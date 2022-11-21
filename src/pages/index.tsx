@@ -1,13 +1,26 @@
 import { getNextStaticProps } from '@faustjs/next';
-
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { CTA, Footer, Header, Hero, Posts } from 'components';
-import styles from 'scss/pages/home.module.scss';
+import { CTA, Footer, Header, Posts } from 'components';
 import { client } from 'client';
+import Banner from '../components/Banner';
+import WeHelp from '../components/WeHelp';
+import Team from 'components/Team';
+import Meeting from 'components/Meeting';
+import PartnerLogo from 'components/PartnerLogo';
+import SplitImageLeft from '../components/SplitImageLeft';
+import FAQ from 'components/FAQ';
+import Gallery from 'components/Gallery';
+import FlexabilitySlider from 'components/FlexabilitySlider';
+import SplitImageRight from '../components/SplitImageRight';
+import Favicon from 'components/Favicon';
+
+
 
 export default function Page() {
+
+
   const { usePosts, useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const posts = usePosts({
@@ -17,21 +30,35 @@ export default function Page() {
     },
   });
 
+
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header />
 
       <Head>
         <title>
           {generalSettings.title} - {generalSettings.description}
         </title>
       </Head>
-
       <main className="content">
-        <Hero
+        <Banner />
+        <WeHelp />
+        <PartnerLogo />
+        <Team />
+        <Meeting />
+        <SplitImageLeft />
+
+      <FlexabilitySlider />
+      <SplitImageRight />
+      <Gallery />
+      <FAQ /> 
+      <CTA />
+      
+
+
+
+
+        {/* <Hero
           title="Get Started with Faust.js"
           buttonText="Developer Docs"
           buttonURL="https://faustjs.org"
@@ -54,8 +81,8 @@ export default function Page() {
             </a>{' '}
             to make building headless WordPress sites fast and fun.
           </p>
-        </Hero>
-        <section className={styles.explore}>
+        </Hero> */}
+        {/* <section className={styles.explore}>
           <div className="wrap">
             <h2>Explore this Example Project</h2>
             <p>
@@ -151,16 +178,16 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </section>
-        <Posts
+        </section> */}
+        {/* <Posts
           posts={posts.nodes}
           heading="Latest Posts"
           intro="The Posts component in src/pages/index.tsx shows the latest six posts from the connected WordPress site."
           headingLevel="h2"
           postTitleLevel="h3"
           id={styles.post_list}
-        />
-        <CTA
+        /> */}
+        {/* <CTA
           title="Questions or comments?"
           buttonText="Join the discussion on GitHub"
           buttonURL="https://github.com/wpengine/faustjs/discussions"
@@ -173,9 +200,19 @@ export default function Page() {
             </a>
             .
           </p>
-        </CTA>
+        </CTA> */}
+        {/* <Posts  
+          posts={posts.nodes}
+          heading="Latest Posts"
+          intro="The Posts component in src/pages/index.tsx shows the latest six   from the connected WordPress site."
+          headingLevel="h2"
+          postTitleLevel="h3"
+        /> */}
       </main>
+      
       <Footer copyrightHolder={generalSettings.title} />
+
+
     </>
   );
 }

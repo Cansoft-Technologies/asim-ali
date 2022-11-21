@@ -10,10 +10,7 @@ export default function Page() {
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header />
 
       <Head>
         <title>Custom Page - {generalSettings.title}</title>
@@ -37,7 +34,7 @@ export default function Page() {
         </div>
       </main>
 
-      <Footer copyrightHolder={generalSettings.title} />
+      <Footer />
     </>
   );
 }

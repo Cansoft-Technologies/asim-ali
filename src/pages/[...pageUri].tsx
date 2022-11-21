@@ -14,10 +14,7 @@ export function PageComponent({ page }: PageProps) {
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header />
 
       <Head>
         <title>
@@ -36,7 +33,7 @@ export function PageComponent({ page }: PageProps) {
         </div>
       </main>
 
-      <Footer copyrightHolder={generalSettings.title} />
+      <Footer />
     </>
   );
 }
