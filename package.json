@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
+    "@emailjs/browser": "^3.9.1",
     "@faustjs/core": "^0.15.7",
     "@faustjs/next": "^0.15.9",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",

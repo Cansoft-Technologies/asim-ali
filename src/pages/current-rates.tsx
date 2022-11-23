@@ -132,14 +132,6 @@ const currentRates = () => {
                      
                         <div dangerouslySetInnerHTML={{__html: data?.CurrentRates?.easyApplicationForm}}   className="application-container"></div>
                      </div>
-                     {/* paymentCalculatorLink
-: 
-{__typename: 'AcfLink', url: 'fff'}
-paymentCalculatorTitle
-: 
-"Use our Mortgage Calculator to see your New Home Payments" */}
-
-{console.log(data?.CurrentRates?.paymentCalculatorTitle)}
                      <div className="calculator-cta"> 
                          <h2>{data?.CurrentRates?.paymentCalculatorTitle}</h2>
                          <Link href={data?.CurrentRates?.paymentCalculatorLink?.url}>

@@ -17,7 +17,14 @@ const blog = () => {
     const generalSettings = useQuery().generalSettings;
 
     const [blogs, setBlogs] = useState([]);
-    const [pages, setPages] = useState([]);
+    const [datas, setDatas] = useState([]);
+    const [isLoading, seIsLoading] = useState(true);
+
+    const [pageCount, setPageCount] = useState(0);
+    const [page, setPage] = useState(0);
+    const size = 3;
+
+    
 
       useEffect(() => {
         const client = new ApolloClient({
@@ -28,7 +35,7 @@ const blog = () => {
         .query({
           query: gql`
           query{
-            posts {
+            posts  {
               nodes {
                 title
                 featuredImage {
@@ -50,7 +57,50 @@ const blog = () => {
             }
           }`,
         })
-        .then((result) => setBlogs(result?.data?.posts?.nodes));
+        .then((result) => 
+
+        {
+          
+       
+        const count = result?.data?.posts?.nodes.length;
+        const pageNumber = Math.ceil(count/size);
+        setPageCount(pageNumber);
+        }
+        
+        );
+        const offset = size * page;
+        client
+        .query({
+          query: gql`
+          query{
+            posts (where: {offsetPagination: {offset: ${offset},  size: ${size}}}) {
+              nodes {
+                title
+                featuredImage {
+                  node {
+                    sourceUrl
+                  }
+                }
+                excerpt
+                content
+                slug
+                uri
+                date
+                author {
+                  node {
+                    name
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) =>  {
+        seIsLoading(false);
+        setBlogs(result?.data?.posts?.nodes);
+        }
+        
+        );
 
 
         client
@@ -69,10 +119,10 @@ const blog = () => {
             }
           }`,
         })
-        .then((result) => setPages(result?.data?.pages?.nodes));
+        .then((result) => setDatas(result?.data?.pages?.nodes));
 
 
-    }, []);
+    }, [page]);
     
     
     const myLoader = ({ src, width, quality }) => {
@@ -82,23 +132,30 @@ const blog = () => {
         <div>
             <Header />
            
-                {pages.map((page, i) => {
+                {datas.map((data, i) => {
                     return(
                         <div key={i}> 
                         <Head>
                     <title>
-                        {console.log(page?.blog)}
-                   {page?.blog.blogBannerTitle} - {generalSettings?.title}
+                   {data?.blog.blogBannerTitle} - {generalSettings?.title}
                     </title>
                 </Head>
                 <main className="content">
                 <Hero
-                    title={page?.blog.blogBannerTitle}
-                    bgImage={page?.blog?.blogBannerBackgroundImage?.sourceUrl}
+                    title={data?.blog.blogBannerTitle}
+                    bgImage={data?.blog?.blogBannerBackgroundImage?.sourceUrl}
                 />
 
+{ isLoading && 
+<div className="text-center py-5">
+<div className="spinner-border text-dark" role="status">
+    <span className="visually-hidden">Loading...</span>
+</div>
+</div>   
+}
+
                 <Container className="my-5 blog-container">
-                    <div className="row row-cols-1 row-cols-md-3 g-4">
+                    <div className="row row-cols-1 row-cols-md-3 g-4 items">
 
 
                         {blogs.map((blog, index) => {
@@ -136,7 +193,17 @@ const blog = () => {
                         })}
                         
                       
-                        
+              <div className="pagination">
+                {
+              [...Array(pageCount).keys()]
+              .map( (number, ind) => <Button
+              className={number == page ? "contactBtn selected": 'contactBtn'}
+              key={number}
+              onClick={() => setPage(number)}
+              >{number + 1}
+              </Button> )
+          } 
+                        </div>
                     </div>
                 </Container>
              

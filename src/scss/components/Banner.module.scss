@@ -54,3 +54,24 @@
         
     }
 }
+
+@media all and (max-width: 441px){
+    .carouselcaption {
+        bottom: 0;
+        .bannerCaption{
+            h1{
+                font-size: 30px;
+            }
+            h4{
+                font-size: 20px;
+            }
+            p{
+                font-size: 15px;
+            }
+        }
+        
+        .bannerBtn{
+            font-size: 18px;
+        }
+    }
+}

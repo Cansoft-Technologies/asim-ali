@@ -8,6 +8,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 const Banner = () => {
 
     const [sliders, setSliders] = useState([]);
+    const [isLoading, seIsLoading] = useState(true);
 
       useEffect(() => {
         const client = new ApolloClient({
@@ -39,7 +40,12 @@ const Banner = () => {
             }
           }`,
         })
-        .then((result) => setSliders(result?.data?.pages?.nodes));
+        .then((result) => {
+          seIsLoading(false);
+          setSliders(result?.data?.pages?.nodes);
+        }
+        
+        );
     }, []);
     
     
@@ -52,6 +58,13 @@ const Banner = () => {
         <div>
             <div className="home-slider"> 
 
+            { isLoading && 
+      <div className="text-center py-5">
+      <div className="spinner-border text-dark" role="status">
+          <span className="visually-hidden">Loading...</span>
+      </div>
+      </div>   
+      }
 
             <Carousel fade>
              
@@ -67,9 +80,7 @@ const Banner = () => {
            {
                return (  
                <Carousel.Item key={slide.sliderTitle}>
-                 {console.log(slider?.HomeLandingPage?.homeSliderSection?.homeSlider == null)}
-                
-                   <div className={styles.overlay}></div>
+                <div className={styles.overlay}></div>
 
                  
                    <Image 
