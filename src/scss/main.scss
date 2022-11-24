@@ -2,7 +2,10 @@
 
 @import "variables";
 @import "typography";
-
+.card-body a{
+	color: $color-black;
+	text-decoration: none;
+}
 body {
 	color: $color-black;
 	font-size: 18px;
@@ -23,10 +26,10 @@ body {
 	a{
 		// font-family: 'AvenirBook';
 		text-transform: uppercase;
-		margin-left: 18px;
+		margin-left: 16px;
 		text-decoration: none;
 		color: $color-footer-bg;
-		font-size: 18px;
+		font-size: 16px;
 		border-bottom: 2px solid transparent;
 		padding: 4px 0;
 		position: relative;
@@ -952,6 +955,40 @@ footer{
 	.Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {
 		font-size: 20px;
 	}
+	.currentRate{
+		.current-rate, .notes{
+			p{
+				margin: 0;
+				font-size: 14px;
+			}
+		}
+		.easy-application{
+			padding: 20px;
+		
+			h1{
+				font-size: 30px;
+			}
+			h2{
+				font-size: 20px !important;
+			}
+
+			.application-container{
+				width: 100%;
+			}
+		}
+	}
+	.calculator-cta{
+		background: $color-footer-bg;
+		width: 80%;
+		margin: 50px auto;
+		padding: 50px 0;
+		text-align: center;
+		h2{
+			font-size: 20px !important;
+		}
+
+	}
+	
 }
 
 

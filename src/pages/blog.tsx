@@ -22,7 +22,7 @@ const blog = () => {
 
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
-    const size = 3;
+    const size = 6;
 
     
 
@@ -35,7 +35,7 @@ const blog = () => {
         .query({
           query: gql`
           query{
-            posts  {
+            posts (where: {offsetPagination: {size: 10000 }}) {
               nodes {
                 title
                 featuredImage {
@@ -61,10 +61,14 @@ const blog = () => {
 
         {
           
-       
+          console.log(result?.data?.posts?.nodes);
         const count = result?.data?.posts?.nodes.length;
+       
         const pageNumber = Math.ceil(count/size);
         setPageCount(pageNumber);
+
+        
+
         }
         
         );
@@ -98,6 +102,7 @@ const blog = () => {
         .then((result) =>  {
         seIsLoading(false);
         setBlogs(result?.data?.posts?.nodes);
+       
         }
         
         );
@@ -193,7 +198,9 @@ const blog = () => {
                         })}
                         
                       
-              <div className="pagination">
+              
+                    </div>
+                    <div className="pagination">
                 {
               [...Array(pageCount).keys()]
               .map( (number, ind) => <Button
@@ -204,7 +211,6 @@ const blog = () => {
               </Button> )
           } 
                         </div>
-                    </div>
                 </Container>
              
                 </main>
