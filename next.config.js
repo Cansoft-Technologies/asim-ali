@@ -5,8 +5,12 @@ const { withFaust } = require('@faustjs/next');
  **/
 module.exports = withFaust();
 
+
 module.exports = {
     images: {
       domains: ['localhost:10004'],
     },
+    eslint: {
+      ignoreDuringBuilds: true,
+    }
   }
