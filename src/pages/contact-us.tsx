@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { Footer, Header } from 'components';
 import { Hero } from '../components';
-import { client, Page as PageType } from 'client';
+import { client } from 'client';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faMapMarker, faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -52,6 +52,8 @@ const contact = () => {
               nodes {
                 contactPage {
                   contactBannerTitle
+                  contactBannerHeading
+                  contactBannerDescription
                   phoneNumber
                   eMail
                   address
@@ -85,6 +87,8 @@ const contact = () => {
                 <main className="content">
                 <Hero
                     title={contact?.contactPage?.contactBannerTitle}
+                    heading={contact?.contactPage?.contactBannerHeading}
+                    description={contact?.contactPage?.contactBannerDescription}
                     bgImage={contact?.contactPage?.contactBannerBackgroundImage?.sourceUrl}
                 />
                 <div className="contact-page mt-5">

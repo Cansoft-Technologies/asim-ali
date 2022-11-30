@@ -60,7 +60,7 @@ const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`
 }
 
-const prefixSettings = settings?.footerSettings;
+const prefixSettings = settings.footerSettings;
 
 const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings?.socialUrl?.tiktok == null && prefixSettings?.socialUrl?.linkedin == null && prefixSettings?.socialUrl?.instagram == null;
 

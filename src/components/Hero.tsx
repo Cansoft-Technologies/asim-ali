@@ -3,6 +3,8 @@ import styles from 'scss/components/Hero.module.scss';
 
 interface Props {
   title: string;
+  heading?: string;
+  description?: string;
   id?: string;
   bgImage?: string;
   buttonText?: string;
@@ -14,6 +16,8 @@ interface Props {
 
 function Hero({
   title = 'Hero Title',
+  heading,
+  description,
   id,
   bgImage,
   buttonText,
@@ -29,7 +33,8 @@ function Hero({
       style={{ backgroundImage: bgImage ? `url(${bgImage})` : 'none' }}
       className={styles.hero}>
       <div className={styles.wrap}>
-        <h1>{title}</h1>
+        <div className="col-md-6 offset-md-6">
+        <h1 className="hero-title">{ title.split(" ")[0] } <span>{ title.split(" ")[1] } { title.split(" ")[2] }</span></h1>
         <div className={styles.intro}>
           <div className={styles.children}>{children}</div>
           {buttonText && buttonURL && (
@@ -46,6 +51,11 @@ function Hero({
               </a>
             </p>
           )}
+        </div>
+        </div>
+        <div className="col-md-11 offset-md-1 mt-5"> 
+            <h3>{heading}</h3>
+            <p>{description}</p>
         </div>
       </div>
     </section>

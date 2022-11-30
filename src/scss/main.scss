@@ -2,6 +2,41 @@
 
 @import "variables";
 @import "typography";
+
+
+.hero-title{
+	font-size: 80px;
+	font-family: 'AvenirBook';
+	position: relative;
+	&:after{
+		position: absolute;
+		overflow: hidden;
+		width: 70%;
+		height: 3px;
+		content: " ";
+		background-color: $color-secondary;
+		left: 60%;
+		top: 25%;
+	}
+	&:before{
+		position: absolute;
+		overflow: hidden;
+		width: 70%;
+		height: 3px;
+		content: " ";
+		background-color: $color-secondary;
+		right: 105%;
+		bottom: 28%;
+	}
+	span{
+		font-family: 'AvenirBlack';
+		color: $color-secondary;
+		display: block;
+		font-weight: 900;
+	}
+}
+
+
 .card-body a{
 	color: $color-black;
 	text-decoration: none;
@@ -11,7 +46,7 @@ body {
 	font-size: 18px;
 	line-height: 1.6;
 	.preloader {
-		background: $color-footer-bg;
+		background: $color-primary;
 		width: 100%;
 		height: 100%;
 		z-index: 99;
@@ -28,7 +63,7 @@ body {
 		text-transform: uppercase;
 		margin-left: 16px;
 		text-decoration: none;
-		color: $color-footer-bg;
+		color: $color-primary;
 		font-size: 16px;
 		border-bottom: 2px solid transparent;
 		padding: 4px 0;
@@ -36,11 +71,11 @@ body {
 		font-weight: 800;
 		&:hover{
 			// font-family: 'AvenirBlack';
-			border-bottom: 2px solid $color-primary;
-			color: $color-footer-bg;
+			border-bottom: 2px solid $color-secondary;
+			color: $color-primary;
 			&:before{
-				border-top: 2px solid  $color-primary;
-				border-right: 2px solid  $color-primary;
+				border-top: 2px solid  $color-secondary;
+				border-right: 2px solid  $color-secondary;
 				width: 30px;
 				height: 30px;
 				content: " ";
@@ -98,9 +133,9 @@ body {
 		opacity: 1;
 	}
 	.carousel-indicators .active {
-				width: 12px;
+		width: 12px;
 		height: 12px !important;
-		background-color: $color-primary;
+		background-color: $color-secondary;
 		position: relative;
 		top: -1px;
 		opacity: 1;
@@ -136,14 +171,14 @@ body {
 				width: 73%;
 				height: 3px;
 				content: " ";
-				background-color: $color-primary;
+				background-color: $color-secondary;
 				margin-left: 10%;
 			
 			}
 			span{
 				font-family: 'AvenirBlack';
 				display: block;
-				color: $color-primary;
+				color: $color-secondary;
 
 			}
 		}
@@ -167,20 +202,10 @@ body {
 			font-size: 80px;
 			color: $color-white;
 			position: relative;
-			:before{
-				position: absolute;
-				left: -12%;
-				overflow: hidden;
-				width: 16%;
-				height: 3px;
-				content: " ";
-				background-color: $color-primary;
-				margin-left: 0;
-				top: 47%;
-			}
+			ç
 			span{
 				font-family: 'AvenirBlack';
-				color: $color-primary;
+				color: $color-secondary;
 
 			}
 		}
@@ -199,13 +224,13 @@ body {
 			width: 71%;
 			height: 3px;
 			content: " ";
-			background-color: $color-primary;
+			background-color: $color-secondary;
 			margin-left: 11%;
 			top: 34%;
 		}
 		span{
 			font-family: 'AvenirBlack';
-			color: $color-primary;
+			color: $color-secondary;
 			display: block;;
 		}
 	}
@@ -222,7 +247,7 @@ body {
 			position: relative;
 			span{
 				font-family: 'AvenirBlack';
-				color: $color-primary;
+				color: $color-secondary;
 				display: block;;
 			}
 		}
@@ -234,12 +259,12 @@ body {
 			font-size: 25px;
 			color: $color-black;
 			span{
-				color: $color-primary;
+				color: $color-secondary;
 				font-family: 'AvenirBlack';
 			}
 			&:hover{
 				background: transparent;
-				border: 2px solid $color-primary;
+				border: 2px solid $color-secondary;
 				color: $color-black;
 				opacity: .5;
 			}
@@ -269,7 +294,7 @@ footer{
 			color: $color-white;
 			font-family: 'AvenirBook';
 			span{
-				color: $color-primary;
+				color: $color-secondary;
 			}
 		}
 		a{
@@ -367,7 +392,7 @@ footer{
 		color: $color-black;
 		span{
 			font-family: 'AvenirBlack';
-			color: $color-primary;
+			color: $color-secondary;
 
 		}
 	}
@@ -424,7 +449,7 @@ footer{
 		
 		span{
 			font-family: 'AvenirBlack';
-			color: $color-primary;
+			color: $color-secondary;
 			
 			
 		}
@@ -435,7 +460,7 @@ footer{
 	padding-bottom: 50px;
 	.accordion{
 		a{
-			color: $color-primary;
+			color: $color-secondary;
 			text-decoration: none;
 		}
 		.accordion-item {
@@ -562,7 +587,7 @@ footer{
 	.react-multiple-carousel__arrow{
 		background-color: transparent;
 		&:before{
-			color: $color-primary;
+			color: $color-secondary;
 		}
 		&:hover{
 			background: transparent;
@@ -587,14 +612,14 @@ footer{
 	height: 50px;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
-	border: 2px solid $color-primary;
+	border: 2px solid $color-secondary;
 	text-align: center;
 	position: absolute;
 	left: 0;
   }
   .contact-icon svg {
 	font-size: 23px;
-	color: $color-primary;
+	color: $color-secondary;
 	line-height: 33px;
 	margin-top: 11px;
   }
@@ -666,18 +691,18 @@ footer{
 	color: $color-black !important;
 	border-radius: 7px;
 	span{
-		color: $color-primary;
+		color: $color-secondary;
 		font-family: 'AvenirBlack';
 	}
 	&:hover{
-		background: $color-footer-bg !important;
-		border: 2px solid $color-primary;
+		background: $color-primary !important;
+		border: 2px solid $color-secondary;
 		color: $color-white !important;
 	}
 	&.selected{
-		background: $color-footer-bg !important;
+		background: $color-primary !important;
 		color: $color-white !important;
-		border: 2px solid $color-footer-bg;
+		border: 2px solid $color-primary;
 	}
 	
 }
@@ -695,7 +720,7 @@ footer{
 		cursor: pointer;
 		
 		&:hover{
-			color: $color-primary;
+			color: $color-secondary;
 		}
 	}
 	.blog-content{
@@ -719,12 +744,12 @@ footer{
 		color: $color-black !important;
 		border-radius: 7px;
 		span{
-			color: $color-primary;
+			color: $color-secondary;
 			font-family: 'AvenirBlack';
 		}
 		&:hover{
-			background: $color-footer-bg !important;
-			border: 2px solid $color-primary;
+			background: $color-primary !important;
+			border: 2px solid $color-secondary;
 			color: $color-white !important;
 		}
 	
@@ -768,7 +793,7 @@ footer{
 				
 			}
 			.contactBt{
-				background: $color-primary !important;
+				background: $color-secondary !important;
 	border: 2px solid $color-black !important;
 	text-transform: uppercase;
 	font-family: 'AvenirBook';
@@ -783,7 +808,7 @@ footer{
 	}
 }
 .calculator-cta{
-	background: $color-footer-bg;
+	background: $color-primary;
 	width: 80%;
 	margin: 50px auto;
 	padding: 50px 0;
@@ -793,7 +818,7 @@ footer{
 		margin-bottom: 30px;
 	}
 	.contactBtn{
-		background: $color-primary !important;
+		background: $color-secondary !important;
 		border: 2px solid $color-black !important;
 		text-transform: uppercase;
 		font-family: 'AvenirBook';
@@ -811,6 +836,184 @@ footer{
 		margin: 10px;
 	}
 }
+
+
+
+
+.our-services{
+	.slide-text {
+		border: 1px solid $color-secondary;
+		margin: 13px;
+		padding: 20px;
+		text-align: center;
+		color: $color-primary;
+		height: 180px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		h4{
+			font-size: 15px;
+			font-family: 'AvenirBlack';
+		}
+		&:hover{
+			background: $color-primary;
+			border: 1px solid $color-primary;
+			color: $color-secondary;
+			cursor: pointer;
+		}
+	}
+	.react-multiple-carousel__arrow{
+		background-color: transparent;
+		&:before{
+			color: $color-secondary;
+		}
+		&:hover{
+			background: transparent;
+		}
+	}
+	.react-multiple-carousel__arrow--left{
+		left: calc(0% + -15px);
+	}
+	.react-multiple-carousel__arrow--right{
+		right: calc(0% + -15px);
+	}
+	.refinance-text{
+		margin-top: 50px;
+		div:nth-child(2){
+			display: flex;
+			align-items: flex-end;
+		}
+		h2{
+			font-size: 80px;
+			font-family: 'AvenirBook';
+			position: relative;
+			&:after{
+				position: absolute;
+				overflow: hidden;
+				width: 70%;
+				height: 3px;
+				content: " ";
+				background-color: $color-secondary;
+				left: 105%;
+				top: 25%;
+			}
+			span{
+				font-family: 'AvenirBlack';
+				color: $color-secondary;
+				display: block;
+				font-weight: 900;
+			}
+		}
+		
+	}
+	.service-text{
+		background: #eee;
+		padding: 30px;
+		margin-top: 50px;
+	}
+	
+}
+.our-locations{
+	.location-heading{
+		margin: 50px 0 150px 0;
+		h2{
+			font-size: 80px;
+			font-family: 'AvenirBook';
+			position: relative;
+			&:after{
+				position: absolute;
+				overflow: hidden;
+				width: 70%;
+				height: 3px;
+				content: " ";
+				background-color: $color-secondary;
+				left: 15%;
+				top: 25%;
+			}
+			span{
+				font-family: 'AvenirBlack';
+				color: $color-secondary;
+				display: block;
+				font-weight: 900;
+			}
+		}
+	}
+	.location-images{
+		margin-top: 30px !important;
+		
+		.col{
+			position: relative;
+			.h2 {
+				width: 86%;
+				height: 100%;
+				background: rgba(0,0,0,.5);
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				display: flex;
+				justify-content: center;
+				text-align: center;
+				align-items: center;
+				cursor: pointer;
+				z-index: 99;
+			}
+		}
+		.col:nth-child(even){
+			position: relative;
+			top: -100px;
+		}
+	}
+}
+.Bc-Coquitlam{
+	.refinance-text{
+		margin-top: 50px;
+		color: $color-primary;
+		div:nth-child(2){
+			display: flex;
+			align-items: flex-end;
+		}
+		h2{
+			font-size: 80px;
+			font-family: 'AvenirBook';
+			position: relative;
+			&:after{
+				position: absolute;
+				overflow: hidden;
+				width: 70%;
+				height: 3px;
+				content: " ";
+				background-color: $color-secondary;
+				left: 105%;
+				top: 25%;
+			}
+			span{
+				font-family: 'AvenirBlack';
+				color: $color-secondary;
+				display: block;
+				font-weight: 900;
+			}
+		}
+	}
+	.coquitlam-grid{
+		display: flex;
+		align-items: center;
+		color: $color-primary;
+		h2{
+			font-size: 20px;
+			margin-bottom: 20px;
+			span{
+				font-family: 'AvenirBlack';
+				color: $color-primary;
+				font-weight: 900;
+			}
+		}
+	}
+}
+
+
 
 @media all and (max-width: 912px){
 	.wehelp_section .wehelp_text h2 {
@@ -834,7 +1037,7 @@ footer{
 				color: $color-white;
 				font-family: 'AvenirBook';
 				span{
-					color: $color-primary;
+					color: $color-secondary;
 				}
 			}
 			a{
@@ -978,7 +1181,7 @@ footer{
 		}
 	}
 	.calculator-cta{
-		background: $color-footer-bg;
+		background: $color-primary;
 		width: 80%;
 		margin: 50px auto;
 		padding: 50px 0;
