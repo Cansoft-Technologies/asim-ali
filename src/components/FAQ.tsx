@@ -9,7 +9,7 @@ const FAQ = () => {
 
       useEffect(() => {
         const client = new ApolloClient({
-            uri: 'http://localhost:10004/graphql',
+            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
             cache: new InMemoryCache(),
           });
         client
