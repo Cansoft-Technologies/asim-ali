@@ -28,10 +28,7 @@ export default function Page() {
 
   return (
     <>
-      <Header
-        title={generalSettings.title}
-        description={generalSettings.description}
-      />
+      <Header />
 
       <Head>
         <title>
@@ -50,7 +47,7 @@ export default function Page() {
         <Pagination pageInfo={posts.pageInfo} basePath="/posts" />
       </main>
 
-      <Footer copyrightHolder={generalSettings.title} />
+      <Footer />
     </>
   );
 }
