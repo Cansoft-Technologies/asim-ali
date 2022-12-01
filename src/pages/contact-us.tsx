@@ -12,12 +12,12 @@ import emailjs from '@emailjs/browser';
 
 
 
-const contact = () => {
+const Contact = () => {
     const { useQuery } = client;
     const generalSettings = useQuery().generalSettings;
     const form = useRef();
     const [contacts, setContacts] = useState([]);
-    const [success, setSuccess] = useState();
+    const [success, setSuccess] = useState(null);
 
 
     const sendEmail = (e) => {
@@ -31,7 +31,7 @@ const contact = () => {
         )
         .then(
           (result) => {
-            setSuccess((result as string).text);
+            setSuccess(result.text);
         
           },
           (error) => {
@@ -240,4 +240,4 @@ const contact = () => {
     );
 };
 
-export default contact;
+export default Contact;
