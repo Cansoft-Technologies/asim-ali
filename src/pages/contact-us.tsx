@@ -31,7 +31,8 @@ const contact = () => {
         )
         .then(
           (result) => {
-            setSuccess(result.text);
+            setSuccess((result as string).text);
+        
           },
           (error) => {
             console.log(error.text);

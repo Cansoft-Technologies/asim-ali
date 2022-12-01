@@ -57,7 +57,6 @@ const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`
 }
 
-console.log("Asim vai", (settings as any).footerSettings);
 
 const prefixSettings = (settings as any).footerSettings;
 
