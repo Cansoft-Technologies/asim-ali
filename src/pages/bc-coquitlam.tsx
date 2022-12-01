@@ -6,6 +6,9 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -92,7 +95,7 @@ const BcCoquitlam = () => {
                     </Carousel>
                 </Row>
                 <Row className="product-service">
-                    <Col md={12}>
+                    <Col className='mb-5' md={12}>
                         <h2 className='text-center'>Mortgage products and services you can trust:</h2>
                     </Col>
                     <Col md={3}>
@@ -106,7 +109,7 @@ const BcCoquitlam = () => {
                         src="/images/conquitlam-grid.png"
                         alt=""
                         width="190" 
-                        height="200" 
+                        height="150" 
                         layout="responsive" 
                         objectFit="contain"
                         />
@@ -118,34 +121,44 @@ const BcCoquitlam = () => {
                         <p>Even though our prices are already competitive, we still want to give you the best rate possible. See how our latest pricing stacks up against the competition below.</p>
                     </Col>
                 </Row>
-                <Row>
+                <Row className='apply-step'>
                     <Col md={4}>
-                        <h2>01</h2>
-                        <h2>Apply Online</h2>
+                        <div className="apply">
+                            <h2>01</h2>
+                            <h2>Apply Online</h2>
+                            <div className="apply-border">
+                            </div>
+                        </div>
                     </Col> 
                     <Col md={4}>
-                    <h2>01</h2>
-                        <h2>Apply Online</h2>
-                        <p>We streamline the mortgage process so you can focus on what’s important: your new home. We’ll take care of the red tape and get you Approved promptly, with clear and transparent conditions.</p> 
+                        <div className="approved"> 
+                            <h2>02</h2>
+                            <h2>Get Approved</h2>
+                            <p>We streamline the mortgage process so you can focus on what’s important: your new home. We’ll take care of the red tape and get you Approved promptly, with clear and transparent conditions.</p> 
+                        </div>
                     </Col> 
                     <Col md={4}>
-                        <h2>01</h2>
-                        <h2>Apply Online</h2>
+                        <div className="apply">
+                            <h2>03</h2>
+                            <h2>Enjoy Saving</h2>
+                            <div className="apply-border">
+                            </div>
+                        </div>
                     </Col> 
                 </Row>
-                <Row>
+                <Row className='mortgage-broker'>
                     <Col>
                         <h2>Work with the best Mortgage Broker Coquitlam</h2> 
                         <p>Refinancing, Renewing, or Need Some Additional Advice From Your Mortgage Broker in Coquitlam? Were you aware that most lenders don’t ever give borrowers the right rate renovation form to sign at the renewal time? But worse, statistics show that most borrower signs these uncompetitive forms of mortgage renewal with no advice whatsoever! Borrowers leave cash on the table.</p>
                     </Col>
                 </Row>
-                <Row>
+                <Row className='renovation-form'>
                     <Col>
                         <h2>Mortgage Renovation Form</h2>
                         <h3>Refinancing</h3>
                         <h2>Pre-Approval</h2>
                     </Col>
-                    <Col>
+                    <Col className="renovation-form-text" >
                         <p>On the other hand, refinancing is even more complicated and takes an integrated approach to find the best refinancing option.</p>
                         <b><i>You may be involved in refinancing for several reasons:</i></b>
                         <ul>
@@ -157,11 +170,11 @@ const BcCoquitlam = () => {
                         </ul>
                     </Col>
                 </Row>
-                <Row>
+                <Row className='broker-coquitlam'>
                     <Col>
                     <h2>Why Work With A Mortgage Broker In Coquitlam?</h2>
                     <p>Two forms to get a mortgage are usually available in Canada: a bank or a certified mortgage broker in Coquitlam.</p>
-                    <a href="#">Read More &#8964;</a>
+                    <a href="#">Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     </Col>
                 </Row>
                

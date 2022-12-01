@@ -14,7 +14,7 @@ function Header(): JSX.Element {
     where: { location: MenuLocationEnum.PRIMARY },
   }).nodes;
 
-  const [settings, setSettings] = useState([]);
+  const [settings, setSettings] = useState({});
   const [isLoading, seIsLoading] = useState(true);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function Header(): JSX.Element {
         query: gql`
         query{
           settingsOptions {
-            settingsOptions {
+            asimOptions {
               headerSettings {
                 uploadLogo {
                   sourceUrl
@@ -40,7 +40,7 @@ function Header(): JSX.Element {
       })
       .then((result) => 
         {
-          setSettings(result?.data?.settingsOptions?.settingsOptions)
+          setSettings(result?.data?.settingsOptions?.asimOptions)
         seIsLoading(false);
         }
         );
@@ -68,10 +68,10 @@ function Header(): JSX.Element {
         <Navbar.Brand>
          
           
-            {settings?.headerSettings?.uploadLogo == null ? "" : (
+            { (settings as any)?.headerSettings?.uploadLogo == null ? "" : (
             <Link href="/">
             <Image 
-            src={settings?.headerSettings?.uploadLogo?.sourceUrl}
+            src={(settings as any)?.headerSettings?.uploadLogo?.sourceUrl}
             loader={myLoader}  
             style={{cursor: 'pointer'}} 
             alt='Logo' 

@@ -42,17 +42,23 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
-                        <h2>Hello World Overlay</h2>
+                        <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
+                        
                     </Col>
                     <Col>
                     <Image 
-                        src="/images/location-2.png"
+                        src="/images/location-9.png"
                         alt=""
                         width="190" 
                         height="700" 
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                     <Col>
                     <Image 
@@ -63,6 +69,9 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                     <Col>
                     <Image 
@@ -73,6 +82,9 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                     <Col>
                     <Image 
@@ -83,6 +95,9 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                 </Row>
 
@@ -96,6 +111,9 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                     <Col>
                     <Image 
@@ -106,6 +124,9 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                     <Col>
                     <Image 
@@ -116,6 +137,9 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                     <Col>
                     <Image 
@@ -126,6 +150,9 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                     <Col>
                     <Image 
@@ -136,6 +163,9 @@ const Locations = () => {
                         layout="responsive" 
                         objectFit="contain"
                         />
+                         <div> 
+                            <h2 dangerouslySetInnerHTML={{__html: ' Coquitlam'.split('').join('</span><span>') + '</span>' }}  ></h2>
+                        </div>
                     </Col>
                 </Row>
 

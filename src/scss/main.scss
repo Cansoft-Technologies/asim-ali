@@ -15,7 +15,7 @@
 		height: 3px;
 		content: " ";
 		background-color: $color-secondary;
-		left: 60%;
+		left: 40%;
 		top: 25%;
 	}
 	&:before{
@@ -941,24 +941,42 @@ footer{
 	}
 	.location-images{
 		margin-top: 30px !important;
-		
 		.col{
 			position: relative;
-			.h2 {
+			
+			&:hover div{
+				opacity: 1;
+			}
+			div{
+				transition-property: opacity;
+				transition-duration: .5s;
 				width: 86%;
 				height: 100%;
-				background: rgba(0,0,0,.5);
+				background: rgba(18, 20, 58, .7);
 				position: absolute;
 				top: 0;
 				left: 0;
 				right: 0;
 				margin: auto;
 				display: flex;
+				opacity: 0;
 				justify-content: center;
 				text-align: center;
 				align-items: center;
 				cursor: pointer;
-				z-index: 99;
+				
+				h2{
+					
+					color: $color-secondary;
+					text-transform: uppercase;
+					font-size: 50px;
+					font-family: 'AvenirBlack';
+					font-weight: 900;
+					span{
+						display: block;
+					}
+				}
+				
 			}
 		}
 		.col:nth-child(even){
@@ -1009,6 +1027,166 @@ footer{
 				color: $color-primary;
 				font-weight: 900;
 			}
+		}
+	}
+	.application-slider{
+		color: $color-primary;
+		margin: 80px 0;
+		padding: 50px 0;
+		border-top: 1px solid $color-secondary;
+		border-bottom: 1px solid $color-secondary;
+		.application-slide{
+			p{
+				width: 90%;
+				margin: auto;
+				line-height: 30px;
+			}
+		}
+		.react-multiple-carousel__arrow{
+			background-color: transparent;
+			&:before{
+				color: $color-secondary;
+			}
+			&:hover{
+				background: transparent;
+			}
+		}
+		.react-multiple-carousel__arrow--left{
+			left: calc(0% + -15px);
+		}
+		.react-multiple-carousel__arrow--right{
+			right: calc(0% + -15px);
+		}
+	}
+	.product-service{
+		margin-bottom: 80px;
+		h2{
+			color: $color-primary;
+			font-size: 20px;
+			font-weight: 600;
+			font-family: 'AvenirBlack';
+			margin-bottom: 10px;
+		}
+		p{
+			color: $color-primary;
+			font-size: 14px;
+			font-weight: 200;
+			line-height: 25px;
+			font-family: 'AvenirBook';
+		}
+	}
+	.apply-step{
+		margin-bottom: 80px;
+		div.col-md-4{
+			display: flex;
+    		align-items: center;
+			justify-content: center;
+		}
+		.apply{
+			background: $color-primary;
+			padding: 20px;
+			text-align: center;
+			color: $color-white;
+			position: relative;
+			z-index: auto;
+			width: 100%;
+			
+			.apply-border{
+				border: 1px solid $color-secondary;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotate(-10deg);
+				z-index: -999;
+			}
+		}
+		.approved{
+			border: 1px solid $color-secondary;
+			padding: 20px;
+			text-align: center;
+			p{
+				color: $color-primary;
+				font-size: 14px;
+				font-weight: 200;
+				line-height: 25px;
+				font-family: 'AvenirBook';
+			}
+		}
+		
+	}
+	.mortgage-broker{
+		color: $color-primary;
+		text-align: center;
+		padding: 50px 0;
+		p{
+			color: $color-primary;
+			font-size: 14px;
+			font-weight: 200;
+			line-height: 25px;
+			font-family: 'AvenirBook';
+		}
+		h2{
+			color: $color-primary;
+			font-size: 20px;
+			font-weight: 600;
+			font-family: 'AvenirBlack';
+			margin-bottom: 10px;
+		}
+	}
+	.renovation-form{
+		color: $color-primary;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		h2{
+			font-size: 22px;
+			font-weight: 400;
+			font-family: 'AvenirBook';
+			padding: 20px 0;
+		}
+		h3{
+			font-size: 20px;
+			font-weight: 600;
+			font-family: 'AvenirBlack';
+			border-bottom: 2px solid $color-secondary;
+			display: inline;
+			padding: 5px 0;
+		}
+		.renovation-form-text{
+			background: $color-light-gray;
+			padding: 20px;
+			p, li{
+				color: $color-primary;
+				font-size: 14px;
+				font-weight: 200;
+				line-height: 25px;
+				font-family: 'AvenirBook';
+			}
+		}
+	}
+	.broker-coquitlam{
+		margin: 80px 0;
+		p{
+			color: $color-primary;
+			font-size: 14px;
+			font-weight: 200;
+			line-height: 25px;
+			font-family: 'AvenirBook';
+		}
+		h2{
+			color: $color-primary;
+			font-size: 22px;
+			font-weight: 600;
+			font-family: 'AvenirBlack';
+			margin-bottom: 10px;
+		}
+		a{
+			color: $color-secondary;
+			font-weight: 600;
+			font-family: 'AvenirBlack';
+			text-decoration: none;
 		}
 	}
 }

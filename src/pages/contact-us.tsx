@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { Footer, Header } from 'components';
 import { Hero } from '../components';
-import { client } from 'client';
+import { client} from 'client';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faMapMarker, faEnvelope } from '@fortawesome/free-solid-svg-icons';

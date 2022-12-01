@@ -8,10 +8,7 @@ import {  faFacebookF , faTiktok, faInstagram, faLinkedinIn} from '@fortawesome/
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-
-
-
-function Footer(): any {
+const Footer = () => {
   // const year = new Date().getFullYear();
   const [settings, setSettings] = useState([]);
 
@@ -24,7 +21,7 @@ function Footer(): any {
     .query({
       query: gql`query MyQuery {
         settingsOptions {
-          settingsOptions {
+          asimOptions {
             footerSettings {
               socialUrl {
                 facebook
@@ -54,13 +51,15 @@ function Footer(): any {
         }
       }`,
     })
-    .then((result) => setSettings(result?.data?.settingsOptions?.settingsOptions));
+    .then((result) => setSettings(result?.data?.settingsOptions?.asimOptions));
 }, []);
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`
 }
 
-const prefixSettings = settings.footerSettings;
+console.log("Asim vai", (settings as any).footerSettings);
+
+const prefixSettings = (settings as any).footerSettings;
 
 const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings?.socialUrl?.tiktok == null && prefixSettings?.socialUrl?.linkedin == null && prefixSettings?.socialUrl?.instagram == null;
 
