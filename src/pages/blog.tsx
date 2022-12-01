@@ -202,8 +202,7 @@ const blog = () => {
                     </div>
                     <div className="pagination">
                 {
-              [...Array(pageCount).keys()]
-              .map( (number, ind) => <Button
+              [...Array(pageCount).keys()].map( (number) => <Button
               className={number == page ? "contactBtn selected": 'contactBtn'}
               key={number}
               onClick={() => setPage(number)}
