@@ -39,7 +39,7 @@ const PartnerLogo = () => {
           query{
             pages(where: {title: "home"}) {
               nodes {
-                HomeLandingPage {
+                homeLandingPage {
                   partnerLogoSection {
                     hideSection
                     partnerLogo {
@@ -64,14 +64,14 @@ const PartnerLogo = () => {
        <Container className="my-5 partnerLogo" >
        {logos.map(logo => {
         return(
-          <div key={logo.HomeLandingPage} >
-          {logo?.HomeLandingPage?.partnerLogoSection.hideSection == true ? "" : (
+          <div key={logo.homeLandingPage} >
+          {logo?.homeLandingPage?.partnerLogoSection.hideSection == true ? "" : (
             <Carousel 
            autoPlay={true}
             infinite={true}
             responsive={responsive}
                 >{
-                  logo?.HomeLandingPage?.partnerLogoSection?.partnerLogo.map(singleLogo => {
+                  logo?.homeLandingPage?.partnerLogoSection?.partnerLogo.map(singleLogo => {
                     return (
                     <div key={singleLogo.sourceUrl}>
                   <Image 

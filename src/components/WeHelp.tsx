@@ -20,7 +20,7 @@ const WeHelp = () => {
         query{
             pages(where: {title: "home"}) {
               nodes {
-                HomeLandingPage {
+                homeLandingPage {
                   weHelpSection {
                     helpTitle
                     helpDescription
@@ -53,9 +53,9 @@ const WeHelp = () => {
                     return(
                 <div 
                
-                key={help?.HomeLandingPage?.weHelpSection}>
+                key={help?.homeLandingPage?.weHelpSection}>
 
-      {help?.HomeLandingPage?.weHelpSection?.hideSection == true ? "" : (
+      {help?.homeLandingPage?.weHelpSection?.hideSection == true ? "" : (
          <section className='wehelp_section'>
         <Container>
             <Row >
@@ -63,16 +63,16 @@ const WeHelp = () => {
                            <div className="wehelp_image">
                            <Image 
                            loader={myLoader}
-                           src={help?.HomeLandingPage?.weHelpSection?.helpImage?.sourceUrl}
+                           src={help?.homeLandingPage?.weHelpSection?.helpImage?.sourceUrl}
                            width="500" 
                            height="639" 
-                           alt={help?.HomeLandingPage?.weHelpSection?.helpImage?.altText} />
+                           alt={help?.homeLandingPage?.weHelpSection?.helpImage?.altText} />
                            </div>
                        </Col>
                        <Col lg={6} >
                           <div className="wehelp_text">
-                               <h2 dangerouslySetInnerHTML={{__html: help?.HomeLandingPage?.weHelpSection?.helpTitle}} ></h2>
-                           <p>{help?.HomeLandingPage?.weHelpSection?.helpDescription} 
+                               <h2 dangerouslySetInnerHTML={{__html: help?.homeLandingPage?.weHelpSection?.helpTitle}} ></h2>
+                           <p>{help?.homeLandingPage?.weHelpSection?.helpDescription} 
                            {help?.helpImage?.sourceUrl}</p>
                            
                           </div>

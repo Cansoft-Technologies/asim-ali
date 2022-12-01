@@ -18,7 +18,7 @@ const Gallery = () => {
           query{
             pages(where: {title: "home"}) {
               nodes {
-                HomeLandingPage {
+                homeLandingPage {
                   gallery {
                     hideSection
                     galleryImage1 {
@@ -61,13 +61,13 @@ const Gallery = () => {
             {images.map( image => {
                 return(
             <Container key={image}> 
-            {image?.HomeLandingPage?.gallery?.hideSection === true ? "" : (
+            {image?.homeLandingPage?.gallery?.hideSection === true ? "" : (
                 <Row className='gx-3'>
                     <Col> 
-                    {image?.HomeLandingPage?.gallery?.galleryImage1 == null ? "" : (
+                    {image?.homeLandingPage?.gallery?.galleryImage1 == null ? "" : (
                      <Image 
-                        src={image?.HomeLandingPage?.gallery?.galleryImage1?.sourceUrl} 
-                        alt={image?.HomeLandingPage?.gallery?.galleryImage1?.altText} 
+                        src={image?.homeLandingPage?.gallery?.galleryImage1?.sourceUrl} 
+                        alt={image?.homeLandingPage?.gallery?.galleryImage1?.altText} 
                         loader={myLoader}
                         width="100%" 
                         height="60" 
@@ -76,10 +76,10 @@ const Gallery = () => {
                         />
                     )}
                     
-                    {image?.HomeLandingPage?.gallery?.galleryImage2 == null ? "" : (
+                    {image?.homeLandingPage?.gallery?.galleryImage2 == null ? "" : (
                         <Image 
-                        src={image?.HomeLandingPage?.gallery?.galleryImage2?.sourceUrl} 
-                        alt={image?.HomeLandingPage?.gallery?.galleryImage2?.altText} 
+                        src={image?.homeLandingPage?.gallery?.galleryImage2?.sourceUrl} 
+                        alt={image?.homeLandingPage?.gallery?.galleryImage2?.altText} 
                         loader={myLoader}
                         width="100%" 
                         height="70" 
@@ -90,10 +90,10 @@ const Gallery = () => {
 
                     </Col>
                     <Col> 
-                    {image?.HomeLandingPage?.gallery?.galleryImage3 == null ? "" : (
+                    {image?.homeLandingPage?.gallery?.galleryImage3 == null ? "" : (
                         <Image 
-                        src={image?.HomeLandingPage?.gallery?.galleryImage3?.sourceUrl} 
-                        alt={image?.HomeLandingPage?.gallery?.galleryImage3?.altText} 
+                        src={image?.homeLandingPage?.gallery?.galleryImage3?.sourceUrl} 
+                        alt={image?.homeLandingPage?.gallery?.galleryImage3?.altText} 
                         loader={myLoader} 
                         width="100%" 
                         height="138" 
@@ -103,10 +103,10 @@ const Gallery = () => {
                         )}
                     </Col>
                     <Col> 
-                    {image?.HomeLandingPage?.gallery?.galleryImage4 == null ? "" : (
+                    {image?.homeLandingPage?.gallery?.galleryImage4 == null ? "" : (
                         <Image 
-                        src={image?.HomeLandingPage?.gallery?.galleryImage4?.sourceUrl} 
-                        alt={image?.HomeLandingPage?.gallery?.galleryImage4?.altText} 
+                        src={image?.homeLandingPage?.gallery?.galleryImage4?.sourceUrl} 
+                        alt={image?.homeLandingPage?.gallery?.galleryImage4?.altText} 
                         loader={myLoader} 
                         width="100%" 
                         height="60" 
@@ -114,10 +114,10 @@ const Gallery = () => {
                         objectFit="contain" />
                         )}
 
-                        {image?.HomeLandingPage?.gallery?.galleryImage5 == null ? "" : (
+                        {image?.homeLandingPage?.gallery?.galleryImage5 == null ? "" : (
                         <Image 
-                        src={image?.HomeLandingPage?.gallery?.galleryImage5?.sourceUrl} 
-                        alt={image?.HomeLandingPage?.gallery?.galleryImage5?.altText} 
+                        src={image?.homeLandingPage?.gallery?.galleryImage5?.sourceUrl} 
+                        alt={image?.homeLandingPage?.gallery?.galleryImage5?.altText} 
                         loader={myLoader} 
                         width="100%" 
                         height="70" 

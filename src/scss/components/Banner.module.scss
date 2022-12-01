@@ -16,7 +16,7 @@
     .bannerCaption{
         font-family: 'DejavuSans';
         h1{
-            color: $color-primary;
+            color: $color-secondary;
             margin: 0 auto;
             font-size: 75px;
             font-weight: 300;
@@ -42,12 +42,12 @@
         font-family: 'AvenirBook';
         font-size: 25px;
         span{
-            color: $color-primary;
+            color: $color-secondary;
             font-family: 'AvenirBlack';
         }
         &:hover{
             background: transparent;
-            border: 2px solid $color-primary;
+            border: 2px solid $color-secondary;
             color: $color-white;
             opacity: .5;
         }

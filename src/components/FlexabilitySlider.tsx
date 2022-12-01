@@ -18,7 +18,7 @@ const FlexabilitySlider = () => {
           query: gql`query MyQuery {
             pages(where: {title: "home"}) {
               nodes {
-                HomeLandingPage {
+                homeLandingPage {
                   flexabilitySlider {
                     sliderTitle
                     sliderSubtitle
@@ -54,9 +54,9 @@ const FlexabilitySlider = () => {
 
               return( 
 
-                slider?.HomeLandingPage?.flexabilitySlider == null ? "" : 
+                slider?.homeLandingPage?.flexabilitySlider == null ? "" : 
                 
-                slider?.HomeLandingPage?.flexabilitySlider.map( (slide) => 
+                slider?.homeLandingPage?.flexabilitySlider.map( (slide) => 
                
               {
                   return (  

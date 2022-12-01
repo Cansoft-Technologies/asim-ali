@@ -18,7 +18,7 @@ const Team = () => {
         query{
             pages(where: {title: "home"}) {
               nodes {
-                HomeLandingPage {
+                homeLandingPage {
                   teamSection {
                     teamTitle
                     hideSection
@@ -45,12 +45,12 @@ const Team = () => {
                     return(
                        
                       <div key={team}>
-                        {team?.HomeLandingPage?.teamSection?.hideSection == true ? "" : (
+                        {team?.homeLandingPage?.teamSection?.hideSection == true ? "" : (
                           <div className='team_section'
                         style={{ 
-                            backgroundImage: `url("${team?.HomeLandingPage?.teamSection?.teamImage?.sourceUrl}")` 
+                            backgroundImage: `url("${team?.homeLandingPage?.teamSection?.teamImage?.sourceUrl}")` 
                           }} > 
-                        <h2 dangerouslySetInnerHTML={{__html: team?.HomeLandingPage?.teamSection?.teamTitle}} ></h2>
+                        <h2 dangerouslySetInnerHTML={{__html: team?.homeLandingPage?.teamSection?.teamTitle}} ></h2>
                         </div>
                         )}
                         

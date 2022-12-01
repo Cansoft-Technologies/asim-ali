@@ -21,7 +21,7 @@ const Banner = () => {
           query {
             pages(where: {title: "home"}) {
               nodes {
-                HomeLandingPage {
+                homeLandingPage {
                   homeSliderSection {
                     homeSlider {
                       sliderTitle
@@ -73,9 +73,9 @@ const Banner = () => {
               
            return( 
 
-            slider?.HomeLandingPage?.homeSliderSection?.homeSlider == null ? "" : 
+            slider?.homeLandingPage?.homeSliderSection?.homeSlider == null ? "" : 
             
-            slider?.HomeLandingPage?.homeSliderSection?.homeSlider.map( (slide) => 
+            slider?.homeLandingPage?.homeSliderSection?.homeSlider.map( (slide) => 
             
            {
                return (  

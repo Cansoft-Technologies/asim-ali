@@ -20,7 +20,7 @@ const CTA = () => {
         query{
             pages(where: {title: "home"}) {
               nodes {
-                HomeLandingPage {
+                homeLandingPage {
                   callToActionSection {
                     hideSection
                     actionTitle
@@ -46,16 +46,16 @@ const CTA = () => {
         {catSections.map((cat, index) => {
             return(
                 <Container key={index}> 
-                {cat?.HomeLandingPage?.callToActionSection?.hideSection == true ? "" : (
+                {cat?.homeLandingPage?.callToActionSection?.hideSection == true ? "" : (
                     <div style={{ 
-                   backgroundImage: `url(${cat?.HomeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl})` 
+                   backgroundImage: `url(${cat?.homeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl})` 
                    }} className='cta_section'> 
                    <div className="cta_text"> 
-                       <h3>{cat?.HomeLandingPage?.callToActionSection?.actionTitle}</h3>
+                       <h3>{cat?.homeLandingPage?.callToActionSection?.actionTitle}</h3>
                        
-                       {cat?.HomeLandingPage?.callToActionSection?.actionLink == null ? "" : (
-                        <Link href={cat?.HomeLandingPage?.callToActionSection?.actionLink?.url}>
-                           <Button className="ctaBtn">{cat?.HomeLandingPage?.callToActionSection?.actionLink?.title}</Button>
+                       {cat?.homeLandingPage?.callToActionSection?.actionLink == null ? "" : (
+                        <Link href={cat?.homeLandingPage?.callToActionSection?.actionLink?.url}>
+                           <Button className="ctaBtn">{cat?.homeLandingPage?.callToActionSection?.actionLink?.title}</Button>
                        </Link>
                        )}
                        

@@ -21,7 +21,7 @@ const SplitImageLeft = () => {
         query{
             pages(where: {title: "home"}) {
               nodes {
-                HomeLandingPage {
+                homeLandingPage {
                   splitImageLeftSection {
                     splitTitle
                     splitDescription
@@ -55,26 +55,26 @@ const SplitImageLeft = () => {
                     <section 
                     key={splitImage}
                     className='split_section'>
-                    { splitImage?.HomeLandingPage?.splitImageLeftSection?.hideSection == true ? "" : (
+                    { splitImage?.homeLandingPage?.splitImageLeftSection?.hideSection == true ? "" : (
                        <Container>
                              <Row>
                                  <Col lg={8}>
                                      <div className="split_image">
                                      <Image 
-                                     src={splitImage?.HomeLandingPage?.splitImageLeftSection?.splitImage?.sourceUrl} 
+                                     src={splitImage?.homeLandingPage?.splitImageLeftSection?.splitImage?.sourceUrl} 
                                      loader={myLoader}
                                      width="1556" 
                                      height="1921" 
-                                     alt={splitImage?.HomeLandingPage?.splitImageLeftSection?.splitImage?.altText} />
+                                     alt={splitImage?.homeLandingPage?.splitImageLeftSection?.splitImage?.altText} />
                                      </div>
                                  </Col>
                                  <Col lg={4}>
                                      <div className="split_text">
-                                     <h2 dangerouslySetInnerHTML={{__html:splitImage?.HomeLandingPage?.splitImageLeftSection?.splitTitle}} ></h2>
-                                     <p>{splitImage?.HomeLandingPage?.splitImageLeftSection?.splitDescription}</p>                                
+                                     <h2 dangerouslySetInnerHTML={{__html:splitImage?.homeLandingPage?.splitImageLeftSection?.splitTitle}} ></h2>
+                                     <p>{splitImage?.homeLandingPage?.splitImageLeftSection?.splitDescription}</p>                                
                                      
-                                     {splitImage?.HomeLandingPage?.splitImageLeftSection?.splitButton == null ? "" : (
-                                      <Link href={splitImage?.HomeLandingPage?.splitImageLeftSection?.splitButton.url}>
+                                     {splitImage?.homeLandingPage?.splitImageLeftSection?.splitButton == null ? "" : (
+                                      <Link href={splitImage?.homeLandingPage?.splitImageLeftSection?.splitButton.url}>
                                       <Button className="SplitBtn">Get <span>Approved</span>
                                       </Button>
                                       </Link>
