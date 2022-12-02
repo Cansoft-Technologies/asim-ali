@@ -55,19 +55,17 @@ function Header(): JSX.Element {
   return (
    <>
    
-    {isLoading && 
+    {/* {isLoading && 
       <div className="preloader" >
         <div className="spinner-border text-warning" role="status">
           <span className="visually-hidden">Loading...</span>
           </div>
       </div>
-      }
+      } */}
     <Navbar bg="light" expand="lg">
        
       <Container>
         <Navbar.Brand>
-         
-          
             { (settings as any)?.headerSettings?.uploadLogo == null ? "" : (
             <Link href="/">
             <Image 
@@ -75,7 +73,7 @@ function Header(): JSX.Element {
             loader={myLoader}  
             style={{cursor: 'pointer'}} 
             alt='Logo' 
-            width={300}
+            width={200}
             height={55}
             objectFit="contain"
             
@@ -92,9 +90,6 @@ function Header(): JSX.Element {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-          
-
-
             {links?.map((link) => (
               
             <Nav.Link key={`${link.label}$-menu`} as={Link} href={`${link.url}`} >
