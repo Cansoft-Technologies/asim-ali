@@ -916,7 +916,41 @@ footer{
 }
 .our-locations{
 	.location-heading{
-		margin: 50px 0 150px 0;
+		margin-top: 50px;
+		button{
+			background: transparent !important;
+			border: 2px solid transparent !important;
+			text-transform: uppercase;
+			font-family: 'AvenirBlack';
+			font-weight: 800;
+			font-size: 25px;
+			padding: 10px 15px 6px 15px;
+			color: $color-secondary !important;
+			border-radius: 0px;
+			width: 100%;
+		}
+		button.active-button{
+			background: transparent !important;
+			border: 2px solid $color-primary !important;
+			text-transform: uppercase;
+			font-family: 'AvenirBlack';
+			font-weight: 800;
+			font-size: 25px;
+			padding: 10px 15px 6px 15px;
+			color: $color-secondary !important;
+			border-radius: 0px;
+			width: 100%;
+		}
+		div:nth-child(2){
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+		}
+		div:nth-child(3){
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+		}
 		h2{
 			font-size: 80px;
 			font-family: 'AvenirBook';
@@ -928,7 +962,7 @@ footer{
 				height: 3px;
 				content: " ";
 				background-color: $color-secondary;
-				left: 15%;
+				left: 22%;
 				top: 25%;
 			}
 			span{
@@ -983,6 +1017,12 @@ footer{
 			position: relative;
 			top: -100px;
 		}
+	}
+	.imageList{
+		margin-top: 250px;
+	}
+	.listMap{
+		margin-top: 100px;
 	}
 }
 .Bc-Coquitlam{
