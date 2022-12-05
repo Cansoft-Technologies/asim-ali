@@ -58,13 +58,13 @@ const Banner = () => {
         <div>
             <div className="home-slider"> 
 
-            {/* { isLoading && 
-      <div className="text-center py-5">
-      <div className="spinner-border text-dark" role="status">
-          <span className="visually-hidden">Loading...</span>
-      </div>
-      </div>   
-      } */}
+              {/* { isLoading && 
+        <div className="text-center py-5">
+        <div className="spinner-border text-dark" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </div>
+        </div>   
+        } */}
 
             <Carousel fade>
              
