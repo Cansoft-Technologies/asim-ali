@@ -11,6 +11,9 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+
 const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -31,11 +34,12 @@ const responsive = {
     }
   };
 
-const BcCoquitlam = () => {
+const Langley = () => {
     const { useQuery } = client;
     const generalSettings = useQuery().generalSettings;
 
     const [datas, setDatas] = useState([]);
+    const [key, setKey] = useState(null);
 
     useEffect(() => {
         const client = new ApolloClient({
@@ -45,42 +49,45 @@ const BcCoquitlam = () => {
         client
         .query({
           query: gql`query{
-            pages (where: {title: "B.C. Coquitlam"}){
+            pages(where: {title: "Langley"}) {
               nodes {
-                coquitlam {
-                  coquitlamBannerTitle
-                  coquitlamBannerHeading
-                  coquitlamBannerDescription
+                langley {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
-                  mortgageRenovationTitles
-                  mortgageRenovationDescription
                   mortgageProductsTitle
                   mortgageProductsRightText
                   mortgageProductsLeftText
+                  mortgageRenovation {
+                    title
+                    description
+                  }
                   mortgageBrokerTitle
                   mortgageBrokerDescription
-                  firstApplyStepTitle
-                  brokerCoquitlamTitle
-                  brokerCoquitlamDescription
-                  aboutCoquitlamText
-                  mortgageProductsImage {
-                    altText
-                    sourceUrl
-                  }
-                  coquitlamSlider {
+                  langleyBannerTitle
+                  langleySlider {
                     title
                     content
                   }
-                  coquitlamBannerImage {
+                  langleyBannerHeading
+                  langleyBannerDescription
+                  firstApplyStepTitle
+                  brokerLangleyTitle
+                  brokerLangleyDescription
+                  aboutLangleyText
+                  brokerLangleyLink {
+                    url
+                    title
+                  }
+                  langleyBannerImage {
                     altText
                     sourceUrl
                   }
-                  brokerCoquitlamLink {
-                    url
+                  aboutLangleyImage {
+                    altText
+                    sourceUrl
                   }
-                  aboutCoquitlamImage {
+                  mortgageProductsImage {
                     altText
                     sourceUrl
                   }
@@ -103,42 +110,41 @@ const BcCoquitlam = () => {
         {datas.map( (data, index) => {
             return(
         <div key={index} className='Bc-Coquitlam'>
-            {console.log("Coquitlam",data?.coquitlam?.brokerCoquitlamLink?.url)}
         <Header />
             <Head>
                 <title>
-                {data?.coquitlam?.coquitlamBannerTitle} - {generalSettings?.title}
+                {data?.langley?.langleyBannerTitle} - {generalSettings?.title}
                 </title>
             </Head>
             <main className="content">
-            {data?.coquitlam?.coquitlamBannerTitle == null ? "" : (
+            {data?.langley?.langleyBannerTitle == null ? "" : (
                 <Hero
-                title={data?.coquitlam?.coquitlamBannerTitle}
-                heading={data?.coquitlam?.coquitlamBannerHeading}
-                description={data?.coquitlam?.coquitlamBannerDescription}
-                bgImage={data?.coquitlam?.coquitlamBannerImage?.sourceUrl}
+                title={data?.langley?.langleyBannerTitle}
+                heading={data?.langley?.langleyBannerHeading}
+                description={data?.langley?.langleyBannerDescription}
+                bgImage={data?.langley?.langleyBannerImage?.sourceUrl}
             />  
             )}
             
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[0]} <span>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[1]}</span></h2>
+                    <h2>{data?.langley?.langleyBannerTitle?.split(" ")[0]} <span>{data?.langley?.langleyBannerTitle?.split(" ")[1]}</span></h2>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.coquitlam?.coquitlamBannerDescription}</p> 
+                        <p>{data?.langley?.langleyBannerDescription}</p> 
                     </Col>
                 </Row>
-                <Row className='coquitlam-grid my-5'>
+                <Row className='kelowna-grid my-5'>
                     <Col md={7}>
-                        <div dangerouslySetInnerHTML={{__html: data?.coquitlam?.aboutCoquitlamText }} >
+                        <div dangerouslySetInnerHTML={{__html: data?.langley?.aboutLangleyText }} >
                         </div>
                     </Col>
                     <Col md={5}>
                     <Image 
-                        src={data?.coquitlam?.aboutCoquitlamImage?.sourceUrl}
+                        src={data?.langley?.aboutLangleyImage?.sourceUrl}
                         loader={myLoader}
-                        alt={data?.coquitlam?.aboutCoquitlamImage?.altText}
+                        alt={data?.langley?.aboutLangleyImage?.altText}
                         width="100%" 
                         height="120" 
                         layout="responsive" 
@@ -146,7 +152,7 @@ const BcCoquitlam = () => {
                         />
                     </Col>
                 </Row>
-                {data?.coquitlam?.coquitlamSlider == null ? "" : (
+                {data?.langley?.langleySlider == null ? "" : (
                     <Row className='application-slider'>
                     
                     <Carousel 
@@ -155,7 +161,7 @@ const BcCoquitlam = () => {
                         responsive={responsive}
                         >
                             
-                            {data?.coquitlam?.coquitlamSlider.map( (slide, a) => {
+                            {data?.langley?.langleySlider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
                                 <h4>{slide?.title}</h4>
@@ -170,19 +176,19 @@ const BcCoquitlam = () => {
                 
                 <Row className="product-service">
                     <Col className='mb-5' md={12}>
-                        <h2 className='text-center'>{data?.coquitlam?.mortgageProductsTitle}</h2>
+                        <h2 className='text-center'>{data?.langley?.mortgageProductsTitle}</h2>
                     </Col>
                     <Col md={3}>
                         <span
-                        dangerouslySetInnerHTML={{__html: data?.coquitlam?.mortgageProductsLeftText }} 
+                        dangerouslySetInnerHTML={{__html: data?.langley?.mortgageProductsLeftText }} 
                         ></span>
                         
                     </Col>
                     <Col md={6}>
                         <Image 
-                         src={data?.coquitlam?.mortgageProductsImage?.sourceUrl}
+                         src={data?.langley?.mortgageProductsImage?.sourceUrl}
                          loader={myLoader}
-                         alt={data?.coquitlam?.mortgageProductsImage?.altText}
+                         alt={data?.langley?.mortgageProductsImage?.altText}
                         width="190" 
                         height="150" 
                         layout="responsive" 
@@ -191,35 +197,35 @@ const BcCoquitlam = () => {
                     </Col>
                     <Col md={3}>
                     <span
-                    dangerouslySetInnerHTML={{__html: data?.coquitlam?.mortgageProductsRightText }} 
+                    dangerouslySetInnerHTML={{__html: data?.langley?.mortgageProductsRightText }} 
                     ></span>
                     </Col>
                 </Row>
                 <Row className='apply-step'>
                     <Col md={4}>
-                        {data?.coquitlam?.firstApplyStepTitle == null ? "" : (
+                        {data?.langley?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
                              <h2>01</h2>
-                             <h2>{data?.coquitlam?.firstApplyStepTitle}</h2>
+                             <h2>{data?.langley?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
                          </div>
                         )}
                     </Col> 
                     <Col md={4}>
-                    {data?.coquitlam?.secondApplyStepTitle == null ? "" : (
+                    {data?.langley?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
                             <h2>02</h2>
-                            <h2>{data?.coquitlam?.secondApplyStepTitle}</h2>
-                            <p>{data?.coquitlam?.secondApplyStepDescription}</p> 
+                            <h2>{data?.langley?.secondApplyStepTitle}</h2>
+                            <p>{data?.langley?.secondApplyStepDescription}</p> 
                         </div>
                          )}
                     </Col> 
                     <Col md={4}>
-                    {data?.coquitlam?.thirdApplyStepTitle == null ? "" : (
+                    {data?.langley?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
                             <h2>03</h2>
-                            <h2>{data?.coquitlam?.thirdApplyStepTitle}</h2>
+                            <h2>{data?.langley?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>
                         </div>
@@ -228,30 +234,40 @@ const BcCoquitlam = () => {
                 </Row>
                 <Row className='mortgage-broker'>
                     <Col>
-                        <h2>{data?.coquitlam?.mortgageBrokerTitle}</h2> 
-                        <p>{data?.coquitlam?.mortgageBrokerDescription}</p>
+                        <h2>{data?.langley?.mortgageBrokerTitle}</h2> 
+                        <p>{data?.langley?.mortgageBrokerDescription}</p>
                     </Col>
                 </Row>
-                <Row className='renovation-form'>
-                    <Col>
-                    <span dangerouslySetInnerHTML={{__html: data?.coquitlam?.mortgageRenovationTitles}} 
-                    ></span>
-                    </Col>
-                    {data?.coquitlam?.mortgageRenovationDescription == null ? "" : (
-                        <Col className="renovation-form-text">
-                        <span dangerouslySetInnerHTML={{__html: data?.coquitlam?.mortgageRenovationDescription }} 
-                        ></span>
-                        </Col>
-                    )}
-                    
-                </Row>
+                {data.langley.mortgageRenovation == null ? "" : (
+                    <Row className="renovation-row">
+                        {console.log(data.langley.mortgageRenovation[0].title)}
+                    <Tabs
+                        id="controlled-tab-example"
+                        activeKey={key == null ? 1 : key }
+                        onSelect={(k) => setKey(k)}
+                        className="mb-3 renovation"
+                        >
+                        {data.langley.mortgageRenovation.map( (tab, item) => {
+                            return(
+                                <Tab key={item} eventKey={item.toString()} title={tab.title}>
+                                    {console.log("data aaa", tab.title)}
+                                <div 
+                                dangerouslySetInnerHTML={{__html: tab.description }}
+                                className="renovation-content-list">   
+                                </div>
+                        </Tab>
+                            )
+                        })}
+                        </Tabs>
+                    </Row>
+                )}
                 <Row className='broker-coquitlam'>
                     <Col>
-                    <h2>{data?.coquitlam?.
-                    brokerCoquitlamTitle}</h2>
-                    <p>{data?.coquitlam?.brokerCoquitlamDescription}</p>
-                    {data?.coquitlam?.brokerCoquitlamLink == null ? "" : (
-                        <a href={data?.coquitlam?.brokerCoquitlamLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                    <h2>{data?.langley?.
+                    brokerLangleyTitle}</h2>
+                    <p>{data?.langley?.brokerLangleyDescription}</p>
+                    {data?.langley?.brokerLangleyLink == null ? "" : (
+                        <a href={data?.langley?.brokerLangleyLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     )}
                     
                     </Col>
@@ -270,4 +286,4 @@ const BcCoquitlam = () => {
     );
 };
 
-export default BcCoquitlam;
+export default Langley;

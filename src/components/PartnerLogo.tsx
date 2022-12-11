@@ -61,7 +61,7 @@ const PartnerLogo = () => {
  
     return (
         <>
-       <Container className="my-5 partnerLogo" >
+       <Container className="partnerLogo" >
        {logos.map(logo => {
         return(
           <div key={logo.homeLandingPage} >

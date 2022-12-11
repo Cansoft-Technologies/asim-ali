@@ -20,6 +20,7 @@
 	padding: 0 10px;
 	position: relative;
 	z-index: 1;
+	overflow-x: hidden;
 }
 
 @media screen and (min-width: $content-width) {
@@ -38,7 +39,6 @@
 	background-color: inherit;
 	opacity: 0.8;
 	z-index: 1;
-	overflow-x: hidden;
 }
 
 .hero a {
