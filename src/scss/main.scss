@@ -665,6 +665,7 @@ footer {
   text-align: center;
   position: absolute;
   left: 0;
+  
 }
 .contact-icon svg {
   font-size: 23px;
@@ -682,7 +683,7 @@ footer {
 .contact-item span,
 .contact-item a {
   font-size: 16px;
-  color: $color-black;
+  color: $color-secondary;
   text-decoration: none;
 }
 .contact-item {
@@ -694,6 +695,13 @@ footer {
 .contact-row {
   margin-left: -8px;
   margin-right: -8px;
+  label{
+    text-transform: capitalize;
+  }
+  .contact-title{
+    padding: 23px 10px;
+    font-size: 25px;
+  }
 }
 .contact-name,
 .contact-email {
@@ -723,6 +731,7 @@ textarea {
   -ms-transition: border-color 0.3s ease-in-out;
   -o-transition: border-color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
+  border-radius: 10px;
 }
 textarea#comment {
   height: 190px;

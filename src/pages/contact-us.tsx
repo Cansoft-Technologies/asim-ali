@@ -143,7 +143,7 @@ const Contact = () => {
                       <div id="contact-form">
 
                         <div className="row contact-row">
-                        <h2>Contact Information</h2>
+                        <h2 className='contact-title'>Contact Information</h2>
                         <div className="col-md-6">
                           <input type="text" name="fname" id="fname" placeholder="First Name" />
                         </div>
@@ -161,7 +161,7 @@ const Contact = () => {
                           <input type="tel" name="phone" id="phone" placeholder="Phone" />
                         </div>
                         <div className="col-md-6">
-                          <label htmlFor="contact">HOW SHOULD WE CONTACT YOU?</label>
+                          <label htmlFor="contact">How Should We Contact You?</label>
                           <select name="contact" id="contact" className="form_control" aria-required="true" aria-invalid="false">
                             <option value="Email">Email</option>
                             <option value="Phone">Phone</option>
@@ -169,7 +169,7 @@ const Contact = () => {
                         </div>
 
                         <div className="col-md-6">
-                          <label htmlFor="about">PLEASE CONTACT ME ABOUT</label>
+                          <label htmlFor="about">Please Contact Me About</label>
                           <select name="about" id="about" className="form_control" aria-required="true" aria-invalid="false">
                             <option value="Mortgage">Mortgage</option>
                             <option value="Leasing">Leasing</option>
@@ -178,7 +178,7 @@ const Contact = () => {
                         </div>
 
                         <div className="col-md-6">
-                          <label htmlFor="find">HOW DID YOU FIND US?</label>
+                          <label htmlFor="find">How Did You Find Us?</label>
                           <select name="find" id="find" className="form_control" aria-required="true" aria-invalid="false">
                             <option value="Television Ad">Television Ad</option>
                             <option value="Search Engines">Search Engines</option>
@@ -192,7 +192,7 @@ const Contact = () => {
                         <div className="col-md-12">
                         <textarea name="message" id="message" style={{height: '120px'}} placeholder="Message"></textarea>
                         </div>
-                        <h2>About You (optional)</h2>
+                        <h2 className='contact-title'>About You (optional)</h2>
                         <div className="col-md-12">
                           <input type="text" name="address" id="address" placeholder="Address" />
                         </div>
@@ -204,7 +204,7 @@ const Contact = () => {
                           <input type="text" name="city" id="city" placeholder="City" />
                         </div>
                         <div className="col-md-6">
-                          <label htmlFor="province">PROVINCE</label>
+                          <label htmlFor="province">Province</label>
                           <select name="province" className="form_control" aria-invalid="false">
                             <option value="Alberta">Alberta</option>
                             <option value="British Columbia">British Columbia</option>
