@@ -144,7 +144,7 @@ const Prince = () => {
                         loader={myLoader}
                         alt={data?.prince?.aboutImage?.altText}
                         width="100%" 
-                        height="120" 
+                        height="100" 
                         layout="responsive" 
                         objectFit="contain"
                         />

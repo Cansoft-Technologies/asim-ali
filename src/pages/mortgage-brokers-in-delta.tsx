@@ -144,7 +144,7 @@ const Delta = () => {
                         loader={myLoader}
                         alt={data?.delta?.aboutImage?.altText}
                         width="100%" 
-                        height="120" 
+                        height="90" 
                         layout="responsive" 
                         objectFit="contain"
                         />

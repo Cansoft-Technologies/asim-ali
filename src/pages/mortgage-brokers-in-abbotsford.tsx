@@ -144,7 +144,7 @@ const Abbotsford = () => {
                         loader={myLoader}
                         alt={data?.abbotsford?.aboutImage?.altText}
                         width="100%" 
-                        height="120" 
+                        height="90" 
                         layout="responsive" 
                         objectFit="contain"
                         />
@@ -188,7 +188,7 @@ const Abbotsford = () => {
                          loader={myLoader}
                          alt={data?.abbotsford?.productsImage?.altText}
                         width="190" 
-                        height="150" 
+                        height="120" 
                         layout="responsive" 
                         objectFit="contain"
                         />

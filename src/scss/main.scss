@@ -1091,7 +1091,7 @@ textarea#comment {
         height: 3px;
         content: " ";
         background-color: $color-secondary;
-        left: 105%;
+        left: 45%;
         top: 25%;
       }
       span {
@@ -1233,7 +1233,7 @@ textarea#comment {
       border-bottom: none;
 	  width: 50%;
       .nav-link {
-        font-size: 30px;
+        font-size: 17px;
         font-weight: 400;
         font-family: "AvenirBook";
         padding: 10px 0;
@@ -1245,7 +1245,7 @@ textarea#comment {
 		
       }
       .nav-link.active {
-        font-size: 25px;
+        font-size: 15px;
         font-weight: 600;
         font-family: "AvenirBlack";
         border-bottom: 2px solid $color-secondary;

@@ -144,7 +144,7 @@ const Vancouver = () => {
                         loader={myLoader}
                         alt={data?.vancouver?.aboutImage?.altText}
                         width="100%" 
-                        height="120" 
+                        height="80" 
                         layout="responsive" 
                         objectFit="contain"
                         />
@@ -188,7 +188,7 @@ const Vancouver = () => {
                          loader={myLoader}
                          alt={data?.vancouver?.productsImage?.altText}
                         width="190" 
-                        height="150" 
+                        height="130" 
                         layout="responsive" 
                         objectFit="contain"
                         />
