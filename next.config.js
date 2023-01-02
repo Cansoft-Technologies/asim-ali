@@ -4,7 +4,7 @@ const { withFaust } = require('@faustjs/next');
  * @type {import('next').NextConfig}
  **/
 module.exports = withFaust();
-const withOptimizedImages = require('next-optimized-images')
+
 
 module.exports = {
     images: {
@@ -14,7 +14,3 @@ module.exports = {
       ignoreDuringBuilds: true,
     }
   }
-
-
-
-module.exports = withOptimizedImages({})
