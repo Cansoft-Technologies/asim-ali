@@ -82,15 +82,34 @@ const Banner = () => {
                <Carousel.Item key={slide.sliderTitle}>
                 <div className={styles.overlay}></div>
 
-                 
+                <div
+                  style={{
+                    position: 'relative',
+                    height: '100vh',
+                    width: '100%',
+                    clipPath: 'inset(0 0 0 0)',
+                  }}
+                >
+
+                <div
+                style={{
+                  position: 'absolute',
+                  height: '100%',
+                  width: '100%',
+                  left: '0',
+                  top: '0',
+                }}
+              >
                    <Image 
                        loader={myLoader}
                      src={slide?.sliderImage?.sourceUrl}
-                       width="100%" 
-                       height="57" 
-                       layout="responsive" 
-                       objectFit="contain"
+                      width={100} 
+                       height={57} 
+                       layout="fill" 
+                       objectFit="cover"
                        alt={slide?.sliderImage?.altText} />
+                       </div>
+                       </div>
                        <Carousel.Caption className={styles.carouselcaption}>
                        <Row className="align-items-center home-slide"> 
                            <Col className='text-start' xs={12} lg="6">

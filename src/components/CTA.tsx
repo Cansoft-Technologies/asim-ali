@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import Image from 'next/image';
 
 const CTA = () => {
 
@@ -39,7 +40,9 @@ const CTA = () => {
       })
       .then((result) => setCatSections(result?.data?.pages?.nodes));
   }, []);
-
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`
+  }
 
     return (
         <>
@@ -47,9 +50,42 @@ const CTA = () => {
             return(
                 <Container key={index}> 
                 {cat?.homeLandingPage?.callToActionSection?.hideSection == true ? "" : (
-                    <div style={{ 
-                   backgroundImage: `url(${cat?.homeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl})` 
-                   }} className='cta_section'> 
+                    <div 
+                  //   style={{ 
+                  //  backgroundImage: `url(${cat?.homeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl})` 
+                  //  }} 
+                   className='cta_section'> 
+                      <div
+                            style={{
+                              position: 'relative',
+                              height: '90vh',
+                              width: '100%',
+                              clipPath: 'inset(0 0 0 0)',
+                            }}
+                          >
+
+                          <div
+                          style={{
+                            position: 'absolute',
+                            height: '100%',
+                            width: '100%',
+                            left: '0',
+                            top: '0',
+                          }}
+                        >
+                <Image 
+                  src={cat?.homeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl}
+                  loader={myLoader}  
+                  style={{zIndex: 0}} 
+                  alt='Logo' 
+                  layout="fill"
+                  objectFit="cover"
+                  width={500}
+                  height="900"
+
+                  />
+               </div>
+               </div>
                    <div className="cta_text"> 
                        <h3>{cat?.homeLandingPage?.callToActionSection?.actionTitle}</h3>
                        

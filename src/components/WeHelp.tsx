@@ -26,8 +26,7 @@ const WeHelp = () => {
                     helpDescription
                     hideSection
                     helpImage {
-                      sourceUrl
-                      altText
+                      mediaItemUrl
                     }
                   }
                 }
@@ -61,12 +60,16 @@ const WeHelp = () => {
             <Row >
                        <Col lg={6} >
                            <div className="wehelp_image">
-                           <Image 
+                            <video autoPlay loop style={{ width: '500px', height: '500px' }}>
+                              {console.log('hello for you', help?.homeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl)}
+                            <source src={help?.homeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
+                          </video>
+                           {/* <Image 
                            loader={myLoader}
                            src={help?.homeLandingPage?.weHelpSection?.helpImage?.sourceUrl}
-                           width="500" 
-                           height="639" 
-                           alt={help?.homeLandingPage?.weHelpSection?.helpImage?.altText} />
+                           width={500}
+                           height={639}
+                           alt={help?.homeLandingPage?.weHelpSection?.helpImage?.altText} /> */}
                            </div>
                        </Col>
                        <Col lg={6} >

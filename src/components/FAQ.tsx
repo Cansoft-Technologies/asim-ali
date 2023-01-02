@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Accordion, Container } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+import Image from 'next/image';   
 
 const FAQ = () => {
     const [faqsections, setFaqSections] = useState([]);
@@ -39,6 +39,9 @@ const FAQ = () => {
         })
         .then((result) => setFaqSections(result?.data?.pages?.nodes));
     }, []);
+    const myLoader = ({ src, width, quality }) => {
+      return `${src}?w=${width}&q=${quality || 75}`
+    }
     
     return (
         <>
@@ -49,10 +52,41 @@ const FAQ = () => {
             {faq?.homeLandingPage?.faqSection?.hideSection == true? "" : (
                 <div>
                 <div
-                 style={{ 
-                    backgroundImage: `url("${faq?.homeLandingPage?.faqSection?.faqImage?.sourceUrl}")` 
-                  }} 
+                //  style={{ 
+                //     backgroundImage: `url("${faq?.homeLandingPage?.faqSection?.faqImage?.sourceUrl}")` 
+                //   }} 
                 className='faq_section'> 
+                <div
+                  style={{
+                    position: 'relative',
+                    height: '70vh',
+                    width: '100%',
+                    clipPath: 'inset(0 0 0 0)',
+                  }}
+                >
+
+                <div
+                style={{
+                  position: 'absolute',
+                  height: '100%',
+                  width: '100%',
+                  left: '0',
+                  top: '0',
+                }}
+              >
+                <Image 
+                  src={faq?.homeLandingPage?.faqSection?.faqImage?.sourceUrl}
+                  loader={myLoader}  
+                  style={{zIndex: 0}} 
+                  alt='Logo' 
+                  layout="fill"
+                  objectFit="cover"
+                  width={400}
+                  height="900"
+
+                  />
+               </div>
+               </div>
                     <div className="faq_text"> 
                         <h2>{faq?.homeLandingPage?.faqSection?.faqTitle}</h2>
                         <h2 dangerouslySetInnerHTML={{__html: faq?.homeLandingPage?.faqSection?.faqSubitle}} ></h2>
