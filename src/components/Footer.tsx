@@ -21,7 +21,7 @@ const Footer = () => {
     .query({
       query: gql`query MyQuery {
         settingsOptions {
-          asimOptions {
+          AsimOptions {
             footerSettings {
               socialUrl {
                 facebook
@@ -51,7 +51,7 @@ const Footer = () => {
         }
       }`,
     })
-    .then((result) => setSettings(result?.data?.settingsOptions?.asimOptions));
+    .then((result) => setSettings(result?.data?.settingsOptions?.AsimOptions));
 }, []);
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`

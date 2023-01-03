@@ -19,7 +19,7 @@ const Meeting = () => {
         query{
             pages(where: {title: "home"}) {
               nodes {
-                homeLandingPage {
+                HomeLandingPage {
                   meetingSection {
                     meetingTitle
                     meetingDescription
@@ -48,26 +48,26 @@ const Meeting = () => {
             {meetings.map(meeting => {
                 return(
                 <div key={meeting}>
-                    {meeting?.homeLandingPage?.meetingSection?.hideSection == true ? "" : (
+                    {meeting?.HomeLandingPage?.meetingSection?.hideSection == true ? "" : (
                     <Container>
                     <Row> 
                         <Col> 
-                            <h2 dangerouslySetInnerHTML={{__html: meeting?.homeLandingPage?.meetingSection?.meetingTitle}} ></h2>
+                            <h2 dangerouslySetInnerHTML={{__html: meeting?.HomeLandingPage?.meetingSection?.meetingTitle}} ></h2>
                         </Col>
                     </Row>
                     <Row>
                         <Col lg={4}>
-                           <div dangerouslySetInnerHTML={{__html: meeting?.homeLandingPage?.meetingSection?.meetingDescription}} className="meeting_text">
+                           <div dangerouslySetInnerHTML={{__html: meeting?.HomeLandingPage?.meetingSection?.meetingDescription}} className="meeting_text">
                            </div>
                         </Col>
                         <Col lg={8}>
                             <div className="meeting_image">
                             <Image 
                             loader={myLoader}
-                            src={meeting?.homeLandingPage?.meetingSection?.meetingImage?.sourceUrl}
+                            src={meeting?.HomeLandingPage?.meetingSection?.meetingImage?.sourceUrl}
                             width="1920" 
                             height="1228" 
-                            alt={meeting?.homeLandingPage?.meetingSection?.meetingImage?.altText} />
+                            alt={meeting?.HomeLandingPage?.meetingSection?.meetingImage?.altText} />
                             </div>
                         </Col>
                     </Row>

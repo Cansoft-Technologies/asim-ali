@@ -20,7 +20,7 @@ const WeHelp = () => {
         query{
             pages(where: {title: "home"}) {
               nodes {
-                homeLandingPage {
+                HomeLandingPage {
                   weHelpSection {
                     helpTitle
                     helpDescription
@@ -52,30 +52,30 @@ const WeHelp = () => {
                     return(
                 <div 
                
-                key={help?.homeLandingPage?.weHelpSection}>
+                key={help?.HomeLandingPage?.weHelpSection}>
 
-      {help?.homeLandingPage?.weHelpSection?.hideSection == true ? "" : (
+      {help?.HomeLandingPage?.weHelpSection?.hideSection == true ? "" : (
          <section className='wehelp_section'>
         <Container>
             <Row >
                        <Col lg={6} >
                            <div className="wehelp_image">
                             <video autoPlay loop style={{ width: '500px', height: '500px' }}>
-                              {console.log('hello for you', help?.homeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl)}
-                            <source src={help?.homeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
+                              {console.log('hello for you', help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl)}
+                            <source src={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
                           </video>
                            {/* <Image 
                            loader={myLoader}
-                           src={help?.homeLandingPage?.weHelpSection?.helpImage?.sourceUrl}
+                           src={help?.HomeLandingPage?.weHelpSection?.helpImage?.sourceUrl}
                            width={500}
                            height={639}
-                           alt={help?.homeLandingPage?.weHelpSection?.helpImage?.altText} /> */}
+                           alt={help?.HomeLandingPage?.weHelpSection?.helpImage?.altText} /> */}
                            </div>
                        </Col>
                        <Col lg={6} >
                           <div className="wehelp_text">
-                               <h2 dangerouslySetInnerHTML={{__html: help?.homeLandingPage?.weHelpSection?.helpTitle}} ></h2>
-                           <p>{help?.homeLandingPage?.weHelpSection?.helpDescription} 
+                               <h2 dangerouslySetInnerHTML={{__html: help?.HomeLandingPage?.weHelpSection?.helpTitle}} ></h2>
+                           <p>{help?.HomeLandingPage?.weHelpSection?.helpDescription} 
                            {help?.helpImage?.sourceUrl}</p>
                            
                           </div>

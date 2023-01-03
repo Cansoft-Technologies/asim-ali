@@ -21,7 +21,7 @@ const CTA = () => {
         query{
             pages(where: {title: "home"}) {
               nodes {
-                homeLandingPage {
+                HomeLandingPage {
                   callToActionSection {
                     hideSection
                     actionTitle
@@ -49,10 +49,10 @@ const CTA = () => {
         {catSections.map((cat, index) => {
             return(
                 <Container key={index}> 
-                {cat?.homeLandingPage?.callToActionSection?.hideSection == true ? "" : (
+                {cat?.HomeLandingPage?.callToActionSection?.hideSection == true ? "" : (
                     <div 
                   //   style={{ 
-                  //  backgroundImage: `url(${cat?.homeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl})` 
+                  //  backgroundImage: `url(${cat?.HomeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl})` 
                   //  }} 
                    className='cta_section'> 
                       <div
@@ -74,7 +74,7 @@ const CTA = () => {
                           }}
                         >
                 <Image 
-                  src={cat?.homeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl}
+                  src={cat?.HomeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl}
                   loader={myLoader}  
                   style={{zIndex: 0}} 
                   alt='Logo' 
@@ -87,11 +87,11 @@ const CTA = () => {
                </div>
                </div>
                    <div className="cta_text"> 
-                       <h3>{cat?.homeLandingPage?.callToActionSection?.actionTitle}</h3>
+                       <h3>{cat?.HomeLandingPage?.callToActionSection?.actionTitle}</h3>
                        
-                       {cat?.homeLandingPage?.callToActionSection?.actionLink == null ? "" : (
-                        <Link href={cat?.homeLandingPage?.callToActionSection?.actionLink?.url}>
-                           <Button className="ctaBtn">{cat?.homeLandingPage?.callToActionSection?.actionLink?.title}</Button>
+                       {cat?.HomeLandingPage?.callToActionSection?.actionLink == null ? "" : (
+                        <Link href={cat?.HomeLandingPage?.callToActionSection?.actionLink?.url}>
+                           <Button className="ctaBtn">{cat?.HomeLandingPage?.callToActionSection?.actionLink?.title}</Button>
                        </Link>
                        )}
                        

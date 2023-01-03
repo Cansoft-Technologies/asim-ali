@@ -28,7 +28,7 @@ function Header(): JSX.Element {
         query: gql`
         query{
           settingsOptions {
-            asimOptions {
+            AsimOptions {
               headerSettings {
                 uploadLogo {
                   sourceUrl
@@ -41,7 +41,7 @@ function Header(): JSX.Element {
       })
       .then((result) => 
         {
-          setSettings(result?.data?.settingsOptions?.asimOptions)
+          setSettings(result?.data?.settingsOptions?.AsimOptions)
         seIsLoading(false);
         }
         );

@@ -18,7 +18,7 @@ const FAQ = () => {
           query{
             pages(where: {title: "home"}) {
               nodes {
-                homeLandingPage {
+                HomeLandingPage {
                   faqSection {
                     hideSection
                     faqTitle
@@ -49,11 +49,11 @@ const FAQ = () => {
         {faqsections.map(faq => {
             return(
             <Container key={faq}> 
-            {faq?.homeLandingPage?.faqSection?.hideSection == true? "" : (
+            {faq?.HomeLandingPage?.faqSection?.hideSection == true? "" : (
                 <div>
                 <div
                 //  style={{ 
-                //     backgroundImage: `url("${faq?.homeLandingPage?.faqSection?.faqImage?.sourceUrl}")` 
+                //     backgroundImage: `url("${faq?.HomeLandingPage?.faqSection?.faqImage?.sourceUrl}")` 
                 //   }} 
                 className='faq_section'> 
                 <div
@@ -75,7 +75,7 @@ const FAQ = () => {
                 }}
               >
                 <Image 
-                  src={faq?.homeLandingPage?.faqSection?.faqImage?.sourceUrl}
+                  src={faq?.HomeLandingPage?.faqSection?.faqImage?.sourceUrl}
                   loader={myLoader}  
                   style={{zIndex: 0}} 
                   alt='Logo' 
@@ -88,15 +88,15 @@ const FAQ = () => {
                </div>
                </div>
                     <div className="faq_text"> 
-                        <h2>{faq?.homeLandingPage?.faqSection?.faqTitle}</h2>
-                        <h2 dangerouslySetInnerHTML={{__html: faq?.homeLandingPage?.faqSection?.faqSubitle}} ></h2>
+                        <h2>{faq?.HomeLandingPage?.faqSection?.faqTitle}</h2>
+                        <h2 dangerouslySetInnerHTML={{__html: faq?.HomeLandingPage?.faqSection?.faqSubitle}} ></h2>
                     
                     </div>
                 </div>
                 <div className='faq-accordion'>
-                    {faq?.homeLandingPage?.faqSection?.faqAccordion == null ? "" : (
+                    {faq?.HomeLandingPage?.faqSection?.faqAccordion == null ? "" : (
                         <Accordion defaultActiveKey="0">
-                       {faq?.homeLandingPage?.faqSection?.faqAccordion.map( (qa, index) => {
+                       {faq?.HomeLandingPage?.faqSection?.faqAccordion.map( (qa, index) => {
                         return(
                         <Accordion.Item key={index} eventKey={index.toString()} >
                            <Accordion.Header>{qa.question}</Accordion.Header>
