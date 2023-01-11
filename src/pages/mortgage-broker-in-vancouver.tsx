@@ -51,7 +51,7 @@ const Vancouver = () => {
           query: gql`query{
             pages(where: {title: "Vancouver"}) {
               nodes {
-                vancouver {
+                Vancouver {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -111,38 +111,38 @@ const Vancouver = () => {
         <Header />
             <Head>
                 <title>
-                {data?.vancouver?.bannerTitle} - {generalSettings?.title}
+                {data?.Vancouver?.bannerTitle} - {generalSettings?.title}
                 </title>
             </Head>
             <main className="content">
-            {data?.vancouver?.bannerTitle == null ? "" : (
+            {data?.Vancouver?.bannerTitle == null ? "" : (
                 <Hero
-                title={data?.vancouver?.bannerTitle}
-                heading={data?.vancouver?.bannerHeading}
-                description={data?.vancouver?.bannerDescription}
-                bgImage={data?.vancouver?.bannerImage?.sourceUrl}
+                title={data?.Vancouver?.bannerTitle}
+                heading={data?.Vancouver?.bannerHeading}
+                description={data?.Vancouver?.bannerDescription}
+                bgImage={data?.Vancouver?.bannerImage?.sourceUrl}
             />  
             )}
             
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.vancouver?.bannerTitle?.split(" ")[0]} <span>{data?.vancouver?.bannerTitle?.split(" ")[1]}</span></h2>
+                    <h2>{data?.Vancouver?.bannerTitle?.split(" ")[0]} <span>{data?.Vancouver?.bannerTitle?.split(" ")[1]}</span></h2>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.vancouver?.bannerDescription}</p> 
+                        <p>{data?.Vancouver?.bannerDescription}</p> 
                     </Col>
                 </Row>
                 <Row className='kelowna-grid my-5'>
                     <Col md={7}>
-                        <div dangerouslySetInnerHTML={{__html: data?.vancouver?.aboutText }} >
+                        <div dangerouslySetInnerHTML={{__html: data?.Vancouver?.aboutText }} >
                         </div>
                     </Col>
                     <Col md={5}>
                     <Image 
-                        src={data?.vancouver?.aboutImage?.sourceUrl}
+                        src={data?.Vancouver?.aboutImage?.sourceUrl}
                         loader={myLoader}
-                        alt={data?.vancouver?.aboutImage?.altText}
+                        alt={data?.Vancouver?.aboutImage?.altText}
                         width="100%" 
                         height="80" 
                         layout="responsive" 
@@ -150,7 +150,7 @@ const Vancouver = () => {
                         />
                     </Col>
                 </Row>
-                {data?.vancouver?.slider == null ? "" : (
+                {data?.Vancouver?.slider == null ? "" : (
                     <Row className='application-slider'>
                     
                     <Carousel 
@@ -159,7 +159,7 @@ const Vancouver = () => {
                         responsive={responsive}
                         >
                             
-                            {data?.vancouver?.slider.map( (slide, a) => {
+                            {data?.Vancouver?.slider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
                                 <h4>{slide?.title}</h4>
@@ -174,19 +174,19 @@ const Vancouver = () => {
                 
                 <Row className="product-service">
                     <Col className='mb-5' md={12}>
-                        <h2 className='text-center'>{data?.vancouver?.productsTitle}</h2>
+                        <h2 className='text-center'>{data?.Vancouver?.productsTitle}</h2>
                     </Col>
                     <Col md={3}>
                         <span
-                        dangerouslySetInnerHTML={{__html: data?.vancouver?.productsLeftText }} 
+                        dangerouslySetInnerHTML={{__html: data?.Vancouver?.productsLeftText }} 
                         ></span>
                         
                     </Col>
                     <Col md={6}>
                         <Image 
-                         src={data?.vancouver?.productsImage?.sourceUrl}
+                         src={data?.Vancouver?.productsImage?.sourceUrl}
                          loader={myLoader}
-                         alt={data?.vancouver?.productsImage?.altText}
+                         alt={data?.Vancouver?.productsImage?.altText}
                         width="190" 
                         height="130" 
                         layout="responsive" 
@@ -195,35 +195,35 @@ const Vancouver = () => {
                     </Col>
                     <Col md={3}>
                     <span
-                    dangerouslySetInnerHTML={{__html: data?.vancouver?.productsRightText }} 
+                    dangerouslySetInnerHTML={{__html: data?.Vancouver?.productsRightText }} 
                     ></span>
                     </Col>
                 </Row>
                 <Row className='apply-step'>
                     <Col md={4}>
-                        {data?.vancouver?.firstApplyStepTitle == null ? "" : (
+                        {data?.Vancouver?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
                              <h2>01</h2>
-                             <h2>{data?.vancouver?.firstApplyStepTitle}</h2>
+                             <h2>{data?.Vancouver?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
                          </div>
                         )}
                     </Col> 
                     <Col md={4}>
-                    {data?.vancouver?.secondApplyStepTitle == null ? "" : (
+                    {data?.Vancouver?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
                             <h2>02</h2>
-                            <h2>{data?.vancouver?.secondApplyStepTitle}</h2>
-                            <p>{data?.vancouver?.secondApplyStepDescription}</p> 
+                            <h2>{data?.Vancouver?.secondApplyStepTitle}</h2>
+                            <p>{data?.Vancouver?.secondApplyStepDescription}</p> 
                         </div>
                          )}
                     </Col> 
                     <Col md={4}>
-                    {data?.vancouver?.thirdApplyStepTitle == null ? "" : (
+                    {data?.Vancouver?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
                             <h2>03</h2>
-                            <h2>{data?.vancouver?.thirdApplyStepTitle}</h2>
+                            <h2>{data?.Vancouver?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>
                         </div>
@@ -232,20 +232,20 @@ const Vancouver = () => {
                 </Row>
                 <Row className='mortgage-broker'>
                     <Col>
-                        <h2>{data?.vancouver?.brokerTitle}</h2> 
-                        <p>{data?.vancouver?.brokerDescription}</p>
+                        <h2>{data?.Vancouver?.brokerTitle}</h2> 
+                        <p>{data?.Vancouver?.brokerDescription}</p>
                     </Col>
                 </Row>
-                {data.vancouver.renovation == null ? "" : (
+                {data.Vancouver.renovation == null ? "" : (
                     <Row className="renovation-row">
-                        {console.log(data.vancouver.renovation[0].title)}
+                        {console.log(data.Vancouver.renovation[0].title)}
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key == null ? 1 : key }
                         onSelect={(k) => setKey(k)}
                         className="mb-3 renovation"
                         >
-                        {data.vancouver.renovation.map( (tab, item) => {
+                        {data.Vancouver.renovation.map( (tab, item) => {
                             return(
                                 <Tab key={item} eventKey={item.toString()} title={tab.title}>
                                     {console.log("data aaa", tab.title)}
@@ -261,11 +261,11 @@ const Vancouver = () => {
                 )}
                 <Row className='broker-coquitlam'>
                     <Col>
-                    <h2>{data?.vancouver?.
+                    <h2>{data?.Vancouver?.
                     brokerTitle}</h2>
-                    <p>{data?.vancouver?.brokerDescription}</p>
-                    {data?.vancouver?.brokerLink == null ? "" : (
-                        <a href={data?.vancouver?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                    <p>{data?.Vancouver?.brokerDescription}</p>
+                    {data?.Vancouver?.brokerLink == null ? "" : (
+                        <a href={data?.Vancouver?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     )}
                     
                     </Col>

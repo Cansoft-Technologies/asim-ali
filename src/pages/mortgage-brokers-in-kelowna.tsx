@@ -51,7 +51,7 @@ const Kelowna = () => {
           query: gql`query{
             pages(where: {title: "Kelowna"}) {
               nodes {
-                kelowna {
+                Kelowna {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -114,38 +114,38 @@ const Kelowna = () => {
         <Header />
             <Head>
                 <title>
-                {data?.kelowna?.kelownaBannerTitle} - {generalSettings?.title}
+                {data?.Kelowna?.kelownaBannerTitle} - {generalSettings?.title}
                 </title>
             </Head>
             <main className="content">
-            {data?.kelowna?.kelownaBannerTitle == null ? "" : (
+            {data?.Kelowna?.kelownaBannerTitle == null ? "" : (
                 <Hero
-                title={data?.kelowna?.kelownaBannerTitle}
-                heading={data?.kelowna?.kelownaBannerHeading}
-                description={data?.kelowna?.kelownaBannerDescription}
-                bgImage={data?.kelowna?.kelownaBannerImage?.sourceUrl}
+                title={data?.Kelowna?.kelownaBannerTitle}
+                heading={data?.Kelowna?.kelownaBannerHeading}
+                description={data?.Kelowna?.kelownaBannerDescription}
+                bgImage={data?.Kelowna?.kelownaBannerImage?.sourceUrl}
             />  
             )}
             
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.kelowna?.kelownaBannerTitle?.split(" ")[0]} <span>{data?.kelowna?.kelownaBannerTitle?.split(" ")[1]}</span></h2>
+                    <h2>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[0]} <span>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[1]}</span></h2>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.kelowna?.kelownaBannerDescription}</p> 
+                        <p>{data?.Kelowna?.kelownaBannerDescription}</p> 
                     </Col>
                 </Row>
                 <Row className='kelowna-grid my-5'>
                     <Col md={7}>
-                        <div dangerouslySetInnerHTML={{__html: data?.kelowna?.aboutKelownaText }} >
+                        <div dangerouslySetInnerHTML={{__html: data?.Kelowna?.aboutKelownaText }} >
                         </div>
                     </Col>
                     <Col md={5}>
                     <Image 
-                        src={data?.kelowna?.aboutKelownaImage?.sourceUrl}
+                        src={data?.Kelowna?.aboutKelownaImage?.sourceUrl}
                         loader={myLoader}
-                        alt={data?.kelowna?.aboutKelownaImage?.altText}
+                        alt={data?.Kelowna?.aboutKelownaImage?.altText}
                         width="100%" 
                         height="120" 
                         layout="responsive" 
@@ -153,7 +153,7 @@ const Kelowna = () => {
                         />
                     </Col>
                 </Row>
-                {data?.kelowna?.kelownaSlider == null ? "" : (
+                {data?.Kelowna?.kelownaSlider == null ? "" : (
                     <Row className='application-slider'>
                     
                     <Carousel 
@@ -162,7 +162,7 @@ const Kelowna = () => {
                         responsive={responsive}
                         >
                             
-                            {data?.kelowna?.kelownaSlider.map( (slide, a) => {
+                            {data?.Kelowna?.kelownaSlider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
                                 <h4>{slide?.title}</h4>
@@ -177,19 +177,19 @@ const Kelowna = () => {
                 
                 <Row className="product-service">
                     <Col className='mb-5' md={12}>
-                        <h2 className='text-center'>{data?.kelowna?.mortgageProductsTitle}</h2>
+                        <h2 className='text-center'>{data?.Kelowna?.mortgageProductsTitle}</h2>
                     </Col>
                     <Col md={3}>
                         <span
-                        dangerouslySetInnerHTML={{__html: data?.kelowna?.mortgageProductsLeftText }} 
+                        dangerouslySetInnerHTML={{__html: data?.Kelowna?.mortgageProductsLeftText }} 
                         ></span>
                         
                     </Col>
                     <Col md={6}>
                         <Image 
-                         src={data?.kelowna?.mortgageProductsImage?.sourceUrl}
+                         src={data?.Kelowna?.mortgageProductsImage?.sourceUrl}
                          loader={myLoader}
-                         alt={data?.kelowna?.mortgageProductsImage?.altText}
+                         alt={data?.Kelowna?.mortgageProductsImage?.altText}
                         width="190" 
                         height="150" 
                         layout="responsive" 
@@ -198,35 +198,35 @@ const Kelowna = () => {
                     </Col>
                     <Col md={3}>
                     <span
-                    dangerouslySetInnerHTML={{__html: data?.kelowna?.mortgageProductsRightText }} 
+                    dangerouslySetInnerHTML={{__html: data?.Kelowna?.mortgageProductsRightText }} 
                     ></span>
                     </Col>
                 </Row>
                 <Row className='apply-step'>
                     <Col md={4}>
-                        {data?.kelowna?.firstApplyStepTitle == null ? "" : (
+                        {data?.Kelowna?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
                              <h2>01</h2>
-                             <h2>{data?.kelowna?.firstApplyStepTitle}</h2>
+                             <h2>{data?.Kelowna?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
                          </div>
                         )}
                     </Col> 
                     <Col md={4}>
-                    {data?.kelowna?.secondApplyStepTitle == null ? "" : (
+                    {data?.Kelowna?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
                             <h2>02</h2>
-                            <h2>{data?.kelowna?.secondApplyStepTitle}</h2>
-                            <p>{data?.kelowna?.secondApplyStepDescription}</p> 
+                            <h2>{data?.Kelowna?.secondApplyStepTitle}</h2>
+                            <p>{data?.Kelowna?.secondApplyStepDescription}</p> 
                         </div>
                          )}
                     </Col> 
                     <Col md={4}>
-                    {data?.kelowna?.thirdApplyStepTitle == null ? "" : (
+                    {data?.Kelowna?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
                             <h2>03</h2>
-                            <h2>{data?.kelowna?.thirdApplyStepTitle}</h2>
+                            <h2>{data?.Kelowna?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>
                         </div>
@@ -235,20 +235,20 @@ const Kelowna = () => {
                 </Row>
                 <Row className='mortgage-broker'>
                     <Col>
-                        <h2>{data?.kelowna?.mortgageBrokerTitle}</h2> 
-                        <p>{data?.kelowna?.mortgageBrokerDescription}</p>
+                        <h2>{data?.Kelowna?.mortgageBrokerTitle}</h2> 
+                        <p>{data?.Kelowna?.mortgageBrokerDescription}</p>
                     </Col>
                 </Row>
-                {data.kelowna.mortgageRenovation == null ? "" : (
+                {data.Kelowna.mortgageRenovation == null ? "" : (
                     <Row className="renovation-row">
-                        {console.log(data.kelowna.mortgageRenovation[0].title)}
+                        {console.log(data.Kelowna.mortgageRenovation[0].title)}
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key == null ? 1 : key }
                         onSelect={(k) => setKey(k)}
                         className="mb-3 renovation"
                         >
-                        {data.kelowna.mortgageRenovation.map( (tab, item) => {
+                        {data.Kelowna.mortgageRenovation.map( (tab, item) => {
                             return(
                                 <Tab key={item} eventKey={item.toString()} title={tab.title}>
                                     {console.log("data aaa", tab.title)}
@@ -264,11 +264,11 @@ const Kelowna = () => {
                 )}
                 <Row className='broker-coquitlam'>
                     <Col>
-                    <h2>{data?.kelowna?.
+                    <h2>{data?.Kelowna?.
                     brokerCoquitlamTitle}</h2>
-                    <p>{data?.kelowna?.brokerCoquitlamDescription}</p>
-                    {data?.kelowna?.brokerCoquitlamLink == null ? "" : (
-                        <a href={data?.kelowna?.brokerCoquitlamLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                    <p>{data?.Kelowna?.brokerCoquitlamDescription}</p>
+                    {data?.Kelowna?.brokerCoquitlamLink == null ? "" : (
+                        <a href={data?.Kelowna?.brokerCoquitlamLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     )}
                     
                     </Col>

@@ -51,7 +51,7 @@ const Abbotsford = () => {
           query: gql`query{
             pages(where: {title: "Abbotsford"}) {
               nodes {
-                abbotsford {
+                Abbotsford {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -111,38 +111,38 @@ const Abbotsford = () => {
         <Header />
             <Head>
                 <title>
-                {data?.abbotsford?.bannerTitle} - {generalSettings?.title}
+                {data?.Abbotsford?.bannerTitle} - {generalSettings?.title}
                 </title>
             </Head>
             <main className="content">
-            {data?.abbotsford?.bannerTitle == null ? "" : (
+            {data?.Abbotsford?.bannerTitle == null ? "" : (
                 <Hero
-                title={data?.abbotsford?.bannerTitle}
-                heading={data?.abbotsford?.bannerHeading}
-                description={data?.abbotsford?.bannerDescription}
-                bgImage={data?.abbotsford?.bannerImage?.sourceUrl}
+                title={data?.Abbotsford?.bannerTitle}
+                heading={data?.Abbotsford?.bannerHeading}
+                description={data?.Abbotsford?.bannerDescription}
+                bgImage={data?.Abbotsford?.bannerImage?.sourceUrl}
             />  
             )}
             
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.abbotsford?.bannerTitle?.split(" ")[0]} <span>{data?.abbotsford?.bannerTitle?.split(" ")[1]}</span></h2>
+                    <h2>{data?.Abbotsford?.bannerTitle?.split(" ")[0]} <span>{data?.Abbotsford?.bannerTitle?.split(" ")[1]}</span></h2>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.abbotsford?.bannerDescription}</p> 
+                        <p>{data?.Abbotsford?.bannerDescription}</p> 
                     </Col>
                 </Row>
                 <Row className='kelowna-grid my-5'>
                     <Col md={7}>
-                        <div dangerouslySetInnerHTML={{__html: data?.abbotsford?.aboutText }} >
+                        <div dangerouslySetInnerHTML={{__html: data?.Abbotsford?.aboutText }} >
                         </div>
                     </Col>
                     <Col md={5}>
                     <Image 
-                        src={data?.abbotsford?.aboutImage?.sourceUrl}
+                        src={data?.Abbotsford?.aboutImage?.sourceUrl}
                         loader={myLoader}
-                        alt={data?.abbotsford?.aboutImage?.altText}
+                        alt={data?.Abbotsford?.aboutImage?.altText}
                         width="100%" 
                         height="90" 
                         layout="responsive" 
@@ -150,7 +150,7 @@ const Abbotsford = () => {
                         />
                     </Col>
                 </Row>
-                {data?.abbotsford?.slider == null ? "" : (
+                {data?.Abbotsford?.slider == null ? "" : (
                     <Row className='application-slider'>
                     
                     <Carousel 
@@ -159,7 +159,7 @@ const Abbotsford = () => {
                         responsive={responsive}
                         >
                             
-                            {data?.abbotsford?.slider.map( (slide, a) => {
+                            {data?.Abbotsford?.slider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
                                 <h4>{slide?.title}</h4>
@@ -174,19 +174,19 @@ const Abbotsford = () => {
                 
                 <Row className="product-service">
                     <Col className='mb-5' md={12}>
-                        <h2 className='text-center'>{data?.abbotsford?.productsTitle}</h2>
+                        <h2 className='text-center'>{data?.Abbotsford?.productsTitle}</h2>
                     </Col>
                     <Col md={3}>
                         <span
-                        dangerouslySetInnerHTML={{__html: data?.abbotsford?.productsLeftText }} 
+                        dangerouslySetInnerHTML={{__html: data?.Abbotsford?.productsLeftText }} 
                         ></span>
                         
                     </Col>
                     <Col md={6}>
                         <Image 
-                         src={data?.abbotsford?.productsImage?.sourceUrl}
+                         src={data?.Abbotsford?.productsImage?.sourceUrl}
                          loader={myLoader}
-                         alt={data?.abbotsford?.productsImage?.altText}
+                         alt={data?.Abbotsford?.productsImage?.altText}
                         width="190" 
                         height="120" 
                         layout="responsive" 
@@ -195,35 +195,35 @@ const Abbotsford = () => {
                     </Col>
                     <Col md={3}>
                     <span
-                    dangerouslySetInnerHTML={{__html: data?.abbotsford?.productsRightText }} 
+                    dangerouslySetInnerHTML={{__html: data?.Abbotsford?.productsRightText }} 
                     ></span>
                     </Col>
                 </Row>
                 <Row className='apply-step'>
                     <Col md={4}>
-                        {data?.abbotsford?.firstApplyStepTitle == null ? "" : (
+                        {data?.Abbotsford?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
                              <h2>01</h2>
-                             <h2>{data?.abbotsford?.firstApplyStepTitle}</h2>
+                             <h2>{data?.Abbotsford?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
                          </div>
                         )}
                     </Col> 
                     <Col md={4}>
-                    {data?.abbotsford?.secondApplyStepTitle == null ? "" : (
+                    {data?.Abbotsford?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
                             <h2>02</h2>
-                            <h2>{data?.abbotsford?.secondApplyStepTitle}</h2>
-                            <p>{data?.abbotsford?.secondApplyStepDescription}</p> 
+                            <h2>{data?.Abbotsford?.secondApplyStepTitle}</h2>
+                            <p>{data?.Abbotsford?.secondApplyStepDescription}</p> 
                         </div>
                          )}
                     </Col> 
                     <Col md={4}>
-                    {data?.abbotsford?.thirdApplyStepTitle == null ? "" : (
+                    {data?.Abbotsford?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
                             <h2>03</h2>
-                            <h2>{data?.abbotsford?.thirdApplyStepTitle}</h2>
+                            <h2>{data?.Abbotsford?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>
                         </div>
@@ -232,20 +232,20 @@ const Abbotsford = () => {
                 </Row>
                 <Row className='mortgage-broker'>
                     <Col>
-                        <h2>{data?.abbotsford?.brokerTitle}</h2> 
-                        <p>{data?.abbotsford?.brokerDescription}</p>
+                        <h2>{data?.Abbotsford?.brokerTitle}</h2> 
+                        <p>{data?.Abbotsford?.brokerDescription}</p>
                     </Col>
                 </Row>
-                {data.abbotsford.renovation == null ? "" : (
+                {data.Abbotsford.renovation == null ? "" : (
                     <Row className="renovation-row">
-                        {console.log(data.abbotsford.renovation[0].title)}
+                        {console.log(data.Abbotsford.renovation[0].title)}
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key == null ? 1 : key }
                         onSelect={(k) => setKey(k)}
                         className="mb-3 renovation"
                         >
-                        {data.abbotsford.renovation.map( (tab, item) => {
+                        {data.Abbotsford.renovation.map( (tab, item) => {
                             return(
                                 <Tab key={item} eventKey={item.toString()} title={tab.title}>
                                     {console.log("data aaa", tab.title)}
@@ -261,11 +261,11 @@ const Abbotsford = () => {
                 )}
                 <Row className='broker-coquitlam'>
                     <Col>
-                    <h2>{data?.abbotsford?.
+                    <h2>{data?.Abbotsford?.
                     brokerTitle}</h2>
-                    <p>{data?.abbotsford?.brokerDescription}</p>
-                    {data?.abbotsford?.brokerLink == null ? "" : (
-                        <a href={data?.abbotsford?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                    <p>{data?.Abbotsford?.brokerDescription}</p>
+                    {data?.Abbotsford?.brokerLink == null ? "" : (
+                        <a href={data?.Abbotsford?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     )}
                     
                     </Col>

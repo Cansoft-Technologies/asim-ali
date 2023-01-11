@@ -51,7 +51,7 @@ const Delta = () => {
           query: gql`query{
             pages(where: {title: "Delta"}) {
               nodes {
-                delta {
+                Delta {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -111,38 +111,38 @@ const Delta = () => {
         <Header />
             <Head>
                 <title>
-                {data?.delta?.bannerTitle} - {generalSettings?.title}
+                {data?.Delta?.bannerTitle} - {generalSettings?.title}
                 </title>
             </Head>
             <main className="content">
-            {data?.delta?.bannerTitle == null ? "" : (
+            {data?.Delta?.bannerTitle == null ? "" : (
                 <Hero
-                title={data?.delta?.bannerTitle}
-                heading={data?.delta?.bannerHeading}
-                description={data?.delta?.bannerDescription}
-                bgImage={data?.delta?.bannerImage?.sourceUrl}
+                title={data?.Delta?.bannerTitle}
+                heading={data?.Delta?.bannerHeading}
+                description={data?.Delta?.bannerDescription}
+                bgImage={data?.Delta?.bannerImage?.sourceUrl}
             />  
             )}
             
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.delta?.bannerTitle?.split(" ")[0]} <span>{data?.delta?.bannerTitle?.split(" ")[1]}</span></h2>
+                    <h2>{data?.Delta?.bannerTitle?.split(" ")[0]} <span>{data?.Delta?.bannerTitle?.split(" ")[1]}</span></h2>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.delta?.bannerDescription}</p> 
+                        <p>{data?.Delta?.bannerDescription}</p> 
                     </Col>
                 </Row>
                 <Row className='kelowna-grid my-5'>
                     <Col md={7}>
-                        <div dangerouslySetInnerHTML={{__html: data?.delta?.aboutText }} >
+                        <div dangerouslySetInnerHTML={{__html: data?.Delta?.aboutText }} >
                         </div>
                     </Col>
                     <Col md={5}>
                     <Image 
-                        src={data?.delta?.aboutImage?.sourceUrl}
+                        src={data?.Delta?.aboutImage?.sourceUrl}
                         loader={myLoader}
-                        alt={data?.delta?.aboutImage?.altText}
+                        alt={data?.Delta?.aboutImage?.altText}
                         width="100%" 
                         height="90" 
                         layout="responsive" 
@@ -150,7 +150,7 @@ const Delta = () => {
                         />
                     </Col>
                 </Row>
-                {data?.delta?.slider == null ? "" : (
+                {data?.Delta?.slider == null ? "" : (
                     <Row className='application-slider'>
                     
                     <Carousel 
@@ -159,7 +159,7 @@ const Delta = () => {
                         responsive={responsive}
                         >
                             
-                            {data?.delta?.slider.map( (slide, a) => {
+                            {data?.Delta?.slider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
                                 <h4>{slide?.title}</h4>
@@ -174,19 +174,19 @@ const Delta = () => {
                 
                 <Row className="product-service">
                     <Col className='mb-5' md={12}>
-                        <h2 className='text-center'>{data?.delta?.productsTitle}</h2>
+                        <h2 className='text-center'>{data?.Delta?.productsTitle}</h2>
                     </Col>
                     <Col md={3}>
                         <span
-                        dangerouslySetInnerHTML={{__html: data?.delta?.productsLeftText }} 
+                        dangerouslySetInnerHTML={{__html: data?.Delta?.productsLeftText }} 
                         ></span>
                         
                     </Col>
                     <Col md={6}>
                         <Image 
-                         src={data?.delta?.productsImage?.sourceUrl}
+                         src={data?.Delta?.productsImage?.sourceUrl}
                          loader={myLoader}
-                         alt={data?.delta?.productsImage?.altText}
+                         alt={data?.Delta?.productsImage?.altText}
                         width="190" 
                         height="150" 
                         layout="responsive" 
@@ -195,35 +195,35 @@ const Delta = () => {
                     </Col>
                     <Col md={3}>
                     <span
-                    dangerouslySetInnerHTML={{__html: data?.delta?.productsRightText }} 
+                    dangerouslySetInnerHTML={{__html: data?.Delta?.productsRightText }} 
                     ></span>
                     </Col>
                 </Row>
                 <Row className='apply-step'>
                     <Col md={4}>
-                        {data?.delta?.firstApplyStepTitle == null ? "" : (
+                        {data?.Delta?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
                              <h2>01</h2>
-                             <h2>{data?.delta?.firstApplyStepTitle}</h2>
+                             <h2>{data?.Delta?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
                          </div>
                         )}
                     </Col> 
                     <Col md={4}>
-                    {data?.delta?.secondApplyStepTitle == null ? "" : (
+                    {data?.Delta?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
                             <h2>02</h2>
-                            <h2>{data?.delta?.secondApplyStepTitle}</h2>
-                            <p>{data?.delta?.secondApplyStepDescription}</p> 
+                            <h2>{data?.Delta?.secondApplyStepTitle}</h2>
+                            <p>{data?.Delta?.secondApplyStepDescription}</p> 
                         </div>
                          )}
                     </Col> 
                     <Col md={4}>
-                    {data?.delta?.thirdApplyStepTitle == null ? "" : (
+                    {data?.Delta?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
                             <h2>03</h2>
-                            <h2>{data?.delta?.thirdApplyStepTitle}</h2>
+                            <h2>{data?.Delta?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>
                         </div>
@@ -232,20 +232,20 @@ const Delta = () => {
                 </Row>
                 <Row className='mortgage-broker'>
                     <Col>
-                        <h2>{data?.delta?.brokerTitle}</h2> 
-                        <p>{data?.delta?.brokerDescription}</p>
+                        <h2>{data?.Delta?.brokerTitle}</h2> 
+                        <p>{data?.Delta?.brokerDescription}</p>
                     </Col>
                 </Row>
-                {data.delta.renovation == null ? "" : (
+                {data.Delta.renovation == null ? "" : (
                     <Row className="renovation-row">
-                        {console.log(data.delta.renovation[0].title)}
+                        {console.log(data.Delta.renovation[0].title)}
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key == null ? 1 : key }
                         onSelect={(k) => setKey(k)}
                         className="mb-3 renovation"
                         >
-                        {data.delta.renovation.map( (tab, item) => {
+                        {data.Delta.renovation.map( (tab, item) => {
                             return(
                                 <Tab key={item} eventKey={item.toString()} title={tab.title}>
                                     {console.log("data aaa", tab.title)}
@@ -261,10 +261,10 @@ const Delta = () => {
                 )}
                 <Row className='broker-coquitlam'>
                     <Col>
-                    <h2>{data?.delta?.
+                    <h2>{data?.Delta?.
                     brokerTitle}</h2>
-                    <p>{data?.delta?.brokerDescription}</p>
-                    {data?.delta?.brokerLink == null ? "" : (
+                    <p>{data?.Delta?.brokerDescription}</p>
+                    {data?.Delta?.brokerLink == null ? "" : (
                         <a href={data?.delta?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     )}
                     

@@ -51,7 +51,7 @@ const Langley = () => {
           query: gql`query{
             pages(where: {title: "Langley"}) {
               nodes {
-                langley {
+                Langley {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -113,38 +113,38 @@ const Langley = () => {
         <Header />
             <Head>
                 <title>
-                {data?.langley?.langleyBannerTitle} - {generalSettings?.title}
+                {data?.Langley?.langleyBannerTitle} - {generalSettings?.title}
                 </title>
             </Head>
             <main className="content">
-            {data?.langley?.langleyBannerTitle == null ? "" : (
+            {data?.Langley?.langleyBannerTitle == null ? "" : (
                 <Hero
-                title={data?.langley?.langleyBannerTitle}
-                heading={data?.langley?.langleyBannerHeading}
-                description={data?.langley?.langleyBannerDescription}
-                bgImage={data?.langley?.langleyBannerImage?.sourceUrl}
+                title={data?.Langley?.langleyBannerTitle}
+                heading={data?.Langley?.langleyBannerHeading}
+                description={data?.Langley?.langleyBannerDescription}
+                bgImage={data?.Langley?.langleyBannerImage?.sourceUrl}
             />  
             )}
             
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.langley?.langleyBannerTitle?.split(" ")[0]} <span>{data?.langley?.langleyBannerTitle?.split(" ")[1]}</span></h2>
+                    <h2>{data?.Langley?.langleyBannerTitle?.split(" ")[0]} <span>{data?.Langley?.langleyBannerTitle?.split(" ")[1]}</span></h2>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.langley?.langleyBannerDescription}</p> 
+                        <p>{data?.Langley?.langleyBannerDescription}</p> 
                     </Col>
                 </Row>
                 <Row className='kelowna-grid my-5'>
                     <Col md={7}>
-                        <div dangerouslySetInnerHTML={{__html: data?.langley?.aboutLangleyText }} >
+                        <div dangerouslySetInnerHTML={{__html: data?.Langley?.aboutLangleyText }} >
                         </div>
                     </Col>
                     <Col md={5}>
                     <Image 
-                        src={data?.langley?.aboutLangleyImage?.sourceUrl}
+                        src={data?.Langley?.aboutLangleyImage?.sourceUrl}
                         loader={myLoader}
-                        alt={data?.langley?.aboutLangleyImage?.altText}
+                        alt={data?.Langley?.aboutLangleyImage?.altText}
                         width="100%" 
                         height="120" 
                         layout="responsive" 
@@ -152,7 +152,7 @@ const Langley = () => {
                         />
                     </Col>
                 </Row>
-                {data?.langley?.langleySlider == null ? "" : (
+                {data?.Langley?.langleySlider == null ? "" : (
                     <Row className='application-slider'>
                     
                     <Carousel 
@@ -161,7 +161,7 @@ const Langley = () => {
                         responsive={responsive}
                         >
                             
-                            {data?.langley?.langleySlider.map( (slide, a) => {
+                            {data?.Langley?.langleySlider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
                                 <h4>{slide?.title}</h4>
@@ -176,19 +176,19 @@ const Langley = () => {
                 
                 <Row className="product-service">
                     <Col className='mb-5' md={12}>
-                        <h2 className='text-center'>{data?.langley?.mortgageProductsTitle}</h2>
+                        <h2 className='text-center'>{data?.Langley?.mortgageProductsTitle}</h2>
                     </Col>
                     <Col md={3}>
                         <span
-                        dangerouslySetInnerHTML={{__html: data?.langley?.mortgageProductsLeftText }} 
+                        dangerouslySetInnerHTML={{__html: data?.Langley?.mortgageProductsLeftText }} 
                         ></span>
                         
                     </Col>
                     <Col md={6}>
                         <Image 
-                         src={data?.langley?.mortgageProductsImage?.sourceUrl}
+                         src={data?.Langley?.mortgageProductsImage?.sourceUrl}
                          loader={myLoader}
-                         alt={data?.langley?.mortgageProductsImage?.altText}
+                         alt={data?.Langley?.mortgageProductsImage?.altText}
                         width="190" 
                         height="150" 
                         layout="responsive" 
@@ -197,35 +197,35 @@ const Langley = () => {
                     </Col>
                     <Col md={3}>
                     <span
-                    dangerouslySetInnerHTML={{__html: data?.langley?.mortgageProductsRightText }} 
+                    dangerouslySetInnerHTML={{__html: data?.Langley?.mortgageProductsRightText }} 
                     ></span>
                     </Col>
                 </Row>
                 <Row className='apply-step'>
                     <Col md={4}>
-                        {data?.langley?.firstApplyStepTitle == null ? "" : (
+                        {data?.Langley?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
                              <h2>01</h2>
-                             <h2>{data?.langley?.firstApplyStepTitle}</h2>
+                             <h2>{data?.Langley?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
                          </div>
                         )}
                     </Col> 
                     <Col md={4}>
-                    {data?.langley?.secondApplyStepTitle == null ? "" : (
+                    {data?.Langley?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
                             <h2>02</h2>
-                            <h2>{data?.langley?.secondApplyStepTitle}</h2>
-                            <p>{data?.langley?.secondApplyStepDescription}</p> 
+                            <h2>{data?.Langley?.secondApplyStepTitle}</h2>
+                            <p>{data?.Langley?.secondApplyStepDescription}</p> 
                         </div>
                          )}
                     </Col> 
                     <Col md={4}>
-                    {data?.langley?.thirdApplyStepTitle == null ? "" : (
+                    {data?.Langley?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
                             <h2>03</h2>
-                            <h2>{data?.langley?.thirdApplyStepTitle}</h2>
+                            <h2>{data?.Langley?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>
                         </div>
@@ -234,20 +234,20 @@ const Langley = () => {
                 </Row>
                 <Row className='mortgage-broker'>
                     <Col>
-                        <h2>{data?.langley?.mortgageBrokerTitle}</h2> 
-                        <p>{data?.langley?.mortgageBrokerDescription}</p>
+                        <h2>{data?.Langley?.mortgageBrokerTitle}</h2> 
+                        <p>{data?.Langley?.mortgageBrokerDescription}</p>
                     </Col>
                 </Row>
-                {data.langley.mortgageRenovation == null ? "" : (
+                {data.Langley.mortgageRenovation == null ? "" : (
                     <Row className="renovation-row">
-                        {console.log(data.langley.mortgageRenovation[0].title)}
+                        {console.log(data.Langley.mortgageRenovation[0].title)}
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key == null ? 1 : key }
                         onSelect={(k) => setKey(k)}
                         className="mb-3 renovation"
                         >
-                        {data.langley.mortgageRenovation.map( (tab, item) => {
+                        {data.Langley.mortgageRenovation.map( (tab, item) => {
                             return(
                                 <Tab key={item} eventKey={item.toString()} title={tab.title}>
                                     {console.log("data aaa", tab.title)}
@@ -263,11 +263,11 @@ const Langley = () => {
                 )}
                 <Row className='broker-coquitlam'>
                     <Col>
-                    <h2>{data?.langley?.
+                    <h2>{data?.Langley?.
                     brokerLangleyTitle}</h2>
-                    <p>{data?.langley?.brokerLangleyDescription}</p>
-                    {data?.langley?.brokerLangleyLink == null ? "" : (
-                        <a href={data?.langley?.brokerLangleyLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                    <p>{data?.Langley?.brokerLangleyDescription}</p>
+                    {data?.Langley?.brokerLangleyLink == null ? "" : (
+                        <a href={data?.Langley?.brokerLangleyLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     )}
                     
                     </Col>

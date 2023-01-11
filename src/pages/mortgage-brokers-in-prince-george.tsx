@@ -51,7 +51,7 @@ const Prince = () => {
           query: gql`query{
             pages(where: {title: "Prince George"}) {
               nodes {
-                prince {
+                Prince {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -111,38 +111,38 @@ const Prince = () => {
         <Header />
             <Head>
                 <title>
-                {data?.prince?.bannerTitle} - {generalSettings?.title}
+                {data?.Prince?.bannerTitle} - {generalSettings?.title}
                 </title>
             </Head>
             <main className="content">
-            {data?.prince?.bannerTitle == null ? "" : (
+            {data?.Prince?.bannerTitle == null ? "" : (
                 <Hero
-                title={data?.prince?.bannerTitle}
-                heading={data?.prince?.bannerHeading}
-                description={data?.prince?.bannerDescription}
-                bgImage={data?.prince?.bannerImage?.sourceUrl}
+                title={data?.Prince?.bannerTitle}
+                heading={data?.Prince?.bannerHeading}
+                description={data?.Prince?.bannerDescription}
+                bgImage={data?.Prince?.bannerImage?.sourceUrl}
             />  
             )}
             
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.prince?.bannerTitle?.split(" ")[0]} <span>{data?.prince?.bannerTitle?.split(" ")[1]}</span></h2>
+                    <h2>{data?.Prince?.bannerTitle?.split(" ")[0]} <span>{data?.Prince?.bannerTitle?.split(" ")[1]}</span></h2>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.prince?.bannerDescription}</p> 
+                        <p>{data?.Prince?.bannerDescription}</p> 
                     </Col>
                 </Row>
                 <Row className='kelowna-grid my-5'>
                     <Col md={7}>
-                        <div dangerouslySetInnerHTML={{__html: data?.prince?.aboutText }} >
+                        <div dangerouslySetInnerHTML={{__html: data?.Prince?.aboutText }} >
                         </div>
                     </Col>
                     <Col md={5}>
                     <Image 
-                        src={data?.prince?.aboutImage?.sourceUrl}
+                        src={data?.Prince?.aboutImage?.sourceUrl}
                         loader={myLoader}
-                        alt={data?.prince?.aboutImage?.altText}
+                        alt={data?.Prince?.aboutImage?.altText}
                         width="100%" 
                         height="100" 
                         layout="responsive" 
@@ -150,7 +150,7 @@ const Prince = () => {
                         />
                     </Col>
                 </Row>
-                {data?.prince?.slider == null ? "" : (
+                {data?.Prince?.slider == null ? "" : (
                     <Row className='application-slider'>
                     
                     <Carousel 
@@ -159,7 +159,7 @@ const Prince = () => {
                         responsive={responsive}
                         >
                             
-                            {data?.prince?.slider.map( (slide, a) => {
+                            {data?.Prince?.slider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
                                 <h4>{slide?.title}</h4>
@@ -174,19 +174,19 @@ const Prince = () => {
                 
                 <Row className="product-service">
                     <Col className='mb-5' md={12}>
-                        <h2 className='text-center'>{data?.prince?.productsTitle}</h2>
+                        <h2 className='text-center'>{data?.Prince?.productsTitle}</h2>
                     </Col>
                     <Col md={3}>
                         <span
-                        dangerouslySetInnerHTML={{__html: data?.prince?.productsLeftText }} 
+                        dangerouslySetInnerHTML={{__html: data?.Prince?.productsLeftText }} 
                         ></span>
                         
                     </Col>
                     <Col md={6}>
                         <Image 
-                         src={data?.prince?.productsImage?.sourceUrl}
+                         src={data?.Prince?.productsImage?.sourceUrl}
                          loader={myLoader}
-                         alt={data?.prince?.productsImage?.altText}
+                         alt={data?.Prince?.productsImage?.altText}
                         width="190" 
                         height="150" 
                         layout="responsive" 
@@ -195,35 +195,35 @@ const Prince = () => {
                     </Col>
                     <Col md={3}>
                     <span
-                    dangerouslySetInnerHTML={{__html: data?.prince?.productsRightText }} 
+                    dangerouslySetInnerHTML={{__html: data?.Prince?.productsRightText }} 
                     ></span>
                     </Col>
                 </Row>
                 <Row className='apply-step'>
                     <Col md={4}>
-                        {data?.prince?.firstApplyStepTitle == null ? "" : (
+                        {data?.Prince?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
                              <h2>01</h2>
-                             <h2>{data?.prince?.firstApplyStepTitle}</h2>
+                             <h2>{data?.Prince?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
                          </div>
                         )}
                     </Col> 
                     <Col md={4}>
-                    {data?.prince?.secondApplyStepTitle == null ? "" : (
+                    {data?.Prince?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
                             <h2>02</h2>
-                            <h2>{data?.prince?.secondApplyStepTitle}</h2>
-                            <p>{data?.prince?.secondApplyStepDescription}</p> 
+                            <h2>{data?.Prince?.secondApplyStepTitle}</h2>
+                            <p>{data?.Prince?.secondApplyStepDescription}</p> 
                         </div>
                          )}
                     </Col> 
                     <Col md={4}>
-                    {data?.prince?.thirdApplyStepTitle == null ? "" : (
+                    {data?.Prince?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
                             <h2>03</h2>
-                            <h2>{data?.prince?.thirdApplyStepTitle}</h2>
+                            <h2>{data?.Prince?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>
                         </div>
@@ -232,20 +232,20 @@ const Prince = () => {
                 </Row>
                 <Row className='mortgage-broker'>
                     <Col>
-                        <h2>{data?.prince?.brokerTitle}</h2> 
-                        <p>{data?.prince?.brokerDescription}</p>
+                        <h2>{data?.Prince?.brokerTitle}</h2> 
+                        <p>{data?.Prince?.brokerDescription}</p>
                     </Col>
                 </Row>
-                {data.prince.renovation == null ? "" : (
+                {data.Prince.renovation == null ? "" : (
                     <Row className="renovation-row">
-                        {console.log(data.prince.renovation[0].title)}
+                        {console.log(data.Prince.renovation[0].title)}
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key == null ? 1 : key }
                         onSelect={(k) => setKey(k)}
                         className="mb-3 renovation"
                         >
-                        {data.prince.renovation.map( (tab, item) => {
+                        {data.Prince.renovation.map( (tab, item) => {
                             return(
                                 <Tab key={item} eventKey={item.toString()} title={tab.title}>
                                     {console.log("data aaa", tab.title)}
@@ -261,11 +261,11 @@ const Prince = () => {
                 )}
                 <Row className='broker-coquitlam'>
                     <Col>
-                    <h2>{data?.prince?.
+                    <h2>{data?.Prince?.
                     brokerTitle}</h2>
-                    <p>{data?.prince?.brokerDescription}</p>
-                    {data?.prince?.brokerLink == null ? "" : (
-                        <a href={data?.prince?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                    <p>{data?.Prince?.brokerDescription}</p>
+                    {data?.Prince?.brokerLink == null ? "" : (
+                        <a href={data?.Prince?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     )}
                     
                     </Col>

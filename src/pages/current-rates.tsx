@@ -25,7 +25,7 @@ const Current = () => {
           query: gql`query {
             pages(where: {title: "Current Rates"}) {
               nodes {
-                currentRates {
+                CurrentRates {
                   bannerTitle
                   currentMortgageRate
                   currentPrimeRate
@@ -69,25 +69,25 @@ const Current = () => {
                     <Header />
                      <Head>
                          <title>
-                        {data?.currentRates?.bannerTitle} - {generalSettings?.title}
+                        {data?.CurrentRates?.bannerTitle} - {generalSettings?.title}
                          </title>
                      </Head>
                      <main className="content">
                      <Hero
-                         title={data?.currentRates?.bannerTitle}
-                         bgImage={data?.currentRates?.bannerBackgroundImage?.sourceUrl}
+                         title={data?.CurrentRates?.bannerTitle}
+                         bgImage={data?.CurrentRates?.bannerBackgroundImage?.sourceUrl}
                      />
      
                      <div className="container py-5">
                          <div className="row">
                              <div className="col-md-6">
                                  <div className="current-rate">
-                                    {data?.currentRates?.currentMortgageRate == null ? "" : (
-                                    <p>Current Variable Mortgage Rate is <b>{data?.currentRates?.currentMortgageRate}</b></p> 
+                                    {data?.CurrentRates?.currentMortgageRate == null ? "" : (
+                                    <p>Current Variable Mortgage Rate is <b>{data?.CurrentRates?.currentMortgageRate}</b></p> 
 
                                     )}
-                                {data?.currentRates?.currentPrimeRate == null ? "" : (
-                                     <p>Current Prime Rate is <b>{data?.currentRates?.currentPrimeRate}</b></p>
+                                {data?.CurrentRates?.currentPrimeRate == null ? "" : (
+                                     <p>Current Prime Rate is <b>{data?.CurrentRates?.currentPrimeRate}</b></p>
                                 )}
                                 
 
@@ -101,7 +101,7 @@ const Current = () => {
                                  </tr>
                              </thead>
                              <tbody>
-           {data?.currentRates?.tableRateInformation.map( (info, i)=> {
+           {data?.CurrentRates?.tableRateInformation.map( (info, i)=> {
                                     return(
                                         <tr key={i}>
                                          <td>{info?.terms}</td>
@@ -115,26 +115,26 @@ const Current = () => {
                              </tbody>
      
                              </table>
-                             <div dangerouslySetInnerHTML={{__html: data?.currentRates?.tableBottomNotes}} className="notes fst-italic">
+                             <div dangerouslySetInnerHTML={{__html: data?.CurrentRates?.tableBottomNotes}} className="notes fst-italic">
                              </div>
                              </div>
-                             <div dangerouslySetInnerHTML={{__html: data?.currentRates?.mortgageLoanApplicationForm}}  className="col-md-6"> 
+                             <div dangerouslySetInnerHTML={{__html: data?.CurrentRates?.mortgageLoanApplicationForm}}  className="col-md-6"> 
                                  
                              </div>
                          </div>
                      </div>
                      <div style={{ 
-                            backgroundImage: `url("${data?.currentRates?.easyApplicationBackground?.sourceUrl}")` 
+                            backgroundImage: `url("${data?.CurrentRates?.easyApplicationBackground?.sourceUrl}")` 
                           }} className="easy-application">
                      {/* <div className="overlay"></div> */}
-                            <h1>{data?.currentRates?.easyApplicationTitle}</h1>
-                            <h2>{data?.currentRates?.easyApplicationSubtitle}</h2> 
+                            <h1>{data?.CurrentRates?.easyApplicationTitle}</h1>
+                            <h2>{data?.CurrentRates?.easyApplicationSubtitle}</h2> 
                      
-                        <div dangerouslySetInnerHTML={{__html: data?.currentRates?.easyApplicationForm}}   className="application-container"></div>
+                        <div dangerouslySetInnerHTML={{__html: data?.CurrentRates?.easyApplicationForm}}   className="application-container"></div>
                      </div>
                      <div className="calculator-cta"> 
-                         <h2>{data?.currentRates?.paymentCalculatorTitle}</h2>
-                         <Link href={data?.currentRates?.paymentCalculatorLink?.url}>
+                         <h2>{data?.CurrentRates?.paymentCalculatorTitle}</h2>
+                         <Link href={data?.CurrentRates?.paymentCalculatorLink?.url}>
                          <Button className="contactBtn">Mortgage Calculator</Button> 
                         </Link>
                      </div>
