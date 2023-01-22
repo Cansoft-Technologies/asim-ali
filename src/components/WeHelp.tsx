@@ -61,7 +61,6 @@ const WeHelp = () => {
                        <Col lg={6} >
                            <div className="wehelp_image">
                             <video autoPlay loop style={{ width: '500px', height: '500px' }}>
-                              {console.log('hello for you', help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl)}
                             <source src={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
                           </video>
                            {/* <Image 

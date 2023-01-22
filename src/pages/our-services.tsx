@@ -7,6 +7,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import Image from 'next/image';
 
 
 const responsive = {
@@ -55,9 +56,15 @@ const Services = () => {
                   serviceBannerDescription
                   refinancingTitle
                   refinancingDescription
-                  serviceCarousel {
-                    serviceItem
+                  ourServices {
+                    serviceTitle
+                    serviceContent
+                    serviceImage {
+                      altText
+                      sourceUrl
+                    }
                   }
+                  ourMortgageServicesTitle
                 }
               }
             }
@@ -66,6 +73,10 @@ const Services = () => {
         .then((result) => setDatas(result?.data?.pages?.nodes));
     }, []);
 
+    const myLoader = ({ src, width, quality }) => {
+      return `${src}?w=${width}&q=${quality || 75}`
+    }
+
 
     return (
        <>
@@ -73,7 +84,6 @@ const Services = () => {
             return(
         <div key={index} className='our-services'>
             <Header />
-            {console.log(data?.services?.refinancingTitle)}
                 <Head>
                     <title>
                     {data?.services?.serviceBannerTitle} - {generalSettings?.title}
@@ -90,18 +100,18 @@ const Services = () => {
                 )}
                 
                 <Container className='my-5'>
-                    {data?.services?.serviceCarousel == null ? "" : (
+                    {data?.services?.ourServices == null ? "" : (
                         <Carousel 
                         autoPlay={true}
                         infinite={true}
                         responsive={responsive}
                         >
 
-                    {data?.services?.serviceCarousel.map( (slide, i) => {
+                    {data?.services?.ourServices.map( (slide, i) => {
                        return(
                         <div key={i} className="slide-text">
                            
-                        <h4>{slide?.serviceItem}</h4>
+                        <a href={`#${i}`}>{slide?.serviceTitle}</a>
                         </div>
                        )
 
@@ -134,6 +144,45 @@ const Services = () => {
                         </Col>
                     </Row>
                 </Container>
+                <div className="service-container">
+                {console.log("Services ",data?.services)}
+                  <h2 className="text-center">{data?.services?.ourMortgageServicesTitle}</h2>
+                  
+                  {data?.services?.ourServices.map(
+                    (service, key) => {
+                    return(
+                        
+                   <div className="service-row" id={key} key={key}>
+                    {console.log("service", service?.serviceTitle)}
+
+                    <Container>
+                      <Row>
+                      <Col lg={6} >
+                           <div className='service-image'> 
+                            <Image 
+                            loader={myLoader}
+                            objectFit="contain"
+                            src={service?.serviceImage?.sourceUrl}
+                            width={500}
+                            height={400}
+                            alt={service?.serviceImage?.altText} />
+                           </div>
+                      </Col>
+                      <Col lg={6}>
+                           <h2 className='mt-4'>{service?.serviceTitle}</h2>
+                           <p dangerouslySetInnerHTML={{__html: service?.serviceContent}} ></p>
+                      </Col>
+                      </Row>
+                    </Container>
+
+                      
+
+                    </div>
+
+                    )
+                  })}
+                  
+                </div>
                 <CTA />
                 </main>
                 <Footer />

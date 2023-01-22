@@ -57,7 +57,7 @@ function Hero({
         </div>
         </div>
         <div className="col-md-11 offset-md-1 mt-5"> 
-            <h3>{heading}</h3>
+            <h2>{heading}</h2>
             <p>{description}</p>
         </div>
       </div>

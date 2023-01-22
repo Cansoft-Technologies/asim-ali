@@ -61,7 +61,6 @@ const blog = () => {
 
         {
           
-          console.log(result?.data?.posts?.nodes);
         const count = result?.data?.posts?.nodes.length;
        
         const pageNumber = Math.ceil(count/size);

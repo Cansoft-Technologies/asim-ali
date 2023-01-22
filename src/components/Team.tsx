@@ -51,42 +51,12 @@ const Team = () => {
                       <div key={team}>
                         {team?.HomeLandingPage?.teamSection?.hideSection == true ? "" : (
                           <div className='team_section'
-                        // style={{ 
-                        //     backgroundImage: `url("${team?.HomeLandingPage?.teamSection?.teamImage?.sourceUrl}")` 
-                        //   }} 
+                        style={{ 
+                            backgroundImage: `url("${team?.HomeLandingPage?.teamSection?.teamImage?.sourceUrl}")` 
+                          }} 
                           
                           > 
-                          <div
-                            style={{
-                              position: 'relative',
-                              height: '70vh',
-                              width: '100%',
-                              clipPath: 'inset(0 0 0 0)',
-                            }}
-                          >
-
-                          <div
-                          style={{
-                            position: 'absolute',
-                            height: '100%',
-                            width: '100%',
-                            left: '0',
-                            top: '0',
-                          }}
-                        >
-                <Image 
-                  src={team?.HomeLandingPage?.teamSection?.teamImage?.sourceUrl}
-                  loader={myLoader}  
-                  style={{zIndex: 0}} 
-                  alt='Logo' 
-                  layout="fill"
-                  objectFit="cover"
-                  width={400}
-                  height="900"
-
-                  />
-               </div>
-               </div>
+                         
                         <h2 dangerouslySetInnerHTML={{__html: team?.HomeLandingPage?.teamSection?.teamTitle}} ></h2>
                         </div>
                         )}

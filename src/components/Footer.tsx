@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Navbar, Nav } from 'react-bootstrap';
 import styles from 'scss/components/Footer.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
@@ -11,7 +11,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 const Footer = () => {
   // const year = new Date().getFullYear();
   const [settings, setSettings] = useState([]);
-
+  const [mainMenus, setMainMenus] = useState([]);
   useEffect(() => {
     const client = new ApolloClient({
         uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
@@ -52,6 +52,41 @@ const Footer = () => {
       }`,
     })
     .then((result) => setSettings(result?.data?.settingsOptions?.AsimOptions));
+
+    client
+      .query({
+        query: gql`{
+            menus(where: {location: PRIMARY}) {
+              nodes {
+                name
+                slug
+                menuItems(first: 50){
+                  nodes {
+                    url
+                    target
+                    parentId
+                    label
+                    cssClasses
+                    description
+                    id
+                    childItems {
+                      nodes {
+                        uri
+                        label
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+      })
+      .then((result) => 
+        {
+            setMainMenus(result?.data?.menus?.nodes)
+        }
+        );
+
 }, []);
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`
@@ -107,24 +142,69 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
 
                 </Row>
                 <Row>
+                  <Container>
+       
+                      <div
+                        className="ms-auto py-5 my-5 my-lg-0 footer-menu">
+                        {mainMenus.map( link => {
+                            return(
+                                <ul key={`${link.label}$-menu`} >
+                                    {link.menuItems.nodes.map(item => {
+                                        
+                                            return(
+                                                <span key={`${item.label}$-menu`}>
+                                                {item.parentId == null ? (
+                                                      <li >
+                                                      
+                                                      <Nav.Link href={`${item.url}`} > 
+                                                      <a onClick={() => (item.url)}>{item.label}</a>
+                                                      </Nav.Link>
+                                                      <ul className="submenu"> 
+                                                        {item.childItems.nodes.map( submenu => {
+                                                            return(
+                                                                <li
+                                                                key={submenu.uri}>
+                                                                    <Nav.Link as={Link} href={`${submenu.uri}`} > 
+                                                                    <a onClick={() => (submenu.uri)}>{submenu.label}</a>
+                                                                    </Nav.Link>
+                                                                </li>
+                                                            )
+                                                        })}
+                                                        
+                                                      </ul>
+                                            </li>
+                                        ) : ""}
+                                                
+                                                </span>
+                                            )
+                                        
+                                        
+                                    })}
+                                </ul>
+                            )
+                        })}
+                      </div>
+                  </Container>
+                </Row>
+                <Row>
                   <Col >
                   {socialNull ? "" : (
                     <div className="social-url"> 
                       <ul>
                         {prefixSettings?.socialUrl?.facebook == null ? "" : (
-                        <li><a href={prefixSettings?.socialUrl?.facebook}><FontAwesomeIcon icon={faFacebookF} /></a></li>
+                        <li><a target="__blank" href={prefixSettings?.socialUrl?.facebook}><FontAwesomeIcon icon={faFacebookF} /></a></li>
                         )}
                        
                        {prefixSettings?.socialUrl?.instagram == null ? "" : (
-                        <li><a href="#"><FontAwesomeIcon icon={faInstagram} /></a></li>
+                        <li><a target="__blank" href={prefixSettings?.socialUrl?.instagram}><FontAwesomeIcon icon={faInstagram} /></a></li>
                         )}
 
                         {prefixSettings?.socialUrl?.linkedin == null ? "" : (
-                        <li><a href="#"><FontAwesomeIcon icon={faLinkedinIn} /></a></li>
+                        <li><a target="__blank" href={prefixSettings?.socialUrl?.linkedin}><FontAwesomeIcon icon={faLinkedinIn} /></a></li>
                         )}
 
                          {prefixSettings?.socialUrl?.tiktok == null ? "" : (
-                        <li><a href="#"><FontAwesomeIcon icon={faTiktok} /></a></li>
+                        <li><a target="__blank" href={prefixSettings?.socialUrl?.tiktok }><FontAwesomeIcon icon={faTiktok} /></a></li>
                         )}
                       </ul>
                     </div>

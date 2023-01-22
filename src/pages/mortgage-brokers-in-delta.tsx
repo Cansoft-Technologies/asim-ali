@@ -162,7 +162,7 @@ const Delta = () => {
                             {data?.Delta?.slider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
-                                <h4>{slide?.title}</h4>
+                                <h3>{slide?.title}</h3>
                                 <p>{slide?.content}</p>
                             </div>
                                 )
@@ -238,7 +238,6 @@ const Delta = () => {
                 </Row>
                 {data.Delta.renovation == null ? "" : (
                     <Row className="renovation-row">
-                        {console.log(data.Delta.renovation[0].title)}
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key == null ? 1 : key }
@@ -248,7 +247,6 @@ const Delta = () => {
                         {data.Delta.renovation.map( (tab, item) => {
                             return(
                                 <Tab key={item} eventKey={item.toString()} title={tab.title}>
-                                    {console.log("data aaa", tab.title)}
                                 <div 
                                 dangerouslySetInnerHTML={{__html: tab.description }}
                                 className="renovation-content-list">   

@@ -164,7 +164,7 @@ const Langley = () => {
                             {data?.Langley?.langleySlider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
-                                <h4>{slide?.title}</h4>
+                                <h3>{slide?.title}</h3>
                                 <p>{slide?.content}</p>
                             </div>
                                 )
@@ -240,7 +240,6 @@ const Langley = () => {
                 </Row>
                 {data.Langley.mortgageRenovation == null ? "" : (
                     <Row className="renovation-row">
-                        {console.log(data.Langley.mortgageRenovation[0].title)}
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key == null ? 1 : key }
@@ -250,7 +249,6 @@ const Langley = () => {
                         {data.Langley.mortgageRenovation.map( (tab, item) => {
                             return(
                                 <Tab key={item} eventKey={item.toString()} title={tab.title}>
-                                    {console.log("data aaa", tab.title)}
                                 <div 
                                 dangerouslySetInnerHTML={{__html: tab.description }}
                                 className="renovation-content-list">   

@@ -33,7 +33,8 @@ export function PageComponent({ page }: PageProps) {
         </div>
       </main>
 
-      <Footer />
+     <Footer />
+
     </>
   );
 }

@@ -131,15 +131,12 @@ function Header(): JSX.Element {
                             
                                 return(
                                    <span key={`${item.label}$-menu`}>
-                                    {console.log("Menu",item)}
                                     {item.parentId == null ? (
                                          <li >
                                          
                                          <Nav.Link as={Link} href={`${item.url}`} > 
                                          <a onClick={() => (item.url)}>{item.label}</a>
                                          </Nav.Link>
-                                         
-                                         {console.log("Submenu",item.childItems.nodes)}
                                          <ul className="submenu"> 
                                             {item.childItems.nodes.map( submenu => {
                                                 return(

@@ -36,17 +36,23 @@ const Locations = () => {
                     sourceUrl
                   }
                   secondLocationList {
-                    locationName
+                    locationLink {
+                      url
+                      title
+                    }
                     locationImage {
                       altText
                       sourceUrl
                     }
                   }
                   firstLocationList {
-                    locationName
                     locationImage {
                       altText
                       sourceUrl
+                    }
+                    locationLink {
+                      url
+                      title
                     }
                   }
                 }
@@ -78,7 +84,6 @@ const Locations = () => {
         {datas.map( (data, index) => {
             return(
                 <div key={index} className='our-locations'>
-                    {console.log(data?.locations?.firstLocationList)}
                 <Header />
                     <Head>
                         <title>
@@ -128,7 +133,6 @@ const Locations = () => {
                                {data?.locations?.firstLocationList.map( (fImage, a) => {
                                 return(
                                     <Col key={a}>
-                                        {console.log("fImage", fImage.locationName)}
                                     <Image 
                                         src={fImage?.locationImage?.sourceUrl}
                                         loader={myLoader}
@@ -139,8 +143,11 @@ const Locations = () => {
                                         objectFit="contain"
                                         />
                                         <div> 
-                                            <h2 dangerouslySetInnerHTML={{__html: fImage.locationName.split('').join('</span><span>') + '</span>' }}  ></h2>
+                                          <a href={fImage?.locationLink?.url}>
+                                            <span dangerouslySetInnerHTML={{__html: fImage?.locationLink?.title.split('').join('</span><span>') + '</span>' }}  ></span>
+                                            </a>
                                         </div>
+                                        
                                         
                                     </Col>
 
@@ -166,7 +173,9 @@ const Locations = () => {
                                        objectFit="contain"
                                         />
                                          <div> 
-                                            <h2 dangerouslySetInnerHTML={{__html:  sImage.locationName.split('').join('</span><span>') + '</span>' }}  ></h2>
+                                         <a href={sImage?.locationLink?.url}>
+                                            <span dangerouslySetInnerHTML={{__html:  sImage?.locationLink?.title?.split('').join('</span><span>') + '</span>' }}  ></span>
+                                            </a>
                                         </div>
                                     </Col>
                                     )

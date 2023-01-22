@@ -66,9 +66,9 @@ const FlexabilitySlider = () => {
                             src={slide?.sliderImage?.sourceUrl} 
                             loader={myLoader}           
                             width="100%" 
-                            height="57" 
+                            height="50" 
                             layout="responsive" 
-                            objectFit="contain"
+                            objectFit="cover"
                             alt={slide?.sliderImage?.altText} />
                             <Carousel.Caption className="carouselcaption">
                             <Row className="align-items-center home-slide"> 
