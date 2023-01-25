@@ -136,7 +136,7 @@ const Kelowna = () => {
                         <p>{data?.Kelowna?.kelownaBannerDescription}</p> 
                     </Col>
                 </Row>
-                <Row className='kelowna-grid my-5'>
+                <Row className='coquitlam-grid my-5'>
                     <Col md={7}>
                         <div dangerouslySetInnerHTML={{__html: data?.Kelowna?.aboutKelownaText }} >
                         </div>

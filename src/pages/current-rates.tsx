@@ -1,11 +1,13 @@
 import { Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { client, Page as PageType } from 'client';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col, Container  } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Link from 'next/link';
+import emailjs from '@emailjs/browser';
+
 
 const Current = () => {
 
@@ -14,6 +16,57 @@ const Current = () => {
 
 
     const [datas, setDatas] = useState([]);
+    const [success, setSuccess] = useState(null);
+
+    const [success2, setSuccess2] = useState(null);
+
+
+    const form = useRef();
+    const form2 = useRef();
+
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+      emailjs
+        .sendForm(
+          "service_s5qgd6k",
+          "template_hvh5bop",
+          form.current,
+          "bKO8M-uo0olOYAj7Z"
+        )
+        .then(
+          (result) => {
+            setSuccess(result.text);
+        
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+      e.target.reset();
+    };
+
+    const sendEmail2 = (e) => {
+      e.preventDefault();
+      emailjs
+        .sendForm(
+          "service_s5qgd6k",
+          "template_hvh5bop",
+          form2.current,
+          "bKO8M-uo0olOYAj7Z"
+        )
+        .then(
+          (result) => {
+            setSuccess2(result.text);
+        
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+      e.target.reset();
+    };
+
 
       useEffect(() => {
         const client = new ApolloClient({
@@ -80,8 +133,9 @@ const Current = () => {
      
                      <div className="container py-5">
                          <div className="row">
-                             <div className="col-md-6">
+                             <div className="col-md-12">
                                  <div className="current-rate">
+                                  <div className="current-container">
                                     {data?.CurrentRates?.currentMortgageRate == null ? "" : (
                                     <p>Current Variable Mortgage Rate is <b>{data?.CurrentRates?.currentMortgageRate}</b></p> 
 
@@ -91,9 +145,9 @@ const Current = () => {
                                 )}
                                 
 
-                                 </div>
+                                
                              <table className="text-center table table-striped table-hover">
-                             <thead className='table-dark'>
+                             <thead className='table-light'>
                                  <tr>
                                  <th scope="col">Terms</th>
                                  <th scope="col">Bank Rates</th>
@@ -118,20 +172,58 @@ const Current = () => {
                              <div dangerouslySetInnerHTML={{__html: data?.CurrentRates?.tableBottomNotes}} className="notes fst-italic">
                              </div>
                              </div>
-                             <div dangerouslySetInnerHTML={{__html: data?.CurrentRates?.mortgageLoanApplicationForm}}  className="col-md-6"> 
-                                 
+                             </div>  
+                             </div>
+
+                             <div  className="col-md-12"> 
+                             <div className="current-container"  >
+                             <h3>Apply for a Mortgage Loan Now!</h3>
+                              <form ref={form} onSubmit={sendEmail} >
+                                <input placeholder="Full Name"  type="text" name="fullname" />
+                                <input placeholder="Email"  type="email" name="email" />
+                                <input placeholder="Phone"  type="text" name="phone" />
+                                <input placeholder="Purchase Price"  type="text" name="price" />
+                                <input value="Apply Now"  type="submit" className="contactBtn" />
+                                {success && <div className="alert alert-success mt-4" role="alert">
+                            Your message was sent Successfully
+                        </div>}
+                              </form>
+                             </div>
                              </div>
                          </div>
                      </div>
+                     
                      <div style={{ 
                             backgroundImage: `url("${data?.CurrentRates?.easyApplicationBackground?.sourceUrl}")` 
                           }} className="easy-application">
-                     {/* <div className="overlay"></div> */}
-                            <h1>{data?.CurrentRates?.easyApplicationTitle}</h1>
-                            <h2>{data?.CurrentRates?.easyApplicationSubtitle}</h2> 
+                    <div className="overlay"></div>
+                    <Container className="py-1">
+                        <Row>
+                          <Col md={6}>
+                        <div className="easyapplication-title">
+                          <h2>{data?.CurrentRates?.easyApplicationTitle}</h2>
+                          <p>{data?.CurrentRates?.easyApplicationSubtitle}</p> 
+                        </div>
                      
-                        <div dangerouslySetInnerHTML={{__html: data?.CurrentRates?.easyApplicationForm}}   className="application-container"></div>
+                        <div className="application-container">
+                        <form ref={form2} onSubmit={sendEmail2}>
+                          <input placeholder="Full Name"  type="text" name="fullname" />
+                          <input placeholder="Email"  type="email" name="email" />
+                          <input placeholder="Phone"  type="text" name="phone" />
+                          <input value="Send"  type="submit" className="contactBt" />
+                          {success2 && <div className="alert alert-success mt-4" role="alert">
+                            Your message was sent Successfully
+                        </div>}
+                        </form>
+
+                        </div>
+                          </Col>
+                          <Col md={6}></Col>
+                        </Row>
+                        </Container>
+
                      </div>
+                     
                      <div className="calculator-cta"> 
                          <h2>{data?.CurrentRates?.paymentCalculatorTitle}</h2>
                          <Link href={data?.CurrentRates?.paymentCalculatorLink?.url}>

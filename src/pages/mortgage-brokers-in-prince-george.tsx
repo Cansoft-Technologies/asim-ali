@@ -133,7 +133,7 @@ const Prince = () => {
                         <p>{data?.Prince?.bannerDescription}</p> 
                     </Col>
                 </Row>
-                <Row className='kelowna-grid my-5'>
+                <Row className='coquitlam-grid my-5'>
                     <Col md={7}>
                         <div dangerouslySetInnerHTML={{__html: data?.Prince?.aboutText }} >
                         </div>

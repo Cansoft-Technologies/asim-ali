@@ -7,22 +7,22 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faMapMarker, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { gql } from '@apollo/client';
-import { ApolloClient, HttpLink, ApolloLink, InMemoryCache, concat } from '@apollo/client';
+import { ApolloClient, HttpLink, ApolloLink, InMemoryCache } from '@apollo/client';
 import emailjs from '@emailjs/browser';
 
-const httpLink = new HttpLink({ uri: '/graphql' });
+// const httpLink = new HttpLink({ uri: '/graphql' });
 
-const authMiddleware = new ApolloLink((operation, forward) => {
-  // add the authorization to the headers
-  operation.setContext(({ headers = {} }) => ({
-    headers: {
-      ...headers,
-      authorization: localStorage.getItem('token') || null,
-    }
-  }));
+// const authMiddleware = new ApolloLink((operation, forward) => {
+//   // add the authorization to the headers
+//   operation.setContext(({ headers = {} }) => ({
+//     headers: {
+//       ...headers,
+//       authorization: localStorage.getItem('token') || null,
+//     }
+//   }));
 
-  return forward(operation);
-})
+//   return forward(operation);
+// })
 
 const Contact = () => {
     const { useQuery } = client;
@@ -91,7 +91,7 @@ const Contact = () => {
         {contacts.map((contact, index) => {
             return(
                 <div key={index}>
-                  {console.log(httpLink)}
+                  {/* {console.log(httpLink)} */}
                 <Header />
                 <Head>
                     <title>
