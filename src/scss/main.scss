@@ -2,7 +2,7 @@
 
 @import "variables";
 @import "typography";
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap'); 
 
 .hero-title-col {
   position: relative;
@@ -228,7 +228,7 @@ body {
         position: absolute;
         top: 26%;
         overflow: hidden;
-        width: 73%;
+        width: 60%;
         height: 3px;
         content: " ";
         background-color: $color-secondary;
@@ -288,11 +288,10 @@ body {
     :after {
       position: absolute;
       overflow: hidden;
-      width: 71%;
+      width: 20%;
       height: 3px;
       content: " ";
       background-color: $color-secondary;
-      margin-left: 11%;
       top: 34%;
     }
     span {
@@ -309,7 +308,7 @@ body {
   .split_text {
     h2 {
       font-family: "AvenirBook";
-      font-size: 80px;
+      font-size: 70px;
       color: $color-black;
       position: relative;
       span {
@@ -1527,6 +1526,23 @@ textarea#comment {
   }
 }
 @media all and (max-width: 768px) {
+  :after{
+    display: none;
+  }
+  .Bc-Coquitlam .renovation-row {
+      flex-wrap: wrap;
+      width: 100%;
+  }
+  .Bc-Coquitlam .renovation-row .renovation.nav-tabs {
+    width: 100%;
+}
+.Bc-Coquitlam .renovation-row .tab-content {
+  width: 100%;
+}
+.our-locations .location-images .col div a {
+  font-size: 15px;
+}
+
   .navbar-nav a:hover {
     border-bottom: unset;
 }
@@ -1591,8 +1607,12 @@ textarea#comment {
     bottom: 10%;
     z-index: 999;
   }
+  .works-container .works-title {
+    text-align: center !important;
+}
 }
 @media all and (max-width: 540px) {
+  
   footer .wrap .footer-logo {
     width: unset;
 }
@@ -1639,10 +1659,7 @@ textarea#comment {
       margin: auto;
     }
   }
-  :after,
-  :before {
-    display: none;
-  }
+ 
   .Banner_carouselcaption__NAlFf {
     bottom: 0%;
     z-index: 999;
@@ -1665,7 +1682,7 @@ textarea#comment {
       }
     }
     .easy-application {
-      padding: 20px;
+      padding: 0;
 
       h1 {
         font-size: 30px;
@@ -1688,6 +1705,15 @@ textarea#comment {
       font-size: 20px !important;
     }
   }
+  .our-locations .location-images .col div a {
+    font-size: 10px;
+  }
+  .Bc-Coquitlam .renovation-row .renovation.nav-tabs li button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
 }
 
 @media all and (max-width: 441px) {

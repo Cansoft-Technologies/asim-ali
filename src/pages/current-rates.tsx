@@ -82,10 +82,8 @@ const Current = () => {
                   bannerTitle
                   currentMortgageRate
                   currentPrimeRate
-                  easyApplicationForm
                   easyApplicationSubtitle
                   easyApplicationTitle
-                  mortgageLoanApplicationForm
                   paymentCalculatorTitle
                   tableBottomNotes
                   bannerBackgroundImage {
