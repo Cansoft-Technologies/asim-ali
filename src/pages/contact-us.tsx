@@ -110,13 +110,13 @@ const Contact = () => {
                     <Row> 
                         {contact?.contactPage?.address == null && contact?.contactPage?.eMail == null && contact?.contactPage?.phoneNumber == null ? "" : (
                         <Col xs={12} lg="4">
-                        <h5>Get in Touch</h5>
+                        <h1>Get in Touch</h1>
 
                         <div className="contact-item">
                         <div className="contact-icon">
                             <FontAwesomeIcon icon={faMapMarker} />
                         </div>
-                        <h6>Address</h6>
+                        <h2>Address</h2>
                         <p>{contact?.contactPage?.address}</p>
                         </div>
 
@@ -124,7 +124,7 @@ const Contact = () => {
                         <div className="contact-icon">
                             <FontAwesomeIcon icon={faPhone} />
                         </div>
-                        <h6>Call Us</h6>
+                        <h2>Call Us</h2>
                         <a href={`tel: ${contact?.contactPage?.phoneNumber}`}>{contact?.contactPage?.phoneNumber}</a>
                         </div>
 
@@ -132,7 +132,7 @@ const Contact = () => {
                         <div className="contact-icon">
                         <FontAwesomeIcon icon={faEnvelope} />
                         </div>
-                        <h6>E-mail</h6>
+                        <h2>E-mail</h2>
                         <a href={`mailto:${contact?.contactPage?.eMail }`}>{contact?.contactPage?.eMail}</a>
                         </div>
                         </Col>

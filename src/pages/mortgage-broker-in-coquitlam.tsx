@@ -128,7 +128,7 @@ const BcCoquitlam = () => {
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[0]} <span>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[1]}</span></h2>
+                    <h1>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[0]} <span>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[1]}</span></h1>
                     </Col>
                     <Col md={7}>
                         <p>{data?.coquitlam?.coquitlamBannerDescription}</p> 

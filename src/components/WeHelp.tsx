@@ -73,9 +73,8 @@ const WeHelp = () => {
                        </Col>
                        <Col lg={6} >
                           <div className="wehelp_text">
-                               <h2 dangerouslySetInnerHTML={{__html: help?.HomeLandingPage?.weHelpSection?.helpTitle}} ></h2>
-                           <p>{help?.HomeLandingPage?.weHelpSection?.helpDescription} 
-                           {help?.helpImage?.sourceUrl}</p>
+                               <p className='wehelp_title' dangerouslySetInnerHTML={{__html: help?.HomeLandingPage?.weHelpSection?.helpTitle}} ></p>
+                           <div className='wehelp_description'  dangerouslySetInnerHTML={{__html: help?.HomeLandingPage?.weHelpSection?.helpDescription}} ></div>
                            
                           </div>
                        </Col>

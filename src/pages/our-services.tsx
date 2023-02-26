@@ -125,7 +125,7 @@ const Services = () => {
                     <Row className='refinance-text'>
                         <Col md={5}>
                             {data?.services?.refinancingTitle == null ? "" : (
-                                <h2>{data?.services?.refinancingTitle.split(" ")[0]} <span>{data?.services?.refinancingTitle.split(" ")[1]}</span></h2>
+                                <h1>{data?.services?.refinancingTitle.split(" ")[0]} <span>{data?.services?.refinancingTitle.split(" ")[1]}</span></h1>
                             )}
                             
 

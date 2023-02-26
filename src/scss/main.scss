@@ -38,6 +38,11 @@
     }
   }
 }
+.banner-bottom{
+  .heading{
+    font-size: 35px;
+  }
+}
 .content a {
   color: $color-secondary !important;
   text-decoration: none !important;
@@ -219,7 +224,7 @@ body {
     align-items: center;
   }
   .wehelp_text {
-    h2 {
+    p.wehelp_title {
       font-family: "AvenirBook";
       font-size: 80px;
       position: relative;
@@ -240,9 +245,11 @@ body {
         color: $color-secondary;
       }
     }
-    p {
+    .wehelp_description {
+     h1,p{
       font-family: "AvenirBook";
-      font-size: 19px;
+      font-size: 16px;
+     }
     }
   }
 }
@@ -257,7 +264,7 @@ body {
   h2 {
     font-family: "AvenirBook";
     padding: 50px;
-    font-size: 80px;
+    font-size: 70px;
     color: $color-white;
     position: absolute;
     top: 40px;
@@ -280,9 +287,9 @@ body {
 
 .meeting_section {
   padding: 80px 0;
-  h2 {
+  h3 {
     font-family: "AvenirBook";
-    font-size: 80px;
+    font-size: 70px;
     color: $color-black;
     position: relative;
     :after {
@@ -306,7 +313,7 @@ body {
     align-items: center;
   }
   .split_text {
-    h2 {
+    h3 {
       font-family: "AvenirBook";
       font-size: 70px;
       color: $color-black;
@@ -523,7 +530,7 @@ footer {
       transform: rotate(90deg);
     }
   }
-  h2 {
+  p {
     font-family: "AvenirBook";
     font-size: 60px;
     color: $color-black;
@@ -608,7 +615,7 @@ footer {
       z-index: 99;
       padding: 20px 80px;
       margin-top: 80px;
-      h1 {
+      .sliderTitle {
         text-transform: uppercase;
         font-family: "AvenirBook";
         font-weight: 200;
@@ -625,7 +632,7 @@ footer {
           left: -8%;
         }
       }
-      h4 {
+      .sliderSubtitle {
         text-transform: uppercase;
         font-family: "AvenirBook";
         font-weight: 200;
@@ -889,7 +896,7 @@ textarea#comment {
     table{
       border-top: 2px solid $color-secondary;
     }
-    h3{
+    h1{
       font-family: 'Oswald', sans-serif;
       margin-bottom: 30px;
     }
@@ -908,7 +915,8 @@ textarea#comment {
   }
   .easy-application {
     background-repeat: no-repeat;
-    background-size: 120% 100%;
+    // background-size: 120% 100%;
+    background-size: contain;
     background-position: center center;
     width: 100%;
     position: relative;
@@ -1052,8 +1060,8 @@ textarea#comment {
       display: flex;
       align-items: flex-end;
     }
-    h2 {
-      font-size: 80px;
+    h1 {
+      font-size: 70px;
       font-family: "AvenirBook";
       position: relative;
       &:after {
@@ -1082,6 +1090,8 @@ textarea#comment {
   .service-container {
     .service-row:nth-child(odd) {
       background-color: $color-primary;
+      direction: rtl;
+      text-align: left;
       h2 {
         color: $color-white;
         font-size: 22px;
@@ -1152,8 +1162,8 @@ textarea#comment {
       align-items: flex-end;
       justify-content: center;
     }
-    h2 {
-      font-size: 80px;
+    h1 {
+      font-size: 70px;
       font-family: "AvenirBook";
       position: relative;
       &:after {
@@ -1233,8 +1243,8 @@ textarea#comment {
       display: flex;
       align-items: flex-end;
     }
-    h2 {
-      font-size: 80px;
+    h1 {
+      font-size: 70px;
       font-family: "AvenirBook";
       position: relative;
       &:after {
@@ -1477,26 +1487,30 @@ textarea#comment {
 // }
 
 @media all and (max-width: 912px) {
-  .wehelp_section .wehelp_text h2 {
+  .currentRate .easy-application {
+    background-size: auto;
+}
+  .wehelp_section .wehelp_text p.wehelp_title {
     left: 0;
   }
-  .wehelp_section .wehelp_text h2 :after {
+  .wehelp_section .wehelp_text p.wehelp_title  :after {
     width: 50%;
     margin-left: 9%;
   }
   .faq_section .faq_text:before {
     width: 15%;
   }
-  .meeting_section h2 :after {
+  .meeting_section h3 :after {
     width: 64%;
   }
 
   footer {
     .wrap {
       width: 55%;
-      h3 {
+      p.widget_title {
         color: $color-white;
         font-family: "AvenirBook";
+        font-size: 25px;
         span {
           color: $color-secondary;
         }
@@ -1529,6 +1543,9 @@ textarea#comment {
   :after{
     display: none;
   }
+  .home-slider .carousel-indicators {
+    bottom: 4%;
+}
   .Bc-Coquitlam .renovation-row {
       flex-wrap: wrap;
       width: 100%;
@@ -1587,14 +1604,14 @@ textarea#comment {
       }
     }
   }
-  .wehelp_section .wehelp_text h2 {
+  .wehelp_section .wehelp_text p.wehelp_title {
     left: 0;
     padding: 30px 0;
     text-align: center;
   }
-  .wehelp_section .wehelp_text h2 span,
-  .meeting_section h2 span,
-  .split_section .split_text h2 span {
+  .wehelp_section .wehelp_text p.wehelp_title span,
+  .meeting_section h3 span,
+  .split_section .split_text h3 span {
     display: inline;
   }
   .wehelp_section .wehelp_image,
@@ -1610,9 +1627,14 @@ textarea#comment {
   .works-container .works-title {
     text-align: center !important;
 }
+.wehelp_section:before {
+  position: inherit;
+}
 }
 @media all and (max-width: 540px) {
-  
+  footer .wrap .social-url :before{
+    display: none;
+  }
   footer .wrap .footer-logo {
     width: unset;
 }
@@ -1636,13 +1658,20 @@ textarea#comment {
   .hero-title-col .hero-title {
     font-size: 50px;
 }
-  .flexability-slider .carouselcaption .bannerCaption h1 {
+  .flexability-slider .carouselcaption .bannerCaption .sliderTitle {
     font-size: 40px;
   }
   h2 {
+    font-size: 35px !important;
+  }
+  h3 {
     font-size: 30px !important;
   }
-  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma h1 {
+  .wehelp_section .wehelp_text p.wehelp_title {
+    font-size: 35px;
+}
+
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderTitle {
     font-size: 60px;
   }
   .Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {
@@ -1664,10 +1693,10 @@ textarea#comment {
     bottom: 0%;
     z-index: 999;
   }
-  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma h1 {
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderTitle {
     font-size: 50px;
   }
-  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma h4 {
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderSubtitle {
     font-size: 35px;
   }
   .Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {
@@ -1721,10 +1750,10 @@ textarea#comment {
     bottom: 0%;
     z-index: 999;
   }
-  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma h1 {
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderTitle {
     font-size: 40px;
   }
-  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma h4 {
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderSubtitle {
     font-size: 25px;
   }
   .Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {

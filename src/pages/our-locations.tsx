@@ -104,7 +104,7 @@ const Locations = () => {
                     
                         <Row className='location-heading'>
                             <Col md={8}>
-                                <h2>{data?.locations?.locationsBannerTitle.split(" ")[0]} <span>{data?.locations?.locationsBannerTitle.split(" ")[1]}</span></h2>
+                                <h1>{data?.locations?.locationsBannerTitle.split(" ")[0]} <span>{data?.locations?.locationsBannerTitle.split(" ")[1]}</span></h1>
                             </Col>
                             {data?.locations?.firstLocationList == null ? "" : (
                             <Col md={2}>

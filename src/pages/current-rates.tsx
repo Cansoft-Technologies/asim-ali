@@ -175,7 +175,7 @@ const Current = () => {
 
                              <div  className="col-md-12"> 
                              <div className="current-container"  >
-                             <h3>Apply for a Mortgage Loan Now!</h3>
+                             <h1>Apply for a Mortgage Loan Now!</h1>
                               <form ref={form} onSubmit={sendEmail} >
                                 <input placeholder="Full Name"  type="text" name="fullname" />
                                 <input placeholder="Email"  type="email" name="email" />

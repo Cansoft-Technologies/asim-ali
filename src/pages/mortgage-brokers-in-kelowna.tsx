@@ -130,7 +130,7 @@ const Kelowna = () => {
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[0]} <span>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[1]}</span></h2>
+                    <h1>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[0]} <span>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[1]}</span></h1>
                     </Col>
                     <Col md={7}>
                         <p>{data?.Kelowna?.kelownaBannerDescription}</p> 

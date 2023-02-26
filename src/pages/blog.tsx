@@ -159,9 +159,8 @@ const blog = () => {
 }
 
                 <Container className="my-5 blog-container">
+                <h1 className="my-3">{data?.blog.blogBannerTitle}</h1>
                     <div className="row row-cols-1 row-cols-md-3 g-4 items">
-
-
                         {blogs.map((blog, index) => {
                             return(
                         <div key={index} className="col">
@@ -177,7 +176,7 @@ const blog = () => {
                             alt={blog?.featuredImage?.node?.altText} />
                            </div>
                             <div className="card-body">
-                            <Link href={blog.uri}><h5 className="card-title">{blog?.title}</h5>
+                            <Link href={blog.uri}><h2 className="card-title">{blog?.title}</h2>
                             </Link>
                                 <span>
 

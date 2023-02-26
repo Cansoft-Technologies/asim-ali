@@ -108,7 +108,7 @@ const HowItWorks = () => {
                         bgImage={data?.HowItWorks?.bannerBackgroundImage?.sourceUrl}
                     />
                     <Container className='my-5 works-container'>
-                        <h2 className="works-title">{data?.HowItWorks?.firstTitle}</h2>
+                        <h1 className="works-title">{data?.HowItWorks?.firstTitle}</h1>
                         <Row className='my-5'>  
                             <Col md={8}>
                                 <div className="works-content">

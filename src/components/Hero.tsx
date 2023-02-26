@@ -34,10 +34,9 @@ function Hero({
       className={styles.hero}>
       <div className={styles.wrap}>
         <div className="hero-title-col col-md-6 offset-md-6">
-        <h1 className="hero-title">{ title.split(" ")[0] } 
-        <span>{ title.split(" ")[1] } { title.split(" ")[2] }</span>
-       
-        </h1>
+          <p className="hero-title">{ title.split(" ")[0] } 
+            <span>{ title.split(" ")[1] } { title.split(" ")[2] }</span>
+          </p>
         <div className={styles.intro}>
           <div className={styles.children}>{children}</div>
           {buttonText && buttonURL && (
@@ -56,9 +55,9 @@ function Hero({
           )}
         </div>
         </div>
-        <div className="col-md-11 offset-md-1 mt-5"> 
-            <h2>{heading}</h2>
-            <p>{description}</p>
+        <div className="banner-bottom col-md-11 offset-md-1 mt-5"> 
+            <p className='heading'>{heading}</p>
+            <p className='description'>{description}</p>
         </div>
       </div>
     </section>

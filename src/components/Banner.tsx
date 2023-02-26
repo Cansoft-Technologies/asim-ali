@@ -114,8 +114,8 @@ const Banner = () => {
                        <Row className="align-items-center home-slide"> 
                            <Col className='text-start' xs={12} lg="6">
                            <div className={styles.bannerCaption}>
-                               <h4>{slide.sliderSubtitle}</h4>
-                               <h1>{slide.sliderTitle}</h1>
+                               <p className={styles.sliderSubtitle}>{slide.sliderSubtitle}</p>
+                               <p className={styles.sliderTitle}>{slide.sliderTitle}</p>
                                <p>{slide.sliderDescription}</p>
                            </div>
                            

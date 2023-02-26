@@ -60,6 +60,8 @@ const Delta = () => {
                   productsLeftText
                   firstApplyStepTitle
                   brokerTitle
+                  title
+                  description
                   brokerDescription
                   bannerTitle
                   bannerHeading
@@ -127,7 +129,7 @@ const Delta = () => {
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h2>{data?.Delta?.bannerTitle?.split(" ")[0]} <span>{data?.Delta?.bannerTitle?.split(" ")[1]}</span></h2>
+                    <h1>{data?.Delta?.bannerTitle?.split(" ")[0]} <span>{data?.Delta?.bannerTitle?.split(" ")[1]}</span></h1>
                     </Col>
                     <Col md={7}>
                         <p>{data?.Delta?.bannerDescription}</p> 
@@ -233,7 +235,8 @@ const Delta = () => {
                 <Row className='mortgage-broker'>
                     <Col>
                         <h2>{data?.Delta?.brokerTitle}</h2> 
-                        <p>{data?.Delta?.brokerDescription}</p>
+                        {console.log(data?.Delta)}
+                        <p>{data?.Delta?.description}</p>
                     </Col>
                 </Row>
                 {data.Delta.renovation == null ? "" : (
@@ -259,11 +262,10 @@ const Delta = () => {
                 )}
                 <Row className='broker-coquitlam'>
                     <Col>
-                    <h2>{data?.Delta?.
-                    brokerTitle}</h2>
-                    <p>{data?.Delta?.brokerDescription}</p>
+                    <h2>{data?.Delta?.title}</h2>
+                    <p>{data?.Delta?.description}</p>
                     {data?.Delta?.brokerLink == null ? "" : (
-                        <a href={data?.delta?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                        <a href={data?.Delta?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
                     )}
                     
                     </Col>

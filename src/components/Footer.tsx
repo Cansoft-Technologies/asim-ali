@@ -104,7 +104,7 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
                 <Row>
                   <Col lg={4}>
                   <div className="footer-widget">
-                      <h3 dangerouslySetInnerHTML={{__html: prefixSettings?.footerLeftWidget.title}} ></h3>
+                      <p className="widget_title" dangerouslySetInnerHTML={{__html: prefixSettings?.footerLeftWidget.title}} ></p>
                       <a 
                       href={`mailto:${prefixSettings?.footerLeftWidget?.emailAddress}`}
                       >{prefixSettings?.footerLeftWidget?.emailAddress}</a>
@@ -135,7 +135,7 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
                   </Col>
                   <Col lg={4}>
                       <div className="footer-widget">
-                      <h3 dangerouslySetInnerHTML={{__html: prefixSettings?.footerRightWidget?.title }}></h3>
+                      <p className="widget_title" dangerouslySetInnerHTML={{__html: prefixSettings?.footerRightWidget?.title }}></p>
                       <p>{prefixSettings?.footerRightWidget?.address}</p>
                       </div>
                   </Col>

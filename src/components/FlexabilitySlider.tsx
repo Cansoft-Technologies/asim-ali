@@ -74,8 +74,8 @@ const FlexabilitySlider = () => {
                             <Row className="align-items-center home-slide"> 
                                 <Col className='text-start' xs={12} lg="6">
                                 <div className="bannerCaption">
-                                    <h1>{slide?.sliderTitle}</h1>
-                                    <h4>{slide?.sliderSubtitle}</h4>
+                                    <p className='sliderTitle'>{slide?.sliderTitle}</p>
+                                    <p className='sliderSubtitle'>{slide?.sliderSubtitle}</p>
                                     <p>{slide?.sliderDescription}</p>
                                     <Link href={slide?.sliderButtonUrl
 ?.url}><Button className="bannerBtn" >Get <span>Approved</span></Button></Link>
