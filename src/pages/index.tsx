@@ -27,6 +27,7 @@ export default function Page() {
       <Header />
 
       <Head>
+      <meta name="google-site-verification" content="QGl_2eHbGZqvJqygpCUHR4bm70SNthl5BDiMo27d2hU" />
         <title>
           {generalSettings.title} - {generalSettings.description}
         </title>
