@@ -7,6 +7,7 @@ module.exports = withFaust();
 
 
 module.exports = {
+  optimizeImages: false,
     images: {
       domains: ['localhost:10004'],
     },

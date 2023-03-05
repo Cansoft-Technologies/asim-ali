@@ -448,11 +448,12 @@ footer {
     }
     .copyright-text {
       text-align: center;
-      font-size: 9px;
       font-family: "AvenirBook";
       color: $color-white;
       margin: 0;
-      font-size: 9px;
+      a{
+        display: inline;
+      }
     }
   }
 }

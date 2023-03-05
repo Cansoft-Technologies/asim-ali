@@ -129,7 +129,7 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
                        />
                      
                       </Link>
-                      <p className="copyright-text" >{prefixSettings?.footerLogoSection?.logoText}</p>
+                      <p className="copyright" >{prefixSettings?.footerLogoSection?.logoText}</p>
                       </div>
                     
                   </Col>
@@ -210,8 +210,7 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
                     </div>
                   )}
                     
-                    <div className="copyright-text">
-                      <p>{prefixSettings?.copyrightText}</p>
+                    <div className="copyright-text" dangerouslySetInnerHTML={{__html:prefixSettings?.copyrightText}} >
                     </div>
                   </Col>
                 </Row>

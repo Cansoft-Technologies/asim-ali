@@ -52,9 +52,18 @@ const FAQ = () => {
             {faq?.HomeLandingPage?.faqSection?.hideSection == true? "" : (
                 <div>
                 <div
-                 
+                     style={{ 
+                    backgroundImage: `url("${faq?.HomeLandingPage?.faqSection?.faqImage?.sourceUrl}")` 
+                  }} 
                 className='faq_section'> 
                     <div className="faq_text"> 
+                    {/* <Image 
+                   width="100" 
+                   height="100" 
+                  src={faq?.HomeLandingPage?.faqSection?.faqImage?.sourceUrl}
+                  loader={myLoader}  
+                  style={{zIndex: 0}} 
+                  alt='Logo' /> */}
                         <p>{faq?.HomeLandingPage?.faqSection?.faqTitle}</p>
                         <p dangerouslySetInnerHTML={{__html: faq?.HomeLandingPage?.faqSection?.faqSubitle}} ></p>
                     
