@@ -256,22 +256,30 @@ const HowItWorks = () => {
                     <Container className='my-5 works-container'>
                         <h2 className="text-end works-title" >{data?.HowItWorks?.sixthTitle}</h2>
                         <Row>
-                            <Col md={4}>
+                            <Col md={6}>
                             <Image 
                                 src={data?.HowItWorks?.sixthImage?.sourceUrl}
                                 loader={myLoader}
                                 alt={data?.HowItWorks?.sixthImage?.altText}
                                 width="190" 
-                                height="150" 
+                                height="100" 
                                 layout="responsive" 
                                 objectFit="contain"
                                 />
                             </Col>
-                            <Col md={8}>
-                            
+                            <Col md={6}>
+                            <Image 
+                               src={data?.HowItWorks?.sixthImage2?.sourceUrl}
+                               loader={myLoader}
+                               alt={data?.HowItWorks?.sixthImage2?.altText}
+                               width="190" 
+                               height="120" 
+                               layout="responsive" 
+                               objectFit="contain"
+                                />
                             </Col>
                         </Row>
-                        <Row>
+                        {/* <Row>
                         <Col md={8}>
                             
                             </Col>
@@ -287,7 +295,7 @@ const HowItWorks = () => {
                                 />
                             </Col>
                             
-                        </Row>
+                        </Row> */}
                     </Container>
 
                     </main>
