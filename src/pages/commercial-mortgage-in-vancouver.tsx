@@ -9,7 +9,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 
 
-const MortgageSurrey = () => {
+const CommercialVancouver = () => {
     const { useQuery } = client;
     const generalSettings = useQuery().generalSettings;
 
@@ -23,9 +23,9 @@ const MortgageSurrey = () => {
         client
         .query({
           query: gql`query{
-            pages(where: {title: "Surrey"}) {
+            pages(where: {title: "Commercial Vancouver"}) {
               nodes {
-                surrey {
+                commercialvancouver {
                   serviceBannerTitle
                   serviceBannerHeading
                   serviceBannerDescription
@@ -63,24 +63,24 @@ const MortgageSurrey = () => {
             <Header />
                 <Head>
                     <title>
-                    {data?.surrey?.serviceBannerTitle} - {generalSettings?.title}
+                    {data?.commercialvancouver?.serviceBannerTitle} - {generalSettings?.title}
                     </title>
                 </Head>
                 <main className="content">
-                {data?.surrey?.serviceBannerTitle == null ? "" : (
+                {data?.commercialvancouver?.serviceBannerTitle == null ? "" : (
                     <Hero
-                    title={data?.surrey?.serviceBannerTitle}
-                    heading={data?.surrey?.serviceBannerHeading}
-                    description={data?.surrey?.serviceBannerDescription}
-                    bgImage={data?.surrey?.serviceBannerImage?.sourceUrl}
+                    title={data?.commercialvancouver?.serviceBannerTitle}
+                    heading={data?.commercialvancouver?.serviceBannerHeading}
+                    description={data?.commercialvancouver?.serviceBannerDescription}
+                    bgImage={data?.commercialvancouver?.serviceBannerImage?.sourceUrl}
                 />
                 )}
                 
                 <div className="service-container">
-                {console.log("Services ",data?.surrey)}
-                  <h1 className="text-center mt-5">{data?.surrey?.ourMortgageServicesTitle}</h1>
+                {console.log("Services ",data?.commercialvancouver)}
+                  <h1 className="text-center mt-5">{data?.commercialvancouver?.ourMortgageServicesTitle}</h1>
                   
-                  {data?.surrey?.ourServices.map(
+                  {data?.commercialvancouver?.ourServices.map(
                     (service, key) => {
                     return(
                         
@@ -128,4 +128,4 @@ const MortgageSurrey = () => {
     );
 };
 
-export default MortgageSurrey;
+export default CommercialVancouver;

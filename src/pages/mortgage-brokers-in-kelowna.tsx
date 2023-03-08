@@ -130,10 +130,10 @@ const Kelowna = () => {
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h1>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[0]} <span>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[1]}</span></h1>
+                    <p>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[0]} <span>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[1]}</span></p>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.Kelowna?.kelownaBannerDescription}</p> 
+                        <span>{data?.Kelowna?.kelownaBannerDescription}</span> 
                     </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
@@ -165,7 +165,7 @@ const Kelowna = () => {
                             {data?.Kelowna?.kelownaSlider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
-                                <h3>{slide?.title}</h3>
+                                <span>{slide?.title}</span>
                                 <p>{slide?.content}</p>
                             </div>
                                 )
@@ -206,7 +206,7 @@ const Kelowna = () => {
                     <Col md={4}>
                         {data?.Kelowna?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
-                             <h2>01</h2>
+                             <span>01</span>
                              <h2>{data?.Kelowna?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
@@ -216,7 +216,7 @@ const Kelowna = () => {
                     <Col md={4}>
                     {data?.Kelowna?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
-                            <h2>02</h2>
+                            <span>02</span>
                             <h2>{data?.Kelowna?.secondApplyStepTitle}</h2>
                             <p>{data?.Kelowna?.secondApplyStepDescription}</p> 
                         </div>
@@ -225,7 +225,7 @@ const Kelowna = () => {
                     <Col md={4}>
                     {data?.Kelowna?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
-                            <h2>03</h2>
+                            <span>03</span>
                             <h2>{data?.Kelowna?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>

@@ -131,8 +131,8 @@ const Services = () => {
 
                         </Col>
                         <Col md={7}>
-                            <p>
-                                {data?.services?.refinancingDescription}</p> 
+                            <span>
+                                {data?.services?.refinancingDescription}</span> 
                         </Col>
                     </Row>
                     <Row>

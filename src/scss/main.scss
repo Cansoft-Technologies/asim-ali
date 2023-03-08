@@ -917,7 +917,7 @@ textarea#comment {
   .easy-application {
     background-repeat: no-repeat;
     // background-size: 120% 100%;
-    background-size: contain;
+    background-size: cover;
     background-position: center center;
     width: 100%;
     position: relative;
@@ -1061,7 +1061,7 @@ textarea#comment {
       display: flex;
       align-items: flex-end;
     }
-    h1 {
+    p{
       font-size: 70px;
       font-family: "AvenirBook";
       position: relative;
@@ -1244,7 +1244,7 @@ textarea#comment {
       display: flex;
       align-items: flex-end;
     }
-    h1 {
+    p {
       font-size: 70px;
       font-family: "AvenirBook";
       position: relative;
@@ -1287,6 +1287,9 @@ textarea#comment {
     border-top: 1px solid $color-secondary;
     border-bottom: 1px solid $color-secondary;
     .application-slide {
+      span{
+        font-size: 2rem;
+      }
       p {
         width: 90%;
         margin: auto;
@@ -1341,6 +1344,9 @@ textarea#comment {
       position: relative;
       z-index: auto;
       width: 100%;
+      span{
+        font-size: 2rem;
+      }
 
       .apply-border {
         border: 1px solid $color-secondary;
@@ -1352,11 +1358,17 @@ textarea#comment {
         transform: rotate(-10deg);
         z-index: -999;
       }
+      p{
+        font-size: 2rem;
+      }
     }
     .approved {
       border: 1px solid $color-secondary;
       padding: 20px;
       text-align: center;
+      span{
+        font-size: 2rem;
+      }
       p {
         color: $color-primary;
         font-size: 14px;

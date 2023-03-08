@@ -129,10 +129,10 @@ const Delta = () => {
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h1>{data?.Delta?.bannerTitle?.split(" ")[0]} <span>{data?.Delta?.bannerTitle?.split(" ")[1]}</span></h1>
+                    <p>{data?.Delta?.bannerTitle?.split(" ")[0]} <span>{data?.Delta?.bannerTitle?.split(" ")[1]}</span></p>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.Delta?.bannerDescription}</p> 
+                        <span>{data?.Delta?.bannerDescription}</span> 
                     </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
@@ -164,7 +164,7 @@ const Delta = () => {
                             {data?.Delta?.slider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
-                                <h3>{slide?.title}</h3>
+                                <span>{slide?.title}</span>
                                 <p>{slide?.content}</p>
                             </div>
                                 )
@@ -205,7 +205,7 @@ const Delta = () => {
                     <Col md={4}>
                         {data?.Delta?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
-                             <h2>01</h2>
+                             <span>01</span>
                              <h2>{data?.Delta?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
@@ -215,7 +215,7 @@ const Delta = () => {
                     <Col md={4}>
                     {data?.Delta?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
-                            <h2>02</h2>
+                            <span>02</span>
                             <h2>{data?.Delta?.secondApplyStepTitle}</h2>
                             <p>{data?.Delta?.secondApplyStepDescription}</p> 
                         </div>
@@ -224,7 +224,7 @@ const Delta = () => {
                     <Col md={4}>
                     {data?.Delta?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
-                            <h2>03</h2>
+                            <span>03</span>
                             <h2>{data?.Delta?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>

@@ -128,10 +128,10 @@ const BcCoquitlam = () => {
             <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                     <Col md={5}>
-                    <h1>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[0]} <span>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[1]}</span></h1>
+                    <p>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[0]} <span>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[1]}</span></p>
                     </Col>
                     <Col md={7}>
-                        <p>{data?.coquitlam?.coquitlamBannerDescription}</p> 
+                        <span>{data?.coquitlam?.coquitlamBannerDescription}</span> 
                     </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
@@ -163,7 +163,7 @@ const BcCoquitlam = () => {
                             {data?.coquitlam?.coquitlamSlider.map( (slide, a) => {
                                 return(
                                <div key={a} className="application-slide text-center">
-                                <h3>{slide?.title}</h3>
+                                <span>{slide?.title}</span>
                                 <p>{slide?.content}</p>
                             </div>
                                 )
@@ -204,7 +204,7 @@ const BcCoquitlam = () => {
                     <Col md={4}>
                         {data?.coquitlam?.firstApplyStepTitle == null ? "" : (
                              <div className="apply">
-                             <h2>01</h2>
+                             <span>01</span>
                              <h2>{data?.coquitlam?.firstApplyStepTitle}</h2>
                              <div className="apply-border">
                              </div>
@@ -214,7 +214,7 @@ const BcCoquitlam = () => {
                     <Col md={4}>
                     {data?.coquitlam?.secondApplyStepTitle == null ? "" : (
                         <div className="approved"> 
-                            <h2>02</h2>
+                            <span>02</span>
                             <h2>{data?.coquitlam?.secondApplyStepTitle}</h2>
                             <p>{data?.coquitlam?.secondApplyStepDescription}</p> 
                         </div>
@@ -223,7 +223,7 @@ const BcCoquitlam = () => {
                     <Col md={4}>
                     {data?.coquitlam?.thirdApplyStepTitle == null ? "" : (
                         <div className="apply">
-                            <h2>03</h2>
+                            <span>03</span>
                             <h2>{data?.coquitlam?.thirdApplyStepTitle}</h2>
                             <div className="apply-border">
                             </div>
