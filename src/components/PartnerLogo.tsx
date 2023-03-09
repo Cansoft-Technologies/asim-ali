@@ -66,7 +66,7 @@ const PartnerLogo = () => {
         return(
           <div key={logo.HomeLandingPage} >
           {logo?.HomeLandingPage?.partnerLogoSection.hideSection == true ? "" : (
-            <Carousel 
+            <Carousel
            autoPlay={true}
             infinite={true}
             responsive={responsive}

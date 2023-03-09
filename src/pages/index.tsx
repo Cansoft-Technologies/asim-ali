@@ -27,9 +27,6 @@ export default function Page() {
       <Header />
 
       <Head>
-
-     
-
         <title>
           {generalSettings.title} - {generalSettings.description}
         </title>
