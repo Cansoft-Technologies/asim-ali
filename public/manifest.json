@@ -1,7 +1,7 @@
 {
     "theme_color": "#12143a",
     "background_color": "#f0b254",
-    "display": "browser",
+    "display": "standalone",
     "scope": "/",
     "start_url": "/",
     "name": "Asim Ali",
