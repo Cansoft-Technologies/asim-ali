@@ -9,7 +9,7 @@ module.exports = withFaust();
 const withPWA = require("next-pwa");
 const runtimeCaching = require('next-pwa/cache')
 
-module.exports = withPWA({
+module.exports = {
   optimizeImages: false,
     images: {
       domains: ['localhost:10004'],
@@ -25,6 +25,6 @@ module.exports = withPWA({
     disable: process.env.NODE_ENV === "development",
     runtimeCaching
   },
-});
+};
 
 
