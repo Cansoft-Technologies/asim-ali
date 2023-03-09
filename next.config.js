@@ -6,9 +6,6 @@ const { withFaust } = require('@faustjs/next');
 module.exports = withFaust();
 
 
-const withPWA = require("next-pwa");
-const runtimeCaching = require('next-pwa/cache')
-
 module.exports = {
   optimizeImages: false,
     images: {
@@ -16,15 +13,5 @@ module.exports = {
     },
     eslint: {
       ignoreDuringBuilds: true,
-    },
-  reactStrictMode: true,
-  pwa: {
-    dest: "public",
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === "development",
-    runtimeCaching
-  },
-};
-
-
+    }
+}
