@@ -6,12 +6,17 @@ const { withFaust } = require('@faustjs/next');
 module.exports = withFaust();
 
 
-module.exports = {
-  optimizeImages: false,
-    images: {
-      domains: ['localhost:10004'],
-    },
-    eslint: {
-      ignoreDuringBuilds: true,
-    }
-  }
+  const withPWA = require('next-pwa')({
+    dest: 'public'
+  })
+  
+  module.exports = withPWA({
+    optimizeImages: false,
+      images: {
+        domains: ['localhost:10004'],
+      },
+      eslint: {
+        ignoreDuringBuilds: true,
+      }
+    })
+  
