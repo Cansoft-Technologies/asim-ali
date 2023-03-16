@@ -62,7 +62,8 @@ const FlexabilitySlider = () => {
                   return (  
                     <Carousel.Item key={slide.sliderTitle}>
                         <div className="overlay"></div>
-                        <Image 
+                       <div className="slider-images">
+                       <Image 
                             src={slide?.sliderImage?.sourceUrl} 
                             loader={myLoader}           
                             width="100%" 
@@ -70,6 +71,7 @@ const FlexabilitySlider = () => {
                             layout="responsive" 
                             objectFit="cover"
                             alt={slide?.sliderImage?.altText} />
+                       </div>
                             <Carousel.Caption className="carouselcaption">
                             <Row className="align-items-center home-slide"> 
                                 <Col className='text-start' xs={12} lg="6">

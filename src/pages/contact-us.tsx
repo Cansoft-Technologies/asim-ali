@@ -9,20 +9,9 @@ import { faPhone, faMapMarker, faEnvelope } from '@fortawesome/free-solid-svg-ic
 import { gql } from '@apollo/client';
 import { ApolloClient, HttpLink, ApolloLink, InMemoryCache } from '@apollo/client';
 import emailjs from '@emailjs/browser';
+import WPHead from '../components/WPHead';
 
-// const httpLink = new HttpLink({ uri: '/graphql' });
 
-// const authMiddleware = new ApolloLink((operation, forward) => {
-//   // add the authorization to the headers
-//   operation.setContext(({ headers = {} }) => ({
-//     headers: {
-//       ...headers,
-//       authorization: localStorage.getItem('token') || null,
-//     }
-//   }));
-
-//   return forward(operation);
-// })
 
 const Contact = () => {
     const { useQuery } = client;
@@ -93,9 +82,13 @@ const Contact = () => {
                 <div key={index}>
                   {/* {console.log(httpLink)} */}
                 <Header />
+                
                 <Head>
-                    <title>
-                    {contact?.contactPage?.contactBannerTitle} - {generalSettings?.title}
+                  <meta name="description" content="description" />
+                  <meta property="og:title" content="title" />
+                  <meta property="og:description" content="description" />
+                  <meta property="og:image" content="imageUrl" /> 
+                  <title>{contact?.contactPage?.contactBannerTitle} - {generalSettings?.title}
                     </title>
                 </Head>
                 <main className="content">
@@ -178,32 +171,6 @@ const Contact = () => {
                         </div>
 
                         <div className="col-md-6">
-                          <label htmlFor="find">How Did You Find Us?</label>
-                          <select name="find" id="find" className="form_control" aria-required="true" aria-invalid="false">
-                            <option value="Television Ad">Television Ad</option>
-                            <option value="Search Engines">Search Engines</option>
-                            <option value="Magazine">Magazine</option>
-                            <option value="Other">Other</option>
-                          </select>
-                        </div>
-                        <div className="col-md-12 mt-3">
-                          <input type="text" name="subject" id="subject" placeholder="Subject" />
-                        </div>
-                        <div className="col-md-12">
-                        <textarea name="message" id="message" style={{height: '120px'}} placeholder="Message"></textarea>
-                        </div>
-                        <h2 className='contact-title'>About You (optional)</h2>
-                        <div className="col-md-12">
-                          <input type="text" name="address" id="address" placeholder="Address" />
-                        </div>
-                        <div className="col-md-12">
-                          <input type="text" name="address2" id="address2" placeholder="Address Line 2" />
-                        </div>
-                        <div className="col-md-6">
-                          <label htmlFor="city">City</label>
-                          <input type="text" name="city" id="city" placeholder="City" />
-                        </div>
-                        <div className="col-md-6">
                           <label htmlFor="province">Province</label>
                           <select name="province" className="form_control" aria-invalid="false">
                             <option value="Alberta">Alberta</option>
@@ -221,9 +188,18 @@ const Contact = () => {
                             <option value="Yukon">Yukon</option>
                             </select>
                         </div>
-                        <div className="col-md-12">
-                          <input type="text" name="postalcode" id="postalcode" placeholder="Postal Code" />
+                        <div className="col-md-12 mt-3">
+                          <input type="text" name="subject" id="subject" placeholder="Subject" />
                         </div>
+                        <div className="col-md-12">
+                        <textarea name="message" id="message" style={{height: '120px'}} placeholder="Message"></textarea>
+                        </div>
+                        
+                       
+                       
+                       
+                       
+                        
                         </div>
                         <input className='contactBtn' type="submit" value="Send Message" />
 

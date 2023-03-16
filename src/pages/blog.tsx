@@ -11,7 +11,7 @@ import Moment from 'react-moment';
 
 
 
-const blog = () => {
+const Blog = () => {
 
     const { useQuery } = client;
     const generalSettings = useQuery().generalSettings;
@@ -139,7 +139,7 @@ const blog = () => {
                 {datas.map((data, i) => {
                     return(
                         <div key={i}> 
-                        <Head>
+                <Head>
                     <title>
                    {data?.blog.blogBannerTitle} - {generalSettings?.title}
                     </title>
@@ -223,4 +223,4 @@ const blog = () => {
     );
 };
 
-export default blog;
+export default Blog;

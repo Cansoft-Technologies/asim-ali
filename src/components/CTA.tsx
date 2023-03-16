@@ -55,10 +55,9 @@ const CTA = () => {
                   //  backgroundImage: `url(${cat?.HomeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl})` 
                   //  }} 
                    className='cta_section'> 
-                      <div
+                      <div className='cta_first'
                             style={{
                               position: 'relative',
-                              height: '90vh',
                               width: '100%',
                               clipPath: 'inset(0 0 0 0)',
                             }}

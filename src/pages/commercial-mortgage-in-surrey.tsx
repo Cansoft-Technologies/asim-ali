@@ -100,9 +100,11 @@ const MortgageSurrey = () => {
                             alt={service?.serviceImage?.altText} />
                            </div>
                       </Col>
-                      <Col lg={6}>
+                      <Col className='service-texts' lg={6}>
+                      <div className='service-content'>
                            <h2 className='mt-4'>{service?.serviceTitle}</h2>
                            <p dangerouslySetInnerHTML={{__html: service?.serviceContent}} ></p>
+                           </div>
                       </Col>
                       </Row>
                     </Container>

@@ -457,7 +457,9 @@ footer {
     }
   }
 }
-
+.cta_section .cta_first{
+  height: 90vh
+}
 .cta_section {
   background-repeat: no-repeat;
   background-size: cover;
@@ -706,6 +708,12 @@ footer {
 }
 
 // contact us page
+
+.contact-page{
+  h1, h2{
+    font-size: 25px;
+  }
+}
 
 .contact-item:first-of-type {
   margin-top: 38px;
@@ -1481,24 +1489,13 @@ textarea#comment {
   }
 
 }
-
-// .howitworks-image{
-//   position: relative;
-//   img{
-//     bottom: -30% !important;
-//   }
-//   &:after {  
-//     position: absolute;   
-//     overflow: hidden;
-//     width: 70%;
-//     height: 3px;
-//     content: " ";
-//     background-color: $color-secondary;
-//     left: -20%;
-//     bottom: 0%;
-//   }
-// }
-
+.service-texts {
+  display: flex;
+  align-items: center;
+}
+section.meeting_section {
+  overflow-x: hidden;
+}
 @media all and (max-width: 912px) {
   .currentRate .easy-application {
     background-size: auto;
@@ -1551,6 +1548,17 @@ textarea#comment {
       }
     }
   }
+  .flexability-slider .carouselcaption .bannerCaption {
+    position: relative;
+    z-index: 99;
+    padding: 10px 80px;
+    margin-top: 0;
+}
+.navbar-nav ul {
+  list-style: none;
+  display: initial;
+  margin-top: revert;
+}
 }
 @media all and (max-width: 768px) {
   :after{
@@ -1645,6 +1653,12 @@ textarea#comment {
 }
 }
 @media all and (max-width: 540px) {
+  .team_section h2, .meeting_section h3, .split_section .split_text h3{
+    font-size: 35px;
+  }
+.cta_section h3 {
+    font-size: 26px;
+}
   footer .wrap .social-url :before{
     display: none;
   }
@@ -1674,12 +1688,7 @@ textarea#comment {
   .flexability-slider .carouselcaption .bannerCaption .sliderTitle {
     font-size: 40px;
   }
-  h2 {
-    font-size: 35px !important;
-  }
-  h3 {
-    font-size: 30px !important;
-  }
+ 
   .wehelp_section .wehelp_text p.wehelp_title {
     font-size: 35px;
 }
@@ -1693,6 +1702,8 @@ textarea#comment {
   .faq_section {
     position: relative !important;
     width: 100%;
+    height: inherit;
+    background-size: cover;
     .faq_text {
       text-align: center;
       left: 0;
@@ -1756,12 +1767,30 @@ textarea#comment {
     text-align: center;
     margin: auto;
 }
+.our-locations .location-images .col div {
+  width: 67%;
+  opacity: 1;
+}
 }
 
 @media all and (max-width: 441px) {
+  .cta_section .cta_first{
+    height: 50vh
+  }
+  .cta_section .cta_text {
+    margin-bottom: 0;
+    top: -88px;
+  }
+  .cta_section{
+    margin: 0;
+  }
+
   .Banner_carouselcaption__NAlFf {
     bottom: 0%;
     z-index: 999;
+  }
+  .meeting_image {
+      display: none;
   }
   .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderTitle {
     font-size: 40px;
@@ -1774,5 +1803,20 @@ textarea#comment {
   }
   .currentRate .easy-application .overlay {
     width: unset;
+}
+.flexability-slider .carousel-inner {
+ width: 100%;
+}
+.carousel-fade .carousel-item {
+  height: 400px;
+}
+.carousel-fade .carousel-item img{
+  height: 400px;
+}
+.slider-images > span {
+  position: inherit !important;
+}
+.flexability-slider .carouselcaption:before {
+  left: -8px;
 }
 }
