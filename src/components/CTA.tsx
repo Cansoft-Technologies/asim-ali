@@ -5,6 +5,7 @@ import { Button, Container } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const CTA = () => {
 
@@ -46,9 +47,13 @@ const CTA = () => {
 
     return (
         <>
+        
         {catSections.map((cat, index) => {
             return(
-                <Container key={index}> 
+              <Container key={index}> 
+              <Head> 
+                <link rel="preload" as="image" href={cat?.HomeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl} />
+              </Head>
                 {cat?.HomeLandingPage?.callToActionSection?.hideSection == true ? "" : (
                     <div 
                   //   style={{ 
