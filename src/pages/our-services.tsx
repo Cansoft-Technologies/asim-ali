@@ -157,7 +157,7 @@ const Services = () => {
 
                     <Container>
                       <Row>
-                      <Col lg={6} >
+                      <Col className='service-texts' lg={6} >
                            <div className='service-image'> 
                             <Image 
                             loader={myLoader}

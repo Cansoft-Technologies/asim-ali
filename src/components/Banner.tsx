@@ -101,13 +101,14 @@ const Banner = () => {
                 }}
               >
                    <Image 
-                       loader={myLoader}
-                     src={slide?.sliderImage?.sourceUrl}
-                      width={100} 
-                       height={57} 
-                       layout="fill" 
-                       objectFit="cover"
-                       alt={slide?.sliderImage?.altText} />
+                      loader={myLoader}
+                      alt="Asim Ali Slider"
+                      src={slide?.sliderImage?.sourceUrl}
+                      width={100}   
+                      height={57} 
+                      layout="fill" 
+                      objectFit="cover"
+                        />
                        </div>
                        </div>
                        <Carousel.Caption className={styles.carouselcaption}>

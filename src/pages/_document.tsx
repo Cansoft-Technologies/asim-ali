@@ -6,7 +6,7 @@ const MyDocument = () => {
     
 
   return (
-    <Html>
+    <Html lang="en-US">
         <Head>
             {/* 
             <meta name="description" content="description" />

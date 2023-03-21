@@ -152,12 +152,12 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
                                     {link.menuItems.nodes.map(item => {
                                         
                                             return(
-                                                <span key={`${item.label}$-menu`}>
+                                                <li key={`${item.label}$-menu`}>
                                                 {item.parentId == null ? (
-                                                      <li >
+                                                      <span >
                                                       
                                                       <Nav.Link href={`${item.url}`} > 
-                                                      <a onClick={() => (item.url)}>{item.label}</a>
+                                                      <span className='link' onClick={() => (item.url)}>{item.label}</span>
                                                       </Nav.Link>
                                                       <ul className="submenu"> 
                                                         {item.childItems.nodes.map( submenu => {
@@ -165,17 +165,17 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
                                                                 <li
                                                                 key={submenu.uri}>
                                                                     <Nav.Link as={Link} href={`${submenu.uri}`} > 
-                                                                    <a onClick={() => (submenu.uri)}>{submenu.label}</a>
+                                                                    <span className='link' onClick={() => (submenu.uri)}>{submenu.label}</span>
                                                                     </Nav.Link>
                                                                 </li>
                                                             )
                                                         })}
                                                         
                                                       </ul>
-                                            </li>
+                                            </span>
                                         ) : ""}
                                                 
-                                                </span>
+                                                </li>
                                             )
                                         
                                         
@@ -192,19 +192,19 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
                     <div className="social-url"> 
                       <ul>
                         {prefixSettings?.socialUrl?.facebook == null ? "" : (
-                        <li><a target="__blank" href={prefixSettings?.socialUrl?.facebook}><FontAwesomeIcon icon={faFacebookF} /></a></li>
+                        <li><a title="Facebook" target="__blank" href={prefixSettings?.socialUrl?.facebook}><FontAwesomeIcon icon={faFacebookF} /></a></li>
                         )}
                        
                        {prefixSettings?.socialUrl?.instagram == null ? "" : (
-                        <li><a target="__blank" href={prefixSettings?.socialUrl?.instagram}><FontAwesomeIcon icon={faInstagram} /></a></li>
+                        <li><a title="Instagram" target="__blank" href={prefixSettings?.socialUrl?.instagram}><FontAwesomeIcon icon={faInstagram} /></a></li>
                         )}
 
                         {prefixSettings?.socialUrl?.linkedin == null ? "" : (
-                        <li><a target="__blank" href={prefixSettings?.socialUrl?.linkedin}><FontAwesomeIcon icon={faLinkedinIn} /></a></li>
+                        <li><a title="Linkedin" target="__blank" href={prefixSettings?.socialUrl?.linkedin}><FontAwesomeIcon icon={faLinkedinIn} /></a></li>
                         )}
 
                          {prefixSettings?.socialUrl?.tiktok == null ? "" : (
-                        <li><a target="__blank" href={prefixSettings?.socialUrl?.tiktok }><FontAwesomeIcon icon={faTiktok} /></a></li>
+                        <li><a title="TikTok" target="__blank" href={prefixSettings?.socialUrl?.tiktok }><FontAwesomeIcon icon={faTiktok} /></a></li>
                         )}
                       </ul>
                     </div>

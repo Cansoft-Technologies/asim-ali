@@ -130,12 +130,12 @@ function Header(): JSX.Element {
                         {link.menuItems.nodes.map(item => {
                             
                                 return(
-                                   <span key={`${item.label}$-menu`}>
+                                   <li key={`${item.label}$-menu`}>
                                     {item.parentId == null ? (
-                                         <li >
+                                         <span >
                                          
                                          <Nav.Link as={Link} href={`${item.url}`} > 
-                                         <a onClick={() => (item.url)}>{item.label}</a>
+                                         <span className="link" onClick={() => (item.url)}>{item.label}</span>
                                          </Nav.Link>
                                          <ul className="submenu"> 
                                             {item.childItems.nodes.map( submenu => {
@@ -143,17 +143,17 @@ function Header(): JSX.Element {
                                                     <li
                                                     key={submenu.uri}>
                                                         <Nav.Link as={Link} href={`${submenu.uri}`} > 
-                                                        <a onClick={() => (submenu.uri)}>{submenu.label}</a>
+                                                        <span className="sublink" onClick={() => (submenu.uri)}>{submenu.label}</span>
                                                         </Nav.Link>
                                                     </li>
                                                 )
                                             })}
                                            
                                          </ul>
-                                </li>
+                                </span>
                            ) : ""}
                                     
-                                   </span>
+                                   </li>
                                 )
                            
                             

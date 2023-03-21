@@ -9,18 +9,22 @@ $color-mid-gray: #606060;
 @font-face {
     font-family: 'DejavuSans';
     src: url('dejavu-sans.book.ttf');
+    font-display: swap;
 }
 @font-face {
     font-family: 'AvenirBlack';
     src: url('AvenirLTStd-Black.otf');
+    font-display: swap;
 }
 @font-face {
     font-family: 'AvenirBook';
     src: url('AvenirLTStd-Book.otf');
+    font-display: swap;
 }
 @font-face {
     font-family: 'AvenirRoman';
     src: url('AvenirLTStd-Roman.otf');
+    font-display: swap;
 }
 
 

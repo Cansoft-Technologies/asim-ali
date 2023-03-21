@@ -2,7 +2,7 @@
 
 @import "variables";
 @import "typography";
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap')preconnect; 
 
 .hero-title-col {
   position: relative;
@@ -93,8 +93,10 @@ body {
         padding: 0;
         background: #fff;
         li {
-          a {
+          span.sublink {
             padding: 13px;
+            display: block;
+            cursor: pointer;
             margin: 0;
             border-bottom: 2px solid $color-secondary;
             &:hover {
@@ -112,8 +114,9 @@ body {
       }
     }
   }
-  a {
+  span.link {
     // font-family: 'AvenirBook';
+    cursor:pointer;
     text-transform: uppercase;
     margin-left: 16px;
     text-decoration: none;
@@ -206,7 +209,7 @@ body {
   &:before {
     content: "";
 
-    background-image: url(/images/we-help-bg.png);
+    background-image: url(/images/we-help-bg.webp);
     background-repeat: no-repeat;
     background-size: 350px auto;
     background-position: bottom left;
@@ -395,14 +398,15 @@ footer {
           overflow: hidden;
           margin-right: 15px;
           li{
-            a{
+            span.link{
               &:hover{
                 color: #fff !important;
               }
             }
-            .submenu{
-              display: none;
-            }
+
+          }
+          .submenu{
+            display: none;
           }
         }
        
@@ -1650,6 +1654,27 @@ section.meeting_section {
 }
 .wehelp_section:before {
   position: inherit;
+}
+.meeting_text {
+  margin-bottom: 29px;
+}
+.flexability-slider .carouselcaption .bannerCaption .sliderTitle {
+  font-size: 35px;
+}
+.flexability-slider .carouselcaption .bannerCaption .sliderSubtitle {
+  font-size: 22px;
+}
+.flexability-slider .carouselcaption .bannerCaption p {
+  margin-top: 17px;
+}
+.flexability-slider .carouselcaption .bannerCaption {
+  position: relative;
+  z-index: 99;
+  padding: 10px 10px;
+  margin-top: 0;
+}
+.faq_section {
+  background-size: contain;
 }
 }
 @media all and (max-width: 540px) {

@@ -71,7 +71,7 @@ const SplitImageLeft = () => {
                                  <Col lg={4}>
                                      <div className="split_text">
                                      <h3 dangerouslySetInnerHTML={{__html:splitImage?.HomeLandingPage?.splitImageLeftSection?.splitTitle}} ></h3>
-                                     <p>{splitImage?.HomeLandingPage?.splitImageLeftSection?.splitDescription}</p>                                
+                                     <p dangerouslySetInnerHTML={{__html:splitImage?.HomeLandingPage?.splitImageLeftSection?.splitDescription}}></p>                                
                                      
                                      {splitImage?.HomeLandingPage?.splitImageLeftSection?.splitButton == null ? "" : (
                                       <Link href={splitImage?.HomeLandingPage?.splitImageLeftSection?.splitButton.url}>
