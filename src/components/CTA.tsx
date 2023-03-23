@@ -82,10 +82,10 @@ const CTA = () => {
                   loader={myLoader}  
                   style={{zIndex: 0}} 
                   alt='Logo' 
-                  layout="fill"
+                  layout="responsive"
                   objectFit="cover"
                   width={500}
-                  height="900"
+                  height="250"
 
                   />
                </div>

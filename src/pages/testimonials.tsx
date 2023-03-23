@@ -73,10 +73,11 @@ const Testimonials = () => {
                 <h1 className="my-3 text-center">{data?.Testimonials?.sectionTitle}</h1>
                     <div className="row row-cols-1 row-cols-md-3 g-4 items">
 
-                        {data?.Testimonials?.testimonials.map((testimonial, key) => {
+                        {data?.Testimonials?.testimonials.slice(0)
+  .reverse().map((testimonial, key) => {
                             return(
                             <div key={key}  className="col">
-                                    <div className="card h-100">
+                                    <div className="testimonial-box card h-100">
                                         {console.log('testimonial area',testimonial)}
                                 
                                     <div className="card-body">

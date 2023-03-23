@@ -1500,6 +1500,19 @@ textarea#comment {
 section.meeting_section {
   overflow-x: hidden;
 }
+q.testimonials-content {
+  font-style: italic;
+}
+p.testimonials-name {
+  font-size: 20px;
+  margin-top: 20px;
+  color: $color-secondary;
+  font-weight: bold;
+}
+.testimonial-box {
+  height: 100%!important;
+  box-shadow: -1px -3px 12px -5px #000;
+}
 @media all and (max-width: 912px) {
   .currentRate .easy-application {
     background-size: auto;
