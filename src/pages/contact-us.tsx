@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faMapMarker, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { gql } from '@apollo/client';
-import { ApolloClient, HttpLink, ApolloLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import emailjs from '@emailjs/browser';
 
 
@@ -19,7 +19,7 @@ const Contact = () => {
     const form = useRef();
     const [contacts, setContacts] = useState([]);
     const [success, setSuccess] = useState(null);
-    const [metaData, setMetaData] = useState('');
+    const [metaData, setMetaData] = useState([]);
 
    
 
@@ -75,17 +75,27 @@ const Contact = () => {
         .then((result) => setContacts(result?.data?.pages?.nodes));
 
 
-
-      fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/rankmath/v1/getHead?url=${window.location.href}`)
-      .then(response => response.json())
-      .then(data => {
-        const { success, head } = data
-        // console.log(success) // true
-        setMetaData(head) 
-        // console.log(window.location.href)
-      })
-      .catch(error => console.error(error))
-
+        client
+        .query({
+          query: gql`query{
+            pages(where: {title: "Contact Us"}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) => setMetaData(result?.data?.pages?.nodes));
 
     }, []);
     
@@ -97,19 +107,32 @@ const Contact = () => {
         {contacts.map((contact, index) => {
             return(
                 <div key={index}>
-                  {/* {console.log(httpLink)} */}
                 <Header />
                 <Head>
-                <script type="application/ld+json" className="rank-math-schema">
-                {metaData}
-               </script>
-               
-                  <meta name="description" content="description" />
-                  <meta property="og:title" content="title" />
-                  <meta property="og:description" content="description" />
-                  <meta property="og:image" content="imageUrl" />
-                  <title>{contact?.contactPage?.contactBannerTitle} - {generalSettings?.title}
-                    </title>
+                
+              
+                {metaData.map((meta) => {
+                   
+                   console.log(meta.seo.fullHead);
+             
+                    return(
+                     <>
+                      <title>{meta?.seo?.title}</title>
+                      <meta name="description" content={meta?.seo?.description} />
+                      <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                      <meta property="og:title" content={meta?.seo?.title} />
+                      <meta property="og:description" content={meta?.seo?.description} />
+                      <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+
+
+                      </>
+                    )
+                  
+                
+                 
+                })}
+                 
+                 
                    
                 </Head>
                 <main className="content">
