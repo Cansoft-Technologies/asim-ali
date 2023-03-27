@@ -9,7 +9,7 @@ import { faPhone, faMapMarker, faEnvelope } from '@fortawesome/free-solid-svg-ic
 import { gql } from '@apollo/client';
 import { ApolloClient, HttpLink, ApolloLink, InMemoryCache } from '@apollo/client';
 import emailjs from '@emailjs/browser';
-import WPHead from '../components/WPHead';
+
 
 
 
@@ -19,6 +19,9 @@ const Contact = () => {
     const form = useRef();
     const [contacts, setContacts] = useState([]);
     const [success, setSuccess] = useState(null);
+    const [metaData, setMetaData] = useState('');
+
+   
 
 
     const sendEmail = (e) => {
@@ -70,6 +73,20 @@ const Contact = () => {
           }`,
         })
         .then((result) => setContacts(result?.data?.pages?.nodes));
+
+
+
+      fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/rankmath/v1/getHead?url=${window.location.href}`)
+      .then(response => response.json())
+      .then(data => {
+        const { success, head } = data
+        // console.log(success) // true
+        setMetaData(head) 
+        // console.log(window.location.href)
+      })
+      .catch(error => console.error(error))
+
+
     }, []);
     
     
@@ -82,16 +99,21 @@ const Contact = () => {
                 <div key={index}>
                   {/* {console.log(httpLink)} */}
                 <Header />
-                
                 <Head>
+                <script type="application/ld+json" className="rank-math-schema">
+                {metaData}
+               </script>
+               
                   <meta name="description" content="description" />
                   <meta property="og:title" content="title" />
                   <meta property="og:description" content="description" />
-                  <meta property="og:image" content="imageUrl" /> 
+                  <meta property="og:image" content="imageUrl" />
                   <title>{contact?.contactPage?.contactBannerTitle} - {generalSettings?.title}
                     </title>
+                   
                 </Head>
                 <main className="content">
+               
                 <Hero
                     title={contact?.contactPage?.contactBannerTitle}
                     heading={contact?.contactPage?.contactBannerHeading}

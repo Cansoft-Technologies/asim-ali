@@ -13,6 +13,11 @@ const MyDocument = () => {
             <meta property="og:title" content="title" />
             <meta property="og:description" content="description" />
             <meta property="og:image" content="imageUrl" /> */}
+            <link
+              rel="preconnect"
+              href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"
+              crossOrigin="anonymous"
+            />
 
             <link rel="manifest" href="/manifest.json" />
             <link rel="apple-touch-icon" href="/logo.png"></link>
