@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from 'scss/components/Banner.module.scss';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import Head from 'next/head';
 const Banner = () => {
 
     const [sliders, setSliders] = useState([]);
@@ -58,6 +59,8 @@ const Banner = () => {
         <div>
             <div className="home-slider"> 
 
+            
+
               {/* { isLoading && 
         <div className="text-center py-5">
         <div className="spinner-border text-dark" role="status">
@@ -100,6 +103,10 @@ const Banner = () => {
                   top: '0',
                 }}
               >
+
+            <Head> 
+                <link rel="preload" as="image" href={slide?.sliderImage?.sourceUrl} />
+            </Head>
                    <Image 
                       loader={myLoader}
                       alt="Asim Ali Slider"
