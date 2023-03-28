@@ -33,7 +33,6 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 export default function Page() {
 
-
   const { usePosts, useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const [metaData, setMetaData] = useState([]);
@@ -71,9 +70,7 @@ export default function Page() {
 
   return (
     <>
-      <Header />
-
-      <Head>
+     <Head>
       {metaData.map((meta) => {
                    
               return(
@@ -88,6 +85,9 @@ export default function Page() {
               )
                 })}
       </Head>
+      <Header />
+
+     
       <main className="content">
         <Banner />
         <WeHelp />
@@ -114,6 +114,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   return getNextStaticProps(context, {
     Page,
     client,
+    
   });
 }
 
