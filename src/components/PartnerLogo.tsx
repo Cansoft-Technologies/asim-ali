@@ -8,7 +8,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-const CustomRightArrow = ({ onClick, ...rest }) => {
+const CustomRightArrow = ({ onClick, ...rest }:any) => {
   const {
     onMove,
     carouselState: { currentSlide, deviceType }
@@ -18,7 +18,7 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
 };
 
 
-const CustomLeftArrow = ({ onClick, ...rest }) => {
+const CustomLeftArrow = ({ onClick, ...rest }: any) => {
   const {
     onMove,
     carouselState: { currentSlide, deviceType }
