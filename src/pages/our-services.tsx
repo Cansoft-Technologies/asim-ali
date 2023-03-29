@@ -9,6 +9,8 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 
+
+
 const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.

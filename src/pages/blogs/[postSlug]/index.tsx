@@ -3,6 +3,9 @@ import { client, Post } from 'client';
 import { Footer, Header, Hero } from 'components';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
+import { gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import React, { useState, useEffect } from 'react';
 
 export interface PostProps {
   post: Post | Post['preview']['node'] | null | undefined;
@@ -11,21 +14,63 @@ export interface PostProps {
 export function PostComponent({ post }: PostProps) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
+  const [metaData, setMetaData] = useState([]);
+
+  useEffect(() => {
+    const client = new ApolloClient({
+        uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+        cache: new InMemoryCache(),
+      });
+    
+
+    client
+    .query({
+      query: gql`query{
+        posts(where: {id: ${post?.postId}}) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }`,
+    })
+    .then((result) => setMetaData(result?.data?.posts?.nodes));
+
+}, [post]);
 
   return (
     <>
+    <Head>
+            {metaData.map((meta) => {
+                return(
+                  <>
+                  <title>{meta?.seo?.title}</title>
+                  <meta name="description" content={meta?.seo?.description} />
+                  <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                  <meta property="og:title" content={meta?.seo?.title} />
+                  <meta property="og:description" content={meta?.seo?.description} />
+                  <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                  </>
+                )
+            })}
+            </Head>
       <Header />
-
-      <Head>
-        <title>
-          {post?.title()} - {generalSettings.title}
-        </title>
-      </Head>
 
       <Hero
         title={post?.title()}
         bgImage={post?.featuredImage?.node?.sourceUrl()}
       />
+
+      {console.log('hello post', post?.postId)}
 
       <main className="content content-single">
         <div className="wrap">
