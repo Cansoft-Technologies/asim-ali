@@ -1,10 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
+const CustomRightArrow = ({ onClick, ...rest }) => {
+  const {
+    onMove,
+    carouselState: { currentSlide, deviceType }
+  } = rest;
+  // onMove means if dragging or swiping in progress.
+  return <button className='react-multiple-carousel__arrow react-multiple-carousel__arrow-right ' onClick={() => onClick()} ><FontAwesomeIcon icon={faChevronRight} /></button>;
+};
+
+
+const CustomLeftArrow = ({ onClick, ...rest }) => {
+  const {
+    onMove,
+    carouselState: { currentSlide, deviceType }
+  } = rest;
+  // onMove means if dragging or swiping in progress.
+  return <button className='react-multiple-carousel__arrow react-multiple-carousel__arrow-left ' onClick={() => onClick()} ><FontAwesomeIcon icon={faChevronLeft} /></button>;
+};
+
 const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -67,6 +89,8 @@ const PartnerLogo = () => {
           <div key={logo.HomeLandingPage} >
           {logo?.HomeLandingPage?.partnerLogoSection.hideSection == true ? "" : (
             <Carousel
+            customRightArrow={<CustomRightArrow />}
+            customLeftArrow	={<CustomLeftArrow />}
            autoPlay={true}
             infinite={true}
             responsive={responsive}

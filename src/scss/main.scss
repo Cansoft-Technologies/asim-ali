@@ -11,7 +11,16 @@
 //   src: url(https://hf0ak2tn748admnnhp68zwih3.js.wpenginepowered.com/_next/static/media/revicons.ff59b316.woff) format('woff2');
 //   font-display: swap;
 // }
-
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow-right {
+  position: absolute;
+  right: -8px;
+}
+button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right, button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left  {
+  font-size: 10px !important;
+  color: $color-secondary;
+  width: 19px;
+  display: block;
+}
 .hero-title-col {
   position: relative;
   &:after {
