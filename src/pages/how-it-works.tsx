@@ -13,6 +13,7 @@ const HowItWorks = () => {
     const { useQuery } = client;
     const generalSettings = useQuery().generalSettings;
     const [datas, setDatas] = useState([]);
+    const [metaData, setMetaData] = useState([]);
 
 
     useEffect(() => {
@@ -23,7 +24,7 @@ const HowItWorks = () => {
         client
         .query({
           query: gql`query{
-            pages(where: {title: "How It Works"}) {
+            pages(where: {id: 499}) {
               nodes {
                 HowItWorks {
                   bannerTitle
@@ -84,6 +85,27 @@ const HowItWorks = () => {
           }`,
         })
         .then((result) => setDatas(result?.data?.pages?.nodes));
+        client
+        .query({
+          query: gql`query{
+            pages(where: {id: 499}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) => setMetaData(result?.data?.pages?.nodes));
     }, []);
     const myLoader = ({ src, width, quality }) => {
         return `${src}?w=${width}&q=${quality || 75}`
@@ -96,12 +118,21 @@ const HowItWorks = () => {
         {datas.map( (data, key) => {
             return(
                 <div key={key}>
-                    <Header />
                     <Head>
-                        <title>
-                        {data?.HowItWorks?.bannerTitle} - {generalSettings?.title}
-                        </title>
-                    </Head>
+                {metaData.map((meta) => {
+                    return(
+                     <>
+                      <title>{meta?.seo?.title}</title>
+                      <meta name="description" content={meta?.seo?.description} />
+                      <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                      <meta property="og:title" content={meta?.seo?.title} />
+                      <meta property="og:description" content={meta?.seo?.description} />
+                      <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                      </>
+                    )
+                })}
+                </Head>
+                    <Header />
                     <main className="content">
                     <Hero
                         title={data?.HowItWorks?.bannerTitle}

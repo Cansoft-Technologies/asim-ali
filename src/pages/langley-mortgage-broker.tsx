@@ -35,11 +35,10 @@ const responsive = {
   };
 
 const Langley = () => {
-    const { useQuery } = client;
-    const generalSettings = useQuery().generalSettings;
-
     const [datas, setDatas] = useState([]);
     const [key, setKey] = useState(null);
+    const [metaData, setMetaData] = useState([]);
+
 
     useEffect(() => {
         const client = new ApolloClient({
@@ -49,7 +48,7 @@ const Langley = () => {
         client
         .query({
           query: gql`query{
-            pages(where: {title: "Langley"}) {
+            pages(where: {id: 713}) {
               nodes {
                 Langley {
                   thirdApplyStepTitle
@@ -97,6 +96,28 @@ const Langley = () => {
           }`,
         })
         .then((result) => setDatas(result?.data?.pages?.nodes));
+        client
+        .query({
+          query: gql`query{
+            pages(where: {id: 713}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) => setMetaData(result?.data?.pages?.nodes));
+
     }, []);
 
 
@@ -110,12 +131,21 @@ const Langley = () => {
         {datas.map( (data, index) => {
             return(
         <div key={index} className='Bc-Coquitlam'>
+        <Head>
+        {metaData.map((meta) => {
+            return(
+                <>
+                <title>{meta?.seo?.title}</title>
+                <meta name="description" content={meta?.seo?.description} />
+                <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                <meta property="og:title" content={meta?.seo?.title} />
+                <meta property="og:description" content={meta?.seo?.description} />
+                <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                </>
+            )
+        })}
+        </Head>
         <Header />
-            <Head>
-                <title>
-                {data?.Langley?.langleyBannerTitle} - {generalSettings?.title}
-                </title>
-            </Head>
             <main className="content">
             {data?.Langley?.langleyBannerTitle == null ? "" : (
                 <Hero

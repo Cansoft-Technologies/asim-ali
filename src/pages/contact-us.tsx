@@ -14,16 +14,12 @@ import emailjs from '@emailjs/browser';
 
 
 const Contact = () => {
-    const { useQuery } = client;
-    const generalSettings = useQuery().generalSettings;
     const form = useRef();
     const [contacts, setContacts] = useState([]);
     const [success, setSuccess] = useState(null);
     const [metaData, setMetaData] = useState([]);
 
    
-
-
     const sendEmail = (e) => {
       e.preventDefault();
       emailjs
@@ -53,7 +49,7 @@ const Contact = () => {
         client
         .query({
           query: gql`query{
-            pages(where: {title: "contact us"}) {
+            pages(where: {id: 245}) {
               nodes {
                 contactPage {
                   contactBannerTitle
@@ -78,7 +74,7 @@ const Contact = () => {
         client
         .query({
           query: gql`query{
-            pages(where: {title: "Contact Us"}) {
+            pages(where: {id: 245}) {
               nodes {
                 seo {
                   title
@@ -107,14 +103,8 @@ const Contact = () => {
         {contacts.map((contact, index) => {
             return(
                 <div key={index}>
-                <Header />
-                <Head>
-                
-              
-                {metaData.map((meta) => {
-                   
-                   console.log(meta.seo.fullHead);
-             
+                  <Head>
+                  {metaData.map((meta) => {
                     return(
                      <>
                       <title>{meta?.seo?.title}</title>
@@ -123,18 +113,12 @@ const Contact = () => {
                       <meta property="og:title" content={meta?.seo?.title} />
                       <meta property="og:description" content={meta?.seo?.description} />
                       <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
-
-
                       </>
                     )
-                  
-                
-                 
                 })}
-                 
-                 
-                   
                 </Head>
+                <Header />
+                
                 <main className="content">
                
                 <Hero

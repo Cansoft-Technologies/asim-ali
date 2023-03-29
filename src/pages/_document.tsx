@@ -8,7 +8,13 @@ const MyDocument = () => {
   return (
     <Html lang="en-US">
         <Head>
-            
+
+            <link
+              rel="preload"
+              href="https://hf0ak2tn748admnnhp68zwih3.js.wpenginepowered.com/_next/static/media/revicons.ff59b316.woff"
+              crossOrigin="anonymous"
+            />
+
             <link
               rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"

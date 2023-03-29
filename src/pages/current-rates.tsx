@@ -11,14 +11,10 @@ import emailjs from '@emailjs/browser';
 
 const Current = () => {
 
-    const { useQuery } = client;
-    const generalSettings = useQuery().generalSettings;
-
-
     const [datas, setDatas] = useState([]);
     const [success, setSuccess] = useState(null);
-
     const [success2, setSuccess2] = useState(null);
+    const [metaData, setMetaData] = useState([]);
 
 
     const form = useRef();
@@ -76,7 +72,7 @@ const Current = () => {
         client
         .query({
           query: gql`query {
-            pages(where: {title: "Current Rates"}) {
+            pages(where: {id: 301}) {
               nodes {
                 CurrentRates {
                   bannerTitle
@@ -108,6 +104,29 @@ const Current = () => {
           }`,
         })
         .then((result) => setDatas(result?.data?.pages?.nodes));
+
+        client
+        .query({
+          query: gql`query{
+            pages(where: {id: 301}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) => setMetaData(result?.data?.pages?.nodes));
+
     }, []);
     
 
@@ -117,12 +136,22 @@ const Current = () => {
             {datas.map((data, index) => {
                 return(
                     <div key={index}className="currentRate-container">
+                 <Head>
+                {metaData.map((meta) => {
+                    return(
+                     <>
+                      <title>{meta?.seo?.title}</title>
+                      <meta name="description" content={meta?.seo?.description} />
+                      <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                      <meta property="og:title" content={meta?.seo?.title} />
+                      <meta property="og:description" content={meta?.seo?.description} />
+                      <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                      </>
+                    )
+                })}
+                </Head>
                     <Header />
-                     <Head>
-                         <title>
-                        {data?.CurrentRates?.bannerTitle} - {generalSettings?.title}
-                         </title>
-                     </Head>
+                    
                      <main className="content">
                      <Hero
                          title={data?.CurrentRates?.bannerTitle}

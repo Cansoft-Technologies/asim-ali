@@ -9,7 +9,6 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 
-
 const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -31,10 +30,8 @@ const responsive = {
   };
 
 const Services = () => {
-    const { useQuery } = client;
-    const generalSettings = useQuery().generalSettings;
-
     const [datas, setDatas] = useState([]);
+    const [metaData, setMetaData] = useState([]);
 
     useEffect(() => {
         const client = new ApolloClient({
@@ -44,7 +41,7 @@ const Services = () => {
         client
         .query({
           query: gql`query{
-            pages(where: {title: "Our Services"}) {
+            pages(where: {id: 553}) {
               nodes {
                 services {
                   serviceBannerTitle
@@ -71,6 +68,29 @@ const Services = () => {
           }`,
         })
         .then((result) => setDatas(result?.data?.pages?.nodes));
+
+        client
+        .query({
+          query: gql`query{
+            pages(where: {id: 553}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) => setMetaData(result?.data?.pages?.nodes));
+
     }, []);
 
     const myLoader = ({ src, width, quality }) => {
@@ -83,12 +103,21 @@ const Services = () => {
          {datas.map( (data, index) => {
             return(
         <div key={index} className='our-services'>
-            <Header />
-                <Head>
-                    <title>
-                    {data?.services?.serviceBannerTitle} - {generalSettings?.title}
-                    </title>
-                </Head>
+          <Head>
+            {metaData.map((meta) => {
+                return(
+                  <>
+                  <title>{meta?.seo?.title}</title>
+                  <meta name="description" content={meta?.seo?.description} />
+                  <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                  <meta property="og:title" content={meta?.seo?.title} />
+                  <meta property="og:description" content={meta?.seo?.description} />
+                  <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                  </>
+                )
+            })}
+            </Head>
+                <Header />
                 <main className="content">
                 {data?.services?.serviceBannerTitle == null ? "" : (
                     <Hero

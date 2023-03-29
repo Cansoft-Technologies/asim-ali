@@ -8,14 +8,14 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 const Locations = () => {
-    const { useQuery } = client;
-    const generalSettings = useQuery().generalSettings;
-
+  
     const [showMaps, setShowMaps] = useState(false);
     const [showLists, setShowLists] = useState(true)
     const [isActive, setIsActive] = useState(false);
 
     const [datas, setDatas] = useState([]);
+    const [metaData, setMetaData] = useState([]);
+
 
     useEffect(() => {
         const client = new ApolloClient({
@@ -25,7 +25,7 @@ const Locations = () => {
         client
         .query({
           query: gql`query{
-            pages (where: {title: "Our Locations"}){
+            pages (where: {id: 555}){
               nodes {
                 locations {
                   locationsBannerTitle
@@ -61,6 +61,29 @@ const Locations = () => {
           }`,
         })
         .then((result) => setDatas(result?.data?.pages?.nodes));
+
+        client
+        .query({
+          query: gql`query{
+            pages(where: {id: 555}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) => setMetaData(result?.data?.pages?.nodes));
+
     }, []);
 
 
@@ -84,12 +107,21 @@ const Locations = () => {
         {datas.map( (data, index) => {
             return(
                 <div key={index} className='our-locations'>
+              <Head>
+                {metaData.map((meta) => {
+                    return(
+                     <>
+                      <title>{meta?.seo?.title}</title>
+                      <meta name="description" content={meta?.seo?.description} />
+                      <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                      <meta property="og:title" content={meta?.seo?.title} />
+                      <meta property="og:description" content={meta?.seo?.description} />
+                      <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                      </>
+                    )
+                })}
+                </Head>
                 <Header />
-                    <Head>
-                        <title>
-                        {data?.locations?.locationsBannerTitle} - {generalSettings?.title}
-                        </title>
-                    </Head>
                     <main className="content">
                     {data?.locations?.locationsBannerTitle == null ? "" : (
                     <Hero

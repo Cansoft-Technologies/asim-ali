@@ -9,10 +9,8 @@ import Image from 'next/image';
 
 
 const Testimonials = () => {
-
-    const { useQuery } = client;
-    const generalSettings = useQuery().generalSettings;
     const [datas, setDatas] = useState([]);
+    const [metaData, setMetaData] = useState([]);
 
 
     useEffect(() => {
@@ -23,7 +21,7 @@ const Testimonials = () => {
         client
         .query({
           query: gql`query{
-            pages(where: {title: "Testimonials"}) {
+            pages(where: {id: 1370}) {
               nodes {
                 Testimonials {
                   bannerTitle
@@ -44,6 +42,30 @@ const Testimonials = () => {
           }`,
         })
         .then((result) => setDatas(result?.data?.pages?.nodes));
+
+        client
+        .query({
+          query: gql`query{
+            pages(where: {id: 1370}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) => setMetaData(result?.data?.pages?.nodes));
+
+
     }, []);
     const myLoader = ({ src, width, quality }) => {
         return `${src}?w=${width}&q=${quality || 75}`
@@ -55,12 +77,21 @@ const Testimonials = () => {
         {datas.map( (data, index) => {
             return(
         <div key={index} className='our-testimonial'>
+          <Head>
+            {metaData.map((meta) => {
+            return(
+              <>
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta property="og:description" content={meta?.seo?.description} />
+              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              </>
+            )
+        })}
+        </Head>
         <Header />
-           <Head>
-               <title>
-               {data?.Testimonials?.bannerTitle} - {generalSettings?.title}
-               </title>
-           </Head>
            <main className="content">
            <Hero
                title={data?.Testimonials?.bannerTitle}

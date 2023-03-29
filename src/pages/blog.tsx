@@ -13,9 +13,6 @@ import Moment from 'react-moment';
 
 const Blog = () => {
 
-    const { useQuery } = client;
-    const generalSettings = useQuery().generalSettings;
-
     const [blogs, setBlogs] = useState([]);
     const [datas, setDatas] = useState([]);
     const [isLoading, seIsLoading] = useState(true);
@@ -23,6 +20,8 @@ const Blog = () => {
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const size = 6;
+    const [metaData, setMetaData] = useState([]);
+
 
     
 
@@ -110,7 +109,7 @@ const Blog = () => {
         client
         .query({
           query: gql`query MyQuery {
-            pages(where: {title: "blog"}) {
+            pages(where: {id: 250}) {
               nodes {
                 blog {
                   blogBannerTitle
@@ -125,6 +124,34 @@ const Blog = () => {
         })
         .then((result) => setDatas(result?.data?.pages?.nodes));
 
+        client
+        .query({
+          query: gql`query{
+            pages(where: {id: 250}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        })
+        .then((result) => setMetaData(result?.data?.pages?.nodes));
+
+  
+
+    const myLoader = ({ src, width, quality }) => {
+      return `${src}?w=${width}&q=${quality || 75}`
+    }
+
 
     }, [page]);
     
@@ -134,16 +161,25 @@ const Blog = () => {
     }
     return (
         <div>
+          <Head>
+              {metaData.map((meta) => {
+                    return(
+                     <>
+                      <title>{meta?.seo?.title}</title>
+                      <meta name="description" content={meta?.seo?.description} />
+                      <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                      <meta property="og:title" content={meta?.seo?.title} />
+                      <meta property="og:description" content={meta?.seo?.description} />
+                      <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                      </>
+                    )
+                })}
+            </Head>
             <Header />
            
                 {datas.map((data, i) => {
                     return(
                         <div key={i}> 
-                <Head>
-                    <title>
-                   {data?.blog.blogBannerTitle} - {generalSettings?.title}
-                    </title>
-                </Head>
                 <main className="content">
                 <Hero
                     title={data?.blog.blogBannerTitle}

@@ -46,7 +46,7 @@ export default function Page() {
     client
     .query({
       query: gql`query{
-        pages(where: {title: "Home"}) {
+        pages(where: {id: 14}) {
           nodes {
             seo {
               title

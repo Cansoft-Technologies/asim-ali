@@ -3,6 +3,10 @@ import { Footer, Header, Hero } from 'components';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { client, Page as PageType } from 'client';
+import { gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import React, { useState, useEffect } from 'react';
+
 
 export interface PageProps {
   page: PageType | PageType['preview']['node'] | null | undefined;
@@ -11,16 +15,57 @@ export interface PageProps {
 export function PageComponent({ page }: PageProps) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
+  const [metaData, setMetaData] = useState([]);
+
+  useEffect(() => {
+    const client = new ApolloClient({
+        uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+        cache: new InMemoryCache(),
+      });
+    
+
+    client
+    .query({
+      query: gql`query{
+        pages(where: {id: ${page.pageId}}) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }`,
+    })
+    .then((result) => setMetaData(result?.data?.pages?.nodes));
+
+}, [page]);
+
 
   return (
     <>
-      <Header />
-
       <Head>
-        <title>
-          {page?.title()} - {generalSettings.title}
-        </title>
-      </Head>
+            {metaData.map((meta) => {
+                return(
+                  <>
+                  <title>{meta?.seo?.title}</title>
+                  <meta name="description" content={meta?.seo?.description} />
+                  <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                  <meta property="og:title" content={meta?.seo?.title} />
+                  <meta property="og:description" content={meta?.seo?.description} />
+                  <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                  </>
+                )
+            })}
+            </Head>
+      <Header />
 
       <Hero
         title={page?.title()}
@@ -29,6 +74,7 @@ export function PageComponent({ page }: PageProps) {
 
       <main className="content content-single">
         <div className="wrap">
+          {console.log(page.pageId)}
           <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
         </div>
       </main>
