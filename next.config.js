@@ -1,13 +1,7 @@
-const { withFaust } = require('@faustjs/next');
-
-/**
- * @type {import('next').NextConfig}
- **/
-
-
+const withFaust = require('@faustjs/next');
 const withPWA = require('next-pwa');
 
-module.exports = withFaust( withPWA({
+module.exports = withPWA (withFaust ({
   pwa: {
     dest: 'public',
   },
