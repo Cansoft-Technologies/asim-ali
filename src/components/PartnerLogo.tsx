@@ -14,7 +14,7 @@ const CustomRightArrow = ({ onClick, ...rest }:any) => {
     carouselState: { currentSlide, deviceType }
   } = rest;
   // onMove means if dragging or swiping in progress.
-  return <button className='react-multiple-carousel__arrow react-multiple-carousel__arrow-right ' onClick={() => onClick()} ><FontAwesomeIcon icon={faChevronRight} /></button>;
+  return <button aria-label="Right Arrow" className='react-multiple-carousel__arrow react-multiple-carousel__arrow-right ' onClick={() => onClick()} ><FontAwesomeIcon icon={faChevronRight} /></button>;
 };
 
 
@@ -24,7 +24,7 @@ const CustomLeftArrow = ({ onClick, ...rest }: any) => {
     carouselState: { currentSlide, deviceType }
   } = rest;
   // onMove means if dragging or swiping in progress.
-  return <button className='react-multiple-carousel__arrow react-multiple-carousel__arrow-left ' onClick={() => onClick()} ><FontAwesomeIcon icon={faChevronLeft} /></button>;
+  return <button aria-label="Left Arrow"  className='react-multiple-carousel__arrow react-multiple-carousel__arrow-left ' onClick={() => onClick()} ><FontAwesomeIcon icon={faChevronLeft} /></button>;
 };
 
 const responsive = {
