@@ -3,11 +3,11 @@ const { withFaust } = require('@faustjs/next');
 /**
  * @type {import('next').NextConfig}
  **/
-module.exports = withFaust();
+
 
 const withPWA = require('next-pwa');
 
-module.exports = withPWA({
+module.exports = withFaust( withPWA({
   pwa: {
     dest: 'public',
   },
@@ -18,6 +18,6 @@ module.exports = withPWA({
     eslint: {
       ignoreDuringBuilds: true,
     }
-});
+}));
 
 
