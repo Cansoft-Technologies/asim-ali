@@ -16,6 +16,7 @@ const MyDocument = () => {
             />
             <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"  />
             <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" /></noscript>
+            <link rel="dns-prefetch" href="https://asimaliprod.wpengine.com" />
 
 
             <link rel="manifest" href="/manifest.json" />
