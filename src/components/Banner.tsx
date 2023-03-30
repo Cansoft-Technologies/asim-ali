@@ -105,7 +105,7 @@ const Banner = () => {
               >
 
             <Head> 
-                <link rel="preload" as="image" href={slide?.sliderImage?.sourceUrl} />
+                <link type="image/webp" rel="preload" as="image" href={slide?.sliderImage?.sourceUrl} />
             </Head>
                   <div className="slider-images">
                     <Image 
