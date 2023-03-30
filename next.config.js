@@ -5,11 +5,12 @@ const { withFaust } = require('@faustjs/next');
  **/
 module.exports = withFaust();
 
-const withPWA = require('next-pwa')({
-  dest: 'public'
-})
+const withPWA = require('next-pwa');
 
 module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+  },
   optimizeImages: false,
     images: {
       domains: ['hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com'],
