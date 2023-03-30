@@ -107,15 +107,17 @@ const Banner = () => {
             <Head> 
                 <link rel="preload" as="image" href={slide?.sliderImage?.sourceUrl} />
             </Head>
-                   <Image 
+                  <div className="slider-images">
+                    <Image 
                       loader={myLoader}
                       alt="Asim Ali Slider"
                       src={slide?.sliderImage?.sourceUrl}
                       width={100}   
                       height={57} 
-                      layout="fill" 
+                      layout="responsive" 
                       objectFit="cover"
                         />
+                        </div>
                        </div>
                        </div>
                        <Carousel.Caption className={styles.carouselcaption}>
