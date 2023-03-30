@@ -14,12 +14,9 @@ const MyDocument = () => {
               href="https://hf0ak2tn748admnnhp68zwih3.js.wpenginepowered.com/_next/static/media/revicons.ff59b316.woff"
               crossOrigin="anonymous"
             />
+            <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"  />
+            <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" /></noscript>
 
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"
-              crossOrigin="anonymous"
-            />
 
             <link rel="manifest" href="/manifest.json" />
             <link rel="apple-touch-icon" href="/logo.png"></link>
