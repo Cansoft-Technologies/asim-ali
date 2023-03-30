@@ -16,7 +16,7 @@
     .bannerCaption{
         font-family: 'DejavuSans';
         .sliderTitle{
-            color: $color-secondary;
+            color: $color-orange;
             margin: 0 auto;
             font-size: 60px;
             font-weight: 300;
@@ -45,12 +45,12 @@
         border-radius: 0;
         padding-top: 11px;
         span{
-            color: $color-secondary;
+            color: $color-orange;
             font-family: 'AvenirBlack';
         }
         &:hover{
             background: transparent;
-            border: 2px solid $color-secondary;
+            border: 2px solid $color-orange;
             color: $color-white;
             opacity: .5;
         }
