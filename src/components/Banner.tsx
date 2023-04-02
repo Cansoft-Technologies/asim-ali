@@ -5,7 +5,7 @@ import Link from 'next/link';
 import styles from 'scss/components/Banner.module.scss';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import Head from 'next/head';
+
 const Banner = () => {
 
     const [sliders, setSliders] = useState([]);
@@ -61,13 +61,13 @@ const Banner = () => {
 
             
 
-              {/* { isLoading && 
+              { isLoading && 
         <div className="text-center py-5">
         <div className="spinner-border text-dark" role="status">
             <span className="visually-hidden">Loading...</span>
         </div>
         </div>   
-        } */}
+        }
 
             <Carousel fade>
              
@@ -140,7 +140,7 @@ const Banner = () => {
                    </Carousel.Caption>
                </Carousel.Item>
                  )
-          }  //  --
+          }  
            
            ))
 
