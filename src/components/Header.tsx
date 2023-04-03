@@ -7,80 +7,130 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-function Header(): JSX.Element {
+  const { data } = await client.query({
+    query: gql`query{
+      settingsOptions {
+        AsimOptions {
+          headerSettings {
+            uploadLogo {
+              sourceUrl
+              altText
+            }
+          }
+        }
+      }
+
+      menus(where: {location: PRIMARY}) {
+        nodes {
+          name
+          slug
+          menuItems(first: 50){
+            nodes {
+              url
+              target
+              parentId
+              label
+              cssClasses
+              description
+              id
+              childItems {
+                nodes {
+                  uri
+                  label
+                }
+              }
+            }
+          }
+        }
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+function Header({settings, mainMenus }): JSX.Element {
   const { menuItems } = client.useQuery()
   const links = menuItems({
     where: { location: MenuLocationEnum.PRIMARY },
   }).nodes;
 
-  const [settings, setSettings] = useState({});
-  const [mainMenus, setMainMenus] = useState([]);
-  const [isLoading, seIsLoading] = useState(true);
+  // const [settings, setSettings] = useState({});
+  // const [mainMenus, setMainMenus] = useState([]);
 
-    useEffect(() => {
-      const client = new ApolloClient({
-          uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-          cache: new InMemoryCache(),
-        });
-      client
-      .query({
-        query: gql`
-        query{
-          settingsOptions {
-            AsimOptions {
-              headerSettings {
-                uploadLogo {
-                  sourceUrl
-                  altText
-                }
-              }
-            }
-          }
-        }`,
-      })
-      .then((result) => 
-        {
-          setSettings(result?.data?.settingsOptions?.AsimOptions)
-        seIsLoading(false);
-        }
-        );
+  //   useEffect(() => {
+  //     const client = new ApolloClient({
+  //         uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+  //         cache: new InMemoryCache(),
+  //       });
+  //     client
+  //     .query({
+  //       query: gql`
+  //       query{
+  //         settingsOptions {
+  //           AsimOptions {
+  //             headerSettings {
+  //               uploadLogo {
+  //                 sourceUrl
+  //                 altText
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }`,
+  //     })
+  //     .then((result) => 
+  //       {
+  //         setSettings(result?.data?.settingsOptions?.AsimOptions)
+  //       }
+  //       );
 
-        client
-      .query({
-        query: gql`{
-            menus(where: {location: PRIMARY}) {
-              nodes {
-                name
-                slug
-                menuItems(first: 50){
-                  nodes {
-                    url
-                    target
-                    parentId
-                    label
-                    cssClasses
-                    description
-                    id
-                    childItems {
-                      nodes {
-                        uri
-                        label
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-      })
-      .then((result) => 
-        {
-            setMainMenus(result?.data?.menus?.nodes)
-        }
-        );
+  //       client
+  //     .query({
+  //       query: gql`{
+  //           menus(where: {location: PRIMARY}) {
+  //             nodes {
+  //               name
+  //               slug
+  //               menuItems(first: 50){
+  //                 nodes {
+  //                   url
+  //                   target
+  //                   parentId
+  //                   label
+  //                   cssClasses
+  //                   description
+  //                   id
+  //                   childItems {
+  //                     nodes {
+  //                       uri
+  //                       label
+  //                     }
+  //                   }
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }`,
+  //     })
+  //     .then((result) => 
+  //       {
+  //           setMainMenus(result?.data?.menus?.nodes)
+  //       }
+  //       );
         
-  }, []);
+  // }, []);
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`
   }
@@ -123,8 +173,9 @@ function Header(): JSX.Element {
             // style={{ maxHeight: '100px' }}
             navbarScroll
           >
+            {console.log('main menu sss', mainMenus)}
             
-            {mainMenus.map( link => {
+            {mainMenus?.map( link => {
                 return(
                     <ul key={`${link.label}$-menu`} >
                         {link.menuItems.nodes.map(item => {

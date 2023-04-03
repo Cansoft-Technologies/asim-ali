@@ -5,6 +5,11 @@ import Head from 'next/head';
 import React, { useEffect } from 'react';
 import { CTA, Footer, Header } from 'components';
 import { client } from 'client';
+import { Carousel, Col, Row, Button, Container } from 'react-bootstrap';
+import Image from 'next/image';
+import styles from 'scss/components/Banner.module.scss';
+
+
 const Banner = dynamic(() => import('../components/Banner'));
 const WeHelp = dynamic(() => import('../components/WeHelp'));
 const Team = dynamic(() => import('components/Team'));
@@ -18,6 +23,7 @@ const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
 import { useState } from 'react';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import Link from 'next/link';
 
 // import Banner from '../components/Banner';
 // import WeHelp from '../components/WeHelp';
@@ -31,41 +37,125 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 // import SplitImageRight from '../components/SplitImageRight';
 
 
-export default function Page() {
 
-  const { usePosts, useQuery } = client;
-  const generalSettings = useQuery().generalSettings;
-  const [metaData, setMetaData] = useState([]);
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-  useEffect(() => {
-    const client = new ApolloClient({
-        uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-        cache: new InMemoryCache(),
-      });
-    
-    client
-    .query({
-      query: gql`query{
-        pages(where: {id: 14}) {
-          nodes {
-            seo {
-              title
-              description
-              canonicalUrl
-              focusKeywords
-              openGraph {
-                image {
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+          HomeLandingPage {
+            homeSliderSection {
+              homeSlider {
+                sliderTitle
+                sliderSubtitle
+                sliderDescription
+                sliderImage {
+                  sourceUrl
+                }
+                sliderButtonUrl {
                   url
                 }
               }
             }
           }
+          HomeLandingPage {
+            partnerLogoSection {
+              hideSection
+              partnerLogo {
+                sourceUrl
+                altText
+              }
+            }
+          }
+          HomeLandingPage {
+            weHelpSection {
+              helpTitle
+              helpDescription
+              hideSection
+              helpImage {
+                mediaItemUrl
+              }
+            }
+          }
         }
-      }`,
-    })
-    .then((result) => setMetaData(result?.data?.pages?.nodes));
+      }
+      settingsOptions {
+        AsimOptions {
+          headerSettings {
+            uploadLogo {
+              sourceUrl
+              altText
+            }
+          }
+        }
+      }
 
-}, []);
+      menus(where: {location: PRIMARY}) {
+        nodes {
+          name
+          slug
+          menuItems(first: 50){
+            nodes {
+              url
+              target
+              parentId
+              label
+              cssClasses
+              description
+              id
+              childItems {
+                nodes {
+                  uri
+                  label
+                }
+              }
+            }
+          }
+        }
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+      metaData: data?.pages?.nodes,
+      sliders: data?.pages?.nodes,
+      helps: data?.pages?.nodes,
+      logos: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  settings: any;
+  mainMenus: any;
+  metaData: any;
+  sliders: any;
+  helps: any;
+  logos: any;
+};
+
+export default function Page(props: MyProps) {
+  const { metaData, sliders, helps, settings, mainMenus, logos } = props;
+
 
 
   return (
@@ -85,14 +175,12 @@ export default function Page() {
               )
                 })}
       </Head>
-      <Header />
-
-     
       <main className="content">
-        <Banner />
-        <WeHelp />
-        <PartnerLogo />
-        <Team />
+      <Header settings={settings} mainMenus={mainMenus} />
+      <Banner sliders={sliders} />
+      <WeHelp helps={helps} />
+      <PartnerLogo logos={logos}/>
+      <Team />
         <Meeting />
         <SplitImageLeft />
 
@@ -110,11 +198,11 @@ export default function Page() {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  return getNextStaticProps(context, {
-    Page,
-    client,
+// export async function getStaticProps(context: GetStaticPropsContext) {
+//   return getNextStaticProps(context, {
+//     Page,
+//     client,
     
-  });
-}
+//   });
+// }
 

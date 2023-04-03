@@ -46,36 +46,76 @@ const responsive = {
       items: 1
     }
   };
-const PartnerLogo = () => {
 
-  const [logos, setLogos] = useState([]);
 
-      useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`
-          query{
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  partnerLogoSection {
-                    hideSection
-                    partnerLogo {
-                      sourceUrl
-                      altText
-                    }
-                  }
+
+  export async function getStaticProps() {
+    const client = new ApolloClient({
+      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+      cache: new InMemoryCache(),
+    });
+  
+    const { data } = await client.query({
+      query: gql`query{
+        pages(where: {id: 14}) {
+          nodes {
+            HomeLandingPage {
+              partnerLogoSection {
+                hideSection
+                partnerLogo {
+                  sourceUrl
+                  altText
                 }
               }
             }
-          }`,
-        })
-        .then((result) => setLogos(result?.data?.pages?.nodes));
-    }, []);
+          }
+        }
+      }`,
+    });
+  
+    return {
+      props: {
+        logos: data?.pages?.nodes,
+      },
+    };
+  }
+  
+  type MyProps = {
+    logos: any;
+  };
+  
+
+const PartnerLogo = (props: MyProps) => {
+
+  const { logos } = props;
+  // const [logos, setLogos] = useState([]);
+
+  //     useEffect(() => {
+  //       const client = new ApolloClient({
+  //           uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+  //           cache: new InMemoryCache(),
+  //         });
+  //       client
+  //       .query({
+  //         query: gql`
+  //         query{
+  //           pages(where: {title: "home"}) {
+  //             nodes {
+  //               HomeLandingPage {
+  //                 partnerLogoSection {
+  //                   hideSection
+  //                   partnerLogo {
+  //                     sourceUrl
+  //                     altText
+  //                   }
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }`,
+  //       })
+  //       .then((result) => setLogos(result?.data?.pages?.nodes));
+  //   }, []);
 
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`
@@ -84,7 +124,7 @@ const PartnerLogo = () => {
     return (
         <>
        <Container className="partnerLogo" >
-       {logos.map(logo => {
+       {logos?.map(logo => {
         return(
           <div key={logo.HomeLandingPage} >
           {logo?.HomeLandingPage?.partnerLogoSection.hideSection == true ? "" : (

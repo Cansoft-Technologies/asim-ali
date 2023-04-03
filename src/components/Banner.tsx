@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Carousel, Col, Row, Button } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,50 +6,53 @@ import styles from 'scss/components/Banner.module.scss';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const Banner = () => {
 
-    const [sliders, setSliders] = useState([]);
-    const [isLoading, seIsLoading] = useState(true);
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-      useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`
-          query {
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  homeSliderSection {
-                    homeSlider {
-                      sliderTitle
-                      sliderSubtitle
-                      sliderDescription
-                      sliderImage {
-                        sourceUrl
-                      }
-                      sliderButtonUrl {
-                        url
-                      }
-                    }
-                  }
+  const { data } = await client.query({
+    query: gql`query {
+      pages(where: {title: "home"}) {
+        nodes {
+          HomeLandingPage {
+            homeSliderSection {
+              homeSlider {
+                sliderTitle
+                sliderSubtitle
+                sliderDescription
+                sliderImage {
+                  sourceUrl
+                }
+                sliderButtonUrl {
+                  url
                 }
               }
             }
-          }`,
-        })
-        .then((result) => {
-          seIsLoading(false);
-          setSliders(result?.data?.pages?.nodes);
+          }
         }
-        
-        );
-    }, []);
-    
-    
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      sliders: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  sliders: any;
+};
+
+
+const Banner = (props: MyProps) => {
+
+  const { sliders } = props;
+
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`
     }
@@ -61,18 +64,20 @@ const Banner = () => {
 
             
 
-              { isLoading && 
+              {/* { isLoading && 
         <div className="text-center py-5">
         <div className="spinner-border text-dark" role="status">
             <span className="visually-hidden">Loading...</span>
         </div>
         </div>   
-        }
+        } */}
 
             <Carousel fade>
+
+              {console.log('slider', sliders)}
              
             
-            {sliders.map( function(slider) { 
+            {sliders?.map( function(slider) { 
               
            return( 
 
@@ -140,7 +145,7 @@ const Banner = () => {
                    </Carousel.Caption>
                </Carousel.Item>
                  )
-          }  
+          }  //  --
            
            ))
 

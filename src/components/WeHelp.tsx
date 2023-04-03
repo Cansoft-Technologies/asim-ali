@@ -1,51 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const WeHelp = () => {
 
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-    const [helps, setHelps] = useState([]);
-
-    useEffect(() => {
-      const client = new ApolloClient({
-          uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-          cache: new InMemoryCache(),
-        });
-      client
-      .query({
-        query: gql`
-        query{
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  weHelpSection {
-                    helpTitle
-                    helpDescription
-                    hideSection
-                    helpImage {
-                      mediaItemUrl
-                    }
-                  }
-                }
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          HomeLandingPage {
+            weHelpSection {
+              helpTitle
+              helpDescription
+              hideSection
+              helpImage {
+                mediaItemUrl
               }
             }
-          }`,
-      })
-      .then((result) => setHelps(result?.data?.pages?.nodes));
-  }, []);
+          }
+        }
+      }
+    }`,
+  });
 
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
+  return {
+    props: {
+      helps: data?.pages?.nodes,
+    },
+  };
+}
 
+type MyProps = {
+  helps: any;
+};
+
+
+const WeHelp = (props: MyProps) => {
+
+  const { helps } = props;
 
     return (
         <>
           
             
-                {helps.map(help =>  
+                {helps?.map(help =>  
                
                 {
                     return(
@@ -62,12 +66,6 @@ const WeHelp = () => {
                             <video autoPlay loop style={{ width: '500px', height: '500px' }}>
                             <source src={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
                           </video>
-                           {/* <Image 
-                           loader={myLoader}
-                           src={help?.HomeLandingPage?.weHelpSection?.helpImage?.sourceUrl}
-                           width={500}
-                           height={639}
-                           alt={help?.HomeLandingPage?.weHelpSection?.helpImage?.altText} /> */}
                            </div>
                        </Col>
                        <Col lg={6} >
