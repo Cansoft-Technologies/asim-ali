@@ -1,6 +1,8 @@
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import { Footer, Header, Hero } from 'components';
+import CustomFooter from 'components/CustomFooter';
+import CustomHeader from 'components/CustomHeader';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 
@@ -10,7 +12,7 @@ export default function Page() {
 
   return (
     <>
-      <Header />
+      <CustomHeader />
 
       <Head>
         <title>Custom Page - {generalSettings.title}</title>
@@ -34,7 +36,7 @@ export default function Page() {
         </div>
       </main>
 
-      <Footer />
+      <CustomFooter />
     </>
   );
 }

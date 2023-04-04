@@ -1,6 +1,8 @@
 import { getNextStaticProps } from '@faustjs/next';
 import { client, OrderEnum, PostObjectsConnectionOrderbyEnum } from 'client';
 import { Footer, Header, Pagination, Posts } from 'components';
+import CustomFooter from 'components/CustomFooter';
+import CustomHeader from 'components/CustomHeader';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -28,7 +30,7 @@ export default function Page() {
 
   return (
     <>
-      <Header />
+      <CustomHeader />
 
       <Head>
         <title>
@@ -47,7 +49,7 @@ export default function Page() {
         <Pagination pageInfo={posts.pageInfo} basePath="/posts" />
       </main>
 
-      <Footer />
+      <CustomFooter />
     </>
   );
 }

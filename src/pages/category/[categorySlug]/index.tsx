@@ -4,6 +4,8 @@ import { Header, Footer, Posts, Pagination } from 'components';
 import { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { client } from 'client';
+import CustomFooter from 'components/CustomFooter';
+import CustomHeader from 'components/CustomHeader';
 
 const POSTS_PER_PAGE = 6;
 
@@ -23,7 +25,7 @@ export default function Page() {
 
   return (
     <>
-      <Header />
+      <CustomHeader />
 
       <Head>
         <title>Posts - {generalSettings?.title}</title>
@@ -41,7 +43,7 @@ export default function Page() {
         </div>
       </main>
 
-      <Footer />
+      <CustomFooter />
     </>
   );
 }

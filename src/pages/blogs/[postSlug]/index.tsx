@@ -6,6 +6,8 @@ import Head from 'next/head';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import React, { useState, useEffect } from 'react';
+import CustomHeader from 'components/CustomHeader';
+import CustomFooter from 'components/CustomFooter';
 
 export interface PostProps {
   post: Post | Post['preview']['node'] | null | undefined;
@@ -63,7 +65,7 @@ export function PostComponent({ post }: PostProps) {
                 )
             })}
             </Head>
-      <Header />
+      <CustomHeader />
 
       <Hero
         title={post?.title()}
@@ -78,7 +80,7 @@ export function PostComponent({ post }: PostProps) {
         </div>
       </main>
 
-      <Footer />
+      <CustomFooter />
     </>
   );
 }
