@@ -34,22 +34,29 @@ const responsive = {
     }
   };
 
-const Abbotsford = () => {
-    const [datas, setDatas] = useState([]);
-    const [key, setKey] = useState(null);
-    const [metaData, setMetaData] = useState([]);
 
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 778}) {
-              nodes {
-                Abbotsford {
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 778}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+          Abbotsford {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -87,37 +94,100 @@ const Abbotsford = () => {
                     title
                     content
                   }
-                }
-              }
             }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
+        }
+      }
+  
 
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 778}) {
+
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
+                uri
+                label
               }
             }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-    }, []);
+          }
+        }
+      }
+    }
+  }`,
+  });
+
+  return {
+    props: {
+      abbotsfordData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  abbotsfordData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
 
 
+const Abbotsford = (props: MyProps) => {
+
+    const { settings, mainMenus, abbotsfordData, metaData } = props;
+
+    const [key, setKey] = useState(null);
+    
     const myLoader = ({ src, width, quality }) => {
         return `${src}?w=${width}&q=${quality || 75}`
       }
@@ -125,7 +195,7 @@ const Abbotsford = () => {
 
     return (
         <>
-        {datas.map( (data, index) => {
+        {abbotsfordData.map( (data, index) => {
             return(
         <div key={index} className='Bc-Coquitlam'>
         <Head>
@@ -142,7 +212,7 @@ const Abbotsford = () => {
             )
         })}
         </Head>
-        <Header />
+        <Header settings={settings} mainMenus={mainMenus}/>
             
             <main className="content">
             {data?.Abbotsford?.bannerTitle == null ? "" : (
@@ -302,7 +372,7 @@ const Abbotsford = () => {
             </Container>
             <CTA />
             </main>
-            <Footer />
+            <Footer settings={settings} mainMenus={mainMenus} />
         
     </div>
         ) 

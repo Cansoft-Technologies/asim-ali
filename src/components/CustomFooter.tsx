@@ -1,5 +1,5 @@
-import React from 'react';
-import { Col, Container, Row, Nav } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Col, Container, Row, Navbar, Nav } from 'react-bootstrap';
 import styles from 'scss/components/Footer.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
@@ -8,91 +8,86 @@ import {  faFacebookF , faTiktok, faInstagram, faLinkedinIn} from '@fortawesome/
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-
-export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
-    query: gql`query {
-      settingsOptions {
-        AsimOptions {
-          footerSettings {
-            socialUrl {
-              facebook
-              tiktok
-              linkedin
-              instagram
-            }
-            copyrightText
-            footerLeftWidget {
-              title
-              phoneNumber
-              emailAddress
-            }
-            footerLogoSection {
-              logoText
-              logoUpload {
-                altText
-                sourceUrl
+const CustomFooter = () => {
+  // const year = new Date().getFullYear();
+  const [settings, setSettings] = useState([]);
+  const [mainMenus, setMainMenus] = useState([]);
+  useEffect(() => {
+    const client = new ApolloClient({
+        uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+        cache: new InMemoryCache(),
+      });
+    client
+    .query({
+      query: gql`query MyQuery {
+        settingsOptions {
+          AsimOptions {
+            footerSettings {
+              socialUrl {
+                facebook
+                tiktok
+                linkedin
+                instagram
               }
-            }
-            footerRightWidget {
-              title
-              address
+              copyrightText
+              footerLeftWidget {
+                title
+                phoneNumber
+                emailAddress
+              }
+              footerLogoSection {
+                logoText
+                logoUpload {
+                  altText
+                  sourceUrl
+                }
+              }
+              footerRightWidget {
+                title
+                address
+              }
             }
           }
         }
-      }
-      menus(where: {location: PRIMARY}) {
-        nodes {
-          name
-          slug
-          menuItems(first: 50){
-            nodes {
-              url
-              target
-              parentId
-              label
-              cssClasses
-              description
-              id
-              childItems {
-                nodes {
-                  uri
-                  label
+      }`,
+    })
+    .then((result) => setSettings(result?.data?.settingsOptions?.AsimOptions));
+
+    client
+      .query({
+        query: gql`{
+            menus(where: {location: PRIMARY}) {
+              nodes {
+                name
+                slug
+                menuItems(first: 50){
+                  nodes {
+                    url
+                    target
+                    parentId
+                    label
+                    cssClasses
+                    description
+                    id
+                    childItems {
+                      nodes {
+                        uri
+                        label
+                      }
+                    }
+                  }
                 }
               }
             }
-          }
+          }`,
+      })
+      .then((result) => 
+        {
+            setMainMenus(result?.data?.menus?.nodes)
         }
-      }
-    }
-    }`,
-  });
+        );
 
-  return {
-    props: {
-      settings: data?.settingsOptions?.AsimOptions,
-      mainMenus: data?.menus?.nodes,
-    },
-  };
-}
-
-type MyProps = {
-  settings: any;
-  mainMenus: any;
-};
-
-
-
-
-const Footer = (props: MyProps) => {
-
-  const { settings, mainMenus } = props;
-
+}, []);
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`
 }
@@ -225,4 +220,4 @@ const socialNull = prefixSettings?.socialUrl?.facebook == null && prefixSettings
   );
 }
 
-export default Footer;
+export default CustomFooter;

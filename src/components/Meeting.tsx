@@ -1,41 +1,51 @@
+import React from 'react';
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-const Meeting = () => {
-    const [meetings, setMeetings] = useState([]);
-
-    useEffect(() => {
-      const client = new ApolloClient({
-          uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-          cache: new InMemoryCache(),
-        });
-      client
-      .query({
-        query: gql`
-        query{
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  meetingSection {
-                    meetingTitle
-                    meetingDescription
-                    hideSection
-                    meetingImage {
-                      sourceUrl
-                      altText
-                    }
-                  }
-                }
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          HomeLandingPage {
+            meetingSection {
+              meetingTitle
+              meetingDescription
+              hideSection
+              meetingImage {
+                sourceUrl
+                altText
               }
             }
-          }`,
-      })
-      .then((result) => setMeetings(result?.data?.pages?.nodes));
-  }, []);
+          }
+        }
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      meetings: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  meetings: any;
+};
+
+
+const Meeting = (props: MyProps) => {
+
+  const { meetings } = props;
+ 
 
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`
@@ -45,7 +55,7 @@ const Meeting = () => {
     return (
         <>
            <section className='meeting_section'>
-            {meetings.map(meeting => {
+            {meetings?.map(meeting => {
                 return(
                 <div key={meeting}>
                     {meeting?.HomeLandingPage?.meetingSection?.hideSection == true ? "" : (

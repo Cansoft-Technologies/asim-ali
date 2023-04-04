@@ -34,8 +34,8 @@ function Hero({
       className={styles.hero}>
       <div className={styles.wrap}>
         <div className="hero-title-col col-md-6 offset-md-6">
-          <p className="hero-title">{ title.split(" ")[0] } 
-            <span>{ title.split(" ")[1] } { title.split(" ")[2] }</span>
+          <p className="hero-title">{ title?.split(" ")[0] } 
+            <span>{ title?.split(" ")[1] } { title?.split(" ")[2] }</span>
           </p>
         <div className={styles.intro}>
           <div className={styles.children}>{children}</div>

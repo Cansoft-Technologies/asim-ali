@@ -1,64 +1,73 @@
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const Gallery = () => {
-    const [images, setImages] = useState([]);
 
-      useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`
-          query{
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  gallery {
-                    hideSection
-                    galleryImage1 {
-                      altText
-                      sourceUrl
-                    }
-                    galleryImage2 {
-                      altText
-                      sourceUrl
-                    }
-                    galleryImage3 {
-                      altText
-                      sourceUrl
-                    }
-                    galleryImage4 {
-                      altText
-                      sourceUrl
-                    }
-                    galleryImage5 {
-                      altText
-                      sourceUrl
-                    }
-                   
-                  }
-                }
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          HomeLandingPage {
+            gallery {
+              hideSection
+              galleryImage1 {
+                altText
+                sourceUrl
               }
+              galleryImage2 {
+                altText
+                sourceUrl
+              }
+              galleryImage3 {
+                altText
+                sourceUrl
+              }
+              galleryImage4 {
+                altText
+                sourceUrl
+              }
+              galleryImage5 {
+                altText
+                sourceUrl
+              }
+             
             }
-          }`,
-        })
-        .then((result) => setImages(result?.data?.pages?.nodes));
-    }, []);
-    
-    
+          }
+        }
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      images: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  images: any;
+};
+
+
+const Gallery = (props: MyProps) => {
+  const { images } = props;
+
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`
     }
     return (
         <>
            <div className="gallery_section">
-            {images.map( image => {
+            {images?.map( image => {
                 return(
             <Container key={image}> 
             {image?.HomeLandingPage?.gallery?.hideSection === true ? "" : (

@@ -1,14 +1,7 @@
 import dynamic from 'next/dynamic';
-import { getNextStaticProps } from '@faustjs/next';
-import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CTA, Footer, Header } from 'components';
-import { client } from 'client';
-import { Carousel, Col, Row, Button, Container } from 'react-bootstrap';
-import Image from 'next/image';
-import styles from 'scss/components/Banner.module.scss';
-
 
 const Banner = dynamic(() => import('../components/Banner'));
 const WeHelp = dynamic(() => import('../components/WeHelp'));
@@ -20,10 +13,8 @@ const FAQ = dynamic(() => import('components/FAQ'));
 const Gallery = dynamic(() => import('components/Gallery'));
 const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
 const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
-import { useState } from 'react';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import Link from 'next/link';
 
 // import Banner from '../components/Banner';
 // import WeHelp from '../components/WeHelp';
@@ -47,89 +38,221 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`query{
       pages(where: {id: 14}) {
-        nodes {
-          seo {
-            title
-            description
-            canonicalUrl
-            focusKeywords
-            openGraph {
-              image {
+      nodes {
+        seo {
+          title
+          description
+          canonicalUrl
+          focusKeywords
+          openGraph {
+            image {
+              url
+            }
+          }
+        }
+        HomeLandingPage {
+          homeSliderSection {
+            homeSlider {
+              sliderTitle
+              sliderSubtitle
+              sliderDescription
+              sliderImage {
+                sourceUrl
+              }
+              sliderButtonUrl {
                 url
               }
             }
           }
-          HomeLandingPage {
-            homeSliderSection {
-              homeSlider {
-                sliderTitle
-                sliderSubtitle
-                sliderDescription
-                sliderImage {
-                  sourceUrl
-                }
-                sliderButtonUrl {
-                  url
-                }
-              }
+          weHelpSection {
+            helpTitle
+            helpDescription
+            hideSection
+            helpImage {
+              mediaItemUrl
             }
           }
-          HomeLandingPage {
-            partnerLogoSection {
-              hideSection
-              partnerLogo {
-                sourceUrl
-                altText
-              }
-            }
-          }
-          HomeLandingPage {
-            weHelpSection {
-              helpTitle
-              helpDescription
-              hideSection
-              helpImage {
-                mediaItemUrl
-              }
-            }
-          }
-        }
-      }
-      settingsOptions {
-        AsimOptions {
-          headerSettings {
-            uploadLogo {
+         partnerLogoSection {
+            hideSection
+            partnerLogo {
               sourceUrl
               altText
             }
           }
+         teamSection {
+            teamTitle
+            hideSection
+            teamImage {
+              sourceUrl
+              altText
+            }
+          }
+          meetingSection {
+            meetingTitle
+            meetingDescription
+            hideSection
+            meetingImage {
+              sourceUrl
+              altText
+            }
+          }
+          splitImageLeftSection {
+            splitTitle
+            splitDescription
+            splitImage {
+              altText
+              sourceUrl
+            }
+            hideSection
+            splitButton {
+              url
+              title
+            }
+          }
+          flexabilitySlider {
+            sliderTitle
+            sliderSubtitle
+            sliderDescription
+            sliderImage {
+              altText
+              sourceUrl
+            }
+            sliderButtonUrl {
+              url
+            }
+          }
+          splitImageRightSection {
+            splitTitle
+            splitDescription
+            splitImage {
+              altText
+              sourceUrl
+            }
+            hideSection
+            splitButton {
+              url
+              title
+            }
+          }
+          gallery {
+            hideSection
+            galleryImage1 {
+              altText
+              sourceUrl
+            }
+            galleryImage2 {
+              altText
+              sourceUrl
+            }
+            galleryImage3 {
+              altText
+              sourceUrl
+            }
+            galleryImage4 {
+              altText
+              sourceUrl
+            }
+            galleryImage5 {
+              altText
+              sourceUrl
+            }
+          }
+          faqSection {
+            hideSection
+            faqTitle
+            faqSubitle
+            faqImage {
+              altText
+              sourceUrl
+            }
+            faqAccordion {
+              question
+              answer
+            }
+          }
+          callToActionSection {
+            hideSection
+            actionTitle
+            actionLink {
+              url
+              title
+            }
+            actionBackgroundImage {
+              sourceUrl
+            }
+          }
+
+
+
+        }
+     
+     
+      }
+     
+    
+    
+ 
+  }
+   settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+          socialUrl {
+            facebook
+            tiktok
+            linkedin
+            instagram
+          }
+          copyrightText
+          footerLeftWidget {
+            title
+            phoneNumber
+            emailAddress
+          }
+          footerLogoSection {
+            logoText
+            logoUpload {
+              altText
+              sourceUrl
+            }
+          }
+          footerRightWidget {
+            title
+            address
+          }
         }
       }
+    }
 
-      menus(where: {location: PRIMARY}) {
-        nodes {
-          name
-          slug
-          menuItems(first: 50){
-            nodes {
-              url
-              target
-              parentId
-              label
-              cssClasses
-              description
-              id
-              childItems {
-                nodes {
-                  uri
-                  label
-                }
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
+              nodes {
+                uri
+                label
               }
             }
           }
         }
       }
-    }`,
+    }
+}`,
   });
 
   return {
@@ -140,6 +263,13 @@ export async function getStaticProps() {
       sliders: data?.pages?.nodes,
       helps: data?.pages?.nodes,
       logos: data?.pages?.nodes,
+      teams: data?.pages?.nodes,
+      meetings: data?.pages?.nodes,
+      splitImagesLeft: data?.pages?.nodes,
+      flexsliders: data?.pages?.nodes,
+      splitImagesRight: data?.pages?.nodes,
+      images: data?.pages?.nodes,
+      faqsections: data?.pages?.nodes,
     },
   };
 }
@@ -151,10 +281,17 @@ type MyProps = {
   sliders: any;
   helps: any;
   logos: any;
+  teams: any;
+  meetings: any;
+  splitImagesLeft: any;
+  flexsliders: any;
+  splitImagesRight: any;
+  images: any;
+  faqsections: any;
 };
 
 export default function Page(props: MyProps) {
-  const { metaData, sliders, helps, settings, mainMenus, logos } = props;
+  const { settings, mainMenus, metaData, sliders, helps, logos, teams, meetings, splitImagesLeft, flexsliders, splitImagesRight, images, faqsections  } = props;
 
 
 
@@ -180,29 +317,19 @@ export default function Page(props: MyProps) {
       <Banner sliders={sliders} />
       <WeHelp helps={helps} />
       <PartnerLogo logos={logos}/>
-      <Team />
-        <Meeting />
-        <SplitImageLeft />
-
-      <FlexabilitySlider />
-      <SplitImageRight />
-      <Gallery />
-      <FAQ /> 
+      <Team teams={teams} />
+      <Meeting  meetings={meetings} />
+      <SplitImageLeft splitImagesLeft={splitImagesLeft} />
+      <FlexabilitySlider flexsliders={flexsliders} />
+      <SplitImageRight splitImagesRight={splitImagesRight}/>
+      <Gallery images={images} />
+      <FAQ faqsections={faqsections} /> 
       <CTA />
       </main>
       
-      <Footer/>
+      <Footer settings={settings} mainMenus={mainMenus}/>
 
       
     </>
   );
 }
-
-// export async function getStaticProps(context: GetStaticPropsContext) {
-//   return getNextStaticProps(context, {
-//     Page,
-//     client,
-    
-//   });
-// }
-

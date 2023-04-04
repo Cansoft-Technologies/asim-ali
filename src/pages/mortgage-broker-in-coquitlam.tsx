@@ -34,23 +34,29 @@ const responsive = {
     }
   };
 
-const BcCoquitlam = () => {
-    const [datas, setDatas] = useState([]);
-    const [key, setKey] = useState(null);
-    const [metaData, setMetaData] = useState([]);
 
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages (where: {id: 557}){
-              nodes {
-                coquitlam {
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 557}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+          coquitlam {
                   coquitlamBannerTitle
                   coquitlamBannerHeading
                   coquitlamBannerDescription
@@ -90,36 +96,99 @@ const BcCoquitlam = () => {
                     description
                   }
                 }
-              }
-            }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
+        }
+      }
+  
 
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 557}) {
+
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
+                uri
+                label
               }
             }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-    }, []);
+          }
+        }
+      }
+    }
+  }`,
+  });
+
+  return {
+    props: {
+      coquitlamData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  coquitlamData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
 
 
+const BcCoquitlam = (props: MyProps) => {
+
+  const { settings, mainMenus, coquitlamData, metaData } = props;
+
+    const [key, setKey] = useState(null);
+  
     const myLoader = ({ src, width, quality }) => {
         return `${src}?w=${width}&q=${quality || 75}`
       }
@@ -127,7 +196,7 @@ const BcCoquitlam = () => {
 
     return (
         <>
-        {datas.map( (data, index) => {
+        {coquitlamData.map( (data, index) => {
             return(
         <div key={index} className='Bc-Coquitlam'>
        <Head>
@@ -144,7 +213,7 @@ const BcCoquitlam = () => {
             )
         })}
         </Head>
-        <Header />
+        <Header settings={settings} mainMenus={mainMenus}/>
             <main className="content">
             {data?.coquitlam?.coquitlamBannerTitle == null ? "" : (
                 <Hero
@@ -303,7 +372,7 @@ const BcCoquitlam = () => {
             </Container>
             <CTA />
             </main>
-            <Footer />
+            <Footer settings={settings} mainMenus={mainMenus} />
         
     </div>
         ) 

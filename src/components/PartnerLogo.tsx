@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { gql } from '@apollo/client';
@@ -88,35 +88,7 @@ const responsive = {
 const PartnerLogo = (props: MyProps) => {
 
   const { logos } = props;
-  // const [logos, setLogos] = useState([]);
-
-  //     useEffect(() => {
-  //       const client = new ApolloClient({
-  //           uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-  //           cache: new InMemoryCache(),
-  //         });
-  //       client
-  //       .query({
-  //         query: gql`
-  //         query{
-  //           pages(where: {title: "home"}) {
-  //             nodes {
-  //               HomeLandingPage {
-  //                 partnerLogoSection {
-  //                   hideSection
-  //                   partnerLogo {
-  //                     sourceUrl
-  //                     altText
-  //                   }
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }`,
-  //       })
-  //       .then((result) => setLogos(result?.data?.pages?.nodes));
-  //   }, []);
-
+  
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`
     }

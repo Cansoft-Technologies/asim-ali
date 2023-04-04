@@ -34,23 +34,28 @@ const responsive = {
     }
   };
 
-const Vancouver = () => {
-    const [datas, setDatas] = useState([]);
-    const [key, setKey] = useState(null);
-    const [metaData, setMetaData] = useState([]);
-
-
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 876}) {
-              nodes {
-                Vancouver {
+  export async function getStaticProps() {
+    const client = new ApolloClient({
+      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+      cache: new InMemoryCache(),
+    });
+  
+    const { data } = await client.query({
+      query: gql`query{ 
+        pages(where: {id: 876}) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+            }
+            Vancouver {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -89,34 +94,177 @@ const Vancouver = () => {
                     content
                   }
                 }
-              }
+          }
+        }
+    
+  
+  
+        settingsOptions {
+        AsimOptions {
+          headerSettings {
+            uploadLogo {
+              sourceUrl
+              altText
             }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 876}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
+          }
+          footerSettings {
+          socialUrl {
+            facebook
+            tiktok
+            linkedin
+            instagram
+          }
+          copyrightText
+          footerLeftWidget {
+            title
+            phoneNumber
+            emailAddress
+          }
+          footerLogoSection {
+            logoText
+            logoUpload {
+              altText
+              sourceUrl
+            }
+          }
+          footerRightWidget {
+            title
+            address
+          }
+        }
+     
+        }
+      }
+  
+      menus(where: {location: PRIMARY}) {
+        nodes {
+          name
+          slug
+          menuItems(first: 50){
+            nodes {
+              url
+              target
+              parentId
+              label
+              cssClasses
+              description
+              id
+              childItems {
+                nodes {
+                  uri
+                  label
                 }
               }
             }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
+          }
+        }
+      }
+    }`,
+    });
+  
+    return {
+      props: {
+        vancouverData: data?.pages?.nodes,
+        metaData: data?.pages?.nodes,
+        settings: data?.settingsOptions?.AsimOptions,
+        mainMenus: data?.menus?.nodes,
+      },
+    };
+  }
+  
+  type MyProps = {
+    vancouverData: any;
+    metaData: any;
+    settings: any;
+    mainMenus: any;
+   
+  };
 
-    }, []);
+const Vancouver = (props: MyProps) => {
+
+  const { settings, mainMenus, vancouverData, metaData } = props;
+    // const [datas, setDatas] = useState([]);
+    const [key, setKey] = useState(null);
+    // const [metaData, setMetaData] = useState([]);
+
+
+    // useEffect(() => {
+    //     const client = new ApolloClient({
+    //         uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    //         cache: new InMemoryCache(),
+    //       });
+    //     client
+    //     .query({
+    //       query: gql`query{
+    //         pages(where: {id: 876}) {
+    //           nodes {
+    //             Vancouver {
+    //               thirdApplyStepTitle
+    //               secondApplyStepTitle
+    //               secondApplyStepDescription
+    //               productsTitle
+    //               productsRightText
+    //               productsLeftText
+    //               firstApplyStepTitle
+    //               brokerTitle
+    //               brokerDescription
+    //               bannerTitle
+    //               bannerHeading
+    //               bannerDescription
+    //               aboutText
+    //               aboutImage {
+    //                 altText
+    //                 sourceUrl
+    //               }
+    //               bannerImage {
+    //                 altText
+    //                 sourceUrl
+    //               }
+    //               brokerLink {
+    //                 url
+    //                 title
+    //               }
+    //               productsImage {
+    //                 altText
+    //                 sourceUrl
+    //               }
+    //               renovation {
+    //                 title
+    //                 description
+    //               }
+    //               slider {
+    //                 title
+    //                 content
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }`,
+    //     })
+    //     .then((result) => setDatas(result?.data?.pages?.nodes));
+    //     client
+    //     .query({
+    //       query: gql`query{
+    //         pages(where: {id: 876}) {
+    //           nodes {
+    //             seo {
+    //               title
+    //               description
+    //               canonicalUrl
+    //               focusKeywords
+    //               openGraph {
+    //                 image {
+    //                   url
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }`,
+    //     })
+    //     .then((result) => setMetaData(result?.data?.pages?.nodes));
+
+    // }, []);
 
 
     const myLoader = ({ src, width, quality }) => {
@@ -126,7 +274,7 @@ const Vancouver = () => {
 
     return (
         <>
-        {datas.map( (data, index) => {
+        {vancouverData?.map( (data, index) => {
             return(
         <div key={index} className='Bc-Coquitlam'>
         <Head>
@@ -143,7 +291,7 @@ const Vancouver = () => {
             )
         })}
         </Head>
-        <Header />
+        <Header settings={settings} mainMenus={mainMenus}/>
             <main className="content">
             {data?.Vancouver?.bannerTitle == null ? "" : (
                 <Hero
@@ -302,7 +450,7 @@ const Vancouver = () => {
             </Container>
             <CTA />
             </main>
-            <Footer />
+            <Footer settings={settings} mainMenus={mainMenus} />
         
     </div>
         ) 

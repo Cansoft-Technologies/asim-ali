@@ -1,52 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Accordion, Container } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import Image from 'next/image';   
 
-const FAQ = () => {
-    const [faqsections, setFaqSections] = useState([]);
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-      useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`
-          query{
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  faqSection {
-                    hideSection
-                    faqTitle
-                    faqSubitle
-                    faqImage {
-                      altText
-                      sourceUrl
-                    }
-                    faqAccordion {
-                      question
-                      answer
-                    }
-                  }
-                }
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          HomeLandingPage {
+            faqSection {
+              hideSection
+              faqTitle
+              faqSubitle
+              faqImage {
+                altText
+                sourceUrl
+              }
+              faqAccordion {
+                question
+                answer
               }
             }
-          }`,
-        })
-        .then((result) => setFaqSections(result?.data?.pages?.nodes));
-    }, []);
-    const myLoader = ({ src, width, quality }) => {
-      return `${src}?w=${width}&q=${quality || 75}`
-    }
-    
+          }
+        }
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      faqsections: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  faqsections: any;
+};
+
+
+const FAQ = (props: MyProps) => {
+
+  const { faqsections } = props;
+
     return (
         <>
         
-        {faqsections.map(faq => {
+        {faqsections?.map(faq => {
             return(
             <Container key={faq}> 
             {faq?.HomeLandingPage?.faqSection?.hideSection == true? "" : (
@@ -57,13 +63,6 @@ const FAQ = () => {
                   }} 
                 className='faq_section'> 
                     <div className="faq_text"> 
-                    {/* <Image 
-                   width="100" 
-                   height="100" 
-                  src={faq?.HomeLandingPage?.faqSection?.faqImage?.sourceUrl}
-                  loader={myLoader}  
-                  style={{zIndex: 0}} 
-                  alt='Logo' /> */}
                         <p>{faq?.HomeLandingPage?.faqSection?.faqTitle}</p>
                         <p dangerouslySetInnerHTML={{__html: faq?.HomeLandingPage?.faqSection?.faqSubitle}} ></p>
                     

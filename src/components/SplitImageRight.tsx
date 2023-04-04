@@ -1,46 +1,55 @@
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const SplitImageRight = () => {
 
-    const [splitImages, setSplitImages] = useState([]);
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-    useEffect(() => {
-      const client = new ApolloClient({
-          uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-          cache: new InMemoryCache(),
-        });
-      client
-      .query({
-        query: gql`
-        query{
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  splitImageRightSection {
-                    splitTitle
-                    splitDescription
-                    splitImage {
-                      altText
-                      sourceUrl
-                    }
-                    hideSection
-                    splitButton {
-                      url
-                      title
-                    }
-                  }
-                }
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          HomeLandingPage {
+            splitImageRightSection {
+              splitTitle
+              splitDescription
+              splitImage {
+                altText
+                sourceUrl
+              }
+              hideSection
+              splitButton {
+                url
+                title
               }
             }
-          }`,
-      })
-      .then((result) => setSplitImages(result?.data?.pages?.nodes));
-  }, []);
+          }
+        }
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      splitImagesRight: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  splitImagesRight: any;
+};
+
+const SplitImageRight = (props: MyProps) => {
+
+  const { splitImagesRight } = props;
 
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`
@@ -49,7 +58,7 @@ const SplitImageRight = () => {
     return (
         <>
    
-            {splitImages.map( splitImage => {
+            {splitImagesRight?.map( splitImage => {
                 return(
                     <section 
                     key={splitImage}

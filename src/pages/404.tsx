@@ -1,14 +1,100 @@
 import React from 'react';
-import { client } from 'client';
 import { Header, Hero, Footer } from '../components';
+import { gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-export default function Page(): JSX.Element {
-  const { useQuery } = client;
-  const generalSettings = useQuery().generalSettings;
+
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`query{ settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
+              nodes {
+                uri
+                label
+              }
+            }
+          }
+        }
+      }
+    }}`,
+  });
+
+  return {
+    props: {
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  settings: any;
+  mainMenus: any;
+};
+
+
+
+export default function Page(props: MyProps): JSX.Element {
+  const { settings, mainMenus } = props;
+ 
 
   return (
     <>
-      <Header />
+      <Header settings={settings} mainMenus={mainMenus}/>
       <main className="content content-page">
         <Hero title={`Oops! That page can’t be found.`} />
         <div className="wrap">
@@ -22,7 +108,7 @@ export default function Page(): JSX.Element {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer settings={settings} mainMenus={mainMenus} />
     </>
   );
 }

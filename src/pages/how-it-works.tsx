@@ -1,32 +1,34 @@
 import { Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
-import { client} from 'client';
+import React  from 'react';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 
 
-const HowItWorks = () => {
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-    const { useQuery } = client;
-    const generalSettings = useQuery().generalSettings;
-    const [datas, setDatas] = useState([]);
-    const [metaData, setMetaData] = useState([]);
-
-
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 499}) {
-              nodes {
-                HowItWorks {
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 499}) {
+      nodes {
+        seo {
+          title
+          description
+          canonicalUrl
+          focusKeywords
+          openGraph {
+            image {
+              url
+            }
+          }
+        }
+        HowItWorks {
                   bannerTitle
                   bannerBackgroundImage {
                     altText
@@ -80,33 +82,99 @@ const HowItWorks = () => {
                     altText
                   }
                 }
-              }
+
+
+
+    
+}
+}
+settingsOptions {
+    AsimOptions {
+      headerSettings {
+        uploadLogo {
+          sourceUrl
+          altText
+        }
+      }
+      footerSettings {
+      socialUrl {
+        facebook
+        tiktok
+        linkedin
+        instagram
+      }
+      copyrightText
+      footerLeftWidget {
+        title
+        phoneNumber
+        emailAddress
+      }
+      footerLogoSection {
+        logoText
+        logoUpload {
+          altText
+          sourceUrl
+        }
+      }
+      footerRightWidget {
+        title
+        address
+      }
+    }
+ 
+    }
+  }
+
+  menus(where: {location: PRIMARY}) {
+    nodes {
+      name
+      slug
+      menuItems(first: 50){
+        nodes {
+          url
+          target
+          parentId
+          label
+          cssClasses
+          description
+          id
+          childItems {
+            nodes {
+              uri
+              label
             }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 499}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-    }, []);
+          }
+        }
+      }
+    }
+  }
+}`,
+  });
+
+  return {
+    props: {
+      howItWorksData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  howItWorksData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
+
+
+const HowItWorks = (props: MyProps) => {
+
+  const { settings, mainMenus, howItWorksData, metaData } = props;
+
+
     const myLoader = ({ src, width, quality }) => {
         return `${src}?w=${width}&q=${quality || 75}`
       }
@@ -114,8 +182,7 @@ const HowItWorks = () => {
 
     return (
         <>
-        {console.log(datas)}
-        {datas.map( (data, key) => {
+        {howItWorksData.map( (data, key) => {
             return(
                 <div key={key}>
                     <Head>
@@ -132,7 +199,7 @@ const HowItWorks = () => {
                     )
                 })}
                 </Head>
-                    <Header />
+                <Header settings={settings} mainMenus={mainMenus}/>
                     <main className="content">
                     <Hero
                         title={data?.HowItWorks?.bannerTitle}
@@ -330,7 +397,7 @@ const HowItWorks = () => {
                     </Container>
 
                     </main>
-                    <Footer/>
+                    <Footer settings={settings} mainMenus={mainMenus} />
                 </div>
                 
             )

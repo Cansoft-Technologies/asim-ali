@@ -6,42 +6,52 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 
-const SplitImageLeft = () => {
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-    const [splitImages, setSplitImages] = useState([]);
-
-    useEffect(() => {
-      const client = new ApolloClient({
-          uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-          cache: new InMemoryCache(),
-        });
-      client
-      .query({
-        query: gql`
-        query{
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  splitImageLeftSection {
-                    splitTitle
-                    splitDescription
-                    splitImage {
-                      altText
-                      sourceUrl
-                    }
-                    hideSection
-                    splitButton {
-                      url
-                      title
-                    }
-                  }
-                }
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          HomeLandingPage {
+            splitImageLeftSection {
+              splitTitle
+              splitDescription
+              splitImage {
+                altText
+                sourceUrl
+              }
+              hideSection
+              splitButton {
+                url
+                title
               }
             }
-          }`,
-      })
-      .then((result) => setSplitImages(result?.data?.pages?.nodes));
-  }, []);
+          }
+        }
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      splitImagesLeft: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  splitImagesLeft: any;
+};
+
+
+const SplitImageLeft = (props: MyProps) => {
+
+  const { splitImagesLeft } = props;
+
 
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`
@@ -50,7 +60,7 @@ const SplitImageLeft = () => {
     return (
         <>
    
-            {splitImages.map( splitImage => {
+            {splitImagesLeft?.map( splitImage => {
                 return(
                     <section 
                     key={splitImage}

@@ -1,33 +1,35 @@
 import { Footer, Header, Hero } from 'components';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import { client } from 'client';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const Locations = () => {
-  
-    const [showMaps, setShowMaps] = useState(false);
-    const [showLists, setShowLists] = useState(true)
-    const [isActive, setIsActive] = useState(false);
-
-    const [datas, setDatas] = useState([]);
-    const [metaData, setMetaData] = useState([]);
 
 
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages (where: {id: 555}){
-              nodes {
-                locations {
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 555}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+          locations {
                   locationsBannerTitle
                   locationsBannerHeading
                   locationsBannerDescription
@@ -56,35 +58,101 @@ const Locations = () => {
                     }
                   }
                 }
-              }
-            }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
+        }
+      }
+  
 
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 555}) {
+
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
+                uri
+                label
               }
             }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
+          }
+        }
+      }
+    }
+  }`,
+  });
 
-    }, []);
+  return {
+    props: {
+      locationData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  locationData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
+
+
+const Locations = (props: MyProps) => {
+
+  const { settings, mainMenus, locationData, metaData } = props;
+
+  
+    const [showMaps, setShowMaps] = useState(false);
+    const [showLists, setShowLists] = useState(true)
+    const [isActive, setIsActive] = useState(false);
 
 
     const mapHandler = () => {
@@ -104,7 +172,7 @@ const Locations = () => {
 
     return (
         <>
-        {datas.map( (data, index) => {
+        {locationData.map( (data, index) => {
             return(
                 <div key={index} className='our-locations'>
               <Head>
@@ -121,7 +189,7 @@ const Locations = () => {
                     )
                 })}
                 </Head>
-                <Header />
+                <Header settings={settings} mainMenus={mainMenus}/>
                     <main className="content">
                     {data?.locations?.locationsBannerTitle == null ? "" : (
                     <Hero
@@ -227,7 +295,7 @@ const Locations = () => {
                         
                     </Container>
                     </main>
-                    <Footer />
+                    <Footer settings={settings} mainMenus={mainMenus} />
                 
             </div>
                 ) 

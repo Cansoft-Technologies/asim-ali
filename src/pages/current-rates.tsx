@@ -1,20 +1,152 @@
 import { Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useState, useEffect, useRef} from 'react';
-import { client, Page as PageType } from 'client';
+import React, { useState, useRef} from 'react';
 import { Button, Row, Col, Container  } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-const Current = () => {
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 301}) {
+      nodes {
+        seo {
+          title
+          description
+          canonicalUrl
+          focusKeywords
+          openGraph {
+            image {
+              url
+            }
+          }
+        }
+   
+        CurrentRates {
+          bannerTitle
+          currentMortgageRate
+          currentPrimeRate
+          easyApplicationSubtitle
+          easyApplicationTitle
+          paymentCalculatorTitle
+          tableBottomNotes
+          bannerBackgroundImage {
+            altText
+            sourceUrl
+          }
+          easyApplicationBackground {
+            altText
+            sourceUrl
+          }
+          paymentCalculatorLink {
+            url
+          }
+          tableRateInformation {
+            terms
+            bankRates
+            dominion
+          }
+        }
 
-    const [datas, setDatas] = useState([]);
+
+
+    
+}
+}
+settingsOptions {
+    AsimOptions {
+      headerSettings {
+        uploadLogo {
+          sourceUrl
+          altText
+        }
+      }
+      footerSettings {
+      socialUrl {
+        facebook
+        tiktok
+        linkedin
+        instagram
+      }
+      copyrightText
+      footerLeftWidget {
+        title
+        phoneNumber
+        emailAddress
+      }
+      footerLogoSection {
+        logoText
+        logoUpload {
+          altText
+          sourceUrl
+        }
+      }
+      footerRightWidget {
+        title
+        address
+      }
+    }
+ 
+    }
+  }
+
+  menus(where: {location: PRIMARY}) {
+    nodes {
+      name
+      slug
+      menuItems(first: 50){
+        nodes {
+          url
+          target
+          parentId
+          label
+          cssClasses
+          description
+          id
+          childItems {
+            nodes {
+              uri
+              label
+            }
+          }
+        }
+      }
+    }
+  }
+}`,
+  });
+
+  return {
+    props: {
+      currentData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  currentData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
+
+const Current = (props: MyProps) => {
+
+  const { settings, mainMenus, currentData, metaData } = props;
+
     const [success, setSuccess] = useState(null);
     const [success2, setSuccess2] = useState(null);
-    const [metaData, setMetaData] = useState([]);
 
 
     const form = useRef();
@@ -64,76 +196,10 @@ const Current = () => {
     };
 
 
-      useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query {
-            pages(where: {id: 301}) {
-              nodes {
-                CurrentRates {
-                  bannerTitle
-                  currentMortgageRate
-                  currentPrimeRate
-                  easyApplicationSubtitle
-                  easyApplicationTitle
-                  paymentCalculatorTitle
-                  tableBottomNotes
-                  bannerBackgroundImage {
-                    altText
-                    sourceUrl
-                  }
-                  easyApplicationBackground {
-                    altText
-                    sourceUrl
-                  }
-                  paymentCalculatorLink {
-                    url
-                  }
-                  tableRateInformation {
-                    terms
-                    bankRates
-                    dominion
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 301}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-
-    }, []);
-    
-
 
     return (
         <div className='currentRate'>
-            {datas.map((data, index) => {
+            {currentData?.map((data, index) => {
                 return(
                     <div key={index}className="currentRate-container">
                  <Head>
@@ -150,7 +216,7 @@ const Current = () => {
                     )
                 })}
                 </Head>
-                    <Header />
+                <Header settings={settings} mainMenus={mainMenus}/>
                     
                      <main className="content">
                      <Hero
@@ -258,7 +324,7 @@ const Current = () => {
                         </Link>
                      </div>
                      </main>
-                     <Footer />  
+                     <Footer settings={settings} mainMenus={mainMenus} />
                     </div>
                 )
             }) }

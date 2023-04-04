@@ -1,43 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Carousel, Col, Row, Button } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const FlexabilitySlider = () => {
-    const [sliders, setSliders] = useState([]);
 
-      useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query MyQuery {
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  flexabilitySlider {
-                    sliderTitle
-                    sliderSubtitle
-                    sliderDescription
-                    sliderImage {
-                      altText
-                      sourceUrl
-                    }
-                    sliderButtonUrl {
-                      url
-                    }
-                  }
-                }
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          HomeLandingPage {
+            flexabilitySlider {
+              sliderTitle
+              sliderSubtitle
+              sliderDescription
+              sliderImage {
+                altText
+                sourceUrl
+              }
+              sliderButtonUrl {
+                url
               }
             }
-          }`,
-        })
-        .then((result) => setSliders(result?.data?.pages?.nodes));
-    }, []);
+          }
+        }
+      }
+    }`,
+  });
+
+  return {
+    props: {
+      flexsliders: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  flexsliders: any;
+};
+
+
+const FlexabilitySlider = (props: MyProps) => {
+
+  const { flexsliders } = props;
     
     
     const myLoader = ({ src, width, quality }) => {
@@ -50,7 +62,7 @@ const FlexabilitySlider = () => {
             <Carousel fade>
            
 
-            {sliders.map( function(slider) { 
+            {flexsliders?.map( function(slider) { 
 
               return( 
 

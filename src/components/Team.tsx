@@ -1,51 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import Image from 'next/image';
-const Team = () => {
 
-    const [teams, setTeams] = useState([]);
 
-    useEffect(() => {
-      const client = new ApolloClient({
-          uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-          cache: new InMemoryCache(),
-        });
-      client
-      .query({
-        query: gql`
-        query{
-            pages(where: {title: "home"}) {
-              nodes {
-                HomeLandingPage {
-                  teamSection {
-                    teamTitle
-                    hideSection
-                    teamImage {
-                      sourceUrl
-                      altText
-                    }
-                  }
-                }
+
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`query{
+      pages(where: {id: 14}) {
+        nodes {
+          HomeLandingPage {
+            teamSection {
+              teamTitle
+              hideSection
+              teamImage {
+                sourceUrl
+                altText
               }
             }
-          }`,
-      })
-      .then((result) => setTeams(result?.data?.pages?.nodes));
-  }, []);
+          }
+        }
+      }
+    }`,
+  });
 
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
+  return {
+    props: {
+      teams: data?.pages?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  teams: any;
+};
 
 
 
+const Team = (props: MyProps) => {
+
+  const { teams } = props;
+ 
     return (
         <>
            <Container> 
             
-                {teams.map(team => {
+                {teams?.map(team => {
                     return(
                        
                       <div key={team}>

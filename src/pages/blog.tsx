@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { client, Page as PageType } from 'client';
-import { Header, Footer, Hero, Pagination } from '../components';
+import { Header, Footer, Hero } from '../components';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { Button, Container } from 'react-bootstrap';
@@ -11,17 +10,129 @@ import Moment from 'react-moment';
 
 
 
-const Blog = () => {
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 250}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+                blog {
+                  blogBannerTitle
+                  blogBannerBackgroundImage {
+                    altText
+                    sourceUrl
+                  }
+                }
+              }
+      }
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
+              nodes {
+                uri
+                label
+              }
+            }
+          }
+        }
+      }
+    }
+  }`,
+  });
+
+  return {
+    props: {
+      blogData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  blogData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
+
+
+const Blog = (props: MyProps) => {
+
+  const { blogData, metaData, settings, mainMenus } = props;
 
     const [blogs, setBlogs] = useState([]);
-    const [datas, setDatas] = useState([]);
     const [isLoading, seIsLoading] = useState(true);
 
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const size = 6;
-    const [metaData, setMetaData] = useState([]);
-
+   
 
     
 
@@ -106,52 +217,6 @@ const Blog = () => {
         );
 
 
-        client
-        .query({
-          query: gql`query MyQuery {
-            pages(where: {id: 250}) {
-              nodes {
-                blog {
-                  blogBannerTitle
-                  blogBannerBackgroundImage {
-                    altText
-                    sourceUrl
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 250}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-
-  
-
-    const myLoader = ({ src, width, quality }) => {
-      return `${src}?w=${width}&q=${quality || 75}`
-    }
-
 
     }, [page]);
     
@@ -175,9 +240,9 @@ const Blog = () => {
                     )
                 })}
             </Head>
-            <Header />
+            <Header settings={settings} mainMenus={mainMenus}/>
            
-                {datas.map((data, i) => {
+                {blogData?.map((data, i) => {
                     return(
                         <div key={i}> 
                 <main className="content">
@@ -186,13 +251,13 @@ const Blog = () => {
                     bgImage={data?.blog?.blogBannerBackgroundImage?.sourceUrl}
                 />
 
-{ isLoading && 
-<div className="text-center py-5">
-<div className="spinner-border text-dark" role="status">
-    <span className="visually-hidden">Loading...</span>
-</div>
-</div>   
-}
+                  { isLoading && 
+                  <div className="text-center py-5">
+                  <div className="spinner-border text-dark" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                  </div>
+                  </div>   
+                  }
 
                 <Container className="my-5 blog-container">
                 <h1 className="my-3">{data?.blog.blogBannerTitle}</h1>
@@ -254,7 +319,7 @@ const Blog = () => {
 
                
                 
-                <Footer />
+            <Footer settings={settings} mainMenus={mainMenus} />
         </div>
     );
 };

@@ -6,6 +6,8 @@ import { client, Page as PageType } from 'client';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import React, { useState, useEffect } from 'react';
+import CustomHeader from 'components/CustomHeader';
+import CustomFooter from 'components/CustomFooter';
 
 
 export interface PageProps {
@@ -65,7 +67,7 @@ export function PageComponent({ page }: PageProps) {
                 )
             })}
             </Head>
-      <Header />
+      <CustomHeader />
 
       <Hero
         title={page?.title()}
@@ -79,7 +81,7 @@ export function PageComponent({ page }: PageProps) {
         </div>
       </main>
 
-     <Footer />
+     <CustomFooter />
 
     </>
   );

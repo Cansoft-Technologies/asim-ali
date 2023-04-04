@@ -34,24 +34,28 @@ const responsive = {
     }
   };
 
-const Prince = () => {
-
-    const [datas, setDatas] = useState([]);
-    const [key, setKey] = useState(null);
-    const [metaData, setMetaData] = useState([]);
-
-
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 908}) {
-              nodes {
-                Prince {
+  export async function getStaticProps() {
+    const client = new ApolloClient({
+      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+      cache: new InMemoryCache(),
+    });
+  
+    const { data } = await client.query({
+      query: gql`query{ 
+        pages(where: {id: 908}) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+            }
+            Prince {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -90,34 +94,99 @@ const Prince = () => {
                     content
                   }
                 }
-              }
+          }
+        }
+    
+  
+  
+        settingsOptions {
+        AsimOptions {
+          headerSettings {
+            uploadLogo {
+              sourceUrl
+              altText
             }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 908}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
+          }
+          footerSettings {
+          socialUrl {
+            facebook
+            tiktok
+            linkedin
+            instagram
+          }
+          copyrightText
+          footerLeftWidget {
+            title
+            phoneNumber
+            emailAddress
+          }
+          footerLogoSection {
+            logoText
+            logoUpload {
+              altText
+              sourceUrl
+            }
+          }
+          footerRightWidget {
+            title
+            address
+          }
+        }
+     
+        }
+      }
+  
+      menus(where: {location: PRIMARY}) {
+        nodes {
+          name
+          slug
+          menuItems(first: 50){
+            nodes {
+              url
+              target
+              parentId
+              label
+              cssClasses
+              description
+              id
+              childItems {
+                nodes {
+                  uri
+                  label
                 }
               }
             }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-    }, []);
+          }
+        }
+      }
+    }`,
+    });
+  
+    return {
+      props: {
+        princeData: data?.pages?.nodes,
+        metaData: data?.pages?.nodes,
+        settings: data?.settingsOptions?.AsimOptions,
+        mainMenus: data?.menus?.nodes,
+      },
+    };
+  }
+  
+  type MyProps = {
+    princeData: any;
+    metaData: any;
+    settings: any;
+    mainMenus: any;
+   
+  };
+  
+
+const Prince = (props: MyProps) => {
+
+  const { settings, mainMenus, princeData, metaData } = props;
+
+    const [key, setKey] = useState(null);
+
 
 
     const myLoader = ({ src, width, quality }) => {
@@ -127,7 +196,7 @@ const Prince = () => {
 
     return (
         <>
-        {datas.map( (data, index) => {
+        {princeData?.map( (data, index) => {
             return(
         <div key={index} className='Bc-Coquitlam'>
         <Head>
@@ -144,7 +213,7 @@ const Prince = () => {
             )
         })}
         </Head>
-        <Header />
+        <Header settings={settings} mainMenus={mainMenus}/>
             <main className="content">
             {data?.Prince?.bannerTitle == null ? "" : (
                 <Hero
@@ -303,7 +372,7 @@ const Prince = () => {
             </Container>
             <CTA />
             </main>
-            <Footer />
+            <Footer settings={settings} mainMenus={mainMenus} />
         
     </div>
         ) 

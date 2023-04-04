@@ -8,23 +8,28 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-const MortgageSurrey = () => {
-    const [datas, setDatas] = useState([]);
-    const [metaData, setMetaData] = useState([]);
-
-
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 1205}) {
-              nodes {
-                surrey {
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 1205}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+          surrey {
                   serviceBannerTitle
                   serviceBannerHeading
                   serviceBannerDescription
@@ -42,35 +47,97 @@ const MortgageSurrey = () => {
                   }
                   ourMortgageServicesTitle
                 }
-              }
-            }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 1205}) {
+        }
+      }
+  
+
+
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
+                uri
+                label
               }
             }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
+          }
+        }
+      }
+    }
+  }`,
+  });
 
-    }, []);
+  return {
+    props: {
+      surreyData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
 
+type MyProps = {
+  surreyData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
+
+
+const MortgageSurrey = (props: MyProps) => {
+
+  const { settings, mainMenus, surreyData, metaData } = props;
+  
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`
     }
@@ -78,7 +145,7 @@ const MortgageSurrey = () => {
 
     return (
        <>
-         {datas.map( (data, index) => {
+         {surreyData?.map( (data, index) => {
             return(
         <div key={index} className='our-services'>
           <Head>
@@ -95,7 +162,7 @@ const MortgageSurrey = () => {
                 )
             })}
             </Head>
-            <Header />
+            <Header settings={settings} mainMenus={mainMenus}/>
                 <main className="content">
                 {data?.surrey?.serviceBannerTitle == null ? "" : (
                     <Hero
@@ -131,6 +198,7 @@ const MortgageSurrey = () => {
                            </div>
                       </Col>
                       <Col className='service-texts' lg={6}>
+                       
                       <div className='service-content'>
                            <h2 className='mt-4'>{service?.serviceTitle}</h2>
                            <p dangerouslySetInnerHTML={{__html: service?.serviceContent}} ></p>
@@ -149,7 +217,7 @@ const MortgageSurrey = () => {
                 </div>
                 <CTA />
                 </main>
-                <Footer />
+                <Footer settings={settings} mainMenus={mainMenus} />
             
         </div>
 

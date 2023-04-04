@@ -1,29 +1,34 @@
 import { Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
-import { client} from 'client';
+import React from 'react';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { Col, Container, Row } from 'react-bootstrap';
-import Image from 'next/image';
+import { Container } from 'react-bootstrap';
 
 
-const Testimonials = () => {
-    const [datas, setDatas] = useState([]);
-    const [metaData, setMetaData] = useState([]);
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 1370}) {
-              nodes {
-                Testimonials {
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 1370}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+     
+          Testimonials {
                   bannerTitle
                   bannerHeading
                   bannerDescription
@@ -36,45 +41,101 @@ const Testimonials = () => {
                     testimonial
                     clientName
                   }
-                }
-              }
             }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 1370}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-
-
-    }, []);
-    const myLoader = ({ src, width, quality }) => {
-        return `${src}?w=${width}&q=${quality || 75}`
+        }
       }
+  
 
+
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
+              nodes {
+                uri
+                label
+              }
+            }
+          }
+        }
+      }
+    }
+  }`,
+  });
+
+  return {
+    props: {
+      testimonialsData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  testimonialsData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
+
+
+
+const Testimonials = (props: MyProps) => {
+  const { settings, mainMenus, testimonialsData, metaData } = props;
 
     return (
         <>
-        {datas.map( (data, index) => {
+        {testimonialsData.map( (data, index) => {
             return(
         <div key={index} className='our-testimonial'>
           <Head>
@@ -91,7 +152,7 @@ const Testimonials = () => {
             )
         })}
         </Head>
-        <Header />
+        <Header settings={settings} mainMenus={mainMenus}/>
            <main className="content">
            <Hero
                title={data?.Testimonials?.bannerTitle}
@@ -104,7 +165,7 @@ const Testimonials = () => {
                 <h1 className="my-3 text-center">{data?.Testimonials?.sectionTitle}</h1>
                     <div className="row row-cols-1 row-cols-md-3 g-4 items">
 
-                        {data?.Testimonials?.testimonials.slice(0)
+              {data?.Testimonials?.testimonials?.slice(0)
   .reverse().map((testimonial, key) => {
                             return(
                             <div key={key}  className="col">
@@ -131,7 +192,7 @@ const Testimonials = () => {
                     
                 </Container>
                 </main>
-                <Footer/>
+                <Footer settings={settings} mainMenus={mainMenus} />
                 </div>
                    )
                 })}

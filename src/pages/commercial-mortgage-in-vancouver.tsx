@@ -8,22 +8,28 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-const CommercialVancouver = () => {
-    const [datas, setDatas] = useState([]);
-    const [metaData, setMetaData] = useState([]);
-
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 1308}) {
-              nodes {
-                commercialvancouver {
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 1308}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+          commercialvancouver {
                   serviceBannerTitle
                   serviceBannerHeading
                   serviceBannerDescription
@@ -41,33 +47,95 @@ const CommercialVancouver = () => {
                   }
                   ourMortgageServicesTitle
                 }
-              }
-            }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 1308}) {
+        }
+      }
+  
+
+
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
+                uri
+                label
               }
             }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-    }, []);
+          }
+        }
+      }
+    }
+  }`,
+  });
+
+  return {
+    props: {
+      commercialvancouverData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  commercialvancouverData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
+
+const CommercialVancouver = (props: MyProps) => {
+  const { settings, mainMenus, commercialvancouverData, metaData } = props;
+
 
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`
@@ -76,7 +144,7 @@ const CommercialVancouver = () => {
 
     return (
        <>
-         {datas.map( (data, index) => {
+         {commercialvancouverData?.map( (data, index) => {
             return(
         <div key={index} className='our-services'>
           <Head>
@@ -93,7 +161,7 @@ const CommercialVancouver = () => {
                 )
             })}
             </Head>
-            <Header />
+            <Header settings={settings} mainMenus={mainMenus}/>
                 <main className="content">
                 {data?.commercialvancouver?.serviceBannerTitle == null ? "" : (
                     <Hero
@@ -105,7 +173,6 @@ const CommercialVancouver = () => {
                 )}
                 
                 <div className="service-container">
-                {console.log("Services ",data?.commercialvancouver)}
                   <h1 className="text-center mt-5">{data?.commercialvancouver?.ourMortgageServicesTitle}</h1>
                   
                   {data?.commercialvancouver?.ourServices.map(
@@ -113,7 +180,6 @@ const CommercialVancouver = () => {
                     return(
                         
                    <div className="service-row" id={key} key={key}>
-                    {console.log("service", service?.serviceTitle)}
 
                     <Container>
                       <Row>
@@ -129,6 +195,7 @@ const CommercialVancouver = () => {
                            </div>
                       </Col>
                       <Col className='service-texts' lg={6}>
+                   
                         <div className="service-content">
                         <h2 className='mt-4'>{service?.serviceTitle}</h2>
                            <p dangerouslySetInnerHTML={{__html: service?.serviceContent}} ></p>
@@ -148,7 +215,7 @@ const CommercialVancouver = () => {
                 </div>
                 <CTA />
                 </main>
-                <Footer />
+                <Footer settings={settings} mainMenus={mainMenus} />
             
         </div>
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { Footer, Header } from 'components';
 import { Hero } from '../components';
-import { client} from 'client';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faMapMarker, faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -12,12 +11,133 @@ import emailjs from '@emailjs/browser';
 
 
 
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-const Contact = () => {
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 245}) {
+              nodes {
+                seo {
+                  title
+                  description
+                  canonicalUrl
+                  focusKeywords
+                  openGraph {
+                    image {
+                      url
+                    }
+                  }
+                }
+                contactPage {
+                  contactBannerTitle
+                  contactBannerHeading
+                  contactBannerDescription
+                  phoneNumber
+                  eMail
+                  address
+                  addressMap
+                  contactBannerBackgroundImage {
+                    altText
+                    sourceUrl
+                  }
+                }
+              }
+      }
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
+              nodes {
+                uri
+                label
+              }
+            }
+          }
+        }
+      }
+    }
+  }`,
+  });
+
+  return {
+    props: {
+      contactData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  contactData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
+
+
+
+
+const Contact = (props: MyProps) => {
+
+  const { settings, mainMenus, contactData, metaData } = props;
     const form = useRef();
     const [contacts, setContacts] = useState([]);
     const [success, setSuccess] = useState(null);
-    const [metaData, setMetaData] = useState([]);
+    // const [metaData, setMetaData] = useState([]);
 
    
     const sendEmail = (e) => {
@@ -41,66 +161,10 @@ const Contact = () => {
       e.target.reset();
     };
 
-      useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 245}) {
-              nodes {
-                contactPage {
-                  contactBannerTitle
-                  contactBannerHeading
-                  contactBannerDescription
-                  phoneNumber
-                  eMail
-                  address
-                  addressMap
-                  contactBannerBackgroundImage {
-                    altText
-                    sourceUrl
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setContacts(result?.data?.pages?.nodes));
-
-
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 245}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-
-    }, []);
-    
-    
-
   
     return (
         <>
-        {contacts.map((contact, index) => {
+        {contactData.map((contact, index) => {
             return(
                 <div key={index}>
                   <Head>
@@ -117,7 +181,7 @@ const Contact = () => {
                     )
                 })}
                 </Head>
-                <Header />
+                <Header settings={settings} mainMenus={mainMenus}/>
                 
                 <main className="content">
                
@@ -248,7 +312,7 @@ const Contact = () => {
                   </div>
             </div>
         </main>
-        <Footer />
+        <Footer settings={settings} mainMenus={mainMenus} />
                 </div>
 
             )

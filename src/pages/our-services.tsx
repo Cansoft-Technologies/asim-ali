@@ -1,7 +1,7 @@
 import { CTA, Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useState, useEffect } from 'react';
-import { client } from 'client';
+import React from 'react';
+
 import { Col, Container, Row } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -9,6 +9,134 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 
+
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
+  const { data } = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 553}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+     
+          services {
+            serviceBannerTitle
+            serviceBannerHeading
+            servicesDescription
+            serviceBannerImage {
+              sourceUrl
+            }
+            serviceBannerDescription
+            refinancingTitle
+            refinancingDescription
+            ourServices {
+              serviceTitle
+              serviceContent
+              serviceImage {
+                altText
+                sourceUrl
+              }
+            }
+            ourMortgageServicesTitle
+          }
+        }
+      }
+  
+
+
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
+              nodes {
+                uri
+                label
+              }
+            }
+          }
+        }
+      }
+    }
+  }`,
+  });
+
+  return {
+    props: {
+      servicesData: data?.pages?.nodes,
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+  };
+}
+
+type MyProps = {
+  servicesData: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
+ 
+};
 
 
 const responsive = {
@@ -31,70 +159,10 @@ const responsive = {
     }
   };
 
-const Services = () => {
-    const [datas, setDatas] = useState([]);
-    const [metaData, setMetaData] = useState([]);
+const Services = (props: MyProps) => {
+  const { settings, mainMenus, servicesData, metaData } = props;
 
-    useEffect(() => {
-        const client = new ApolloClient({
-            uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-            cache: new InMemoryCache(),
-          });
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 553}) {
-              nodes {
-                services {
-                  serviceBannerTitle
-                  serviceBannerHeading
-                  servicesDescription
-                  serviceBannerImage {
-                    sourceUrl
-                  }
-                  serviceBannerDescription
-                  refinancingTitle
-                  refinancingDescription
-                  ourServices {
-                    serviceTitle
-                    serviceContent
-                    serviceImage {
-                      altText
-                      sourceUrl
-                    }
-                  }
-                  ourMortgageServicesTitle
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setDatas(result?.data?.pages?.nodes));
-
-        client
-        .query({
-          query: gql`query{
-            pages(where: {id: 553}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }`,
-        })
-        .then((result) => setMetaData(result?.data?.pages?.nodes));
-
-    }, []);
-
+   
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`
     }
@@ -102,7 +170,7 @@ const Services = () => {
 
     return (
        <>
-         {datas.map( (data, index) => {
+         {servicesData.map( (data, index) => {
             return(
         <div key={index} className='our-services'>
           <Head>
@@ -119,7 +187,7 @@ const Services = () => {
                 )
             })}
             </Head>
-                <Header />
+            <Header settings={settings} mainMenus={mainMenus}/>
                 <main className="content">
                 {data?.services?.serviceBannerTitle == null ? "" : (
                     <Hero
@@ -218,7 +286,7 @@ const Services = () => {
                 </div>
                 <CTA />
                 </main>
-                <Footer />
+                <Footer settings={settings} mainMenus={mainMenus} />
             
         </div>
 
