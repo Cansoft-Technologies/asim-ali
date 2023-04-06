@@ -8,6 +8,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import React, { useState, useEffect } from 'react';
 import CustomHeader from 'components/CustomHeader';
 import CustomFooter from 'components/CustomFooter';
+import CustomHero from 'components/CustomHero';
 
 export interface PostProps {
   post: Post | Post['preview']['node'] | null | undefined;
@@ -67,7 +68,7 @@ export function PostComponent({ post }: PostProps) {
             </Head>
       <CustomHeader />
 
-      <Hero
+      <CustomHero
         title={post?.title()}
         bgImage={post?.featuredImage?.node?.sourceUrl()}
       />

@@ -12,6 +12,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import Link from 'next/link';
 
 const responsive = {
     superLargeDesktop: {
@@ -362,7 +363,11 @@ const Langley = (props: MyProps) => {
                     brokerLangleyTitle}</h2>
                     <p>{data?.Langley?.brokerLangleyDescription}</p>
                     {data?.Langley?.brokerLangleyLink == null ? "" : (
-                        <a href={data?.Langley?.brokerLangleyLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                        <Link href={data?.Langley?.brokerLangleyLink?.url}>
+                          <span>
+                          Read More <FontAwesomeIcon icon={faChevronRight} />
+                          </span>
+                        </Link>
                     )}
                     
                     </Col>

@@ -63,8 +63,8 @@ const FAQ = (props: MyProps) => {
                   }} 
                 className='faq_section'> 
                     <div className="faq_text"> 
-                        <p>{faq?.HomeLandingPage?.faqSection?.faqTitle}</p>
-                        <p dangerouslySetInnerHTML={{__html: faq?.HomeLandingPage?.faqSection?.faqSubitle}} ></p>
+                        <h2><span className="faq-span">{faq?.HomeLandingPage?.faqSection?.faqTitle} </span>
+                        <span className="faq-span" dangerouslySetInnerHTML={{__html: faq?.HomeLandingPage?.faqSection?.faqSubitle}} ></span></h2>
                     
                     </div>
                 </div>
@@ -74,7 +74,7 @@ const FAQ = (props: MyProps) => {
                        {faq?.HomeLandingPage?.faqSection?.faqAccordion.map( (qa, index) => {
                         return(
                         <Accordion.Item key={index} eventKey={index.toString()} >
-                           <Accordion.Header>{qa.question}</Accordion.Header>
+                           <Accordion.Header as="h3">{qa.question}</Accordion.Header>
                            <Accordion.Body dangerouslySetInnerHTML={{__html: qa.answer}}>
                            </Accordion.Body>
                        </Accordion.Item>

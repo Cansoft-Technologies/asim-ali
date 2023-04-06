@@ -244,7 +244,9 @@ const Locations = (props: MyProps) => {
                                         />
                                         <div> 
                                           <a href={fImage?.locationLink?.url}>
-                                            <span dangerouslySetInnerHTML={{__html: fImage?.locationLink?.title.split('').join('</span><span>') + '</span>' }}  ></span>
+                                            <p className='verticall-location' >{fImage?.locationLink?.title}</p>
+
+                                            {/* <span dangerouslySetInnerHTML={{__html: fImage?.locationLink?.title.split('').join('</span><span>') + '</span>' }}  ></span> */}
                                             </a>
                                         </div>
                                         
@@ -274,7 +276,8 @@ const Locations = (props: MyProps) => {
                                         />
                                          <div> 
                                          <a href={sImage?.locationLink?.url}>
-                                            <span dangerouslySetInnerHTML={{__html:  sImage?.locationLink?.title?.split('').join('</span><span>') + '</span>' }}  ></span>
+                                         <p className='verticall-location' >{sImage?.locationLink?.title}</p>
+                                            {/* <span dangerouslySetInnerHTML={{__html:  sImage?.locationLink?.title?.split('').join('</span><span>') + '</span>' }}  ></span> */}
                                             </a>
                                         </div>
                                     </Col>

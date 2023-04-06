@@ -90,7 +90,7 @@ const CTA = () => {
                </div>
                </div>
                    <div className="cta_text"> 
-                       <h3>{cat?.HomeLandingPage?.callToActionSection?.actionTitle}</h3>
+                       <p>{cat?.HomeLandingPage?.callToActionSection?.actionTitle}</p>
                        
                        {cat?.HomeLandingPage?.callToActionSection?.actionLink == null ? "" : (
                         <Link href={cat?.HomeLandingPage?.callToActionSection?.actionLink?.url}>

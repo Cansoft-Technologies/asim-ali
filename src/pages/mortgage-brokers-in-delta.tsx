@@ -12,6 +12,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import Link from 'next/link';
 
 const responsive = {
     superLargeDesktop: {
@@ -361,7 +362,11 @@ const Delta = (props: MyProps) => {
                     <h2>{data?.Delta?.title}</h2>
                     <p>{data?.Delta?.description}</p>
                     {data?.Delta?.brokerLink == null ? "" : (
-                        <a href={data?.Delta?.brokerLink?.url}>Read More <FontAwesomeIcon icon={faChevronRight} /></a>
+                        <Link href={data?.Delta?.brokerLink?.url}>
+                          <span>
+                          Read More <FontAwesomeIcon icon={faChevronRight} />
+                          </span>
+                          </Link>
                     )}
                     
                     </Col>

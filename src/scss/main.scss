@@ -47,6 +47,20 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right, butto
     }
   }
 }
+.hero-title-post {
+  position: relative;
+  .hero-title {
+    font-size: 50px;
+    font-family: "AvenirBook";
+
+    span {
+      font-family: "AvenirBlack";
+      color:$color-orange;
+      display: block;
+      font-weight: 900;
+    }
+  }
+}
 .banner-bottom{
   .heading{
     font-size: 35px;
@@ -273,7 +287,7 @@ body {
   width: 100%;
   height: 600px;
   position: relative;
-  h2 {
+  h1 {
     font-family: "AvenirBook";
     padding: 50px;
     font-size: 70px;
@@ -299,7 +313,7 @@ body {
 
 .meeting_section {
   padding: 80px 0;
-  h3 {
+  h2 {
     font-family: "AvenirBook";
     font-size: 70px;
     color: $color-black;
@@ -371,7 +385,7 @@ body {
 
 footer {
   .wrap {
-    width: 55%;
+    width: 60%;
     h3 {
       color: $color-white;
       font-family: "AvenirBook";
@@ -496,7 +510,7 @@ footer {
       border: none;
     }
   }
-  h3 {
+  p {
     font-family: "AvenirBook";
     font-size: 40px;
     color: $color-black;
@@ -546,13 +560,13 @@ footer {
       transform: rotate(90deg);
     }
   }
-  p {
+  span.faq-span {
     font-family: "AvenirBook";
     font-size: 60px;
     color: $color-black;
     margin: 0;
     font-weight: 100;
-
+        display: block;
     span {
       font-family: "AvenirBlack";
       color: $color-secondary;
@@ -960,7 +974,7 @@ textarea#comment {
         font-family: 'Oswald', sans-serif;
       }
       p {
-        color: $color-secondary;
+        color: $color-orange;
         margin-bottom: 0;
       }
     }
@@ -977,7 +991,7 @@ textarea#comment {
       .contactBt {
         position: relative;
         z-index: 999;
-        background: $color-secondary !important;
+        background: $color-orange !important;
         border: 2px solid transparent !important;
         text-transform: uppercase;
         font-family: "AvenirBook";
@@ -1013,7 +1027,7 @@ textarea#comment {
     }
   }
   .contactBtn {
-    background: $color-secondary !important;
+    background: $color-orange !important;
     border: 1px solid transparent !important;
     text-transform: uppercase;
     font-family: "AvenirBook";
@@ -1112,16 +1126,19 @@ textarea#comment {
   .service-container {
     .service-row:nth-child(odd) {
       background-color: $color-primary;
-      direction: rtl;
       text-align: left;
-      h2 {
-        color: $color-white;
-        font-size: 22px;
-      }
-      p {
-        color: $color-white;
-        a {
-          color: $color-white !important;
+      .row{
+        flex-direction: row-reverse;
+        display: flex;
+        h2 {
+          color: $color-white;
+          font-size: 22px;
+        }
+        p {
+          color: $color-white;
+          a {
+            color: $color-white !important;
+          }
         }
       }
     }
@@ -1239,6 +1256,12 @@ textarea#comment {
           font-family: "AvenirBlack";
           font-weight: 900;
           width: 100%;
+          p.verticall-location{
+            writing-mode: vertical-rl;
+            text-orientation: upright; 
+            margin: auto;
+            white-space: nowrap;
+          }
           span {
             display: block;
           }
@@ -1483,7 +1506,8 @@ textarea#comment {
       font-family: "AvenirBlack";
       margin-bottom: 10px;
     }
-    a {
+    span {
+      cursor: pointer;
       color: $color-secondary;
       font-weight: 600;
       font-family: "AvenirBlack";
@@ -1522,7 +1546,7 @@ p.testimonials-name {
   height: 100%!important;
   box-shadow: -1px -3px 12px -5px #000;
 }
-.Bc-Coquitlam .broker-coquitlam a svg {
+.Bc-Coquitlam .broker-coquitlam span svg {
   width: 10px;
 }
 @media all and (max-width: 912px) {
@@ -1551,7 +1575,7 @@ p.testimonials-name {
         font-family: "AvenirBook";
         font-size: 25px;
         span {
-          color: $color-secondary;
+          color: $color-orange;
         }
       }
       a {
@@ -1703,6 +1727,13 @@ p.testimonials-name {
 }
 }
 @media all and (max-width: 540px) {
+  .meeting_section h2{
+    font-size: 30px;
+  }
+  .team_section h1 {
+    padding: 30px;
+    font-size: 40px;
+}
   .team_section h2, .meeting_section h3, .split_section .split_text h3{
     font-size: 35px;
   }
@@ -1821,6 +1852,9 @@ p.testimonials-name {
   width: 67%;
   opacity: 1;
 }
+.Bc-Coquitlam .refinance-text p {
+  font-size: 40px;
+}
 }
 
 @media all and (max-width: 441px) {
@@ -1852,9 +1886,9 @@ p.testimonials-name {
   .Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {
     font-size: 15px;
   }
-  .currentRate .easy-application .overlay {
-    width: unset;
-}
+//   .currentRate .easy-application .overlay {
+//     width: unset;
+// }
 .flexability-slider .carousel-inner {
  width: 100%;
 }

@@ -63,7 +63,7 @@ const Team = (props: MyProps) => {
                           
                           > 
                          
-                        <h2 dangerouslySetInnerHTML={{__html: team?.HomeLandingPage?.teamSection?.teamTitle}} ></h2>
+                        <h1 dangerouslySetInnerHTML={{__html: team?.HomeLandingPage?.teamSection?.teamTitle}} ></h1>
                         </div>
                         )}
                         
