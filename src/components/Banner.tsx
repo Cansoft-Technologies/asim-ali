@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, Col, Row, Button } from 'react-bootstrap';
+import { Carousel, Col, Row, Button, Spinner } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from 'scss/components/Banner.module.scss';
@@ -77,88 +77,93 @@ const Banner = (props: MyProps) => {
                 <link rel="preload" href={sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl} as="image" />
             </Head>
 
-            <Carousel fade>
+            {sliders.length === 0 ? <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+                </Spinner> : <Carousel fade>
+
 
             
-            {sliders?.map( function(slider) { 
-              
-           return( 
+{sliders?.map( function(slider) { 
+  
+return( 
 
-            slider?.HomeLandingPage?.homeSliderSection?.homeSlider == null ? "" : 
-            
-            slider?.HomeLandingPage?.homeSliderSection?.homeSlider.map( (slide) => 
-            
-           {
-               return (  
-               <Carousel.Item key={slide.sliderTitle}>
-                <div className={styles.overlay}></div>
+slider?.HomeLandingPage?.homeSliderSection?.homeSlider == null ? "" : 
 
-                <div
-                  style={{
-                    position: 'relative',
-                    height: '100vh',
-                    width: '100%',
-                    clipPath: 'inset(0 0 0 0)',
-                  }}
-                >
+slider?.HomeLandingPage?.homeSliderSection?.homeSlider.map( (slide) => 
 
-                <div
-                style={{
-                  position: 'absolute',
-                  height: '100%',
-                  width: '100%',
-                  left: '0',
-                  top: '0',
-                }}
-              >
+{
+   return (  
+   <Carousel.Item key={slide.sliderTitle}>
+    <div className={styles.overlay}></div>
 
-            
-                  <div className="slider-images">
+    <div
+      style={{
+        position: 'relative',
+        height: '100vh',
+        width: '100%',
+        clipPath: 'inset(0 0 0 0)',
+      }}
+    >
 
-                      <Image 
-                        loader={myLoader}
-                        alt="Asim Ali Slider"
-                        src={slide?.sliderImage?.sourceUrl}
-                        width={100}   
-                        height={57} 
-                        layout="responsive" 
-                        objectFit="cover"
-                          />
-                    
-                    
-                        </div>
-                       </div>
-                       </div>
-                       <Carousel.Caption className={styles.carouselcaption}>
-                       <Row className="align-items-center home-slide"> 
-                           <Col className='text-start' xs={12} lg="6">
-                           <div className={styles.bannerCaption}>
-                               <p className={styles.sliderSubtitle}>{slide.sliderSubtitle}</p>
-                               <p className={styles.sliderTitle}>{slide.sliderTitle}</p>
-                               <p>{slide.sliderDescription}</p>
-                           </div>
-                           
-                           </Col>
-                           {slide.sliderButtonUrl == null ? "" : (
-                            <Col className='text-end' xs={12} lg="6">
-                               <Link href={slide.sliderButtonUrl.url}><Button className={styles.bannerBtn} >Get <span>Approved</span></Button></Link>
-                           </Col>
-                           )}
-                           
-                       </Row>
-                   </Carousel.Caption>
-               </Carousel.Item>
-                 )
-          }  //  --
-           
-           ))
+    <div
+    style={{
+      position: 'absolute',
+      height: '100%',
+      width: '100%',
+      left: '0',
+      top: '0',
+    }}
+  >
 
+
+      <div className="slider-images">
+
+          <Image 
+            loader={myLoader}
+            alt="Asim Ali Slider"
+            src={slide?.sliderImage?.sourceUrl}
+            width={100}   
+            height={57} 
+            layout="responsive" 
+            objectFit="cover"
+              />
         
-            }
+        
+            </div>
+           </div>
+           </div>
+           <Carousel.Caption className={styles.carouselcaption}>
+           <Row className="align-items-center home-slide"> 
+               <Col className='text-start' xs={12} lg="6">
+               <div className={styles.bannerCaption}>
+                   <p className={styles.sliderSubtitle}>{slide.sliderSubtitle}</p>
+                   <p className={styles.sliderTitle}>{slide.sliderTitle}</p>
+                   <p>{slide.sliderDescription}</p>
+               </div>
+               
+               </Col>
+               {slide.sliderButtonUrl == null ? "" : (
+                <Col className='text-end' xs={12} lg="6">
+                   <Link href={slide.sliderButtonUrl.url}><Button className={styles.bannerBtn} >Get <span>Approved</span></Button></Link>
+               </Col>
+               )}
+               
+           </Row>
+       </Carousel.Caption>
+   </Carousel.Item>
+     )
+}  //  --
 
-            )}
-                
-            </Carousel>
+))
+
+
+}
+
+)}
+    
+</Carousel>}
+
+            
             </div>
         </div>
     );
