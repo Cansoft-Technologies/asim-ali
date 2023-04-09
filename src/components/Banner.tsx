@@ -83,9 +83,9 @@ const Banner = (props: MyProps) => {
                 <link rel="preload" href={sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl} as="image" />
             </Head>
 
-            {console.log("Hello vaia",sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl)}
+            {console.log("Hello vaia",sliders[0].HomeLandingPage.homeSliderSection.homeSlider.length)}
 
-            {!isLoading && sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl == "" ? <div className='text-center mt-5'> <Spinner  animation="border" role="status">
+            {!isLoading && sliders[0].HomeLandingPage.homeSliderSection.homeSlider.length === 0 ? <div className='text-center mt-5'> <Spinner  animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
                 </Spinner></div> : <Carousel fade>
 
