@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel, Col, Row, Button, Spinner } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -54,9 +54,16 @@ const Banner = (props: MyProps) => {
 
   const { sliders } = props;
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [sliders]);
+
     const myLoader = ({ src, width, quality }) => {
       return `${src}?w=${width}&q=${quality || 75}`
     }
+
   
     
     return (
@@ -65,21 +72,20 @@ const Banner = (props: MyProps) => {
 
             
 
-              {/* { isLoading && 
+            { isLoading && 
         <div className="text-center py-5">
-        <div className="spinner-border text-dark" role="status">
+          <div className="spinner-border text-dark" role="status">
             <span className="visually-hidden">Loading...</span>
-        </div>
+          </div>
         </div>   
-        } */}
-
+      }
             <Head> 
                 <link rel="preload" href={sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl} as="image" />
             </Head>
 
             {console.log("Hello vaia",sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl)}
 
-            {sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl == "" ? <div className='text-center mt-5'> <Spinner  animation="border" role="status">
+            {!isLoading && sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl == "" ? <div className='text-center mt-5'> <Spinner  animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
                 </Spinner></div> : <Carousel fade>
 
