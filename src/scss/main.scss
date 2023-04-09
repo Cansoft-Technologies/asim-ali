@@ -1855,9 +1855,13 @@ p.testimonials-name {
 .Bc-Coquitlam .refinance-text p {
   font-size: 40px;
 }
+.faq_section {
+  background-image: url("") !important;
+}
 }
 
 @media all and (max-width: 441px) {
+  
   .cta_section .cta_first{
     height: 50vh
   }
