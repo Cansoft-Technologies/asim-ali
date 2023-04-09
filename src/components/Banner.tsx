@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from 'scss/components/Banner.module.scss';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import Head from 'next/head';
 
 
 export async function getStaticProps() {
@@ -72,10 +73,12 @@ const Banner = (props: MyProps) => {
         </div>   
         } */}
 
+            <Head> 
+                <link rel="preload" href={sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl} as="image" />
+            </Head>
+
             <Carousel fade>
 
-              {console.log('slider', sliders)}
-             
             
             {sliders?.map( function(slider) { 
               
@@ -109,10 +112,9 @@ const Banner = (props: MyProps) => {
                 }}
               >
 
-            {/* <Head> 
-                <link type="image/webp" rel="preload" as="image" href={slide?.sliderImage?.sourceUrl} />
-            </Head> */}
+            
                   <div className="slider-images">
+                    {console.log("Home slider",sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl)}
                     <Image 
                       loader={myLoader}
                       alt="Asim Ali Slider"
