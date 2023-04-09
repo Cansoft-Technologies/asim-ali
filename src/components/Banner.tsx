@@ -115,15 +115,25 @@ const Banner = (props: MyProps) => {
             
                   <div className="slider-images">
                     {console.log("Home slider",sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0].sliderImage.sourceUrl)}
-                    <Image 
+                    {slide?.sliderImage?.sourceUrl == "" ? <Image 
                       loader={myLoader}
                       alt="Asim Ali Slider"
-                      src={slide?.sliderImage?.sourceUrl}
+                      src="/home-banner.webp"
                       width={100}   
                       height={57} 
                       layout="responsive" 
                       objectFit="cover"
-                        />
+                        /> : <Image 
+                        loader={myLoader}
+                        alt="Asim Ali Slider"
+                        src={slide?.sliderImage?.sourceUrl}
+                        width={100}   
+                        height={57} 
+                        layout="responsive" 
+                        objectFit="cover"
+                          /> }
+                    
+                    
                         </div>
                        </div>
                        </div>
