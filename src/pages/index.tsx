@@ -306,10 +306,12 @@ export default function Page(props: MyProps) {
               return(
                 <>
                 {console.log("SEO", meta?.seo?.jsonLd?.raw)}
-                <noscript dangerouslySetInnerHTML={{
+                <noscript>
+                <span
+                  dangerouslySetInnerHTML={{
                     __html: JSON.stringify(meta?.seo?.jsonLd),
-                  }}>
-                
+                  }}
+                />
                 </noscript>
                   {meta?.seo?.jsonLd?.raw}
                 
