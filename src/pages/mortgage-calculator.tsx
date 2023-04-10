@@ -5,70 +5,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-
-
-
-const Calculator = (props: MyProps) => {
-
-  const { settings, mainMenus, calculatorData, metaData } = props;
-
-  
-
-    return (
-        <>
-        {calculatorData.map( (data, index) => {
-            return(
-            <div key={index} className='our-locations'>
-              <Head>
-                {metaData.map((meta) => {
-                    return(
-                     <>
-                      <title>{meta?.seo?.title}</title>
-                      <meta name="description" content={meta?.seo?.description} />
-                      <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                      <meta property="og:title" content={meta?.seo?.title} />
-                      <meta property="og:description" content={meta?.seo?.description} />
-                      <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
-                      </>
-                    )
-                })}
-                </Head>
-                <Header settings={settings} mainMenus={mainMenus}/>
-                    <main className="content">
-                    {data?.mortgagecalculator?.calculatorBannerTitle == null ? "" : (
-                    <Hero
-                        title={data?.mortgagecalculator?.calculatorBannerTitle}
-                       
-                        bgImage={data?.mortgagecalculator?.calculatorBannerImage?.sourceUrl}
-                    />
-                    )}
-                    
-                    <Container className='my-5'>
-                    
-                        <Row className='mortgagecalculator-heading'>
-                            <Col md={12}>
-                                <h1>{data?.mortgagecalculator?.calculatorBannerTitle.split(" ")[0]} <span>{data?.mortgagecalculator?.calculatorBannerTitle.split(" ")[1]}</span></h1>
-                                <div dangerouslySetInnerHTML={{__html: data?.mortgagecalculator?.calculatorPageContent }}>
-
-                                </div>
-                            </Col>
-                          
-                            
-
-                        </Row>
-                        
-                    </Container>
-                    </main>
-                <Footer settings={settings} mainMenus={mainMenus} />
-                
-            </div>
-                ) 
-            } ) }
-        
-            </>
-    );
-};
-
 export async function getStaticProps() {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
@@ -184,3 +120,66 @@ type MyProps = {
  
 };
 
+
+const Calculator = (props: MyProps) => {
+
+  const { settings, mainMenus, calculatorData, metaData } = props;
+
+  
+
+    return (
+        <>
+        {calculatorData.map( (data, index) => {
+            return(
+            <div key={index} className='our-locations'>
+              <Head>
+                {metaData.map((meta) => {
+                    return(
+                     <>
+                      <title>{meta?.seo?.title}</title>
+                      <meta name="description" content={meta?.seo?.description} />
+                      <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                      <meta property="og:title" content={meta?.seo?.title} />
+                      <meta property="og:description" content={meta?.seo?.description} />
+                      <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                      </>
+                    )
+                })}
+                </Head>
+                <Header settings={settings} mainMenus={mainMenus}/>
+                    <main className="content">
+                    {data?.mortgagecalculator?.calculatorBannerTitle == null ? "" : (
+                    <Hero
+                        title={data?.mortgagecalculator?.calculatorBannerTitle}
+                       
+                        bgImage={data?.mortgagecalculator?.calculatorBannerImage?.sourceUrl}
+                    />
+                    )}
+                    
+                    <Container className='my-5'>
+                    
+                        <Row className='mortgagecalculator-heading'>
+                            <Col md={12}>
+                                <h1>{data?.mortgagecalculator?.calculatorBannerTitle.split(" ")[0]} <span>{data?.mortgagecalculator?.calculatorBannerTitle.split(" ")[1]}</span></h1>
+                                <div dangerouslySetInnerHTML={{__html: data?.mortgagecalculator?.calculatorPageContent }}>
+
+                                </div>
+                            </Col>
+                          
+                            
+
+                        </Row>
+                        
+                    </Container>
+                    </main>
+                <Footer settings={settings} mainMenus={mainMenus} />
+                
+            </div>
+                ) 
+            } ) }
+        
+            </>
+    );
+};
+
+export default Calculator;
