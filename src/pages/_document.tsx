@@ -32,6 +32,7 @@ const MyDocument = () => {
             <meta name="msapplication-TileColor" content="#da532c" />
             <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
             <meta name="theme-color" content="#ffffff" />
+            
         </Head>
         <body>
             <Main />

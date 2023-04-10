@@ -49,6 +49,9 @@ export async function getStaticProps() {
               url
             }
           }
+          jsonLd {
+            raw
+          }
         }
         HomeLandingPage {
           homeSliderSection {
@@ -302,6 +305,17 @@ export default function Page(props: MyProps) {
                    
               return(
                 <>
+                {console.log("SEO", meta?.seo?.jsonLd?.raw)}
+                <noscript>
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(meta?.seo?.jsonLd?.raw),
+                  }}
+                />
+                </noscript>
+                  {meta?.seo?.jsonLd?.raw}
+                
                 <title>{meta?.seo?.title}</title>
                 <meta name="description" content={meta?.seo?.description} />
                 <link rel="canonical" href={meta?.seo?.canonicalUrl} />

@@ -87,7 +87,8 @@ const Banner = (props: MyProps) => {
 
             {!isLoading && sliders[0].HomeLandingPage.homeSliderSection.homeSlider.length === 0 ? <div className='text-center mt-5'> <Spinner  animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
-                </Spinner></div> : <Carousel fade>
+                </Spinner></div> : 
+                <Carousel fade>
 
 
             
@@ -169,7 +170,9 @@ slider?.HomeLandingPage?.homeSliderSection?.homeSlider.map( (slide) =>
 
 )}
     
-</Carousel>}
+                </Carousel>
+
+            }
 
             
             </div>
