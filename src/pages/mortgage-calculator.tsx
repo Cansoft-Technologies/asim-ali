@@ -133,7 +133,7 @@ const MortgageCalculator = (props: MyProps) => {
         <>
         {calculatorData.map( (data, index) => {
             return(
-                <div key={index} className='our-locations'>
+            <div key={index} className='our-locations'>
               <Head>
                 {metaData.map((meta) => {
                     return(
@@ -174,7 +174,7 @@ const MortgageCalculator = (props: MyProps) => {
                         
                     </Container>
                     </main>
-                    <Footer settings={settings} mainMenus={mainMenus} />
+                <Footer settings={settings} mainMenus={mainMenus} />
                 
             </div>
                 ) 
