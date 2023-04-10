@@ -5,8 +5,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-
-
 export async function getStaticProps() {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
@@ -123,7 +121,7 @@ type MyProps = {
 };
 
 
-const MortgageCalculator = (props: MyProps) => {
+const Calculator = (props: MyProps) => {
 
   const { settings, mainMenus, calculatorData, metaData } = props;
 
@@ -184,4 +182,4 @@ const MortgageCalculator = (props: MyProps) => {
     );
 };
 
-export default MortgageCalculator;
+export default Calculator;
