@@ -12,9 +12,9 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = {
   images: {
-    domains: ['example.com'],
+    domains: ['hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com'],
     loader: 'imgix',
-    path: 'https://example.com/_next/image',
+    path: 'https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/_next/image',
   },
   async headers() {
     return [
