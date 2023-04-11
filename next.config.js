@@ -1,7 +1,4 @@
 const { withFaust } = require('@faustjs/next');
-const withPlugins = require('next-compose-plugins');
-
-const withImages = require('next-images');
 
 /**
  * @type {import('next').NextConfig}
@@ -11,43 +8,14 @@ const withPWA = require('next-pwa')({
   dest: 'public'
 })
 
-const nextConfig = {
-  images: {
-    domains: ['hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com'],
-    loader: 'imgix',
-    path: 'https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/_next/image',
-  },
-  async headers() {
-    return [
-      {
-        // Define the cache policy for static assets
-        source: '/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
-};
-
-
-
-module.exports = withFaust (withPWA  ( withImages (withPlugins ( 
-  {
-    nextConfig,
+module.exports = withFaust (withPWA({
+  optimizeImages: false,
+    images: {
+      domains: ['hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com'],
+    },
     eslint: {
       ignoreDuringBuilds: true,
     }
-}))));
-
-
-
-
-
-
-
+}));
 
 
