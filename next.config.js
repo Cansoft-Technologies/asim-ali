@@ -2,6 +2,8 @@ const { withFaust } = require('@faustjs/next');
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 
+const withImages = require('next-images');
+
 /**
  * @type {import('next').NextConfig}
  **/
@@ -34,19 +36,14 @@ const nextConfig = {
 
 
 
-module.exports = withFaust (withPWA( withPlugins(
-    [[optimizedImages]], 
-    nextConfig
-    ),
+module.exports = withFaust (withPWA  ( withImages (withPlugins ( 
   {
-  optimizeImages: false,
-    images: {
-      domains: ['hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com'],
-    },
+    optimizedImages,
+    nextConfig,
     eslint: {
       ignoreDuringBuilds: true,
     }
-}));
+}))));
 
 
 
