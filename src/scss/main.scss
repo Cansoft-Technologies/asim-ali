@@ -9,7 +9,7 @@ button.react-multiple-carousel__arrow.react-multiple-carousel__arrow-right {
 }
 button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right, button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left  {
   font-size: 10px !important;
-  color: $color-orange;;
+  color: $color-secondary;
   width: 19px;
   display: block;
 }
@@ -21,7 +21,7 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right, butto
     width: 70%;
     height: 3px;
     content: " ";
-    background-color: $color-orange;
+    background-color: $color-secondary;
     right: -30%;
     top: 25%;
   }
@@ -31,7 +31,7 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right, butto
     width: 70%;
     height: 3px;
     content: " ";
-    background-color: $color-orange;;
+    background-color: $color-secondary;
     right: 105%;
     bottom: 28%;
   }
@@ -41,7 +41,7 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right, butto
 
     span {
       font-family: "AvenirBlack";
-      color:$color-orange;
+      color:$color-secondary;
       display: block;
       font-weight: 900;
     }
@@ -55,7 +55,7 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right, butto
 
     span {
       font-family: "AvenirBlack";
-      color:$color-orange;
+      color:$color-secondary;
       display: block;
       font-weight: 900;
     }
@@ -217,12 +217,12 @@ body {
   .carousel-indicators .active {
     width: 12px;
     height: 12px !important;
-    background-color: $color-orange;
+    background-color: $color-secondary;
     position: relative;
     top: -1px;
     opacity: 1;
     border: 5px solid transparent;
-    outline: 1px solid $color-orange;
+    outline: 1px solid $color-secondary;
   }
 }
 
@@ -301,12 +301,12 @@ body {
       width: 20%;
       height: 3px;
       content: " ";
-      background-color: $color-orange;
+      background-color: $color-secondary;
       left: -17%;
     }
     span {
       font-family: "AvenirBlack";
-      color: $color-orange;
+      color: $color-secondary;
     }
   }
 }
@@ -974,7 +974,7 @@ textarea#comment {
         font-family: 'Oswald', sans-serif;
       }
       p {
-        color: $color-orange;
+        color: $color-secondary;
         margin-bottom: 0;
       }
     }
@@ -991,7 +991,7 @@ textarea#comment {
       .contactBt {
         position: relative;
         z-index: 999;
-        background: $color-orange !important;
+        background: $color-secondary !important;
         border: 2px solid transparent !important;
         text-transform: uppercase;
         font-family: "AvenirBook";
@@ -1027,7 +1027,7 @@ textarea#comment {
     }
   }
   .contactBtn {
-    background: $color-orange !important;
+    background: $color-secondary !important;
     border: 1px solid transparent !important;
     text-transform: uppercase;
     font-family: "AvenirBook";
@@ -1575,7 +1575,7 @@ p.testimonials-name {
         font-family: "AvenirBook";
         font-size: 25px;
         span {
-          color: $color-orange;
+          color: $color-secondary;
         }
       }
       a {
