@@ -164,7 +164,7 @@ function Header(props: MyProps) {
         <noscript>
             <script
               type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(settings?.generalSettings?.schemaProductRating) }}
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(settings?.generalSettings?.schemaProductRating.replace(/[\r\n]/gm, '')) }}
             />
         </noscript>
     </Head>
