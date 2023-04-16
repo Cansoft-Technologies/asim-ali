@@ -69,6 +69,51 @@ type MyProps = {
   mainMenus: any;
 };
 
+const schema = 
+{
+"@context": "https://schema.org/",
+"@type": "Product",
+"name": "Mortgage Brokers",
+"image": [
+"https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-9.webp",
+"https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/home-banner.webp",
+"https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-8.webp"
+],
+"description": "Asim Ali and his team of the best mortgage brokers in Surrey will help you with the best mortgage rates available.",
+"sku": "CAN1971SEO",
+"mpn": "925872",
+"brand": {
+"@type": "Brand",
+"name": "Asim Ali"
+},
+"review": {
+"@type": "Review",
+"reviewRating": {
+  "@type": "Rating",
+  "ratingValue": "5",
+  "bestRating": "5"
+},
+"author": {
+  "@type": "Person",
+  "name": "Chloe Chan"
+}
+},
+"offers": {
+"@type": "Offer",
+"url": "https://asimali.ca/",
+"priceCurrency": "CAD",
+"price": "499",
+"priceValidUntil": "2020-12-31",
+"availability": "https://schema.org/InStock"
+},
+"aggregateRating": {
+"@type": "AggregateRating",
+"ratingValue": "4.8",
+"bestRating": "5",
+"ratingCount": "209"
+}
+};
+
 function Header(props: MyProps) {
   const { settings, mainMenus } = props;
 
@@ -162,11 +207,19 @@ function Header(props: MyProps) {
       } */}
     <Head>
         <noscript>
-            <script
+        <script
               type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(settings?.generalSettings?.schemaProductRating.replace(/[\r\n]/gm, '')) }}
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
             />
         </noscript>
+        {/* <noscript>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(settings?.generalSettings?.schemaProductRating.replace(/(\r\n|\n|\r)/gm, "")
+              ) }}
+            />
+            
+        </noscript> */}
     </Head>
     <Navbar bg="light" expand="lg">
        
