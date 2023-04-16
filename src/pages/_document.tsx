@@ -3,12 +3,18 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 
 const MyDocument = () => {
 
-    
+   
 
   return (
     <Html lang="en-US">
         <Head>
-
+        
+         <noscript>
+        {/* <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(fasd) }}
+        /> */}
+        </noscript>
             <link
               rel="preload"
               href="https://hf0ak2tn748admnnhp68zwih3.js.wpenginepowered.com/_next/static/media/revicons.ff59b316.woff"

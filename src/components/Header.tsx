@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { client, MenuLocationEnum } from 'client';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import Head from 'next/head';
 
 
 export async function getStaticProps() {
@@ -22,6 +23,9 @@ export async function getStaticProps() {
               sourceUrl
               altText
             }
+          }
+          generalSettings {
+            schemaProductRating
           }
         }
       }
@@ -60,7 +64,16 @@ export async function getStaticProps() {
   };
 }
 
-function Header({settings, mainMenus }): JSX.Element {
+type MyProps = {
+  settings: any;
+  mainMenus: any;
+};
+
+function Header(props: MyProps) {
+  const { settings, mainMenus } = props;
+
+
+  
   const { menuItems } = client.useQuery()
   const links = menuItems({
     where: { location: MenuLocationEnum.PRIMARY },
@@ -138,6 +151,8 @@ function Header({settings, mainMenus }): JSX.Element {
   return (
    <>
    
+
+    {/* ?.generalSettings?.schemaProductRating */}
     {/* {isLoading && 
       <div className="preloader" >
         <div className="spinner-border text-warning" role="status">
@@ -145,12 +160,23 @@ function Header({settings, mainMenus }): JSX.Element {
           </div>
       </div>
       } */}
+    <Head>
+        <noscript>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(settings?.generalSettings?.schemaProductRating) }}
+            />
+        </noscript>
+    </Head>
     <Navbar bg="light" expand="lg">
        
       <Container>
         <Navbar.Brand>
+        {console.log("Shabbir theNabab",settings?.generalSettings?.schemaProductRating)}
+
             { (settings as any)?.headerSettings?.uploadLogo == null ? "" : (
             <Link href="/">
+              
             <Image 
             src={(settings as any)?.headerSettings?.uploadLogo?.sourceUrl}
             loader={myLoader}  
@@ -173,8 +199,6 @@ function Header({settings, mainMenus }): JSX.Element {
             // style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            {console.log('main menu sss', mainMenus)}
-            
             {mainMenus?.map( link => {
                 return(
                     <ul key={`${link.label}$-menu`} >
@@ -246,10 +270,3 @@ function Header({settings, mainMenus }): JSX.Element {
 }
 
 export default Header;
-
-
-
-
-
-
-

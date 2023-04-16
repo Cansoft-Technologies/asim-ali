@@ -69,7 +69,6 @@ export async function getStaticProps() {
           }
         }
       }
-    }
     }`,
   });
 

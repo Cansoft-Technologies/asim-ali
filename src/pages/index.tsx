@@ -204,6 +204,9 @@ export async function getStaticProps() {
             altText
           }
         }
+        generalSettings {
+            schemaProductRating
+        }
         footerSettings {
           socialUrl {
             facebook
