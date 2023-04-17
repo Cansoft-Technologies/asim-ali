@@ -297,53 +297,52 @@ type MyProps = {
 };
 
 export default function Page(props: MyProps) {
-  const { settings, mainMenus, metaData, sliders, helps, logos, teams, meetings, splitImagesLeft, flexsliders, splitImagesRight, images, faqsections  } = props;
+  const { settings, mainMenus, metaData, sliders, helps, logos, teams, meetings, splitImagesLeft, flexsliders, splitImagesRight, images, faqsections } = props;
 
 
 
   return (
     <>
-     <Head>
-      {metaData.map((meta) => {
-                   
-              return(
-                <>
-                {console.log("SEO", meta?.seo?.jsonLd?.raw)}
-                <noscript dangerouslySetInnerHTML={{
-                    __html: meta?.seo?.jsonLd?.raw,
-                  }}>
-              
-                </noscript>
-                  {meta?.seo?.jsonLd?.raw}
-                
-                <title>{meta?.seo?.title}</title>
-                <meta name="description" content={meta?.seo?.description} />
-                <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                <meta property="og:title" content={meta?.seo?.title} />
-                <meta property="og:description" content={meta?.seo?.description} />
-                <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
-                </>
-              )
-                })}
+      <Head>
+        {metaData.map((meta) => {
+
+          return (
+            <>
+              <noscript dangerouslySetInnerHTML={{
+                __html: meta?.seo?.jsonLd?.raw,
+              }}>
+
+              </noscript>
+              {meta?.seo?.jsonLd?.raw}
+
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta property="og:description" content={meta?.seo?.description} />
+              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+            </>
+          )
+        })}
       </Head>
       <main className="content">
-      <Header settings={settings} mainMenus={mainMenus} />
-      <Banner sliders={sliders} />
-      <WeHelp helps={helps} />
-      <PartnerLogo logos={logos}/>
-      <Team teams={teams} />
-      <Meeting  meetings={meetings} />
-      <SplitImageLeft splitImagesLeft={splitImagesLeft} />
-      <FlexabilitySlider flexsliders={flexsliders} />
-      <SplitImageRight splitImagesRight={splitImagesRight}/>
-      <Gallery images={images} />
-      <FAQ faqsections={faqsections} /> 
-      <CTA />
+        <Header settings={settings} mainMenus={mainMenus} />
+        <Banner sliders={sliders} />
+        <WeHelp helps={helps} />
+        <PartnerLogo logos={logos} />
+        <Team teams={teams} />
+        <Meeting meetings={meetings} />
+        <SplitImageLeft splitImagesLeft={splitImagesLeft} />
+        <FlexabilitySlider flexsliders={flexsliders} />
+        <SplitImageRight splitImagesRight={splitImagesRight} />
+        <Gallery images={images} />
+        <FAQ faqsections={faqsections} />
+        <CTA />
       </main>
-      
-      <Footer settings={settings} mainMenus={mainMenus}/>
 
-      
+      <Footer settings={settings} mainMenus={mainMenus} />
+
+
     </>
   );
 }

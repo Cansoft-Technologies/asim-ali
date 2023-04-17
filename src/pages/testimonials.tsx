@@ -125,7 +125,7 @@ type MyProps = {
   metaData: any;
   settings: any;
   mainMenus: any;
- 
+
 };
 
 
@@ -133,71 +133,66 @@ type MyProps = {
 const Testimonials = (props: MyProps) => {
   const { settings, mainMenus, testimonialsData, metaData } = props;
 
-    return (
-        <>
-        {testimonialsData.map( (data, index) => {
-            return(
-        <div key={index} className='our-testimonial'>
-          <Head>
-            {metaData.map((meta) => {
-            return(
-              <>
-              <title>{meta?.seo?.title}</title>
-              <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-              <meta property="og:title" content={meta?.seo?.title} />
-              <meta property="og:description" content={meta?.seo?.description} />
-              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
-              </>
-            )
-        })}
-        </Head>
-        <Header settings={settings} mainMenus={mainMenus}/>
-           <main className="content">
-           <Hero
-               title={data?.Testimonials?.bannerTitle}
-               bgImage={data?.Testimonials?.bannerImage?.sourceUrl}
-           />
-
-           {console.log("Hello frined",data.Testimonials)}
-
-         <Container className="my-5 blog-container">
+  return (
+    <>
+      {testimonialsData.map((data, index) => {
+        return (
+          <div key={index} className='our-testimonial'>
+            <Head>
+              {metaData.map((meta) => {
+                return (
+                  <>
+                    <title>{meta?.seo?.title}</title>
+                    <meta name="description" content={meta?.seo?.description} />
+                    <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+                    <meta property="og:title" content={meta?.seo?.title} />
+                    <meta property="og:description" content={meta?.seo?.description} />
+                    <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+                  </>
+                )
+              })}
+            </Head>
+            <Header settings={settings} mainMenus={mainMenus} />
+            <main className="content">
+              <Hero
+                title={data?.Testimonials?.bannerTitle}
+                bgImage={data?.Testimonials?.bannerImage?.sourceUrl}
+              />
+              <Container className="my-5 blog-container">
                 <h1 className="my-3 text-center">{data?.Testimonials?.sectionTitle}</h1>
-                    <div className="row row-cols-1 row-cols-md-3 g-4 items">
+                <div className="row row-cols-1 row-cols-md-3 g-4 items">
 
-              {data?.Testimonials?.testimonials?.slice(0)
-  .reverse().map((testimonial, key) => {
-                            return(
-                            <div key={key}  className="col">
-                                    <div className="testimonial-box card h-100">
-                                        {console.log('testimonial area',testimonial)}
-                                
-                                    <div className="card-body">
-                                
-                                        <q className='testimonials-content'>{testimonial?.testimonial}</q>
-                                        <p className="testimonials-name">{testimonial?.clientName}</p>
-                                    </div>
+                  {data?.Testimonials?.testimonials?.slice(0)
+                    .reverse().map((testimonial, key) => {
+                      return (
+                        <div key={key} className="col">
+                          <div className="testimonial-box card h-100">
+                            <div className="card-body">
 
-                                    </div>
-                                </div>
-                            )
-                        })}
-                        
-                        
-                        
-                        
-                      
-              
-                    </div>
-                    
-                </Container>
-                </main>
-                <Footer settings={settings} mainMenus={mainMenus} />
+                              <q className='testimonials-content'>{testimonial?.testimonial}</q>
+                              <p className="testimonials-name">{testimonial?.clientName}</p>
+                            </div>
+
+                          </div>
+                        </div>
+                      )
+                    })}
+
+
+
+
+
+
                 </div>
-                   )
-                })}
-        </>
-    );
+
+              </Container>
+            </main>
+            <Footer settings={settings} mainMenus={mainMenus} />
+          </div>
+        )
+      })}
+    </>
+  );
 };
 
 export default Testimonials;

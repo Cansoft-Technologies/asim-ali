@@ -144,8 +144,6 @@ function Header(props: MyProps) {
 
         <Container>
           <Navbar.Brand>
-            {console.log("Shabbir theNabab", settings?.generalSettings?.schemaProductRating)}
-
             {(settings as any)?.headerSettings?.uploadLogo == null ? "" : (
               <Link href="/">
 

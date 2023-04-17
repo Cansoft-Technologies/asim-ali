@@ -21,14 +21,14 @@ export function PostComponent({ post }: PostProps) {
 
   useEffect(() => {
     const client = new ApolloClient({
-        uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-        cache: new InMemoryCache(),
-      });
-    
+      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+      cache: new InMemoryCache(),
+    });
+
 
     client
-    .query({
-      query: gql`query{
+      .query({
+        query: gql`query{
         posts(where: {id: ${post?.postId}}) {
           nodes {
             seo {
@@ -45,36 +45,33 @@ export function PostComponent({ post }: PostProps) {
           }
         }
       }`,
-    })
-    .then((result) => setMetaData(result?.data?.posts?.nodes));
+      })
+      .then((result) => setMetaData(result?.data?.posts?.nodes));
 
-}, [post]);
+  }, [post]);
 
   return (
     <>
-    <Head>
-            {metaData.map((meta) => {
-                return(
-                  <>
-                  <title>{meta?.seo?.title}</title>
-                  <meta name="description" content={meta?.seo?.description} />
-                  <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                  <meta property="og:title" content={meta?.seo?.title} />
-                  <meta property="og:description" content={meta?.seo?.description} />
-                  <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
-                  </>
-                )
-            })}
-            </Head>
+      <Head>
+        {metaData.map((meta) => {
+          return (
+            <>
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta property="og:description" content={meta?.seo?.description} />
+              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+            </>
+          )
+        })}
+      </Head>
       <CustomHeader />
 
       <CustomHero
         title={post?.title()}
         bgImage={post?.featuredImage?.node?.sourceUrl()}
       />
-
-      {console.log('hello post', post?.postId)}
-
       <main className="content content-single">
         <div className="wrap">
           <div dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }} />

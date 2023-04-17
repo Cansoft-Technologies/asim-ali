@@ -21,14 +21,14 @@ export function PageComponent({ page }: PageProps) {
 
   useEffect(() => {
     const client = new ApolloClient({
-        uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-        cache: new InMemoryCache(),
-      });
-    
+      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+      cache: new InMemoryCache(),
+    });
+
 
     client
-    .query({
-      query: gql`query{
+      .query({
+        query: gql`query{
         pages(where: {id: ${page.pageId}}) {
           nodes {
             seo {
@@ -45,28 +45,28 @@ export function PageComponent({ page }: PageProps) {
           }
         }
       }`,
-    })
-    .then((result) => setMetaData(result?.data?.pages?.nodes));
+      })
+      .then((result) => setMetaData(result?.data?.pages?.nodes));
 
-}, [page]);
+  }, [page]);
 
 
   return (
     <>
       <Head>
-            {metaData.map((meta) => {
-                return(
-                  <>
-                  <title>{meta?.seo?.title}</title>
-                  <meta name="description" content={meta?.seo?.description} />
-                  <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                  <meta property="og:title" content={meta?.seo?.title} />
-                  <meta property="og:description" content={meta?.seo?.description} />
-                  <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
-                  </>
-                )
-            })}
-            </Head>
+        {metaData.map((meta) => {
+          return (
+            <>
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta property="og:description" content={meta?.seo?.description} />
+              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+            </>
+          )
+        })}
+      </Head>
       <CustomHeader />
 
       <Hero
@@ -76,12 +76,11 @@ export function PageComponent({ page }: PageProps) {
 
       <main className="content content-single">
         <div className="wrap">
-          {console.log(page.pageId)}
           <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
         </div>
       </main>
 
-     <CustomFooter />
+      <CustomFooter />
 
     </>
   );
