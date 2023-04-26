@@ -90,7 +90,7 @@ export default function Page() {
   return <PostComponent post={post} />;
 }
 
-export async function getServerSideProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context: GetStaticPropsContext) {
   return getNextStaticProps(context, {
     Page,
     client,

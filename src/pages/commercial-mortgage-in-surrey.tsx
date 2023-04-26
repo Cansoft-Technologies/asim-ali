@@ -7,7 +7,7 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import Image from 'next/image';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
     cache: new InMemoryCache(),
