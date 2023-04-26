@@ -93,7 +93,7 @@ export default function Page() {
   return <PageComponent page={page} />;
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetStaticPropsContext) {
   return getNextStaticProps(context, {
     Page,
     client,

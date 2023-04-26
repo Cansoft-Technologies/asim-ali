@@ -54,7 +54,7 @@ export default function Page() {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetStaticPropsContext) {
   return getNextStaticProps(context, {
     Page,
     client,

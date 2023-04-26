@@ -6,7 +6,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { Container } from 'react-bootstrap';
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
     cache: new InMemoryCache(),

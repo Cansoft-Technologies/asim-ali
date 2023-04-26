@@ -10,7 +10,7 @@ import Moment from 'react-moment';
 
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
     cache: new InMemoryCache(),
