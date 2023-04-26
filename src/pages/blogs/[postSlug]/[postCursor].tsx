@@ -20,9 +20,9 @@ export async function getServerSideProps(context: GetStaticPropsContext) {
   });
 }
 
-export function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  };
-}
+// export function getStaticPaths() {
+//   return {
+//     paths: [],
+//     fallback: 'blocking',
+//   };
+// }
