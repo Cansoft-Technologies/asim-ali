@@ -383,7 +383,7 @@ const Vancouver = (props: MyProps) => {
                     {data?.Vancouver?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <h2>{data?.Vancouver?.firstApplyStepTitle}</h2>
+                        <p>{data?.Vancouver?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -393,7 +393,9 @@ const Vancouver = (props: MyProps) => {
                     {data?.Vancouver?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <h2>{data?.Vancouver?.secondApplyStepTitle}</h2>
+                        <p>
+                          <span>{data?.Vancouver?.secondApplyStepTitle}</span>
+                        </p>
                         <p>{data?.Vancouver?.secondApplyStepDescription}</p>
                       </div>
                     )}
@@ -402,7 +404,7 @@ const Vancouver = (props: MyProps) => {
                     {data?.Vancouver?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <h2>{data?.Vancouver?.thirdApplyStepTitle}</h2>
+                        <p>{data?.Vancouver?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -411,7 +413,7 @@ const Vancouver = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <h2>{data?.Vancouver?.brokerTitle}</h2>
+                    <p className='headering-title'>{data?.Vancouver?.brokerTitle}</p>
                     <p>{data?.Vancouver?.brokerDescription}</p>
                   </Col>
                 </Row>

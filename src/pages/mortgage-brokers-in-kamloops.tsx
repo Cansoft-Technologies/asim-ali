@@ -302,7 +302,7 @@ const Kamloops = (props: MyProps) => {
                     {data?.Kamloops?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <h2>{data?.Kamloops?.firstApplyStepTitle}</h2>
+                        <p>{data?.Kamloops?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -312,7 +312,9 @@ const Kamloops = (props: MyProps) => {
                     {data?.Kamloops?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <h2>{data?.Kamloops?.secondApplyStepTitle}</h2>
+                        <p>
+                          <span>{data?.Kamloops?.secondApplyStepTitle}</span>
+                        </p>
                         <p>{data?.Kamloops?.secondApplyStepDescription}</p>
                       </div>
                     )}
@@ -321,7 +323,7 @@ const Kamloops = (props: MyProps) => {
                     {data?.Kamloops?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <h2>{data?.Kamloops?.thirdApplyStepTitle}</h2>
+                        <p>{data?.Kamloops?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -330,7 +332,7 @@ const Kamloops = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <h2>{data?.Kamloops?.brokerTitle}</h2>
+                    <p className='headering-title'>{data?.Kamloops?.brokerTitle}</p>
                     <p>{data?.Kamloops?.brokerDescription}</p>
                   </Col>
                 </Row>

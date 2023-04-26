@@ -304,7 +304,7 @@ const Kelowna = (props: MyProps) => {
                     {data?.Kelowna?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <h2>{data?.Kelowna?.firstApplyStepTitle}</h2>
+                        <p>{data?.Kelowna?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -314,7 +314,9 @@ const Kelowna = (props: MyProps) => {
                     {data?.Kelowna?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <h2>{data?.Kelowna?.secondApplyStepTitle}</h2>
+                        <p>
+                          <span>{data?.Kelowna?.secondApplyStepTitle}</span>
+                        </p>
                         <p>{data?.Kelowna?.secondApplyStepDescription}</p>
                       </div>
                     )}
@@ -323,7 +325,7 @@ const Kelowna = (props: MyProps) => {
                     {data?.Kelowna?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <h2>{data?.Kelowna?.thirdApplyStepTitle}</h2>
+                        <p>{data?.Kelowna?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>

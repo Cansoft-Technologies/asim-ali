@@ -305,7 +305,7 @@ const BcCoquitlam = (props: MyProps) => {
                     {data?.coquitlam?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <h2>{data?.coquitlam?.firstApplyStepTitle}</h2>
+                        <p>{data?.coquitlam?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -315,7 +315,9 @@ const BcCoquitlam = (props: MyProps) => {
                     {data?.coquitlam?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <h2>{data?.coquitlam?.secondApplyStepTitle}</h2>
+                        <p><span>
+                          {data?.coquitlam?.secondApplyStepTitle}
+                        </span></p>
                         <p>{data?.coquitlam?.secondApplyStepDescription}</p>
                       </div>
                     )}
@@ -324,7 +326,7 @@ const BcCoquitlam = (props: MyProps) => {
                     {data?.coquitlam?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <h2>{data?.coquitlam?.thirdApplyStepTitle}</h2>
+                        <p>{data?.coquitlam?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>

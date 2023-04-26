@@ -304,7 +304,7 @@ const Langley = (props: MyProps) => {
                     {data?.Langley?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <h2>{data?.Langley?.firstApplyStepTitle}</h2>
+                        <p>{data?.Langley?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -314,7 +314,9 @@ const Langley = (props: MyProps) => {
                     {data?.Langley?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <h2>{data?.Langley?.secondApplyStepTitle}</h2>
+                        <p>
+                          <span>{data?.Langley?.secondApplyStepTitle}</span>
+                        </p>
                         <p>{data?.Langley?.secondApplyStepDescription}</p>
                       </div>
                     )}
@@ -323,7 +325,7 @@ const Langley = (props: MyProps) => {
                     {data?.Langley?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <h2>{data?.Langley?.thirdApplyStepTitle}</h2>
+                        <p>{data?.Langley?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>

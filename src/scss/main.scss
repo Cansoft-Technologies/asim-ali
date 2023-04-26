@@ -416,6 +416,8 @@ footer {
         margin: 0;
         padding: 0;
         list-style: none;
+        display: flex;
+        justify-content: center;
         span{
           float: left;
           overflow: hidden;
@@ -1134,6 +1136,10 @@ textarea#comment {
           color: $color-white;
           font-size: 22px;
         }
+        h3{
+          color: $color-white;
+          font-size: 22px;
+        }
         p {
           color: $color-white;
           a {
@@ -1433,7 +1439,7 @@ textarea#comment {
       line-height: 25px;
       font-family: "AvenirBook";
     }
-    h2 {
+    p.headering-title {
       color: $color-primary;
       font-size: 20px;
       font-weight: 600;

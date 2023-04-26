@@ -196,8 +196,9 @@ const MortgageSurrey = (props: MyProps) => {
                             <Col className='service-texts' lg={6}>
 
                               <div className='service-content'>
-                                <h2 className='mt-4'>{service?.serviceTitle}</h2>
-                                <p dangerouslySetInnerHTML={{ __html: service?.serviceContent }} ></p>
+                                <div className='mt-4' dangerouslySetInnerHTML={{ __html: service?.serviceTitle }}></div>
+                                {console.log(service.serviceContent)}
+                                <p dangerouslySetInnerHTML={{ __html: service.serviceContent }} ></p>
                               </div>
                             </Col>
                           </Row>

@@ -306,7 +306,7 @@ const Maple = (props: MyProps) => {
                     {data?.Maple?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <h2>{data?.Maple?.firstApplyStepTitle}</h2>
+                        <p>{data?.Maple?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -316,7 +316,9 @@ const Maple = (props: MyProps) => {
                     {data?.Maple?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <h2>{data?.Maple?.secondApplyStepTitle}</h2>
+                        <p>
+                          <span>{data?.Maple?.secondApplyStepTitle}</span>
+                        </p>
                         <p>{data?.Maple?.secondApplyStepDescription}</p>
                       </div>
                     )}
@@ -325,7 +327,7 @@ const Maple = (props: MyProps) => {
                     {data?.Maple?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <h2>{data?.Maple?.thirdApplyStepTitle}</h2>
+                        <p>{data?.Maple?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -334,7 +336,7 @@ const Maple = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <h2>{data?.Maple?.brokerTitle}</h2>
+                    <p className='headering-title'>{data?.Maple?.brokerTitle}</p>
                     <p>{data?.Maple?.brokerDescription}</p>
                   </Col>
                 </Row>

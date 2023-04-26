@@ -305,7 +305,7 @@ const Prince = (props: MyProps) => {
                     {data?.Prince?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <h2>{data?.Prince?.firstApplyStepTitle}</h2>
+                        <p>{data?.Prince?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -315,7 +315,9 @@ const Prince = (props: MyProps) => {
                     {data?.Prince?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <h2>{data?.Prince?.secondApplyStepTitle}</h2>
+                        <p>
+                          <span>{data?.Prince?.secondApplyStepTitle}</span>
+                        </p>
                         <p>{data?.Prince?.secondApplyStepDescription}</p>
                       </div>
                     )}
@@ -324,7 +326,7 @@ const Prince = (props: MyProps) => {
                     {data?.Prince?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <h2>{data?.Prince?.thirdApplyStepTitle}</h2>
+                        <p>{data?.Prince?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -333,7 +335,7 @@ const Prince = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <h2>{data?.Prince?.brokerTitle}</h2>
+                    <p className='headering-title'>{data?.Prince?.brokerTitle}</p>
                     <p>{data?.Prince?.brokerDescription}</p>
                   </Col>
                 </Row>

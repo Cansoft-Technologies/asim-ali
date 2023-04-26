@@ -303,7 +303,7 @@ const Delta = (props: MyProps) => {
                     {data?.Delta?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <h2>{data?.Delta?.firstApplyStepTitle}</h2>
+                        <p>{data?.Delta?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -313,7 +313,9 @@ const Delta = (props: MyProps) => {
                     {data?.Delta?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <h2>{data?.Delta?.secondApplyStepTitle}</h2>
+                        <p>
+                          <span>{data?.Delta?.secondApplyStepTitle}</span>
+                        </p>
                         <p>{data?.Delta?.secondApplyStepDescription}</p>
                       </div>
                     )}
@@ -322,7 +324,7 @@ const Delta = (props: MyProps) => {
                     {data?.Delta?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <h2>{data?.Delta?.thirdApplyStepTitle}</h2>
+                        <p>{data?.Delta?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -331,7 +333,7 @@ const Delta = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <h2>{data?.Delta?.brokerTitle}</h2>
+                    <p className="headering-title" >{data?.Delta?.brokerTitle}</p>
                     <p>{data?.Delta?.description}</p>
                   </Col>
                 </Row>
