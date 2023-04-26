@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
     cache: new InMemoryCache(),
@@ -90,11 +90,11 @@ type MyProps = {
 
 export default function Page(props: MyProps): JSX.Element {
   const { settings, mainMenus } = props;
- 
+
 
   return (
     <>
-      <Header settings={settings} mainMenus={mainMenus}/>
+      <Header settings={settings} mainMenus={mainMenus} />
       <main className="content content-page">
         <Hero title={`Oops! That page can’t be found.`} />
         <div className="wrap">

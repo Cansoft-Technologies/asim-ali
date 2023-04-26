@@ -5,7 +5,7 @@ import { client } from 'client';
 
 export default Page;
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetStaticPropsContext) {
   const { postSlug } = context.params;
 
   if (!(postSlug === 'after' || postSlug === 'before')) {
