@@ -90,7 +90,7 @@ export default function Page() {
   return <PostComponent post={post} />;
 }
 
-export async function getServerSideProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context: GetStaticPropsContext) {
   return getNextStaticProps(context, {
     Page,
     client,
@@ -98,9 +98,9 @@ export async function getServerSideProps(context: GetStaticPropsContext) {
   });
 }
 
-// export function getStaticPaths() {
-//   return {
-//     paths: [],
-//     fallback: 'blocking',
-//   };
-// }
+export function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+}

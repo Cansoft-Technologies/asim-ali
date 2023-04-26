@@ -5,7 +5,7 @@ import { client } from 'client';
 
 export default Page;
 
-export async function getServerSideProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context: GetStaticPropsContext) {
   const { paginationTerm } = context.params;
   if (!(paginationTerm === 'after' || paginationTerm === 'before')) {
     return {
@@ -19,9 +19,9 @@ export async function getServerSideProps(context: GetStaticPropsContext) {
   });
 }
 
-// export function getStaticPaths() {
-//   return {
-//     paths: [],
-//     fallback: 'blocking',
-//   };
-// }
+export function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+}
