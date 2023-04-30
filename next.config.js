@@ -13,12 +13,6 @@ module.exports = withFaust (withPWA({
     images: {
       domains: ['hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com'],
     },
-    webpack: (config, { isServer }) => {
-      if (isServer) {
-        require("./scripts/sitemap-generator");
-      }
-      return config;
-    },
     eslint: {
       ignoreDuringBuilds: true,
     }
