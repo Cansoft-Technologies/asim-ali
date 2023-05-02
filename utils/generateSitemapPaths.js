@@ -5,7 +5,7 @@ export default function generateSitemapPaths(array) {
     (item) =>
       `
             <url>
-                <loc>${item?.url}</loc>
+                <loc>${frontendUrl + item?.url}</loc>
                 ${
                   item?.post_modified_date
                     ? `<lastmod>${
