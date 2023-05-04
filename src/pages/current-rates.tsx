@@ -157,7 +157,7 @@ const Current = (props: MyProps) => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_s5qgd6k",
+        "service_12yqpdo",
         "template_hvh5bop",
         form.current,
         "bKO8M-uo0olOYAj7Z"
@@ -178,7 +178,7 @@ const Current = (props: MyProps) => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_s5qgd6k",
+        "service_12yqpdo",
         "template_hvh5bop",
         form2.current,
         "bKO8M-uo0olOYAj7Z"
@@ -268,7 +268,7 @@ const Current = (props: MyProps) => {
                     </div>
                   </div>
 
-                  <div className="col-md-12">
+                  {/* <div className="col-md-12">
                     <div className="current-container"  >
                       <h1>Apply for a Mortgage Loan Now!</h1>
                       <form ref={form} onSubmit={sendEmail} >
@@ -282,7 +282,7 @@ const Current = (props: MyProps) => {
                         </div>}
                       </form>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

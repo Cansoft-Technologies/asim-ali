@@ -144,7 +144,7 @@ const Contact = (props: MyProps) => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_s5qgd6k",
+        "service_12yqpdo",
         "template_qa4pqev",
         form.current,
         "bKO8M-uo0olOYAj7Z"
@@ -236,12 +236,12 @@ const Contact = (props: MyProps) => {
                             <div className="col-md-6">
                               <input type="text" name="lname" id="lname" placeholder="Last Name" />
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-12">
                               <input type="email" name="mail" id="mail" placeholder="Email" />
                             </div>
-                            <div className="col-md-6">
+                            {/* <div className="col-md-6">
                               <input type="email" name="cmail" id="cmail" placeholder="Confirm Email" />
-                            </div>
+                            </div> */}
                             <div className="col-md-6">
                               <label htmlFor="Phone">Phone</label>
                               <input type="tel" name="phone" id="phone" placeholder="Phone" />
