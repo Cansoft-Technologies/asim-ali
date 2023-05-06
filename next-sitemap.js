@@ -1,4 +1,4 @@
 module.exports = {
-    siteUrl: '/',
+    siteUrl: 'https://www.asimali.ca/',
     generateRobotsTxt: true,
   };
