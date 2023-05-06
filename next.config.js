@@ -11,7 +11,7 @@ const withPWA = require('next-pwa')({
 module.exports = withFaust (withPWA({
   optimizeImages: false,
     images: {
-      domains: ['hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com'],
+      domains: ['asimali.ca'],
     },
     eslint: {
       ignoreDuringBuilds: true,
