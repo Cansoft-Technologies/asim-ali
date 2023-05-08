@@ -198,6 +198,7 @@ const CommercialVancouver = (props: MyProps) => {
 
                               <div className="service-content">
                                 <h2 className='mt-4'>{service?.serviceTitle}</h2>
+                                {console.log(service?.serviceContent)}
                                 <p dangerouslySetInnerHTML={{ __html: service?.serviceContent }} ></p>
                               </div>
 

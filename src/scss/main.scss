@@ -1671,6 +1671,9 @@ p.testimonials-name {
 }
 }
 @media all and (max-width: 768px) {
+  .pagination {
+    display: block !important;
+  }
   footer .wrap .footer-menu ul {
     display: block;
   }
