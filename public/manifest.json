@@ -2,8 +2,8 @@
     "theme_color": "#12143a",
     "background_color": "#f0b254",
     "display": "standalone",
-    "scope": "/",
-    "start_url": "https://asimali.ca/",
+    "scope": "https://asimali.ca/",
+    "start_url": "https://asimali.ca/blog",
     "name": "Asim Ali",
     "short_name": "Asim",
     "icons": [
