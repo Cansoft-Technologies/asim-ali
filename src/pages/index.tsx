@@ -1,7 +1,12 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import React from 'react';
-import { CTA, Footer, Header } from 'components';
+// import { CTA, Footer, Header } from 'components';
+
+
+const Header = dynamic(() => import('../components/Header'));
+const Footer = dynamic(() => import('../components/Footer'));
+const CTA = dynamic(() => import('../components/CTA'));
 
 const Banner = dynamic(() => import('../components/Banner'));
 const WeHelp = dynamic(() => import('../components/WeHelp'));
@@ -13,6 +18,7 @@ const FAQ = dynamic(() => import('components/FAQ'));
 const Gallery = dynamic(() => import('components/Gallery'));
 const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
 const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
+
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
