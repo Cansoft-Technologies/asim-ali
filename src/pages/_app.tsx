@@ -5,6 +5,7 @@ import 'scss/main.scss';
 import { client } from 'client';
 import type { AppProps } from 'next/app';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-svg-core/styles.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 
