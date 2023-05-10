@@ -124,7 +124,6 @@ const Banner = (props: MyProps) => {
 
 
                           <div className="slider-images">
-                            {loading && <div>Loading...</div>}
 
                             <Image
                               loader={myLoader}
@@ -136,7 +135,7 @@ const Banner = (props: MyProps) => {
                               objectFit="cover"
                               onLoad={handleLoad}
                               onError={handleError}
-                              priority={false}
+                              priority
                               style={{ display: loading ? 'none' : 'block' }}
                             />
 
