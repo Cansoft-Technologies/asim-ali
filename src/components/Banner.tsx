@@ -56,11 +56,6 @@ const Banner = (props: MyProps) => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const [loading, setLoading] = useState(true)
-
-  const handleLoad = () => setLoading(false)
-  const handleError = () => setLoading(false)
-
   useEffect(() => {
     setIsLoading(false);
   }, [sliders]);
@@ -133,10 +128,6 @@ const Banner = (props: MyProps) => {
                               height={57}
                               layout="responsive"
                               objectFit="cover"
-                              onLoad={handleLoad}
-                              onError={handleError}
-                              priority
-                              style={{ display: loading ? 'none' : 'block' }}
                             />
 
 
