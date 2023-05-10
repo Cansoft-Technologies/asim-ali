@@ -56,6 +56,11 @@ const Banner = (props: MyProps) => {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const [loading, setLoading] = useState(true)
+
+  const handleLoad = () => setLoading(false)
+  const handleError = () => setLoading(false)
+
   useEffect(() => {
     setIsLoading(false);
   }, [sliders]);
@@ -119,6 +124,7 @@ const Banner = (props: MyProps) => {
 
 
                           <div className="slider-images">
+                            {loading && <div>Loading...</div>}
 
                             <Image
                               loader={myLoader}
@@ -128,6 +134,10 @@ const Banner = (props: MyProps) => {
                               height={57}
                               layout="responsive"
                               objectFit="cover"
+                              onLoad={handleLoad}
+                              onError={handleError}
+                              priority={false}
+                              style={{ display: loading ? 'none' : 'block' }}
                             />
 
 
