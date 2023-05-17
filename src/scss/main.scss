@@ -1789,7 +1789,31 @@ p.testimonials-name {
   background-size: contain;
 }
 }
+.mobile-banner{
+  display: none;
+}
 @media all and (max-width: 540px) {
+  .desktop-banner{
+    display: none;
+  }
+  .mobile-banner{
+    display: block;
+  }
+  .home-slider .carousel-indicators {
+    display: none;
+  }
+  .carousel-fade .carousel-item img{
+    height: 400px;
+  }
+  .slider-images span {
+    height: 400px !important;
+  }
+  .wehelp_section {
+    padding: 30px 0;
+}
+  .Banner_carouselcaption__NAlFf {
+    bottom: 10% !important;
+}
   .meeting_section h2{
     font-size: 30px;
   }
@@ -1924,7 +1948,7 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
-  
+
   .cta_section .cta_first{
     height: 50vh
   }
@@ -1939,7 +1963,7 @@ p.testimonials-name {
   .Banner_carouselcaption__NAlFf {
       bottom: 0%;
       z-index: 999;
-      top: 50px;
+      top: 20px;
   }
   .meeting_image {
       display: none;
@@ -1959,15 +1983,13 @@ p.testimonials-name {
 .flexability-slider .carousel-inner {
  width: 100%;
 }
-.carousel-fade .carousel-item {
-  height: 400px;
-}
-.carousel-fade .carousel-item img{
-  height: 400px;
-}
-.slider-images > span {
-  position: inherit !important;
-}
+// .carousel-fade .carousel-item {
+//   height: 400px;
+// }
+
+// .slider-images > span {
+//   position: inherit !important;
+// }
 .flexability-slider .carouselcaption:before {
   left: -8px;
 }
