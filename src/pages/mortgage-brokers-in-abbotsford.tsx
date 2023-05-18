@@ -2,7 +2,7 @@ import { CTA, Footer, Header, Hero } from 'components';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { client } from 'client';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Nav, NavItem, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -349,7 +349,7 @@ const Abbotsford = (props: MyProps) => {
                     >
                       {data.Abbotsford.renovation.map((tab, item) => {
                         return (
-                          <Tab key={item} eventKey={item.toString()} title={tab.title}>
+                          <Tab key={item} eventKey={item.toString()} title={<h3 className='location-tab-title'>{tab.title}</h3>}>
                             <div
                               dangerouslySetInnerHTML={{ __html: tab.description }}
                               className="renovation-content-list">

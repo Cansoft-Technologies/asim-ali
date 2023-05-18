@@ -335,7 +335,7 @@ const BcCoquitlam = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <h2>{data?.coquitlam?.mortgageBrokerTitle}</h2>
+                    <p className='headering-title' >{data?.coquitlam?.mortgageBrokerTitle}</p>
                     <p>{data?.coquitlam?.mortgageBrokerDescription}</p>
                   </Col>
                 </Row>
@@ -349,7 +349,7 @@ const BcCoquitlam = (props: MyProps) => {
                     >
                       {data.coquitlam.mortgageRenovation.map((tab, item) => {
                         return (
-                          <Tab key={item} eventKey={item.toString()} title={tab.title}>
+                          <Tab key={item} eventKey={item.toString()} title={<h3 className='location-tab-title'>{tab.title}</h3>}>
                             <div
                               dangerouslySetInnerHTML={{ __html: tab.description }}
                               className="renovation-content-list">

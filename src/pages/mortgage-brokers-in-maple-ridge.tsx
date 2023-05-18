@@ -350,7 +350,7 @@ const Maple = (props: MyProps) => {
                     >
                       {data.Maple.renovation.map((tab, item) => {
                         return (
-                          <Tab key={item} eventKey={item.toString()} title={tab.title}>
+                          <Tab key={item} eventKey={item.toString()} title={<h3 className='location-tab-title'>{tab.title}</h3>}>
                             <div
                               dangerouslySetInnerHTML={{ __html: tab.description }}
                               className="renovation-content-list">
