@@ -126,7 +126,7 @@ const MobileBanner = (props: MyProps) => {
                                                     width={100}
                                                     height={67}
                                                     layout="responsive"
-                                                    objectFit="revert"
+                                                    objectFit="cover"
                                                 />
                                                 {console.log("Home slider Shabbir", slide)}
 
