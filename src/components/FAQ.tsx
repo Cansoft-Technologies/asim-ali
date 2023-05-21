@@ -13,7 +13,7 @@ export async function getStaticProps() {
     query: gql`query{
       pages(where: {id: 14}) {
         nodes {
-          HomeLandingPage {
+          HomeLandingPage { 
             faqSection {
               hideSection
               faqTitle
