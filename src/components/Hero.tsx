@@ -33,31 +33,31 @@ function Hero({
       style={{ backgroundImage: bgImage ? `url(${bgImage})` : 'none' }}
       className={styles.hero}>
       <div className={styles.wrap}>
-        <div className="hero-title-col col-md-6 offset-md-6">
-          <p className="hero-title">{ title?.split(" ")[0] } 
-            <span>{ title?.split(" ")[1] } { title?.split(" ")[2] }</span>
+        <div className="hero-title-col col-xl-6 offset-xl-6">
+          <p className="hero-title">{title?.split(" ")[0]}
+            <span>{title?.split(" ")[1]} {title?.split(" ")[2]}</span>
           </p>
-        <div className={styles.intro}>
-          <div className={styles.children}>{children}</div>
-          {buttonText && buttonURL && (
-            <p>
-              <a href={buttonURL} className="button">
-                {buttonText}
-              </a>
-            </p>
-          )}
-          {button2Text && button2URL && (
-            <p>
-              <a href={button2URL} className="button button-secondary">
-                {button2Text}
-              </a>
-            </p>
-          )}
+          <div className={styles.intro}>
+            <div className={styles.children}>{children}</div>
+            {buttonText && buttonURL && (
+              <p>
+                <a href={buttonURL} className="button">
+                  {buttonText}
+                </a>
+              </p>
+            )}
+            {button2Text && button2URL && (
+              <p>
+                <a href={button2URL} className="button button-secondary">
+                  {button2Text}
+                </a>
+              </p>
+            )}
+          </div>
         </div>
-        </div>
-        <div className="banner-bottom col-md-11 offset-md-1 mt-5"> 
-            <p className='heading'>{heading}</p>
-            <p className='description'>{description}</p>
+        <div className="banner-bottom col-md-11 offset-md-1 mt-5">
+          <p className='heading'>{heading}</p>
+          <p className='description'>{description}</p>
         </div>
       </div>
     </section>

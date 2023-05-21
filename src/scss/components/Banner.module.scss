@@ -10,8 +10,14 @@
     position: absolute;
 }
 
+
+
+
 .carouselcaption {
-    bottom: 30%;
+    top: 0;
+    bottom: 0;
+    vertical-align: middle;
+    display: flex;
     z-index: 999;
     .bannerCaption{
         font-family: 'DejavuSans';

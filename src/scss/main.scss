@@ -1610,12 +1610,9 @@ p.testimonials-name {
   font-size: 15px;
 }
 @media all and (max-width: 912px) {
-  .Banner_carouselcaption__NAlFf {
-    bottom: 5% !important;
-}
   .currentRate .easy-application {
-    background-size: auto;
-}
+      background-size: auto;
+  }
   .wehelp_section .wehelp_text p.wehelp_title {
     left: 0;
   }
@@ -1679,7 +1676,17 @@ p.testimonials-name {
 .mobile-banner{
   display: none;
 }
-@media all and (max-width: 768px) {
+@media all and (max-width: 820px) {
+  .cta_section .cta_first {
+      height: 30vh;
+  }
+  .hero-title-col .hero-title, .banner-bottom{
+    text-align: center;
+  }
+  .hero-title-col .hero-title span {
+    display: inline;
+    margin-left: 20px;
+  }
   .pagination {
     display: block !important;
   }
@@ -1731,12 +1738,6 @@ p.testimonials-name {
   .faq_section .faq_text:before {
     display: none;
   }
-  .Banner_carouselcaption__NAlFf {
-    bottom: 0;
-  }
-
-
-
   footer {
     text-align: center;
     .wrap {
@@ -1824,10 +1825,7 @@ p.testimonials-name {
   }
   .wehelp_section {
     padding: 30px 0;
-}
-  .Banner_carouselcaption__NAlFf {
-    bottom: 0% !important;
-}
+  }
   .meeting_section h2{
     font-size: 30px;
   }
@@ -1896,7 +1894,6 @@ p.testimonials-name {
   }
  
   .Banner_carouselcaption__NAlFf {
-    bottom: 0%;
     z-index: 999;
   }
   .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderTitle {
@@ -1975,7 +1972,7 @@ p.testimonials-name {
   }
 
   .Banner_carouselcaption__NAlFf {
-      bottom: 0%;
+      // bottom: 0%;
       z-index: 999;
       top: 20%;
   }
@@ -1991,19 +1988,9 @@ p.testimonials-name {
   .Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {
     font-size: 15px;
   }
-//   .currentRate .easy-application .overlay {
-//     width: unset;
-// }
 .flexability-slider .carousel-inner {
  width: 100%;
 }
-// .carousel-fade .carousel-item {
-//   height: 400px;
-// }
-
-// .slider-images > span {
-//   position: inherit !important;
-// }
 .flexability-slider .carouselcaption:before {
   left: -8px;
 }
