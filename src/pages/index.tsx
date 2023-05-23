@@ -288,6 +288,7 @@ export async function getStaticProps() {
       images: data?.pages?.nodes,
       faqsections: data?.pages?.nodes,
     },
+    revalidate: 60
   };
 }
 

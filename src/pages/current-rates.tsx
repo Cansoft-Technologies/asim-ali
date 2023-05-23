@@ -130,6 +130,7 @@ settingsOptions {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
     },
+    revalidate: 60
   };
 }
 

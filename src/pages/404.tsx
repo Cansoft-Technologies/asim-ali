@@ -78,6 +78,7 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
     },
+    revalidate: 60
   };
 }
 

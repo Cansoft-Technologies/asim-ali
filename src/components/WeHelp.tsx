@@ -33,6 +33,7 @@ export async function getStaticProps() {
     props: {
       helps: data?.pages?.nodes,
     },
+    revalidate: 60
   };
 }
 

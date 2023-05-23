@@ -39,6 +39,7 @@ export async function getStaticProps() {
     props: {
       flexsliders: data?.pages?.nodes,
     },
+    revalidate: 60
   };
 }
 

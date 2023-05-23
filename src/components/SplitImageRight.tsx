@@ -40,6 +40,7 @@ export async function getStaticProps() {
     props: {
       splitImagesRight: data?.pages?.nodes,
     },
+    revalidate: 60
   };
 }
 

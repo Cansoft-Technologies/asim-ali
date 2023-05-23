@@ -6,13 +6,13 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 
 export async function getStaticProps() {
-    const client = new ApolloClient({
-        uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-        cache: new InMemoryCache(),
-    });
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
 
-    const { data } = await client.query({
-        query: gql`query{ 
+  const { data } = await client.query({
+    query: gql`query{ 
         pages(where: {id: 1580}) {
           nodes {
             seo {
@@ -94,54 +94,55 @@ export async function getStaticProps() {
         }
       }
     }`,
-    });
+  });
 
-    return {
-        props: {
-            metaData: data?.pages?.nodes,
-            settings: data?.settingsOptions?.AsimOptions,
-            mainMenus: data?.menus?.nodes,
-        },
-    };
+  return {
+    props: {
+      metaData: data?.pages?.nodes,
+      settings: data?.settingsOptions?.AsimOptions,
+      mainMenus: data?.menus?.nodes,
+    },
+    revalidate: 60
+  };
 }
 
 type MyProps = {
-    metaData: any;
-    settings: any;
-    mainMenus: any;
+  metaData: any;
+  settings: any;
+  mainMenus: any;
 
 };
 
 
 
 function portfolio(props) {
-    const { settings, mainMenus, metaData } = props;
+  const { settings, mainMenus, metaData } = props;
 
-    return (
-        <>
-            <Head>
-                {metaData.map((meta) => {
-                    return (
-                        <>
-                            <title>{meta?.seo?.title}</title>
-                            <meta name="description" content={meta?.seo?.description} />
-                            <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                            <meta property="og:title" content={meta?.seo?.title} />
-                            <meta property="og:description" content={meta?.seo?.description} />
-                            <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
-                        </>
-                    )
-                })}
-            </Head>
-            <main className="content">
-                <Header settings={settings} mainMenus={mainMenus} />
+  return (
+    <>
+      <Head>
+        {metaData.map((meta) => {
+          return (
+            <>
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta property="og:description" content={meta?.seo?.description} />
+              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+            </>
+          )
+        })}
+      </Head>
+      <main className="content">
+        <Header settings={settings} mainMenus={mainMenus} />
 
-            </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+      </main>
+      <Footer settings={settings} mainMenus={mainMenus} />
 
 
-        </>
-    );
+    </>
+  );
 }
 
 export default portfolio;

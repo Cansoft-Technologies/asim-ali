@@ -42,6 +42,7 @@ export async function getStaticProps() {
     props: {
       sliders: data?.pages?.nodes,
     },
+    revalidate: 60
   };
 }
 

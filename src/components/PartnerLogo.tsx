@@ -77,6 +77,7 @@ export async function getStaticProps() {
     props: {
       logos: data?.pages?.nodes,
     },
+    revalidate: 60
   };
 }
 

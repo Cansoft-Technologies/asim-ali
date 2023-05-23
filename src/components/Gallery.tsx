@@ -50,6 +50,7 @@ export async function getStaticProps() {
     props: {
       images: data?.pages?.nodes,
     },
+    revalidate: 60
   };
 }
 

@@ -34,6 +34,7 @@ export async function getStaticProps() {
     props: {
       meetings: data?.pages?.nodes,
     },
+    revalidate: 60
   };
 }
 
