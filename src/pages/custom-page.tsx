@@ -1,6 +1,6 @@
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
-import { Footer, Header, Hero } from 'components';
+import { Hero } from 'components';
 import CustomFooter from 'components/CustomFooter';
 import CustomHeader from 'components/CustomHeader';
 import { GetStaticPropsContext } from 'next';

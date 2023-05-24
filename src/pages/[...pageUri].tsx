@@ -1,5 +1,5 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
-import { Footer, Header, Hero } from 'components';
+import { Hero } from 'components';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { client, Page as PageType } from 'client';

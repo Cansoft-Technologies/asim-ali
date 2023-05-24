@@ -1,7 +1,6 @@
 import { CTA, Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useState, useEffect } from 'react';
-import { client } from 'client';
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import 'react-multi-carousel/lib/styles.css';
 import { gql } from '@apollo/client';

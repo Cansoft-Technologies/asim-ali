@@ -1,8 +1,6 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import React from 'react';
-// import { CTA, Footer, Header } from 'components';
-
 
 const Header = dynamic(() => import('../components/Header'));
 const Footer = dynamic(() => import('../components/Footer'));
@@ -22,18 +20,6 @@ const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import MobileBanner from 'components/MobileBanner';
-
-// import Banner from '../components/Banner';
-// import WeHelp from '../components/WeHelp';
-// import Team from 'components/Team';
-// import Meeting from 'components/Meeting';
-// import PartnerLogo from 'components/PartnerLogo';
-// import SplitImageLeft from '../components/SplitImageLeft';
-// import FAQ from 'components/FAQ';
-// import Gallery from 'components/Gallery';
-// import FlexabilitySlider from 'components/FlexabilitySlider';
-// import SplitImageRight from '../components/SplitImageRight';
-
 
 
 export async function getStaticProps() {

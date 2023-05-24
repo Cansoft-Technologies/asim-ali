@@ -1,8 +1,7 @@
 import { CTA, Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
-import { client } from 'client';
-import { Col, Container, Nav, NavItem, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';

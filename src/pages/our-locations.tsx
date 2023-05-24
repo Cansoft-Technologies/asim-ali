@@ -1,6 +1,6 @@
 import { Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import { gql } from '@apollo/client';

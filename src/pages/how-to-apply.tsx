@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Head from 'next/head';
 import { Footer, Header, Hero } from 'components';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 
 
