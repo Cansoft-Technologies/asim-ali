@@ -19,7 +19,9 @@ const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const MobileBanner = dynamic(() => import('components/MobileBanner'));
+// const MobileBanner = dynamic(() => import('components/MobileBanner'));
+import MobileBanner from 'components/MobileBanner';
+
 
 
 export async function getStaticProps() {
