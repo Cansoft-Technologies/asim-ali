@@ -1,20 +1,28 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-const Header = dynamic(() => import('../components/Header'));
-const Footer = dynamic(() => import('../components/Footer'));
-const CTA = dynamic(() => import('../components/CTA'));
+import { Header, Banner, Footer, CTA, WeHelp, Team, Meeting, PartnerLogo, SplitImageLeft, FAQ, Gallery, FlexabilitySlider, SplitImageRight } from './../components';
 
-const Banner = dynamic(() => import('../components/Banner'));
-const WeHelp = dynamic(() => import('../components/WeHelp'));
-const Team = dynamic(() => import('components/Team'));
-const Meeting = dynamic(() => import('components/Meeting'));
-const PartnerLogo = dynamic(() => import('components/PartnerLogo'));
-const SplitImageLeft = dynamic(() => import('../components/SplitImageLeft'));
-const FAQ = dynamic(() => import('components/FAQ'));
-const Gallery = dynamic(() => import('components/Gallery'));
-const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
-const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
+
+// , WeHelp, Team, Meeting, PartnerLogo, SplitImageLeft, FAQ, Gallery, FlexabilitySlider, SplitImageRight
+// import Banner from 'components/Banner';
+
+
+
+// const Header = dynamic(() => import('../components/Header'));
+// const Footer = dynamic(() => import('../components/Footer'));
+// const CTA = dynamic(() => import('../components/CTA'));
+
+// const Banner = dynamic(() => import('../components/Banner'));
+// const WeHelp = dynamic(() => import('../components/WeHelp'));
+// const Team = dynamic(() => import('components/Team'));
+// const Meeting = dynamic(() => import('components/Meeting'));
+// const PartnerLogo = dynamic(() => import('components/PartnerLogo'));
+// const SplitImageLeft = dynamic(() => import('../components/SplitImageLeft'));
+// const FAQ = dynamic(() => import('components/FAQ'));
+// const Gallery = dynamic(() => import('components/Gallery'));
+// const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
+// const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
 
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
