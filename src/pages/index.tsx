@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import React from 'react';
 
 const Header = dynamic(() => import('../components/Header'));
 const Footer = dynamic(() => import('../components/Footer'));

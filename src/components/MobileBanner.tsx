@@ -1,5 +1,7 @@
+import dynamic from 'next/dynamic';
+
 import React, { useState, useEffect } from 'react';
-import { Carousel, Col, Row, Button, Spinner } from 'react-bootstrap';
+import { Carousel, Col, Row, Button } from 'react-bootstrap';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from 'scss/components/Banner.module.scss';
