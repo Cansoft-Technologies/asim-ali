@@ -278,9 +278,7 @@ const Blog = (props: MyProps) => {
                           <div className="card-body">
                             <Link href={blog.uri}><h2 className="card-title">{blog?.title}</h2>
                             </Link>
-                            <span>
-
-                              <Moment format="MMM D, YYYY" >{blog.date}</Moment></span>
+                            <span>By Asim Ali | <Moment format="MMM D, YYYY" >{blog.date}</Moment></span>
                             {/* <p dangerouslySetInnerHTML={{__html: blog?.content.textContent }}className="card-text my-3"></p> */}
                             <p className='blog-content'>{blog?.content.replace(/(<([^>]+)>)/ig, '')}</p>
                           </div>

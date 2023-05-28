@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 import CustomHeader from 'components/CustomHeader';
 import CustomFooter from 'components/CustomFooter';
 import CustomHero from 'components/CustomHero';
-
+import Moment from 'react-moment';
 export interface PostProps {
   post: Post | Post['preview']['node'] | null | undefined;
 }
@@ -76,6 +76,7 @@ export function PostComponent({ post }: PostProps) {
       <main className="content content-single">
         <div className="wrap">
           <h1>{post?.title()}</h1>
+          <span>By Asim Ali | <Moment format="MMM D, YYYY" >{post.date}</Moment></span>
           <div dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }} />
         </div>
       </main>
