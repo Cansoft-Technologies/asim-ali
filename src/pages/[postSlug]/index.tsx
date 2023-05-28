@@ -72,11 +72,10 @@ export function PostComponent({ post }: PostProps) {
         title={""}
         bgImage={post?.featuredImage?.node?.sourceUrl()}
       />
-      {console.log("zara baba", post)}
       <main className="content content-single">
         <div className="wrap">
           <h1>{post?.title()}</h1>
-          <span>By Asim Ali | <Moment format="MMM D, YYYY" >{post.date}</Moment></span>
+          <span className='asim-post-meta' >By Asim Ali | <Moment format="MMM D, YYYY" >{post.date}</Moment></span>
           <div dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }} />
         </div>
       </main>
