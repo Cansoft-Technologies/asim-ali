@@ -1111,29 +1111,23 @@ textarea#comment {
 }
 
 .our-services {
-  .slide-text {
+  a.slide-text {
     border: 1px solid $color-secondary;
     margin: 13px;
     padding: 20px;
     text-align: center;
-    color: $color-primary;
+    color: $color-primary !important;
     height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    a {
-      font-size: 15px;
-      font-family: "AvenirBlack";
-      color: $color-primary !important;
-    }
+    font-weight: 600;
+    
     &:hover {
       background: $color-primary;
       border: 1px solid $color-primary;
       cursor: pointer;
-      a {
-        color: $color-secondary !important;
-      }
+      color: $color-secondary !important;
     }
   }
   .react-multiple-carousel__arrow {

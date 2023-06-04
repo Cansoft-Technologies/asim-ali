@@ -209,9 +209,9 @@ const Services = (props: MyProps) => {
 
                     {data?.services?.ourServices.map((slide, i) => {
                       return (
-                        <div key={i} className="slide-text">
+                        <div key={i} >
 
-                          <a href={`#${i}`}>{slide?.serviceTitle}</a>
+                          <a className="slide-text" href={`#${i}`}>{slide?.serviceTitle}</a>
                         </div>
                       )
 
@@ -268,7 +268,7 @@ const Services = (props: MyProps) => {
                             <Col className='service-texts' lg={6}>
                               <div className='service-content'>
                                 <h2 className='mt-4'>{service?.serviceTitle}</h2>
-                                <p dangerouslySetInnerHTML={{ __html: service?.serviceContent }} ></p>
+                                <p>{service.serviceContent}</p>
                               </div>
                             </Col>
                           </Row>
