@@ -62,8 +62,8 @@ const WeHelp = (props: MyProps) => {
                   <Row >
                     <Col lg={6} >
                       <div className="wehelp_image">
-                        <video autoPlay={true} loop={true} style={{ width: '500px', height: '500px' }}>
-                          <source src={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
+                        <video autoPlay loop muted playsInline style={{ width: '500px', height: '500px' }}>
+                          <source type="video/mp4" src={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
                         </video>
                       </div>
                     </Col>
