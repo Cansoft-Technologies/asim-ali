@@ -107,25 +107,42 @@ body {
         display: flex;
         flex-direction: column;
         position: absolute;
-        left: 0;
+        /* left: 0; */
         top: 100%;
         z-index: 99;
-        width: 240px;
-        display: none;
+        width: 100%;
         margin: 0;
         padding: 0;
         background: #fff;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        width: 240px;
+
+        // display: flex;
+        // flex-direction: column;
+        // position: absolute;
+        // left: 0;
+        // top: 100%;
+        // z-index: 99;
+        // width: 240px;
+        // display: none;
+        // margin: 0;
+        // padding: 0;
+        // background: #fff;
         li {
           span.sublink {
             padding: 13px;
             display: block;
             cursor: pointer;
             margin: 0;
+
             border-bottom: 2px solid $color-secondary;
-            &:hover {
-              background: $color-secondary;
-              color: $color-white;
-            }
+            // &:hover {
+            //   // background: $color-secondary;
+            //   // color: $color-white;
+            // }
             &:before {
               display: none;
             }
@@ -151,26 +168,26 @@ body {
     font-weight: 800;
     display: block;
     text-align: center;
-    &:hover {
-      // font-family: 'AvenirBlack';
-      border-bottom: 2px solid $color-secondary;
-      color: $color-primary;
-      &:before {
-        border-top: 2px solid $color-secondary;
-        border-right: 2px solid $color-secondary;
-        width: 30px;
-        height: 30px;
-        content: " ";
-        display: block;
-        background-color: transparent;
-        transform: rotate(-44deg) skew(10deg, 10deg);
-        position: absolute;
-        top: -14px;
-        left: 0;
-        right: 0;
-        margin: auto;
-      }
-    }
+    // &:hover {
+    //   // font-family: 'AvenirBlack';
+    //   border-bottom: 2px solid $color-secondary;
+    //   color: $color-primary;
+    //   &:before {
+    //     border-top: 2px solid $color-secondary;
+    //     border-right: 2px solid $color-secondary;
+    //     width: 30px;
+    //     height: 30px;
+    //     content: " ";
+    //     display: block;
+    //     background-color: transparent;
+    //     transform: rotate(-44deg) skew(10deg, 10deg);
+    //     position: absolute;
+    //     top: -14px;
+    //     left: 0;
+    //     right: 0;
+    //     margin: auto;
+    //   }
+    // }
   }
 }
 
@@ -416,26 +433,49 @@ footer {
         margin: 0;
         padding: 0;
         list-style: none;
-        display: flex;
+        display: block;
         justify-content: center;
+        li{
+            position: relative;
+        }
         span{
           float: left;
           overflow: hidden;
           margin-right: 15px;
+          z-index: 9999;
           li{
-            span.link{
-              &:hover{
-                color: #fff !important;
-              }
+            &:hover{
+              color: $color-primary;
+              display: block;
+              background: $color-secondary;
+              width: 100%;
             }
-
           }
           .submenu{
             display: none;
+            position: absolute;
+            top: 23px;
+            // left: 0;
+            background-color: #fff;
+            width: 190px;
+            z-index: 99;
+            margin: auto;
+            li{
+              float: none;
+              padding: 5px;
+              cursor: pointer;
+              span{
+                float: none;
+              }
+            }
           }
         }
        
       }
+    }
+    .footer-menu ul span:hover .submenu{
+      display: block;
+
     }
 
     .social-url {
@@ -1426,7 +1466,7 @@ textarea#comment {
     }
     p {
       color: $color-primary;
-      font-size: 14px;
+      // font-size: 14px;
       font-weight: 200;
       line-height: 25px;
       font-family: "AvenirBook";
@@ -1487,7 +1527,7 @@ textarea#comment {
     padding: 50px 0;
     p {
       color: $color-primary;
-      font-size: 14px;
+      // font-size: 14px;
       font-weight: 200;
       line-height: 25px;
       font-family: "AvenirBook";
@@ -1541,7 +1581,7 @@ textarea#comment {
       p,
       li {
         color: $color-primary;
-        font-size: 14px;
+        // font-size: 14px;
         font-weight: 200;
         line-height: 25px;
         font-family: "AvenirBook";
@@ -1553,7 +1593,7 @@ textarea#comment {
     margin: 80px 0;
     p {
       color: $color-primary;
-      font-size: 14px;
+      // font-size: 14px;
       font-weight: 200;
       line-height: 25px;
       font-family: "AvenirBook";
@@ -1612,6 +1652,10 @@ p.testimonials-name {
   font-size: 15px;
 }
 @media all and (max-width: 912px) {
+  .navbar-nav ul li ul.submenu{
+    position: inherit;
+    width: auto;
+  }
   .currentRate .easy-application {
       background-size: auto;
   }
@@ -1673,6 +1717,9 @@ p.testimonials-name {
   list-style: none;
   display: initial;
   margin-top: revert;
+}
+footer .wrap .footer-menu ul span .submenu{
+  position: inherit;
 }
 }
 .mobile-banner{
