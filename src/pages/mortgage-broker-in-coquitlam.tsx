@@ -1,7 +1,7 @@
 import { CTA, Footer, Header, Hero } from 'components';
 import Head from 'next/head';
 import React, { useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Accordion, Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -95,6 +95,10 @@ export async function getStaticProps() {
                     title
                     description
                   }
+                  faqAccordion {
+                  question
+                  answer
+                }
                 }
         }
       }
@@ -375,7 +379,30 @@ const BcCoquitlam = (props: MyProps) => {
 
                   </Col>
                 </Row>
+                {/* faq section start */}
 
+                <div className='faq-accordion'>
+
+                  <Accordion defaultActiveKey="0">
+                    {data?.coquitlam?.faqAccordion.map((qa, index) => {
+                      return (
+                        <Accordion.Item key={index} eventKey={index.toString()} >
+                          <Accordion.Header as="h3">{qa.question}</Accordion.Header>
+                          <Accordion.Body
+                            dangerouslySetInnerHTML={{ __html: qa.answer }}
+                          >
+
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      )
+                    })}
+
+                  </Accordion>
+
+
+                </div>
+
+                {/* faq section end */}
               </Container>
               <CTA />
             </main>
