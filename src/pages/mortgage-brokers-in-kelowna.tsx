@@ -339,7 +339,7 @@ const Kelowna = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <p className='headering-title'>{data?.Kelowna?.mortgageBrokerTitle}</p>
+                    <h2 className='headering-title'>{data?.Kelowna?.mortgageBrokerTitle}</h2>
                     <p>{data?.Kelowna?.mortgageBrokerDescription}</p>
                   </Col>
                 </Row>

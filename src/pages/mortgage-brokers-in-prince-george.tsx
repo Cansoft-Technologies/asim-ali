@@ -339,7 +339,7 @@ const Prince = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <p className='headering-title'>{data?.Prince?.brokerTitle}</p>
+                    <h2 className='headering-title'>{data?.Prince?.brokerTitle}</h2>
                     <p>{data?.Prince?.brokerDescription}</p>
                   </Col>
                 </Row>
@@ -364,7 +364,7 @@ const Prince = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className='broker-coquitlam'>
+                {/* <Row className='broker-coquitlam'>
                   <Col>
                     <h2>{data?.Prince?.
                       brokerTitle}</h2>
@@ -378,7 +378,7 @@ const Prince = (props: MyProps) => {
                     )}
 
                   </Col>
-                </Row>
+                </Row> */}
                 {/* faq section start */}
 
                 <div className='faq-accordion'>

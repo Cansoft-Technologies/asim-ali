@@ -340,7 +340,7 @@ const Maple = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <p className='headering-title'>{data?.Maple?.brokerTitle}</p>
+                    <h2 className='headering-title'>{data?.Maple?.brokerTitle}</h2>
                     <p>{data?.Maple?.brokerDescription}</p>
                   </Col>
                 </Row>
@@ -365,7 +365,7 @@ const Maple = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className='broker-coquitlam'>
+                {/* <Row className='broker-coquitlam'>
                   <Col>
                     <h2>{data?.Maple?.
                       brokerTitle}</h2>
@@ -379,7 +379,7 @@ const Maple = (props: MyProps) => {
                     )}
 
                   </Col>
-                </Row>
+                </Row> */}
                 {/* faq section start */}
 
                 <div className='faq-accordion'>

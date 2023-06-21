@@ -337,7 +337,7 @@ const Kamloops = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <p className='headering-title'>{data?.Kamloops?.brokerTitle}</p>
+                    <h2 className='headering-title'>{data?.Kamloops?.brokerTitle}</h2>
                     <p>{data?.Kamloops?.brokerDescription}</p>
                   </Col>
                 </Row>
@@ -362,7 +362,7 @@ const Kamloops = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className='broker-coquitlam'>
+                {/* <Row className='broker-coquitlam'>
                   <Col>
                     <h2>{data?.Kamloops?.
                       brokerTitle}</h2>
@@ -376,10 +376,10 @@ const Kamloops = (props: MyProps) => {
                     )}
 
                   </Col>
-                </Row>
+                </Row> */}
                 {/* faq section start */}
 
-                <div className='faq-accordion'>
+                <div className='faq-accordion mt-5'>
                   <Accordion defaultActiveKey="0">
                     {data?.Kamloops?.faqAccordion.map((qa, index) => {
                       return (

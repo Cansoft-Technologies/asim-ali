@@ -338,7 +338,7 @@ const Delta = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <p className="headering-title" >{data?.Delta?.brokerTitle}</p>
+                    <h2 className="headering-title" >{data?.Delta?.brokerTitle}</h2>
                     <p>{data?.Delta?.description}</p>
                   </Col>
                 </Row>
