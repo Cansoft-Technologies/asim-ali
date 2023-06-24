@@ -27,6 +27,7 @@ const MyDocument = () => {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#12143a" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+        <meta name="google-site-verification" content="ArsOxUI8W_sRuQ8inukzs24Mjl5_sl-TfzJGoz3CBQI" />
         <meta name="theme-color" content="#ffffff" />
 
       </Head>
