@@ -442,7 +442,7 @@ const Vancouver = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className='broker-coquitlam'>
+                {/* <Row className='broker-coquitlam'>
                   <Col>
                     <h2>{data?.Vancouver?.
                       brokerTitle}</h2>
@@ -456,7 +456,7 @@ const Vancouver = (props: MyProps) => {
                     )}
 
                   </Col>
-                </Row>
+                </Row> */}
                 {/* faq section start */}
 
                 <div className='faq-accordion'>
