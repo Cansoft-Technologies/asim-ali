@@ -1,7 +1,7 @@
 import 'faust.config';
 
 import { FaustProvider } from '@faustjs/next';
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'scss/main.scss';
 
 import { client } from 'client';
@@ -17,11 +17,6 @@ import { TRACKING_ID } from "./../../utils/variables";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 
-  useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
-  }, []);
 
   return (
     <>
