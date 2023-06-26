@@ -1,5 +1,4 @@
 const { withFaust } = require('@faustjs/next');
-const withOffline = require('next-offline');
 const runtimeCaching = require("next-pwa/cache");
 const prod = process.env.NODE_ENV === 'production'
 /**
@@ -18,15 +17,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = withBundleAnalyzer ( withOffline ( withFaust ( withPWA({
+module.exports = withBundleAnalyzer ( withFaust ( withPWA({
   optimizeImages: false,
     images: {
-      domains: ['asimali.ca'],
+      domains: ["localhost","asimaliprod.wpengine.com"],
+      optimized: true,
+      allowFutureImage: true,
     },
     eslint: {
       ignoreDuringBuilds: true,
     }
-}))) );
+})));
 
 
 
