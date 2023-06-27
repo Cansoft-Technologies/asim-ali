@@ -62,6 +62,7 @@ export async function getStaticProps() {
                   mortgageProductsTitle
                   mortgageProductsRightText
                   mortgageProductsLeftText
+                  topLangleyDescription
                   mortgageRenovation {
                     title
                     description
@@ -235,7 +236,7 @@ const Langley = (props: MyProps) => {
                     <p>{data?.Langley?.langleyBannerTitle?.split(" ")[0]} <span>{data?.Langley?.langleyBannerTitle?.split(" ")[1]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.Langley?.langleyBannerDescription}</span>
+                    <span>{data?.Langley?.topLangleyDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>

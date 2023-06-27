@@ -66,6 +66,7 @@ export async function getStaticProps() {
                   title
                   description
                   brokerDescription
+                  topDescription
                   bannerTitle
                   bannerHeading
                   bannerDescription
@@ -234,7 +235,7 @@ const Delta = (props: MyProps) => {
                     <p>{data?.Delta?.bannerTitle?.split(" ")[0]} <span>{data?.Delta?.bannerTitle?.split(" ")[1]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.Delta?.bannerDescription}</span>
+                    <span>{data?.Delta?.topDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
@@ -263,9 +264,9 @@ const Delta = (props: MyProps) => {
                       responsive={responsive}
                     >
 
-                      {data?.Delta?.slider.map((slide, a) => {
+                      {data?.Delta?.slider.map((slide:any, a:any) => {
                         return (
-                          <div key={a} className="application-slide text-center">
+                          <div key={slide?.title} className="application-slide text-center">
                             <span>{slide?.title}</span>
                             <p>{slide?.content}</p>
                           </div>
