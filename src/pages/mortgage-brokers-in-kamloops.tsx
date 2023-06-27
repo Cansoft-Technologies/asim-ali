@@ -65,6 +65,7 @@ export async function getStaticProps() {
                   firstApplyStepTitle
                   brokerTitle
                   brokerDescription
+                  topDescription
                   bannerTitle
                   bannerHeading
                   bannerDescription
@@ -233,7 +234,7 @@ const Kamloops = (props: MyProps) => {
                     <p>{data?.Kamloops?.bannerTitle?.split(" ")[0]} <span>{data?.Kamloops?.bannerTitle?.split(" ")[1]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.Kamloops?.bannerDescription}</span>
+                    <span>{data?.Kamloops?.topDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>

@@ -65,6 +65,7 @@ export async function getStaticProps() {
                   mortgageProductsRightText
                   mortgageBrokerTitle
                   mortgageBrokerDescription
+                  topKelownaDescription
                   kelownaBannerTitle
                   kelownaBannerHeading
                   kelownaBannerDescription
@@ -235,7 +236,7 @@ const Kelowna = (props: MyProps) => {
                     <p>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[0]} <span>{data?.Kelowna?.kelownaBannerTitle?.split(" ")[1]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.Kelowna?.kelownaBannerDescription}</span>
+                    <span>{data?.Kelowna?.topKelownaDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
