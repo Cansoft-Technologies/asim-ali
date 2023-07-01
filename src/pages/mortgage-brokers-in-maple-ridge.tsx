@@ -69,6 +69,7 @@ export async function getStaticProps() {
                   bannerTitle
                   bannerHeading
                   bannerDescription
+                  topDescription
                   aboutText
                   aboutImage {
                     altText
@@ -236,7 +237,7 @@ const Maple = (props: MyProps) => {
                     <p>{data?.Maple?.bannerTitle?.split(" ")[0]} <span>{data?.Maple?.bannerTitle?.split(" ")[1]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.Maple?.bannerDescription}</span>
+                    <span>{data?.Maple?.topDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>

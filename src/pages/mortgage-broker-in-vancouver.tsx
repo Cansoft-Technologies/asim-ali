@@ -68,6 +68,7 @@ export async function getStaticProps() {
                   bannerTitle
                   bannerHeading
                   bannerDescription
+                  topDescription
                   aboutText
                   aboutImage {
                     altText
@@ -313,7 +314,7 @@ const Vancouver = (props: MyProps) => {
                     <p>{data?.Vancouver?.bannerTitle?.split(" ")[0]} <span>{data?.Vancouver?.bannerTitle?.split(" ")[1]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.Vancouver?.bannerDescription}</span>
+                    <span>{data?.Vancouver?.topDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
