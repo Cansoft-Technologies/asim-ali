@@ -136,11 +136,11 @@ const Testimonials = (props: MyProps) => {
 
   return (
     <>
-      {testimonialsData.map((data, index) => {
+      {testimonialsData?.map((data, index) => {
         return (
           <div key={index} className='our-testimonial'>
             <Head>
-              {metaData.map((meta) => {
+              {metaData?.map((meta) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>

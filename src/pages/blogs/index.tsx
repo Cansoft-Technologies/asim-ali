@@ -1,14 +1,13 @@
 import { getNextStaticProps } from '@faustjs/next';
-import { client, OrderEnum, PostObjectsConnectionOrderbyEnum } from 'client';
-import { Footer, Header, Pagination, Posts } from 'components';
+import { client } from 'client';
+import { Pagination, Posts } from 'components';
 import CustomFooter from 'components/CustomFooter';
 import CustomHeader from 'components/CustomHeader';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
 import styles from 'scss/pages/posts.module.scss';
-
+ß
 const POSTS_PER_PAGE = 6;
 
 export default function Page() {

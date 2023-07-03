@@ -205,7 +205,7 @@ const Abbotsford = (props: MyProps) => {
         return (
           <div key={index} className='Bc-Coquitlam'>
             <Head>
-              {metaData.map((meta) => {
+              {metaData?.map((meta) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>
@@ -247,12 +247,11 @@ const Abbotsford = (props: MyProps) => {
                   <Col md={5}>
                     <Image
                       src={data?.Abbotsford?.aboutImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.Abbotsford?.aboutImage?.altText}
-                      width="100%"
-                      height="90"
-                      layout="responsive"
-                      objectFit="contain"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{width:"100%",objectFit:"contain"}}
                     />
                   </Col>
                 </Row>
@@ -291,12 +290,11 @@ const Abbotsford = (props: MyProps) => {
                   <Col md={6}>
                     <Image
                       src={data?.Abbotsford?.productsImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.Abbotsford?.productsImage?.altText}
-                      width="190"
-                      height="120"
-                      layout="responsive"
-                      objectFit="contain"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{width:"100%",objectFit:"contain"}}
                     />
                   </Col>
                   <Col md={3}>

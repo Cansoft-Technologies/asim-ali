@@ -112,13 +112,11 @@ const PartnerLogo = (props: MyProps) => {
                       return (
                         <div key={singleLogo.sourceUrl}>
                           <Image
-                            loader={myLoader}
                             src={singleLogo.sourceUrl}
-                            width="100%"
-                            height="15"
-                            layout="responsive"
-                            objectFit="contain"
+                            width="200"
+                            height="40"
                             alt={singleLogo.altText}
+                            style={{objectFit: 'contain',width: '100%'}}
                           />
                         </div>
                       )

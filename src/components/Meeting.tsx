@@ -72,13 +72,25 @@ const Meeting = (props: MyProps) => {
                       </div>
                     </Col>
                     <Col lg={8}>
-                      <div className="meeting_image">
+                    <div className="meeting_image" style={{
+                            position: "relative",
+                            height: "70vh",
+                            width: "100%",
+                            clipPath: "inset(0 0 0 0)",
+                          }}>
                         <Image
-                          loader={myLoader}
-                          src={meeting?.HomeLandingPage?.meetingSection?.meetingImage?.sourceUrl}
-                          width="1920"
-                          height="1228"
-                          alt={meeting?.HomeLandingPage?.meetingSection?.meetingImage?.altText} />
+                          
+                          src={
+                            meeting?.HomeLandingPage?.meetingSection
+                              ?.meetingImage?.sourceUrl
+                          }
+                          fill
+                          style={{ height: '100%', width: '100%' }}
+                          alt={
+                            meeting?.HomeLandingPage?.meetingSection
+                              ?.meetingImage?.altText
+                          }
+                        />
                       </div>
                     </Col>
                   </Row>
