@@ -237,12 +237,11 @@ const HowItWorks = (props: MyProps) => {
                   <Col md={4}>
                     <Image
                       src={data?.HowItWorks?.secondImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.HowItWorks?.secondImage?.altText}
-                      width="190"
-                      height="150"
-                      layout="responsive"
-                      objectFit="contain"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Col>
                   <Col md={8}>
@@ -261,12 +260,11 @@ const HowItWorks = (props: MyProps) => {
                   <Col md={12}>
                     <Image
                       src={data?.HowItWorks?.firstBanner?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.HowItWorks?.firstBanner?.altText}
-                      width="100%"
-                      height="50"
-                      layout="responsive"
-                      objectFit="cover"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Col>
                 </Row>
@@ -287,12 +285,11 @@ const HowItWorks = (props: MyProps) => {
                     <div className="howitworks-image">
                       <Image
                         src={data?.HowItWorks?.thirdImage?.sourceUrl}
-                        loader={myLoader}
                         alt={data?.HowItWorks?.thirdImage?.altText}
-                        width="100"
-                        height="80"
-                        layout="responsive"
-                        objectFit="contain"
+                        width="390"
+                        height="400"
+                        priority={true}
+                        style={{ width: "100%", objectFit: "contain" }}
                       />
                     </div>
                   </Col>
@@ -306,12 +303,11 @@ const HowItWorks = (props: MyProps) => {
                   <Col md={4}>
                     <Image
                       src={data?.HowItWorks?.fourthImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.HowItWorks?.fourthImage?.altText}
-                      width="190"
-                      height="150"
-                      layout="responsive"
-                      objectFit="contain"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Col>
                   <Col md={8}>
@@ -341,12 +337,11 @@ const HowItWorks = (props: MyProps) => {
                     <div className="howitworks-image">
                       <Image
                         src={data?.HowItWorks?.fifthImage?.sourceUrl}
-                        loader={myLoader}
                         alt={data?.HowItWorks?.fifthImage?.altText}
-                        width="100"
-                        height="80"
-                        layout="responsive"
-                        objectFit="contain"
+                        width="390"
+                        height="400"
+                        priority={true}
+                        style={{ width: "100%", objectFit: "contain" }}
                       />
                     </div>
                   </Col>
@@ -361,7 +356,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{width:"100%",objectFit:"contain"}}
+                      style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Col>
                 </Row>
@@ -378,7 +373,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{width:"100%",objectFit:"contain"}}
+                      style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Col>
                   <Col md={6}>
@@ -388,7 +383,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{width:"100%",objectFit:"contain"}}
+                      style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Col>
                 </Row>
