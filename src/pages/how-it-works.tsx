@@ -357,12 +357,11 @@ const HowItWorks = (props: MyProps) => {
                   <Col md={12}>
                     <Image
                       src={data?.HowItWorks?.secondBanner?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.HowItWorks?.secondBanner?.altText}
-                      width="100%"
-                      height="50"
-                      layout="responsive"
-                      objectFit="cover"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{width:"100%",objectFit:"contain"}}
                     />
                   </Col>
                 </Row>
