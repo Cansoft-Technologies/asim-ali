@@ -247,12 +247,11 @@ const Langley = (props: MyProps) => {
                   <Col md={5}>
                     <Image
                       src={data?.Langley?.aboutLangleyImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.Langley?.aboutLangleyImage?.altText}
-                      width="100%"
-                      height="120"
-                      layout="responsive"
-                      objectFit="contain"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{width:"100%",objectFit:"contain"}}
                     />
                   </Col>
                 </Row>
@@ -291,12 +290,11 @@ const Langley = (props: MyProps) => {
                   <Col md={6}>
                     <Image
                       src={data?.Langley?.mortgageProductsImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.Langley?.mortgageProductsImage?.altText}
-                      width="190"
-                      height="150"
-                      layout="responsive"
-                      objectFit="contain"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{width:"100%",objectFit:"contain"}}
                     />
                   </Col>
                   <Col md={3}>

@@ -121,7 +121,7 @@ function portfolio(props) {
   return (
     <>
       <Head>
-        {metaData.map((meta) => {
+        {metaData?.map((meta) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>

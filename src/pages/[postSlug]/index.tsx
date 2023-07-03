@@ -18,7 +18,7 @@ export function PostComponent({ post }: PostProps) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const [metaData, setMetaData] = useState([]);
-
+  console.log(post?.postId);
   useEffect(() => {
     const client = new ApolloClient({
       uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,

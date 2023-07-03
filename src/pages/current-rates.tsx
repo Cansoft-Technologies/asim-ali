@@ -204,7 +204,7 @@ const Current = (props: MyProps) => {
         return (
           <div key={index} className="currentRate-container">
             <Head>
-              {metaData.map((meta) => {
+              {metaData?.map((meta) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>

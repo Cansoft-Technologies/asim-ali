@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+import styles from "scss/components/Banner.module.scss";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -77,12 +77,12 @@ const FlexabilitySlider = (props: MyProps) => {
                         <Image
                           src={slide?.sliderImage?.sourceUrl}
                           loader={myLoader}
-                          width="100%"
+                          width={390}
                           height="50"
-                          layout="responsive"
-                          objectFit="cover"
+                          style={{objectFit:"cover",width:"100%",height:"80vh"}}
                           alt={slide?.sliderImage?.altText} />
                       </div>
+                      <div className={styles.overlay}>
                       <Carousel.Caption className="carouselcaption">
                         <Row className="align-items-center home-slide">
                           <Col className='text-start' xs={12} lg="6">
@@ -98,6 +98,7 @@ const FlexabilitySlider = (props: MyProps) => {
 
                         </Row>
                       </Carousel.Caption>
+                      </div>
                     </Carousel.Item>
                   )
                 }

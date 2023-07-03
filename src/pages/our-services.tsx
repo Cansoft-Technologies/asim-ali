@@ -171,11 +171,11 @@ const Services = (props: MyProps) => {
 
   return (
     <>
-      {servicesData.map((data, index) => {
+      {servicesData?.map((data, index) => {
         return (
           <div key={index} className='our-services'>
             <Head>
-              {metaData.map((meta) => {
+              {metaData?.map((meta) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>

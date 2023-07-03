@@ -78,11 +78,8 @@ const CTA = () => {
                         >
                 <Image 
                   src={cat?.HomeLandingPage?.callToActionSection?.actionBackgroundImage?.sourceUrl}
-                  loader={myLoader}  
-                  style={{zIndex: 0}} 
+                  style={{objectFit:"cover",width:"100%",height:"82vh"}}
                   alt='Logo' 
-                  layout="responsive"
-                  objectFit="cover"
                   width={500}
                   height="250"
 

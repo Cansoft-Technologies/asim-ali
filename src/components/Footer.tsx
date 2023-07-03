@@ -122,15 +122,13 @@ const Footer = (props: MyProps) => {
             <Col lg={4}>
               <div className="footer-logo">
                 <Link href="/" >
-                  <Image
-                    src={prefixSettings?.footerLogoSection?.logoUpload?.sourceUrl}
-                    loader={myLoader}
+                <Image
+                    src={
+                      prefixSettings?.footerLogoSection?.logoUpload?.sourceUrl
+                    }
                     alt={prefixSettings?.footerLogoSection?.logoUpload?.altText}
-                    width="100%"
-                    height="57"
-                    layout="responsive"
-                    objectFit="contain"
-
+                    width="190"
+                    height="108"
                   />
 
                 </Link>

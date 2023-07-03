@@ -241,12 +241,11 @@ const PrivateRefinance = (props: MyProps) => {
                   <Col md={5}>
                     <Image
                       src={data?.PrivateRefinance?.aboutImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.PrivateRefinance?.aboutImage?.altText}
-                      width="100%"
-                      height="90"
-                      layout="responsive"
-                      objectFit="contain"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{width:"100%",objectFit:"contain"}}
                     />
                   </Col>
                 </Row>
@@ -286,12 +285,11 @@ const PrivateRefinance = (props: MyProps) => {
                   <Col md={6}>
                     <Image
                       src={data?.PrivateRefinance?.productsImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.PrivateRefinance?.productsImage?.altText}
-                      width="190"
-                      height="120"
-                      layout="responsive"
-                      objectFit="contain"
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{width:"100%",objectFit:"contain"}}
                     />
                   </Col>
                   <Col md={3}>
