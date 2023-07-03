@@ -7,7 +7,6 @@ import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from 'scss/pages/posts.module.scss';
-ß
 const POSTS_PER_PAGE = 6;
 
 export default function Page() {
