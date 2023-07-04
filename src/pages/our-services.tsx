@@ -257,8 +257,7 @@ const Services = (props: MyProps) => {
                             <Col className='service-texts' lg={6} >
                               <div className='service-image'>
                                 <Image
-                                  loader={myLoader}
-                                  objectFit="contain"
+                                  style={{objectFit:"contain"}}
                                   src={service?.serviceImage?.sourceUrl}
                                   width={500}
                                   height={400}

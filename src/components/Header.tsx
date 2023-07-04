@@ -150,11 +150,11 @@ function Header(props: MyProps) {
 
                 <Image
                   src={(settings as any)?.headerSettings?.uploadLogo?.sourceUrl}
-                  loader={myLoader}
                   alt='Logo'
+                  style={{ cursor: 'pointer' }}
                   width={200}
-                  height={55}
-                  style={{objectFit:"contain",cursor: 'pointer'}}
+                  height={43}
+                  priority={true}
                 />
               </Link>
             )}

@@ -92,12 +92,10 @@ function CustomHeader(): JSX.Element {
               <Link href="/">
                 <Image
                   src={(settings as any)?.headerSettings?.uploadLogo?.sourceUrl}
-                  loader={myLoader}
-                  style={{ cursor: 'pointer' }}
                   alt='Logo'
                   width={200}
                   height={55}
-                  objectFit="contain"
+                  style={{objectFit:"contain",cursor: 'pointer'}}
 
                 />
               </Link>
