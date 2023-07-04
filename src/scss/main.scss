@@ -108,7 +108,7 @@ body {
         flex-direction: column;
         position: absolute;
         /* left: 0; */
-        top: 100%;
+        top: 80%;
         z-index: 99;
         width: 100%;
         margin: 0;
@@ -133,16 +133,16 @@ body {
         // background: #fff;
         li {
           span.sublink {
-            padding: 13px;
+            padding: 5px;
             display: block;
             cursor: pointer;
             margin: 0;
 
             border-bottom: 2px solid $color-secondary;
-            // &:hover {
-            //   // background: $color-secondary;
-            //   // color: $color-white;
-            // }
+            &:hover {
+              background: $color-secondary;
+              color: $color-white;
+            }
             &:before {
               display: none;
             }
@@ -445,7 +445,7 @@ footer {
           z-index: 9999;
           li{
             &:hover{
-              color: $color-primary;
+              // color: $color-secondary;
               display: block;
               background: $color-secondary;
               width: 100%;
@@ -456,7 +456,8 @@ footer {
             position: absolute;
             top: 23px;
             // left: 0;
-            background-color: #fff;
+            background-color: #12143a;
+            color: $color-secondary;
             width: 190px;
             z-index: 99;
             margin: auto;
@@ -652,6 +653,7 @@ footer {
 }
 
 .gallery_section {
+  margin-top: 20px;
   img {
     transition-duration: 0.3s;
     &:hover {
@@ -2008,13 +2010,17 @@ footer .wrap .footer-menu ul span .submenu{
 }
 
 @media all and (max-width: 441px) {
-
+  .gallery_img{
+    height: 66px;
+    width: 112px;
+  }
   .cta_section .cta_first{
     height: 50vh
   }
   .cta_section .cta_text {
     margin-bottom: 0;
     top: -88px;
+    margin-top: 100px;
   }
   .cta_section{
     margin: 0;
