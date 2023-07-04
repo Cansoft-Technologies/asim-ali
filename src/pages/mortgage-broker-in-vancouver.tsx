@@ -368,7 +368,6 @@ const Vancouver = (props: MyProps) => {
                   <Col md={6}>
                     <Image
                       src={data?.Vancouver?.productsImage?.sourceUrl}
-                      loader={myLoader}
                       alt={data?.Vancouver?.productsImage?.altText}
                       width="390"
                       height="400"

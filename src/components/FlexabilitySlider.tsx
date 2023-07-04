@@ -76,7 +76,6 @@ const FlexabilitySlider = (props: MyProps) => {
                       <div className="slider-images">
                         <Image
                           src={slide?.sliderImage?.sourceUrl}
-                          loader={myLoader}
                           width={390}
                           height="50"
                           style={{objectFit:"cover",width:"100%",height:"80vh"}}
