@@ -24,6 +24,20 @@ module.exports = withBundleAnalyzer ( withFaust ( withPWA({
       optimized: true,
       allowFutureImage: true,
     },
+    async headers() {
+      return [
+        {
+          source: "/:all*(svg|jpg|png|webp)",
+          locale: false,
+          headers: [
+            {
+              key: "Cache-Control",
+              value: "public, s-maxage=10, stale-while-revalidate=59",
+            },
+          ],
+        },
+      ];
+    },
     eslint: {
       ignoreDuringBuilds: true,
     }
