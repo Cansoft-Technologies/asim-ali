@@ -1,40 +1,35 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
-import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { gql } from "@apollo/client";
+import { apolloClient } from "lib/apollo";
+import { Container } from "react-bootstrap";
 import styles from "scss/components/Banner.module.scss";
 
-
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
-    query: gql`query{
-      pages(where: {id: 14}) {
-        nodes {
-          HomeLandingPage {
-            teamSection {
-              teamTitle
-              hideSection
-              teamImage {
-                sourceUrl
-                altText
+  const { data } = await apolloClient.query({
+    query: gql`
+      query {
+        pages(where: { id: 14 }) {
+          nodes {
+            HomeLandingPage {
+              teamSection {
+                teamTitle
+                hideSection
+                teamImage {
+                  sourceUrl
+                  altText
+                }
               }
             }
           }
         }
       }
-    }`,
+    `,
   });
 
   return {
     props: {
       teams: data?.pages?.nodes,
     },
-    revalidate: 60
+    revalidate: 60,
   };
 }
 
@@ -42,42 +37,37 @@ type MyProps = {
   teams: any;
 };
 
-
-
 const Team = (props: MyProps) => {
-
   const { teams } = props;
 
   return (
     <>
       <Container>
-
-        {teams?.map(team => {
+        {teams?.map((team) => {
           return (
-
             <div key={team}>
-              {team?.HomeLandingPage?.teamSection?.hideSection == true ? "" : (
-                <div className='team_section'
+              {team?.HomeLandingPage?.teamSection?.hideSection == true ? (
+                ""
+              ) : (
+                <div
+                  className="team_section"
                   style={{
-                    backgroundImage: `url("${team?.HomeLandingPage?.teamSection?.teamImage?.sourceUrl}")`
+                    backgroundImage: `url("${team?.HomeLandingPage?.teamSection?.teamImage?.sourceUrl}")`,
                   }}
-
                 >
                   <div className={styles.overlay}>
-                  <h1 dangerouslySetInnerHTML={{ __html: team?.HomeLandingPage?.teamSection?.teamTitle }} ></h1>
+                    <h1
+                      dangerouslySetInnerHTML={{
+                        __html: team?.HomeLandingPage?.teamSection?.teamTitle,
+                      }}
+                    ></h1>
                   </div>
                 </div>
               )}
-
             </div>
-          )
+          );
         })}
-
-
-
-
       </Container>
-
     </>
   );
 };

@@ -1,18 +1,8 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-
-// import { Header, Banner, Footer, CTA, WeHelp, Team, Meeting, PartnerLogo, SplitImageLeft, FAQ, Gallery, FlexabilitySlider, SplitImageRight } from './../components';
-
-
-// , WeHelp, Team, Meeting, PartnerLogo, SplitImageLeft, FAQ, Gallery, FlexabilitySlider, SplitImageRight
-// import Banner from 'components/Banner';
-
-
-
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 const CTA = dynamic(() => import('../components/CTA'));
-
 const Banner = dynamic(() => import('../components/Banner'));
 const WeHelp = dynamic(() => import('../components/WeHelp'));
 const Team = dynamic(() => import('components/Team'));
@@ -23,21 +13,16 @@ const FAQ = dynamic(() => import('components/FAQ'));
 const Gallery = dynamic(() => import('components/Gallery'));
 const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
 const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
-
+import { apolloClient } from "../lib/apollo";
 import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
 
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
 
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: gql`query{
       pages(where: {id: 14}) {
       nodes {
@@ -312,7 +297,7 @@ export default function Page(props: MyProps) {
   return (
     <>
       <Head>
-        {metaData.map((meta) => {
+        {metaData?.map((meta) => {
 
           return (
             <>

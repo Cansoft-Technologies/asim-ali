@@ -1,18 +1,13 @@
-import { Footer, Header, Hero } from "components";
-import Head from "next/head";
-import React, { useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import Image from "next/image";
 import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { Footer, Header, Hero } from "components";
+import { apolloClient } from "lib/apollo";
+import Head from "next/head";
+import Image from "next/image";
+import { useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: gql`
       query {
         pages(where: { id: 555 }) {
@@ -157,10 +152,6 @@ const Locations = (props: MyProps) => {
     setShowMaps(false);
     setShowLists(true);
     setIsActive((current) => !current);
-  };
-
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
   };
 
   return (

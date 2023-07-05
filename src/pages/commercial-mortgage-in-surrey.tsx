@@ -1,19 +1,13 @@
+import { gql } from "@apollo/client";
 import { CTA, Footer, Header, Hero } from "components";
+import { apolloClient } from "lib/apollo";
 import Head from "next/head";
-import React from "react";
+import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
-import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import Image from "next/image";
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: gql`
       query {
         pages(where: { id: 1205 }) {
@@ -133,10 +127,6 @@ type MyProps = {
 
 const MortgageSurrey = (props: MyProps) => {
   const { settings, mainMenus, surreyData, metaData } = props;
-
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-  };
 
   return (
     <>

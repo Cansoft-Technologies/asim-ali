@@ -1,21 +1,14 @@
-import dynamic from "next/dynamic";
-
-import React, { useState, useEffect } from "react";
-import { Carousel, Col, Row, Button } from "react-bootstrap";
+import { gql } from "@apollo/client";
+import { apolloClient } from "lib/apollo";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button, Carousel, Col, Row } from "react-bootstrap";
 import styles from "scss/components/Banner.module.scss";
-import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import Head from "next/head";
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: gql`
       query {
         pages(where: { id: 14 }) {
@@ -60,10 +53,6 @@ const MobileBanner = (props: MyProps) => {
   useEffect(() => {
     setIsLoading(false);
   }, [msliders]);
-
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-  };
 
   return (
     <div>

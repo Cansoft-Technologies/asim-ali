@@ -1,17 +1,16 @@
-import { getNextStaticProps, is404 } from '@faustjs/next';
-import { Hero } from 'components';
-import { GetStaticPropsContext } from 'next';
-import Head from 'next/head';
-import { client, Page as PageType } from 'client';
-import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import React, { useState, useEffect } from 'react';
-import CustomHeader from 'components/CustomHeader';
-import CustomFooter from 'components/CustomFooter';
-
+import { gql } from "@apollo/client";
+import { getNextStaticProps, is404 } from "@faustjs/next";
+import { Page as PageType, client } from "client";
+import { Hero } from "components";
+import CustomFooter from "components/CustomFooter";
+import CustomHeader from "components/CustomHeader";
+import { apolloClient } from "lib/apollo";
+import { GetStaticPropsContext } from "next";
+import Head from "next/head";
+import { useEffect, useState } from "react";
 
 export interface PageProps {
-  page: PageType | PageType['preview']['node'] | null | undefined;
+  page: PageType | PageType["preview"]["node"] | null | undefined;
 }
 
 export function PageComponent({ page }: PageProps) {
@@ -20,13 +19,7 @@ export function PageComponent({ page }: PageProps) {
   const [metaData, setMetaData] = useState([]);
 
   useEffect(() => {
-    const client = new ApolloClient({
-      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-      cache: new InMemoryCache(),
-    });
-
-
-    client
+    apolloClient
       .query({
         query: gql`query{
         pages(where: {id: ${page.pageId}}) {
@@ -47,24 +40,28 @@ export function PageComponent({ page }: PageProps) {
       }`,
       })
       .then((result) => setMetaData(result?.data?.pages?.nodes));
-
   }, [page]);
-
 
   return (
     <>
       <Head>
-        {metaData.map((meta) => {
+        {metaData?.map((meta) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
               <link rel="canonical" href={meta?.seo?.canonicalUrl} />
               <meta property="og:title" content={meta?.seo?.title} />
-              <meta property="og:description" content={meta?.seo?.description} />
-              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <meta
+                property="og:description"
+                content={meta?.seo?.description}
+              />
+              <meta
+                property="og:image"
+                content={meta?.seo?.openGraph?.image?.url}
+              />
             </>
-          )
+          );
         })}
       </Head>
       <CustomHeader />
@@ -76,12 +73,11 @@ export function PageComponent({ page }: PageProps) {
 
       <main className="content content-single">
         <div className="wrap">
-          <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
+          <div dangerouslySetInnerHTML={{ __html: page?.content() ?? "" }} />
         </div>
       </main>
 
       <CustomFooter />
-
     </>
   );
 }
@@ -92,8 +88,6 @@ export default function Page() {
 
   return <PageComponent page={page} />;
 }
-
-
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   return getNextStaticProps(context, {
@@ -106,6 +100,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 export function getStaticPaths() {
   return {
     paths: [],
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 }
