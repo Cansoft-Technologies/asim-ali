@@ -1,11 +1,11 @@
-import { getNextStaticProps, is404 } from '@faustjs/next';
-import Head from 'next/head';
-import { Header, Footer, Posts, Pagination } from 'components';
-import { GetStaticPropsContext } from 'next';
-import { useRouter } from 'next/router';
-import { client } from 'client';
-import CustomFooter from 'components/CustomFooter';
-import CustomHeader from 'components/CustomHeader';
+import { getNextStaticProps, is404 } from "@faustjs/next";
+import { client } from "client";
+import { Pagination, Posts } from "components";
+import CustomFooter from "components/CustomFooter";
+import CustomHeader from "components/CustomHeader";
+import { GetStaticPropsContext } from "next";
+import Head from "next/head";
+import { useRouter } from "next/router";
 
 const POSTS_PER_PAGE = 6;
 
@@ -15,7 +15,7 @@ export default function Page() {
   const { categorySlug, paginationTerm, categoryCursor } = query;
   const generalSettings = useQuery().generalSettings;
   const category = useCategory();
-  const isBefore = paginationTerm === 'before';
+  const isBefore = paginationTerm === "before";
   const posts = usePosts({
     after: !isBefore ? (categoryCursor as string) : undefined,
     before: isBefore ? (categoryCursor as string) : undefined,
@@ -59,6 +59,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 export function getStaticPaths() {
   return {
     paths: [],
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 }

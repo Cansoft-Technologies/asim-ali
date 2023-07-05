@@ -1,18 +1,13 @@
-import React, { useState, useRef } from "react";
-import Head from "next/head";
-import { Footer, Header, Hero } from "components";
 import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { Button, Col, Container, Row } from "react-bootstrap";
 import emailjs from "@emailjs/browser";
+import { Footer, Header, Hero } from "components";
+import { apolloClient } from "lib/apollo";
+import Head from "next/head";
+import { useRef, useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: gql`
       query {
         pages(where: { id: 1582 }) {
@@ -138,26 +133,6 @@ function HowtoApply(props) {
   const { settings, mainMenus, howApplyData, metaData } = props;
   const form = useRef();
   const [success, setSuccess] = useState(null);
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_12yqpdo",
-        "template_qa4pqev",
-        form.current,
-        "bKO8M-uo0olOYAj7Z"
-      )
-      .then(
-        (result) => {
-          setSuccess(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-    e.target.reset();
-  };
 
   return (
     <>

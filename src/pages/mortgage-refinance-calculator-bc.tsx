@@ -1,18 +1,15 @@
-import { CTA, Footer, Header, Hero } from "components";
+import { gql } from "@apollo/client";
+import { Footer, Header, Hero } from "components";
 import Head from "next/head";
-import React, { useState } from "react";
-import { Accordion, Col, Container, Row } from "react-bootstrap";
 import Image from "next/image";
+import { useState } from "react";
+import { Accordion, Col, Container, Row } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 
+import { apolloClient } from "lib/apollo";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Link from "next/link";
 
 const responsive = {
   superLargeDesktop: {
@@ -35,12 +32,7 @@ const responsive = {
 };
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: gql`
       query {
         pages(where: { id: 1893 }) {
@@ -182,10 +174,6 @@ const Refinance = (props: MyProps) => {
   const { settings, mainMenus, refinanceData, metaData } = props;
 
   const [key, setKey] = useState(null);
-
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-  };
 
   return (
     <>

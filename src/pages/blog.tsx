@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { gql } from "@apollo/client";
+import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import Image from "next/image";
-import { Header, Footer, Hero } from "../components";
-import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { Button, Container } from "react-bootstrap";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button, Container } from "react-bootstrap";
 import Moment from "react-moment";
+import { Footer, Header, Hero } from "../components";
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: gql`
       query {
         pages(where: { id: 250 }) {
@@ -131,11 +126,7 @@ const Blog = (props: MyProps) => {
   const size = 6;
 
   useEffect(() => {
-    const client = new ApolloClient({
-      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-      cache: new InMemoryCache(),
-    });
-    client
+    apolloClient
       .query({
         query: gql`
           query {
@@ -169,7 +160,7 @@ const Blog = (props: MyProps) => {
         setPageCount(pageNumber);
       });
     const offset = size * page;
-    client
+    apolloClient
       .query({
         query: gql`
           query{

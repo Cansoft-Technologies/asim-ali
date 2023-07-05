@@ -1,63 +1,74 @@
-import React from 'react';
-import Image from 'next/image';
-import { Container } from 'react-bootstrap';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { gql } from "@apollo/client";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { apolloClient } from "lib/apollo";
+import Image from "next/image";
+import { Container } from "react-bootstrap";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const CustomRightArrow = ({ onClick, ...rest }: any) => {
   const {
     onMove,
-    carouselState: { currentSlide, deviceType }
+    carouselState: { currentSlide, deviceType },
   } = rest;
   // onMove means if dragging or swiping in progress.
-  return <button aria-label="Right Arrow" className='react-multiple-carousel__arrow react-multiple-carousel__arrow-right ' onClick={() => onClick()} ><FontAwesomeIcon icon={faChevronRight} /></button>;
+  return (
+    <button
+      aria-label="Right Arrow"
+      className="react-multiple-carousel__arrow react-multiple-carousel__arrow-right "
+      onClick={() => onClick()}
+    >
+      <FontAwesomeIcon icon={faChevronRight} />
+    </button>
+  );
 };
-
 
 const CustomLeftArrow = ({ onClick, ...rest }: any) => {
   const {
     onMove,
-    carouselState: { currentSlide, deviceType }
+    carouselState: { currentSlide, deviceType },
   } = rest;
   // onMove means if dragging or swiping in progress.
-  return <button aria-label="Left Arrow" className='react-multiple-carousel__arrow react-multiple-carousel__arrow-left ' onClick={() => onClick()} ><FontAwesomeIcon icon={faChevronLeft} /></button>;
+  return (
+    <button
+      aria-label="Left Arrow"
+      className="react-multiple-carousel__arrow react-multiple-carousel__arrow-left "
+      onClick={() => onClick()}
+    >
+      <FontAwesomeIcon icon={faChevronLeft} />
+    </button>
+  );
 };
 
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
-    items: 5
+    items: 5,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 4
+    items: 4,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2
+    items: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1
-  }
+    items: 1,
+  },
 };
 
-
-
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
-    query: gql`query{
-        pages(where: {id: 14}) {
+  const { data } = await apolloClient.query({
+    query: gql`
+      query {
+        pages(where: { id: 14 }) {
           nodes {
             HomeLandingPage {
               partnerLogoSection {
@@ -70,14 +81,15 @@ export async function getStaticProps() {
             }
           }
         }
-      }`,
+      }
+    `,
   });
 
   return {
     props: {
       logos: data?.pages?.nodes,
     },
-    revalidate: 60
+    revalidate: 60,
   };
 }
 
@@ -85,30 +97,27 @@ type MyProps = {
   logos: any;
 };
 
-
 const PartnerLogo = (props: MyProps) => {
-
   const { logos } = props;
-
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
 
   return (
     <>
-      <Container className="partnerLogo" >
-        {logos?.map(logo => {
+      <Container className="partnerLogo">
+        {logos?.map((logo) => {
           return (
-            <div key={logo.HomeLandingPage} >
-              {logo?.HomeLandingPage?.partnerLogoSection.hideSection == true ? "" : (
+            <div key={logo.HomeLandingPage}>
+              {logo?.HomeLandingPage?.partnerLogoSection.hideSection == true ? (
+                ""
+              ) : (
                 <Carousel
                   customRightArrow={<CustomRightArrow />}
                   customLeftArrow={<CustomLeftArrow />}
                   autoPlay={true}
                   infinite={true}
                   responsive={responsive}
-                >{
-                    logo?.HomeLandingPage?.partnerLogoSection?.partnerLogo.map(singleLogo => {
+                >
+                  {logo?.HomeLandingPage?.partnerLogoSection?.partnerLogo.map(
+                    (singleLogo) => {
                       return (
                         <div key={singleLogo.sourceUrl}>
                           <Image
@@ -116,20 +125,17 @@ const PartnerLogo = (props: MyProps) => {
                             width="200"
                             height="40"
                             alt={singleLogo.altText}
-                            style={{objectFit: 'contain',width: '100%'}}
+                            style={{ objectFit: "contain", width: "100%" }}
                           />
                         </div>
-                      )
-                    })
-
-                  }
+                      );
+                    }
+                  )}
                 </Carousel>
               )}
-
             </div>
-          )
+          );
         })}
-
       </Container>
     </>
   );

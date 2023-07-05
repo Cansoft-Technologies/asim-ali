@@ -1,25 +1,20 @@
-import React, { useState, useRef } from "react";
-import Head from "next/head";
-import { Footer, Header } from "components";
-import { Hero } from "../components";
-import { Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPhone,
-  faMapMarker,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
 import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 import emailjs from "@emailjs/browser";
+import {
+  faEnvelope,
+  faMapMarker,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Footer, Header } from "components";
+import { apolloClient } from "lib/apollo";
+import Head from "next/head";
+import { useRef, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { Hero } from "../components";
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: gql`
       query {
         pages(where: { id: 245 }) {
@@ -134,7 +129,6 @@ type MyProps = {
 const Contact = (props: MyProps) => {
   const { settings, mainMenus, contactData, metaData } = props;
   const form = useRef();
-  const [contacts, setContacts] = useState([]);
   const [success, setSuccess] = useState(null);
   // const [metaData, setMetaData] = useState([]);
 

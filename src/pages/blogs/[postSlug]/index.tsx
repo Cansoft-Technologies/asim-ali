@@ -1,32 +1,23 @@
-import { getNextStaticProps, is404 } from '@faustjs/next';
-import { client, Post } from 'client';
-import { Footer, Header, Hero } from 'components';
-import { GetStaticPropsContext } from 'next';
-import Head from 'next/head';
-import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import React, { useState, useEffect } from 'react';
-import CustomHeader from 'components/CustomHeader';
-import CustomFooter from 'components/CustomFooter';
-import CustomHero from 'components/CustomHero';
+import { gql } from "@apollo/client";
+import { getNextStaticProps, is404 } from "@faustjs/next";
+import { Post, client } from "client";
+import CustomFooter from "components/CustomFooter";
+import CustomHeader from "components/CustomHeader";
+import CustomHero from "components/CustomHero";
+import { apolloClient } from "lib/apollo";
+import { GetStaticPropsContext } from "next";
+import Head from "next/head";
+import { useEffect, useState } from "react";
 
 export interface PostProps {
-  post: Post | Post['preview']['node'] | null | undefined;
+  post: Post | Post["preview"]["node"] | null | undefined;
 }
 
 export function PostComponent({ post }: PostProps) {
-  const { useQuery } = client;
-  const generalSettings = useQuery().generalSettings;
   const [metaData, setMetaData] = useState([]);
 
   useEffect(() => {
-    const client = new ApolloClient({
-      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-      cache: new InMemoryCache(),
-    });
-
-
-    client
+    apolloClient
       .query({
         query: gql`query{
         posts(where: {id: ${post?.postId}}) {
@@ -47,23 +38,28 @@ export function PostComponent({ post }: PostProps) {
       }`,
       })
       .then((result) => setMetaData(result?.data?.posts?.nodes));
-
   }, [post]);
 
   return (
     <>
       <Head>
-        {metaData.map((meta) => {
+        {metaData?.map((meta) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
               <link rel="canonical" href={meta?.seo?.canonicalUrl} />
               <meta property="og:title" content={meta?.seo?.title} />
-              <meta property="og:description" content={meta?.seo?.description} />
-              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <meta
+                property="og:description"
+                content={meta?.seo?.description}
+              />
+              <meta
+                property="og:image"
+                content={meta?.seo?.openGraph?.image?.url}
+              />
             </>
-          )
+          );
         })}
       </Head>
       <CustomHeader />
@@ -74,7 +70,7 @@ export function PostComponent({ post }: PostProps) {
       />
       <main className="content content-single">
         <div className="wrap">
-          <div dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }} />
+          <div dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }} />
         </div>
       </main>
 
@@ -101,6 +97,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 export function getStaticPaths() {
   return {
     paths: [],
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 }

@@ -1,28 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Col, Container, Row, Navbar, Nav } from "react-bootstrap";
-import styles from "scss/components/Footer.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import Image from "next/image";
+import { gql } from "@apollo/client";
 import {
   faFacebookF,
-  faTiktok,
   faInstagram,
   faLinkedinIn,
+  faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
-import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { apolloClient } from "lib/apollo";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Col, Container, Nav, Row } from "react-bootstrap";
+import styles from "scss/components/Footer.module.scss";
 
 const CustomFooter = () => {
   // const year = new Date().getFullYear();
   const [settings, setSettings] = useState([]);
   const [mainMenus, setMainMenus] = useState([]);
   useEffect(() => {
-    const client = new ApolloClient({
-      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-      cache: new InMemoryCache(),
-    });
-    client
+    apolloClient
       .query({
         query: gql`
           query MyQuery {
@@ -62,7 +58,7 @@ const CustomFooter = () => {
         setSettings(result?.data?.settingsOptions?.AsimOptions)
       );
 
-    client
+    apolloClient
       .query({
         query: gql`
           {
@@ -96,9 +92,6 @@ const CustomFooter = () => {
         setMainMenus(result?.data?.menus?.nodes);
       });
   }, []);
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-  };
 
   const prefixSettings = (settings as any).footerSettings;
 
