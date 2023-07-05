@@ -18,7 +18,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer ( withFaust ( withPWA({
-  optimizeImages: false,
+  optimizeImages: true,
     images: {
       domains: ["localhost","asimaliprod.wpengine.com"],
       optimized: true,
@@ -27,12 +27,12 @@ module.exports = withBundleAnalyzer ( withFaust ( withPWA({
     async headers() {
       return [
         {
-          source: "/:all*(svg|jpg|png|webp)",
+          source: "/:all*(svg|jpg|png|webp|jpeg)",
           locale: false,
           headers: [
             {
               key: "Cache-Control",
-              value: "public, s-maxage=10, stale-while-revalidate=59",
+              value: 'public, max-age=9999999999, must-revalidate',
             },
           ],
         },
