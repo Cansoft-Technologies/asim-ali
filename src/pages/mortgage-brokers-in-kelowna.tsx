@@ -94,6 +94,18 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
+              faqImage {
+                altText
+                sourceUrl
+              }
+              renovateImageFirst {
+                altText
+                sourceUrl
+              }
+              renovateImageSecond {
+                altText
+                sourceUrl
+              }
               faqAccordion {
                 question
                 answer
@@ -350,6 +362,16 @@ const Kelowna = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Kelowna?.renovateImageFirst?.sourceUrl}
+                      alt={data?.Kelowna?.renovateImageFirst?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
@@ -391,6 +413,16 @@ const Kelowna = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
+                <Row className="my-5">
+                    <Image
+                      src={data?.Kelowna?.renovateImageSecond?.sourceUrl}
+                      alt={data?.Kelowna?.renovateImageSecond?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <Row className="broker-coquitlam">
                   <Col>
                     <h2>{data?.Kelowna?.brokerCoquitlamTitle}</h2>
@@ -407,7 +439,16 @@ const Kelowna = (props: MyProps) => {
                   </Col>
                 </Row>
                 {/* faq section start */}
-
+                <Row className="my-5">
+                    <Image
+                      src={data?.Kelowna?.faqImage?.sourceUrl}
+                      alt={data?.Kelowna?.faqImage?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
                     {data?.Kelowna?.faqAccordion.map((qa, index) => {

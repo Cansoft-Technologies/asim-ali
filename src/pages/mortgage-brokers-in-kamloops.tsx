@@ -10,6 +10,9 @@ import "react-multi-carousel/lib/styles.css";
 import { apolloClient } from "lib/apollo";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const responsive = {
   superLargeDesktop: {
@@ -58,6 +61,8 @@ export async function getStaticProps() {
               firstApplyStepTitle
               brokerTitle
               brokerDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
               topDescription
               bannerTitle
               bannerHeading
@@ -86,6 +91,18 @@ export async function getStaticProps() {
               slider {
                 title
                 content
+              }
+              faqImage {
+                altText
+                sourceUrl
+              }
+              renovateImageFirst {
+                altText
+                sourceUrl
+              }
+              renovateImageSecond {
+                altText
+                sourceUrl
               }
               faqAccordion {
                 question
@@ -341,6 +358,16 @@ const Kamloops = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Kamloops?.renovateImageFirst?.sourceUrl}
+                      alt={data?.Kamloops?.renovateImageFirst?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
@@ -382,23 +409,46 @@ const Kamloops = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                {/* <Row className='broker-coquitlam'>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Kamloops?.renovateImageSecond?.sourceUrl}
+                      alt={data?.Kamloops?.renovateImageSecond?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
+                <Row className="mortgage-broker-bottom">
                   <Col>
-                    <h2>{data?.Kamloops?.
-                      brokerTitle}</h2>
-                    <p>{data?.Kamloops?.brokerDescription}</p>
-                    {data?.Kamloops?.brokerLink == null ? "" : (
+                    <h2>{data?.Kamloops?.bottomBrokerTitle}</h2>
+                    <div
+                              dangerouslySetInnerHTML={{
+                                __html: data?.Kamloops?.bottomBrokerDescription,
+                              }}
+                            ></div>
+                    {data?.Kamloops?.brokerLink == null ? (
+                      ""
+                    ) : (
                       <Link href={data?.Kamloops?.brokerLink?.url}>
                         <span>
                           Read More <FontAwesomeIcon icon={faChevronRight} />
                         </span>
                       </Link>
                     )}
-
                   </Col>
-                </Row> */}
+                </Row>
                 {/* faq section start */}
-
+                <Row className="my-5">
+                    <Image
+                      src={data?.Kamloops?.faqImage?.sourceUrl}
+                      alt={data?.Kamloops?.faqImage?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <div className="faq-accordion mt-5">
                   <Accordion defaultActiveKey="0">
                     {data?.Kamloops?.faqAccordion.map((qa, index) => {

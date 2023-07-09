@@ -1542,6 +1542,25 @@ textarea#comment {
       margin-bottom: 10px;
     }
   }
+  .mortgage-broker-bottom {
+    color: $color-primary;
+    text-align: left;
+    padding: 50px 0;
+    p {
+      color: $color-primary;
+      // font-size: 14px;
+      font-weight: 200;
+      line-height: 25px;
+      font-family: "AvenirBook";
+    }
+    p.headering-title {
+      color: $color-primary;
+      font-size: 20px;
+      font-weight: 600;
+      font-family: "AvenirBlack";
+      margin-bottom: 10px;
+    }
+  }
   .renovation-row {
     display: flex;
     flex-wrap: nowrap;
