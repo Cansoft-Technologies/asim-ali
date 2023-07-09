@@ -59,9 +59,9 @@ export async function getStaticProps() {
               productsLeftText
               firstApplyStepTitle
               brokerTitle
-              title
-              description
               brokerDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
               topDescription
               bannerTitle
               bannerHeading
@@ -90,6 +90,18 @@ export async function getStaticProps() {
               slider {
                 title
                 content
+              }
+              faqImage {
+                altText
+                sourceUrl
+              }
+              renovateImageFirst {
+                altText
+                sourceUrl
+              }
+              renovateImageSecond {
+                altText
+                sourceUrl
               }
               faqAccordion {
                 question
@@ -346,12 +358,22 @@ const Delta = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Delta?.renovateImageFirst?.sourceUrl}
+                      alt={data?.Delta?.renovateImageFirst?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
                       {data?.Delta?.brokerTitle}
                     </h2>
-                    <p>{data?.Delta?.description}</p>
+                    <p>{data?.Delta?.brokerDescription}</p>
                   </Col>
                 </Row>
                 {data.Delta.renovation == null ? (
@@ -387,10 +409,24 @@ const Delta = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="broker-coquitlam">
+                <Row className="my-5">
+                    <Image
+                      src={data?.Delta?.renovateImageSecond?.sourceUrl}
+                      alt={data?.Delta?.renovateImageSecond?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
+                <Row className="mortgage-broker-bottom">
                   <Col>
-                    <h2>{data?.Delta?.title}</h2>
-                    <p>{data?.Delta?.description}</p>
+                    <h2>{data?.Delta?.bottomBrokerTitle}</h2>
+                    <div
+                              dangerouslySetInnerHTML={{
+                                __html: data?.Delta?.bottomBrokerDescription,
+                              }}
+                            ></div>
                     {data?.Delta?.brokerLink == null ? (
                       ""
                     ) : (
@@ -402,6 +438,16 @@ const Delta = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Delta?.faqImage?.sourceUrl}
+                      alt={data?.Delta?.faqImage?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 {/* faq section start */}
 
                 <div className="faq-accordion">

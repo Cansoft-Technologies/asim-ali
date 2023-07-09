@@ -61,6 +61,8 @@ export async function getStaticProps() {
               firstApplyStepTitle
               brokerTitle
               brokerDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
               topDescription
               bannerTitle
               bannerHeading
@@ -89,6 +91,18 @@ export async function getStaticProps() {
               slider {
                 title
                 content
+              }
+              faqImage {
+                altText
+                sourceUrl
+              }
+              renovateImageFirst {
+                altText
+                sourceUrl
+              }
+              renovateImageSecond {
+                altText
+                sourceUrl
               }
               faqAccordion {
                 answer
@@ -186,7 +200,7 @@ const Abbotsford = (props: MyProps) => {
 
   return (
     <>
-      {abbotsfordData.map((data, index) => {
+      {abbotsfordData?.map((data, index) => {
         return (
           <div key={index} className="Bc-Coquitlam">
             <Head>
@@ -348,6 +362,16 @@ const Abbotsford = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Abbotsford?.renovateImageFirst?.sourceUrl}
+                      alt={data?.Abbotsford?.renovateImageFirst?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
                     <p className="headering-title">
@@ -389,10 +413,24 @@ const Abbotsford = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="broker-coquitlam">
+                <Row className="my-5">
+                    <Image
+                      src={data?.Abbotsford?.renovateImageSecond?.sourceUrl}
+                      alt={data?.Abbotsford?.renovateImageSecond?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
+                <Row className="mortgage-broker-bottom">
                   <Col>
-                    <h2>{data?.Abbotsford?.brokerTitle}</h2>
-                    <p>{data?.Abbotsford?.brokerDescription}</p>
+                    <h2>{data?.Abbotsford?.bottomBrokerTitle}</h2>
+                    <div
+                              dangerouslySetInnerHTML={{
+                                __html: data?.Abbotsford?.bottomBrokerDescription,
+                              }}
+                            ></div>
                     {data?.Abbotsford?.brokerLink == null ? (
                       ""
                     ) : (
@@ -405,7 +443,16 @@ const Abbotsford = (props: MyProps) => {
                   </Col>
                 </Row>
                 {/* faq section start */}
-
+                <Row className="my-5">
+                    <Image
+                      src={data?.Abbotsford?.faqImage?.sourceUrl}
+                      alt={data?.Abbotsford?.faqImage?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
                     {data?.Abbotsford?.faqAccordion.map((qa, index) => {
