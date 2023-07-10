@@ -10,6 +10,9 @@ import "react-multi-carousel/lib/styles.css";
 import { apolloClient } from "lib/apollo";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const responsive = {
   superLargeDesktop: {
@@ -58,6 +61,8 @@ export async function getStaticProps() {
               firstApplyStepTitle
               brokerTitle
               brokerDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
               bannerTitle
               bannerHeading
               bannerDescription
@@ -86,6 +91,18 @@ export async function getStaticProps() {
               slider {
                 title
                 content
+              }
+              faqImage {
+                altText
+                sourceUrl
+              }
+              renovateImageFirst {
+                altText
+                sourceUrl
+              }
+              renovateImageSecond {
+                altText
+                sourceUrl
               }
               faqAccordion {
                 question
@@ -342,6 +359,16 @@ const Maple = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Maple?.renovateImageFirst?.sourceUrl}
+                      alt={data?.Maple?.renovateImageFirst?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
@@ -383,23 +410,47 @@ const Maple = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                {/* <Row className='broker-coquitlam'>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Maple?.renovateImageSecond?.sourceUrl}
+                      alt={data?.Maple?.renovateImageSecond?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
+                  <Row className="mortgage-broker-bottom">
                   <Col>
-                    <h2>{data?.Maple?.
-                      brokerTitle}</h2>
-                    <p>{data?.Maple?.brokerDescription}</p>
-                    {data?.Maple?.brokerLink == null ? "" : (
+                    <h2>{data?.Maple?.bottomBrokerTitle}</h2>
+                    <div
+                              dangerouslySetInnerHTML={{
+                                __html: data?.Maple?.bottomBrokerDescription,
+                              }}
+                            ></div>
+                    {data?.Maple?.brokerLink == null ? (
+                      ""
+                    ) : (
                       <Link href={data?.Maple?.brokerLink?.url}>
                         <span>
                           Read More <FontAwesomeIcon icon={faChevronRight} />
                         </span>
                       </Link>
                     )}
-
                   </Col>
-                </Row> */}
+                </Row>
                 {/* faq section start */}
-
+                {data?.Maple?.faqImage !== null && 
+                <Row className="my-5">
+                <Image
+                  src={data?.Maple?.faqImage?.sourceUrl}
+                  alt={data?.Maple?.faqImage?.altText}
+                  width="390"
+                  height="400"
+                  priority={true}
+                  style={{ width: "100%", objectFit: "contain" }}
+                />
+              </Row> }
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
                     {data?.Maple?.faqAccordion.map((qa, index) => {
