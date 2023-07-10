@@ -9,6 +9,9 @@ import "react-multi-carousel/lib/styles.css";
 
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const responsive = {
   superLargeDesktop: {
@@ -62,6 +65,8 @@ export async function getStaticProps() {
               firstApplyStepTitle
               brokerTitle
               brokerDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
               bannerTitle
               bannerHeading
               bannerDescription
@@ -90,6 +95,18 @@ export async function getStaticProps() {
               slider {
                 title
                 content
+              }
+              faqImage {
+                altText
+                sourceUrl
+              }
+              renovateImageFirst {
+                altText
+                sourceUrl
+              }
+              renovateImageSecond {
+                altText
+                sourceUrl
               }
               faqAccordion {
                 question
@@ -345,6 +362,16 @@ const Vancouver = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Vancouver?.renovateImageFirst?.sourceUrl}
+                      alt={data?.Vancouver?.renovateImageFirst?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
                     <p className="headering-title">
@@ -353,7 +380,7 @@ const Vancouver = (props: MyProps) => {
                     <p>{data?.Vancouver?.brokerDescription}</p>
                   </Col>
                 </Row>
-                {data.Vancouver.renovation == null ? (
+                {data?.Vancouver?.renovation == null ? (
                   ""
                 ) : (
                   <Row className="renovation-row">
@@ -363,7 +390,7 @@ const Vancouver = (props: MyProps) => {
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {data.Vancouver.renovation.map((tab, item) => {
+                      {data?.Vancouver?.renovation?.map((tab, item) => {
                         return (
                           <Tab
                             key={item}
@@ -386,28 +413,52 @@ const Vancouver = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                {/* <Row className='broker-coquitlam'>
+                <Row className="my-5">
+                    <Image
+                      src={data?.Vancouver?.renovateImageSecond?.sourceUrl}
+                      alt={data?.Vancouver?.renovateImageSecond?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row>
+                <Row className="mortgage-broker-bottom">
                   <Col>
-                    <h2>{data?.Vancouver?.
-                      brokerTitle}</h2>
-                    <p>{data?.Vancouver?.brokerDescription}</p>
-                    {data?.Vancouver?.brokerLink == null ? "" : (
+                    <h2>{data?.Vancouver?.bottomBrokerTitle}</h2>
+                    <div
+                              dangerouslySetInnerHTML={{
+                                __html: data?.Vancouver?.bottomBrokerDescription,
+                              }}
+                            ></div>
+                    {data?.Vancouver?.brokerLink == null ? (
+                      ""
+                    ) : (
                       <Link href={data?.Vancouver?.brokerLink?.url}>
                         <span>
                           Read More <FontAwesomeIcon icon={faChevronRight} />
                         </span>
                       </Link>
                     )}
-
                   </Col>
-                </Row> */}
+                </Row>
                 {/* faq section start */}
-
+                {data?.Vancouver?.faqImage !== null && 
+                <Row className="my-5">
+                <Image
+                  src={data?.Vancouver?.faqImage?.sourceUrl}
+                  alt={data?.Vancouver?.faqImage?.altText}
+                  width="390"
+                  height="400"
+                  priority={true}
+                  style={{ width: "100%", objectFit: "contain" }}
+                />
+              </Row> }
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
                     {data?.Vancouver?.faqAccordion.map((qa, index) => {
                       return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
+                        <Accordion.Item key={index} eventKey={index?.toString()}>
                           <Accordion.Header as="h3">
                             {qa.question}
                           </Accordion.Header>
