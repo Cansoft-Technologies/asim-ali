@@ -68,7 +68,7 @@ const Gallery = (props: MyProps) => {
                     {image?.HomeLandingPage?.gallery?.galleryImage1 == null ? (
                       ""
                     ) : (
-                      <div style={{ height: "252px",width:"100%",position:"relative" }}>
+                      <div className="gallery_img">
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage1
@@ -78,7 +78,6 @@ const Gallery = (props: MyProps) => {
                           image?.HomeLandingPage?.gallery?.galleryImage1
                             ?.altText
                         }
-                        className="gallery_img"
                         fill
                       />
                       </div>
@@ -87,7 +86,7 @@ const Gallery = (props: MyProps) => {
                     {image?.HomeLandingPage?.gallery?.galleryImage2 == null ? (
                       ""
                     ) : (
-                      <div style={{ height: "252px",width:"100%",position:"relative" }}>
+                      <div className="gallery_img">
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage2
@@ -97,7 +96,6 @@ const Gallery = (props: MyProps) => {
                           image?.HomeLandingPage?.gallery?.galleryImage2
                             ?.altText
                         }
-                        className="gallery_img"
                        fill
                       />
                       </div>
@@ -107,7 +105,7 @@ const Gallery = (props: MyProps) => {
                     {image?.HomeLandingPage?.gallery?.galleryImage3 == null ? (
                       ""
                     ) : (
-                      <div style={{ height: "100%",width:"100%",position:"relative" }}>
+                      <div className="gallery_img_mid">
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage3
@@ -117,7 +115,6 @@ const Gallery = (props: MyProps) => {
                           image?.HomeLandingPage?.gallery?.galleryImage3
                             ?.altText
                         }
-                        className="gallery_img"
                         fill
                       />
                       </div>
@@ -127,7 +124,7 @@ const Gallery = (props: MyProps) => {
                     {image?.HomeLandingPage?.gallery?.galleryImage4 == null ? (
                       ""
                     ) : (
-                      <div style={{ height: "252px",width:"100%",position:"relative" }}>
+                      <div className="gallery_img">
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage4
@@ -137,7 +134,6 @@ const Gallery = (props: MyProps) => {
                           image?.HomeLandingPage?.gallery?.galleryImage4
                             ?.altText
                         }
-                        className="gallery_img"
                         fill
                       />
                       </div>
@@ -146,7 +142,7 @@ const Gallery = (props: MyProps) => {
                     {image?.HomeLandingPage?.gallery?.galleryImage5 == null ? (
                       ""
                     ) : (
-                      <div style={{ height: "252px",width:"100%",position:"relative" }}>
+                      <div className="gallery_img">
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage5
@@ -156,7 +152,6 @@ const Gallery = (props: MyProps) => {
                           image?.HomeLandingPage?.gallery?.galleryImage5
                             ?.altText
                         }
-                        className="gallery_img"
                         fill
                       />
                       </div>

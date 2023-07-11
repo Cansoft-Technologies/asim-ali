@@ -59,7 +59,7 @@ const SplitImageRight = (props: MyProps) => {
                 <Row className="flex-row-reverse">
                   <Col lg={8}>
                     <div className="split_image" style={{
-                      position: "relative", width:"80%", height:"100vh"
+                      position: "relative", width:"80%", height:"90vh"
                     }}>
                       <Image
                         src={
