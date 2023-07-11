@@ -68,6 +68,7 @@ const Gallery = (props: MyProps) => {
                     {image?.HomeLandingPage?.gallery?.galleryImage1 == null ? (
                       ""
                     ) : (
+                      <div style={{ height: "252px",width:"100%",position:"relative" }}>
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage1
@@ -78,15 +79,15 @@ const Gallery = (props: MyProps) => {
                             ?.altText
                         }
                         className="gallery_img"
-                        height="252"
-                        width="380"
-                        style={{ width: "100%" }}
+                        fill
                       />
+                      </div>
                     )}
                     <div style={{ height: "20px" }}></div>
                     {image?.HomeLandingPage?.gallery?.galleryImage2 == null ? (
                       ""
                     ) : (
+                      <div style={{ height: "252px",width:"100%",position:"relative" }}>
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage2
@@ -97,16 +98,16 @@ const Gallery = (props: MyProps) => {
                             ?.altText
                         }
                         className="gallery_img"
-                        height="252"
-                        width="380"
-                        style={{ width: "100%" }}
+                       fill
                       />
+                      </div>
                     )}
                   </Col>
                   <Col style={{ display: "flex", alignItems: "center" }}>
                     {image?.HomeLandingPage?.gallery?.galleryImage3 == null ? (
                       ""
                     ) : (
+                      <div style={{ height: "100%",width:"100%",position:"relative" }}>
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage3
@@ -117,16 +118,16 @@ const Gallery = (props: MyProps) => {
                             ?.altText
                         }
                         className="gallery_img"
-                        height="252"
-                        width="380"
-                        style={{ width: "100%", height: "100%" }}
+                        fill
                       />
+                      </div>
                     )}
                   </Col>
                   <Col>
                     {image?.HomeLandingPage?.gallery?.galleryImage4 == null ? (
                       ""
                     ) : (
+                      <div style={{ height: "252px",width:"100%",position:"relative" }}>
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage4
@@ -137,15 +138,15 @@ const Gallery = (props: MyProps) => {
                             ?.altText
                         }
                         className="gallery_img"
-                        height="252"
-                        width="380"
-                        style={{ width: "100%" }}
+                        fill
                       />
+                      </div>
                     )}
                     <div style={{ height: "20px" }}></div>
                     {image?.HomeLandingPage?.gallery?.galleryImage5 == null ? (
                       ""
                     ) : (
+                      <div style={{ height: "252px",width:"100%",position:"relative" }}>
                       <Image
                         src={
                           image?.HomeLandingPage?.gallery?.galleryImage5
@@ -156,10 +157,9 @@ const Gallery = (props: MyProps) => {
                             ?.altText
                         }
                         className="gallery_img"
-                        height="252"
-                        width="380"
-                        style={{ width: "100%" }}
+                        fill
                       />
+                      </div>
                     )}
                   </Col>
                 </Row>

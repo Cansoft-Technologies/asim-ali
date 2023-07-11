@@ -58,15 +58,15 @@ const SplitImageLeft = (props: MyProps) => {
               <Container>
                 <Row>
                   <Col lg={8}>
-                    <div className="split_image">
+                    <div className="split_image" style={{
+                      position: "relative", width:"80%", height:"100vh"
+                    }}>
                       <Image
                         src={
                           splitImage?.HomeLandingPage?.splitImageLeftSection
                             ?.splitImage?.sourceUrl
                         }
-                        width="380"
-                        height="500"
-                        style={{ height: "100%", width: "100%" }}
+                        fill
                         alt={
                           splitImage?.HomeLandingPage?.splitImageLeftSection
                             ?.splitImage?.altText

@@ -57,17 +57,20 @@ const FlexabilitySlider = (props: MyProps) => {
                   return (
                     <Carousel.Item key={slide.sliderTitle}>
                       <div className="overlay"></div>
-                      <div className="slider-images">
+                      <div className="slider-images" style={{
+                        position: "relative",
+                        height: "80vh",
+                        width: "100%",
+                      }}>
                         <Image
                           src={slide?.sliderImage?.sourceUrl}
-                          width={390}
-                          height="50"
                           style={{
                             objectFit: "cover",
                             width: "100%",
-                            height: "80vh",
+                            height: "100%",
                           }}
                           alt={slide?.sliderImage?.altText}
+                          fill
                         />
                       </div>
                       <div className={styles.overlay}>
