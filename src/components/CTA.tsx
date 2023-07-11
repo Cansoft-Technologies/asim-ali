@@ -72,7 +72,7 @@ const CTA = () => {
                   <div
                     style={{
                       position: "absolute",
-                      height: "100%",
+                      height: "82vh",
                       width: "100%",
                       left: "0",
                       top: "0",
@@ -86,11 +86,10 @@ const CTA = () => {
                       style={{
                         objectFit: "cover",
                         width: "100%",
-                        height: "82vh",
+                        height: "100%",
                       }}
                       alt="Logo"
-                      width={500}
-                      height="250"
+                      fill
                     />
                   </div>
                 </div>
