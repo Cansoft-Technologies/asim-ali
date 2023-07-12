@@ -395,6 +395,8 @@ body {
   }
   .split_image {
     width: 80%;
+    position: relative;
+    height: 90vh;
   }
 }
 .gallery_img{
@@ -2048,6 +2050,9 @@ footer .wrap .footer-menu ul span .submenu{
   }
   .gallery_img_mid{
     height: 150px;
+  }
+  .split_image{
+    height: 40vh;
   }
   .cta_section .cta_first{
     height: 50vh
