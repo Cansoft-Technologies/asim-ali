@@ -2051,8 +2051,10 @@ footer .wrap .footer-menu ul span .submenu{
   .gallery_img_mid{
     height: 150px;
   }
-  .split_image{
-    height: 40vh;
+  .split_section{
+    .split_image{
+      height: 60vh;
+    }
   }
   .cta_section .cta_first{
     height: 50vh
