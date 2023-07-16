@@ -129,7 +129,7 @@ function Header(props: MyProps) {
         </noscript>
       </Head>
       <Navbar bg="light" expand="lg">
-        <Container>
+        <Container style={{width:"100%"}}>
           <Navbar.Brand>
             {(settings as any)?.headerSettings?.uploadLogo == null ? (
               ""
@@ -139,7 +139,7 @@ function Header(props: MyProps) {
                   src={(settings as any)?.headerSettings?.uploadLogo?.sourceUrl}
                   alt="Logo"
                   style={{ cursor: "pointer" }}
-                  width={200}
+                  width={180}
                   height={43}
                   priority={true}
                 />
@@ -192,6 +192,16 @@ function Header(props: MyProps) {
                         </li>
                       );
                     })}
+                    <li>
+                  <Nav.Link href={"tel:+16045913590"}>
+                    <span
+                      className="link"
+                      onClick={() => "tel:+16045913590"}
+                    >
+                      604-591-3590
+                    </span>
+                  </Nav.Link>
+                </li>
                   </ul>
                 );
               })}
