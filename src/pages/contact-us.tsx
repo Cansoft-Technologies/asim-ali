@@ -139,7 +139,7 @@ const Contact = (props: MyProps) => {
         "service_12yqpdo",
         "template_qa4pqev",
         form.current,
-        "bKO8M-uo0olOYAj7Z"
+        "LYwiuAFI1c6Btwysb"
       )
       .then(
         (result) => {
