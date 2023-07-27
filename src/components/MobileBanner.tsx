@@ -95,12 +95,12 @@ const MobileBanner = (props: MyProps) => {
                               <Col className="text-center" xs={12} lg="6">
                                 <div className={styles.bannerCaption}>
                                   <p className={styles.sliderSubtitle}>
-                                    {slide.sliderSubtitle}
+                                    {slide?.sliderSubtitle || ""}
                                   </p>
                                   <p className={styles.sliderTitle}>
-                                    {slide.sliderTitle}
+                                    {slide?.sliderTitle || ""}
                                   </p>
-                                  <p>{slide.sliderDescription}</p>
+                                  <p>{slide?.sliderDescription || ""}</p>
                                 </div>
                               </Col>
                               {slide.sliderButtonUrl == null ? (

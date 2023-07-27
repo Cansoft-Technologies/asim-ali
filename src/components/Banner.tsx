@@ -107,7 +107,7 @@ const Banner = (props: MyProps) => {
                         <div className={styles.overlay}>
                           <Carousel.Caption className={styles.carouselcaption}>
                             <Row className="align-items-center home-slide">
-                              <Col className="text-start" xs={12} lg="6">
+                              <Col className="text-start" xs={12} lg={8}>
                                 <div className={styles.bannerCaption}>
                                   <p className={styles.sliderSubtitle}>
                                     {slide?.sliderSubtitle || ""}
