@@ -25,8 +25,9 @@
         .sliderTitle{
             color: $color-secondary;
             margin: 0 auto;
-            font-size: 48px;
-            font-weight: 300;
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 60px;
         }
         .sliderSubtitle{
             font-family: "AvenirBook";
@@ -38,9 +39,9 @@
         p{
             font-family: 'dejavusans';
             color: $color-white;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 100;
-            margin: 0 auto;
+            margin-top: 10px;
         }
     }
     .bannerBtn{
@@ -71,6 +72,7 @@
         .bannerCaption{
             .sliderTitle{
                 font-size: 30px;
+                line-height: 40px;
             }
             .sliderSubtitle{
                 font-size: 20px;
