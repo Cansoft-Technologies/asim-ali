@@ -65,7 +65,7 @@ const Banner = (props: MyProps) => {
           />
         </Head>
 
-        <Carousel fade>
+        <Carousel fade controls={false}>
           {sliders?.map(function (slider) {
             return slider?.HomeLandingPage?.homeSliderSection?.homeSlider ==
               null
@@ -110,18 +110,17 @@ const Banner = (props: MyProps) => {
                               <Col className="text-start" xs={12} lg="6">
                                 <div className={styles.bannerCaption}>
                                   <p className={styles.sliderSubtitle}>
-                                    {slide.sliderSubtitle}
+                                    {slide?.sliderSubtitle || ""}
                                   </p>
                                   <p className={styles.sliderTitle}>
-                                    {slide.sliderTitle}
+                                    {slide?.sliderTitle || ""}
                                   </p>
-                                  <p>{slide.sliderDescription}</p>
+                                  <p>{slide?.sliderDescription || ""}</p>
                                 </div>
-                              </Col>
-                              {slide.sliderButtonUrl == null ? (
+                                {slide.sliderButtonUrl == null ? (
                                 ""
                               ) : (
-                                <Col className="text-end" xs={12} lg="6">
+                                <Col className="text-start mt-5" xs={12} lg="6">
                                   <Link href={slide.sliderButtonUrl.url}>
                                     <Button className={styles.bannerBtn}>
                                       Get <span>Approved</span>
@@ -129,6 +128,7 @@ const Banner = (props: MyProps) => {
                                   </Link>
                                 </Col>
                               )}
+                              </Col>
                             </Row>
                           </Carousel.Caption>
                         </div>
