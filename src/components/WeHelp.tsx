@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { apolloClient } from "lib/apollo";
-import { Col, Container, Row } from "react-bootstrap";
+import Link from "next/link";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -38,7 +39,7 @@ type MyProps = {
 
 const WeHelp = (props: MyProps) => {
   const { helps } = props;
-
+console.log(helps);
   return (
     <>
       {helps?.map((help) => {
@@ -71,13 +72,13 @@ const WeHelp = (props: MyProps) => {
                     </Col>
                     <Col lg={6}>
                       <div className="wehelp_text">
-                        <p
+                        <h1
                           className="wehelp_title"
                           dangerouslySetInnerHTML={{
                             __html:
                               help?.HomeLandingPage?.weHelpSection?.helpTitle,
                           }}
-                        ></p>
+                        ></h1>
                         <div
                           className="wehelp_description"
                           dangerouslySetInnerHTML={{
@@ -86,6 +87,21 @@ const WeHelp = (props: MyProps) => {
                                 ?.helpDescription,
                           }}
                         ></div>
+                        {help?.HomeLandingPage?.weHelpSection
+                        ?.helpButton == null ? (
+                        ""
+                      ) : (
+                        <Link
+                          href={
+                            help?.HomeLandingPage?.weHelpSection
+                        ?.helpButton?.url
+                          }
+                        >
+                          <Button className="SplitBtn">
+                            Get <span>Approved</span>
+                          </Button>
+                        </Link>
+                      )}
                       </div>
                     </Col>
                   </Row>

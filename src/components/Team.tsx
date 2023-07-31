@@ -56,11 +56,16 @@ const Team = (props: MyProps) => {
                   }}
                 >
                   <div className={styles.overlay}>
-                    <h1
+                    <h2
                       dangerouslySetInnerHTML={{
                         __html: team?.HomeLandingPage?.teamSection?.teamTitle,
                       }}
-                    ></h1>
+                    ></h2>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: team?.HomeLandingPage?.teamSection?.teamDescription,
+                      }}
+                    ></p>
                   </div>
                 </div>
               )}
