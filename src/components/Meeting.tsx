@@ -53,13 +53,13 @@ const Meeting = (props: MyProps) => {
                 <Container>
                   <Row>
                     <Col>
-                      <h2
+                      <h3
                         dangerouslySetInnerHTML={{
                           __html:
                             meeting?.HomeLandingPage?.meetingSection
                               ?.meetingTitle,
                         }}
-                      ></h2>
+                      ></h3>
                     </Col>
                   </Row>
                   <Row>

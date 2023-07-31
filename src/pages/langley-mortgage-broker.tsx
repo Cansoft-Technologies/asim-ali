@@ -197,7 +197,7 @@ const Langley = (props: MyProps) => {
   const { settings, mainMenus, langleyData, metaData } = props;
 
   const [key, setKey] = useState(null);
-
+console.log(langleyData);
   return (
     <>
       {langleyData?.map((data, index) => {
