@@ -13,15 +13,9 @@ export default function MortgageAdvisor(props: MyProps) {
         <Row>
           <Col lg={7}>
           <h2 className="text-start service-title">{advisorData?.advisorTitle}</h2>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: advisorData?.advisorDescriptionTop,
-        }}
-        className=""
-      ></div>
             <div className="split_image"  style={{
-                          height: "90vh",
-                          width: "100%",
+                          height: "70vh",
+                          width: "80%",
                         }}>
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}

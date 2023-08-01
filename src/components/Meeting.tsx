@@ -78,7 +78,7 @@ const Meeting = (props: MyProps) => {
                         className="meeting_image"
                         style={{
                           position: "relative",
-                          height: "70vh",
+                          height: "50vh",
                           width: "100%",
                           clipPath: "inset(0 0 0 0)",
                         }}

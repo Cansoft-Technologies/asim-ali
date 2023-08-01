@@ -19,7 +19,7 @@ export default function FlexibilityTab(props: MyProps)
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {tabData?.tabRenovation.map((tab, item) => {
+                      {tabData?.tabRenovation?.map((tab, item) => {
                         return (
                           <Tab
                             key={item}

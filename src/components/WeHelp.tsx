@@ -48,7 +48,7 @@ console.log(helps);
             {help?.HomeLandingPage?.weHelpSection?.hideSection == true ? (
               ""
             ) : (
-              <section className="wehelp_section">
+              <section className="wehelp_section mb-5">
                 <Container>
                   <Row>
                     <Col lg={6}>
@@ -71,6 +71,7 @@ console.log(helps);
                       </div>
                     </Col>
                     <Col lg={6}>
+                      <div className="wehelp_desc">
                       <div className="wehelp_text">
                         <h1
                           className="wehelp_title"
@@ -102,6 +103,7 @@ console.log(helps);
                           </Button>
                         </Link>
                       )}
+                      </div>
                       </div>
                     </Col>
                   </Row>

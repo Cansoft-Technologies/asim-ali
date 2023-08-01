@@ -347,7 +347,7 @@ export default function NewHome(props: MyProps) {
         <FAQ faqsections={faqsections} />
         <CTA />
         <Container className="mb-5">
-        <p className="text-center service-title">{contactData?.title}</p>
+        <h2 className="text-center service-title">{contactData?.title}</h2>
       <div
         dangerouslySetInnerHTML={{
           __html: contactData?.description,
