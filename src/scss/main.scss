@@ -92,7 +92,7 @@
     // }
   }
   .advisor-title{
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 600;
     font-family: "AvenirBook";
     color: $color-secondary;
@@ -249,7 +249,25 @@
       outline: 1px solid $color-secondary;
     }
   }
-
+  .SplitBtn {
+    background: transparent;
+    border: 2px solid $color-black;
+    text-transform: uppercase;
+    font-family: "AvenirBook";
+    font-size: 25px;
+    color: $color-black;
+    border-radius: 0;
+    span {
+      color: $color-secondary;
+      font-family: "AvenirBlack";
+    }
+    &:hover {
+      background: transparent;
+      border: 2px solid $color-secondary;
+      color: $color-black;
+      opacity: 0.5;
+    }
+  }
   .wehelp_section {
     padding-top: 50px;
     padding: 80px 0;
@@ -299,7 +317,7 @@
         font-size: 50px;
         font-weight: 500;
         position: relative;
-        left: -90px;
+        // left: -90px;
         :after {
           position: absolute;
           top: 26%;
@@ -487,13 +505,15 @@
           list-style: none;
           display: block;
           justify-content: center;
+          align-items: center;
+          width: 100%;
           li{
               position: relative;
           }
           span{
             float: left;
             overflow: hidden;
-            margin-right: 15px;
+            margin-left: 15px;
             z-index: 9999;
             li{
               &:hover{
@@ -723,20 +743,36 @@
     width: 380px !important;
     box-shadow: -1px -3px 4px -5px #000;
   }
-  .review-text{
-    text-align: center;
-    color:#f0b254;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 20px;
+  .review-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    &:hover{
-      color: $color-secondary;
-      text-decoration: underline;
+    .review-text{
+      width: 250px;
+      padding-left: 10px;
+      background: transparent;
+      border: 2px solid $color-black;
+      text-transform: uppercase;
+      font-family: "AvenirBook";
+      font-size: 25px;
+      color: $color-black;
+      border-radius: 0;
+      span {
+        color: $color-secondary;
+        font-family: "AvenirBlack";
+      }
+      &:hover {
+        background: transparent;
+        border: 2px solid $color-secondary;
+        color: $color-black;
+        opacity: 0.5;
+      }
     }
   }
   .service-title{
     font-size: 50px;
+    font-family: "AvenirBook";
   }
   .faq-accordion {
     padding-bottom: 50px;
@@ -1355,7 +1391,7 @@
           }
           h3{
             color: $color-white;
-            font-size: 22px;
+            font-size: 24px;
           }
           p {
             color: $color-white;
@@ -1511,8 +1547,7 @@
     align-items: center;
     justify-content:center ;
     .service-top-card{
-      width: 50%;
-      height: 280px;
+      height: 250px;
       width: 100%;
       border: none;
       padding: 20px 40px 40px;
@@ -1527,13 +1562,16 @@
     gap: 20px;
     .service-card{
         width: 50%;
-        height: 280px;
+        height: 250px;
         border: none;
         padding: 20px;
         box-shadow: -1px -3px 12px -5px #000;
         &:hover{
           height: 300px;
           transform: translateY(-10px);
+        }
+        h3{
+          font-size: 24px;
         }
       }
       .service-card-image{
@@ -1557,22 +1595,25 @@
       .nav-link {
         font-size: 17px;
         font-weight: 400;
+        width: 500px;
         font-family: "AvenirBook";
-        padding: 10px 0;
+        // padding: 10px 0;
+        margin-bottom: 5px;
+        border-radius: 5px;
         cursor: pointer;
-        color: $color-black;
+        color: white;
+        background-color: $color-black;
         &:hover {
           border-color: transparent;
         }
       }
       .nav-link.active {
         font-size: 15px;
-        font-weight: 600;
         font-family: "AvenirBlack";
-        border: 2px solid $color-secondary;
-        border-radius: 5px;
+        background-color: $color-secondary;
+        color: $color-black;
         display: inline;
-        padding: 20px;
+        // padding: 20px;
       }
     }
     .tab-content {
@@ -1886,6 +1927,13 @@
     font-size: 15px;
   }
   @media all and (max-width: 1400px) {
+    .footer-menu ul {
+      li{
+        span{
+          font-size: 12px;
+        }
+      }
+    }
     .navbar-nav {
       span.link {
         margin-left: 3px;
@@ -2126,7 +2174,7 @@
       padding: 30px 0;
     }
     .meeting_section h3{
-      font-size: 30px;
+      font-size: 24px;
       font-weight: 500;
     }
     .team_section{
@@ -2142,11 +2190,11 @@
   }
       
     .team_section h2, .meeting_section h3, .split_section .split_text h2{
-      font-size: 35px;
+      font-size: 24px;
       font-weight: 500;
     }
   .cta_section h3 {
-      font-size: 26px;
+      font-size: 24px;
   }
     footer .wrap .social-url :before{
       display: none;
@@ -2286,25 +2334,27 @@ margin-left: 20px;
   }
 
   @media all and (max-width: 441px) {
-    .renovation-tab-row .renovation.nav-tabs {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      margin-left: 20px;
-      .location-tab-title{
-        font-size: 16px;
-      }
-  }
+    .service-description p{
+      font-size: 14px;
+    }
+
   .review{
     h1{
       font-size: 30px;
     }
   }
-  .renovation-tab-row .tab-content{
-    display: flex;
+  .renovation-tab-row {
+    .tab-content{
+  display: flex;
   width: 100%;
   align-items: center;
   margin-left: 10px;
+  }
+  .renovation.nav-tabs {
+    .nav-link{
+      width: 100%;
+    }
+  }
   }
   .service-title{
     font-size: 30px;
@@ -2312,17 +2362,18 @@ margin-left: 20px;
   .service-top-section{
     .service-top-card{
       width: 100%;
-      height: 320px;
+      height: 420px;
+      overflow: hidden;
     }
   }
   .service-section{
     flex-direction: column;
     .service-card{
       width: 100%;
-      height: 340px;
+      height: 360px;
       overflow: hidden;
       .service-card-text p{
-        font-size: 18px;
+        font-size: 14px;
       }
       .service-card-image img{
         width: 30px;
