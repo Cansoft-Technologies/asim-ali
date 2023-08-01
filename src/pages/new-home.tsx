@@ -347,12 +347,12 @@ export default function NewHome(props: MyProps) {
         <CTA />
         <ContactSection />
         <Container className="mb-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
+        <p className="text-center service-title">{contactData?.title}</p>
       <div
         dangerouslySetInnerHTML={{
           __html: contactData?.description,
         }}
-        className="service-description text-center"
+        className="text-lg text-center"
       ></div>
         </Container>
       </main>

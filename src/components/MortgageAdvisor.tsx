@@ -15,7 +15,7 @@ export default function MortgageAdvisor(props: MyProps) {
         dangerouslySetInnerHTML={{
           __html: advisorData?.advisorDescriptionTop,
         }}
-        className="service-description"
+        className=""
       ></div>
         <Row>
           <Col lg={7}>
