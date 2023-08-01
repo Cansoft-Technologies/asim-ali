@@ -15,7 +15,7 @@ export default function FlexibilityTab(props: MyProps)
                   <Row className="renovation-tab-row">
                     <Tabs
                       id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
+                      activeKey={key == null ? 0 : key}
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
