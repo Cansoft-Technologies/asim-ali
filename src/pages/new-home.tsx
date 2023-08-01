@@ -337,6 +337,7 @@ export default function NewHome(props: MyProps) {
         <WeHelp helps={weHelpData} />
         <PartnerLogo logos={logos} />
         <Team teams={teamData} />
+        <ContactSection />
         <Meeting meetings={meetingData} />
         <SplitImageLeft splitImagesLeft={splitLeftData} />
         <OurServices serviceData={serviceData} />
@@ -345,7 +346,6 @@ export default function NewHome(props: MyProps) {
         <ClientReviews reviews={reviewData} />
         <FAQ faqsections={faqsections} />
         <CTA />
-        <ContactSection />
         <Container className="mb-5">
         <p className="text-center service-title">{contactData?.title}</p>
       <div

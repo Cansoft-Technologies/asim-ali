@@ -86,7 +86,7 @@ export const tabData = {
 };
 export const serviceData = {
   serviceTitle: "Our Services",
-  serviceDescription: "<p>As a trusted mortgage broker in Surrey, we offer a range of services that cater to your individual needs. Our team of experts is dedicated to ensuring that you get the best deals on your mortgages and the most suitable financing options available to you.</p> &nbsp; <p>We offer mortgage services that include first-time homebuyer mortgages, refinancing, renewals, debt consolidation, investment properties, and commercial mortgages. Our team will work closely with you to assess your financial situation, understand your requirements, and help you navigate the complex world of mortgages.</p>",
+  serviceDescription: "<p>As a trusted mortgage broker in Surrey, we offer a range of services that cater to your individual needs. Our team of experts is dedicated to ensuring that you get the best deals on your mortgages and the most suitable financing options available to you.</p> <p>We offer mortgage services that include first-time homebuyer mortgages, refinancing, renewals, debt consolidation, investment properties, and commercial mortgages. Our team will work closely with you to assess your financial situation, understand your requirements, and help you navigate the complex world of mortgages.</p>",
   serviceCards:[
     {
         title: "We Simplify The Process for You",

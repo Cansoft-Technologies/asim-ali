@@ -137,13 +137,15 @@ const ClientReviews = (props: MyProps) => {
         }}
         className="service-description"
       ></div> */}
+          <div className="review-button">
           <p
             className="review-text"
             onClick={() => router.push("/testimonials")}
           >
             {" "}
-            View all Reviews
+            View all <span>Reviews</span>
           </p>
+          </div>
         </Container>
       )}
     </>

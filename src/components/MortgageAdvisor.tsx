@@ -10,16 +10,19 @@ export default function MortgageAdvisor(props: MyProps) {
   return (
     <section className="split_section">
       <Container>
-      <h2 className="text-start service-title">{advisorData?.advisorTitle}</h2>
+        <Row>
+          <Col lg={7}>
+          <h2 className="text-start service-title">{advisorData?.advisorTitle}</h2>
       <div
         dangerouslySetInnerHTML={{
           __html: advisorData?.advisorDescriptionTop,
         }}
         className=""
       ></div>
-        <Row>
-          <Col lg={7}>
-            <div className="split_image">
+            <div className="split_image"  style={{
+                          height: "90vh",
+                          width: "100%",
+                        }}>
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
                 fill
