@@ -30,9 +30,9 @@ export default function ContactSection() {
     <form ref={form} onSubmit={sendEmail} id="contact-form">
                         <div id="contact-form">
                           <div className="row contact-row">
-                            <h2 className="contact-title">
+                            <p className="contact-title">
                               Contact Information
-                            </h2>
+                            </p>
                             <div className="col-md-6">
                               <input
                                 type="text"
@@ -154,7 +154,7 @@ export default function ContactSection() {
                             </div>
                           </div>
                           <input
-                            className="contactBtn"
+                            className="contactBtn mt-3"
                             type="submit"
                             value="Send Message"
                           />
