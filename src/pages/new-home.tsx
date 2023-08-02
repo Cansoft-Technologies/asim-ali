@@ -352,7 +352,7 @@ export default function NewHome(props: MyProps) {
         dangerouslySetInnerHTML={{
           __html: contactData?.description,
         }}
-        className="text-lg text-center"
+        className="text-lg text-start"
       ></div>
         </Container>
       </main>

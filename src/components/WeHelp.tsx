@@ -73,13 +73,13 @@ console.log(helps);
                     <Col lg={6}>
                       <div className="wehelp_desc">
                       <div className="wehelp_text">
-                        <h1
+                        <div
                           className="wehelp_title"
                           dangerouslySetInnerHTML={{
                             __html:
                               help?.HomeLandingPage?.weHelpSection?.helpTitle,
                           }}
-                        ></h1>
+                        ></div>
                         <div
                           className="wehelp_description"
                           dangerouslySetInnerHTML={{

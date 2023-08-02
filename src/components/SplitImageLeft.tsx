@@ -74,13 +74,13 @@ const SplitImageLeft = (props: MyProps) => {
                   </Col>
                   <Col lg={4}>
                     <div className="split_text">
-                      <h2
+                      <div
                         dangerouslySetInnerHTML={{
                           __html:
                             splitImage?.HomeLandingPage?.splitImageLeftSection
                               ?.splitTitle,
                         }}
-                      ></h2>
+                      ></div>
                       <div
                         dangerouslySetInnerHTML={{
                           __html:

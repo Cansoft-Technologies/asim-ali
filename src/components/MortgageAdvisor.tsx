@@ -12,7 +12,12 @@ export default function MortgageAdvisor(props: MyProps) {
       <Container>
         <Row>
           <Col lg={7}>
-          <h2 className="text-start service-title">{advisorData?.advisorTitle}</h2>
+          <div
+                dangerouslySetInnerHTML={{
+                  __html: advisorData?.advisorTitle,
+                }}
+                className="text-start service-title"
+              ></div>
             <div className="split_image"  style={{
                           height: "70vh",
                           width: "80%",
