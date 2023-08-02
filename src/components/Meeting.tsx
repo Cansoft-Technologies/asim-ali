@@ -52,18 +52,18 @@ const Meeting = (props: MyProps) => {
               ) : (
                 <Container>
                   <Row>
-                    <Col>
-                      <h3
+                    <Col lg={4}>
+                      <div>
+                      <Col>
+                      <div
                         dangerouslySetInnerHTML={{
                           __html:
                             meeting?.HomeLandingPage?.meetingSection
                               ?.meetingTitle,
                         }}
-                      ></h3>
+                      ></div>
                     </Col>
-                  </Row>
-                  <Row>
-                    <Col lg={4}>
+                      </div>
                       <div
                         dangerouslySetInnerHTML={{
                           __html:
@@ -78,7 +78,7 @@ const Meeting = (props: MyProps) => {
                         className="meeting_image"
                         style={{
                           position: "relative",
-                          height: "50vh",
+                          height: "60vh",
                           width: "100%",
                           clipPath: "inset(0 0 0 0)",
                         }}

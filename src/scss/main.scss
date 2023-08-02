@@ -269,12 +269,18 @@
     }
   }
   .wehelp_desc{
-    padding-top: 30px;
     display: flex;
     justify-content: center;
   }
   .wehelp_section {
     padding-top: 50px;
+    .row {
+      .col-lg-6 div{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        }
+    }
     &:before {
       content: "";
 
@@ -290,6 +296,8 @@
     }
     .wehelp_image {
       width: 90%;
+      display: flex;
+      align-content: center;
     }
     .col:nth-child(2) {
       display: flex;
@@ -386,6 +394,19 @@
       span {
         font-family: "AvenirBlack";
         color: $color-secondary;
+      }
+    }
+  }
+
+  .meeting_section div{
+    .container{
+      .row{
+        .col-lg-4{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5%;
+        }
       }
     }
   }
@@ -1578,6 +1599,10 @@
         }
       }
       .service-card-image{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 10px;
         padding: 10px;
       }
   }
@@ -1585,7 +1610,7 @@
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    margin-left: auto;
+    // margin-left: auto;
     align-items: center;
     .renovation.nav-tabs {
       display: flex;
@@ -1625,6 +1650,7 @@
       background: $color-light-gray;
       padding: 30px;
       width: 50%;
+      margin-left: 20px;
       border-radius: 10px;
       p,
       li {

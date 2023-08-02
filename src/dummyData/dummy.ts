@@ -8,7 +8,7 @@ export const weHelpData = [{
     helpButton:{
         url: "https://asimali.ca/contact-us/"
     },
-    helpTitle:"Trusted Mortgage Broker in Surrey: Get the best deals on mortgages"
+    helpTitle: `<h1>Trusted <span style="color: #ffcc00;">Mortgage Broker in Surrey</span>: Get the best deals on mortgages</h1>`
   }
 }}]
 export const teamData = [{
@@ -27,7 +27,7 @@ export const teamData = [{
 export const meetingData = [{
   HomeLandingPage:{
     meetingSection:{
-      meetingTitle: "We Go Extra Miles For You",
+      meetingTitle: `<h3>We Go <span style="color: #ffcc00;">Extra Miles </span>For You</h3>`,
       meetingDescription: "<p>At Asim Ali Mortgage, we understand that purchasing a home is one of the most significant financial decisions you will ever make. That's why we go the extra mile to ensure that you have a seamless mortgage application process. From pre-approvals to finding the right lender and securing the best mortgage rates, we handle everything. Our priority is to make your home buying journey stress-free and enjoyable. Choose us, and you'll have the best mortgage broker in Surrey BC by your side, offering you valuable advice, unparalleled service, and unbeatable mortgage deals.</p>",
       meetingImage: {
             sourceUrl: "https://asimaliprod.wpengine.com/wp-content/uploads/2023/06/surrey-bc-mortgage-broker.webp",
@@ -48,7 +48,7 @@ export const splitLeftData = [{
         url: "https://asimali.ca/contact-us/",
         title:"Contact Us"
     },
-    splitTitle:"How We Can Help You With Your Mortgages"
+    splitTitle:`<h2>How We Can Help You With Your <span style="color: #ffcc00;">Mortgages</span></h2>`
   }
 }}]
 export const splitRightData = [{
@@ -85,7 +85,7 @@ export const tabData = {
 ]
 };
 export const serviceData = {
-  serviceTitle: "Our Services",
+  serviceTitle: `<h2>Our <span style="color: #ffcc00;">Services</span></h2>`,
   serviceDescription: "<p>As a trusted mortgage broker in Surrey, we offer a range of services that cater to your individual needs. Our team of experts is dedicated to ensuring that you get the best deals on your mortgages and the most suitable financing options available to you.</p> <p>We offer mortgage services that include first-time homebuyer mortgages, refinancing, renewals, debt consolidation, investment properties, and commercial mortgages. Our team will work closely with you to assess your financial situation, understand your requirements, and help you navigate the complex world of mortgages.</p>",
   serviceCards:[
     {
@@ -142,7 +142,7 @@ export const reviewData = {
 
 
 export const advisorData = {
-  advisorTitle: "Why Choose Asim Ali as Your Mortgage Advisor in Surrey",
+  advisorTitle: `<h2 class="text-start service-title">Why Choose Asim Ali as Your <span style="color: #ffcc00;">Mortgage Advisor in Surrey</span></h2>`,
   advisorDescriptionTop: "<p>Choosing Asim Ali as your mortgage advisor in Surrey comes with a lot of benefits. Here are a few reasons why he is the best choice for you:</p>",
   advisorDescriptionBottom:"<p>Overall, choosing Asim Ali as your mortgage advisor in Surrey guarantees you personalized attention, expertise, and unbiased advice.</p>",
   advisorImage:{
