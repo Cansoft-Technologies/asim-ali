@@ -9,20 +9,20 @@ export default function OurServices(props: MyProps) {
   return (
     <Container className="my-5">
       <div className="service-top-section">
-      <div className="service-top-card">
-      <div
-        dangerouslySetInnerHTML={{
-          __html: serviceData?.serviceTitle,
-        }}
-        className="text-start service-title text-center"
-      ></div>
-        <div
-        dangerouslySetInnerHTML={{
-          __html: serviceData?.serviceDescription,
-        }}
-        className="service-description"
-      ></div>
-      </div>
+        <div className="service-top-card">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: serviceData?.serviceTitle,
+            }}
+            className="text-start service-title text-center"
+          ></div>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: serviceData?.serviceDescription,
+            }}
+            className="service-description"
+          ></div>
+        </div>
       </div>
       <div className="service-section">
         {serviceData?.serviceCards?.map((data, item) => {
@@ -35,11 +35,14 @@ export default function OurServices(props: MyProps) {
                   src={data?.cardImage?.sourceUrl}
                   alt={data?.cardImage?.altText}
                 />
-              <h3>{data.title}</h3>
+                <h3>{data.title}</h3>
               </div>
-              <div className="service-card-text">
-                <p>{data?.description}</p>
-              </div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: data?.description,
+                }}
+                className="service-card-text"
+              ></div>
             </div>
           );
         })}
