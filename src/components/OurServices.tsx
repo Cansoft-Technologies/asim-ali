@@ -47,6 +47,17 @@ export default function OurServices(props: MyProps) {
           );
         })}
       </div>
+      {/* <div className="service-bottom-section">
+        <p className="service-text-after">Best Mortgage <span>Broker in Surrey</span></p>
+      <Image
+      className="service-image-after"
+                  height={200}
+                  width={300}
+                  // style={{ height: "100%", width: "100%" }}
+                  src={serviceData?.serviceImageAfter?.sourceUrl}
+                  alt={serviceData?.serviceImageAfter?.altText}
+                />
+      </div> */}
     </Container>
   );
 }
