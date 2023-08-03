@@ -370,16 +370,6 @@
       color: $color-white;
       position: absolute;
       top: 40px;
-      &:after {
-        position: absolute;
-        top: 45%;
-        overflow: hidden;
-        width: 20%;
-        height: 3px;
-        content: " ";
-        background-color: $color-secondary;
-        left: -17%;
-      }
       span {
         font-family: "AvenirBlack";
         color: $color-secondary;
@@ -663,27 +653,6 @@
   }
   .service-bottom-section{
     margin-top: 100px;
-    &:before {
-      position: absolute;
-      top: 26%;
-      overflow: hidden;
-      width: 40%;
-      height: 3px;
-      content: " ";
-      background-color: #f0b254;
-      margin-left: 50%;
-    }
-    &:after {
-      position: absolute;
-      bottom: -85%;
-      overflow: hidden;
-      width: 120%;
-      height: 3px;
-      content: " ";
-      background-color: #f0b254;
-      margin-left: -11%;
-      transform: rotate(90deg);
-    }
   }
   .service-text-after{
     z-index: 1;
@@ -695,20 +664,19 @@
     width: 40%;
     &:before {
       position: absolute;
-      top: 26%;
+      // top: 26%;
       overflow: hidden;
       width: 40%;
       height: 3px;
       content: " ";
       background-color: #f0b254;
-      margin-left: -72%;
-      transform: rotate(360deg);
+      margin-left: -63%;
     }
     &:after {
       position: absolute;
       bottom: -40%;
       overflow: hidden;
-      width:80%;
+      width: 65%;
       height: 3px;
       content: " ";
       background-color: #f0b254;
