@@ -661,6 +661,27 @@
       }
     }
   }
+  .service-bottom-section{
+    margin-top: 30px;
+  }
+  .service-text-after{
+    z-index: 1;
+    position: relative;
+    margin-bottom: -300px;
+    font-size: 70px;
+    margin-left: 150px;
+    width: 30%;
+    span{
+      color:#f0b254;
+    }
+  }
+   .service-image-after{
+    z-index: 0;
+    height: 500px;
+    width: 800px;
+    margin-left: 350px;
+    // position: relative;
+  }
 
   .faq_section {
     background-repeat: no-repeat;
@@ -2370,7 +2391,20 @@ margin-left: 20px;
     .service-description p{
       font-size: 14px;
     }
-
+    .service-text-after{
+      margin-left:0 ;
+      width: 100%;
+      z-index: 1;
+      font-size: 24px;
+    }
+    .service-image-after{
+      margin-top: 250px;
+      z-index: 0;
+      height: 200px;
+      width: 300px;
+      margin-left: 0;
+      // position: relative;
+    }
   .review{
     h1{
       font-size: 30px;
