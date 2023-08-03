@@ -1,3 +1,5 @@
+import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React from "react";
 import { Container } from "react-bootstrap";
@@ -7,7 +9,7 @@ type MyProps = {
 export default function OurServices(props: MyProps) {
   const { serviceData } = props;
   return (
-    <Container className="my-5">
+    <Container className="mt-5 mb-5">
       <div className="service-top-section">
         <div className="service-top-card">
           <div
@@ -24,7 +26,7 @@ export default function OurServices(props: MyProps) {
           ></div>
         </div>
       </div>
-      <div className="service-section">
+      <div className="service-section mb-5">
         {serviceData?.serviceCards?.map((data, item) => {
           return (
             <div key={item} className="service-card">
@@ -47,17 +49,19 @@ export default function OurServices(props: MyProps) {
           );
         })}
       </div>
-      {/* <div className="service-bottom-section">
-        <p className="service-text-after">Best Mortgage <span>Broker in Surrey</span></p>
+      <div className="service-bottom-section">
+      <div className="service-text-after">
+      <p><FontAwesomeIcon icon={faQuoteLeft} /> What {""}<br/>We <span>Do </span><span><FontAwesomeIcon icon={faQuoteRight} /></span></p>
+      </div>
       <Image
       className="service-image-after"
                   height={200}
                   width={300}
-                  // style={{ height: "100%", width: "100%" }}
-                  src={serviceData?.serviceImageAfter?.sourceUrl}
+                  style={{ objectFit: "cover" }}
+                  src={serviceData?.serviceImage?.sourceUrl}
                   alt={serviceData?.serviceImageAfter?.altText}
                 />
-      </div> */}
+      </div>
     </Container>
   );
 }

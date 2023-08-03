@@ -74,13 +74,13 @@ const SplitImageRight = (props: MyProps) => {
                   </Col>
                   <Col lg={4}>
                     <div className="split_text">
-                      <h3
+                      <h2
                         dangerouslySetInnerHTML={{
                           __html:
                             splitImage?.HomeLandingPage?.splitImageRightSection
                               ?.splitTitle,
                         }}
-                      ></h3>
+                      ></h2>
                       <p
                         dangerouslySetInnerHTML={{
                           __html:

@@ -91,8 +91,8 @@ export const serviceData = {
   serviceDescription: `<p><span style="font-weight: 400;">As a trusted </span><b>mortgage broker in Surrey</b><span style="font-weight: 400;">, we offer a range of services that cater to your individual needs. Our team of experts is dedicated to ensuring that you get the best deals on your mortgages and the most suitable financing options available to you.</span></p>
 
   <p><span style="font-weight: 400;">We offer mortgage services that include first-time homebuyer mortgages, refinancing, renewals, debt consolidation, investment properties, and commercial mortgages. Our team will work closely with you to assess your financial situation, understand your requirements, and help you navigate the complex world of mortgages.</span></p>`,
-  serviceImageAfter:{
-    sourceUrl: "http://asimaliprod.wpengine.com/wp-content/uploads/2023/07/mortgage-broker-in-vancouver-bc.webp",
+  serviceImage:{
+    sourceUrl: "http://asimaliprod.wpengine.com/wp-content/uploads/2023/07/mortgage-broker-abbotsford-bc.webp",
     altText: "mortgage broker surrey"
 },
   serviceCards:[
