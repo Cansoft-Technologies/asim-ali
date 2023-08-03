@@ -1,4 +1,4 @@
-import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React from "react";
@@ -51,7 +51,7 @@ export default function OurServices(props: MyProps) {
       </div>
       <div className="service-bottom-section">
       <div className="service-text-after">
-      <p><FontAwesomeIcon icon={faQuoteLeft} /> What {""}<br/>We <span>Do </span><span><FontAwesomeIcon icon={faQuoteRight} /></span></p>
+      <p> What <br/>We <span style={{fontWeight:"700"}}>Do </span></p>
       </div>
       <Image
       className="service-image-after"
