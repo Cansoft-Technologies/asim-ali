@@ -15,6 +15,10 @@ const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
 const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
 import { apolloClient } from "../lib/apollo";
 import { gql } from '@apollo/client';
+import ClientReviews from 'components/ClientReviews';
+import MortgageAdvisor from 'components/MortgageAdvisor';
+import { Container } from 'react-bootstrap';
+import ContactSection from 'components/ContactSection';
 
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
@@ -74,6 +78,7 @@ export async function getStaticProps() {
           }
          teamSection {
             teamTitle
+            teamDescription
             hideSection
             teamImage {
               sourceUrl
@@ -150,6 +155,18 @@ export async function getStaticProps() {
               sourceUrl
             }
           }
+          advisorSection {
+            advisorTitle
+            advisorDescriptionBottom
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
+              title
+              description
+            }
+          }
           faqSection {
             hideSection
             faqTitle
@@ -174,8 +191,22 @@ export async function getStaticProps() {
               sourceUrl
             }
           }
-
-
+          homeContactSection {
+            title
+            description
+          }
+          reviewSection {
+            reviewTitle
+            reviewDescription
+            reviewCard{
+              author
+              reviewText
+              clientImage{
+                sourceUrl
+                altText
+              }
+            }
+          }
 
         }
      
@@ -260,13 +291,14 @@ export async function getStaticProps() {
       msliders: data?.pages?.nodes,
       helps: data?.pages?.nodes,
       logos: data?.pages?.nodes,
-      teams: data?.pages?.nodes,
-      meetings: data?.pages?.nodes,
-      splitImagesLeft: data?.pages?.nodes,
+      teamData: data?.pages?.nodes[0]?.HomeLandingPage?.teamSection,
+      meetings: data?.pages?.nodes[0]?.HomeLandingPage?.meetingSection,
+      advisorData: data?.pages?.nodes[0]?.HomeLandingPage?.advisorSection,
       flexsliders: data?.pages?.nodes,
       splitImagesRight: data?.pages?.nodes,
       images: data?.pages?.nodes,
-      faqsections: data?.pages?.nodes,
+      reviewData: data?.pages?.nodes[0]?.HomeLandingPage?.reviewSection,
+      contactData: data?.pages?.nodes[0]?.HomeLandingPage?.homeContactSection,
     },
     revalidate: 60
   };
@@ -280,18 +312,62 @@ type MyProps = {
   msliders: any;
   helps: any;
   logos: any;
-  teams: any;
+  teamData: any;
   meetings: any;
-  splitImagesLeft: any;
+  advisorData: any;
   flexsliders: any;
   splitImagesRight: any;
   images: any;
-  faqsections: any;
+  reviewData: any;
+  contactData: any;
+};
+const schema = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  name: "Mortgage Brokers",
+  image: [
+    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-9.webp",
+    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/home-banner.webp",
+    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-8.webp",
+  ],
+  description:
+    "Asim Ali and his team of the best mortgage brokers in Surrey will help you with the best mortgage rates available.",
+  sku: "CAN1971SEO",
+  mpn: "925872",
+  brand: {
+    "@type": "Brand",
+    name: "Asim Ali",
+  },
+  review: {
+    "@type": "Review",
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+    },
+    author: {
+      "@type": "Person",
+      name: "Ghazala Sarwar",
+    },
+  },
+  offers: {
+    "@type": "Offer",
+    url: "https://asimali.ca/",
+    priceCurrency: "CAD",
+    price: "499",
+    priceValidUntil: "2020-12-31",
+    availability: "https://schema.org/InStock",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    bestRating: "5",
+    ratingCount: "213",
+  },
 };
 
 export default function Page(props: MyProps) {
-  const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teams, meetings, splitImagesLeft, flexsliders, splitImagesRight, images, faqsections } = props;
-
+  const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teamData, meetings, advisorData, flexsliders, splitImagesRight, images, reviewData,contactData } = props;
 
 
   return (
@@ -301,11 +377,12 @@ export default function Page(props: MyProps) {
 
           return (
             <>
-              <noscript dangerouslySetInnerHTML={{
-                __html: meta?.seo?.jsonLd?.raw,
-              }}>
-
-              </noscript>
+              <noscript>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        </noscript>
               {meta?.seo?.jsonLd?.raw}
 
               <title>{meta?.seo?.title}</title>
@@ -328,14 +405,24 @@ export default function Page(props: MyProps) {
         </div>
         <WeHelp helps={helps} />
         <PartnerLogo logos={logos} />
-        <Team teams={teams} />
+        <Team teams={teamData} />
+        <ContactSection />
         <Meeting meetings={meetings} />
-        <SplitImageLeft splitImagesLeft={splitImagesLeft} />
+        <MortgageAdvisor advisorData={advisorData}/>
         <FlexabilitySlider flexsliders={flexsliders} />
         <SplitImageRight splitImagesRight={splitImagesRight} />
         <Gallery images={images} />
-        <FAQ faqsections={faqsections} />
+        <ClientReviews reviews={reviewData} />
         <CTA />
+        <Container className="mb-5">
+        <h2 className="text-center service-title">{contactData?.title}</h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: contactData?.description,
+        }}
+        className="text-lg text-start"
+      ></div>
+        </Container>
       </main>
 
       <Footer settings={settings} mainMenus={mainMenus} />

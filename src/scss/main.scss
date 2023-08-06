@@ -125,18 +125,6 @@
           align-items: center;
           display: none;
           width: 240px;
-
-          // display: flex;
-          // flex-direction: column;
-          // position: absolute;
-          // left: 0;
-          // top: 100%;
-          // z-index: 99;
-          // width: 240px;
-          // display: none;
-          // margin: 0;
-          // padding: 0;
-          // background: #fff;
           li {
             span.sublink {
               padding: 5px;
@@ -157,6 +145,21 @@
               }
             }
           }
+        }
+        .HeadBtn{
+          width: 150px;
+          padding-top: 1.5px;
+          padding-bottom: 1.5px;
+          color: $color-secondary;
+          font-family: "AvenirBlack";
+          background: transparent;
+    border: 2px solid $color-black;
+    text-transform: uppercase;
+    &:hover {
+      background: $color-black;
+      border: 2px solid $color-secondary;
+      text-transform: uppercase;
+    }
         }
       }
     }
@@ -222,6 +225,11 @@
       padding-right: 0;
     }
   }
+  .top-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   .home-slider {
     .carousel-indicators {
       // position: absolute;
@@ -282,19 +290,6 @@
         flex-direction: column;
         align-items: start;
         }
-    }
-    &:before {
-      content: "";
-
-      background-image: url(/images/we-help-bg.webp);
-      background-repeat: no-repeat;
-      background-size: 350px auto;
-      background-position: bottom left;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 610px;
-      height: 905px;
     }
     .wehelp_image {
       width: 90%;

@@ -62,7 +62,7 @@ const MobileBanner = (props: MyProps) => {
           />
         </Head>
 
-        <Carousel fade>
+        <Carousel fade controls={false}>
           {msliders?.map(function (slider) {
             return slider?.HomeLandingPage?.homeSliderSection?.homeSlider ==
               null
@@ -114,6 +114,11 @@ const MobileBanner = (props: MyProps) => {
                                   <Link href={slide.sliderButtonUrl.url}>
                                     <Button className={styles.bannerBtn}>
                                       Get <span>Approved</span>
+                                    </Button>
+                                  </Link>
+                                  <Link href="#apply_now">
+                                    <Button className={styles.bannerBtn}>
+                                      <span>Apply Now</span>
                                     </Button>
                                   </Link>
                                 </Col>

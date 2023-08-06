@@ -70,11 +70,12 @@ type MyProps = {
 const ClientReviews = (props: MyProps) => {
   const { reviews } = props;
   const router = useRouter();
+  console.log(reviews);
   return (
     <>
-      {reviews?.reviewCards?.length > 1 && (
-        <Container className="review">
-          <h2 className="my-5 text-start service-title">
+      {reviews?.reviewCard?.length > 1 && (
+        <Container className="review mb-5">
+          <h2 className="my-5 text-start service-title mt-5">
             {reviews?.reviewTitle?.split(" ")?.[0]} {reviews?.reviewTitle?.split(" ")?.[1]} {reviews?.reviewTitle?.split(" ")?.[2]} {" "}
             <span style={{ color: "#f0b254" }}>
               {reviews?.reviewTitle?.split(" ")?.[3]} {reviews?.reviewTitle?.split(" ")?.[4]}
@@ -82,7 +83,7 @@ const ClientReviews = (props: MyProps) => {
           </h2>
       <div
         dangerouslySetInnerHTML={{
-          __html: reviews?.reviewDescriptionTop,
+          __html: reviews?.reviewDescription,
         }}
         className="service-description"
       ></div>
@@ -93,7 +94,7 @@ const ClientReviews = (props: MyProps) => {
             infinite={true}
             responsive={responsive}
           >
-            {reviews?.reviewCards?.map((review: any, index: number) => {
+            {reviews?.reviewCard?.map((review: any, index: number) => {
               return (
                 // <div key={index}>
                 <div key={index} className="review-box card ml-5">

@@ -26,7 +26,7 @@ export default function ContactSection() {
     e.target.reset();
   };
   return (
-    <Container className="contact-section mb-5">
+    <Container className="contact-section mb-5" id="apply_now">
     <form ref={form} onSubmit={sendEmail} id="contact-form">
                         <div id="contact-form">
                           <div className="row contact-row">
