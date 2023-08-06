@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 type MyProps = {
-  contactData: any;
+  contactData?: any;
 }
 const CTA = (props: MyProps) => {
   const [catSections, setCatSections] = useState([]);
