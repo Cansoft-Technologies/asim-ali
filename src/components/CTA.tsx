@@ -5,10 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
-
-const CTA = () => {
+type MyProps = {
+  contactData: any;
+}
+const CTA = (props: MyProps) => {
   const [catSections, setCatSections] = useState([]);
-
+  const { contactData } = props;
   useEffect(() => {
     apolloClient
       .query({
@@ -93,7 +95,18 @@ const CTA = () => {
                     />
                   </div>
                 </div>
-                <div className="cta_text">
+                <div className="cta-details">
+                <Container className="mb-5">
+        <h2 className="text-center service-title">{contactData?.title}</h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: contactData?.description,
+        }}
+        className="text-lg text-start"
+      ></div>
+        </Container>
+                </div>
+                <div className="cta_text mt-5">
                   <p>
                     {cat?.HomeLandingPage?.callToActionSection?.actionTitle}
                   </p>

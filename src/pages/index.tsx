@@ -406,23 +406,14 @@ export default function Page(props: MyProps) {
         <WeHelp helps={helps} />
         <PartnerLogo logos={logos} />
         <Team teams={teamData} />
-        <ContactSection />
+        {/* <ContactSection /> */}
         <Meeting meetings={meetings} />
         <MortgageAdvisor advisorData={advisorData}/>
         <FlexabilitySlider flexsliders={flexsliders} />
         <SplitImageRight splitImagesRight={splitImagesRight} />
         <Gallery images={images} />
         <ClientReviews reviews={reviewData} />
-        <CTA />
-        <Container className="mb-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: contactData?.description,
-        }}
-        className="text-lg text-start"
-      ></div>
-        </Container>
+        <CTA contactData={contactData}/>
       </main>
 
       <Footer settings={settings} mainMenus={mainMenus} />

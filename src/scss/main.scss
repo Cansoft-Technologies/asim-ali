@@ -635,16 +635,26 @@
         font-size: 20px;
         border: none;
       }
-    }
-    p {
-      font-family: "AvenirBook";
+      p {
+        font-family: "AvenirBook";
       font-size: 40px;
       color: $color-black;
       span {
         font-family: "AvenirBlack";
         color: $color-secondary;
       }
+      }
     }
+    .cta_details p {
+      font-family: "AvenirBook";
+      font-size: 40px;
+      color: $color-black;
+      // span {
+      //   font-family: "AvenirBlack";
+      //   color: $color-secondary;
+      // }
+    }
+
   }
   .service-bottom-section{
     margin-top: 100px;
@@ -978,7 +988,7 @@
   }
 
   .partnerLogo {
-    margin: 20px 0 100px 0;
+    margin: 100px 0 100px 0;
     .react-multiple-carousel__arrow {
       background-color: transparent;
       &:before {
