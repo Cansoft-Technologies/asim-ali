@@ -193,7 +193,7 @@ function Header(props: MyProps) {
                       );
                     })}
                     <li>
-                  <Nav.Link href="#apply_now">
+                  <Nav.Link href="/contact-us">
                   <Button className="HeadBtn">
                             <span>Apply Now</span>
                           </Button>
