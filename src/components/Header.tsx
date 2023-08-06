@@ -4,7 +4,7 @@ import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -129,7 +129,7 @@ function Header(props: MyProps) {
         </noscript>
       </Head>
       <Navbar bg="light" expand="lg">
-        <Container style={{width:"100%"}}>
+        <Container style={{maxWidth:"1450px"}}>
           <Navbar.Brand>
             {(settings as any)?.headerSettings?.uploadLogo == null ? (
               ""
@@ -194,12 +194,9 @@ function Header(props: MyProps) {
                     })}
                     <li>
                   <Nav.Link href={"tel:+16045913590"}>
-                    <span
-                      className="link"
-                      onClick={() => "tel:+16045913590"}
-                    >
-                      604-591-3590
-                    </span>
+                  <Button className="HeadBtn">
+                            <span>Apply Now</span>
+                          </Button>
                   </Nav.Link>
                 </li>
                   </ul>
