@@ -193,7 +193,7 @@ function Header(props: MyProps) {
                       );
                     })}
                     <li>
-                  <Nav.Link href={"tel:+16045913590"}>
+                  <Nav.Link href="#apply_now">
                   <Button className="HeadBtn">
                             <span>Apply Now</span>
                           </Button>
