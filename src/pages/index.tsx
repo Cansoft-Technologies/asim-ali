@@ -19,6 +19,7 @@ import ClientReviews from 'components/ClientReviews';
 import MortgageAdvisor from 'components/MortgageAdvisor';
 import { Container } from 'react-bootstrap';
 import ContactSection from 'components/ContactSection';
+import FlexibilityTab from 'components/FlexibilityTab';
 
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
@@ -180,6 +181,10 @@ export async function getStaticProps() {
               answer
             }
           }
+          tabRenovation{
+            title
+            description
+          }
           callToActionSection {
             hideSection
             actionTitle
@@ -299,6 +304,7 @@ export async function getStaticProps() {
       images: data?.pages?.nodes,
       reviewData: data?.pages?.nodes[0]?.HomeLandingPage?.reviewSection,
       contactData: data?.pages?.nodes[0]?.HomeLandingPage?.homeContactSection,
+      tabRenovationData: data?.pages?.nodes[0]?.HomeLandingPage?.tabRenovation,
     },
     revalidate: 60
   };
@@ -320,6 +326,7 @@ type MyProps = {
   images: any;
   reviewData: any;
   contactData: any;
+  tabRenovationData: any;
 };
 const schema = {
   "@context": "https://schema.org/",
@@ -367,9 +374,9 @@ const schema = {
 };
 
 export default function Page(props: MyProps) {
-  const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teamData, meetings, advisorData, flexsliders, splitImagesRight, images, reviewData,contactData } = props;
+  const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teamData, meetings, advisorData, flexsliders, splitImagesRight, images, reviewData,contactData,tabRenovationData } = props;
 
-
+console.log(tabRenovationData);
   return (
     <>
       <Head>
@@ -406,7 +413,7 @@ export default function Page(props: MyProps) {
         <WeHelp helps={helps} />
         <PartnerLogo logos={logos} />
         <Team teams={teamData} />
-        {/* <ContactSection /> */}
+        <FlexibilityTab tabData={tabRenovationData}/>
         <Meeting meetings={meetings} />
         <MortgageAdvisor advisorData={advisorData}/>
         <FlexabilitySlider flexsliders={flexsliders} />
