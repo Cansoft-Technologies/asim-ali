@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import React, { useState } from 'react'
-import { Container, Row, Tab, Tabs } from 'react-bootstrap';
+import { Button, Container, Row, Tab, Tabs } from 'react-bootstrap';
 type MyProps = {
   tabData: any;
 };
@@ -9,7 +10,7 @@ export default function FlexibilityTab(props: MyProps)
     const [key, setKey] = useState(null);
   return (
     <Container className="my-5">
-      {tabData?.tabRenovation == null ? (
+      {tabData == null ? (
                   ""
                 ) : (
                   <Row className="renovation-tab-row">
@@ -19,7 +20,7 @@ export default function FlexibilityTab(props: MyProps)
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {tabData?.tabRenovation?.map((tab, item) => {
+                      {tabData?.map((tab, item) => {
                         return (
                           <Tab
                             key={item}
@@ -42,6 +43,15 @@ export default function FlexibilityTab(props: MyProps)
                     </Tabs>
                   </Row>
                 )}
+                <div className="tab-btn">
+                <Link
+                          href={"/contact-us"}
+                        >
+                          <Button className="HeadBtn">
+                            Apply <span>Now</span>
+                          </Button>
+                        </Link>
+                </div>
     </Container>
   )
 }

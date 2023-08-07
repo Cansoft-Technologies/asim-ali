@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import emailjs from "@emailjs/browser";
 import { Footer, Header, Hero } from "components";
+import ApplySection from "components/ApplySection";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import { useRef, useState } from "react";
@@ -221,7 +222,7 @@ function HowtoApply(props) {
                         <p>{data?.HowToApply?.fromSubtitle}</p>
                       </div>
 
-                      <div className="application-container">
+                      {/* <div className="application-container">
                         <form ref={form} onSubmit={sendEmail}>
                           <input
                             placeholder="Full Name"
@@ -248,7 +249,8 @@ function HowtoApply(props) {
                             </div>
                           )}
                         </form>
-                      </div>
+                      </div> */}
+                      <ApplySection/>
                     </Col>
                     <Col md={6}></Col>
                   </Row>

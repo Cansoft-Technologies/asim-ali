@@ -5,6 +5,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -128,6 +130,15 @@ function Header(props: MyProps) {
           />
         </noscript>
       </Head>
+      <Container style={{maxWidth:"100%",backgroundColor: "#12143a"}}> 
+      <Container style={{maxWidth:"1450px"}}> 
+      <div className="top-nav">
+      <a href="mailto:admin@asimali.ca"><p className="brand-mail"><span><FontAwesomeIcon icon={faEnvelope} /></span> admin@asimali.ca</p></a>
+        <a href="tel:+1 (604) 591 3590"><p className="brand-cell"> <span><FontAwesomeIcon icon={faPhone} /> </span>+1 (604) 591 3590 </p></a>
+      </div>
+      </Container>
+      
+      </Container>
       <Navbar bg="light" expand="lg">
         <Container style={{maxWidth:"1450px"}}>
           <Navbar.Brand>
