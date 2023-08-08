@@ -10,21 +10,22 @@ export default function ApplySection() {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_12yqpdo",
-        "template_qa4pqev",
-        form.current,
-        "LYwiuAFI1c6Btwysb"
-      )
-      .then(
-        (result) => {
-          setSuccess(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    console.log(form.current);
+    // emailjs
+    //   .sendForm(
+    //     "service_12yqpdo",
+    //     "template_qa4pqev",
+    //     form.current,
+    //     "LYwiuAFI1c6Btwysb"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       setSuccess(result.text);
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //     }
+    //   );
     e.target.reset();
   };
   return (
@@ -69,32 +70,32 @@ export default function ApplySection() {
                             </div>
                             <div className="col-md-6">
                               <select
-                                name="contact"
-                                id="contact"
+                                name="referred"
+                                id="referred"
                                 className="form_control"
                                 aria-required="true"
                                 aria-invalid="false"
                               >
                                 <option value={null}>Referred</option>
-                                <option value="text">Television Add</option>
-                                <option value="text">Radio Add</option>
-                                <option value="text">Internet Search</option>
-                                <option value="text">Facebook</option>
-                                <option value="text">Brochure</option>
-                                <option value="text">Friend or Relative</option>
+                                <option value="Television Add">Television Add</option>
+                                <option value="Radio Add">Radio Add</option>
+                                <option value="Internet Search">Internet Search</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="Brochure">Brochure</option>
+                                <option value="Friend or Relative">Friend or Relative</option>
                               </select>
                             </div>
                             <div className="col-md-6">
                               <select
-                                name="contact"
-                                id="contact"
+                                name="homeowner"
+                                id="homeowner"
                                 className="form_control"
                                 aria-required="true"
                                 aria-invalid="false"
                               >
                                 <option value={null}>Homeowner</option>
-                                <option value="text">Yes</option>
-                                <option value="text">No</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
                               </select>
                             </div>
                             <div className="col-md-6 mt-3">
@@ -141,15 +142,15 @@ export default function ApplySection() {
                             </div>
                             <div className="col-md-4">
                               <select
-                                name="contact"
-                                id="contact"
+                                name="mortgage"
+                                id="mortgage"
                                 className="form_control"
                                 aria-required="true"
                                 aria-invalid="false"
                               >
                                 <option value={null}>Do You Have A Mortgage?</option>
-                                <option value="text">Yes</option>
-                                <option value="text">No</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
                               </select>
                             </div>
                             <div className="col-md-4">
@@ -178,8 +179,8 @@ export default function ApplySection() {
                             </div>
                             <div className="col-md-6">
                               <select
-                                name="contact"
-                                id="contact"
+                                name="preferred"
+                                id="preferred"
                                 className="form_control"
                                 aria-required="true"
                                 aria-invalid="false"
@@ -187,7 +188,7 @@ export default function ApplySection() {
                                 <option value={null}>My Preferred Contact Method is...</option>
                                 <option value="Phone">Phone</option>
                                 <option value="Email">Email</option>
-                                <option value="Phone-Email">Phone & Email both are fine</option>
+                                <option value="Phone & Email both are fine">Phone & Email both are fine</option>
                               </select>
                             </div>
 
