@@ -120,7 +120,7 @@ const Banner = (props: MyProps) => {
                                 {slide.sliderButtonUrl == null ? (
                                 ""
                               ) : (
-                                <Col className="text-start mt-5 link_banner" xs={12} lg="6">
+                                <Col className="text-start mt-5 link_banner" xs={12} lg="12">
                                   <Link href={slide.sliderButtonUrl.url}>
                                     <Button className={styles.bannerBtn}>
                                       Get <span>Approved</span>
