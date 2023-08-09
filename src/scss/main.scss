@@ -252,6 +252,15 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.tab-head h2 {
+  font-family: "AvenirBook";
+  font-size: 50px;
+  color: $color-black;
+  span {
+    font-family: "AvenirBlack";
+    color: $color-secondary;
+  }
+}
 .home-slider {
   .carousel-indicators {
     // position: absolute;
@@ -2283,6 +2292,12 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 540px) {
+  .tab-head h2 {
+    font-size: 30px;
+  }
+  .top-nav{
+    letter-spacing: 1px;
+  }
   .review-box {
     margin-left: 0px;
     height: 220px !important;

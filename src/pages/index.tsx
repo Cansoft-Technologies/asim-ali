@@ -182,8 +182,11 @@ export async function getStaticProps() {
             }
           }
           tabRenovation{
-            title
-            description
+            tabHeading
+            tabDetails{
+              title
+              description
+            }
           }
           callToActionSection {
             hideSection
