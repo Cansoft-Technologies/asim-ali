@@ -68,7 +68,7 @@ export default function ApplySection() {
                                 placeholder="Phone Number"
                               />
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-6 mt-3">
                               <select
                                 name="referred"
                                 id="referred"
@@ -85,7 +85,7 @@ export default function ApplySection() {
                                 <option value="Friend or Relative">Friend or Relative</option>
                               </select>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-6 mt-3">
                               <select
                                 name="homeowner"
                                 id="homeowner"
@@ -140,7 +140,7 @@ export default function ApplySection() {
                                 <option value="Yukon">Yukon</option>
                               </select>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 mt-3">
                               <select
                                 name="mortgage"
                                 id="mortgage"
@@ -153,7 +153,7 @@ export default function ApplySection() {
                                 <option value="No">No</option>
                               </select>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 mt-3">
                               <input
                                 type="text"
                                 name="property"
@@ -161,7 +161,7 @@ export default function ApplySection() {
                                 placeholder="Property Value ($)"
                               />
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 mt-3">
                               <input
                                 type="text"
                                 name="balance"
@@ -192,7 +192,7 @@ export default function ApplySection() {
                               </select>
                             </div>
 
-                            <div className="col-md-12">
+                            <div className="col-md-12 mt-3">
                               <textarea
                                 name="message"
                                 id="message"
