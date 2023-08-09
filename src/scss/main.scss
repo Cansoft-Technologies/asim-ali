@@ -282,7 +282,7 @@ body {
     height: 12px !important;
     background-color: $color-secondary;
     position: relative;
-    top: -1px;
+    top: 80px;
     opacity: 1;
     border: 5px solid transparent;
     outline: 1px solid $color-secondary;
@@ -664,6 +664,11 @@ footer {
       padding: 5px 30px;
       font-size: 20px;
       border: none;
+      cursor: pointer;
+      &:hover{
+        background: $color-secondary;
+        color: $color-black;
+      }
     }
     p {
       font-family: "AvenirBook";
