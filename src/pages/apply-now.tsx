@@ -11,27 +11,26 @@ export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
       query {
-        pages(where: { id: 1582 }) {
+        pages(where: { id: 2222 }) {
           nodes {
-            HowToApply {
+            ApplyNow {
               bannerTitle
               bannerBackgroundImage {
                 altText
                 sourceUrl
               }
-              fromTitle
-              fromSubtitle
               formBackgroundImage {
                 altText
                 sourceUrl
               }
-              firstBotton {
-                url
-                title
-              }
-              secondButton {
-                url
-                title
+              applyStepHeading
+              applyStepSection{
+                firstStepTitle
+                firstStepDescription
+                secondStepTitle
+                secondStepDescription
+                thirdStepTitle
+                thirdStepDescription
               }
               applyNowContent
             }
@@ -130,8 +129,9 @@ type MyProps = {
   mainMenus: any;
 };
 
-function ApplyNow(props) {
+function ApplyNow(props: MyProps) {
   const { settings, mainMenus, howApplyData, metaData } = props;
+  console.log(howApplyData);
   const form = useRef();
   const [success, setSuccess] = useState(null);
 
@@ -163,32 +163,22 @@ function ApplyNow(props) {
             <main className="content">
               <Header settings={settings} mainMenus={mainMenus} />
               <Hero
-                title={data?.HowToApply?.bannerTitle}
-                bgImage={data?.HowToApply?.bannerBackgroundImage?.sourceUrl}
+                title={data?.ApplyNow?.bannerTitle}
+                bgImage={data?.ApplyNow?.bannerBackgroundImage?.sourceUrl}
               />
+              <Container>
               <div className="text-center my-5">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: data?.HowToApply?.applyNowContent,
+                    __html: data?.ApplyNow?.applyNowContent,
                   }}
                 ></div>
-                <div className="button-apply my-2">
-                  <a href={data?.HowToApply?.firstBotton?.url}>
-                    <Button className="mx-2" variant="primary" size="lg">
-                      {data?.HowToApply?.firstBotton?.title}
-                    </Button>
-                  </a>
-                  <a href={data?.HowToApply?.secondButton?.url}>
-                    <Button variant="primary" size="lg">
-                      {data?.HowToApply?.secondButton?.title}
-                    </Button>
-                  </a>
-                </div>
               </div>
+              </Container>
 
               <div
                 style={{
-                  backgroundImage: `url("${data?.HowToApply?.formBackgroundImage?.sourceUrl}")`,
+                  backgroundImage: `url("${data?.ApplyNow?.formBackgroundImage?.sourceUrl}")`,
                 }}
                 className="howto-application"
               >
@@ -196,16 +186,62 @@ function ApplyNow(props) {
                 <Container className="py-1">
                   <Row>
                     <Col md={12}>
-                      <div className="easyapplication-title">
-                        <h2>{data?.HowToApply?.fromTitle}</h2>
-                        <p>{data?.HowToApply?.fromSubtitle}</p>
-                      </div>
                       <ApplySection/>
                     </Col>
                     <Col md={6}></Col>
                   </Row>
                 </Container>
               </div>
+              <Container className="apply-now">
+                <div className="text-center mt-5 mb-5">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data?.ApplyNow?.applyStepHeading,
+                  }}
+                ></div>
+              </div>
+                  <div className="mt-5">
+                  <Row className="apply-step">
+                  <Col md={4}>
+                    {data?.ApplyNow?.applyStepSection?.firstStepTitle == null ? (
+                      ""
+                    ) : (
+                      <div className="apply">
+                        <span>01</span>
+                        <p>{data?.ApplyNow?.applyStepSection?.firstStepTitle}</p>
+                        <p className="desc">{data?.ApplyNow?.applyStepSection?.firstStepDescription}</p>
+                        <div className="apply-border"></div>
+                      </div>
+                    )}
+                  </Col>
+                  <Col md={4}>
+                    {data?.ApplyNow?.applyStepSection?.secondStepTitle == null ? (
+                      ""
+                    ) : (
+                      <div className="approved">
+                        <span>02</span>
+                        <p className="title">
+                          {data?.ApplyNow?.applyStepSection?.secondStepTitle}
+                        </p>
+                        <p>{data?.ApplyNow?.applyStepSection?.secondStepDescription}</p>
+                      </div>
+                    )}
+                  </Col>
+                  <Col md={4}>
+                    {data?.ApplyNow?.applyStepSection?.thirdStepTitle == null ? (
+                      ""
+                    ) : (
+                      <div className="apply">
+                        <span>03</span>
+                        <p>{data?.ApplyNow?.applyStepSection?.thirdStepTitle}</p>
+                        <p className="desc">{data?.ApplyNow?.applyStepSection?.thirdStepDescription}</p>
+                        <div className="apply-border"></div>
+                      </div>
+                    )}
+                  </Col>
+                </Row>
+                  </div>
+                </Container>
             </main>
             <Footer settings={settings} mainMenus={mainMenus} />
           </div>
