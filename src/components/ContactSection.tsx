@@ -30,9 +30,6 @@ export default function ContactSection() {
     <form ref={form} onSubmit={sendEmail} id="contact-form">
                         <div id="contact-form">
                           <div className="row contact-row">
-                            <p className="contact-title">
-                              Contact Information
-                            </p>
                             <div className="col-md-6">
                               <input
                                 type="text"

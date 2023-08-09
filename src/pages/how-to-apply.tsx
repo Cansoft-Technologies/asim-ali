@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import emailjs from "@emailjs/browser";
 import { Footer, Header, Hero } from "components";
 import ApplySection from "components/ApplySection";
+import ContactSection from "components/ContactSection";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import { useRef, useState } from "react";
@@ -250,7 +251,7 @@ function HowtoApply(props) {
                           )}
                         </form>
                       </div> */}
-                      <ApplySection/>
+                      <ContactSection/>
                     </Col>
                     <Col md={6}></Col>
                   </Row>

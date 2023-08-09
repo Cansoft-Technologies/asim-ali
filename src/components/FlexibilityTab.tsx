@@ -10,7 +10,13 @@ export default function FlexibilityTab(props: MyProps)
     const [key, setKey] = useState(null);
   return (
     <Container className="my-5">
-      {tabData == null ? (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: tabData?.tabHeading,
+        }}
+        className="text-lg mt-5 mb-5 text-center tab-head"
+      ></div>
+      {tabData?.tabDetails == null ? (
                   ""
                 ) : (
                   <Row className="renovation-tab-row">
@@ -20,7 +26,7 @@ export default function FlexibilityTab(props: MyProps)
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {tabData?.map((tab, item) => {
+                      {tabData?.tabDetails?.map((tab, item) => {
                         return (
                           <Tab
                             key={item}
