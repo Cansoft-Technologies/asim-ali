@@ -116,7 +116,7 @@ const MobileBanner = (props: MyProps) => {
                                       Get <span>Approved</span>
                                     </Button>
                                   </Link>
-                                  <Link href="/contact-us">
+                                  <Link href="/apply-now">
                                     <Button className={styles.bannerBtn}>
                                       <span>Apply Now</span>
                                     </Button>

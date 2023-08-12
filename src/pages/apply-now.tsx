@@ -1,11 +1,10 @@
 import { gql } from "@apollo/client";
-import emailjs from "@emailjs/browser";
 import { Footer, Header, Hero } from "components";
 import ApplySection from "components/ApplySection";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import { useRef, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({

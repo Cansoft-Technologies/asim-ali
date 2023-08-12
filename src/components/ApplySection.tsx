@@ -1,36 +1,60 @@
-import emailjs from "@emailjs/browser";
+
 import { useRef, useState } from 'react';
 import { Container } from "react-bootstrap";
-
+function isInputNamedElement(e: Element): e is HTMLInputElement & { name: string } {
+  return 'value' in e && 'name' in e
+}
 
 export default function ApplySection() {
   const form = useRef();
-  const [success, setSuccess] = useState(null);
+  const [success, setSuccess] = useState("");
   // const [metaData, setMetaData] = useState([]);
 
-  const sendEmail = (e) => {
+  async function sendEmail(e){
     e.preventDefault();
-    console.log(form.current);
-    // emailjs
-    //   .sendForm(
-    //     "service_12yqpdo",
-    //     "template_qa4pqev",
-    //     form.current,
-    //     "LYwiuAFI1c6Btwysb"
-    //   )
-    //   .then(
-    //     (result) => {
-    //       setSuccess(result.text);
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
+    const formData: Record<string, string> = {};
+    Array.from(e.currentTarget.elements).filter(isInputNamedElement).forEach((field) => {
+      if (!field.name) return;
+      formData[field.name] = field.value;
+  });
+
+    const bodyData = JSON.stringify({
+      fromEmail: "noreply@asimali.ca",
+      toEmail: "admin@asimali.ca",
+      emailSubject: "New Form Submission from :" + formData.fname + " " + formData.lname,
+      fname: formData.fname.toString() || "",
+      lname: formData.lname.toString() || "",
+      mail: formData.mail.toString() || "",
+      phone: formData.phone.toString() || "",
+      referred: formData.referred.toString() || "", 
+      homeowner: formData.homeowner.toString() || "",
+      city: formData.city.toString() || "",
+      province: formData.province.toString() || "",
+      mortgage: formData.mortgage.toString() || "",
+      property: formData.property.toString() || "", 
+      balance: formData.balance.toString() || "",
+      preferred: formData.preferred.toString() || "",
+      amount: formData.loan.toString() || "",
+      message : formData.message.toString() || ""
+    })
+    console.log(bodyData);
+   try{
+    const response = await fetch('/api/email', {
+      method: 'POST',
+      body: bodyData,
+    });
+    const data = await response.json();
+    console.log(data);
+    setSuccess(data.message);
     e.target.reset();
+   } catch (error) {
+    console.log(error);
+   }
   };
+
   return (
     <Container className="contact-section mb-5" id="apply_now">
-    <form ref={form} onSubmit={sendEmail} id="contact-form">
+    <form  onSubmit={sendEmail} id="contact-form">
                         <div id="contact-form">
                           <div className="row contact-row mt-5">
                             <div className="col-md-6">
@@ -76,7 +100,7 @@ export default function ApplySection() {
                                 aria-required="true"
                                 aria-invalid="false"
                               >
-                                <option value={null}>Referred</option>
+                                <option value={""}>Referred</option>
                                 <option value="Television Add">Television Add</option>
                                 <option value="Radio Add">Radio Add</option>
                                 <option value="Internet Search">Internet Search</option>
@@ -93,7 +117,7 @@ export default function ApplySection() {
                                 aria-required="true"
                                 aria-invalid="false"
                               >
-                                <option value={null}>Homeowner</option>
+                                <option value={""}>Homeowner</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                               </select>
@@ -112,7 +136,7 @@ export default function ApplySection() {
                                 className="form_control"
                                 aria-invalid="false"
                               >
-                                <option value={null}>Province/Territory</option>
+                                <option value={""}>Province/Territory</option>
                                 <option value="Alberta">Alberta</option>
                                 <option value="British Columbia">
                                   British Columbia
@@ -148,7 +172,7 @@ export default function ApplySection() {
                                 aria-required="true"
                                 aria-invalid="false"
                               >
-                                <option value={null}>Do You Have A Mortgage?</option>
+                                <option value={""}>Do You Have A Mortgage?</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                               </select>
@@ -185,7 +209,7 @@ export default function ApplySection() {
                                 aria-required="true"
                                 aria-invalid="false"
                               >
-                                <option value={null}>My Preferred Contact Method is...</option>
+                                <option value={""}>My Preferred Contact Method is...</option>
                                 <option value="Phone">Phone</option>
                                 <option value="Email">Email</option>
                                 <option value="Phone & Email both are fine">Phone & Email both are fine</option>
