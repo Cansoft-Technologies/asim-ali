@@ -16,16 +16,18 @@ interface MyProps {
   lname: string;
   mail: string;
   phone: string;
-  referred: string;
-  homeowner: string;
-  city: string;
+  referred?: string;
+  homeowner?: string;
+  city?: string;
   province: string;
-  mortgage: string;
-  property: string;
-  balance: string;
-  preferred: string;
+  mortgage?: string;
+  property?: string;
+  balance?: string;
+  preferred?: string;
   message: string;
-  amount: string;
+  amount?: string;
+  contact?: string;
+  about?: string;
 }
 
 export const ApplyNowEmail = ({
@@ -43,6 +45,8 @@ export const ApplyNowEmail = ({
   amount,
   preferred,
   message,
+  about,
+  contact,
 }: MyProps) => (
   <Html>
     <Head />
@@ -64,6 +68,16 @@ export const ApplyNowEmail = ({
         <Text style={{ ...text, marginBottom: "10px" }}>Email: {mail}</Text>
         {phone?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}><Text style={{...span}}>Phone:</Text> {phone}</Text>
+        )}
+        {contact?.length > 0 && (
+          <Text style={{ ...text, marginBottom: "10px" }}>
+            <Text style={{...span}}>How Should We Contact You?:</Text> {contact}
+          </Text>
+        )}
+        {about?.length > 0 && (
+          <Text style={{ ...text, marginBottom: "10px" }}>
+            <Text style={{...span}}>Please Contact Me About:</Text> {about}
+          </Text>
         )}
         {referred?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
@@ -117,7 +131,7 @@ export const ApplyNowEmail = ({
         </Text>
 
         <Text style={footer}>
-          Best regards,{fname} {lname}
+          Best regards,
         </Text>
         <Text style={footer}>
           {fname} {lname}

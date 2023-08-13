@@ -1,29 +1,47 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from 'react';
 import { Container } from "react-bootstrap";
+function isInputNamedElement(e: Element): e is HTMLInputElement & { name: string } {
+  return 'value' in e && 'name' in e
+}
 export default function ContactSection() {
   const form = useRef();
   const [success, setSuccess] = useState(null);
   // const [metaData, setMetaData] = useState([]);
 
-  const sendEmail = (e) => {
+  async function sendEmail(e){
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_12yqpdo",
-        "template_qa4pqev",
-        form.current,
-        "LYwiuAFI1c6Btwysb"
-      )
-      .then(
-        (result) => {
-          setSuccess(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    const formData: Record<string, string> = {};
+    Array.from(e.currentTarget.elements).filter(isInputNamedElement).forEach((field) => {
+      if (!field.name) return;
+      formData[field.name] = field.value;
+  });
+
+    const bodyData = JSON.stringify({
+      fromEmail: "noreply@asimali.ca",
+      toEmail: "admin@asimali.ca",
+      emailSubject: "New Form Submission from :" + formData.fname + " " + formData.lname + " " + formData.subject,
+      fname: formData.fname.toString() || "",
+      lname: formData.lname.toString() || "",
+      mail: formData.mail.toString() || "",
+      phone: formData.phone.toString() || "",
+      contact: formData.contact.toString() || "", 
+      about: formData.about.toString() || "",
+      message : formData.message.toString() || ""
+    })
+    console.log(bodyData);
+   try{
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      body: bodyData,
+    });
+    const data = await response.json();
+    console.log(data);
+    setSuccess(data.message);
     e.target.reset();
+   } catch (error) {
+    console.log(error);
+   }
   };
   return (
     <Container className="contact-section mb-5" id="apply_now">
@@ -54,9 +72,6 @@ export default function ContactSection() {
                                 placeholder="Email"
                               />
                             </div>
-                            {/* <div className="col-md-6">
-                              <input type="email" name="cmail" id="cmail" placeholder="Confirm Email" />
-                            </div> */}
                             <div className="col-md-6">
                               <label htmlFor="Phone">Phone</label>
                               <input
