@@ -1,5 +1,5 @@
 import { render } from "@react-email/render";
-import ApplyNowEmail from "emails_template/contact_form";
+import ContactUsEmail from "emails_template/contact_form";
 import { sendEmail } from "lib/email-helper";
 
 import AutoReply from "emails_template/auto_reply";
@@ -14,14 +14,14 @@ export default async function handler(
 
     try {
       const data = await JSON.parse(req.body);
-      const { fromEmail, toEmail, emailSubject, fname, lname, mail, phone, referred, homeowner, city, province, mortgage, property, balance, preferred, message, amount } = data;
+      const { fromEmail, toEmail, emailSubject, fname, lname, mail, phone, contact, about,province,message } = data;
       console.log(toEmail);
       await sendEmail({
         from: fromEmail,
         to: toEmail,
         subject: emailSubject,
-        html: render(ApplyNowEmail({
-          fname, lname, mail, phone, referred, homeowner, city, province, mortgage, property, balance, preferred, message , amount
+        html: render(ContactUsEmail({
+          fname, lname, mail, phone, contact, about, province,message
         }))
       });
       await sendEmail({
