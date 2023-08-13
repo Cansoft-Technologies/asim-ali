@@ -20,7 +20,7 @@ export default function ContactSection() {
     const bodyData = JSON.stringify({
       fromEmail: "noreply@asimali.ca",
       toEmail: "admin@asimali.ca",
-      emailSubject: "New Form Submission from :" + formData.fname + " " + formData.lname + " " + formData.subject,
+      emailSubject: formData.subject + "-" + formData.fname + " " + formData.lname,
       fname: formData.fname.toString() || "",
       lname: formData.lname.toString() || "",
       mail: formData.mail.toString() || "",
