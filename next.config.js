@@ -24,6 +24,15 @@ module.exports = withBundleAnalyzer ( withFaust ( withPWA({
       optimized: true,
       allowFutureImage: true,
     },
+    async redirects() {
+      return [
+        {
+          source: '/b-lender-mortgage-bc',
+          destination: '/b-lender-bc-mortgage',
+          permanent: true,
+        },
+      ]
+    },
     async headers() {
       return [
         {
