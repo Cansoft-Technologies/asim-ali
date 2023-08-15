@@ -192,9 +192,7 @@ const Blog = (props: MyProps) => {
       });
   }, [page]);
 
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-  };
+
   return (
     <div>
       <Head>
@@ -249,7 +247,6 @@ const Blog = (props: MyProps) => {
                               alt={blog?.featuredImage?.node?.altText}
                               width="390"
                               height="400"
-                              priority={true}
                               style={{ width: "100%", objectFit: "contain" }}
                             />
                           </div>

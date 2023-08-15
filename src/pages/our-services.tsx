@@ -257,10 +257,10 @@ const Services = (props: MyProps) => {
                           <Col className="service-texts" lg={6}>
                             <div className="service-image">
                               <Image
-                                style={{ objectFit: "contain" }}
+                                style={{ width: "100%", height: "100%" }}
                                 src={service?.serviceImage?.sourceUrl}
-                                width={500}
-                                height={400}
+                                width={380}
+                                height={200}
                                 alt={service?.serviceImage?.altText}
                               />
                             </div>

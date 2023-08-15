@@ -51,7 +51,7 @@ export default function FlexibilityTab(props: MyProps)
                 )}
                 <div className="tab-btn">
                 <Link
-                          href={"/contact-us"}
+                          href={"/apply-now"}
                         >
                           <Button className="HeadBtn">
                             Apply <span>Now</span>

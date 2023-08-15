@@ -2,7 +2,8 @@ import { gql } from "@apollo/client";
 import { Footer, Header, Hero } from "components";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
-import { Container, Row } from "react-bootstrap";
+import Link from "next/link";
+import { Button, Container, Row } from "react-bootstrap";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -142,6 +143,7 @@ const Calculator = (props: MyProps) => {
               })}
             </Head>
             <Header settings={settings} mainMenus={mainMenus} />
+            <div>
             <main className="content">
               {data?.mortgagecalculator?.calculatorBannerTitle == null ? (
                 ""
@@ -170,14 +172,25 @@ const Calculator = (props: MyProps) => {
                       }
                     </span>
                   </h1>
-                  <div
+                </Row>
+                   <div
+                   className="mortgagecalculator-content"
                     dangerouslySetInnerHTML={{
                       __html: data?.mortgagecalculator?.calculatorPageContent,
                     }}
                   ></div>
-                </Row>
+                <div className="tab-btn">
+                <Link
+                          href={"/apply-now"}
+                        >
+                          <Button className="HeadBtn">
+                            Apply <span>Now</span>
+                          </Button>
+                        </Link>
+                </div>
               </Container>
             </main>
+            </div>
             <Footer settings={settings} mainMenus={mainMenus} />
           </div>
         );

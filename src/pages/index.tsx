@@ -237,6 +237,12 @@ export async function getStaticProps() {
             schemaProductRating
         }
         footerSettings {
+          footerPartnerLogoSection {
+            footerPartnerLogo {
+              altText
+              sourceUrl
+            }
+          }
           socialUrl {
             facebook
             tiktok
