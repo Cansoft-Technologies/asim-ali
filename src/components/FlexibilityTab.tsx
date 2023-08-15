@@ -14,7 +14,7 @@ export default function FlexibilityTab(props: MyProps)
         dangerouslySetInnerHTML={{
           __html: tabData?.tabHeading,
         }}
-        className="text-lg mt-5 mb-5 text-center tab-head"
+        className="text-lg text-center tab-head"
       ></div>
       {tabData?.tabDetails == null ? (
                   ""

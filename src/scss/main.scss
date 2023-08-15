@@ -314,6 +314,7 @@ body {
 }
 .wehelp_section {
   padding-top: 50px;
+  margin-top: 30px;
   .row {
     display: flex;
     align-items: center;
@@ -920,7 +921,7 @@ q.review-content {
 }
 
 .gallery_section {
-  margin-top: 20px;
+  margin-top: 50px;
   img {
     transition-duration: 0.3s;
     &:hover {
@@ -1529,7 +1530,7 @@ textarea#comment {
         }
         h3 {
           color: $color-white;
-          font-size: 24px;
+          font-size: 30px;
         }
         p {
           color: $color-white;
@@ -1754,7 +1755,7 @@ textarea#comment {
   }
 }
 .service-section {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1770,7 +1771,7 @@ textarea#comment {
       transform: translateY(-10px);
     }
     h3 {
-      font-size: 24px;
+      font-size: 30px;
     }
   }
   .service-card-image {
@@ -1781,11 +1782,13 @@ textarea#comment {
     padding: 10px;
   }
 }
+.tab-head{
+  margin-top: 80px;
+}
 .renovation-tab-row {
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  // margin-left: auto;
   align-items: center;
   .renovation.nav-tabs {
     display: flex;
@@ -2385,7 +2388,7 @@ p.testimonials-name {
     padding: 30px 0;
   }
   .meeting_section h3 {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 500;
   }
   .team_section {
@@ -2403,11 +2406,11 @@ p.testimonials-name {
   .team_section h2,
   .meeting_section h3,
   .split_section .split_text h2 {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 500;
   }
   .cta_section h3 {
-    font-size: 24px;
+    font-size: 30px;
   }
   footer .wrap .social-url :before {
     display: none;
@@ -2547,6 +2550,7 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
+
   .service-description p {
     font-size: 14px;
   }
@@ -2623,6 +2627,7 @@ p.testimonials-name {
   .split_section {
     .split_image {
       height: 60vh;
+      margin-bottom: 30px;
     }
   }
   .cta_section .cta_first {
@@ -2634,7 +2639,17 @@ p.testimonials-name {
     margin-top: 100px;
   }
   .cta_section {
-    margin: 0;
+    .cta_text{
+      p{
+        margin-top: 30px;
+        font-size: 30px;
+      }
+    }
+    .cta-details{
+      .container{
+          margin-top: 50px;
+      }
+    }
   }
 
   .Banner_carouselcaption__NAlFf {
