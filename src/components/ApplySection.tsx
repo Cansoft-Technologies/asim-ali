@@ -228,7 +228,7 @@ export default function ApplySection() {
                           <input
                             className="contactBtn mt-3"
                             type="submit"
-                            value="Send Message"
+                            value="Apply Now"
                           />
                         </div>
                         {success && (
