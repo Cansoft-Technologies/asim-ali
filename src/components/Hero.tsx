@@ -35,7 +35,7 @@ function Hero({
       <div className={styles.wrap}>
         <div className="hero-title-col col-xl-6 offset-xl-6">
           <p className="hero-title">{title?.split(" ")[0]}
-            <span>{title?.split(" ")[1]} {title?.split(" ")[2]}</span>
+            <span>{title?.split(" ")[1]}</span>
           </p>
           <div className={styles.intro}>
             <div className={styles.children}>{children}</div>

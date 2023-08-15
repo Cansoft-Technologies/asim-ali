@@ -25,6 +25,12 @@ export async function getStaticProps() {
                 linkedin
                 instagram
               }
+              footerPartnerLogoSection {
+                footerPartnerLogo {
+                  altText
+                  sourceUrl
+                }
+              }
               copyrightText
               footerLeftWidget {
                 title
@@ -90,6 +96,7 @@ const Footer = (props: MyProps) => {
   const { settings, mainMenus } = props;
 
   const prefixSettings = (settings as any).footerSettings;
+  console.log(prefixSettings);
 
   const socialNull =
     prefixSettings?.socialUrl?.facebook == null &&
@@ -204,11 +211,32 @@ const Footer = (props: MyProps) => {
             </Container>
           </Row>
           <Row>
+            <Container>
+              <div className="ms-auto my-lg-0 footer-partner-logo">
+              {prefixSettings?.footerPartnerLogoSection?.footerPartnerLogo?.map(
+                    (singleLogo) => {
+                      return (
+                        <div key={singleLogo.sourceUrl}>
+                          <Image
+                            src={singleLogo.sourceUrl}
+                            width="120"
+                            height="100"
+                            alt={singleLogo.altText}
+                            style={{ objectFit: "contain", width: "100%" }}
+                          />
+                        </div>
+                      );
+                    }
+                  )}
+              </div>
+            </Container>
+          </Row>
+          <Row>
             <Col>
               {socialNull ? (
                 ""
               ) : (
-                <div className="social-url">
+                <div className="social-url mt-3">
                   <ul>
                     {prefixSettings?.socialUrl?.facebook == null ? (
                       ""
