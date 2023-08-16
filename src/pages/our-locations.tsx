@@ -70,6 +70,12 @@ export async function getStaticProps() {
                 linkedin
                 instagram
               }
+              footerPartnerLogoSection {
+                footerPartnerLogo {
+                  altText
+                  sourceUrl
+                }
+              }
               copyrightText
               footerLeftWidget {
                 title
