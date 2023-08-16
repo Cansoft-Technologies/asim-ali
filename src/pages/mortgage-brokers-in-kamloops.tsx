@@ -121,13 +121,6 @@ export async function getStaticProps() {
               }
             }
             footerSettings {
-footerPartnerLogoSection {
-                footerPartnerLogo {
-                  altText
-                  sourceUrl
-                }
-              }
-}
               socialUrl {
                 facebook
                 tiktok
