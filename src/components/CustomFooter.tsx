@@ -25,18 +25,17 @@ const CustomFooter = () => {
             settingsOptions {
               AsimOptions {
                 footerSettings {
-footerPartnerLogoSection {
-                footerPartnerLogo {
-                  altText
-                  sourceUrl
-                }
-              }
-}
                   socialUrl {
                     facebook
                     tiktok
                     linkedin
                     instagram
+                  }
+                  footerPartnerLogoSection {
+                    footerPartnerLogo {
+                      altText
+                      sourceUrl
+                    }
                   }
                   copyrightText
                   footerLeftWidget {
