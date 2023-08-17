@@ -337,55 +337,11 @@ type MyProps = {
   contactData: any;
   tabRenovationData: any;
 };
-const schema = {
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  name: "Mortgage Brokers",
-  image: [
-    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-9.webp",
-    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/home-banner.webp",
-    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-8.webp",
-  ],
-  description:
-    "Asim Ali and his team of the best mortgage brokers in Surrey will help you with the best mortgage rates available.",
-  sku: "CAN1971SEO",
-  mpn: "925872",
-  brand: {
-    "@type": "Brand",
-    name: "Asim Ali",
-  },
-  review: {
-    "@type": "Review",
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: "5",
-      bestRating: "5",
-    },
-    author: {
-      "@type": "Person",
-      name: "Ghazala Sarwar",
-    },
-  },
-  offers: {
-    "@type": "Offer",
-    url: "https://asimali.ca/",
-    priceCurrency: "CAD",
-    price: "499",
-    priceValidUntil: "2020-12-31",
-    availability: "https://schema.org/InStock",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    bestRating: "5",
-    ratingCount: "213",
-  },
-};
 
 export default function Page(props: MyProps) {
   const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teamData, meetings, advisorData, flexsliders, splitImagesRight, images, reviewData,contactData,tabRenovationData } = props;
 
-console.log(tabRenovationData);
+console.log(settings);
   return (
     <>
       <Head>
@@ -393,14 +349,6 @@ console.log(tabRenovationData);
 
           return (
             <>
-              <noscript>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        </noscript>
-              {meta?.seo?.jsonLd?.raw}
-
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
               <link rel="canonical" href={meta?.seo?.canonicalUrl} />
@@ -431,10 +379,7 @@ console.log(tabRenovationData);
         <ClientReviews reviews={reviewData} />
         <CTA contactData={contactData}/>
       </main>
-
       <Footer settings={settings} mainMenus={mainMenus} />
-
-
     </>
   );
 }
