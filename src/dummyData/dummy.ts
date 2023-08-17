@@ -150,29 +150,30 @@ export const reviewData = {
 
 
 export const advisorData = {
-  advisorTitle: `<h2 class="text-start service-title">Why Choose Asim Ali as Your <span style="color: #ffcc00;">Mortgage Advisor in Surrey</span></h2>`,
-  advisorDescriptionTop: "<p>Choosing Asim Ali as your mortgage advisor in Surrey comes with a lot of benefits. Here are a few reasons why he is the best choice for you:</p>",
-  advisorDescriptionBottom:"<p>Overall, choosing Asim Ali as your mortgage advisor in Surrey guarantees you personalized attention, expertise, and unbiased advice.</p>",
+  advisorTitle: ``,
+  advisorDescriptionTop: `<p><span style="font-weight: 400;">Navigating the final stages of the home buying process can be a complex and challenging experience. We understand that unexpected obstacles can arise during closing, and we're here to help you navigate through them. </span></p>`,
+  advisorDescriptionBottom:``,
   advisorImage:{
-    sourceUrl: "https://asimaliprod.wpengine.com/wp-content/uploads/2023/06/mortgage-broker-in-surrey-bc.webp",
+    sourceUrl: "http://asimaliprod.wpengine.com/wp-content/uploads/2023/08/Top-quality-Abbotsford-mortgage.webp",
     altText: "mortgage broker surrey"
 },
   advisorCards:[
     {
-        title: "Expertise",
-        description: "<p>Asim Ali has been in the mortgage industry for several years. He has helped many clients find the best deals on mortgages and secured their dream homes. He knows the market trends and the lending industry's ins and outs. As a result, you can trust him to provide the right advice for your mortgage needs.</p>",
+        title: "Support and Assist After Loan Closed",
+        description: `<p>
+        <span style="font-weight: 400;">We believe in building long-term relationships with our clients. We understand that obtaining a mortgage is just the beginning of your homeownership journey, and we are committed to providing ongoing support and guidance even after your loan is closed.</span></p>`,
     },
     {
-        title: "Unbiased advice",
-        description: "<p>Unlike banks that have a limited pool of loan products to offer, Asim Ali works with many lenders. This means he can offer you unbiased advice on the best deal that suits your unique needs.</p>",
+        title: "",
+        description: `<p><span style="font-weight: 400;">Once your loan is closed, our relationship with you does not end. We are here to provide continuous support and assist you with any questions or concerns that may arise throughout the life of your mortgage. Whether you have questions about your payment schedule, need assistance with refinancing, or want to explore options for a home equity loan, our team of experienced professionals is just a phone call away.</span></p>`,
     },
     {
         title: "Flexibility",
         description: "<p>Asim Ali understands that life can be unpredictable, and mortgage needs can change. That's why he is flexible to accommodate your unique needs. He can work with you to tailor the right solution for you.</p>",
     },
     {
-        title: "Save time and money",
-        description: "<p>Finding the right mortgage deal can be a time-consuming and stressful process. However, with Asim Ali, you save both time and money. He does the research and legwork for you and ensures that you get the best deal.</p>",
+        title: "",
+        description: `<p><span style="font-weight: 400;">Choose Asim Ali as your broker in Abbotsford, and experience the benefits of our continuing support long after your loan is closed. Contact us today to learn more about how we can assist you in achieving your homeownership goals and providing ongoing guidance throughout your mortgage journey.</span></p>`,
     },
 ]
 }

@@ -8,11 +8,12 @@ import { useState } from "react";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import { advisorData } from "dummyData/dummy";
 import { apolloClient } from "lib/apollo";
 import Link from "next/link";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import MortgageAdvisor from "components/MortgageAdvisor";
 
 const responsive = {
   superLargeDesktop: {
@@ -225,6 +226,7 @@ const Abbotsford = (props: MyProps) => {
                       property="og:image"
                       content={meta?.seo?.openGraph?.image?.url}
                     />
+                    <meta name="robots" content="noindex" />
                   </>
                 );
               })}
@@ -380,13 +382,13 @@ const Abbotsford = (props: MyProps) => {
                   </Row>
                 <Row className="mortgage-broker">
                   <Col>
-                    <p className="headering-title">
+                    <h2 className="headering-title">
                       {data?.Abbotsford?.brokerTitle}
-                    </p>
+                    </h2>
                     <p>{data?.Abbotsford?.brokerDescription}</p>
                   </Col>
                 </Row>
-                {data.Abbotsford.renovation == null ? (
+                {/* {data.Abbotsford.renovation == null ? (
                   ""
                 ) : (
                   <Row className="renovation-row">
@@ -418,7 +420,12 @@ const Abbotsford = (props: MyProps) => {
                       })}
                     </Tabs>
                   </Row>
-                )}
+                )} */}
+                <Container>
+                  <div className="my-5">
+                  <MortgageAdvisor advisorData={advisorData} />
+                  </div>
+                </Container>
                 <Row className="my-5">
                     <Image
                       src={data?.Abbotsford?.renovateImageSecond?.sourceUrl}
