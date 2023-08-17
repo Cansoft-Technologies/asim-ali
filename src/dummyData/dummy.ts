@@ -154,7 +154,7 @@ export const advisorData = {
   advisorDescriptionTop: `<p><span style="font-weight: 400;">Navigating the final stages of the home buying process can be a complex and challenging experience. We understand that unexpected obstacles can arise during closing, and we're here to help you navigate through them. </span></p>`,
   advisorDescriptionBottom:``,
   advisorImage:{
-    sourceUrl: "https://asimaliprod.wpengine.com/wp-content/uploads/2023/06/mortgage-broker-in-surrey-bc.webp",
+    sourceUrl: "http://asimaliprod.wpengine.com/wp-content/uploads/2023/08/Top-quality-Abbotsford-mortgage.webp",
     altText: "mortgage broker surrey"
 },
   advisorCards:[
