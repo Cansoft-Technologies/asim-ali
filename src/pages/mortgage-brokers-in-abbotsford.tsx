@@ -293,7 +293,7 @@ const Abbotsford = (props: MyProps) => {
                             key={a}
                             className="application-slide text-center"
                           >
-                            <span>{slide?.title}</span>
+                            <h2>{slide?.title}</h2>
                             <p>{slide?.content}</p>
                           </div>
                         );
@@ -307,31 +307,68 @@ const Abbotsford = (props: MyProps) => {
                     <h2 className="text-center">
                       {data?.Abbotsford?.productsTitle}
                     </h2>
-                  </Col>
-                  <Col md={3}>
-                    <span
+                    <div
+                      className="text-center"
                       dangerouslySetInnerHTML={{
-                        __html: data?.Abbotsford?.productsLeftText,
+                        __html: `<span style="font-weight: 400;">As the leading</span><b> mortgage broker in abbotsford bc</b><span style="font-weight: 400;">, We offer a wide range of services to meet all of your mortgage needs. Whether you're a first-time homebuyer, looking to refinance, or seeking a commercial mortgage, we have the expertise and resources to help you secure the best home loan for your unique situation. Our team of experienced professionals is committed to providing personalized service and guidance throughout the entire process. With access to over 40 lenders, including </span><i><span style="font-weight: 400;">national mortgage abbotsford</span></i><span style="font-weight: 400;"> options, we can find the most competitive rates and terms for you. </span>`,
                       }}
-                    ></span>
+                    ></div>
                   </Col>
-                  <Col md={6}>
-                    <Image
-                      src={data?.Abbotsford?.productsImage?.sourceUrl}
-                      alt={data?.Abbotsford?.productsImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Col>
-                  <Col md={3}>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Abbotsford?.productsRightText,
-                      }}
-                    ></span>
-                  </Col>
+
+                  <div className="service-row">
+                    <Container>
+                      <Row>
+                        <Col className="service-texts" lg={6}>
+                          <div
+                            className="service-content"
+                            dangerouslySetInnerHTML={{
+                              __html: data?.Abbotsford?.productsLeftText,
+                            }}
+                          ></div>
+                        </Col>
+                        <Col className="service-texts" lg={6}>
+                          <div className="service-image">
+                            <Image
+                              src={data?.Abbotsford?.productsImage?.sourceUrl}
+                              alt={data?.Abbotsford?.productsImage?.altText}
+                              width="390"
+                              height="400"
+                              style={{ width: "100%", objectFit: "contain" }}
+                            />
+                          </div>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </div>
+                  <div className="service-row">
+                    <Container>
+                      <Row>
+                        <Col className="service-texts" lg={6}>
+                          <div className="service-image">
+                            <Image
+                              src={
+                                data?.Abbotsford?.renovateImageSecond?.sourceUrl
+                              }
+                              alt={
+                                data?.Abbotsford?.renovateImageSecond?.altText
+                              }
+                              width="390"
+                              height="400"
+                              style={{ width: "100%", objectFit: "contain" }}
+                            />
+                          </div>
+                        </Col>
+                        <Col className="service-texts" lg={6}>
+                          <div
+                            className="service-content"
+                            dangerouslySetInnerHTML={{
+                              __html: data?.Abbotsford?.productsRightText,
+                            }}
+                          ></div>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </div>
                 </Row>
                 <Row className="apply-step">
                   <Col md={4}>
@@ -370,16 +407,6 @@ const Abbotsford = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
-                <Row className="my-5">
-                    <Image
-                      src={data?.Abbotsford?.renovateImageFirst?.sourceUrl}
-                      alt={data?.Abbotsford?.renovateImageFirst?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
@@ -388,62 +415,29 @@ const Abbotsford = (props: MyProps) => {
                     <p>{data?.Abbotsford?.brokerDescription}</p>
                   </Col>
                 </Row>
-                {/* {data.Abbotsford.renovation == null ? (
-                  ""
-                ) : (
-                  <Row className="renovation-row">
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-3 renovation"
-                    >
-                      {data.Abbotsford.renovation.map((tab, item) => {
-                        return (
-                          <Tab
-                            key={item}
-                            eventKey={item.toString()}
-                            title={
-                              <h3 className="location-tab-title">
-                                {tab.title}
-                              </h3>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: tab.description,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )} */}
+                <Row className="my-5">
+                  <Image
+                    src={data?.Abbotsford?.renovateImageFirst?.sourceUrl}
+                    alt={data?.Abbotsford?.renovateImageFirst?.altText}
+                    width="390"
+                    height="400"
+                    priority={true}
+                    style={{ width: "100%", objectFit: "contain" }}
+                  />
+                </Row>
                 <Container>
                   <div className="my-5">
-                  <MortgageAdvisor advisorData={advisorData} />
+                    <MortgageAdvisor advisorData={advisorData} />
                   </div>
                 </Container>
-                <Row className="my-5">
-                    <Image
-                      src={data?.Abbotsford?.renovateImageSecond?.sourceUrl}
-                      alt={data?.Abbotsford?.renovateImageSecond?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                <Row className="mortgage-broker-bottom">
+                <Row className="mortgage-broker-bottom text-center">
                   <Col>
                     <h2>{data?.Abbotsford?.bottomBrokerTitle}</h2>
                     <div
-                              dangerouslySetInnerHTML={{
-                                __html: data?.Abbotsford?.bottomBrokerDescription,
-                              }}
-                            ></div>
+                      dangerouslySetInnerHTML={{
+                        __html: data?.Abbotsford?.bottomBrokerDescription,
+                      }}
+                    ></div>
                     {data?.Abbotsford?.brokerLink == null ? (
                       ""
                     ) : (
@@ -455,35 +449,6 @@ const Abbotsford = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
-                {/* faq section start */}
-                <Row className="my-5">
-                    <Image
-                      src={data?.Abbotsford?.faqImage?.sourceUrl}
-                      alt={data?.Abbotsford?.faqImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                <div className="faq-accordion">
-                  <Accordion defaultActiveKey="0">
-                    {data?.Abbotsford?.faqAccordion.map((qa, index) => {
-                      return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="h3">
-                            {qa.question}
-                          </Accordion.Header>
-                          <Accordion.Body
-                            dangerouslySetInnerHTML={{ __html: qa.answer }}
-                          ></Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
-                  </Accordion>
-                </div>
-
-                {/* faq section end */}
               </Container>
               <CTA />
             </main>
