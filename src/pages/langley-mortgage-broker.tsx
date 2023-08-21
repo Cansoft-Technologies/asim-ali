@@ -13,6 +13,7 @@ import { apolloClient } from "lib/apollo";
 import Link from "next/link";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import MortgageAdvisor from "components/MortgageAdvisor";
 
 const responsive = {
   superLargeDesktop: {
@@ -33,6 +34,38 @@ const responsive = {
     items: 1,
   },
 };
+const advisorData = {
+  advisorTitle: `<h2 style="font-weight: 400;">Why Choose Us</h2>`,
+  advisorDescriptionTop: `<p style="margin-bottom: 120px;">At Asim Ali, we understand that choosing a mortgage broker is an important decision. Few reasons why you should choose us for all your mortgage needs.</p>`,
+  advisorDescriptionBottom:`<p>Choose Asim Ali as your mortgage broker and experience the difference of working with a trusted and reliable team. Let us take the stress out of mortgages and guide you towards homeownership. Contact us today to get started.</p>`,
+  advisorImage:{
+    sourceUrl: "http://asimaliprod.wpengine.com/wp-content/uploads/2023/08/mortgage-broker-in-langley.webp",
+    altText: "mortgage broker surrey"
+},
+  advisorCards:[
+    {
+        title: "Experience",
+        description: `<p>
+        With years of experience in the mortgage industry, our team has the knowledge and expertise to guide you through the process. We understand the local market and can help you find the best mortgage rates in Langley.</p>`,
+    },
+    {
+        title: "Personalized Service",
+        description: `<p>We take the time to understand your unique needs and financial goals. Our personalized approach allows us to tailor mortgage solutions that are best for you. We believe in building long-term relationships with our clients, so you can trust us to have your best interests at heart.</p>`,
+    },
+    {
+        title: "Access to Lenders",
+        description: "<p>As a mortgage broker we have access to a wide range of lenders. This means we can shop around to find the best mortgage options for you. We do the legwork, so you don't have to.</p>",
+    },
+    {
+        title: "Exceptional Customer Service",
+        description: `<p>At Asim Ali, we pride ourselves on providing exceptional customer service. We are always available to answer your questions and address any concerns you may have. We are here to make the mortgage process as smooth and stress-free as possible.</p>`,
+    },
+    {
+        title: "Comprehensive Solutions",
+        description: `<p>Whether you're a first-time homebuyer or looking to refinance, we have the expertise to help. We offer a wide range of mortgage services, ensuring we can find the right solution for your unique needs.</p>`,
+    },
+]
+}
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -275,6 +308,16 @@ console.log(langleyData);
                     />
                   </Col>
                 </Row>
+                <Row className="product-service">
+                  <Col className="px-4" md={12}>
+                    <h2 className="text-center">
+                      {data?.Langley?.mortgageProductsTitle}
+                    </h2>
+                    <p className="text-center">
+                    As one of the best & trusted Mortgage Brokers in Coquitlam, We offer a wide range of services to meet your mortgage needs. We provide personalized solutions and tailored advice to ensure that you get the best mortgage rates and terms.
+                    </p>
+                  </Col>
+                </Row>
                 {data?.Langley?.langleySlider == null ? (
                   ""
                 ) : (
@@ -290,7 +333,7 @@ console.log(langleyData);
                             key={a}
                             className="application-slide text-center"
                           >
-                            <span>{slide?.title}</span>
+                            <h2>{slide?.title}</h2>
                             <p>{slide?.content}</p>
                           </div>
                         );
@@ -298,37 +341,12 @@ console.log(langleyData);
                     </Carousel>
                   </Row>
                 )}
-
-                <Row className="product-service">
-                  <Col className="mb-5" md={12}>
-                    <h2 className="text-center">
-                      {data?.Langley?.mortgageProductsTitle}
-                    </h2>
-                  </Col>
-                  <Col md={3}>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Langley?.mortgageProductsLeftText,
-                      }}
-                    ></span>
-                  </Col>
-                  <Col md={6}>
-                    <Image
-                      src={data?.Langley?.mortgageProductsImage?.sourceUrl}
-                      alt={data?.Langley?.mortgageProductsImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Col>
-                  <Col md={3}>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Langley?.mortgageProductsRightText,
-                      }}
-                    ></span>
-                  </Col>
+                <Row className="my-5">
+                <Container>
+                  <div className="my-5">
+                    <MortgageAdvisor advisorData={advisorData} />
+                  </div>
+                </Container>
                 </Row>
                 <Row className="apply-step">
                   <Col md={4}>
@@ -367,112 +385,74 @@ console.log(langleyData);
                     )}
                   </Col>
                 </Row>
-                <Row className="my-5">
-                    <Image
-                      src={data?.Langley?.renovateImageFirst?.sourceUrl}
-                      alt={data?.Langley?.renovateImageFirst?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
-                    <p className="headering-title">
+                    <h2 className="headering-title">
                       {data?.Langley?.mortgageBrokerTitle}
-                    </p>
+                    </h2>
                     <p>{data?.Langley?.mortgageBrokerDescription}</p>
                   </Col>
                 </Row>
-                {data.Langley.mortgageRenovation == null ? (
-                  ""
-                ) : (
-                  <Row className="renovation-row">
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-3 renovation"
-                    >
-                      {data.Langley.mortgageRenovation.map((tab, item) => {
-                        return (
-                          <Tab
-                            key={item}
-                            eventKey={item.toString()}
-                            title={
-                              <h3 className="location-tab-title">
-                                {tab.title}
-                              </h3>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: tab.description,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )}
-                <Row className="my-5">
-                    <Image
-                      src={data?.Langley?.renovateImageSecond?.sourceUrl}
-                      alt={data?.Langley?.renovateImageSecond?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                <Row className="broker-coquitlam">
+                <div className="service-row my-5">
+                    <Container>
+                      <Row>
+                        <Col className="service-texts" lg={6}>
+                          <div
+                            className="service-content"
+                            dangerouslySetInnerHTML={{
+                              __html: data?.Langley?.mortgageProductsLeftText,
+                            }}
+                          ></div>
+                        </Col>
+                        <Col className="service-texts" lg={6}>
+                          <div className="service-image">
+                            <Image
+                              src={data?.Langley?.mortgageProductsImage?.sourceUrl}
+                              alt={data?.Langley?.mortgageProductsImage?.altText}
+                              width="390"
+                              height="400"
+                              style={{ width: "100%", objectFit: "cover" }}
+                            />
+                          </div>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </div>
+                  <div className="service-row my-5">
+                    <Container>
+                      <Row>
+                        <Col className="service-texts" lg={6}>
+                          <div className="service-image">
+                            <Image
+                              src={data?.Langley?.renovateImageFirst?.sourceUrl}
+                              alt={data?.Langley?.renovateImageFirst?.altText}
+                              width="390"
+                              height="400"
+                              style={{ width: "100%", objectFit: "cover" }}
+                            />
+                          </div>
+                        </Col>
+                        <Col className="service-texts" lg={6}>
+                          <div
+                            className="service-content"
+                            dangerouslySetInnerHTML={{
+                              __html: data?.Langley?.mortgageProductsRightText,
+                            }}
+                          ></div>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </div>
+                <Row className="mortgage-broker-bottom text-center">
                   <Col>
                     <h2>{data?.Langley?.brokerLangleyTitle}</h2>
-                    <p>{data?.Langley?.brokerLangleyDescription}</p>
-                    {data?.Langley?.brokerLangleyLink == null ? (
-                      ""
-                    ) : (
-                      <Link href={data?.Langley?.brokerLangleyLink?.url}>
-                        <span>
-                          Read More <FontAwesomeIcon icon={faChevronRight} />
-                        </span>
-                      </Link>
-                    )}
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.Langley?.brokerLangleyDescription,
+                      }}
+                    ></div>
                   </Col>
                 </Row>
-                <Row className="my-5">
-                    <Image
-                      src={data?.Langley?.faqImage?.sourceUrl}
-                      alt={data?.Langley?.faqImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                {/* faq section start */}
-
-                <div className="faq-accordion">
-                  <Accordion defaultActiveKey="0">
-                    {data?.Langley?.faqAccordion.map((qa, index) => {
-                      return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="h3">
-                            {qa.question}
-                          </Accordion.Header>
-                          <Accordion.Body
-                            dangerouslySetInnerHTML={{ __html: qa.answer }}
-                          ></Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
-                  </Accordion>
-                </div>
-
-                {/* faq section end */}
               </Container>
               <CTA />
             </main>

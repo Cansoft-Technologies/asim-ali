@@ -278,7 +278,7 @@ const BcCoquitlam = (props: MyProps) => {
                   </Col>
                 </Row>
                 <Row className="product-service">
-                  <Col className="mb-5" md={12}>
+                  <Col className="mb-5 px-3" md={12}>
                     <h2 className="text-center">
                       {data?.coquitlam?.mortgageProductsTitle}
                     </h2>

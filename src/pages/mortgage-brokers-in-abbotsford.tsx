@@ -2,18 +2,16 @@ import { gql } from "@apollo/client";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CTA, Footer, Header, Hero } from "components";
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import { Accordion, Col, Container, Row } from "react-bootstrap";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import MortgageAdvisor from "components/MortgageAdvisor";
 import { advisorData } from "dummyData/dummy";
 import { apolloClient } from "lib/apollo";
+import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import MortgageAdvisor from "components/MortgageAdvisor";
+import { useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   superLargeDesktop: {
@@ -315,7 +313,7 @@ const Abbotsford = (props: MyProps) => {
                     ></div>
                   </Col>
 
-                  <div className="service-row">
+                  <div className="service-row my-5">
                     <Container>
                       <Row>
                         <Col className="service-texts" lg={6}>
@@ -340,7 +338,7 @@ const Abbotsford = (props: MyProps) => {
                       </Row>
                     </Container>
                   </div>
-                  <div className="service-row">
+                  <div className="service-row my-5">
                     <Container>
                       <Row>
                         <Col className="service-texts" lg={6}>

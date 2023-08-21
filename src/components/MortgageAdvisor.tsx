@@ -19,7 +19,12 @@ export default function MortgageAdvisor(props: MyProps) {
                 }}
                 className="text-start service-title"
               ></div>
-              
+              <div
+        dangerouslySetInnerHTML={{
+          __html: advisorData?.advisorDescriptionTop,
+        }}
+        className="service-description"
+      ></div>
             <div className="split_image">
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
