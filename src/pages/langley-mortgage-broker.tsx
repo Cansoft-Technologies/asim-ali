@@ -35,9 +35,9 @@ const responsive = {
   },
 };
 const advisorData = {
-  advisorTitle: `<h2 style="font-weight: 400;">Why Choose Us</h2>`,
-  advisorDescriptionTop: `<p style="margin-bottom: 120px;">At Asim Ali, we understand that choosing a mortgage broker is an important decision. Few reasons why you should choose us for all your mortgage needs.</p>`,
-  advisorDescriptionBottom:`<p>Choose Asim Ali as your mortgage broker and experience the difference of working with a trusted and reliable team. Let us take the stress out of mortgages and guide you towards homeownership. Contact us today to get started.</p>`,
+  advisorTitle: `<h2 style="font-weight: 400; margin-top: -80px;">Why Choose Us</h2>`,
+  advisorDescriptionTop: `<p style="margin-top: 50px; margin-bottom: 100px">At Asim Ali, we understand that choosing a mortgage broker is an important decision. Few reasons why you should choose us for all your mortgage needs.</p>`,
+  advisorDescriptionBottom:``,
   advisorImage:{
     sourceUrl: "http://asimaliprod.wpengine.com/wp-content/uploads/2023/08/mortgage-broker-in-langley.webp",
     altText: "mortgage broker surrey"
@@ -62,7 +62,8 @@ const advisorData = {
     },
     {
         title: "Comprehensive Solutions",
-        description: `<p>Whether you're a first-time homebuyer or looking to refinance, we have the expertise to help. We offer a wide range of mortgage services, ensuring we can find the right solution for your unique needs.</p>`,
+        description: `<p>Whether you're a first-time homebuyer or looking to refinance, we have the expertise to help. We offer a wide range of mortgage services, ensuring we can find the right solution for your unique needs.</p>
+        <p>Choose Asim Ali as your mortgage broker and experience the difference of working with a trusted and reliable team. Let us take the stress out of mortgages and guide you towards homeownership. Contact us today to get started.</p>`,
     },
 ]
 }
