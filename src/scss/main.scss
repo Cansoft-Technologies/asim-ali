@@ -506,12 +506,14 @@ body {
     .split_image {
       width: 80%;
       float: right;
+      object-fit: cover;
     }
   }
   .split_image {
     width: 80%;
     position: relative;
     height: 90vh;
+    object-fit: cover;
   }
 }
 .gallery_img {
