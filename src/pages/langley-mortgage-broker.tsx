@@ -310,7 +310,8 @@ console.log(langleyData);
                   </Col>
                 </Row>
                 <Row className="product-service">
-                  <Col className="px-4" md={12}>
+                <Col className="px-5" md={1}></Col>
+                  <Col md={10}>
                     <h2 className="text-center">
                       {data?.Langley?.mortgageProductsTitle}
                     </h2>
@@ -318,6 +319,7 @@ console.log(langleyData);
                     As one of the best & trusted Mortgage Brokers in Coquitlam, We offer a wide range of services to meet your mortgage needs. We provide personalized solutions and tailored advice to ensure that you get the best mortgage rates and terms.
                     </p>
                   </Col>
+                  <Col className="px-5" md={1}></Col>
                 </Row>
                 {data?.Langley?.langleySlider == null ? (
                   ""
