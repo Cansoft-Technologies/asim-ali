@@ -64,6 +64,7 @@ export async function getStaticProps() {
               mortgageProductsTitle
               mortgageProductsRightText
               mortgageProductsLeftText
+              mortgageBrokerBottomText
               mortgageBrokerTitle
               mortgageBrokerDescription
               firstApplyStepTitle
@@ -272,7 +273,7 @@ const BcCoquitlam = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>
@@ -285,12 +286,36 @@ const BcCoquitlam = (props: MyProps) => {
                     As one of the best & trusted Mortgage Brokers in Coquitlam, We offer a wide range of services to meet your mortgage needs. We provide personalized solutions and tailored advice to ensure that you get the best mortgage rates and terms.
                     </p>
                   </Col>
-                  <div className="service-row">
+                  <div className="service-row my-5">
+                      <Container>
+                        <Row>
+                          <Col className="service-texts" lg={6}>
+                            <div className="service-image">
+                              <Image
+                                src={data?.coquitlam?.renovateImageFirst?.sourceUrl}
+                                alt={data?.coquitlam?.renovateImageFirst?.altText}
+                                width="390"
+                                height="400"
+                                style={{ width: "100%", objectFit: "contain" }}
+                              />
+                            </div>
+                          </Col>
+                          <Col className="service-texts" lg={6}>
+                            <div className="service-content" dangerouslySetInnerHTML={{
+                        __html: data?.coquitlam?.mortgageProductsLeftText,
+                      }}
+                    >
+                            </div>
+                          </Col>
+                        </Row>
+                      </Container>
+                    </div>
+                  <div className="service-row my-5">
                       <Container>
                         <Row>
                           <Col className="service-texts" lg={6}>
                             <div className="service-content" dangerouslySetInnerHTML={{
-                        __html: data?.coquitlam?.mortgageProductsLeftText,
+                        __html: data?.coquitlam?.mortgageProductsRightText,
                       }}
                     >
                             </div>
@@ -309,14 +334,14 @@ const BcCoquitlam = (props: MyProps) => {
                         </Row>
                       </Container>
                     </div>
-                    <div className="service-row">
+                    <div className="service-row my-5">
                       <Container>
                         <Row>
                           <Col className="service-texts" lg={6}>
                             <div className="service-image">
                               <Image
-                                src={data?.coquitlam?.renovateImageFirst?.sourceUrl}
-                                alt={data?.coquitlam?.renovateImageFirst?.altText}
+                                src={data?.coquitlam?.faqImage?.sourceUrl}
+                                alt={data?.coquitlam?.faqImage?.altText}
                                 width="390"
                                 height="400"
                                 style={{ width: "100%", objectFit: "contain" }}
@@ -325,7 +350,7 @@ const BcCoquitlam = (props: MyProps) => {
                           </Col>
                           <Col className="service-texts" lg={6}>
                             <div className="service-content" dangerouslySetInnerHTML={{
-                        __html: data?.coquitlam?.mortgageProductsRightText,
+                        __html: data?.coquitlam?.mortgageBrokerBottomText,
                       }}
                     >
                             </div>
@@ -422,23 +447,13 @@ const BcCoquitlam = (props: MyProps) => {
                       style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Row>
-                <Row className="mortgage-broker-bottom">
+                <Row className="mortgage-broker-bottom text-center">
                   <Col>
                     <h2>{data?.coquitlam?.brokerCoquitlamTitle}</h2>
                     <p>{data?.coquitlam?.brokerCoquitlamDescription}</p>
                   </Col>
                 </Row>
                 {/* faq section start */}
-                <Row className="my-5">
-                    <Image
-                      src={data?.coquitlam?.faqImage?.sourceUrl}
-                      alt={data?.coquitlam?.faqImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
                     {data?.coquitlam?.faqAccordion.map((qa, index) => {
