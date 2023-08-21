@@ -301,7 +301,8 @@ const Abbotsford = (props: MyProps) => {
                 )}
 
                 <Row className="product-service">
-                  <Col className="mb-5" md={12}>
+                <Col className="px-5" md={1}></Col>
+                  <Col className="px-5 py-5" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {data?.Abbotsford?.productsTitle}
                     </h2>
@@ -312,8 +313,9 @@ const Abbotsford = (props: MyProps) => {
                       }}
                     ></div>
                   </Col>
-
-                  <div className="service-row my-5">
+                  <Col className="px-5" md={8}></Col>
+                </Row>
+                <div className="service-row my-5">
                     <Container>
                       <Row>
                         <Col className="service-texts" lg={6}>
@@ -367,8 +369,7 @@ const Abbotsford = (props: MyProps) => {
                       </Row>
                     </Container>
                   </div>
-                </Row>
-                <Row className="apply-step">
+                <Row className="apply-step" style={{marginTop: "80px"}}>
                   <Col md={4}>
                     {data?.Abbotsford?.firstApplyStepTitle == null ? (
                       ""
@@ -413,7 +414,7 @@ const Abbotsford = (props: MyProps) => {
                     <p>{data?.Abbotsford?.brokerDescription}</p>
                   </Col>
                 </Row>
-                <Row className="my-5">
+                <Row className="">
                   <Image
                     src={data?.Abbotsford?.renovateImageFirst?.sourceUrl}
                     alt={data?.Abbotsford?.renovateImageFirst?.altText}
@@ -423,8 +424,8 @@ const Abbotsford = (props: MyProps) => {
                     style={{ width: "100%", objectFit: "contain" }}
                   />
                 </Row>
-                <Container>
-                  <div className="my-5">
+                <Container style={{marginTop: "60px"}}>
+                  <div >
                     <MortgageAdvisor advisorData={advisorData} />
                   </div>
                 </Container>
