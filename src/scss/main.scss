@@ -506,12 +506,14 @@ body {
     .split_image {
       width: 80%;
       float: right;
+      object-fit: cover;
     }
   }
   .split_image {
     width: 80%;
     position: relative;
     height: 90vh;
+    object-fit: cover;
   }
 }
 .gallery_img {
@@ -2670,6 +2672,7 @@ p.testimonials-name {
     .split_image {
       height: 60vh;
       margin-bottom: 30px;
+      object-fit: cover;
     }
   }
   .cta_section .cta_first {
