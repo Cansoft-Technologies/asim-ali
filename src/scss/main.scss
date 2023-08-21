@@ -512,7 +512,7 @@ body {
   .split_image {
     width: 80%;
     position: relative;
-    height: 90vh;
+    height: 80vh;
     object-fit: cover;
   }
 }
@@ -2338,6 +2338,7 @@ p.testimonials-name {
   .split_section .flex-row-reverse .split_image {
     width: 100%;
     text-align: center;
+    object-fit: cover;
   }
   .Banner_carouselcaption__NAlFf {
     // bottom: 10%;

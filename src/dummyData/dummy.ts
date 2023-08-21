@@ -161,19 +161,17 @@ export const advisorData = {
     {
         title: "Support and Assist After Loan Closed",
         description: `<p>
-        <span style="font-weight: 400;">We believe in building long-term relationships with our clients. We understand that obtaining a mortgage is just the beginning of your homeownership journey, and we are committed to providing ongoing support and guidance even after your loan is closed.</span></p>`,
-    },
-    {
-        title: "",
-        description: `<p><span style="font-weight: 400;">Once your loan is closed, our relationship with you does not end. We are here to provide continuous support and assist you with any questions or concerns that may arise throughout the life of your mortgage. Whether you have questions about your payment schedule, need assistance with refinancing, or want to explore options for a home equity loan, our team of experienced professionals is just a phone call away.</span></p>`,
+        <span style="font-weight: 400;">We believe in building long-term relationships with our clients. We understand that obtaining a mortgage is just the beginning of your homeownership journey, and we are committed to providing ongoing support and guidance even after your loan is closed.</span></p>
+        <p><span style="font-weight: 400;">Once your loan is closed, our relationship with you does not end. We are here to provide continuous support and assist you with any questions or concerns that may arise throughout the life of your mortgage. Whether you have questions about your payment schedule, need assistance with refinancing, or want to explore options for a home equity loan, our team of experienced professionals is just a phone call away.</span></p>`,
     },
     {
         title: "Flexibility",
-        description: "<p>Asim Ali understands that life can be unpredictable, and mortgage needs can change. That's why he is flexible to accommodate your unique needs. He can work with you to tailor the right solution for you.</p>",
+        description: `<p>Asim Ali understands that life can be unpredictable, and mortgage needs can change. That's why he is flexible to accommodate your unique needs. He can work with you to tailor the right solution for you.</p>
+        <p><span style="font-weight: 400;">Choose Asim Ali as your broker in Abbotsford, and experience the benefits of our continuing support long after your loan is closed. Contact us today to learn more about how we can assist you in achieving your homeownership goals and providing ongoing guidance throughout your mortgage journey.</span></p>`,
     },
     {
         title: "",
-        description: `<p><span style="font-weight: 400;">Choose Asim Ali as your broker in Abbotsford, and experience the benefits of our continuing support long after your loan is closed. Contact us today to learn more about how we can assist you in achieving your homeownership goals and providing ongoing guidance throughout your mortgage journey.</span></p>`,
+        description: ``,
     },
 ]
 }
