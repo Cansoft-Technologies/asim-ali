@@ -96,6 +96,12 @@ const schema = {
       name: "Ghazala Sarwar",
     },
   },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    bestRating: "5",
+    ratingCount: "213",
+  },
   offers: {
     "@type": "Offer",
     url: "https://asimali.ca/",
@@ -103,12 +109,6 @@ const schema = {
     price: "499",
     priceValidUntil: "2020-12-31",
     availability: "https://schema.org/InStock",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    bestRating: "5",
-    ratingCount: "213",
   },
 };
 
