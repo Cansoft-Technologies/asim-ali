@@ -123,12 +123,6 @@ function Header(props: MyProps) {
   return (
     <>
       <Head>
-        <noscript>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          />
-        </noscript>
       </Head>
       <Container style={{maxWidth:"100%",backgroundColor: "#12143a"}}> 
       <Container style={{maxWidth:"1450px"}}> 

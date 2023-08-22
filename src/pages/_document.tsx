@@ -7,6 +7,53 @@ class MyDocument extends Document {
   }
 
   render() {
+    function addJsonLd() {
+      return {
+        __html:`{
+          "@context":"https://schema.org/",
+          "@type":"Product",
+          "name":"Mortgage Brokers",
+          "image":[
+             "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-9.webp",
+             "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/home-banner.webp",
+             "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-8.webp"
+          ],
+          "description":"Asim Ali and his team of the best mortgage brokers in Surrey will help you with the best mortgage rates available.",
+          "sku": "CAN1971SEO",
+          "mpn": "925872",
+          "brand": {
+            "@type": "Brand",
+            "name": "Asim Ali",
+          },
+          "review": {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5",
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Ghazala Sarwar",
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "bestRating": "5",
+            "ratingCount": "213",
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://asimali.ca/",
+            "priceCurrency": "CAD",
+            "price": "499",
+            "priceValidUntil": "2020-12-31",
+            "availability": "https://schema.org/InStock",
+          }
+        }`,
+      };
+    }
   return (
     <Html lang="en-US">
       <Head>
@@ -35,7 +82,11 @@ class MyDocument extends Document {
         <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
         <meta name="google-site-verification" content="ArsOxUI8W_sRuQ8inukzs24Mjl5_sl-TfzJGoz3CBQI" />
         <meta name="theme-color" content="#ffffff" />
-
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addJsonLd()}
+          key="product-jsonld"
+        />
       </Head>
       <body>
         <Main />
