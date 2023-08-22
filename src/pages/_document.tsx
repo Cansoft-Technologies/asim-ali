@@ -7,53 +7,50 @@ class MyDocument extends Document {
   }
 
   render() {
-    function addJsonLd() {
-      return {
-        __html:`{
-          "@context":"https://schema.org/",
-          "@type":"Product",
-          "name":"Mortgage Brokers",
-          "image":[
-             "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-9.webp",
-             "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/home-banner.webp",
-             "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-8.webp"
-          ],
-          "description":"Asim Ali and his team of the best mortgage brokers in Surrey will help you with the best mortgage rates available.",
-          "sku": "CAN1971SEO",
-          "mpn": "925872",
-          "brand": {
-            "@type": "Brand",
-            "name": "Asim Ali",
-          },
-          "review": {
-            "@type": "Review",
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": "5",
-              "bestRating": "5",
-            },
-            "author": {
-              "@type": "Person",
-              "name": "Ghazala Sarwar",
-            }
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "bestRating": "5",
-            "ratingCount": "213",
-          },
-          "offers": {
-            "@type": "Offer",
-            "url": "https://asimali.ca/",
-            "priceCurrency": "CAD",
-            "price": "499",
-            "priceValidUntil": "2020-12-31",
-            "availability": "https://schema.org/InStock",
-          }
-        }`,
-      };
-    }
+    const schema = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      name: "Mortgage Brokers",
+      image: [
+        "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-9.webp",
+        "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/home-banner.webp",
+        "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-8.webp",
+      ],
+      description:
+        "Asim Ali and his team of the best mortgage brokers in Surrey will help you with the best mortgage rates available.",
+      sku: "CAN1971SEO",
+      mpn: "925872",
+      brand: {
+        "@type": "Brand",
+        name: "Asim Ali",
+      },
+      review: {
+        "@type": "Review",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        author: {
+          "@type": "Person",
+          name: "Ghazala Sarwar",
+        },
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        bestRating: "5",
+        ratingCount: "213",
+      },
+      offers: {
+        "@type": "Offer",
+        url: "https://asimali.ca/",
+        priceCurrency: "CAD",
+        price: "499",
+        priceValidUntil: "2020-12-31",
+        availability: "https://schema.org/InStock",
+      },
+    };
   return (
     <Html lang="en-US">
       <Head>
@@ -84,7 +81,7 @@ class MyDocument extends Document {
         <meta name="theme-color" content="#ffffff" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={addJsonLd()}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           key="product-jsonld"
         />
       </Head>
