@@ -10,28 +10,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -55,6 +35,7 @@ export async function getStaticProps() {
               secondApplyStepTitle
               secondApplyStepDescription
               productsTitle
+              productsDescription
               productsRightText
               productsLeftText
               firstApplyStepTitle
@@ -79,15 +60,25 @@ export async function getStaticProps() {
                 url
                 title
               }
-              productsImage {
+              productsImageRight {
                 altText
                 sourceUrl
               }
-              renovation {
-                title
-                description
+              productsImageLeft {
+                altText
+                sourceUrl
               }
-              slider {
+              advisorData {
+                advisorCards {
+                  title
+                  description
+                }
+                advisorImage {
+                  altText
+                  sourceUrl
+                }
+              }
+              tabs {
                 title
                 content
               }
@@ -96,10 +87,6 @@ export async function getStaticProps() {
                 sourceUrl
               }
               renovateImageFirst {
-                altText
-                sourceUrl
-              }
-              renovateImageSecond {
                 altText
                 sourceUrl
               }
@@ -276,7 +263,7 @@ const Abbotsford = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Abbotsford?.slider == null ? (
+                {data?.Abbotsford?.tabs == null ? (
                   ""
                 ) : (
                   <Row className="renovation-tab-row">
@@ -286,7 +273,7 @@ const Abbotsford = (props: MyProps) => {
                       onSelect={(k) => setKey(k)}
                       className="mb-5 renovation"
                     >
-                      {data?.Abbotsford?.slider.map((slide, a) => {
+                      {data?.Abbotsford?.tabs?.map((slide, a) => {
                         return (
                           <Tab
                             key={a}
@@ -319,7 +306,7 @@ const Abbotsford = (props: MyProps) => {
                     <div
                       className="text-center"
                       dangerouslySetInnerHTML={{
-                        __html: `<span style="font-weight: 400;">As the leading</span><b> mortgage broker in abbotsford bc</b><span style="font-weight: 400;">, We offer a wide range of services to meet all of your mortgage needs. Whether you're a first-time homebuyer, looking to refinance, or seeking a commercial mortgage, we have the expertise and resources to help you secure the best home loan for your unique situation. Our team of experienced professionals is committed to providing personalized service and guidance throughout the entire process. With access to over 40 lenders, including </span><i><span style="font-weight: 400;">national mortgage abbotsford</span></i><span style="font-weight: 400;"> options, we can find the most competitive rates and terms for you. </span>`,
+                        __html: data?.Abbotsford?.productsDescription,
                       }}
                     ></div>
                   </Col>
@@ -339,8 +326,8 @@ const Abbotsford = (props: MyProps) => {
                         <Col className="service-texts" lg={6}>
                           <div className="service-image">
                             <Image
-                              src={data?.Abbotsford?.productsImage?.sourceUrl}
-                              alt={data?.Abbotsford?.productsImage?.altText}
+                              src={data?.Abbotsford?.productsImageRight?.sourceUrl}
+                              alt={data?.Abbotsford?.productsImageRight?.altText}
                               width="390"
                               height="400"
                               style={{ width: "100%", objectFit: "contain" }}
@@ -357,10 +344,10 @@ const Abbotsford = (props: MyProps) => {
                           <div className="service-image">
                             <Image
                               src={
-                                data?.Abbotsford?.renovateImageSecond?.sourceUrl
+                                data?.Abbotsford?.productsImageLeft?.sourceUrl
                               }
                               alt={
-                                data?.Abbotsford?.renovateImageSecond?.altText
+                                data?.Abbotsford?.productsImageLeft?.altText
                               }
                               width="390"
                               height="400"
@@ -436,7 +423,7 @@ const Abbotsford = (props: MyProps) => {
                 </Row>
                 <Container style={{marginTop: "60px"}}>
                   <div >
-                    <MortgageAdvisor advisorData={advisorData} />
+                    <MortgageAdvisor advisorData={data?.Abbotsford?.advisorData} />
                   </div>
                 </Container>
                 <Row className="mortgage-broker-bottom text-center">
