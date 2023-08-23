@@ -1764,6 +1764,8 @@ textarea#comment {
 }
 .service-description p {
   font-size: 18px;
+  margin-top: 50px; 
+  margin-bottom: 100px;
 }
 .service-top-section {
   display: flex;
@@ -1815,16 +1817,12 @@ textarea#comment {
   align-items: center;
   justify-content: center;
   .renovation.nav-tabs {
-    margin-top: 50px;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
     border-bottom: none;
     width: 45%;
     margin-left: 10px;
-    .location-tab-title {
-      font-size: 24px;
-      margin-top: 10px;
-    }
     .nav-link {
       font-size: 17px;
       font-weight: 400;
@@ -1840,9 +1838,15 @@ textarea#comment {
       &:hover {
         border-color: transparent;
       }
+      p{
+        margin: 0;
+      }
+      .location-tab-title {
+        font-size: 20px;
+        vertical-align: middle;
+      }
     }
     .nav-link.active {
-      font-size: 15px;
       font-family: "AvenirBlack";
       background-color: $color-secondary;
       color: $color-black;
@@ -1860,7 +1864,7 @@ textarea#comment {
     p,
     li {
       color: $color-primary;
-      // font-size: 14px;
+      font-size: 17px;
       font-weight: 200;
       line-height: 25px;
       font-family: "AvenirBook";
@@ -2055,7 +2059,7 @@ textarea#comment {
     display: flex;
     flex-wrap: nowrap;
     width: 80%;
-    margin: auto;
+    // margin: auto;
     align-items: center;
     .renovation.nav-tabs {
       display: flex;
@@ -2066,7 +2070,7 @@ textarea#comment {
         font-size: 17px;
         font-weight: 400;
         font-family: "AvenirBook";
-        padding: 10px 0;
+        // padding: 10px 0;
         cursor: pointer;
         color: $color-black;
         &:hover {
@@ -2082,7 +2086,7 @@ textarea#comment {
         border-left: none;
         border-right: none;
         display: inline;
-        padding: 5px 0;
+        // padding: 5px 0;
       }
     }
     .tab-content {

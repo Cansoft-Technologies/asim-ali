@@ -34,39 +34,6 @@ const responsive = {
     items: 1,
   },
 };
-const advisorData = {
-  advisorTitle: `<h2 style="font-weight: 400; margin-top: -80px;">Why Choose Us</h2>`,
-  advisorDescriptionTop: `<p style="margin-top: 50px; margin-bottom: 100px">At Asim Ali, we understand that choosing a mortgage broker is an important decision. Few reasons why you should choose us for all your mortgage needs.</p>`,
-  advisorDescriptionBottom:``,
-  advisorImage:{
-    sourceUrl: "http://asimaliprod.wpengine.com/wp-content/uploads/2023/08/mortgage-broker-in-langley.webp",
-    altText: "mortgage broker surrey"
-},
-  advisorCards:[
-    {
-        title: "Experience",
-        description: `<p>
-        With years of experience in the mortgage industry, our team has the knowledge and expertise to guide you through the process. We understand the local market and can help you find the best mortgage rates in Langley.</p>`,
-    },
-    {
-        title: "Personalized Service",
-        description: `<p>We take the time to understand your unique needs and financial goals. Our personalized approach allows us to tailor mortgage solutions that are best for you. We believe in building long-term relationships with our clients, so you can trust us to have your best interests at heart.</p>`,
-    },
-    {
-        title: "Access to Lenders",
-        description: "<p>As a mortgage broker we have access to a wide range of lenders. This means we can shop around to find the best mortgage options for you. We do the legwork, so you don't have to.</p>",
-    },
-    {
-        title: "Exceptional Customer Service",
-        description: `<p>At Asim Ali, we pride ourselves on providing exceptional customer service. We are always available to answer your questions and address any concerns you may have. We are here to make the mortgage process as smooth and stress-free as possible.</p>`,
-    },
-    {
-        title: "Comprehensive Solutions",
-        description: `<p>Whether you're a first-time homebuyer or looking to refinance, we have the expertise to help. We offer a wide range of mortgage services, ensuring we can find the right solution for your unique needs.</p>
-        <p>Choose Asim Ali as your mortgage broker and experience the difference of working with a trusted and reliable team. Let us take the stress out of mortgages and guide you towards homeownership. Contact us today to get started.</p>`,
-    },
-]
-}
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -90,13 +57,10 @@ export async function getStaticProps() {
               secondApplyStepTitle
               secondApplyStepDescription
               mortgageProductsTitle
+              mortgageProductsDescription
               mortgageProductsRightText
               mortgageProductsLeftText
               topLangleyDescription
-              mortgageRenovation {
-                title
-                description
-              }
               mortgageBrokerTitle
               mortgageBrokerDescription
               langleyBannerTitle
@@ -134,9 +98,17 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-              renovateImageSecond {
-                altText
-                sourceUrl
+              advisorData {
+                advisorCards {
+                  title
+                  description
+                }
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  altText
+                  sourceUrl
+                }
               }
               faqAccordion {
                 question
@@ -316,7 +288,7 @@ console.log(langleyData);
                       {data?.Langley?.mortgageProductsTitle}
                     </h2>
                     <p className="text-center">
-                    As one of the best & trusted Mortgage Brokers in Coquitlam, We offer a wide range of services to meet your mortgage needs. We provide personalized solutions and tailored advice to ensure that you get the best mortgage rates and terms.
+                    {data?.Langley?.mortgageProductsDescription}
                     </p>
                   </Col>
                   <Col className="px-5" md={1}></Col>
@@ -357,7 +329,7 @@ console.log(langleyData);
                 <Row className="my-5">
                 <Container>
                   <div className="my-5">
-                    <MortgageAdvisor advisorData={advisorData} />
+                    <MortgageAdvisor advisorData={data?.Langley?.advisorData} />
                   </div>
                 </Container>
                 </Row>
