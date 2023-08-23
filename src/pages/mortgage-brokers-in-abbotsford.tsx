@@ -9,7 +9,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -279,28 +279,38 @@ const Abbotsford = (props: MyProps) => {
                 {data?.Abbotsford?.slider == null ? (
                   ""
                 ) : (
-                  <Row className="application-slider">
-                    <Carousel
-                      autoPlay={true}
-                      infinite={true}
-                      responsive={responsive}
+                  <Row className="renovation-tab-row">
+                    <Tabs
+                      id="controlled-tab-example"
+                      activeKey={key == null ? 0 : key}
+                      onSelect={(k) => setKey(k)}
+                      className="mb-5 renovation"
                     >
                       {data?.Abbotsford?.slider.map((slide, a) => {
                         return (
-                          <div
+                          <Tab
                             key={a}
-                            className="application-slide text-center"
+                            eventKey={a.toString()}
+                            title={
+                              <h2 className="location-tab-title">
+                                {slide?.title}
+                              </h2>
+                            }
                           >
-                            <h2>{slide?.title}</h2>
-                            <p>{slide?.content}</p>
-                          </div>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: slide?.content,
+                              }}
+                              className="renovation-content-list"
+                            ></div>
+                          </Tab>
                         );
                       })}
-                    </Carousel>
+                    </Tabs>
                   </Row>
                 )}
 
-                <Row className="product-service">
+                <Row className="product-service mt-5">
                 <Col className="px-5" md={1}></Col>
                   <Col className="px-5 py-5" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">

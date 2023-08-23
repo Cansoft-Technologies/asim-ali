@@ -324,24 +324,34 @@ console.log(langleyData);
                 {data?.Langley?.langleySlider == null ? (
                   ""
                 ) : (
-                  <Row className="application-slider">
-                    <Carousel
-                      autoPlay={true}
-                      infinite={true}
-                      responsive={responsive}
+                  <Row className="renovation-tab-row">
+                    <Tabs
+                      id="controlled-tab-example"
+                      activeKey={key == null ? 0 : key}
+                      onSelect={(k) => setKey(k)}
+                      className="mb-3 renovation"
                     >
                       {data?.Langley?.langleySlider.map((slide, a) => {
                         return (
-                          <div
+                          <Tab
                             key={a}
-                            className="application-slide text-center"
+                            eventKey={a.toString()}
+                            title={
+                              <p className="location-tab-title">
+                                {slide?.title}
+                              </p>
+                            }
                           >
-                            <h2>{slide?.title}</h2>
-                            <p>{slide?.content}</p>
-                          </div>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: slide?.content,
+                              }}
+                              className="renovation-content-list"
+                            ></div>
+                          </Tab>
                         );
                       })}
-                    </Carousel>
+                    </Tabs>
                   </Row>
                 )}
                 <Row className="my-5">

@@ -459,7 +459,7 @@ const BcCoquitlam = (props: MyProps) => {
                     {data?.coquitlam?.faqAccordion.map((qa, index) => {
                       return (
                         <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="h3">
+                          <Accordion.Header as="p">
                             {qa.question}
                           </Accordion.Header>
                           <Accordion.Body

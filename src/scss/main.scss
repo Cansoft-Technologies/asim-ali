@@ -1813,7 +1813,9 @@ textarea#comment {
   flex-wrap: nowrap;
   width: 100%;
   align-items: center;
+  justify-content: center;
   .renovation.nav-tabs {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     border-bottom: none;
@@ -1821,6 +1823,7 @@ textarea#comment {
     margin-left: 10px;
     .location-tab-title {
       font-size: 24px;
+      margin-top: 10px;
     }
     .nav-link {
       font-size: 17px;
@@ -1828,7 +1831,7 @@ textarea#comment {
       width: 500px;
       font-family: "AvenirBook";
       // padding: 10px 0;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       border-radius: 5px;
       cursor: pointer;
       color: white;
@@ -1851,6 +1854,7 @@ textarea#comment {
     background: $color-light-gray;
     padding: 30px;
     width: 50%;
+    // height: 250px;
     margin-left: 20px;
     border-radius: 10px;
     p,
@@ -2638,7 +2642,9 @@ p.testimonials-name {
       margin-left: 10px;
     }
     .renovation.nav-tabs {
+      margin-top: 20px;
       .nav-link {
+        margin-top: 5px;
         width: 280px;
       }
     }
