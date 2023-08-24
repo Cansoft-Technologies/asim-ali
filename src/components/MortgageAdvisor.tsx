@@ -23,9 +23,9 @@ export default function MortgageAdvisor(props: MyProps) {
         dangerouslySetInnerHTML={{
           __html: advisorData?.advisorDescriptionTop,
         }}
-        className="service-description"
+        className="service-description mt-5"
       ></div>
-            <div className="split_image">
+            <div className="split_image" style={{marginTop:"100px"}}>
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
                 fill
