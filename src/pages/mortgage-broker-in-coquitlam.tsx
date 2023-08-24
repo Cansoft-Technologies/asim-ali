@@ -70,6 +70,10 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
+              mortgageProductsImageLeft {
+                altText
+                sourceUrl
+              }
               coquitlamBannerImage {
                 altText
                 sourceUrl
@@ -265,7 +269,7 @@ const BcCoquitlam = (props: MyProps) => {
                   </Col>
                 </Row>
                 <Row className="product-service">
-                  <Col className="mb-5 px-3" md={12}>
+                  <Col className="mb-5 px-3 py-3" md={12} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {data?.coquitlam?.mortgageProductsTitle}
                     </h2>
@@ -340,8 +344,8 @@ const BcCoquitlam = (props: MyProps) => {
                         <Col className="service-texts" lg={6}>
                           <div className="service-image">
                             <Image
-                              src={data?.coquitlam?.faqImage?.sourceUrl}
-                              alt={data?.coquitlam?.faqImage?.altText}
+                              src={data?.coquitlam?.mortgageProductsImageLeft?.sourceUrl}
+                              alt={data?.coquitlam?.mortgageProductsImageLeft?.altText}
                               width="390"
                               height="400"
                               style={{ width: "100%", objectFit: "contain" }}
