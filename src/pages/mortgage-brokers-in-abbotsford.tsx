@@ -9,7 +9,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
+import { Accordion, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 
 
@@ -81,10 +81,6 @@ export async function getStaticProps() {
               tabs {
                 title
                 content
-              }
-              faqImage {
-                altText
-                sourceUrl
               }
               renovateImageFirst {
                 altText
@@ -445,6 +441,37 @@ const Abbotsford = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                {data?.Abbotsford?.faqAccordion == null ? (
+                  "") : (
+                    <Container>
+                      {/* <Row className="my-5">
+                    <Image
+                      src={data?.Abbotsford?.faqImage?.sourceUrl}
+                      alt={data?.Abbotsford?.faqImage?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Row> */}
+                <div className="faq-accordion mt-5">
+                  <Accordion defaultActiveKey="0">
+                    {data?.Abbotsford?.faqAccordion.map((qa, index) => {
+                      return (
+                        <Accordion.Item key={index} eventKey={index.toString()}>
+                          <Accordion.Header as="h3">
+                            {qa.question}
+                          </Accordion.Header>
+                          <Accordion.Body
+                            dangerouslySetInnerHTML={{ __html: qa.answer }}
+                          ></Accordion.Body>
+                        </Accordion.Item>
+                      );
+                    })}
+                  </Accordion>
+                </div>
+                    </Container>
+                  )}
               </Container>
               <CTA />
             </main>

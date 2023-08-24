@@ -90,10 +90,6 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-              faqImage {
-                altText
-                sourceUrl
-              }
               renovateImageFirst {
                 altText
                 sourceUrl

@@ -13,6 +13,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import MortgageAdvisor from "components/MortgageAdvisor";
 
 const responsive = {
   superLargeDesktop: {
@@ -56,11 +57,12 @@ export async function getStaticProps() {
               secondApplyStepTitle
               secondApplyStepDescription
               productsTitle
+              productsDescription
               productsRightText
               productsLeftText
               firstApplyStepTitle
               brokerTitle
-              brokerDescription
+              topBrokerDescription
               bottomBrokerTitle
               bottomBrokerDescription
               topDescription
@@ -84,23 +86,23 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-              renovation {
-                title
-                description
+              advisorData {
+                advisorCards {
+                  title
+                  description
+                }
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  altText
+                  sourceUrl
+                }
               }
-              slider {
+              tabs {
                 title
                 content
               }
-              faqImage {
-                altText
-                sourceUrl
-              }
               renovateImageFirst {
-                altText
-                sourceUrl
-              }
-              renovateImageSecond {
                 altText
                 sourceUrl
               }
@@ -272,62 +274,62 @@ const Kamloops = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Kamloops?.slider == null ? (
-                  ""
-                ) : (
-                  <Row className="application-slider">
-                    <Carousel
-                      autoPlay={true}
-                      infinite={true}
-                      responsive={responsive}
-                    >
-                      {data?.Kamloops?.slider.map((slide, a) => {
-                        return (
-                          <div
-                            key={a}
-                            className="application-slide text-center"
-                          >
-                            <span>{slide?.title}</span>
-                            <p>{slide?.content}</p>
-                          </div>
-                        );
-                      })}
-                    </Carousel>
-                  </Row>
-                )}
-
+                <Row className="my-5">
+                  <Container>
+                    <div className="my-5">
+                      <MortgageAdvisor advisorData={data?.Kamloops?.advisorData} />
+                    </div>
+                  </Container>
+                </Row>
                 <Row className="product-service">
-                  <Col className="mb-5" md={12}>
+                  <Col className="px-5" md={1}></Col>
+                  <Col className="py-3" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {data?.Kamloops?.productsTitle}
                     </h2>
-                  </Col>
-                  <Col md={3}>
-                    <span
+                    <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.Kamloops?.productsLeftText,
+                        __html: data?.Kamloops?.productsDescription,
                       }}
-                    ></span>
+                      className="text-center"
+                    ></div>
                   </Col>
-                  <Col md={6}>
-                    <Image
-                      src={data?.Kamloops?.productsImage?.sourceUrl}
-                      alt={data?.Kamloops?.productsImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Col>
-                  <Col md={3}>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Kamloops?.productsRightText,
-                      }}
-                    ></span>
-                  </Col>
+                  <Col className="px-5" md={1}></Col>
                 </Row>
-                <Row className="apply-step">
+                {data?.Kamloops?.tabs == null ? (
+                  ""
+                ) : (
+                  <Row className="renovation-tab-row">
+                    <Tabs
+                      id="controlled-tab-example"
+                      activeKey={key == null ? 0 : key}
+                      onSelect={(k) => setKey(k)}
+                      className="mb-3 renovation"
+                    >
+                      {data?.Kamloops?.tabs?.map((slide, a) => {
+                        return (
+                          <Tab
+                            key={a}
+                            eventKey={a.toString()}
+                            title={
+                              <h3 className="location-tab-title">
+                                {slide?.title}
+                              </h3>
+                            }
+                          >
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: slide?.content,
+                              }}
+                              className="renovation-content-list"
+                            ></div>
+                          </Tab>
+                        );
+                      })}
+                    </Tabs>
+                  </Row>
+                )}
+                <Row className="apply-step" style={{marginTop: "80px"}}>
                   <Col md={4}>
                     {data?.Kamloops?.firstApplyStepTitle == null ? (
                       ""
@@ -364,68 +366,70 @@ const Kamloops = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
-                <Row className="my-5">
-                    <Image
-                      src={data?.Kamloops?.renovateImageFirst?.sourceUrl}
-                      alt={data?.Kamloops?.renovateImageFirst?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                <Row className="mortgage-broker">
+                  <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
                       {data?.Kamloops?.brokerTitle}
                     </h2>
-                    <p>{data?.Kamloops?.brokerDescription}</p>
+                    <div
+                      className="service-content"
+                      dangerouslySetInnerHTML={{
+                        __html: data?.Kamloops?.topBrokerDescription,
+                      }}
+                    ></div>
                   </Col>
                 </Row>
-                {data.Kamloops.renovation == null ? (
-                  ""
-                ) : (
-                  <Row className="renovation-row">
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-3 renovation"
-                    >
-                      {data.Kamloops.renovation.map((tab, item) => {
-                        return (
-                          <Tab
-                            key={item}
-                            eventKey={item.toString()}
-                            title={
-                              <h3 className="location-tab-title">
-                                {tab.title}
-                              </h3>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: tab.description,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )}
-                <Row className="my-5">
-                    <Image
-                      src={data?.Kamloops?.renovateImageSecond?.sourceUrl}
-                      alt={data?.Kamloops?.renovateImageSecond?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                <Row className="mortgage-broker-bottom">
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Kamloops?.productsLeftText,
+                          }}
+                        ></div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Kamloops?.productsImage?.sourceUrl}
+                            alt={data?.Kamloops?.productsImage?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Kamloops?.renovateImageFirst?.sourceUrl}
+                            alt={data?.Kamloops?.renovateImageFirst?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Kamloops?.productsRightText,
+                          }}
+                        ></div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <Row className="mortgage-broker-bottom text-center">
                   <Col>
                     <h2>{data?.Kamloops?.bottomBrokerTitle}</h2>
                     <div
@@ -445,7 +449,10 @@ const Kamloops = (props: MyProps) => {
                   </Col>
                 </Row>
                 {/* faq section start */}
-                <Row className="my-5">
+                {data?.Kamloops?.faqAccordion == null ? (
+                  "") : (
+                    <Container>
+                      {/* <Row className="my-5">
                     <Image
                       src={data?.Kamloops?.faqImage?.sourceUrl}
                       alt={data?.Kamloops?.faqImage?.altText}
@@ -454,7 +461,7 @@ const Kamloops = (props: MyProps) => {
                       priority={true}
                       style={{ width: "100%", objectFit: "contain" }}
                     />
-                  </Row>
+                  </Row> */}
                 <div className="faq-accordion mt-5">
                   <Accordion defaultActiveKey="0">
                     {data?.Kamloops?.faqAccordion.map((qa, index) => {
@@ -471,6 +478,8 @@ const Kamloops = (props: MyProps) => {
                     })}
                   </Accordion>
                 </div>
+                    </Container>
+                  )}
 
                 {/* faq section end */}
               </Container>

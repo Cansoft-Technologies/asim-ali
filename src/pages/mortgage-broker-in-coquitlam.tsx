@@ -1,18 +1,12 @@
 import { gql } from "@apollo/client";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CTA, Footer, Header, Hero } from "components";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import { apolloClient } from "lib/apollo";
-import Link from "next/link";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
 
 const responsive = {
   superLargeDesktop: {
@@ -62,6 +56,7 @@ export async function getStaticProps() {
               secondApplyStepTitle
               secondApplyStepDescription
               mortgageProductsTitle
+              mortgageProductsDescription
               mortgageProductsRightText
               mortgageProductsLeftText
               mortgageBrokerBottomText
@@ -74,10 +69,6 @@ export async function getStaticProps() {
               mortgageProductsImage {
                 altText
                 sourceUrl
-              }
-              coquitlamSlider {
-                title
-                content
               }
               coquitlamBannerImage {
                 altText
@@ -93,10 +84,6 @@ export async function getStaticProps() {
               mortgageRenovation {
                 title
                 description
-              }
-              faqImage {
-                altText
-                sourceUrl
               }
               renovateImageFirst {
                 altText
@@ -282,82 +269,96 @@ const BcCoquitlam = (props: MyProps) => {
                     <h2 className="text-center">
                       {data?.coquitlam?.mortgageProductsTitle}
                     </h2>
-                    <p className="text-center">
-                    As one of the best & trusted Mortgage Brokers in Coquitlam, We offer a wide range of services to meet your mortgage needs. We provide personalized solutions and tailored advice to ensure that you get the best mortgage rates and terms.
-                    </p>
+                    <div
+                      className="text-center"
+                      dangerouslySetInnerHTML={{
+                        __html: data?.coquitlam?.mortgageProductsDescription,
+                      }}
+                    ></div>
                   </Col>
                   <div className="service-row my-5">
-                      <Container>
-                        <Row>
-                          <Col className="service-texts" lg={6}>
-                            <div className="service-image">
-                              <Image
-                                src={data?.coquitlam?.renovateImageFirst?.sourceUrl}
-                                alt={data?.coquitlam?.renovateImageFirst?.altText}
-                                width="390"
-                                height="400"
-                                style={{ width: "100%", objectFit: "contain" }}
-                              />
-                            </div>
-                          </Col>
-                          <Col className="service-texts" lg={6}>
-                            <div className="service-content" dangerouslySetInnerHTML={{
-                        __html: data?.coquitlam?.mortgageProductsLeftText,
-                      }}
-                    >
-                            </div>
-                          </Col>
-                        </Row>
-                      </Container>
-                    </div>
+                    <Container>
+                      <Row>
+                        <Col className="service-texts" lg={6}>
+                          <div className="service-image">
+                            <Image
+                              src={
+                                data?.coquitlam?.renovateImageFirst?.sourceUrl
+                              }
+                              alt={data?.coquitlam?.renovateImageFirst?.altText}
+                              width="390"
+                              height="400"
+                              style={{ width: "100%", objectFit: "contain" }}
+                            />
+                          </div>
+                        </Col>
+                        <Col className="service-texts" lg={6}>
+                          <div
+                            className="service-content"
+                            dangerouslySetInnerHTML={{
+                              __html: data?.coquitlam?.mortgageProductsLeftText,
+                            }}
+                          ></div>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </div>
                   <div className="service-row my-5">
-                      <Container>
-                        <Row>
-                          <Col className="service-texts" lg={6}>
-                            <div className="service-content" dangerouslySetInnerHTML={{
-                        __html: data?.coquitlam?.mortgageProductsRightText,
-                      }}
-                    >
-                            </div>
-                          </Col>
-                          <Col className="service-texts" lg={6}>
-                            <div className="service-image">
-                              <Image
-                                src={data?.coquitlam?.mortgageProductsImage?.sourceUrl}
-                                alt={data?.coquitlam?.mortgageProductsImage?.altText}
-                                width="390"
-                                height="400"
-                                style={{ width: "100%", objectFit: "contain" }}
-                              />
-                            </div>
-                          </Col>
-                        </Row>
-                      </Container>
-                    </div>
-                    <div className="service-row my-5">
-                      <Container>
-                        <Row>
-                          <Col className="service-texts" lg={6}>
-                            <div className="service-image">
-                              <Image
-                                src={data?.coquitlam?.faqImage?.sourceUrl}
-                                alt={data?.coquitlam?.faqImage?.altText}
-                                width="390"
-                                height="400"
-                                style={{ width: "100%", objectFit: "contain" }}
-                              />
-                            </div>
-                          </Col>
-                          <Col className="service-texts" lg={6}>
-                            <div className="service-content" dangerouslySetInnerHTML={{
-                        __html: data?.coquitlam?.mortgageBrokerBottomText,
-                      }}
-                    >
-                            </div>
-                          </Col>
-                        </Row>
-                      </Container>
-                    </div>
+                    <Container>
+                      <Row>
+                        <Col className="service-texts" lg={6}>
+                          <div
+                            className="service-content"
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                data?.coquitlam?.mortgageProductsRightText,
+                            }}
+                          ></div>
+                        </Col>
+                        <Col className="service-texts" lg={6}>
+                          <div className="service-image">
+                            <Image
+                              src={
+                                data?.coquitlam?.mortgageProductsImage
+                                  ?.sourceUrl
+                              }
+                              alt={
+                                data?.coquitlam?.mortgageProductsImage?.altText
+                              }
+                              width="390"
+                              height="400"
+                              style={{ width: "100%", objectFit: "contain" }}
+                            />
+                          </div>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </div>
+                  <div className="service-row my-5">
+                    <Container>
+                      <Row>
+                        <Col className="service-texts" lg={6}>
+                          <div className="service-image">
+                            <Image
+                              src={data?.coquitlam?.faqImage?.sourceUrl}
+                              alt={data?.coquitlam?.faqImage?.altText}
+                              width="390"
+                              height="400"
+                              style={{ width: "100%", objectFit: "contain" }}
+                            />
+                          </div>
+                        </Col>
+                        <Col className="service-texts" lg={6}>
+                          <div
+                            className="service-content"
+                            dangerouslySetInnerHTML={{
+                              __html: data?.coquitlam?.mortgageBrokerBottomText,
+                            }}
+                          ></div>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </div>
                 </Row>
                 <Row className="apply-step">
                   <Col md={4}>
@@ -404,49 +405,16 @@ const BcCoquitlam = (props: MyProps) => {
                     <p>{data?.coquitlam?.mortgageBrokerDescription}</p>
                   </Col>
                 </Row>
-                {/* {data.coquitlam.mortgageRenovation == null ? (
-                  ""
-                ) : (
-                  <Row className="renovation-row">
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-3 renovation"
-                    >
-                      {data.coquitlam.mortgageRenovation.map((tab, item) => {
-                        return (
-                          <Tab
-                            key={item}
-                            eventKey={item.toString()}
-                            title={
-                              <h3 className="location-tab-title">
-                                {tab.title}
-                              </h3>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: tab.description,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )} */}
                 <Row className="my-5">
-                    <Image
-                      src={data?.coquitlam?.renovateImageSecond?.sourceUrl}
-                      alt={data?.coquitlam?.renovateImageSecond?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
+                  <Image
+                    src={data?.coquitlam?.renovateImageSecond?.sourceUrl}
+                    alt={data?.coquitlam?.renovateImageSecond?.altText}
+                    width="390"
+                    height="400"
+                    priority={true}
+                    style={{ width: "100%", objectFit: "contain" }}
+                  />
+                </Row>
                 <Row className="mortgage-broker-bottom text-center">
                   <Col>
                     <h2>{data?.coquitlam?.brokerCoquitlamTitle}</h2>
@@ -474,10 +442,10 @@ const BcCoquitlam = (props: MyProps) => {
                   <Col>
                     <h2>{data?.coquitlam?.contactTitle}</h2>
                     <div
-                              dangerouslySetInnerHTML={{
-                                __html: data?.coquitlam?.contactDescription,
-                              }}
-                            ></div>
+                      dangerouslySetInnerHTML={{
+                        __html: data?.coquitlam?.contactDescription,
+                      }}
+                    ></div>
                   </Col>
                 </Row>
                 {/* faq section end */}
