@@ -204,7 +204,7 @@ type MyProps = {
 const Maple = (props: MyProps) => {
   const { settings, mainMenus, mapleData, metaData } = props;
 
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState(null);
 
   return (
     <>
@@ -398,7 +398,7 @@ const Maple = (props: MyProps) => {
                   <Row className="renovation-tab-row">
                     <Tabs
                       id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
+                      activeKey={key == null ? 0 : key}
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
