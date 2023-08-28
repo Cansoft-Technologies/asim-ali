@@ -13,6 +13,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import MortgageAdvisor from "components/MortgageAdvisor";
 
 const responsive = {
   superLargeDesktop: {
@@ -56,6 +57,7 @@ export async function getStaticProps() {
               secondApplyStepTitle
               secondApplyStepDescription
               productsTitle
+              productsDescription
               productsRightText
               productsLeftText
               firstApplyStepTitle
@@ -88,19 +90,19 @@ export async function getStaticProps() {
                 title
                 description
               }
-              slider {
-                title
-                content
-              }
-              faqImage {
-                altText
-                sourceUrl
+              advisorData {
+                advisorCards {
+                  title
+                  description
+                }
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  altText
+                  sourceUrl
+                }
               }
               renovateImageFirst {
-                altText
-                sourceUrl
-              }
-              renovateImageSecond {
                 altText
                 sourceUrl
               }
@@ -202,7 +204,7 @@ type MyProps = {
 const Maple = (props: MyProps) => {
   const { settings, mainMenus, mapleData, metaData } = props;
 
-  const [key, setKey] = useState(null);
+  const [key, setKey] = useState(0);
 
   return (
     <>
@@ -273,60 +275,12 @@ const Maple = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Maple?.slider == null ? (
-                  ""
-                ) : (
-                  <Row className="application-slider">
-                    <Carousel
-                      autoPlay={true}
-                      infinite={true}
-                      responsive={responsive}
-                    >
-                      {data?.Maple?.slider.map((slide, a) => {
-                        return (
-                          <div
-                            key={a}
-                            className="application-slide text-center"
-                          >
-                            <span>{slide?.title}</span>
-                            <p>{slide?.content}</p>
-                          </div>
-                        );
-                      })}
-                    </Carousel>
-                  </Row>
-                )}
-
-                <Row className="product-service">
-                  <Col className="mb-5" md={12}>
-                    <h2 className="text-center">
-                      {data?.Maple?.productsTitle}
-                    </h2>
-                  </Col>
-                  <Col md={3}>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Maple?.productsLeftText,
-                      }}
-                    ></span>
-                  </Col>
-                  <Col md={6}>
-                    <Image
-                      src={data?.Maple?.productsImage?.sourceUrl}
-                      alt={data?.Maple?.productsImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Col>
-                  <Col md={3}>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Maple?.productsRightText,
-                      }}
-                    ></span>
-                  </Col>
+                <Row className="my-5">
+                  <Container>
+                    <div className="my-5">
+                      <MortgageAdvisor advisorData={data?.Maple?.advisorData} />
+                    </div>
+                  </Container>
                 </Row>
                 <Row className="apply-step">
                   <Col md={4}>
@@ -365,16 +319,71 @@ const Maple = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
-                <Row className="my-5">
-                    <Image
-                      src={data?.Maple?.renovateImageFirst?.sourceUrl}
-                      alt={data?.Maple?.renovateImageFirst?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
+                <Row className="product-service">
+                  <Col className="px-5" md={1}></Col>
+                  <Col className="py-3" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                    <h2 className="text-center">
+                      {data?.Maple?.productsTitle}
+                    </h2>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.Maple?.productsDescription,
+                      }}
+                      className="text-center"
+                    ></div>
+                  </Col>
+                  <Col className="px-5" md={1}></Col>
+                </Row>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Maple?.productsLeftText,
+                          }}
+                        ></div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Maple?.productsImage?.sourceUrl}
+                            alt={data?.Maple?.productsImage?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Maple?.renovateImageFirst?.sourceUrl}
+                            alt={data?.Maple?.renovateImageFirst?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Maple?.productsRightText,
+                          }}
+                        ></div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
                 <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
@@ -386,7 +395,7 @@ const Maple = (props: MyProps) => {
                 {data.Maple.renovation == null ? (
                   ""
                 ) : (
-                  <Row className="renovation-row">
+                  <Row className="renovation-tab-row">
                     <Tabs
                       id="controlled-tab-example"
                       activeKey={key == null ? 1 : key}
@@ -416,17 +425,7 @@ const Maple = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="my-5">
-                    <Image
-                      src={data?.Maple?.renovateImageSecond?.sourceUrl}
-                      alt={data?.Maple?.renovateImageSecond?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                  <Row className="mortgage-broker-bottom">
+                  <Row className="mortgage-broker-bottomtext-center mt-5">
                   <Col>
                     <h2>{data?.Maple?.bottomBrokerTitle}</h2>
                     <div
@@ -434,7 +433,7 @@ const Maple = (props: MyProps) => {
                                 __html: data?.Maple?.bottomBrokerDescription,
                               }}
                             ></div>
-                    {data?.Maple?.brokerLink == null ? (
+                    {/* {data?.Maple?.brokerLink == null ? (
                       ""
                     ) : (
                       <Link href={data?.Maple?.brokerLink?.url}>
@@ -442,24 +441,14 @@ const Maple = (props: MyProps) => {
                           Read More <FontAwesomeIcon icon={faChevronRight} />
                         </span>
                       </Link>
-                    )}
+                    )} */}
                   </Col>
                 </Row>
                 {/* faq section start */}
-                {data?.Maple?.faqImage !== null && 
-                <Row className="my-5">
-                <Image
-                  src={data?.Maple?.faqImage?.sourceUrl}
-                  alt={data?.Maple?.faqImage?.altText}
-                  width="390"
-                  height="400"
-                  priority={true}
-                  style={{ width: "100%", objectFit: "contain" }}
-                />
-              </Row> }
+
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
-                    {data?.Maple?.faqAccordion.map((qa, index) => {
+                    {data?.Maple?.faqAccordion?.map((qa, index) => {
                       return (
                         <Accordion.Item key={index} eventKey={index.toString()}>
                           <Accordion.Header as="h3">
