@@ -425,7 +425,7 @@ const Maple = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                  <Row className="mortgage-broker-bottomtext-center mt-5">
+                  <Row className="mortgage-broker-bottom text-center mt-5">
                   <Col>
                     <h2>{data?.Maple?.bottomBrokerTitle}</h2>
                     <div
