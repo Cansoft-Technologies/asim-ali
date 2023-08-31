@@ -89,10 +89,6 @@ export async function getStaticProps() {
                   sourceUrl
                 }
               }
-              brokerLink {
-                url
-                title
-              }
               productsImage {
                 altText
                 sourceUrl
@@ -283,7 +279,14 @@ const Delta = (props: MyProps) => {
                 </Row>
                 <Row className="product-service">
                   <Col className="px-5" md={1}></Col>
-                  <Col className="py-3" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                  <Col
+                    className="py-3"
+                    md={10}
+                    style={{
+                      border: "1px solid #f0b254",
+                      borderRadius: "10px",
+                    }}
+                  >
                     <h2 className="text-center">
                       {data?.Delta?.productsTitle}
                     </h2>
@@ -329,7 +332,7 @@ const Delta = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="apply-step" style={{marginTop: "80px"}}>
+                <Row className="apply-step" style={{ marginTop: "80px" }}>
                   <Col md={4}>
                     {data?.Delta?.firstApplyStepTitle == null ? (
                       ""
@@ -437,50 +440,35 @@ const Delta = (props: MyProps) => {
                         __html: data?.Delta?.bottomBrokerDescription,
                       }}
                     ></div>
-                    {data?.Delta?.brokerLink == null ? (
-                      ""
-                    ) : (
-                      <Link href={data?.Delta?.brokerLink?.url}>
-                        <span>
-                          Read More <FontAwesomeIcon icon={faChevronRight} />
-                        </span>
-                      </Link>
-                    )}
                   </Col>
                 </Row>
                 {/* faq section start */}
 
                 {data?.Delta?.faqAccordion == null ? (
-                  "") : (
-                    <Container>
-                      {/* <Row className="my-5">
-                    <Image
-                      src={data?.Delta?.faqImage?.sourceUrl}
-                      alt={data?.Delta?.faqImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row> */}
-                <div className="faq-accordion mt-5">
-                  <Accordion defaultActiveKey="0">
-                    {data?.Delta?.faqAccordion.map((qa, index) => {
-                      return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="h3">
-                            {qa.question}
-                          </Accordion.Header>
-                          <Accordion.Body
-                            dangerouslySetInnerHTML={{ __html: qa.answer }}
-                          ></Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
-                  </Accordion>
-                </div>
-                    </Container>
-                  )}
+                  ""
+                ) : (
+                  <Container>
+                    <div className="faq-accordion mt-5">
+                      <Accordion defaultActiveKey="0">
+                        {data?.Delta?.faqAccordion.map((qa, index) => {
+                          return (
+                            <Accordion.Item
+                              key={index}
+                              eventKey={index.toString()}
+                            >
+                              <Accordion.Header as="h3">
+                                {qa.question}
+                              </Accordion.Header>
+                              <Accordion.Body
+                                dangerouslySetInnerHTML={{ __html: qa.answer }}
+                              ></Accordion.Body>
+                            </Accordion.Item>
+                          );
+                        })}
+                      </Accordion>
+                    </div>
+                  </Container>
+                )}
 
                 {/* faq section end */}
               </Container>
