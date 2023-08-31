@@ -14,6 +14,7 @@ import { apolloClient } from "lib/apollo";
 import Link from "next/link";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import MortgageAdvisor from "components/MortgageAdvisor";
 
 const responsive = {
   superLargeDesktop: {
@@ -57,6 +58,7 @@ export async function getStaticProps() {
               secondApplyStepTitle
               secondApplyStepDescription
               mortgageProductsTitle
+              mortgageProductsDescription
               mortgageProductsLeftText
               mortgageProductsRightText
               mortgageBrokerTitle
@@ -69,40 +71,41 @@ export async function getStaticProps() {
               brokerCoquitlamTitle
               aboutKelownaText
               brokerCoquitlamDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
               mortgageRenovation {
                 title
                 description
+              }
+              advisorData {
+                advisorCards {
+                  title
+                  description
+                }
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  altText
+                  sourceUrl
+                }
               }
               mortgageProductsImage {
                 altText
                 sourceUrl
               }
-              kelownaSlider {
-                title
-                content
-              }
               kelownaBannerImage {
                 altText
                 sourceUrl
-              }
-              brokerCoquitlamLink {
-                url
-                title
-                target
               }
               aboutKelownaImage {
                 altText
                 sourceUrl
               }
-              faqImage {
+              brokerKelownaImage {
                 altText
                 sourceUrl
               }
               renovateImageFirst {
-                altText
-                sourceUrl
-              }
-              renovateImageSecond {
                 altText
                 sourceUrl
               }
@@ -276,62 +279,79 @@ const Kelowna = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Kelowna?.kelownaSlider == null ? (
-                  ""
-                ) : (
-                  <Row className="application-slider">
-                    <Carousel
-                      autoPlay={true}
-                      infinite={true}
-                      responsive={responsive}
-                    >
-                      {data?.Kelowna?.kelownaSlider.map((slide, a) => {
-                        return (
-                          <div
-                            key={a}
-                            className="application-slide text-center"
-                          >
-                            <span>{slide?.title}</span>
-                            <p>{slide?.content}</p>
-                          </div>
-                        );
-                      })}
-                    </Carousel>
-                  </Row>
-                )}
-
+                <Row className="my-5">
+                  <Container>
+                    <div className="my-5">
+                      <MortgageAdvisor advisorData={data?.Kelowna?.advisorData} />
+                    </div>
+                  </Container>
+                </Row>
                 <Row className="product-service">
-                  <Col className="mb-5" md={12}>
+                <Col className="px-5" md={1}></Col>
+                  <Col className="mb-5 py-3"  md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {data?.Kelowna?.mortgageProductsTitle}
                     </h2>
-                  </Col>
-                  <Col md={3}>
-                    <span
+                  <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.Kelowna?.mortgageProductsLeftText,
+                        __html: data?.Kelowna?.mortgageProductsDescription,
                       }}
-                    ></span>
-                  </Col>
-                  <Col md={6}>
-                    <Image
-                      src={data?.Kelowna?.mortgageProductsImage?.sourceUrl}
-                      alt={data?.Kelowna?.mortgageProductsImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Col>
-                  <Col md={3}>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Kelowna?.mortgageProductsRightText,
-                      }}
-                    ></span>
-                  </Col>
+                      className="text-center"
+                      ></div>
+                      </Col>
+                      <Col className="px-5" md={1}></Col>
                 </Row>
-                <Row className="apply-step">
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Kelowna?.mortgageProductsLeftText,
+                          }}
+                        ></div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Kelowna?.mortgageProductsImage?.sourceUrl}
+                            alt={data?.Kelowna?.mortgageProductsImage?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Kelowna?.renovateImageFirst?.sourceUrl}
+                            alt={data?.Kelowna?.renovateImageFirst?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Kelowna?.mortgageProductsRightText,
+                          }}
+                        ></div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <Row className="apply-step" style={{marginTop: "80px"}}>
                   <Col md={4}>
                     {data?.Kelowna?.firstApplyStepTitle == null ? (
                       ""
@@ -368,35 +388,30 @@ const Kelowna = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
-                <Row className="my-5">
-                    <Image
-                      src={data?.Kelowna?.renovateImageFirst?.sourceUrl}
-                      alt={data?.Kelowna?.renovateImageFirst?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
                 <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
                       {data?.Kelowna?.mortgageBrokerTitle}
                     </h2>
-                    <p>{data?.Kelowna?.mortgageBrokerDescription}</p>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.Kelowna?.mortgageBrokerDescription,
+                      }}
+                      className="text-center"
+                    ></div>
                   </Col>
                 </Row>
                 {data.Kelowna.mortgageRenovation == null ? (
                   ""
                 ) : (
-                  <Row className="renovation-row">
+                  <Row className="renovation-tab-row">
                     <Tabs
                       id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
+                      activeKey={key == null ? 0 : key}
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {data.Kelowna.mortgageRenovation.map((tab, item) => {
+                      {data.Kelowna?.mortgageRenovation.map((tab, item) => {
                         return (
                           <Tab
                             key={item}
@@ -419,45 +434,40 @@ const Kelowna = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="my-5">
-                    <Image
-                      src={data?.Kelowna?.renovateImageSecond?.sourceUrl}
-                      alt={data?.Kelowna?.renovateImageSecond?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                <Row className="broker-coquitlam">
+                <Row className="mortgage-broker-bottom text-center">
                   <Col>
                     <h2>{data?.Kelowna?.brokerCoquitlamTitle}</h2>
-                    <p>{data?.Kelowna?.brokerCoquitlamDescription}</p>
-                    {data?.Kelowna?.brokerCoquitlamLink == null ? (
-                      ""
-                    ) : (
-                      <Link href={data?.Kelowna?.brokerCoquitlamLink?.url}>
-                        <span>
-                          Read More <FontAwesomeIcon icon={faChevronRight} />
-                        </span>
-                      </Link>
-                    )}
+                    <div
+                              dangerouslySetInnerHTML={{
+                                __html: data?.Kelowna?.brokerCoquitlamDescription,
+                              }}
+                            ></div>
                   </Col>
                 </Row>
                 {/* faq section start */}
                 <Row className="my-5">
                     <Image
-                      src={data?.Kelowna?.faqImage?.sourceUrl}
-                      alt={data?.Kelowna?.faqImage?.altText}
+                      src={data?.Kelowna?.brokerKelownaImage?.sourceUrl}
+                      alt={data?.Kelowna?.brokerKelownaImage?.altText}
                       width="390"
                       height="400"
                       priority={true}
                       style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Row>
+                  <Row className="mortgage-broker-bottom text-center">
+                  <Col>
+                    <h2>{data?.Kelowna?.bottomBrokerTitle}</h2>
+                    <div
+                              dangerouslySetInnerHTML={{
+                                __html: data?.Kelowna?.bottomBrokerDescription,
+                              }}
+                            ></div>
+                  </Col>
+                </Row>
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
-                    {data?.Kelowna?.faqAccordion.map((qa, index) => {
+                    {data?.Kelowna?.faqAccordion?.map((qa, index) => {
                       return (
                         <Accordion.Item key={index} eventKey={index.toString()}>
                           <Accordion.Header as="h3">
