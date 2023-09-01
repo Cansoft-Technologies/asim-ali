@@ -426,7 +426,7 @@ const Kelowna = (props: MyProps) => {
                               dangerouslySetInnerHTML={{
                                 __html: tab.description,
                               }}
-                              className="renovation-content-list"
+                              className=""
                             ></div>
                           </Tab>
                         );
@@ -434,18 +434,16 @@ const Kelowna = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="mortgage-broker-bottom text-center">
-                  <Col>
-                    <h2>{data?.Kelowna?.brokerCoquitlamTitle}</h2>
+                <Row className="coquitlam-grid my-5">
+                  <Col md={6}>
+                  <h2>{data?.Kelowna?.brokerCoquitlamTitle}</h2>
                     <div
                               dangerouslySetInnerHTML={{
                                 __html: data?.Kelowna?.brokerCoquitlamDescription,
                               }}
                             ></div>
                   </Col>
-                </Row>
-                {/* faq section start */}
-                <Row className="my-5">
+                  <Col md={6}>
                     <Image
                       src={data?.Kelowna?.brokerKelownaImage?.sourceUrl}
                       alt={data?.Kelowna?.brokerKelownaImage?.altText}
@@ -454,7 +452,8 @@ const Kelowna = (props: MyProps) => {
                       priority={true}
                       style={{ width: "100%", objectFit: "contain" }}
                     />
-                  </Row>
+                  </Col>
+                </Row>
                   <Row className="mortgage-broker-bottom text-center">
                   <Col>
                     <h2>{data?.Kelowna?.bottomBrokerTitle}</h2>
