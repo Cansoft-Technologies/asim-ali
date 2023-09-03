@@ -12,6 +12,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import MortgageAdvisor from "components/MortgageAdvisor";
 
 const responsive = {
   superLargeDesktop: {
@@ -60,6 +61,7 @@ export async function getStaticProps() {
               secondApplyStepTitle
               secondApplyStepDescription
               productsTitle
+              productsDescription
               productsRightText
               productsLeftText
               firstApplyStepTitle
@@ -80,10 +82,6 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-              brokerLink {
-                url
-                title
-              }
               productsImage {
                 altText
                 sourceUrl
@@ -92,19 +90,19 @@ export async function getStaticProps() {
                 title
                 description
               }
-              slider {
-                title
-                content
-              }
-              faqImage {
-                altText
-                sourceUrl
+              advisorData {
+                advisorCards {
+                  title
+                  description
+                }
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  altText
+                  sourceUrl
+                }
               }
               renovateImageFirst {
-                altText
-                sourceUrl
-              }
-              renovateImageSecond {
                 altText
                 sourceUrl
               }
@@ -276,62 +274,118 @@ const Vancouver = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Vancouver?.slider == null ? (
-                  ""
-                ) : (
-                  <Row className="application-slider">
-                    <Carousel
-                      autoPlay={true}
-                      infinite={true}
-                      responsive={responsive}
-                    >
-                      {data?.Vancouver?.slider.map((slide, a) => {
-                        return (
-                          <div
-                            key={a}
-                            className="application-slide text-center"
-                          >
-                            <span>{slide?.title}</span>
-                            <p>{slide?.content}</p>
-                          </div>
-                        );
-                      })}
-                    </Carousel>
-                  </Row>
-                )}
-
                 <Row className="product-service">
-                  <Col className="mb-5" md={12}>
+                  <Col className="px-5" md={1}></Col>
+                  <Col className="py-3" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {data?.Vancouver?.productsTitle}
                     </h2>
-                  </Col>
-                  <Col md={3}>
-                    <span
+                    <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.Vancouver?.productsLeftText,
+                        __html: data?.Vancouver?.productsDescription,
                       }}
-                    ></span>
+                      className="text-center"
+                    ></div>
                   </Col>
-                  <Col md={6}>
-                    <Image
-                      src={data?.Vancouver?.productsImage?.sourceUrl}
-                      alt={data?.Vancouver?.productsImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Col>
-                  <Col md={3}>
-                    <span
+                  <Col className="px-5" md={1}></Col>
+                </Row>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Vancouver?.productsLeftText,
+                          }}
+                        ></div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Vancouver?.productsImage?.sourceUrl}
+                            alt={data?.Vancouver?.productsImage?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Vancouver?.renovateImageFirst?.sourceUrl}
+                            alt={data?.Vancouver?.renovateImageFirst?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Vancouver?.productsRightText,
+                          }}
+                        ></div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <Row className="mortgage-broker">
+                  <Col>
+                    <h2 className="headering-title">
+                      {data?.Vancouver?.brokerTitle}
+                    </h2>
+                    <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.Vancouver?.productsRightText,
+                        __html: data?.Vancouver?.brokerDescription,
                       }}
-                    ></span>
+                      className="text-center"
+                    ></div>
                   </Col>
                 </Row>
-                <Row className="apply-step">
+                {data.Vancouver.renovation == null ? (
+                  ""
+                ) : (
+                  <Row className="renovation-tab-row">
+                    <Tabs
+                      id="controlled-tab-example"
+                      activeKey={key == null ? 0 : key}
+                      onSelect={(k) => setKey(k)}
+                      className="mb-3 renovation"
+                    >
+                      {data?.Vancouver?.renovation?.map((tab, item) => {
+                        return (
+                          <Tab
+                            key={item}
+                            eventKey={item.toString()}
+                            title={
+                              <h3 className="location-tab-title">
+                                {tab.title}
+                              </h3>
+                            }
+                          >
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: tab.description,
+                              }}
+                              className="renovation-content-list"
+                            ></div>
+                          </Tab>
+                        );
+                      })}
+                    </Tabs>
+                  </Row>
+                )}
+                <Row className="apply-step" style={{ marginTop: "80px" }}>
                   <Col md={4}>
                     {data?.Vancouver?.firstApplyStepTitle == null ? (
                       ""
@@ -369,67 +423,13 @@ const Vancouver = (props: MyProps) => {
                   </Col>
                 </Row>
                 <Row className="my-5">
-                    <Image
-                      src={data?.Vancouver?.renovateImageFirst?.sourceUrl}
-                      alt={data?.Vancouver?.renovateImageFirst?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                <Row className="mortgage-broker">
-                  <Col>
-                    <p className="headering-title">
-                      {data?.Vancouver?.brokerTitle}
-                    </p>
-                    <p>{data?.Vancouver?.brokerDescription}</p>
-                  </Col>
+                  <Container>
+                    <div className="my-5">
+                      <MortgageAdvisor advisorData={data?.Vancouver?.advisorData} />
+                    </div>
+                  </Container>
                 </Row>
-                {data?.Vancouver?.renovation == null ? (
-                  ""
-                ) : (
-                  <Row className="renovation-row">
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-3 renovation"
-                    >
-                      {data?.Vancouver?.renovation?.map((tab, item) => {
-                        return (
-                          <Tab
-                            key={item}
-                            eventKey={item.toString()}
-                            title={
-                              <h3 className="location-tab-title">
-                                {tab.title}
-                              </h3>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: tab.description,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )}
-                <Row className="my-5">
-                    <Image
-                      src={data?.Vancouver?.renovateImageSecond?.sourceUrl}
-                      alt={data?.Vancouver?.renovateImageSecond?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Row>
-                <Row className="mortgage-broker-bottom">
+                  <Row className="mortgage-broker-bottom text-center mt-5">
                   <Col>
                     <h2>{data?.Vancouver?.bottomBrokerTitle}</h2>
                     <div
@@ -437,7 +437,7 @@ const Vancouver = (props: MyProps) => {
                                 __html: data?.Vancouver?.bottomBrokerDescription,
                               }}
                             ></div>
-                    {data?.Vancouver?.brokerLink == null ? (
+                    {/* {data?.Vancouver?.brokerLink == null ? (
                       ""
                     ) : (
                       <Link href={data?.Vancouver?.brokerLink?.url}>
@@ -445,26 +445,16 @@ const Vancouver = (props: MyProps) => {
                           Read More <FontAwesomeIcon icon={faChevronRight} />
                         </span>
                       </Link>
-                    )}
+                    )} */}
                   </Col>
                 </Row>
                 {/* faq section start */}
-                {data?.Vancouver?.faqImage !== null && 
-                <Row className="my-5">
-                <Image
-                  src={data?.Vancouver?.faqImage?.sourceUrl}
-                  alt={data?.Vancouver?.faqImage?.altText}
-                  width="390"
-                  height="400"
-                  priority={true}
-                  style={{ width: "100%", objectFit: "contain" }}
-                />
-              </Row> }
+
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
-                    {data?.Vancouver?.faqAccordion.map((qa, index) => {
+                    {data?.Vancouver?.faqAccordion?.map((qa, index) => {
                       return (
-                        <Accordion.Item key={index} eventKey={index?.toString()}>
+                        <Accordion.Item key={index} eventKey={index.toString()}>
                           <Accordion.Header as="h3">
                             {qa.question}
                           </Accordion.Header>
