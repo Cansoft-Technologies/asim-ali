@@ -1,9 +1,11 @@
 import { gql } from "@apollo/client";
 import { CTA, Footer, Header, Hero } from "components";
+import MortgageAdvisor from "components/MortgageAdvisor";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Accordion, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 
 export async function getStaticProps() {
@@ -31,15 +33,47 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-              ourServices {
-                serviceTitle
-                serviceContent
-                serviceImage {
+              productsTitle
+              productsDescription
+              productsRightText
+              productsLeftText
+              brokerTitle
+              brokerDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
+              aboutText
+              aboutImage {
+                altText
+                sourceUrl
+              }
+              productsImage {
+                altText
+                sourceUrl
+              }
+              renovation {
+                title
+                description
+              }
+              advisorData {
+                advisorCards {
+                  title
+                  description
+                }
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
                   altText
                   sourceUrl
                 }
               }
-              ourMortgageServicesTitle
+              renovateImageFirst {
+                altText
+                sourceUrl
+              }
+              faqAccordion {
+                question
+                answer
+              }
             }
           }
         }
@@ -133,7 +167,7 @@ type MyProps = {
 
 const CommercialVancouver = (props: MyProps) => {
   const { settings, mainMenus, commercialvancouverData, metaData } = props;
-
+  const [key, setKey] = useState(null);
   return (
     <>
       {commercialvancouverData?.map((data, index) => {
@@ -167,57 +201,189 @@ const CommercialVancouver = (props: MyProps) => {
                 <Hero
                   title={data?.commercialvancouver?.serviceBannerTitle}
                   heading={data?.commercialvancouver?.serviceBannerHeading}
-                  description={
-                    data?.commercialvancouver?.serviceBannerDescription
-                  }
-                  bgImage={
-                    data?.commercialvancouver?.serviceBannerImage?.sourceUrl
-                  }
+                  description={data?.commercialvancouver?.serviceBannerDescription}
+                  bgImage={data?.commercialvancouver?.serviceBannerImage?.sourceUrl}
                 />
               )}
 
-              <div className="service-container">
-                <h1 className="text-center mt-5">
-                  {data?.commercialvancouver?.ourMortgageServicesTitle}
-                </h1>
-
-                {data?.commercialvancouver?.ourServices.map((service, key) => {
-                  return (
-                    <div className="service-row" id={key} key={key}>
-                      <Container>
-                        <Row>
-                          <Col className="service-texts" lg={6}>
-                            <div className="service-image">
-                              <Image
-                                src={service?.serviceImage?.sourceUrl}
-                                alt={service?.serviceImage?.altText}
-                                width="390"
-                                height="400"
-                                priority={true}
-                                style={{ width: "100%", objectFit: "contain" }}
-                              />
-                            </div>
-                          </Col>
-                          <Col className="service-texts" lg={6}>
-                            <div className="service-content">
-                              <h3 className="mt-4">{service?.serviceTitle}</h3>
-                              {console.log(
-                                "Hello Conent",
-                                service?.serviceContent
-                              )}
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html: service?.serviceContent,
-                                }}
-                              ></div>
-                            </div>
-                          </Col>
-                        </Row>
-                      </Container>
+              <Container className="my-5">
+                <Row className="coquitlam-grid my-5">
+                  <Col md={7}>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.commercialvancouver?.aboutText,
+                      }}
+                    ></div>
+                  </Col>
+                  <Col md={5}>
+                    <Image
+                      src={data?.commercialvancouver?.aboutImage?.sourceUrl}
+                      alt={data?.commercialvancouver?.aboutImage?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Col>
+                </Row>
+                <Row className="my-5">
+                  <Container>
+                    <div className="my-5">
+                      <MortgageAdvisor
+                        advisorData={data?.commercialvancouver?.advisorData}
+                      />
                     </div>
-                  );
-                })}
-              </div>
+                  </Container>
+                </Row>
+                <Row className="product-service">
+                  <Col className="px-5" md={1}></Col>
+                  <Col
+                    className="py-3"
+                    md={10}
+                    style={{
+                      border: "1px solid #f0b254",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    <h2 className="text-center">
+                      {data?.commercialvancouver?.productsTitle}
+                    </h2>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.commercialvancouver?.productsDescription,
+                      }}
+                      className="text-center"
+                    ></div>
+                  </Col>
+                  <Col className="px-5" md={1}></Col>
+                </Row>
+                {data.commercialvancouver.renovation == null ? (
+                  ""
+                ) : (
+                  <Row
+                    className="renovation-tab-row"
+                    style={{ marginTop: "80px" }}
+                  >
+                    <Tabs
+                      id="controlled-tab-example"
+                      activeKey={key == null ? 0 : key}
+                      onSelect={(k) => setKey(k)}
+                      className="mb-3 renovation"
+                    >
+                      {data.commercialvancouver.renovation.map((tab, item) => {
+                        return (
+                          <Tab
+                            key={item}
+                            eventKey={item.toString()}
+                            title={
+                              <h3 className="location-tab-title">
+                                {tab.title}
+                              </h3>
+                            }
+                          >
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: tab.description,
+                              }}
+                              className="renovation-content-list"
+                            ></div>
+                          </Tab>
+                        );
+                      })}
+                    </Tabs>
+                  </Row>
+                )}
+                <Row
+                  className="mortgage-broker text-center"
+                  style={{ marginTop: "80px" }}
+                >
+                  <Col>
+                    <h2 className="headering-title">
+                      {data?.commercialvancouver?.brokerTitle}
+                    </h2>
+                    <p>{data?.commercialvancouver?.brokerDescription}</p>
+                  </Col>
+                </Row>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.commercialvancouver?.productsLeftText,
+                          }}
+                        ></div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.commercialvancouver?.productsImage?.sourceUrl}
+                            alt={data?.commercialvancouver?.productsImage?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.commercialvancouver?.renovateImageFirst?.sourceUrl}
+                            alt={data?.commercialvancouver?.renovateImageFirst?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.commercialvancouver?.productsRightText,
+                          }}
+                        ></div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <Row className="mortgage-broker-bottom text-center mt-5">
+                  <Col>
+                    <h2>{data?.commercialvancouver?.bottomBrokerTitle}</h2>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.commercialvancouver?.bottomBrokerDescription,
+                      }}
+                    ></div>
+                  </Col>
+                </Row>
+                {/* faq section start */}
+                <div className="faq-accordion">
+                  <Accordion defaultActiveKey="0">
+                    {data?.commercialvancouver?.faqAccordion?.map((qa, index) => {
+                      return (
+                        <Accordion.Item key={index} eventKey={index.toString()}>
+                          <Accordion.Header as="h3">
+                            {qa.question}
+                          </Accordion.Header>
+                          <Accordion.Body
+                            dangerouslySetInnerHTML={{ __html: qa.answer }}
+                          ></Accordion.Body>
+                        </Accordion.Item>
+                      );
+                    })}
+                  </Accordion>
+                </div>
+
+                {/* faq section end */}
+              </Container>
               <CTA />
             </main>
             <Footer settings={settings} mainMenus={mainMenus} />
