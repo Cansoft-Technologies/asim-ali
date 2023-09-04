@@ -10,6 +10,7 @@ import "react-multi-carousel/lib/styles.css";
 import { apolloClient } from "lib/apollo";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import MortgageAdvisor from "components/MortgageAdvisor";
 
 const responsive = {
   superLargeDesktop: {
@@ -49,14 +50,8 @@ export async function getStaticProps() {
               }
             }
             Refinance {
-              contactField
               heroTitle
               heroDescription
-              productsTitle
-              productsDescription
-              productsRightText
-              productsLeftText
-              brokerSection
               bannerTitle
               bannerHeading
               bannerDescription
@@ -69,21 +64,47 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
+              productsTitle
+              productsDescription
+              productsRightText
+              productsLeftText
+              brokerTitle
+              brokerDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
               productsImage {
                 altText
                 sourceUrl
               }
+              brokerImage {
+                altText
+                sourceUrl
+              }
+
+              brokerText
               renovation {
                 title
                 description
               }
-              slider {
-                title
-                content
+              advisorData {
+                advisorCards {
+                  title
+                  description
+                }
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  altText
+                  sourceUrl
+                }
+              }
+              renovateImageFirst {
+                altText
+                sourceUrl
               }
               faqAccordion {
-                answer
                 question
+                answer
               }
             }
           }
@@ -224,8 +245,8 @@ const Refinance = (props: MyProps) => {
                 <Row className="refinance-text my-5">
                   <Col md={5}>
                     <p>
-                      {data?.Refinance?.heroTitle?.split(" ")[0]}{" "}
-                      <span>{data?.Refinance?.heroTitle?.split(" ")[1]}</span>
+                      {data?.Refinance?.bannerTitle?.split(" ")[0]}{" "}
+                      <span>{data?.Refinance?.bannerTitle?.split(" ")[1]}</span>
                     </p>
                   </Col>
                   <Col md={7}>
@@ -251,83 +272,39 @@ const Refinance = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Refinance?.slider == null ? (
-                  ""
-                ) : (
-                  <Row className="application-slider">
-                    <Carousel
-                      autoPlay={true}
-                      infinite={true}
-                      responsive={responsive}
-                    >
-                      {data?.Refinance?.slider.map((slide, a) => {
-                        return (
-                          <div
-                            key={a}
-                            className="application-slide text-center"
-                          >
-                            <span>{slide?.title}</span>
-                            <p>{slide?.content}</p>
-                          </div>
-                        );
-                      })}
-                    </Carousel>
-                  </Row>
-                )}
-
+                <Row className="my-5">
+                  <Container>
+                    <div className="my-5">
+                      <MortgageAdvisor advisorData={data?.Refinance?.advisorData} />
+                    </div>
+                  </Container>
+                </Row>
                 <Row className="product-service">
-                  <Col className="mb-5" md={12}>
+                  <Col className="px-5" md={1}></Col>
+                  <Col className="py-3" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {data?.Refinance?.productsTitle}
                     </h2>
-                    <p className="text-center">
-                      {data?.Refinance?.productsDescription}
-                    </p>
-                  </Col>
-                  <Col md={3}>
-                    <span
+                    <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.Refinance?.productsLeftText,
+                        __html: data?.Refinance?.productsDescription,
                       }}
-                    ></span>
+                      className="text-center"
+                    ></div>
                   </Col>
-                  <Col md={6}>
-                    <Image
-                      src={data?.Refinance?.productsImage?.sourceUrl}
-                      alt={data?.Refinance?.productsImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
-                    />
-                  </Col>
-                  <Col md={3}>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Refinance?.productsRightText,
-                      }}
-                    ></span>
-                  </Col>
-                </Row>
-
-                <Row className="mortgage-broker">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data?.Refinance?.brokerSection,
-                    }}
-                  ></div>
+                  <Col className="px-5" md={1}></Col>
                 </Row>
                 {data.Refinance.renovation == null ? (
                   ""
                 ) : (
-                  <Row className="renovation-row">
+                  <Row className="renovation-tab-row">
                     <Tabs
                       id="controlled-tab-example"
-                      activeKey={key == null ? 1 : key}
+                      activeKey={key == null ? 0 : key}
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {data.Refinance.renovation.map((tab, item) => {
+                      {data?.Refinance?.renovation?.map((tab, item) => {
                         return (
                           <Tab
                             key={item}
@@ -350,12 +327,104 @@ const Refinance = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-
+                <Row className="mortgage-broker">
+                  <Col>
+                    <h2 className="headering-title">
+                      {data?.Refinance?.brokerTitle}
+                    </h2>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.Refinance?.brokerDescription,
+                      }}
+                      className="text-center"
+                    ></div>
+                  </Col>
+                </Row>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Refinance?.productsLeftText,
+                          }}
+                        ></div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Refinance?.productsImage?.sourceUrl}
+                            alt={data?.Refinance?.productsImage?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                <div className="service-row my-5">
+                  <Container>
+                    <Row>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Refinance?.renovateImageFirst?.sourceUrl}
+                            alt={data?.Refinance?.renovateImageFirst?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: data?.Refinance?.productsRightText,
+                          }}
+                        ></div>
+                      </Col>
+                    </Row>
+                  </Container>
+                </div>
+                
+                <Row className="coquitlam-grid my-5">
+                  <Col md={7}>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.Refinance?.brokerText,
+                      }}
+                    ></div>
+                  </Col>
+                  <Col md={5}>
+                    <Image
+                      src={data?.Refinance?.brokerImage?.sourceUrl}
+                      alt={data?.Refinance?.brokerImage?.altText}
+                      width="390"
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "contain" }}
+                    />
+                  </Col>
+                </Row>
+                  <Row className="mortgage-broker-bottom text-center mt-5">
+                  <Col>
+                    <h2>{data?.Refinance?.bottomBrokerTitle}</h2>
+                    <div
+                              dangerouslySetInnerHTML={{
+                                __html: data?.Refinance?.bottomBrokerDescription,
+                              }}
+                            ></div>
+                  </Col>
+                </Row>
                 {/* faq section start */}
 
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
-                    {data?.Refinance?.faqAccordion.map((qa, index) => {
+                    {data?.Refinance?.faqAccordion?.map((qa, index) => {
                       return (
                         <Accordion.Item key={index} eventKey={index.toString()}>
                           <Accordion.Header as="h3">
@@ -370,13 +439,7 @@ const Refinance = (props: MyProps) => {
                   </Accordion>
                 </div>
 
-                <Row className="mortgage-broker">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data?.Refinance?.contactField,
-                    }}
-                  ></div>
-                </Row>
+                {/* faq section end */}
               </Container>
             </main>
             <Footer settings={settings} mainMenus={mainMenus} />
