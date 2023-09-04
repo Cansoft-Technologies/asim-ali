@@ -59,16 +59,8 @@ export async function getStaticProps() {
             Vancouver {
               thirdApplyStepTitle
               secondApplyStepTitle
-              secondApplyStepDescription
-              productsTitle
-              productsDescription
-              productsRightText
-              productsLeftText
               firstApplyStepTitle
-              brokerTitle
-              brokerDescription
-              bottomBrokerTitle
-              bottomBrokerDescription
+              secondApplyStepDescription
               bannerTitle
               bannerHeading
               bannerDescription
@@ -82,6 +74,14 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
+              productsTitle
+              productsDescription
+              productsRightText
+              productsLeftText
+              brokerTitle
+              brokerDescription
+              bottomBrokerTitle
+              bottomBrokerDescription
               productsImage {
                 altText
                 sourceUrl
