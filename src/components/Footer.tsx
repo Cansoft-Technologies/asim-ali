@@ -182,6 +182,7 @@ const Footer = (props: MyProps) => {
                                   {item.childItems.nodes.map((submenu) => {
                                     return (
                                       <li key={submenu.uri}>
+                                        <span>
                                         <Nav.Link
                                           as={Link}
                                           href={`${submenu.uri}`}
@@ -193,6 +194,40 @@ const Footer = (props: MyProps) => {
                                             {submenu.label}
                                           </span>
                                         </Nav.Link>
+                                        {submenu?.label == "Commercial Mortgages" ? (
+                                        <ul className="submenu-child">
+
+                                    <li>
+                                      <Nav.Link
+                                        as={Link}
+                                        href={'/commercial-mortgage-in-surrey'}
+                                      >
+                                        <span
+                                          className="link"
+                                          onClick={() => submenu.uri}
+                                        >
+                                          Surrey
+                                        </span>
+                                      </Nav.Link>
+                                      
+                                    </li>
+                                    <li>
+                                      <Nav.Link
+                                        as={Link}
+                                        href={'/commercial-mortgage-in-vancouver'}
+                                      >
+                                        <span
+                                          className="link"
+                                          onClick={() => submenu.uri}
+                                        >
+                                          Vancouver
+                                        </span>
+                                      </Nav.Link>
+                                      
+                                    </li>
+                                        </ul>
+                                      ): ""}
+                                      </span>
                                       </li>
                                     );
                                   })}
