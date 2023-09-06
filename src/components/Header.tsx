@@ -67,58 +67,12 @@ type MyProps = {
   mainMenus: any;
 };
 
-const schema = {
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  name: "Mortgage Brokers",
-  image: [
-    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-9.webp",
-    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/home-banner.webp",
-    "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-8.webp",
-  ],
-  description:
-    "Asim Ali and his team of the best mortgage brokers in Surrey will help you with the best mortgage rates available.",
-  sku: "CAN1971SEO",
-  mpn: "925872",
-  brand: {
-    "@type": "Brand",
-    name: "Asim Ali",
-  },
-  review: {
-    "@type": "Review",
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: "5",
-      bestRating: "5",
-    },
-    author: {
-      "@type": "Person",
-      name: "Ghazala Sarwar",
-    },
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    bestRating: "5",
-    ratingCount: "213",
-  },
-  offers: {
-    "@type": "Offer",
-    url: "https://asimali.ca/",
-    priceCurrency: "CAD",
-    price: "499",
-    priceValidUntil: "2020-12-31",
-    availability: "https://schema.org/InStock",
-  },
-};
 
 function Header(props: MyProps) {
   const { settings, mainMenus } = props;
 
   const { menuItems } = client.useQuery();
-  const links = menuItems({
-    where: { location: MenuLocationEnum.PRIMARY },
-  }).nodes;
+  console.log(mainMenus);
 
   return (
     <>
@@ -172,10 +126,11 @@ function Header(props: MyProps) {
                                 </span>
                               </Nav.Link>
                               <ul className="submenu">
-                                {item.childItems.nodes.map((submenu) => {
+                                {item.childItems.nodes.map((submenu) => {   
                                   return (
                                     <li key={submenu.uri}>
-                                      <Nav.Link
+                                     <span>
+                                     <Nav.Link
                                         as={Link}
                                         href={`${submenu.uri}`}
                                       >
@@ -186,6 +141,41 @@ function Header(props: MyProps) {
                                           {submenu.label}
                                         </span>
                                       </Nav.Link>
+                                      
+                                      {submenu?.label == "Commercial Mortgages" ? (
+                                        <ul className="submenu-child">
+
+                                    <li>
+                                      <Nav.Link
+                                        as={Link}
+                                        href={'/commercial-mortgage-in-surrey'}
+                                      >
+                                        <span
+                                          className="sublink"
+                                          onClick={() => submenu.uri}
+                                        >
+                                          Surrey
+                                        </span>
+                                      </Nav.Link>
+                                      
+                                    </li>
+                                    <li>
+                                      <Nav.Link
+                                        as={Link}
+                                        href={'/commercial-mortgage-in-vancouver'}
+                                      >
+                                        <span
+                                          className="sublink"
+                                          onClick={() => submenu.uri}
+                                        >
+                                          Vancouver
+                                        </span>
+                                      </Nav.Link>
+                                      
+                                    </li>
+                                        </ul>
+                                      ): ""}
+                                     </span>
                                     </li>
                                   );
                                 })}
