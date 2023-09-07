@@ -81,7 +81,7 @@ function Header(props: MyProps) {
       <Container style={{maxWidth:"100%",backgroundColor: "#12143a"}}> 
       <Container style={{maxWidth:"1450px"}}> 
       <div className="top-nav">
-      <a href="mailto:admin@asimali.ca"><p className="brand-mail"><span><FontAwesomeIcon icon={faEnvelope} /></span> admin@asimali.ca</p></a>
+      <a href="mailto:admin@asimali.ca"><p className="brand-mail"><span><FontAwesomeIcon icon={faEnvelope} /></span> admin@asimali.ca | Licensed in BC & AB</p></a>
         <a href="tel:+1 (604) 591 3590"><p className="brand-cell"> <span><FontAwesomeIcon icon={faPhone} /> </span>+1 (604) 591 3590 </p></a>
       </div>
       </Container>
