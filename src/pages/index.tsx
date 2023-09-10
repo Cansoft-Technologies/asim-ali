@@ -17,9 +17,10 @@ import { apolloClient } from "../lib/apollo";
 import { gql } from '@apollo/client';
 import ClientReviews from 'components/ClientReviews';
 import MortgageAdvisor from 'components/MortgageAdvisor';
-import { Container } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import ContactSection from 'components/ContactSection';
 import FlexibilityTab from 'components/FlexibilityTab';
+import Image from 'next/image';
 
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
@@ -203,6 +204,10 @@ export async function getStaticProps() {
             title
             description
           }
+          bottomPartnerLogoSection {
+            altText
+            sourceUrl
+          }
           reviewSection {
             reviewTitle
             reviewDescription
@@ -237,12 +242,6 @@ export async function getStaticProps() {
             schemaProductRating
         }
         footerSettings {
-          footerPartnerLogoSection {
-            footerPartnerLogo {
-              altText
-              sourceUrl
-            }
-          }
           socialUrl {
             facebook
             tiktok
@@ -308,6 +307,7 @@ export async function getStaticProps() {
       teamData: data?.pages?.nodes[0]?.HomeLandingPage?.teamSection,
       meetings: data?.pages?.nodes[0]?.HomeLandingPage?.meetingSection,
       advisorData: data?.pages?.nodes[0]?.HomeLandingPage?.advisorSection,
+      bottomPartnerLogoSection: data?.pages?.nodes[0]?.HomeLandingPage?.bottomPartnerLogoSection,
       flexsliders: data?.pages?.nodes,
       splitImagesRight: data?.pages?.nodes,
       images: data?.pages?.nodes,
@@ -336,10 +336,11 @@ type MyProps = {
   reviewData: any;
   contactData: any;
   tabRenovationData: any;
+  bottomPartnerLogoSection: any;
 };
 
 export default function Page(props: MyProps) {
-  const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teamData, meetings, advisorData, flexsliders, splitImagesRight, images, reviewData,contactData,tabRenovationData } = props;
+  const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teamData, meetings, advisorData, flexsliders, splitImagesRight, images, reviewData,contactData,tabRenovationData,bottomPartnerLogoSection } = props;
 
 console.log(settings);
   return (
@@ -378,6 +379,25 @@ console.log(settings);
         <Gallery images={images} />
         <ClientReviews reviews={reviewData} />
         <CTA contactData={contactData}/>
+            <Container>
+              <div className="ms-auto mt-5 footer-partner-logo">
+              {bottomPartnerLogoSection?.map(
+                    (singleLogo) => {
+                      return (
+                        <div key={singleLogo.sourceUrl}>
+                          <Image
+                            src={singleLogo.sourceUrl}
+                            width="350"
+                            height="150"
+                            alt={singleLogo.altText}
+                            style={{ objectFit: "contain", width: "100%" }}
+                          />
+                        </div>
+                      );
+                    }
+                  )}
+              </div>
+            </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
     </>
