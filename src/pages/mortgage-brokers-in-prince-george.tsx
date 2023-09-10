@@ -110,13 +110,7 @@ export async function getStaticProps() {
                 tiktok
                 linkedin
                 instagram
-              }
-              footerPartnerLogoSection {
-                footerPartnerLogo {
-                  altText
-                  sourceUrl
-                }
-              }
+              }              
               copyrightText
               footerLeftWidget {
                 title
