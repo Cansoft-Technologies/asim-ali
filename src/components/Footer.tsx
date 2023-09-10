@@ -25,12 +25,6 @@ export async function getStaticProps() {
                 linkedin
                 instagram
               }
-              footerPartnerLogoSection {
-                footerPartnerLogo {
-                  altText
-                  sourceUrl
-                }
-              }
               copyrightText
               footerLeftWidget {
                 title
@@ -242,27 +236,6 @@ const Footer = (props: MyProps) => {
                     </ul>
                   );
                 })}
-              </div>
-            </Container>
-          </Row>
-          <Row>
-            <Container>
-              <div className="ms-auto my-lg-0 footer-partner-logo">
-              {prefixSettings?.footerPartnerLogoSection?.footerPartnerLogo?.map(
-                    (singleLogo) => {
-                      return (
-                        <div key={singleLogo.sourceUrl}>
-                          <Image
-                            src={singleLogo.sourceUrl}
-                            width="120"
-                            height="100"
-                            alt={singleLogo.altText}
-                            style={{ objectFit: "contain", width: "100%" }}
-                          />
-                        </div>
-                      );
-                    }
-                  )}
               </div>
             </Container>
           </Row>
