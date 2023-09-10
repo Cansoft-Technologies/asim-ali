@@ -129,12 +129,6 @@ export async function getStaticProps() {
                 linkedin
                 instagram
               }
-              footerPartnerLogoSection {
-                footerPartnerLogo {
-                  altText
-                  sourceUrl
-                }
-              }
               copyrightText
               footerLeftWidget {
                 title
@@ -277,13 +271,22 @@ const Kamloops = (props: MyProps) => {
                 <Row className="my-5">
                   <Container>
                     <div className="my-5">
-                      <MortgageAdvisor advisorData={data?.Kamloops?.advisorData} />
+                      <MortgageAdvisor
+                        advisorData={data?.Kamloops?.advisorData}
+                      />
                     </div>
                   </Container>
                 </Row>
                 <Row className="product-service">
                   <Col className="px-5" md={1}></Col>
-                  <Col className="py-3" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                  <Col
+                    className="py-3"
+                    md={10}
+                    style={{
+                      border: "1px solid #f0b254",
+                      borderRadius: "10px",
+                    }}
+                  >
                     <h2 className="text-center">
                       {data?.Kamloops?.productsTitle}
                     </h2>
@@ -329,7 +332,7 @@ const Kamloops = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="apply-step" style={{marginTop: "80px"}}>
+                <Row className="apply-step" style={{ marginTop: "80px" }}>
                   <Col md={4}>
                     {data?.Kamloops?.firstApplyStepTitle == null ? (
                       ""
@@ -366,7 +369,7 @@ const Kamloops = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
-                  <Row className="mortgage-broker">
+                <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
                       {data?.Kamloops?.brokerTitle}
@@ -433,10 +436,10 @@ const Kamloops = (props: MyProps) => {
                   <Col>
                     <h2>{data?.Kamloops?.bottomBrokerTitle}</h2>
                     <div
-                              dangerouslySetInnerHTML={{
-                                __html: data?.Kamloops?.bottomBrokerDescription,
-                              }}
-                            ></div>
+                      dangerouslySetInnerHTML={{
+                        __html: data?.Kamloops?.bottomBrokerDescription,
+                      }}
+                    ></div>
                     {data?.Kamloops?.brokerLink == null ? (
                       ""
                     ) : (
@@ -450,9 +453,10 @@ const Kamloops = (props: MyProps) => {
                 </Row>
                 {/* faq section start */}
                 {data?.Kamloops?.faqAccordion == null ? (
-                  "") : (
-                    <Container>
-                      {/* <Row className="my-5">
+                  ""
+                ) : (
+                  <Container>
+                    {/* <Row className="my-5">
                     <Image
                       src={data?.Kamloops?.faqImage?.sourceUrl}
                       alt={data?.Kamloops?.faqImage?.altText}
@@ -462,24 +466,27 @@ const Kamloops = (props: MyProps) => {
                       style={{ width: "100%", objectFit: "contain" }}
                     />
                   </Row> */}
-                <div className="faq-accordion mt-5">
-                  <Accordion defaultActiveKey="0">
-                    {data?.Kamloops?.faqAccordion.map((qa, index) => {
-                      return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="h3">
-                            {qa.question}
-                          </Accordion.Header>
-                          <Accordion.Body
-                            dangerouslySetInnerHTML={{ __html: qa.answer }}
-                          ></Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
-                  </Accordion>
-                </div>
-                    </Container>
-                  )}
+                    <div className="faq-accordion mt-5">
+                      <Accordion defaultActiveKey="0">
+                        {data?.Kamloops?.faqAccordion.map((qa, index) => {
+                          return (
+                            <Accordion.Item
+                              key={index}
+                              eventKey={index.toString()}
+                            >
+                              <Accordion.Header as="h3">
+                                {qa.question}
+                              </Accordion.Header>
+                              <Accordion.Body
+                                dangerouslySetInnerHTML={{ __html: qa.answer }}
+                              ></Accordion.Body>
+                            </Accordion.Item>
+                          );
+                        })}
+                      </Accordion>
+                    </div>
+                  </Container>
+                )}
 
                 {/* faq section end */}
               </Container>
