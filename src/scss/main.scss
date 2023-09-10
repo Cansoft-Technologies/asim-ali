@@ -538,6 +538,9 @@ body {
   height: 100%;
   position: relative;
 }
+.brand-mail span{
+  color: $color-secondary;
+}
 // footer style
 
 footer {
@@ -618,6 +621,7 @@ footer {
               ul.submenu-child{
                 display: none;
             position: absolute;
+            padding-left: 0px !important;
             // top: 23px;
             // left: 0;
             background-color: #12143a;
