@@ -32,18 +32,18 @@ module.exports = withBundleAnalyzer ( withFaust ( withPWA({
           permanent: true,
         },
         {
-          source: '/refinance-your-mortgage-in-vancouver/',
-          destination: '/',
+          source: '/refinance-your-mortgage-in-vancouver',
+          destination: 'https://asimali.ca',
           permanent: true,
         },
         {
           source: '/best-mortgage-rates-in-vancouver',
-          destination: '/',
+          destination: 'https://asimali.ca',
           permanent: true,
         },
         {
-          source: '/vancouver-empty-home-tax/',
-          destination: '/',
+          source: '/vancouver-empty-home-tax',
+          destination: 'https://asimali.ca',
           permanent: true,
         },
       ]
