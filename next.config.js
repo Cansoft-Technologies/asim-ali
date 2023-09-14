@@ -33,17 +33,17 @@ module.exports = withBundleAnalyzer ( withFaust ( withPWA({
         },
         {
           source: '/refinance-your-mortgage-in-vancouver/',
-          destination: '/mortgage-refinance-calculator-bc',
+          destination: '/',
           permanent: true,
         },
         {
           source: '/best-mortgage-rates-in-vancouver',
-          destination: '/commercial-mortgage-in-vancouver',
+          destination: '/',
           permanent: true,
         },
         {
           source: '/vancouver-empty-home-tax/',
-          destination: '/mortgage-broker-in-vancouver',
+          destination: '/',
           permanent: true,
         },
       ]
