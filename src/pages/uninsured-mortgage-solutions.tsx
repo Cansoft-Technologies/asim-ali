@@ -240,8 +240,8 @@ const UninsuredMortgage = (props: MyProps) => {
                       <Col className="service-texts" lg={6}>
                         <div className="service-image">
                           <Image
-                            src={data?.uninsuredMortgage?.productImageFirst?.sourceUrl}
-                            alt={data?.uninsuredMortgage?.productImageFirst?.altText}
+                            src={data?.uninsuredMortgage?.productImage?.sourceUrl}
+                            alt={data?.uninsuredMortgage?.productImage?.altText}
                             width="390"
                             height="400"
                             style={{ width: "100%", objectFit: "cover" }}
@@ -276,7 +276,11 @@ const UninsuredMortgage = (props: MyProps) => {
                     <h2 className="headering-title">
                       {data?.uninsuredMortgage?.brokerTitle}
                     </h2>
-                    <p>{data?.uninsuredMortgage?.brokerDescription}</p>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.uninsuredMortgage?.brokerDescription,
+                      }}
+                    ></div>
                   </Col>
                 </Row>
                 {data.uninsuredMortgage.renovation == null ? (
