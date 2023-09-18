@@ -170,6 +170,7 @@ const UninsuredMortgage = (props: MyProps) => {
                       property="og:description"
                       content={meta?.seo?.description}
                     />
+                    <meta name="robots" content="noindex,nofollow" />
                     <meta
                       property="og:image"
                       content={meta?.seo?.openGraph?.image?.url}
