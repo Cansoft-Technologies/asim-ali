@@ -39,6 +39,7 @@ export async function getStaticProps() {
               ourServices {
                 serviceTitle
                 serviceContent
+                serviceLink
                 serviceImage {
                   altText
                   sourceUrl
@@ -200,10 +201,10 @@ const Services = (props: MyProps) => {
                     infinite={true}
                     responsive={responsive}
                   >
-                    {data?.services?.ourServices.map((slide, i) => {
+                    {data?.services?.ourServices?.map((slide, i) => {
                       return (
                         <div key={i}>
-                          <a className="slide-text" href={`#${i}`}>
+                          <a className="slide-text" href={`${slide?.serviceLink || '#'}`}>
                             {slide?.serviceTitle}
                           </a>
                         </div>
