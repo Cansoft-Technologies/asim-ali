@@ -240,8 +240,8 @@ const UninsuredMortgage = (props: MyProps) => {
                       <Col className="service-texts" lg={6}>
                         <div className="service-image">
                           <Image
-                            src={data?.uninsuredMortgage?.productImage?.sourceUrl}
-                            alt={data?.uninsuredMortgage?.productImage?.altText}
+                            src={data?.uninsuredMortgage?.productsImage?.sourceUrl}
+                            alt={data?.uninsuredMortgage?.productsImage?.altText}
                             width="390"
                             height="400"
                             style={{ width: "100%", objectFit: "cover" }}
