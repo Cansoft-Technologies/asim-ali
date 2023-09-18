@@ -37,7 +37,7 @@ export async function getStaticProps() {
               productsDescription
               productsRightText
               brokerTitle
-              brokerDescription
+              topBrokerDescription
               bottomBrokerTitle
               bottomBrokerDescription
               aboutText
@@ -278,7 +278,7 @@ const UninsuredMortgage = (props: MyProps) => {
                     </h2>
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.uninsuredMortgage?.brokerDescription,
+                        __html: data?.uninsuredMortgage?.topBrokerDescription,
                       }}
                     ></div>
                   </Col>
