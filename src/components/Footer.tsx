@@ -219,6 +219,20 @@ const Footer = (props: MyProps) => {
                                       </Nav.Link>
                                       
                                     </li>
+                                    <li>
+                                      <Nav.Link
+                                        as={Link}
+                                        href={'/commercial-mortgage-in-bc'}
+                                      >
+                                        <span
+                                          className="link"
+                                          onClick={() => submenu.uri}
+                                        >
+                                          British Columbia
+                                        </span>
+                                      </Nav.Link>
+                                      
+                                    </li>
                                         </ul>
                                       ): ""}
                                       </span>
