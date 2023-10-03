@@ -46,6 +46,16 @@ module.exports = withBundleAnalyzer ( withFaust ( withPWA({
           destination: 'https://asimali.ca',
           permanent: true,
         },
+        {
+          source: '/vancity-mortgage-calculator',
+          destination: 'https://asimali.ca',
+          permanent: true,
+        },
+        {
+          source: '/mortgage-fund-canada',
+          destination: 'https://asimali.ca',
+          permanent: true,
+        },
       ]
     },
     async headers() {
