@@ -490,7 +490,7 @@ console.log(settings);
         <SplitImageLeft splitImagesLeft={splitImagesLeft} />
         <FlexibilityTab tabData={tabRenovationData}/>
         <MortgageAdvisor advisorData={mortgageServiceData}/>
-                    <Container className="mb-5 px-3 py-3" md={12} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                    <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
                     </h2>
