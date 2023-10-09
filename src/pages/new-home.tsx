@@ -412,6 +412,7 @@ console.log(settings);
               <meta property="og:title" content={meta?.seo?.title} />
               <meta property="og:description" content={meta?.seo?.description} />
               <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <meta name="robots" content="noindex,nofollow" />
             </>
           )
         })}
