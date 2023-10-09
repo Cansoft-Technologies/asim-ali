@@ -17,10 +17,13 @@ import { apolloClient } from "../lib/apollo";
 import { gql } from '@apollo/client';
 import ClientReviews from 'components/ClientReviews';
 import MortgageAdvisor from 'components/MortgageAdvisor';
-import { Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import ContactSection from 'components/ContactSection';
 import FlexibilityTab from 'components/FlexibilityTab';
 import Image from 'next/image';
+import MortgageFeatured from 'components/MortgageFeatured';
+import ServiceSection from 'components/ServiceSection';
+import HomeBuyerSection from 'components/HomeBuyerSection';
 
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
@@ -30,7 +33,7 @@ export async function getStaticProps() {
 
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 14}) {
+      pages(where: {id: 2856}) {
       nodes {
         seo {
           title
@@ -46,7 +49,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        HomeLandingPage {
+        NewHomeLandingPage {
           homeSliderSection {
             homeSlider {
               sliderTitle
@@ -87,6 +90,58 @@ export async function getStaticProps() {
               altText
             }
           }
+          featuredTextLeft
+          featuredTextRight
+          featuredImageRight {
+            altText
+            sourceUrl
+          }
+          featuredImageLeft {
+            altText
+            sourceUrl
+          }
+          approvalRenovation{
+            tabHeading
+            tabDetails{
+              title
+              description
+            }
+          }
+          mortgageServiceSection {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
+              title
+              description
+            }
+          }
+          tipsTitle
+          tipsDescription
+          tipsLeftText
+          tipsRightText
+          tipsImageRight {
+            altText
+            sourceUrl
+          }
+          tipsImageLeft {
+            altText
+            sourceUrl
+          }
+          homebuyerSection {
+            advisorTitle
+            advisorCards{
+              title
+              description
+              image{
+                sourceUrl
+                altText
+              }
+            }
+          }
           meetingSection {
             meetingTitle
             meetingDescription
@@ -109,18 +164,6 @@ export async function getStaticProps() {
               title
             }
           }
-          flexabilitySlider {
-            sliderTitle
-            sliderSubtitle
-            sliderDescription
-            sliderImage {
-              altText
-              sourceUrl
-            }
-            sliderButtonUrl {
-              url
-            }
-          }
           splitImageRightSection {
             splitTitle
             splitDescription
@@ -134,32 +177,21 @@ export async function getStaticProps() {
               title
             }
           }
-          gallery {
-            hideSection
-            galleryImage1 {
-              altText
-              sourceUrl
-            }
-            galleryImage2 {
-              altText
-              sourceUrl
-            }
-            galleryImage3 {
-              altText
-              sourceUrl
-            }
-            galleryImage4 {
-              altText
-              sourceUrl
-            }
-            galleryImage5 {
-              altText
-              sourceUrl
-            }
-          }
           advisorSection {
             advisorTitle
             advisorDescriptionBottom
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
+              title
+              description
+            }
+          }
+          mortgageInterest {
+            advisorTitle
+            advisorDescriptionTop
             advisorImage {
               sourceUrl
               altText
@@ -300,20 +332,32 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      sliders: data?.pages?.nodes[0]?.HomeLandingPage?.homeSliderSection,
-      msliders: data?.pages?.nodes[0]?.HomeLandingPage?.homeSliderSection,
-      helps: data?.pages?.nodes[0]?.HomeLandingPage?.weHelpSection,
-      logos: data?.pages?.nodes,
-      teamData: data?.pages?.nodes[0]?.HomeLandingPage?.teamSection,
-      meetings: data?.pages?.nodes[0]?.HomeLandingPage?.meetingSection,
-      advisorData: data?.pages?.nodes[0]?.HomeLandingPage?.advisorSection,
-      bottomPartnerLogoSection: data?.pages?.nodes[0]?.HomeLandingPage?.bottomPartnerLogoSection,
-      flexsliders: data?.pages?.nodes,
-      splitImagesRight: data?.pages?.nodes[0]?.HomeLandingPage?.splitImageRightSection,
-      images: data?.pages?.nodes,
-      reviewData: data?.pages?.nodes[0]?.HomeLandingPage?.reviewSection,
-      contactData: data?.pages?.nodes[0]?.HomeLandingPage?.homeContactSection,
-      tabRenovationData: data?.pages?.nodes[0]?.HomeLandingPage?.tabRenovation,
+      sliders: data?.pages?.nodes[0]?.NewHomeLandingPage?.homeSliderSection,
+      msliders: data?.pages?.nodes[0]?.NewHomeLandingPage?.homeSliderSection,
+      helps: data?.pages?.nodes[0]?.NewHomeLandingPage?.weHelpSection,
+      teamData: data?.pages?.nodes[0]?.NewHomeLandingPage?.teamSection,
+      meetings: data?.pages?.nodes[0]?.NewHomeLandingPage?.meetingSection,
+      advisorData: data?.pages?.nodes[0]?.NewHomeLandingPage?.advisorSection,
+      mortgageInterestData: data?.pages?.nodes[0]?.NewHomeLandingPage?.mortgageInterest,
+      mortgageServiceData: data?.pages?.nodes[0]?.NewHomeLandingPage?.mortgageServiceSection,
+      bottomPartnerLogoSection: data?.pages?.nodes[0]?.NewHomeLandingPage?.bottomPartnerLogoSection,
+      splitImagesRight: data?.pages?.nodes[0]?.NewHomeLandingPage?.splitImageRightSection,
+      splitImagesLeft: data?.pages?.nodes[0]?.NewHomeLandingPage?.splitImageLeftSection,
+      featuredTextLeft: data?.pages?.nodes[0]?.NewHomeLandingPage?.featuredTextLeft,
+      featuredImageLeft: data?.pages?.nodes[0]?.NewHomeLandingPage?.featuredImageLeft,
+      featuredImageRight: data?.pages?.nodes[0]?.NewHomeLandingPage?.featuredImageRight,
+      featuredTextRight: data?.pages?.nodes[0]?.NewHomeLandingPage?.featuredTextRight,
+      reviewData: data?.pages?.nodes[0]?.NewHomeLandingPage?.reviewSection,
+      contactData: data?.pages?.nodes[0]?.NewHomeLandingPage?.homeContactSection,
+      tabRenovationData: data?.pages?.nodes[0]?.NewHomeLandingPage?.tabRenovation,
+      approvalRenovationData: data?.pages?.nodes[0]?.NewHomeLandingPage?.approvalRenovation,
+      homebuyerSectionData: data?.pages?.nodes[0]?.NewHomeLandingPage?.homebuyerSection,
+      tipsTitle: data?.pages?.nodes[0]?.NewHomeLandingPage?.tipsTitle,
+      tipsDescription: data?.pages?.nodes[0]?.NewHomeLandingPage?.tipsDescription,
+      tipsLeftText: data?.pages?.nodes[0]?.NewHomeLandingPage?.tipsLeftText,
+      tipsRightText: data?.pages?.nodes[0]?.NewHomeLandingPage?.tipsRightText,
+      tipsImageRight: data?.pages?.nodes[0]?.NewHomeLandingPage?.tipsImageRight,
+      tipsImageLeft: data?.pages?.nodes[0]?.NewHomeLandingPage?.tipsImageLeft,
     },
     revalidate: 60
   };
@@ -326,21 +370,33 @@ type MyProps = {
   sliders: any;
   msliders: any;
   helps: any;
-  logos: any;
   teamData: any;
   meetings: any;
   advisorData: any;
-  flexsliders: any;
   splitImagesRight: any;
-  images: any;
+  splitImagesLeft: any;
   reviewData: any;
   contactData: any;
   tabRenovationData: any;
+  approvalRenovationData: any;
   bottomPartnerLogoSection: any;
+  featuredTextLeft: any;
+  featuredImageLeft: any;
+  featuredImageRight: any;
+  featuredTextRight: any;
+  mortgageServiceData: any;
+  tipsImageRight  : any;
+  tipsTitle: any;
+  tipsDescription: any;
+  tipsLeftText: any;
+  tipsRightText: any;
+  tipsImageLeft: any;
+  mortgageInterestData: any;
+  homebuyerSectionData: any;
 };
 
 export default function Page(props: MyProps) {
-  const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teamData, meetings, advisorData, flexsliders, splitImagesRight, images, reviewData,contactData,tabRenovationData,bottomPartnerLogoSection } = props;
+  const { settings, mainMenus, metaData, sliders, msliders, helps, teamData, meetings, advisorData, splitImagesRight, reviewData,contactData,tabRenovationData,approvalRenovationData,bottomPartnerLogoSection,  featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,splitImagesLeft,mortgageInterestData,homebuyerSectionData  } = props;
 
 console.log(settings);
   return (
@@ -369,16 +425,84 @@ console.log(settings);
           <MobileBanner msliders={msliders} />
         </div>
         <WeHelp helps={helps} />
-        <PartnerLogo logos={logos} />
         <Team teams={teamData} />
-        <FlexibilityTab tabData={tabRenovationData}/>
+        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
+                <Container className="apply-now-home">
+                <div className="text-center mt-5 mb-5">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: approvalRenovationData?.tabHeading,
+                  }}
+                ></div>
+              </div>
+                  <div className="mt-5">
+                  <Row className="apply-step">
+                  <Col md={4}>
+                    {approvalRenovationData?.tabDetails[0] == null ? (
+                      ""
+                    ) : (
+                      <div className="apply">
+                        <span>01</span>
+                        <p className='title'>{approvalRenovationData?.tabDetails[0]?.title}</p>
+                        <div className="desc" dangerouslySetInnerHTML={{
+                    __html: approvalRenovationData?.tabDetails[0]?.description,
+                  }}></div>
+                        <div className="apply-border"></div>
+                      </div>
+                    )}
+                  </Col>
+                  <Col md={4}>
+                    {approvalRenovationData?.tabDetails[1] == null  == null ? (
+                      ""
+                    ) : (
+                      <div className="approved">
+                        <span>02</span>
+                        <p className="title">
+                          {approvalRenovationData?.tabDetails[1]?.title}
+                        </p>
+                        <div className="desc" dangerouslySetInnerHTML={{
+                    __html: approvalRenovationData?.tabDetails[1]?.description,
+                  }}></div>
+                      </div>
+                    )}
+                  </Col>
+                  <Col md={4}>
+                    {approvalRenovationData?.tabDetails[2] == null  == null ? (
+                      ""
+                    ) : (
+                      <div className="apply">
+                        <span>03</span>
+                        <p className='title'>{approvalRenovationData?.tabDetails[2]?.title}</p>
+                        <div className="desc"  dangerouslySetInnerHTML={{
+                    __html: approvalRenovationData?.tabDetails[2]?.description,
+                  }}></div>
+                        <div className="apply-border"></div>
+                      </div>
+                    )}
+                  </Col>
+                </Row>
+                  </div>
+                </Container>
         <Meeting meetings={meetings} />
         <MortgageAdvisor advisorData={advisorData}/>
-        <FlexabilitySlider flexsliders={flexsliders} />
         <SplitImageRight splitImagesRight={splitImagesRight} />
-        <Gallery images={images} />
-        <ClientReviews reviews={reviewData} />
-        <CTA contactData={contactData}/>
+        <MortgageFeatured advisorData={mortgageInterestData}/>
+        <SplitImageLeft splitImagesLeft={splitImagesLeft} />
+        <FlexibilityTab tabData={tabRenovationData}/>
+        <MortgageAdvisor advisorData={mortgageServiceData}/>
+                    <Container className="mb-5 px-3 py-3" md={12} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                    <h2 className="text-center">
+                      {tipsTitle}
+                    </h2>
+                    <div
+                      className="text-center"
+                      dangerouslySetInnerHTML={{
+                        __html: tipsDescription,
+                      }}
+                    ></div>
+                  </Container>
+        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
+        <HomeBuyerSection homebuyerData={homebuyerSectionData} />
             <Container>
               <div className="ms-auto mt-5 footer-partner-logo">
               {bottomPartnerLogoSection?.map(

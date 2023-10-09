@@ -49,7 +49,7 @@ type MyProps = {
 
 const Banner = (props: MyProps) => {
   const { sliders } = props;
-
+console.log(sliders);
 
   return (
     <div>
@@ -58,7 +58,7 @@ const Banner = (props: MyProps) => {
           <link
             rel="preload"
             href={
-              sliders[0].HomeLandingPage.homeSliderSection.homeSlider[0]
+              sliders.homeSlider[0]
                 .sliderImage.sourceUrl
             }
             as="image"
@@ -66,11 +66,7 @@ const Banner = (props: MyProps) => {
         </Head>
 
         <Carousel fade controls={false}>
-          {sliders?.map(function (slider) {
-            return slider?.HomeLandingPage?.homeSliderSection?.homeSlider ==
-              null
-              ? ""
-              : slider?.HomeLandingPage?.homeSliderSection?.homeSlider.map(
+          {sliders?.homeSlider.map(
                   (slide) => {
                     return (
                       <Carousel.Item key={slide.sliderTitle}>
@@ -140,8 +136,7 @@ const Banner = (props: MyProps) => {
                       </Carousel.Item>
                     );
                   } //  --
-                );
-          })}
+                )}
         </Carousel>
       </div>
     </div>

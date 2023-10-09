@@ -42,12 +42,6 @@ const WeHelp = (props: MyProps) => {
 console.log(helps);
   return (
     <>
-      {helps?.map((help) => {
-        return (
-          <div key={help?.HomeLandingPage?.weHelpSection}>
-            {help?.HomeLandingPage?.weHelpSection?.hideSection == true ? (
-              ""
-            ) : (
               <section className="wehelp_section mb-5">
                 <Container>
                   <Row>
@@ -63,7 +57,7 @@ console.log(helps);
                           <source
                             type="video/mp4"
                             src={
-                              help?.HomeLandingPage?.weHelpSection?.helpImage
+                              helps?.helpImage
                                 ?.mediaItemUrl
                             }
                           />
@@ -77,24 +71,24 @@ console.log(helps);
                           className="wehelp_title"
                           dangerouslySetInnerHTML={{
                             __html:
-                              help?.HomeLandingPage?.weHelpSection?.helpTitle,
+                              helps?.helpTitle,
                           }}
                         ></div>
                         <div
                           className="wehelp_description"
                           dangerouslySetInnerHTML={{
                             __html:
-                              help?.HomeLandingPage?.weHelpSection
+                              helps
                                 ?.helpDescription,
                           }}
                         ></div>
-                        {help?.HomeLandingPage?.weHelpSection
+                        {helps
                         ?.helpButton == null ? (
                         ""
                       ) : (
                         <Link
                           href={
-                            help?.HomeLandingPage?.weHelpSection
+                            helps
                         ?.helpButton?.url
                           }
                         >
@@ -109,10 +103,6 @@ console.log(helps);
                   </Row>
                 </Container>
               </section>
-            )}
-          </div>
-        );
-      })}
     </>
   );
 };

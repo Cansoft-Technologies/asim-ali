@@ -29,7 +29,7 @@ const Team = (props: MyProps) => {
                         __html: teams?.teamTitle,
                       }}
                     ></div>
-                    <p
+                    <p className={styles.description}
                       dangerouslySetInnerHTML={{
                         __html: teams?.teamDescription,
                       }}
