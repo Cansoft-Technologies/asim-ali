@@ -14,7 +14,7 @@ export async function getStaticProps() {
               splitImageLeftSection {
                 splitTitle
                 splitDescription
-                splitImage {
+                splitImagesLeft {
                   altText
                   sourceUrl
                 }
@@ -48,25 +48,19 @@ const SplitImageLeft = (props: MyProps) => {
 
   return (
     <>
-      {splitImagesLeft?.map((splitImage) => {
-        return (
-          <section key={splitImage} className="split_section">
-            {splitImage?.HomeLandingPage?.splitImageLeftSection?.hideSection ==
-            true ? (
-              ""
-            ) : (
+          <section className="split_section my-5 ">
               <Container>
                 <Row>
                   <Col lg={8}>
                     <div className="split_image">
                       <Image
                         src={
-                          splitImage?.HomeLandingPage?.splitImageLeftSection
+                          splitImagesLeft
                             ?.splitImage?.sourceUrl
                         }
                         fill
                         alt={
-                          splitImage?.HomeLandingPage?.splitImageLeftSection
+                          splitImagesLeft
                             ?.splitImage?.altText
                         }
                       />
@@ -77,41 +71,22 @@ const SplitImageLeft = (props: MyProps) => {
                       <div
                         dangerouslySetInnerHTML={{
                           __html:
-                            splitImage?.HomeLandingPage?.splitImageLeftSection
+                            splitImagesLeft
                               ?.splitTitle,
                         }}
                       ></div>
                       <div
                         dangerouslySetInnerHTML={{
                           __html:
-                            splitImage?.HomeLandingPage?.splitImageLeftSection
+                            splitImagesLeft
                               ?.splitDescription,
                         }}
                       ></div>
-
-                      {splitImage?.HomeLandingPage?.splitImageLeftSection
-                        ?.splitButton == null ? (
-                        ""
-                      ) : (
-                        <Link
-                          href={
-                            splitImage?.HomeLandingPage?.splitImageLeftSection
-                              ?.splitButton.url
-                          }
-                        >
-                          <Button className="SplitBtn">
-                            Get <span>Approved</span>
-                          </Button>
-                        </Link>
-                      )}
                     </div>
                   </Col>
                 </Row>
               </Container>
-            )}
           </section>
-        );
-      })}
     </>
   );
 };

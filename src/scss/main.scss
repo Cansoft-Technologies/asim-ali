@@ -979,7 +979,47 @@ q.review-content {
     }
   }
 }
-
+.homebuyer-items{
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .card{
+    padding-top: 15px;
+    width: 300px;
+    height: 450px;
+    overflow-y: hidden ;
+    .card-index{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      p{
+        font-size: 2rem;
+        border: 1px solid $color-black;
+        background-color: #12143a;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        padding: 1px;
+        font-weight: 700;
+        color:#f0b254
+      }
+    }
+    .card-body{
+      .card-title{
+        font-size: 24px;
+        font-weight: 700;
+      }
+      p{
+        span{
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
 .gallery_section {
   margin-top: 50px;
   img {
@@ -1682,6 +1722,72 @@ textarea#comment {
         font-weight: 200;
         line-height: 25px;
         font-family: "AvenirBook";
+      }
+    }
+  }
+}
+.apply-now-home{
+  .apply-step {
+    margin-bottom: 80px;
+    div.col-md-4 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .apply {
+      background: $color-primary;
+      padding: 20px;
+      text-align: center;
+      color: $color-white;
+      position: relative;
+      z-index: auto;
+      width: 100%;
+      span {
+        font-size: 2rem;
+      }
+      p.title{
+        font-size: 2rem;
+      }
+      div.desc{
+        span{
+          color: $color-white;
+        font-size: 14px;
+        font-weight: 200;
+        font-family: "AvenirBook";
+        }
+      }
+      .apply-border {
+        border: 1px solid $color-secondary;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(-10deg);
+        z-index: -999;
+      }
+      .p {
+        font-size: 2rem;
+        line-height: 25px;
+      }
+    }
+    .approved {
+      border: 1px solid $color-secondary;
+      padding: 20px;
+      text-align: center;
+      span {
+        font-size: 2rem;
+      }
+      p.title{
+        font-size: 2rem;
+      }
+      div.desc{
+        span{
+        color: $color-primary;
+        font-size: 14px;
+        font-weight: 200;
+        font-family: "AvenirBook";
+        }
       }
     }
   }

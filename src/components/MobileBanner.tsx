@@ -55,7 +55,7 @@ const MobileBanner = (props: MyProps) => {
           <link
             rel="preload"
             href={
-              msliders[0].HomeLandingPage.homeSliderSection.homeSlider[0]
+              msliders?.homeSlider[0]
                 .mobileImage?.sourceUrl
             }
             as="image"
@@ -63,11 +63,7 @@ const MobileBanner = (props: MyProps) => {
         </Head>
 
         <Carousel fade controls={false}>
-          {msliders?.map(function (slider) {
-            return slider?.HomeLandingPage?.homeSliderSection?.homeSlider ==
-              null
-              ? ""
-              : slider?.HomeLandingPage?.homeSliderSection?.homeSlider.map(
+          {msliders?.homeSlider.map(
                   (slide) => {
                     return (
                       <Carousel.Item key={slide.sliderTitle}>
@@ -129,8 +125,7 @@ const MobileBanner = (props: MyProps) => {
                       </Carousel.Item>
                     );
                   } //  --
-                );
-          })}
+          )}
         </Carousel>
       </div>
     </div>
