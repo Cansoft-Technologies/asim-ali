@@ -33,6 +33,11 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
+              aboutText
+              aboutImage {
+                altText
+                sourceUrl
+              }
               productsTitle
               productsDescription
               productsRightText
@@ -41,11 +46,6 @@ export async function getStaticProps() {
               brokerDescription
               bottomBrokerTitle
               bottomBrokerDescription
-              aboutText
-              aboutImage {
-                altText
-                sourceUrl
-              }
               productsImage {
                 altText
                 sourceUrl

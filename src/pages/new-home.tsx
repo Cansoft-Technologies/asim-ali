@@ -504,6 +504,15 @@ console.log(settings);
                   </Container>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
         <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+        <Container className="mb-5">
+        <h2 className="text-center service-title">{contactData?.title}</h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: contactData?.description,
+        }}
+        className="text-lg text-start"
+      ></div>
+        </Container>
             <Container>
               <div className="ms-auto mt-5 footer-partner-logo">
               {bottomPartnerLogoSection?.map(
