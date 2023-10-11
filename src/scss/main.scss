@@ -14,7 +14,7 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
   width: 19px;
   display: block;
 }
-.link_banner{
+.link-banner{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,6 +187,7 @@ body {
             padding: 5px;
             display: block;
             cursor: pointer;
+            text-transform: uppercase;
             // margin: 0;
 
             border-bottom: 2px solid $color-secondary;
@@ -216,6 +217,7 @@ body {
           padding: 5px;
           display: block;
           cursor: pointer;
+          text-transform: uppercase;
           // margin: 0;
 
           border-bottom: 2px solid $color-secondary;

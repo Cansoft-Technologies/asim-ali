@@ -425,6 +425,25 @@ console.log(settings);
         <div className='mobile-banner'>
           <MobileBanner msliders={msliders} />
         </div>
+        <Container>
+              <div className="ms-auto mt-5 footer-partner-logo">
+              {bottomPartnerLogoSection?.map(
+                    (singleLogo) => {
+                      return (
+                        <div key={singleLogo.sourceUrl}>
+                          <Image
+                            src={singleLogo.sourceUrl}
+                            width="350"
+                            height="150"
+                            alt={singleLogo.altText}
+                            style={{ objectFit: "contain", width: "100%" }}
+                          />
+                        </div>
+                      );
+                    }
+                  )}
+              </div>
+            </Container>
         <WeHelp helps={helps} />
         <Team teams={teamData} />
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
@@ -484,7 +503,7 @@ console.log(settings);
                   {sliders?.homeSlider[0].sliderButtonUrl == null ? (
                                 ""
                               ) : (
-                                <Col className="text-start mt-5 link_banner" xs={12} lg="12">
+                                <Col className="text-start mt-5 link-banner" xs={12} lg="12">
                                   <Link href={sliders?.homeSlider[0].sliderButtonUrl.url}>
                                     <Button className="apply-button">
                                       Get <span>Approved</span>
@@ -535,25 +554,6 @@ console.log(settings);
           </div>
         <ContactSection/>
         </Container>
-            {/* <Container>
-              <div className="ms-auto mt-5 footer-partner-logo">
-              {bottomPartnerLogoSection?.map(
-                    (singleLogo) => {
-                      return (
-                        <div key={singleLogo.sourceUrl}>
-                          <Image
-                            src={singleLogo.sourceUrl}
-                            width="350"
-                            height="150"
-                            alt={singleLogo.altText}
-                            style={{ objectFit: "contain", width: "100%" }}
-                          />
-                        </div>
-                      );
-                    }
-                  )}
-              </div>
-            </Container> */}
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
     </>
