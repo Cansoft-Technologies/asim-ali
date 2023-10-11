@@ -7,41 +7,6 @@ import { useEffect, useState } from "react";
 import { Button, Carousel, Col, Row } from "react-bootstrap";
 import styles from "scss/components/Banner.module.scss";
 
-export async function getStaticProps() {
-
-  const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        pages(where: { id: 14 }) {
-          nodes {
-            HomeLandingPage {
-              homeSliderSection {
-                homeSlider {
-                  sliderTitle
-                  sliderSubtitle
-                  sliderDescription
-                  sliderImage {
-                    sourceUrl
-                  }
-                  sliderButtonUrl {
-                    url
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-  });
-
-  return {
-    props: {
-      sliders: data?.pages?.nodes,
-    },
-    revalidate: 60,
-  };
-}
 
 type MyProps = {
   sliders: any;

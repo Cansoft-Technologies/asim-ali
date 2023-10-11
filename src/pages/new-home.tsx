@@ -17,14 +17,14 @@ import { apolloClient } from "../lib/apollo";
 import { gql } from '@apollo/client';
 import ClientReviews from 'components/ClientReviews';
 import MortgageAdvisor from 'components/MortgageAdvisor';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import ContactSection from 'components/ContactSection';
 import FlexibilityTab from 'components/FlexibilityTab';
 import Image from 'next/image';
 import MortgageFeatured from 'components/MortgageFeatured';
 import ServiceSection from 'components/ServiceSection';
 import HomeBuyerSection from 'components/HomeBuyerSection';
-
+import Link from 'next/link';
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
 
@@ -481,6 +481,22 @@ console.log(settings);
                       </div>
                     )}
                   </Col>
+                  {sliders?.homeSlider[0].sliderButtonUrl == null ? (
+                                ""
+                              ) : (
+                                <Col className="text-start mt-5 link_banner" xs={12} lg="12">
+                                  <Link href={sliders?.homeSlider[0].sliderButtonUrl.url}>
+                                    <Button className="apply-button">
+                                      Get <span>Approved</span>
+                                    </Button>
+                                  </Link>
+                                  <Link href="/apply-now">
+                                    <Button className="apply-button">
+                                      <span>Apply Now</span>
+                                    </Button>
+                                  </Link>
+                                </Col>
+                              )}
                 </Row>
                   </div>
                 </Container>
@@ -513,7 +529,13 @@ console.log(settings);
         className="text-lg text-start"
       ></div>
         </Container>
-            <Container>
+        <Container className="mt-5">
+          <div className="my-5">
+            <p className="text-center service-title">Contact Us</p>
+          </div>
+        <ContactSection/>
+        </Container>
+            {/* <Container>
               <div className="ms-auto mt-5 footer-partner-logo">
               {bottomPartnerLogoSection?.map(
                     (singleLogo) => {
@@ -531,7 +553,7 @@ console.log(settings);
                     }
                   )}
               </div>
-            </Container>
+            </Container> */}
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
     </>
