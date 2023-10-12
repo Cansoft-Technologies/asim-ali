@@ -438,6 +438,8 @@ body {
 }
 
 .team_section {
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -449,7 +451,7 @@ body {
     padding: 50px;
     font-size: 70px;
     color: $color-white;
-    position: absolute;
+    // position: absolute;
     top: 40px;
     span {
       font-family: "AvenirBlack";
@@ -460,14 +462,10 @@ body {
     width: 80%;
     font-family: "AvenirBook";
     padding: 20px;
-    font-size: 20px;
+    font-size: 18px;
     color: $color-white;
-    position: absolute;
-    margin-top: 120px;
-    span {
-      font-family: "AvenirBlack";
-      color: $color-secondary;
-    }
+    // position: absolute;
+    // margin-top: 120px;
   }
 }
 
