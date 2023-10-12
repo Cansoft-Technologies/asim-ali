@@ -368,18 +368,7 @@ console.log(settings);
         <div className='mobile-banner'>
           <MobileBanner msliders={msliders} />
         </div>
-        <WeHelp helps={helps} />
-        <PartnerLogo logos={logos} />
-        <Team teams={teamData} />
-        <FlexibilityTab tabData={tabRenovationData}/>
-        <Meeting meetings={meetings} />
-        <MortgageAdvisor advisorData={advisorData}/>
-        <FlexabilitySlider flexsliders={flexsliders} />
-        <SplitImageRight splitImagesRight={splitImagesRight} />
-        <Gallery images={images} />
-        <ClientReviews reviews={reviewData} />
-        <CTA contactData={contactData}/>
-            <Container>
+        <Container>
               <div className="ms-auto mt-5 footer-partner-logo">
               {bottomPartnerLogoSection?.map(
                     (singleLogo) => {
@@ -398,6 +387,17 @@ console.log(settings);
                   )}
               </div>
             </Container>
+        <WeHelp helps={helps} />
+        <PartnerLogo logos={logos} />
+        <Team teams={teamData} />
+        <FlexibilityTab tabData={tabRenovationData}/>
+        <Meeting meetings={meetings} />
+        <MortgageAdvisor advisorData={advisorData}/>
+        <FlexabilitySlider flexsliders={flexsliders} />
+        <SplitImageRight splitImagesRight={splitImagesRight} />
+        <Gallery images={images} />
+        <ClientReviews reviews={reviewData} />
+        <CTA contactData={contactData}/>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
     </>
