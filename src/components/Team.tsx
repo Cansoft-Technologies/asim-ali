@@ -18,7 +18,7 @@ const Team = (props: MyProps) => {
                 ""
               ) : (
                 <div
-                  className="team_section"
+                  className="team_section my-5"
                   style={{
                     backgroundImage: `url("${teams?.teamImage?.sourceUrl}")`,
                   }}
