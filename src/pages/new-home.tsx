@@ -425,6 +425,7 @@ console.log(settings);
         <div className='mobile-banner'>
           <MobileBanner msliders={msliders} />
         </div>
+        <WeHelp helps={helps} />
         <Container>
               <div className="ms-auto mt-5 footer-partner-logo">
               {bottomPartnerLogoSection?.map(
@@ -444,7 +445,6 @@ console.log(settings);
                   )}
               </div>
             </Container>
-        <WeHelp helps={helps} />
         <Team teams={teamData} />
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
                 <Container className="apply-now-home">
