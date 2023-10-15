@@ -64,14 +64,14 @@ const MobileBanner = (props: MyProps) => {
 
         <Carousel fade controls={false}>
           {msliders?.homeSlider.map(
-                  (slide) => {
+                  (slide,idx) => {
                     return (
-                      <Carousel.Item key={slide.sliderTitle}>
+                      <Carousel.Item key={idx}>
                         <div
                           className={styles.overlay}
                           style={{
                             position: "relative",
-                            height: "55vh",
+                            height: "60vh",
                             width: "100%",
                             clipPath: "inset(0 0 0 0)",
                           }}
