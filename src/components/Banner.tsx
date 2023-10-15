@@ -34,7 +34,7 @@ console.log(sliders);
           {sliders?.homeSlider.map(
                   (slide) => {
                     return (
-                      <Carousel.Item key={slide.sliderTitle}>
+                      <Carousel.Item key={slide?.sliderTitle}>
                         {/* <div className={styles.overlay}></div> */}
 
                         <div
@@ -78,11 +78,11 @@ console.log(sliders);
                                   </p>
                                   <p>{slide?.sliderDescription || ""}</p>
                                 </div>
-                                {slide.sliderButtonUrl == null ? (
+                                {slide?.sliderButtonUrl == null ? (
                                 ""
                               ) : (
                                 <Col className="text-start mt-5 link_banner" xs={12} lg="12">
-                                  <Link href={slide.sliderButtonUrl.url}>
+                                  <Link href={slide?.sliderButtonUrl.url}>
                                     <Button className={styles.bannerBtn}>
                                       Get <span>Approved</span>
                                     </Button>

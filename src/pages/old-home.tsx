@@ -342,7 +342,7 @@ type MyProps = {
 export default function Page(props: MyProps) {
   const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teamData, meetings, advisorData, flexsliders, splitImagesRight, images, reviewData,contactData,tabRenovationData,bottomPartnerLogoSection } = props;
 
-console.log(settings);
+console.log(sliders);
   return (
     <>
       <Head>
