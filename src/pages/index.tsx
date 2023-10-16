@@ -1,7 +1,18 @@
+import { gql } from '@apollo/client';
+import ContactSection from 'components/ContactSection';
+import FlexibilityTab from 'components/FlexibilityTab';
+import HomeBuyerSection from 'components/HomeBuyerSection';
+import MortgageAdvisor from 'components/MortgageAdvisor';
+import MortgageFeaturedHome from 'components/MortgageFeaturedHome';
+import ServiceSection from 'components/ServiceSection';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import Header from '../components/Header';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
+import { apolloClient } from "../lib/apollo";
 const CTA = dynamic(() => import('../components/CTA'));
 const Banner = dynamic(() => import('../components/Banner'));
 const WeHelp = dynamic(() => import('../components/WeHelp'));
@@ -13,18 +24,6 @@ const FAQ = dynamic(() => import('components/FAQ'));
 const Gallery = dynamic(() => import('components/Gallery'));
 const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
 const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
-import { apolloClient } from "../lib/apollo";
-import { gql } from '@apollo/client';
-import ClientReviews from 'components/ClientReviews';
-import MortgageAdvisor from 'components/MortgageAdvisor';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import ContactSection from 'components/ContactSection';
-import FlexibilityTab from 'components/FlexibilityTab';
-import Image from 'next/image';
-import MortgageFeatured from 'components/MortgageFeatured';
-import ServiceSection from 'components/ServiceSection';
-import HomeBuyerSection from 'components/HomeBuyerSection';
-import Link from 'next/link';
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
 
@@ -521,7 +520,7 @@ console.log(settings);
         <Meeting meetings={meetings} />
         <MortgageAdvisor advisorData={advisorData}/>
         <SplitImageRight splitImagesRight={splitImagesRight} />
-        <MortgageFeatured advisorData={mortgageInterestData}/>
+        <MortgageFeaturedHome advisorData={mortgageInterestData}/>
         <SplitImageLeft splitImagesLeft={splitImagesLeft} />
         <FlexibilityTab tabData={tabRenovationData}/>
         <MortgageAdvisor advisorData={mortgageServiceData}/>

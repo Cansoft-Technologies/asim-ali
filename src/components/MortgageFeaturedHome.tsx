@@ -5,7 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 type MyProps = {
   advisorData: any;
 };
-export default function MortgageFeatured(props: MyProps) {
+export default function MortgageFeaturedHome(props: MyProps) {
   const { advisorData } = props;
   console.log(advisorData)
   return (
@@ -28,7 +28,7 @@ export default function MortgageFeatured(props: MyProps) {
             {advisorData?.advisorCards?.map((data, item) => {
               return(
                 <div key={item} className="split_text mb-5">
-              <h3 className="advisor-title">{data.title}</h3>
+              <h4 className="advisor-title">{data.title}</h4>
               <div
                 dangerouslySetInnerHTML={{
                   __html: data.description,
