@@ -34,7 +34,7 @@ export async function getStaticProps() {
 
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 3272}) {
+      pages(where: {id: 3741}) {
       nodes {
         seo {
           title
@@ -50,7 +50,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        NewComVancouver {
+        NewMaple {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -73,22 +73,8 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
-          mortgageServiceSection {
-            advisorTitle
-            advisorDescriptionTop
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-            }
-          }
           tipsTitle
           tipsDescription
-          benefitTitle
-          benefitDescription
           tipsLeftText
           tipsRightText
           tipsImageRight {
@@ -111,18 +97,6 @@ export async function getStaticProps() {
             }
           }
           advisorSection {
-            advisorTitle
-            advisorDescriptionTop
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-            }
-          }
-          mortgageInterest {
             advisorTitle
             advisorDescriptionTop
             advisorImage {
@@ -236,25 +210,22 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      advisorData: data?.pages?.nodes[0]?.NewComVancouver?.advisorSection,
-      serviceBannerData: data?.pages?.nodes[0]?.NewComVancouver,
-      mortgageBenefitsData: data?.pages?.nodes[0]?.NewComVancouver?.mortgageBenifits,
-      mortgageServiceData: data?.pages?.nodes[0]?.NewComVancouver?.mortgageServiceSection,
-      featuredTextLeft: data?.pages?.nodes[0]?.NewComVancouver?.featuredTextLeft,
-      featuredImageLeft: data?.pages?.nodes[0]?.NewComVancouver?.featuredImageLeft,
-      featuredImageRight: data?.pages?.nodes[0]?.NewComVancouver?.featuredImageRight,
-      featuredTextRight: data?.pages?.nodes[0]?.NewComVancouver?.featuredTextRight,
-      contactData: data?.pages?.nodes[0]?.NewComVancouver?.homeContactSection,
-      tabRenovationData: data?.pages?.nodes[0]?.NewComVancouver?.tabRenovation,
-      homebuyerSectionData: data?.pages?.nodes[0]?.NewComVancouver?.homebuyerSection,
-      benefitTitle: data?.pages?.nodes[0]?.NewComVancouver?.benefitTitle,
-      tipsTitle: data?.pages?.nodes[0]?.NewComVancouver?.tipsTitle,
-      tipsDescription: data?.pages?.nodes[0]?.NewComVancouver?.tipsDescription,
-      benefitDescription: data?.pages?.nodes[0]?.NewComVancouver?.benefitDescription,
-      tipsLeftText: data?.pages?.nodes[0]?.NewComVancouver?.tipsLeftText,
-      tipsRightText: data?.pages?.nodes[0]?.NewComVancouver?.tipsRightText,
-      tipsImageRight: data?.pages?.nodes[0]?.NewComVancouver?.tipsImageRight,
-      tipsImageLeft: data?.pages?.nodes[0]?.NewComVancouver?.tipsImageLeft,
+      advisorData: data?.pages?.nodes[0]?.NewMaple?.advisorSection,
+      serviceBannerData: data?.pages?.nodes[0]?.NewMaple,
+      mortgageBenefitsData: data?.pages?.nodes[0]?.NewMaple?.mortgageBenifits,
+      featuredTextLeft: data?.pages?.nodes[0]?.NewMaple?.featuredTextLeft,
+      featuredImageLeft: data?.pages?.nodes[0]?.NewMaple?.featuredImageLeft,
+      featuredImageRight: data?.pages?.nodes[0]?.NewMaple?.featuredImageRight,
+      featuredTextRight: data?.pages?.nodes[0]?.NewMaple?.featuredTextRight,
+      contactData: data?.pages?.nodes[0]?.NewMaple?.homeContactSection,
+      tabRenovationData: data?.pages?.nodes[0]?.NewMaple?.tabRenovation,
+      homebuyerSectionData: data?.pages?.nodes[0]?.NewMaple?.homebuyerSection,
+      tipsTitle: data?.pages?.nodes[0]?.NewMaple?.tipsTitle,
+      tipsDescription: data?.pages?.nodes[0]?.NewMaple?.tipsDescription,
+      tipsLeftText: data?.pages?.nodes[0]?.NewMaple?.tipsLeftText,
+      tipsRightText: data?.pages?.nodes[0]?.NewMaple?.tipsRightText,
+      tipsImageRight: data?.pages?.nodes[0]?.NewMaple?.tipsImageRight,
+      tipsImageLeft: data?.pages?.nodes[0]?.NewMaple?.tipsImageLeft,
     },
     revalidate: 60
   };
@@ -270,12 +241,9 @@ type MyProps = {
   featuredImageLeft: any;
   featuredImageRight: any;
   featuredTextRight: any;
-  mortgageServiceData: any;
   tipsImageRight  : any;
   tipsTitle: any;
   tipsDescription: any;
-  benefitTitle: any;
-  benefitDescription: any;
   tipsLeftText: any;
   tipsRightText: any;
   tipsImageLeft: any;
@@ -285,8 +253,8 @@ type MyProps = {
   advisorData: any;
 };
 
-export default function NewComVancouver(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData,benefitTitle,benefitDescription } = props;
+export default function NewMaple(props: MyProps) {
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData } = props;
 
 console.log(settings);
   return (
@@ -319,8 +287,8 @@ console.log(settings);
                   bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
                 />
               )}
-              <Container className="mb-5">
-              <Row className="coquitlam-grid my-5">
+              <Container className="coquitlam-grid mb-5">
+              <Row className="my-5">
                   <Col md={7}>
                     <div
                       dangerouslySetInnerHTML={{
@@ -340,23 +308,9 @@ console.log(settings);
                   </Col>
                 </Row>
                 </Container>
-                <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
-                    <h2 className="text-center">
-                      {benefitTitle}
-                    </h2>
-                    <div
-                      className="text-center"
-                      dangerouslySetInnerHTML={{
-                        __html: benefitDescription,
-                      }}
-                    ></div>
-                  </Container>
-                <MortgageFeatured advisorData={mortgageBenefitsData}/>
-        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
+        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
         <MortgageAdvisor advisorData={advisorData}/>
-                    <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-        <FlexibilityTab tabData={tabRenovationData}/>
-                    <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+        <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
                     </h2>
@@ -367,7 +321,9 @@ console.log(settings);
                       }}
                     ></div>
                   </Container>
-        <MortgageAdvisor advisorData={mortgageServiceData}/>
+        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>         
+        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
+                      <FlexibilityTab tabData={tabRenovationData}/>
         <HomeBuyerSection homebuyerData={homebuyerSectionData} />
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
