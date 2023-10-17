@@ -313,7 +313,7 @@ console.log(settings);
                   </Col>
                 </Row>
                 </Container>
-                <MortgageFeatured advisorData={mortgageBenefitsData}/>
+                <MortgageAdvisor advisorData={mortgageBenefitsData}/>
                     <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
                     <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
@@ -328,7 +328,7 @@ console.log(settings);
                   </Container>
                       <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
         <MortgageAdvisor advisorData={advisorData}/>
-        <MortgageAdvisor advisorData={mortgageServiceData}/>
+        <MortgageFeatured advisorData={mortgageServiceData}/>
         <HomeBuyerSection homebuyerData={homebuyerSectionData} />
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
