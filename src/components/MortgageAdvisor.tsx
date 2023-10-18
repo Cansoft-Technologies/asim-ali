@@ -24,7 +24,7 @@ export default function MortgageAdvisor(props: MyProps) {
         }}
         className=""
       ></div>
-            <div className="split_image" style={{marginTop:"100px"}}>
+            <div className="split_image">
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
                 fill
