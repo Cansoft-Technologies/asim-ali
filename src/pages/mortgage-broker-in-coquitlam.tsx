@@ -286,7 +286,7 @@ const BcCoquitlam = (props: MyProps) => {
                               alt={data?.coquitlam?.renovateImageFirst?.altText}
                               width="390"
                               height="400"
-                              style={{ width: "100%", objectFit: "contain" }}
+                              style={{ width: "100%", objectFit: "cover" }}
                             />
                           </div>
                         </Col>
@@ -325,7 +325,7 @@ const BcCoquitlam = (props: MyProps) => {
                               }
                               width="390"
                               height="400"
-                              style={{ width: "100%", objectFit: "contain" }}
+                              style={{ width: "100%", objectFit: "cover" }}
                             />
                           </div>
                         </Col>
@@ -342,7 +342,7 @@ const BcCoquitlam = (props: MyProps) => {
                               alt={data?.coquitlam?.mortgageProductsImageLeft?.altText}
                               width="390"
                               height="400"
-                              style={{ width: "100%", objectFit: "contain" }}
+                              style={{ width: "100%", objectFit: "cover" }}
                             />
                           </div>
                         </Col>
@@ -410,7 +410,7 @@ const BcCoquitlam = (props: MyProps) => {
                     width="390"
                     height="400"
                     priority={true}
-                    style={{ width: "100%", objectFit: "contain" }}
+                    style={{ width: "100%", objectFit: "cover" }}
                   />
                 </Row>
                 <Row className="mortgage-broker-bottom text-center">

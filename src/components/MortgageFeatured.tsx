@@ -9,11 +9,11 @@ export default function MortgageFeatured(props: MyProps) {
   const { advisorData } = props;
   console.log(advisorData)
   return (
-    <section className="split_section mt-5">
+    <section className="split_section">
       <Container>
         <Row>
-          <Col lg={5}>
-          <div
+          <Col lg={5} className='my-5'>
+            <div
                 dangerouslySetInnerHTML={{
                   __html: advisorData?.advisorTitle,
                 }}
@@ -45,8 +45,7 @@ export default function MortgageFeatured(props: MyProps) {
         className="service-description"
       ></div>
           </Col>
-          <Col lg={2}></Col>
-          <Col lg={5}>
+          <Col lg={7}>
             <div className="split_image" style={{marginTop:"100px"}}>
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}

@@ -7,7 +7,6 @@ type MyProps = {
 };
 export default function MortgageAdvisor(props: MyProps) {
   const { advisorData } = props;
-  console.log(advisorData)
   return (
     <section className="split_section">
       <Container>
@@ -23,7 +22,7 @@ export default function MortgageAdvisor(props: MyProps) {
         dangerouslySetInnerHTML={{
           __html: advisorData?.advisorDescriptionTop,
         }}
-        className="mt-5"
+        className=""
       ></div>
             <div className="split_image" style={{marginTop:"100px"}}>
               <Image

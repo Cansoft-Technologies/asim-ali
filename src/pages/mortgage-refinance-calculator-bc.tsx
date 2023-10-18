@@ -262,7 +262,7 @@ const Refinance = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>
@@ -400,7 +400,7 @@ const Refinance = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>

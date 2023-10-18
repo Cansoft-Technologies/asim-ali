@@ -264,7 +264,7 @@ const Kamloops = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>
@@ -463,7 +463,7 @@ const Kamloops = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Row> */}
                     <div className="faq-accordion mt-5">

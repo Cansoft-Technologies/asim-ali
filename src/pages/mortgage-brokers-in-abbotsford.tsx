@@ -320,7 +320,7 @@ const Abbotsford = (props: MyProps) => {
                               alt={data?.Abbotsford?.productsImageRight?.altText}
                               width="390"
                               height="400"
-                              style={{ width: "100%", objectFit: "contain" }}
+                              style={{ width: "100%", objectFit: "cover" }}
                             />
                           </div>
                         </Col>
@@ -341,7 +341,7 @@ const Abbotsford = (props: MyProps) => {
                               }
                               width="390"
                               height="400"
-                              style={{ width: "100%", objectFit: "contain" }}
+                              style={{ width: "100%", objectFit: "cover" }}
                             />
                           </div>
                         </Col>
@@ -408,7 +408,7 @@ const Abbotsford = (props: MyProps) => {
                     width="390"
                     height="400"
                     priority={true}
-                    style={{ width: "100%", objectFit: "contain" }}
+                    style={{ width: "100%", objectFit: "cover" }}
                   />
                 </Row>
                 <Container style={{marginTop: "60px"}}>
@@ -445,7 +445,7 @@ const Abbotsford = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Row> */}
                 <div className="faq-accordion mt-5">
