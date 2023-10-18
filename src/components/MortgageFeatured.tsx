@@ -46,7 +46,7 @@ export default function MortgageFeatured(props: MyProps) {
       ></div>
           </Col>
           <Col lg={7}>
-            <div className="split_image" style={{marginTop:"100px"}}>
+            <div className="split_image">
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
                 fill
