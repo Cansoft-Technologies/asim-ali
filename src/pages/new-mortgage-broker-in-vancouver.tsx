@@ -25,6 +25,7 @@ import MortgageFeatured from 'components/MortgageFeatured';
 import ServiceSection from 'components/ServiceSection';
 import HomeBuyerSection from 'components/HomeBuyerSection';
 import { Hero } from 'components';
+import AccordionSection from 'components/AccordionSection';
 
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
@@ -95,6 +96,18 @@ export async function getStaticProps() {
             sourceUrl
           }
           advisorSection {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
+              title
+              description
+            }
+          }
+          mortgageInterest {
             advisorTitle
             advisorDescriptionTop
             advisorImage {
@@ -212,6 +225,7 @@ export async function getStaticProps() {
       advisorData: data?.pages?.nodes[0]?.NewVancouver?.advisorSection,
       serviceBannerData: data?.pages?.nodes[0]?.NewVancouver,
       mortgageBenefitsData: data?.pages?.nodes[0]?.NewVancouver?.mortgageBenifits,
+      mortgageInterestData: data?.pages?.nodes[0]?.NewVancouver?.mortgageInterest,
       featuredTextLeft: data?.pages?.nodes[0]?.NewVancouver?.featuredTextLeft,
       featuredImageLeft: data?.pages?.nodes[0]?.NewVancouver?.featuredImageLeft,
       featuredImageRight: data?.pages?.nodes[0]?.NewVancouver?.featuredImageRight,
@@ -250,10 +264,11 @@ type MyProps = {
   mortgageBenefitsData: any;
   serviceBannerData: any;
   advisorData: any;
+  mortgageInterestData: any;
 };
 
 export default function NewVancouver(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData } = props;
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
 
 console.log(settings);
   return (
@@ -323,6 +338,7 @@ console.log(settings);
                   </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
+                      <AccordionSection advisorData={mortgageInterestData}/>
         <FlexibilityTab tabData={tabRenovationData}/>
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
