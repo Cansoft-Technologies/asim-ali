@@ -51,7 +51,7 @@ export default function ServiceSection(props: MyProps) {
                           />
                         </div>
                       </Col>
-                      <Col className="service-texts" lg={6}>
+                      <Col className="service-texts my-5" lg={6}>
                         <div
                           className="service-content"
                           dangerouslySetInnerHTML={{

@@ -287,8 +287,8 @@ console.log(settings);
                   bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
                 />
               )}
-              <Container className="coquitlam-grid mb-5">
-              <Row className="my-5">
+              <Container className="mb-5">
+              <Row className="my-5 coquitlam-grid">
                   <Col md={7}>
                     <div
                       dangerouslySetInnerHTML={{
@@ -303,7 +303,7 @@ console.log(settings);
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>

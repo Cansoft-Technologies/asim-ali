@@ -213,7 +213,7 @@ const HowItWorks = (props: MyProps) => {
                         width="390"
                         height="400"
                         priority={true}
-                        style={{ width: "100%", objectFit: "contain" }}
+                        style={{ width: "100%", objectFit: "cover" }}
                       />
                     </div>
                   </Col>
@@ -231,7 +231,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                   <Col md={8}>
@@ -254,7 +254,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>
@@ -279,7 +279,7 @@ const HowItWorks = (props: MyProps) => {
                         width="390"
                         height="400"
                         priority={true}
-                        style={{ width: "100%", objectFit: "contain" }}
+                        style={{ width: "100%", objectFit: "cover" }}
                       />
                     </div>
                   </Col>
@@ -297,7 +297,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                   <Col md={8}>
@@ -331,7 +331,7 @@ const HowItWorks = (props: MyProps) => {
                         width="390"
                         height="400"
                         priority={true}
-                        style={{ width: "100%", objectFit: "contain" }}
+                        style={{ width: "100%", objectFit: "cover" }}
                       />
                     </div>
                   </Col>
@@ -346,7 +346,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>
@@ -363,7 +363,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                   <Col md={6}>
@@ -373,7 +373,7 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>

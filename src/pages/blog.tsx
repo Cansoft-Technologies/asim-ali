@@ -247,7 +247,7 @@ const Blog = (props: MyProps) => {
                               alt={blog?.featuredImage?.node?.altText}
                               width="390"
                               height="400"
-                              style={{ width: "100%", objectFit: "contain" }}
+                              style={{ width: "100%", objectFit: "cover" }}
                             />
                           </div>
                           <div className="card-body">

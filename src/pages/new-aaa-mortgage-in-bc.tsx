@@ -1,7 +1,18 @@
+import { gql } from '@apollo/client';
+import { Hero } from 'components';
+import FlexibilityTab from 'components/FlexibilityTab';
+import HomeBuyerSection from 'components/HomeBuyerSection';
+import MortgageAdvisor from 'components/MortgageAdvisor';
+import ServiceSection from 'components/ServiceSection';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import Header from '../components/Header';
+import Image from 'next/image';
+import { Col, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
+import { apolloClient } from "../lib/apollo";
+import AccordionSection from 'components/AccordionSection';
+import MortgageFeatured from 'components/MortgageFeatured';
 const CTA = dynamic(() => import('../components/CTA'));
 const Banner = dynamic(() => import('../components/Banner'));
 const WeHelp = dynamic(() => import('../components/WeHelp'));
@@ -13,18 +24,6 @@ const FAQ = dynamic(() => import('components/FAQ'));
 const Gallery = dynamic(() => import('components/Gallery'));
 const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
 const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
-import { apolloClient } from "../lib/apollo";
-import { gql } from '@apollo/client';
-import ClientReviews from 'components/ClientReviews';
-import MortgageAdvisor from 'components/MortgageAdvisor';
-import { Col, Container, Row } from 'react-bootstrap';
-import ContactSection from 'components/ContactSection';
-import FlexibilityTab from 'components/FlexibilityTab';
-import Image from 'next/image';
-import MortgageFeatured from 'components/MortgageFeatured';
-import ServiceSection from 'components/ServiceSection';
-import HomeBuyerSection from 'components/HomeBuyerSection';
-import { Hero } from 'components';
 
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
@@ -34,7 +33,7 @@ export async function getStaticProps() {
 
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 2982}) {
+      pages(where: {id: 3874}) {
       nodes {
         seo {
           title
@@ -50,7 +49,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        NewSurrey {
+        NewAAAMortgage {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -73,17 +72,15 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
-          mortgageServiceSection {
-            advisorTitle
-            advisorDescriptionTop
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-            }
+          serviceRightText
+          serviceLeftText
+          serviceImageRight {
+            altText
+            sourceUrl
+          }
+          serviceImageLeft {
+            altText
+            sourceUrl
           }
           tipsTitle
           tipsDescription
@@ -96,17 +93,6 @@ export async function getStaticProps() {
           tipsImageLeft {
             altText
             sourceUrl
-          }
-          homebuyerSection {
-            advisorTitle
-            advisorCards{
-              title
-              description
-              image{
-                sourceUrl
-                altText
-              }
-            }
           }
           advisorSection {
             advisorTitle
@@ -234,23 +220,26 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      advisorData: data?.pages?.nodes[0]?.NewSurrey?.advisorSection,
-      serviceBannerData: data?.pages?.nodes[0]?.NewSurrey,
-      mortgageBenefitsData: data?.pages?.nodes[0]?.NewSurrey?.mortgageBenifits,
-      mortgageServiceData: data?.pages?.nodes[0]?.NewSurrey?.mortgageServiceSection,
-      featuredTextLeft: data?.pages?.nodes[0]?.NewSurrey?.featuredTextLeft,
-      featuredImageLeft: data?.pages?.nodes[0]?.NewSurrey?.featuredImageLeft,
-      featuredImageRight: data?.pages?.nodes[0]?.NewSurrey?.featuredImageRight,
-      featuredTextRight: data?.pages?.nodes[0]?.NewSurrey?.featuredTextRight,
-      contactData: data?.pages?.nodes[0]?.NewSurrey?.homeContactSection,
-      tabRenovationData: data?.pages?.nodes[0]?.NewSurrey?.tabRenovation,
-      homebuyerSectionData: data?.pages?.nodes[0]?.NewSurrey?.homebuyerSection,
-      tipsTitle: data?.pages?.nodes[0]?.NewSurrey?.tipsTitle,
-      tipsDescription: data?.pages?.nodes[0]?.NewSurrey?.tipsDescription,
-      tipsLeftText: data?.pages?.nodes[0]?.NewSurrey?.tipsLeftText,
-      tipsRightText: data?.pages?.nodes[0]?.NewSurrey?.tipsRightText,
-      tipsImageRight: data?.pages?.nodes[0]?.NewSurrey?.tipsImageRight,
-      tipsImageLeft: data?.pages?.nodes[0]?.NewSurrey?.tipsImageLeft,
+      serviceLeftText: data?.pages?.nodes[0]?.NewAAAMortgage?.serviceLeftText,
+      serviceRightText: data?.pages?.nodes[0]?.NewAAAMortgage?.serviceRightText,
+      serviceImageLeft: data?.pages?.nodes[0]?.NewAAAMortgage?.serviceImageLeft,
+      serviceImageRight: data?.pages?.nodes[0]?.NewAAAMortgage?.serviceImageRight,
+      advisorData: data?.pages?.nodes[0]?.NewAAAMortgage?.advisorSection,
+      mortgageInterestData: data?.pages?.nodes[0]?.NewAAAMortgage?.mortgageInterest,
+      serviceBannerData: data?.pages?.nodes[0]?.NewAAAMortgage,
+      mortgageBenefitsData: data?.pages?.nodes[0]?.NewAAAMortgage?.mortgageBenifits,
+      featuredTextLeft: data?.pages?.nodes[0]?.NewAAAMortgage?.featuredTextLeft,
+      featuredImageLeft: data?.pages?.nodes[0]?.NewAAAMortgage?.featuredImageLeft,
+      featuredImageRight: data?.pages?.nodes[0]?.NewAAAMortgage?.featuredImageRight,
+      featuredTextRight: data?.pages?.nodes[0]?.NewAAAMortgage?.featuredTextRight,
+      contactData: data?.pages?.nodes[0]?.NewAAAMortgage?.homeContactSection,
+      tabRenovationData: data?.pages?.nodes[0]?.NewAAAMortgage?.tabRenovation,
+      tipsTitle: data?.pages?.nodes[0]?.NewAAAMortgage?.tipsTitle,
+      tipsDescription: data?.pages?.nodes[0]?.NewAAAMortgage?.tipsDescription,
+      tipsLeftText: data?.pages?.nodes[0]?.NewAAAMortgage?.tipsLeftText,
+      tipsRightText: data?.pages?.nodes[0]?.NewAAAMortgage?.tipsRightText,
+      tipsImageRight: data?.pages?.nodes[0]?.NewAAAMortgage?.tipsImageRight,
+      tipsImageLeft: data?.pages?.nodes[0]?.NewAAAMortgage?.tipsImageLeft,
     },
     revalidate: 60
   };
@@ -258,6 +247,11 @@ export async function getStaticProps() {
 
 type MyProps = {
   settings: any;
+  mortgageInterestData: any;
+  serviceLeftText: any;
+  serviceRightText: any;
+  serviceImageLeft: any;
+  serviceImageRight: any;
   mainMenus: any;
   metaData: any;
   contactData: any;
@@ -266,7 +260,6 @@ type MyProps = {
   featuredImageLeft: any;
   featuredImageRight: any;
   featuredTextRight: any;
-  mortgageServiceData: any;
   tipsImageRight  : any;
   tipsTitle: any;
   tipsDescription: any;
@@ -274,13 +267,12 @@ type MyProps = {
   tipsRightText: any;
   tipsImageLeft: any;
   mortgageBenefitsData: any;
-  homebuyerSectionData: any;
   serviceBannerData: any;
   advisorData: any;
 };
 
-export default function NewSurrey(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData } = props;
+export default function NewAAAMortgage(props: MyProps) {
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft, serviceBannerData,advisorData,mortgageBenefitsData, serviceLeftText, serviceRightText, serviceImageLeft, serviceImageRight,mortgageInterestData } = props;
 
 console.log(settings);
   return (
@@ -334,12 +326,10 @@ console.log(settings);
                   </Col>
                 </Row>
                 </Container>
-                <MortgageFeatured advisorData={mortgageBenefitsData}/>
-        <FlexibilityTab tabData={tabRenovationData}/>
-        <MortgageAdvisor advisorData={advisorData}/>
+        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
+        <MortgageFeatured advisorData={advisorData}/>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
-        <MortgageAdvisor advisorData={mortgageServiceData}/>
-                    <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+        <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
                     </h2>
@@ -350,8 +340,10 @@ console.log(settings);
                       }}
                     ></div>
                   </Container>
-        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-        <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>         
+        <ServiceSection textLeft={serviceLeftText} textRight={serviceRightText} imageLeft={serviceImageLeft} imageRight={serviceImageRight}/>         
+                      <FlexibilityTab tabData={tabRenovationData}/>
+                      <AccordionSection advisorData={mortgageInterestData}/>
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
       <div

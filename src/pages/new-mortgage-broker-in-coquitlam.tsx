@@ -317,12 +317,12 @@ console.log(settings);
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
                 </Row>
                 </Container>
-        <MortgageFeatured advisorData={mortgageBenefitsData}/>
+        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <FlexibilityTab tabData={tabRenovationData}/>
         <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
@@ -337,7 +337,7 @@ console.log(settings);
                     ></div>
                   </Container>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-        <MortgageAdvisor advisorData={advisorData}/>
+        <MortgageFeatured advisorData={advisorData}/>
         <MortgageAdvisor advisorData={mortgageServiceData}/>
                     
         <HomeBuyerSection homebuyerData={homebuyerSectionData} />
