@@ -167,7 +167,6 @@ const AAAMortgage = (props: MyProps) => {
                     <meta name="description" content={meta?.seo?.description} />
                     <link rel="canonical" href={meta?.seo?.canonicalUrl} />
                     <meta property="og:title" content={meta?.seo?.title} />
-                    <meta name="robots" content="noindex,nofollow" />
                     <meta
                       property="og:description"
                       content={meta?.seo?.description}

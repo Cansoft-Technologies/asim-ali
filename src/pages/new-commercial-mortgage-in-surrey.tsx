@@ -311,6 +311,8 @@ console.log(settings);
                   heading={serviceBannerData?.serviceBannerHeading}
                   description={serviceBannerData?.serviceBannerDescription}
                   bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+                  buttonText="APPLY NOW"
+                  buttonURL="/apply-now"
                 />
               )}
               <Container className="mb-5">

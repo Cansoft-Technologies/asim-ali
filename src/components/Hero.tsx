@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import React from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 import styles from 'scss/components/Hero.module.scss';
 
 interface Props {
@@ -37,28 +39,30 @@ function Hero({
           <p className="hero-title">{title?.split(" ")[0]}
             <span>{title?.split(" ")[1]}</span>
           </p>
-          <div className={styles.intro}>
-            <div className={styles.children}>{children}</div>
-            {buttonText && buttonURL && (
-              <p>
-                <a href={buttonURL} className="button">
-                  {buttonText}
-                </a>
-              </p>
-            )}
-            {button2Text && button2URL && (
-              <p>
-                <a href={button2URL} className="button button-secondary">
-                  {button2Text}
-                </a>
-              </p>
-            )}
-          </div>
         </div>
         <div className="banner-bottom col-md-11 offset-md-1 mt-5">
           <p className='heading'>{heading}</p>
           <p className='description'>{description}</p>
         </div>
+        <Row className="align-items-center home-slide">
+        <Col className="text-center mt-5 link_banner">
+            {/* <div className={styles.children}>{children}</div> */}
+            {buttonText && buttonURL && (
+              <Link href={buttonURL}>
+              <Button className={styles.bannerBtn}>
+              {buttonText}
+              </Button>
+            </Link>
+            )}
+            {button2Text && button2URL && (
+              <Link href={button2URL}>
+              <Button className={styles.bannerBtn}>
+                <span>{button2Text}</span>
+              </Button>
+            </Link>
+            )}
+          </Col>
+          </Row>
       </div>
     </section>
   );
