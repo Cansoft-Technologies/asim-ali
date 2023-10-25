@@ -1,251 +1,304 @@
-import { gql } from "@apollo/client";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CTA, Footer, Header, Hero } from "components";
-import MortgageAdvisor from "components/MortgageAdvisor";
-import { advisorData } from "dummyData/dummy";
-import { apolloClient } from "lib/apollo";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import { Accordion, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
-import "react-multi-carousel/lib/styles.css";
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+const CTA = dynamic(() => import('../components/CTA'));
+const Banner = dynamic(() => import('../components/Banner'));
+const WeHelp = dynamic(() => import('../components/WeHelp'));
+const Team = dynamic(() => import('components/Team'));
+const Meeting = dynamic(() => import('components/Meeting'));
+const PartnerLogo = dynamic(() => import('components/PartnerLogo'));
+const SplitImageLeft = dynamic(() => import('../components/SplitImageLeft'));
+const FAQ = dynamic(() => import('components/FAQ'));
+const Gallery = dynamic(() => import('components/Gallery'));
+const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
+const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
+import { apolloClient } from "../lib/apollo";
+import { gql } from '@apollo/client';
+import ClientReviews from 'components/ClientReviews';
+import MortgageAdvisor from 'components/MortgageAdvisor';
+import { Col, Container, Row } from 'react-bootstrap';
+import ContactSection from 'components/ContactSection';
+import FlexibilityTab from 'components/FlexibilityTab';
+import Image from 'next/image';
+import MortgageFeatured from 'components/MortgageFeatured';
+import ServiceSection from 'components/ServiceSection';
+import HomeBuyerSection from 'components/HomeBuyerSection';
+import { Hero } from 'components';
+
+const MobileBanner = dynamic(() => import('components/MobileBanner'));
+
 
 
 export async function getStaticProps() {
+
   const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        pages(where: { id: 778 }) {
-          nodes {
-            seo {
-              title
-              description
-              canonicalUrl
-              focusKeywords
-              openGraph {
-                image {
-                  url
-                }
-              }
+    query: gql`query{
+      pages(where: {id: 3348}) {
+      nodes {
+        seo {
+          title
+          description
+          canonicalUrl
+          focusKeywords
+          openGraph {
+            image {
+              url
             }
-            Abbotsford {
-              thirdApplyStepTitle
-              secondApplyStepTitle
-              secondApplyStepDescription
-              productsTitle
-              productsDescription
-              productsRightText
-              productsLeftText
-              firstApplyStepTitle
-              brokerTitle
-              brokerDescription
-              bottomBrokerTitle
-              bottomBrokerDescription
-              topDescription
-              bannerTitle
-              bannerHeading
-              bannerDescription
+          }
+          jsonLd {
+            raw
+          }
+        }
+        NewAbbotsford {
+          serviceBannerTitle
+              serviceBannerHeading
+              serviceBannerDescription
+              serviceBannerImage {
+                altText
+                sourceUrl
+              }
               aboutText
               aboutImage {
                 altText
                 sourceUrl
               }
-              bannerImage {
-                altText
+          featuredTextLeft
+          featuredTextRight
+          featuredImageRight {
+            altText
+            sourceUrl
+          }
+          featuredImageLeft {
+            altText
+            sourceUrl
+          }
+          tipsTitle
+          tipsDescription
+          tipsLeftText
+          tipsRightText
+          tipsImageRight {
+            altText
+            sourceUrl
+          }
+          tipsImageLeft {
+            altText
+            sourceUrl
+          }
+          homebuyerSection {
+            advisorTitle
+            advisorCards{
+              title
+              description
+              image{
                 sourceUrl
-              }
-              brokerLink {
-                url
-                title
-              }
-              productsImageRight {
                 altText
-                sourceUrl
-              }
-              productsImageLeft {
-                altText
-                sourceUrl
-              }
-              advisorData {
-                advisorCards {
-                  title
-                  description
-                }
-                advisorImage {
-                  altText
-                  sourceUrl
-                }
-              }
-              tabs {
-                title
-                content
-              }
-              renovateImageFirst {
-                altText
-                sourceUrl
-              }
-              faqAccordion {
-                answer
-                question
               }
             }
           }
-        }
-
-        settingsOptions {
-          AsimOptions {
-            headerSettings {
-              uploadLogo {
-                sourceUrl
-                altText
-              }
+          advisorSection {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
             }
-            footerSettings {
-              socialUrl {
-                facebook
-                tiktok
-                linkedin
-                instagram
-              }             
-              copyrightText
-              footerLeftWidget {
-                title
-                phoneNumber
-                emailAddress
-              }
-              footerLogoSection {
-                logoText
-                logoUpload {
-                  altText
-                  sourceUrl
-                }
-              }
-              footerRightWidget {
-                title
-                address
-              }
+            advisorCards{
+              title
+              description
             }
           }
+          mortgageBenifits {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
+              title
+              description
+            }
+          }
+          tabRenovation{
+            tabHeading
+            tabDetails{
+              title
+              description
+            }
+          }
+          homeContactSection {
+            title
+            description
+          }
         }
+     
+     
+      }
+     
+    
+    
+ 
+  }
+   settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        generalSettings {
+            schemaProductRating
+        }
+        footerSettings {
+          socialUrl {
+            facebook
+            tiktok
+            linkedin
+            instagram
+          }
+          copyrightText
+          footerLeftWidget {
+            title
+            phoneNumber
+            emailAddress
+          }
+          footerLogoSection {
+            logoText
+            logoUpload {
+              altText
+              sourceUrl
+            }
+          }
+          footerRightWidget {
+            title
+            address
+          }
+        }
+      }
+    }
 
-        menus(where: { location: PRIMARY }) {
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
           nodes {
-            name
-            slug
-            menuItems(first: 50) {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                url
-                target
-                parentId
+                uri
                 label
-                cssClasses
-                description
-                id
-                childItems {
-                  nodes {
-                    uri
-                    label
-                  }
-                }
               }
             }
           }
         }
       }
-    `,
+    }
+}`,
   });
 
   return {
     props: {
-      abbotsfordData: data?.pages?.nodes,
-      metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
+      metaData: data?.pages?.nodes,
+      advisorData: data?.pages?.nodes[0]?.NewAbbotsford?.advisorSection,
+      serviceBannerData: data?.pages?.nodes[0]?.NewAbbotsford,
+      mortgageBenefitsData: data?.pages?.nodes[0]?.NewAbbotsford?.mortgageBenifits,
+      featuredTextLeft: data?.pages?.nodes[0]?.NewAbbotsford?.featuredTextLeft,
+      featuredImageLeft: data?.pages?.nodes[0]?.NewAbbotsford?.featuredImageLeft,
+      featuredImageRight: data?.pages?.nodes[0]?.NewAbbotsford?.featuredImageRight,
+      featuredTextRight: data?.pages?.nodes[0]?.NewAbbotsford?.featuredTextRight,
+      contactData: data?.pages?.nodes[0]?.NewAbbotsford?.homeContactSection,
+      tabRenovationData: data?.pages?.nodes[0]?.NewAbbotsford?.tabRenovation,
+      homebuyerSectionData: data?.pages?.nodes[0]?.NewAbbotsford?.homebuyerSection,
+      tipsTitle: data?.pages?.nodes[0]?.NewAbbotsford?.tipsTitle,
+      tipsDescription: data?.pages?.nodes[0]?.NewAbbotsford?.tipsDescription,
+      tipsLeftText: data?.pages?.nodes[0]?.NewAbbotsford?.tipsLeftText,
+      tipsRightText: data?.pages?.nodes[0]?.NewAbbotsford?.tipsRightText,
+      tipsImageRight: data?.pages?.nodes[0]?.NewAbbotsford?.tipsImageRight,
+      tipsImageLeft: data?.pages?.nodes[0]?.NewAbbotsford?.tipsImageLeft,
     },
-    revalidate: 60,
+    revalidate: 60
   };
 }
 
 type MyProps = {
-  abbotsfordData: any;
-  metaData: any;
   settings: any;
   mainMenus: any;
+  metaData: any;
+  contactData: any;
+  tabRenovationData: any;
+  featuredTextLeft: any;
+  featuredImageLeft: any;
+  featuredImageRight: any;
+  featuredTextRight: any;
+  tipsImageRight  : any;
+  tipsTitle: any;
+  tipsDescription: any;
+  tipsLeftText: any;
+  tipsRightText: any;
+  tipsImageLeft: any;
+  mortgageBenefitsData: any;
+  homebuyerSectionData: any;
+  serviceBannerData: any;
+  advisorData: any;
 };
 
-const Abbotsford = (props: MyProps) => {
-  const { settings, mainMenus, abbotsfordData, metaData } = props;
+export default function NewAbbotsford(props: MyProps) {
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData } = props;
 
-  const [key, setKey] = useState(null);
-
+console.log(settings);
   return (
     <>
-      {abbotsfordData?.map((data, index) => {
-        return (
-          <div key={index} className="Bc-Coquitlam">
-            <Head>
-              {metaData?.map((meta) => {
-                return (
-                  <>
-                    <title>{meta?.seo?.title}</title>
-                    <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                    <meta property="og:title" content={meta?.seo?.title} />
-                    <meta
-                      property="og:description"
-                      content={meta?.seo?.description}
-                    />
-                    <meta
-                      property="og:image"
-                      content={meta?.seo?.openGraph?.image?.url}
-                    />
-                    <meta name="robots" content="noindex" />
-                  </>
-                );
-              })}
-            </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+      <Head>
+        {metaData?.map((meta) => {
 
-            <main className="content">
-              {data?.Abbotsford?.bannerTitle == null ? (
+          return (
+            <>
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta property="og:description" content={meta?.seo?.description} />
+              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+            </>
+          )
+        })}
+      </Head>
+        <Header settings={settings} mainMenus={mainMenus} />
+      <main className="content">
+        {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
               ) : (
                 <Hero
-                  title={data?.Abbotsford?.bannerTitle}
-                  heading={data?.Abbotsford?.bannerHeading}
-                  description={data?.Abbotsford?.bannerDescription}
-                  bgImage={data?.Abbotsford?.bannerImage?.sourceUrl}
+                  title={serviceBannerData?.serviceBannerTitle}
+                  heading={serviceBannerData?.serviceBannerHeading}
+                  description={serviceBannerData?.serviceBannerDescription}
+                  bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
                 />
               )}
-
-              <Container className="my-5">
-                <Row className="refinance-text my-5">
-                  <Col md={5}>
-                    <p>
-                      {data?.Abbotsford?.bannerTitle?.split(" ")[0]}{" "}
-                      <span>
-                        {data?.Abbotsford?.bannerTitle?.split(" ")[1]}
-                      </span>
-                    </p>
-                  </Col>
-                  <Col md={7}>
-                    <span>{data?.Abbotsford?.topDescription}</span>
-                  </Col>
-                </Row>
-                <Row className="coquitlam-grid my-5">
+              <Container className="mb-5">
+              <Row className="coquitlam-grid my-5">
                   <Col md={7}>
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.Abbotsford?.aboutText,
+                        __html: serviceBannerData?.aboutText,
                       }}
                     ></div>
                   </Col>
                   <Col md={5}>
                     <Image
-                      src={data?.Abbotsford?.aboutImage?.sourceUrl}
-                      alt={data?.Abbotsford?.aboutImage?.altText}
+                      src={serviceBannerData?.aboutImage?.sourceUrl}
+                      alt={serviceBannerData?.aboutImage?.altText}
                       width="390"
                       height="400"
                       priority={true}
@@ -253,228 +306,35 @@ const Abbotsford = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Abbotsford?.tabs == null ? (
-                  ""
-                ) : (
-                  <Row className="renovation-tab-row">
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 0 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-5 renovation"
-                    >
-                      {data?.Abbotsford?.tabs?.map((slide, a) => {
-                        return (
-                          <Tab
-                            key={a}
-                            eventKey={a.toString()}
-                            title={
-                              <h2 className="location-tab-title">
-                                {slide?.title}
-                              </h2>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: slide?.content,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )}
-
-                <Row className="product-service mt-5">
-                <Col className="px-5" md={1}></Col>
-                  <Col className="px-5 py-5" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                </Container>
+        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
+        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
+        <FlexibilityTab tabData={tabRenovationData}/>
+                    <MortgageAdvisor advisorData={advisorData}/>
+        <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
-                      {data?.Abbotsford?.productsTitle}
+                      {tipsTitle}
                     </h2>
                     <div
                       className="text-center"
                       dangerouslySetInnerHTML={{
-                        __html: data?.Abbotsford?.productsDescription,
+                        __html: tipsDescription,
                       }}
                     ></div>
-                  </Col>
-                  <Col className="px-5" md={8}></Col>
-                </Row>
-                <div className="service-row my-5">
-                    <Container>
-                      <Row>
-                        <Col className="service-texts" lg={6}>
-                          <div
-                            className="service-content"
-                            dangerouslySetInnerHTML={{
-                              __html: data?.Abbotsford?.productsLeftText,
-                            }}
-                          ></div>
-                        </Col>
-                        <Col className="service-texts" lg={6}>
-                          <div className="service-image">
-                            <Image
-                              src={data?.Abbotsford?.productsImageRight?.sourceUrl}
-                              alt={data?.Abbotsford?.productsImageRight?.altText}
-                              width="390"
-                              height="400"
-                              style={{ width: "100%", objectFit: "cover" }}
-                            />
-                          </div>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                  <div className="service-row my-5">
-                    <Container>
-                      <Row>
-                        <Col className="service-texts" lg={6}>
-                          <div className="service-image">
-                            <Image
-                              src={
-                                data?.Abbotsford?.productsImageLeft?.sourceUrl
-                              }
-                              alt={
-                                data?.Abbotsford?.productsImageLeft?.altText
-                              }
-                              width="390"
-                              height="400"
-                              style={{ width: "100%", objectFit: "cover" }}
-                            />
-                          </div>
-                        </Col>
-                        <Col className="service-texts" lg={6}>
-                          <div
-                            className="service-content"
-                            dangerouslySetInnerHTML={{
-                              __html: data?.Abbotsford?.productsRightText,
-                            }}
-                          ></div>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                <Row className="apply-step" style={{marginTop: "80px"}}>
-                  <Col md={4}>
-                    {data?.Abbotsford?.firstApplyStepTitle == null ? (
-                      ""
-                    ) : (
-                      <div className="apply">
-                        <span>01</span>
-                        <p>{data?.Abbotsford?.firstApplyStepTitle}</p>
-                        <div className="apply-border"></div>
-                      </div>
-                    )}
-                  </Col>
-                  <Col md={4}>
-                    {data?.Abbotsford?.secondApplyStepTitle == null ? (
-                      ""
-                    ) : (
-                      <div className="approved">
-                        <span>02</span>
-                        <p>
-                          <span>{data?.Abbotsford?.secondApplyStepTitle}</span>
-                        </p>
-                        <p>{data?.Abbotsford?.secondApplyStepDescription}</p>
-                      </div>
-                    )}
-                  </Col>
-                  <Col md={4}>
-                    {data?.Abbotsford?.thirdApplyStepTitle == null ? (
-                      ""
-                    ) : (
-                      <div className="apply">
-                        <span>03</span>
-                        <p>{data?.Abbotsford?.thirdApplyStepTitle}</p>
-                        <div className="apply-border"></div>
-                      </div>
-                    )}
-                  </Col>
-                </Row>
-                <Row className="mortgage-broker">
-                  <Col>
-                    <h2 className="headering-title">
-                      {data?.Abbotsford?.brokerTitle}
-                    </h2>
-                    <p>{data?.Abbotsford?.brokerDescription}</p>
-                  </Col>
-                </Row>
-                <Row className="">
-                  <Image
-                    src={data?.Abbotsford?.renovateImageFirst?.sourceUrl}
-                    alt={data?.Abbotsford?.renovateImageFirst?.altText}
-                    width="390"
-                    height="400"
-                    priority={true}
-                    style={{ width: "100%", objectFit: "cover" }}
-                  />
-                </Row>
-                <Container style={{marginTop: "60px"}}>
-                  <div >
-                    <MortgageAdvisor advisorData={data?.Abbotsford?.advisorData} />
-                  </div>
-                </Container>
-                <Row className="mortgage-broker-bottom text-center">
-                  <Col>
-                    <h2>{data?.Abbotsford?.bottomBrokerTitle}</h2>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.Abbotsford?.bottomBrokerDescription,
-                      }}
-                    ></div>
-                    {data?.Abbotsford?.brokerLink == null ? (
-                      ""
-                    ) : (
-                      <Link href={data?.Abbotsford?.brokerLink?.url}>
-                        <span>
-                          Read More <FontAwesomeIcon icon={faChevronRight} />
-                        </span>
-                      </Link>
-                    )}
-                  </Col>
-                </Row>
-                {data?.Abbotsford?.faqAccordion == null ? (
-                  "") : (
-                    <Container>
-                      {/* <Row className="my-5">
-                    <Image
-                      src={data?.Abbotsford?.faqImage?.sourceUrl}
-                      alt={data?.Abbotsford?.faqImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "cover" }}
-                    />
-                  </Row> */}
-                <div className="faq-accordion mt-5">
-                  <Accordion defaultActiveKey="0">
-                    {data?.Abbotsford?.faqAccordion.map((qa, index) => {
-                      return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="h3">
-                            {qa.question}
-                          </Accordion.Header>
-                          <Accordion.Body
-                            dangerouslySetInnerHTML={{ __html: qa.answer }}
-                          ></Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
-                  </Accordion>
-                </div>
-                    </Container>
-                  )}
-              </Container>
-              <CTA />
-            </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
-          </div>
-        );
-      })}
+                  </Container>
+        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>         
+        <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+        <Container className="mb-5">
+        <h2 className="text-center service-title">{contactData?.title}</h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: contactData?.description,
+        }}
+        className="text-lg text-start"
+      ></div>
+        </Container>
+      </main>
+      <Footer settings={settings} mainMenus={mainMenus} />
     </>
   );
-};
-
-export default Abbotsford;
+}

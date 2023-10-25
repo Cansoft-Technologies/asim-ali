@@ -1,260 +1,318 @@
-import { gql } from "@apollo/client";
-import { CTA, Footer, Header, Hero } from "components";
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import { Accordion, Col, Container, Row } from "react-bootstrap";
-import "react-multi-carousel/lib/styles.css";
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+const CTA = dynamic(() => import('../components/CTA'));
+const Banner = dynamic(() => import('../components/Banner'));
+const WeHelp = dynamic(() => import('../components/WeHelp'));
+const Team = dynamic(() => import('components/Team'));
+const Meeting = dynamic(() => import('components/Meeting'));
+const PartnerLogo = dynamic(() => import('components/PartnerLogo'));
+const SplitImageLeft = dynamic(() => import('../components/SplitImageLeft'));
+const FAQ = dynamic(() => import('components/FAQ'));
+const Gallery = dynamic(() => import('components/Gallery'));
+const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
+const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
+import { apolloClient } from "../lib/apollo";
+import { gql } from '@apollo/client';
+import ClientReviews from 'components/ClientReviews';
+import MortgageAdvisor from 'components/MortgageAdvisor';
+import { Col, Container, Row } from 'react-bootstrap';
+import ContactSection from 'components/ContactSection';
+import FlexibilityTab from 'components/FlexibilityTab';
+import Image from 'next/image';
+import MortgageFeatured from 'components/MortgageFeatured';
+import ServiceSection from 'components/ServiceSection';
+import HomeBuyerSection from 'components/HomeBuyerSection';
+import { Hero } from 'components';
 
-import { apolloClient } from "lib/apollo";
+const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
+
 
 export async function getStaticProps() {
+
   const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        pages(where: { id: 557 }) {
-          nodes {
-            seo {
+    query: gql`query{
+      pages(where: {id: 3152}) {
+      nodes {
+        seo {
+          title
+          description
+          canonicalUrl
+          focusKeywords
+          openGraph {
+            image {
+              url
+            }
+          }
+          jsonLd {
+            raw
+          }
+        }
+        NewCoquitlam {
+          serviceBannerTitle
+              serviceBannerHeading
+              serviceBannerDescription
+              serviceBannerImage {
+                altText
+                sourceUrl
+              }
+              aboutText
+              aboutImage {
+                altText
+                sourceUrl
+              }
+          featuredTextLeft
+          featuredTextRight
+          featuredImageRight {
+            altText
+            sourceUrl
+          }
+          featuredImageLeft {
+            altText
+            sourceUrl
+          }
+          mortgageServiceSection {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
               title
               description
-              canonicalUrl
-              focusKeywords
-              openGraph {
-                image {
-                  url
-                }
-              }
             }
-            coquitlam {
-              coquitlamBannerTitle
-              coquitlamBannerHeading
-              coquitlamBannerDescription
-              contactTitle
-              contactDescription
-              topDescription
-              thirdApplyStepTitle
-              secondApplyStepTitle
-              secondApplyStepDescription
-              mortgageProductsTitle
-              mortgageProductsDescription
-              mortgageProductsRightText
-              mortgageProductsLeftText
-              mortgageBrokerBottomText
-              mortgageBrokerTitle
-              mortgageBrokerDescription
-              firstApplyStepTitle
-              brokerCoquitlamTitle
-              brokerCoquitlamDescription
-              aboutCoquitlamText
-              mortgageProductsImage {
-                altText
+          }
+          tipsTitle
+          tipsDescription
+          tipsLeftText
+          tipsRightText
+          tipsImageRight {
+            altText
+            sourceUrl
+          }
+          tipsImageLeft {
+            altText
+            sourceUrl
+          }
+          homebuyerSection {
+            advisorTitle
+            advisorCards{
+              title
+              description
+              image{
                 sourceUrl
-              }
-              mortgageProductsImageLeft {
                 altText
-                sourceUrl
-              }
-              coquitlamBannerImage {
-                altText
-                sourceUrl
-              }
-              brokerCoquitlamLink {
-                url
-              }
-              aboutCoquitlamImage {
-                altText
-                sourceUrl
-              }
-              mortgageRenovation {
-                title
-                description
-              }
-              renovateImageFirst {
-                altText
-                sourceUrl
-              }
-              renovateImageSecond {
-                altText
-                sourceUrl
-              }
-              faqAccordion {
-                question
-                answer
               }
             }
           }
-        }
-
-        settingsOptions {
-          AsimOptions {
-            headerSettings {
-              uploadLogo {
-                sourceUrl
-                altText
-              }
+          advisorSection {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
             }
-            footerSettings {
-              socialUrl {
-                facebook
-                tiktok
-                linkedin
-                instagram
-              }             
-              copyrightText
-              footerLeftWidget {
-                title
-                phoneNumber
-                emailAddress
-              }
-              footerLogoSection {
-                logoText
-                logoUpload {
-                  altText
-                  sourceUrl
-                }
-              }
-              footerRightWidget {
-                title
-                address
-              }
+            advisorCards{
+              title
+              description
             }
           }
+          mortgageBenifits {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
+              title
+              description
+            }
+          }
+          tabRenovation{
+            tabHeading
+            tabDetails{
+              title
+              description
+            }
+          }
+          homeContactSection {
+            title
+            description
+          }
         }
+     
+     
+      }
+     
+    
+    
+ 
+  }
+   settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        generalSettings {
+            schemaProductRating
+        }
+        footerSettings {
+          socialUrl {
+            facebook
+            tiktok
+            linkedin
+            instagram
+          }
+          copyrightText
+          footerLeftWidget {
+            title
+            phoneNumber
+            emailAddress
+          }
+          footerLogoSection {
+            logoText
+            logoUpload {
+              altText
+              sourceUrl
+            }
+          }
+          footerRightWidget {
+            title
+            address
+          }
+        }
+      }
+    }
 
-        menus(where: { location: PRIMARY }) {
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
           nodes {
-            name
-            slug
-            menuItems(first: 50) {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                url
-                target
-                parentId
+                uri
                 label
-                cssClasses
-                description
-                id
-                childItems {
-                  nodes {
-                    uri
-                    label
-                  }
-                }
               }
             }
           }
         }
       }
-    `,
+    }
+}`,
   });
 
   return {
     props: {
-      coquitlamData: data?.pages?.nodes,
-      metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
+      metaData: data?.pages?.nodes,
+      advisorData: data?.pages?.nodes[0]?.NewCoquitlam?.advisorSection,
+      serviceBannerData: data?.pages?.nodes[0]?.NewCoquitlam,
+      mortgageBenefitsData: data?.pages?.nodes[0]?.NewCoquitlam?.mortgageBenifits,
+      mortgageServiceData: data?.pages?.nodes[0]?.NewCoquitlam?.mortgageServiceSection,
+      featuredTextLeft: data?.pages?.nodes[0]?.NewCoquitlam?.featuredTextLeft,
+      featuredImageLeft: data?.pages?.nodes[0]?.NewCoquitlam?.featuredImageLeft,
+      featuredImageRight: data?.pages?.nodes[0]?.NewCoquitlam?.featuredImageRight,
+      featuredTextRight: data?.pages?.nodes[0]?.NewCoquitlam?.featuredTextRight,
+      contactData: data?.pages?.nodes[0]?.NewCoquitlam?.homeContactSection,
+      tabRenovationData: data?.pages?.nodes[0]?.NewCoquitlam?.tabRenovation,
+      homebuyerSectionData: data?.pages?.nodes[0]?.NewCoquitlam?.homebuyerSection,
+      tipsTitle: data?.pages?.nodes[0]?.NewCoquitlam?.tipsTitle,
+      tipsDescription: data?.pages?.nodes[0]?.NewCoquitlam?.tipsDescription,
+      tipsLeftText: data?.pages?.nodes[0]?.NewCoquitlam?.tipsLeftText,
+      tipsRightText: data?.pages?.nodes[0]?.NewCoquitlam?.tipsRightText,
+      tipsImageRight: data?.pages?.nodes[0]?.NewCoquitlam?.tipsImageRight,
+      tipsImageLeft: data?.pages?.nodes[0]?.NewCoquitlam?.tipsImageLeft,
     },
-    revalidate: 60,
+    revalidate: 60
   };
 }
 
 type MyProps = {
-  coquitlamData: any;
-  metaData: any;
   settings: any;
   mainMenus: any;
+  metaData: any;
+  contactData: any;
+  tabRenovationData: any;
+  featuredTextLeft: any;
+  featuredImageLeft: any;
+  featuredImageRight: any;
+  featuredTextRight: any;
+  mortgageServiceData: any;
+  tipsImageRight  : any;
+  tipsTitle: any;
+  tipsDescription: any;
+  tipsLeftText: any;
+  tipsRightText: any;
+  tipsImageLeft: any;
+  mortgageBenefitsData: any;
+  homebuyerSectionData: any;
+  serviceBannerData: any;
+  advisorData: any;
 };
 
-const BcCoquitlam = (props: MyProps) => {
-  const { settings, mainMenus, coquitlamData, metaData } = props;
+export default function NewCoquitlam(props: MyProps) {
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData } = props;
 
-  const [key, setKey] = useState(null);
-
+console.log(settings);
   return (
     <>
-      {coquitlamData?.map((data, index) => {
-        return (
-          <div key={index} className="Bc-Coquitlam">
-            <Head>
-              {metaData?.map((meta) => {
-                return (
-                  <>
-                    <title>{meta?.seo?.title}</title>
-                    <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                    <meta property="og:title" content={meta?.seo?.title} />
-                    <meta
-                      property="og:description"
-                      content={meta?.seo?.description}
-                    />
-                    <meta
-                      property="og:image"
-                      content={meta?.seo?.openGraph?.image?.url}
-                    />
-                  </>
-                );
-              })}
-            </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
-            <main className="content">
-              {data?.coquitlam?.coquitlamBannerTitle == null ? (
+      <Head>
+        {metaData?.map((meta) => {
+
+          return (
+            <>
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta property="og:description" content={meta?.seo?.description} />
+              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+            </>
+          )
+        })}
+      </Head>
+        <Header settings={settings} mainMenus={mainMenus} />
+      <main className="content">
+        {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
               ) : (
                 <Hero
-                  title={data?.coquitlam?.coquitlamBannerTitle}
-                  heading={data?.coquitlam?.coquitlamBannerHeading}
-                  description={data?.coquitlam?.coquitlamBannerDescription}
-                  bgImage={data?.coquitlam?.coquitlamBannerImage?.sourceUrl}
+                  title={serviceBannerData?.serviceBannerTitle}
+                  heading={serviceBannerData?.serviceBannerHeading}
+                  description={serviceBannerData?.serviceBannerDescription}
+                  bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
                 />
               )}
-
-              <Container className="my-5">
-                <Row className="refinance-text my-5">
-                  <Col md={5}>
-                    <p>
-                      {data?.coquitlam?.coquitlamBannerTitle?.split(" ")[0]}{" "}
-                      <span>
-                        {data?.coquitlam?.coquitlamBannerTitle?.split(" ")[1]}
-                      </span>
-                    </p>
-                  </Col>
-                  <Col md={7}>
-                    <span>{data?.coquitlam?.topDescription}</span>
-                  </Col>
-                </Row>
-                <Row className="coquitlam-grid my-5">
+              <Container className="mb-5">
+              <Row className="coquitlam-grid my-5">
                   <Col md={7}>
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.coquitlam?.aboutCoquitlamText,
+                        __html: serviceBannerData?.aboutText,
                       }}
                     ></div>
                   </Col>
                   <Col md={5}>
                     <Image
-                      src={data?.coquitlam?.aboutCoquitlamImage?.sourceUrl}
-                      alt={data?.coquitlam?.aboutCoquitlamImage?.altText}
+                      src={serviceBannerData?.aboutImage?.sourceUrl}
+                      alt={serviceBannerData?.aboutImage?.altText}
                       width="390"
                       height="400"
                       priority={true}
@@ -262,200 +320,37 @@ const BcCoquitlam = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                <Row className="product-service">
-                  <Col className="mb-5 px-3 py-3" md={12} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                </Container>
+        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
+        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
+        <FlexibilityTab tabData={tabRenovationData}/>
+        <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
-                      {data?.coquitlam?.mortgageProductsTitle}
+                      {tipsTitle}
                     </h2>
                     <div
                       className="text-center"
                       dangerouslySetInnerHTML={{
-                        __html: data?.coquitlam?.mortgageProductsDescription,
+                        __html: tipsDescription,
                       }}
                     ></div>
-                  </Col>
-                  <div className="service-row my-5">
-                    <Container>
-                      <Row>
-                        <Col className="service-texts" lg={6}>
-                          <div className="service-image">
-                            <Image
-                              src={
-                                data?.coquitlam?.renovateImageFirst?.sourceUrl
-                              }
-                              alt={data?.coquitlam?.renovateImageFirst?.altText}
-                              width="390"
-                              height="400"
-                              style={{ width: "100%", objectFit: "cover" }}
-                            />
-                          </div>
-                        </Col>
-                        <Col className="service-texts" lg={6}>
-                          <div
-                            className="service-content"
-                            dangerouslySetInnerHTML={{
-                              __html: data?.coquitlam?.mortgageProductsLeftText,
-                            }}
-                          ></div>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                  <div className="service-row my-5">
-                    <Container>
-                      <Row>
-                        <Col className="service-texts" lg={6}>
-                          <div
-                            className="service-content"
-                            dangerouslySetInnerHTML={{
-                              __html:
-                                data?.coquitlam?.mortgageProductsRightText,
-                            }}
-                          ></div>
-                        </Col>
-                        <Col className="service-texts" lg={6}>
-                          <div className="service-image">
-                            <Image
-                              src={
-                                data?.coquitlam?.mortgageProductsImage
-                                  ?.sourceUrl
-                              }
-                              alt={
-                                data?.coquitlam?.mortgageProductsImage?.altText
-                              }
-                              width="390"
-                              height="400"
-                              style={{ width: "100%", objectFit: "cover" }}
-                            />
-                          </div>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                  <div className="service-row my-5">
-                    <Container>
-                      <Row>
-                        <Col className="service-texts" lg={6}>
-                          <div className="service-image">
-                            <Image
-                              src={data?.coquitlam?.mortgageProductsImageLeft?.sourceUrl}
-                              alt={data?.coquitlam?.mortgageProductsImageLeft?.altText}
-                              width="390"
-                              height="400"
-                              style={{ width: "100%", objectFit: "cover" }}
-                            />
-                          </div>
-                        </Col>
-                        <Col className="service-texts" lg={6}>
-                          <div
-                            className="service-content"
-                            dangerouslySetInnerHTML={{
-                              __html: data?.coquitlam?.mortgageBrokerBottomText,
-                            }}
-                          ></div>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                </Row>
-                <Row className="apply-step">
-                  <Col md={4}>
-                    {data?.coquitlam?.firstApplyStepTitle == null ? (
-                      ""
-                    ) : (
-                      <div className="apply">
-                        <span>01</span>
-                        <p>{data?.coquitlam?.firstApplyStepTitle}</p>
-                        <div className="apply-border"></div>
-                      </div>
-                    )}
-                  </Col>
-                  <Col md={4}>
-                    {data?.coquitlam?.secondApplyStepTitle == null ? (
-                      ""
-                    ) : (
-                      <div className="approved">
-                        <span>02</span>
-                        <p>
-                          <span>{data?.coquitlam?.secondApplyStepTitle}</span>
-                        </p>
-                        <p>{data?.coquitlam?.secondApplyStepDescription}</p>
-                      </div>
-                    )}
-                  </Col>
-                  <Col md={4}>
-                    {data?.coquitlam?.thirdApplyStepTitle == null ? (
-                      ""
-                    ) : (
-                      <div className="apply">
-                        <span>03</span>
-                        <p>{data?.coquitlam?.thirdApplyStepTitle}</p>
-                        <div className="apply-border"></div>
-                      </div>
-                    )}
-                  </Col>
-                </Row>
-                <Row className="mortgage-broker">
-                  <Col>
-                    <h2 className="headering-title">
-                      {data?.coquitlam?.mortgageBrokerTitle}
-                    </h2>
-                    <p>{data?.coquitlam?.mortgageBrokerDescription}</p>
-                  </Col>
-                </Row>
-                <Row className="my-5">
-                  <Image
-                    src={data?.coquitlam?.renovateImageSecond?.sourceUrl}
-                    alt={data?.coquitlam?.renovateImageSecond?.altText}
-                    width="390"
-                    height="400"
-                    priority={true}
-                    style={{ width: "100%", objectFit: "cover" }}
-                  />
-                </Row>
-                <Row className="mortgage-broker-bottom text-center">
-                  <Col>
-                    <h2>{data?.coquitlam?.brokerCoquitlamTitle}</h2>
-                    <p>{data?.coquitlam?.brokerCoquitlamDescription}</p>
-                  </Col>
-                </Row>
-                {/* faq section start */}
-                <div className="faq-accordion">
-                  <Accordion defaultActiveKey="0">
-                    {data?.coquitlam?.faqAccordion.map((qa, index) => {
-                      return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="p">
-                            {qa.question}
-                          </Accordion.Header>
-                          <Accordion.Body
-                            dangerouslySetInnerHTML={{ __html: qa.answer }}
-                          ></Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
-                  </Accordion>
-                </div>
-                <Row className="mortgage-broker-bottom text-center">
-                  <Col>
-                    <h2>{data?.coquitlam?.contactTitle}</h2>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.coquitlam?.contactDescription,
-                      }}
-                    ></div>
-                  </Col>
-                </Row>
-                {/* faq section end */}
-              </Container>
-              <CTA />
-            </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
-          </div>
-        );
-      })}
+                  </Container>
+        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
+        <MortgageFeatured advisorData={advisorData}/>
+        <MortgageAdvisor advisorData={mortgageServiceData}/>
+                    
+        <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+        <Container className="mb-5">
+        <h2 className="text-center service-title">{contactData?.title}</h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: contactData?.description,
+        }}
+        className="text-lg text-start"
+      ></div>
+        </Container>
+      </main>
+      <Footer settings={settings} mainMenus={mainMenus} />
     </>
   );
-};
-
-export default BcCoquitlam;
+}
