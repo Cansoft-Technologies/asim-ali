@@ -22,6 +22,28 @@
 	z-index: 1;
 	overflow-x: hidden;
 }
+.bannerBtn{
+	background: transparent;
+	border: 2px solid $color-white;
+	text-transform: uppercase;
+	font-family: 'AvenirBook';
+	font-size: 16px;
+	border-radius: 0;
+	padding-top: 11px;
+	margin-right: 20px;
+	color: #f0B254;
+	span{
+			color: #f0B254;
+			font-family: 'AvenirBlack';
+	}
+	&:hover{
+			background: transparent;
+			border: 2px solid $color-secondary;
+			color: $color-white;
+			opacity: .5;
+	}
+	
+}
 
 @media screen and (min-width: $content-width) {
 	.wrap {
@@ -59,4 +81,8 @@
 		margin-bottom: 2%;
 		max-width: 50%;
 	}
+	.bannerBtn{
+		font-size: 14px;
+		margin-top: 10px;
+}
 }
