@@ -25,6 +25,7 @@ import MortgageFeatured from 'components/MortgageFeatured';
 import ServiceSection from 'components/ServiceSection';
 import HomeBuyerSection from 'components/HomeBuyerSection';
 import { Hero } from 'components';
+import AccordionSection from 'components/AccordionSection';
 
 const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
@@ -239,6 +240,7 @@ export async function getStaticProps() {
       advisorData: data?.pages?.nodes[0]?.NewComVancouver?.advisorSection,
       serviceBannerData: data?.pages?.nodes[0]?.NewComVancouver,
       mortgageBenefitsData: data?.pages?.nodes[0]?.NewComVancouver?.mortgageBenifits,
+      mortgageInterestData: data?.pages?.nodes[0]?.NewComVancouver?.mortgageInterest,
       mortgageServiceData: data?.pages?.nodes[0]?.NewComVancouver?.mortgageServiceSection,
       featuredTextLeft: data?.pages?.nodes[0]?.NewComVancouver?.featuredTextLeft,
       featuredImageLeft: data?.pages?.nodes[0]?.NewComVancouver?.featuredImageLeft,
@@ -247,9 +249,9 @@ export async function getStaticProps() {
       contactData: data?.pages?.nodes[0]?.NewComVancouver?.homeContactSection,
       tabRenovationData: data?.pages?.nodes[0]?.NewComVancouver?.tabRenovation,
       homebuyerSectionData: data?.pages?.nodes[0]?.NewComVancouver?.homebuyerSection,
-      benefitTitle: data?.pages?.nodes[0]?.NewComVancouver?.benefitTitle,
       tipsTitle: data?.pages?.nodes[0]?.NewComVancouver?.tipsTitle,
       tipsDescription: data?.pages?.nodes[0]?.NewComVancouver?.tipsDescription,
+      benefitTitle: data?.pages?.nodes[0]?.NewComVancouver?.benefitTitle,
       benefitDescription: data?.pages?.nodes[0]?.NewComVancouver?.benefitDescription,
       tipsLeftText: data?.pages?.nodes[0]?.NewComVancouver?.tipsLeftText,
       tipsRightText: data?.pages?.nodes[0]?.NewComVancouver?.tipsRightText,
@@ -283,10 +285,11 @@ type MyProps = {
   homebuyerSectionData: any;
   serviceBannerData: any;
   advisorData: any;
+  mortgageInterestData: any;
 };
 
 export default function NewComVancouver(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData,benefitTitle,benefitDescription } = props;
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData,benefitTitle,benefitDescription,mortgageInterestData } = props;
 
 console.log(settings);
   return (
@@ -351,11 +354,9 @@ console.log(settings);
                       }}
                     ></div>
                   </Container>
-                <MortgageFeatured advisorData={mortgageBenefitsData}/>
+                <MortgageAdvisor advisorData={mortgageBenefitsData}/>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <MortgageAdvisor advisorData={advisorData}/>
-                    <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-        <FlexibilityTab tabData={tabRenovationData}/>
                     <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
@@ -367,7 +368,10 @@ console.log(settings);
                       }}
                     ></div>
                   </Container>
-        <MortgageAdvisor advisorData={mortgageServiceData}/>
+                    <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
+        <FlexibilityTab tabData={tabRenovationData}/>
+        <AccordionSection advisorData={mortgageServiceData}/>
+        <MortgageAdvisor advisorData={mortgageInterestData}/>
         <HomeBuyerSection homebuyerData={homebuyerSectionData} />
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
