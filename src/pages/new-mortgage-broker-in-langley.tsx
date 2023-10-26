@@ -95,6 +95,8 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
+          benefitTitle
+          benefitDescription
           mortgageBenifits {
             advisorTitle
             advisorDescriptionTop
@@ -215,6 +217,8 @@ export async function getStaticProps() {
       tipsRightText: data?.pages?.nodes[0]?.NewLangley?.tipsRightText,
       tipsImageRight: data?.pages?.nodes[0]?.NewLangley?.tipsImageRight,
       tipsImageLeft: data?.pages?.nodes[0]?.NewLangley?.tipsImageLeft,
+      benefitTitle: data?.pages?.nodes[0]?.NewLangley?.benefitTitle,
+      benefitDescription: data?.pages?.nodes[0]?.NewLangley?.benefitDescription,
     },
     revalidate: 60
   };
@@ -242,10 +246,12 @@ type MyProps = {
   tipsImageLeft: any;
   mortgageBenefitsData: any;
   serviceBannerData: any;
+  benefitTitle: any;
+  benefitDescription: any;
 };
 
 export default function NewLangley(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,mortgageBenefitsData,bottomFeaturedTextLeft,bottomFeaturedImageLeft,bottomFeaturedImageRight,bottomFeaturedTextRight,serviceBannerData } = props;
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,mortgageBenefitsData,bottomFeaturedTextLeft,bottomFeaturedImageLeft,bottomFeaturedImageRight,bottomFeaturedTextRight,serviceBannerData,benefitTitle,benefitDescription } = props;
 
 console.log(settings);
   return (
@@ -299,6 +305,17 @@ console.log(settings);
                   </Col>
                 </Row>
                 </Container>
+                <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                    <h2 className="text-center">
+                      {benefitTitle}
+                    </h2>
+                    <div
+                      className="text-center"
+                      dangerouslySetInnerHTML={{
+                        __html: benefitDescription,
+                      }}
+                    ></div>
+                  </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <MortgageAdvisor advisorData={mortgageBenefitsData}/>
                     <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
