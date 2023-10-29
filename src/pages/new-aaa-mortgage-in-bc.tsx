@@ -303,6 +303,10 @@ console.log(settings);
                   heading={serviceBannerData?.serviceBannerHeading}
                   description={serviceBannerData?.serviceBannerDescription}
                   bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+                  buttonText="APPLY NOW"
+                  buttonURL="/apply-now"
+                  button2Text="CONTACT US"
+                  button2URL="/contact-us"
                 />
               )}
               <Container className="mb-5">
