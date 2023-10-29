@@ -50,7 +50,7 @@ function Hero({
             {buttonText && buttonURL && (
               <Link href={buttonURL}>
               <Button className={styles.bannerBtn}>
-              {buttonText}
+              <span>{buttonText}</span>
               </Button>
             </Link>
             )}

@@ -210,7 +210,6 @@ const Calculator = (props: MyProps) => {
             </Col>
           </Row>
               </Container>
-                <FeaturedSection featuredData={data?.newMortgagecalculator?.homebuyerSection} />
                 <Container className="my-5">
                 <Row className="mortgagecalculator-heading text-center my-5 service-title">
                   <p>
@@ -244,6 +243,7 @@ const Calculator = (props: MyProps) => {
                         </Link>
                 </div>
               </Container>
+                <FeaturedSection featuredData={data?.newMortgagecalculator?.homebuyerSection} />
         <ServiceSection
           textLeft={data?.newMortgagecalculator?.tipsLeftText}
           textRight={data?.newMortgagecalculator?.tipsRightText}
