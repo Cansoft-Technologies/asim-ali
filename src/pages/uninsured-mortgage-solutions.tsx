@@ -1,210 +1,320 @@
-import { gql } from "@apollo/client";
-import { CTA, Footer, Header, Hero } from "components";
-import MortgageAdvisor from "components/MortgageAdvisor";
-import { apolloClient } from "lib/apollo";
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import { Accordion, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
-import "react-multi-carousel/lib/styles.css";
+import { gql } from '@apollo/client';
+import { Hero } from 'components';
+import FlexibilityTab from 'components/FlexibilityTab';
+import HomeBuyerSection from 'components/HomeBuyerSection';
+import MortgageAdvisor from 'components/MortgageAdvisor';
+import ServiceSection from 'components/ServiceSection';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Image from 'next/image';
+import { Col, Container, Row } from 'react-bootstrap';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import { apolloClient } from "../lib/apollo";
+const CTA = dynamic(() => import('../components/CTA'));
+const Banner = dynamic(() => import('../components/Banner'));
+const WeHelp = dynamic(() => import('../components/WeHelp'));
+const Team = dynamic(() => import('components/Team'));
+const Meeting = dynamic(() => import('components/Meeting'));
+const PartnerLogo = dynamic(() => import('components/PartnerLogo'));
+const SplitImageLeft = dynamic(() => import('../components/SplitImageLeft'));
+const FAQ = dynamic(() => import('components/FAQ'));
+const Gallery = dynamic(() => import('components/Gallery'));
+const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
+const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
+
+const MobileBanner = dynamic(() => import('components/MobileBanner'));
+
+
 
 export async function getStaticProps() {
+
   const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        pages(where: { id: 2534 }) {
-          nodes {
-            seo {
-              title
-              description
-              canonicalUrl
-              focusKeywords
-              openGraph {
-                image {
-                  url
-                }
-              }
+    query: gql`query{
+      pages(where: {id: 3814}) {
+      nodes {
+        seo {
+          title
+          description
+          canonicalUrl
+          focusKeywords
+          openGraph {
+            image {
+              url
             }
-            uninsuredMortgage {
-              serviceBannerTitle
+          }
+          jsonLd {
+            raw
+          }
+        }
+        NewUninsured {
+          serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
               serviceBannerImage {
                 altText
                 sourceUrl
               }
-              productsTitle
-              productsDescription
-              productsRightText
-              brokerTitle
-              topBrokerDescription
-              bottomBrokerTitle
-              bottomBrokerDescription
               aboutText
               aboutImage {
                 altText
                 sourceUrl
               }
-              productsImage {
-                altText
+          featuredTextLeft
+          featuredTextRight
+          featuredImageRight {
+            altText
+            sourceUrl
+          }
+          featuredImageLeft {
+            altText
+            sourceUrl
+          }
+          serviceRightText
+          serviceLeftText
+          serviceImageRight {
+            altText
+            sourceUrl
+          }
+          serviceImageLeft {
+            altText
+            sourceUrl
+          }
+          tipsTitle
+          tipsDescription
+          tipsLeftText
+          tipsRightText
+          tipsImageRight {
+            altText
+            sourceUrl
+          }
+          tipsImageLeft {
+            altText
+            sourceUrl
+          }
+          homebuyerSection {
+            advisorTitle
+            advisorCards{
+              title
+              description
+              image{
                 sourceUrl
-              }
-              renovation {
-                title
-                description
-              }
-              advisorData {
-                advisorCards {
-                  title
-                  description
-                }
-                advisorTitle
-                advisorDescriptionTop
-                advisorImage {
-                  altText
-                  sourceUrl
-                }
+                altText
               }
             }
           }
-        }
-
-        settingsOptions {
-          AsimOptions {
-            headerSettings {
-              uploadLogo {
-                sourceUrl
-                altText
-              }
+          advisorSection {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
             }
-            footerSettings {
-              socialUrl {
-                facebook
-                tiktok
-                linkedin
-                instagram
-              }              
-              copyrightText
-              footerLeftWidget {
-                title
-                phoneNumber
-                emailAddress
-              }
-              footerLogoSection {
-                logoText
-                logoUpload {
-                  altText
-                  sourceUrl
-                }
-              }
-              footerRightWidget {
-                title
-                address
-              }
+            advisorCards{
+              title
+              description
             }
           }
+          mortgageBenifits {
+            advisorTitle
+            advisorDescriptionTop
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
+              title
+              description
+            }
+          }
+          tabRenovation{
+            tabHeading
+            tabDetails{
+              title
+              description
+            }
+          }
+          homeContactSection {
+            title
+            description
+          }
         }
+     
+     
+      }
+     
+    
+    
+ 
+  }
+   settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        generalSettings {
+            schemaProductRating
+        }
+        footerSettings {
+          socialUrl {
+            facebook
+            tiktok
+            linkedin
+            instagram
+          }
+          copyrightText
+          footerLeftWidget {
+            title
+            phoneNumber
+            emailAddress
+          }
+          footerLogoSection {
+            logoText
+            logoUpload {
+              altText
+              sourceUrl
+            }
+          }
+          footerRightWidget {
+            title
+            address
+          }
+        }
+      }
+    }
 
-        menus(where: { location: PRIMARY }) {
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
           nodes {
-            name
-            slug
-            menuItems(first: 50) {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                url
-                target
-                parentId
+                uri
                 label
-                cssClasses
-                description
-                id
-                childItems {
-                  nodes {
-                    uri
-                    label
-                  }
-                }
               }
             }
           }
         }
       }
-    `,
+    }
+}`,
   });
 
   return {
     props: {
-      uninsuredMortgageData: data?.pages?.nodes,
-      metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
+      metaData: data?.pages?.nodes,
+      serviceLeftText: data?.pages?.nodes[0]?.NewUninsured?.serviceLeftText,
+      serviceRightText: data?.pages?.nodes[0]?.NewUninsured?.serviceRightText,
+      serviceImageLeft: data?.pages?.nodes[0]?.NewUninsured?.serviceImageLeft,
+      serviceImageRight: data?.pages?.nodes[0]?.NewUninsured?.serviceImageRight,
+      advisorData: data?.pages?.nodes[0]?.NewUninsured?.advisorSection,
+      serviceBannerData: data?.pages?.nodes[0]?.NewUninsured,
+      mortgageBenefitsData: data?.pages?.nodes[0]?.NewUninsured?.mortgageBenifits,
+      featuredTextLeft: data?.pages?.nodes[0]?.NewUninsured?.featuredTextLeft,
+      featuredImageLeft: data?.pages?.nodes[0]?.NewUninsured?.featuredImageLeft,
+      featuredImageRight: data?.pages?.nodes[0]?.NewUninsured?.featuredImageRight,
+      featuredTextRight: data?.pages?.nodes[0]?.NewUninsured?.featuredTextRight,
+      contactData: data?.pages?.nodes[0]?.NewUninsured?.homeContactSection,
+      tabRenovationData: data?.pages?.nodes[0]?.NewUninsured?.tabRenovation,
+      homebuyerSectionData: data?.pages?.nodes[0]?.NewUninsured?.homebuyerSection,
+      tipsTitle: data?.pages?.nodes[0]?.NewUninsured?.tipsTitle,
+      tipsDescription: data?.pages?.nodes[0]?.NewUninsured?.tipsDescription,
+      tipsLeftText: data?.pages?.nodes[0]?.NewUninsured?.tipsLeftText,
+      tipsRightText: data?.pages?.nodes[0]?.NewUninsured?.tipsRightText,
+      tipsImageRight: data?.pages?.nodes[0]?.NewUninsured?.tipsImageRight,
+      tipsImageLeft: data?.pages?.nodes[0]?.NewUninsured?.tipsImageLeft,
     },
-    revalidate: 60,
+    revalidate: 60
   };
 }
 
 type MyProps = {
-  uninsuredMortgageData: any;
-  metaData: any;
   settings: any;
+  serviceLeftText: any;
+  serviceRightText: any;
+  serviceImageLeft: any;
+  serviceImageRight: any;
   mainMenus: any;
+  metaData: any;
+  contactData: any;
+  tabRenovationData: any;
+  featuredTextLeft: any;
+  featuredImageLeft: any;
+  featuredImageRight: any;
+  featuredTextRight: any;
+  tipsImageRight  : any;
+  tipsTitle: any;
+  tipsDescription: any;
+  tipsLeftText: any;
+  tipsRightText: any;
+  tipsImageLeft: any;
+  mortgageBenefitsData: any;
+  homebuyerSectionData: any;
+  serviceBannerData: any;
+  advisorData: any;
 };
 
-const UninsuredMortgage = (props: MyProps) => {
-  const { settings, mainMenus, uninsuredMortgageData, metaData } = props;
-  const [key, setKey] = useState(null);
+export default function NewUninsured(props: MyProps) {
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData, serviceLeftText, serviceRightText, serviceImageLeft, serviceImageRight } = props;
+
+console.log(settings);
   return (
     <>
-      {uninsuredMortgageData?.map((data, index) => {
-        return (
-          <div key={index} className="our-services">
-            <Head>
-              {metaData.map((meta) => {
-                return (
-                  <>
-                    <title>{meta?.seo?.title}</title>
-                    <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                    <meta property="og:title" content={meta?.seo?.title} />
-                    <meta
-                      property="og:description"
-                      content={meta?.seo?.description}
-                    />
-                    <meta name="robots" content="noindex,nofollow" />
-                    <meta
-                      property="og:image"
-                      content={meta?.seo?.openGraph?.image?.url}
-                    />
-                  </>
-                );
-              })}
-            </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
-            <main className="content">
-              {data?.uninsuredMortgage?.serviceBannerTitle == null ? (
+      <Head>
+        {metaData?.map((meta) => {
+
+          return (
+            <>
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta property="og:description" content={meta?.seo?.description} />
+              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <meta name="robots" content="noindex,nofollow" />
+            </>
+          )
+        })}
+      </Head>
+        <Header settings={settings} mainMenus={mainMenus} />
+      <main className="content">
+        {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
               ) : (
                 <Hero
-                  title={data?.uninsuredMortgage?.serviceBannerTitle}
-                  heading={data?.uninsuredMortgage?.serviceBannerHeading}
-                  description={data?.uninsuredMortgage?.serviceBannerDescription}
-                  bgImage={data?.uninsuredMortgage?.serviceBannerImage?.sourceUrl}
+                  title={serviceBannerData?.serviceBannerTitle}
+                  heading={serviceBannerData?.serviceBannerHeading}
+                  description={serviceBannerData?.serviceBannerDescription}
+                  bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
                 />
               )}
-
-              <Container className="my-5">
-                <Row className="coquitlam-grid my-5">
+              <Container className="mb-5">
+              <Row className="coquitlam-grid my-5">
                   <Col md={7}>
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.uninsuredMortgage?.aboutText,
+                        __html: serviceBannerData?.aboutText,
                       }}
                     ></div>
                   </Col>
                   <Col md={5}>
                     <Image
-                      src={data?.uninsuredMortgage?.aboutImage?.sourceUrl}
-                      alt={data?.uninsuredMortgage?.aboutImage?.altText}
+                      src={serviceBannerData?.aboutImage?.sourceUrl}
+                      alt={serviceBannerData?.aboutImage?.altText}
                       width="390"
                       height="400"
                       priority={true}
@@ -212,134 +322,36 @@ const UninsuredMortgage = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                <Row className="product-service">
-                  <Col className="px-5" md={1}></Col>
-                  <Col
-                    className="py-3"
-                    md={10}
-                    style={{
-                      border: "1px solid #f0b254",
-                      borderRadius: "10px",
-                    }}
-                  >
+                </Container>
+        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
+        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
+                    <MortgageAdvisor advisorData={advisorData}/>
+        <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
-                      {data?.uninsuredMortgage?.productsTitle}
+                      {tipsTitle}
                     </h2>
                     <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.uninsuredMortgage?.productsDescription,
-                      }}
                       className="text-center"
-                    ></div>
-                  </Col>
-                  <Col className="px-5" md={1}></Col>
-                </Row>
-                <div className="service-row my-5">
-                  <Container>
-                    <Row>
-                      <Col className="service-texts" lg={6}>
-                        <div className="service-image">
-                          <Image
-                            src={data?.uninsuredMortgage?.productsImage?.sourceUrl}
-                            alt={data?.uninsuredMortgage?.productsImage?.altText}
-                            width="390"
-                            height="400"
-                            style={{ width: "100%", objectFit: "cover" }}
-                          />
-                        </div>
-                      </Col>
-                      <Col className="service-texts" lg={6}>
-                        <div
-                          className="service-content"
-                          dangerouslySetInnerHTML={{
-                            __html: data?.uninsuredMortgage?.productsRightText,
-                          }}
-                        ></div>
-                      </Col>
-                    </Row>
-                  </Container>
-                </div>
-                <Row className="my-5">
-                  <Container>
-                    <div className="my-5">
-                      <MortgageAdvisor
-                        advisorData={data?.uninsuredMortgage?.advisorData}
-                      />
-                    </div>
-                  </Container>
-                </Row>
-                <Row
-                  className="mortgage-broker text-center"
-                  style={{ marginTop: "80px" }}
-                >
-                  <Col>
-                    <h2 className="headering-title">
-                      {data?.uninsuredMortgage?.brokerTitle}
-                    </h2>
-                    <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.uninsuredMortgage?.topBrokerDescription,
+                        __html: tipsDescription,
                       }}
                     ></div>
-                  </Col>
-                </Row>
-                {data.uninsuredMortgage.renovation == null ? (
-                  ""
-                ) : (
-                  <Row
-                    className="renovation-tab-row"
-                    style={{ marginTop: "80px" }}
-                  >
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 0 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-3 renovation"
-                    >
-                      {data.uninsuredMortgage.renovation.map((tab, item) => {
-                        return (
-                          <Tab
-                            key={item}
-                            eventKey={item.toString()}
-                            title={
-                              <h3 className="location-tab-title">
-                                {tab.title}
-                              </h3>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: tab.description,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )}
-                <Row className="mortgage-broker-bottom text-center mt-5">
-                  <Col>
-                    <h2>{data?.uninsuredMortgage?.bottomBrokerTitle}</h2>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.uninsuredMortgage?.bottomBrokerDescription,
-                      }}
-                    ></div>
-                  </Col>
-                </Row>
-
-                {/* faq section end */}
-              </Container>
-              <CTA />
-            </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
-          </div>
-        );
-      })}
+                  </Container>
+        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>         
+        <ServiceSection textLeft={serviceLeftText} textRight={serviceRightText} imageLeft={serviceImageLeft} imageRight={serviceImageRight}/>         
+                      <FlexibilityTab tabData={tabRenovationData}/>
+        <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+        <Container className="mb-5">
+        <h2 className="text-center service-title">{contactData?.title}</h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: contactData?.description,
+        }}
+        className="text-lg text-start"
+      ></div>
+        </Container>
+      </main>
+      <Footer settings={settings} mainMenus={mainMenus} />
     </>
   );
-};
-
-export default UninsuredMortgage;
+}
