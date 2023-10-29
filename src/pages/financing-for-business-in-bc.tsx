@@ -370,7 +370,6 @@ export default function NewFinance(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
             </>
           );
         })}

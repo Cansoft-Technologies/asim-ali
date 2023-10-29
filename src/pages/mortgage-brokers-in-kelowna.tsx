@@ -316,7 +316,6 @@ export default function NewKelowna(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
             </>
           );
         })}
