@@ -1,15 +1,18 @@
 import { gql } from "@apollo/client";
 import { Footer, Header, Hero } from "components";
+import FeaturedSection from "components/FeaturedSection";
+import ServiceSection from "components/ServiceSection";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
-import { Button, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
       query {
-        pages(where: { id: 425 }) {
+        pages(where: { id: 4096 }) {
           nodes {
             seo {
               title
@@ -22,7 +25,37 @@ export async function getStaticProps() {
                 }
               }
             }
-            mortgagecalculator {
+            newMortgagecalculator {
+              aboutText
+              aboutImage {
+                altText
+                sourceUrl
+              }
+              tipsLeftText
+              tipsRightText
+              tipsImageRight {
+                altText
+                sourceUrl
+              }
+              tipsImageLeft {
+                altText
+                sourceUrl
+              }
+              homeContactSection {
+                title
+                description
+              }
+              homebuyerSection {
+                advisorTitle
+                advisorCards{
+                  title
+                  description
+                  image{
+                    sourceUrl
+                    altText
+                  }
+                }
+              }
               calculatorBannerTitle
               calculatorPageContent
               calculatorBannerImage {
@@ -145,38 +178,59 @@ const Calculator = (props: MyProps) => {
             <Header settings={settings} mainMenus={mainMenus} />
             <div>
             <main className="content">
-              {data?.mortgagecalculator?.calculatorBannerTitle == null ? (
+              {data?.newMortgagecalculator?.calculatorBannerTitle == null ? (
                 ""
               ) : (
                 <Hero
-                  title={data?.mortgagecalculator?.calculatorBannerTitle}
+                  title={data?.newMortgagecalculator?.calculatorBannerTitle}
                   bgImage={
-                    data?.mortgagecalculator?.calculatorBannerImage?.sourceUrl
+                    data?.newMortgagecalculator?.calculatorBannerImage?.sourceUrl
                   }
                 />
               )}
 
               <Container className="my-5">
-                <Row className="mortgagecalculator-heading">
-                  <h1>
+                <Row className="coquitlam-grid my-5">
+            <Col md={7}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: data?.newMortgagecalculator?.aboutText,
+                }}
+              ></div>
+            </Col>
+            <Col md={5}>
+              <Image
+                src={data?.newMortgagecalculator?.aboutImage?.sourceUrl}
+                alt={data?.newMortgagecalculator?.aboutImage?.altText}
+                width="390"
+                height="400"
+                priority={true}
+                style={{ width: "100%", objectFit: "cover" }}
+              />
+            </Col>
+          </Row>
+              </Container>
+                <Container className="my-5">
+                <Row className="mortgagecalculator-heading text-center my-5 service-title">
+                  <p>
                     {
-                      data?.mortgagecalculator?.calculatorBannerTitle.split(
+                      data?.newMortgagecalculator?.calculatorBannerTitle.split(
                         " "
                       )[0]
                     }{" "}
                     <span>
                       {
-                        data?.mortgagecalculator?.calculatorBannerTitle.split(
+                        data?.newMortgagecalculator?.calculatorBannerTitle.split(
                           " "
                         )[1]
                       }
                     </span>
-                  </h1>
+                  </p>
                 </Row>
                    <div
-                   className="mortgagecalculator-content"
+                   className="mortgagecalculator-content my-5"
                     dangerouslySetInnerHTML={{
-                      __html: data?.mortgagecalculator?.calculatorPageContent,
+                      __html: data?.newMortgagecalculator?.calculatorPageContent,
                     }}
                   ></div>
                 <div className="tab-btn">
@@ -189,6 +243,22 @@ const Calculator = (props: MyProps) => {
                         </Link>
                 </div>
               </Container>
+                <FeaturedSection featuredData={data?.newMortgagecalculator?.homebuyerSection} />
+        <ServiceSection
+          textLeft={data?.newMortgagecalculator?.tipsLeftText}
+          textRight={data?.newMortgagecalculator?.tipsRightText}
+          imageLeft={data?.newMortgagecalculator?.tipsImageLeft}
+          imageRight={data?.newMortgagecalculator?.tipsImageRight}
+        />
+        <Container className="mb-5">
+          <h2 className="text-center service-title">{data?.newMortgagecalculator?.homeContactSection?.title}</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data?.newMortgagecalculator?.homeContactSection?.description,
+            }}
+            className="text-lg text-start"
+          ></div>
+        </Container>
             </main>
             </div>
             <Footer settings={settings} mainMenus={mainMenus} />
