@@ -189,6 +189,39 @@ const Calculator = (props: MyProps) => {
                 />
               )}
 
+                  <Container className="my-5">
+                  <Row className="mortgagecalculator-heading text-center my-5 service-title">
+                    <p>
+                      {
+                        data?.newMortgagecalculator?.calculatorBannerTitle.split(
+                          " "
+                        )[0]
+                      }{" "}
+                      <span>
+                        {
+                          data?.newMortgagecalculator?.calculatorBannerTitle.split(
+                            " "
+                          )[1]
+                        }
+                      </span>
+                    </p>
+                  </Row>
+                     <div
+                     className="mortgagecalculator-content my-5"
+                      dangerouslySetInnerHTML={{
+                        __html: data?.newMortgagecalculator?.calculatorPageContent,
+                      }}
+                    ></div>
+                  <div className="tab-btn">
+                  <Link
+                            href={"/apply-now"}
+                          >
+                            <Button className="HeadBtn">
+                              Apply <span>Now</span>
+                            </Button>
+                          </Link>
+                  </div>
+                </Container>
               <Container className="my-5">
                 <Row className="coquitlam-grid my-5">
             <Col md={7}>
@@ -209,39 +242,6 @@ const Calculator = (props: MyProps) => {
               />
             </Col>
           </Row>
-              </Container>
-                <Container className="my-5">
-                <Row className="mortgagecalculator-heading text-center my-5 service-title">
-                  <p>
-                    {
-                      data?.newMortgagecalculator?.calculatorBannerTitle.split(
-                        " "
-                      )[0]
-                    }{" "}
-                    <span>
-                      {
-                        data?.newMortgagecalculator?.calculatorBannerTitle.split(
-                          " "
-                        )[1]
-                      }
-                    </span>
-                  </p>
-                </Row>
-                   <div
-                   className="mortgagecalculator-content my-5"
-                    dangerouslySetInnerHTML={{
-                      __html: data?.newMortgagecalculator?.calculatorPageContent,
-                    }}
-                  ></div>
-                <div className="tab-btn">
-                <Link
-                          href={"/apply-now"}
-                        >
-                          <Button className="HeadBtn">
-                            Apply <span>Now</span>
-                          </Button>
-                        </Link>
-                </div>
               </Container>
                 <FeaturedSection featuredData={data?.newMortgagecalculator?.homebuyerSection} />
         <ServiceSection
