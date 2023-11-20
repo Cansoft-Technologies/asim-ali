@@ -7,9 +7,11 @@ type MyProps = {
   textRight: any;
   imageLeft: any;
   imageRight: any;
+  leftText: any;
+  leftImage: any;
 };
-export default function ServiceSection(props: MyProps) {
-  const { textLeft, textRight, imageLeft, imageRight } = props;
+export default function ServiceSectionNewBC(props: MyProps) {
+  const { textLeft, textRight, imageLeft, imageRight, leftText, leftImage } = props;
   return (
     <section className="my-5">
       <div className="service-row">
@@ -58,6 +60,31 @@ export default function ServiceSection(props: MyProps) {
                   __html: textRight,
                 }}
               ></div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <div className="service-row my-5">
+        <Container>
+          <Row>
+            <Col className="service-texts my-5" lg={6}>
+              <div
+                className="service-content"
+                dangerouslySetInnerHTML={{
+                  __html: leftText,
+                }}
+              ></div>
+            </Col>
+            <Col className="service-texts" lg={6}>
+              <div className="service-image">
+                <Image
+                  src={leftImage?.sourceUrl}
+                  alt={leftImage?.altText}
+                  width="390"
+                  height="400"
+                  style={{ width: "100%", objectFit: "cover" }}
+                />
+              </div>
             </Col>
           </Row>
         </Container>

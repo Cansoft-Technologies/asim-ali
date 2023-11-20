@@ -20,7 +20,7 @@ export default function HomeBuyerSection(props: MyProps) {
         <div className="row row-cols-1 row-cols-md-4 g-4 homebuyer-items mt-5">
           {homebuyerData?.advisorCards?.map((data, index) => {
             return (
-              <div key={index} className="card  text-center">
+              <div key={index} className="card text-center">
                 <div className="card-index">
                   <p className="">{index + 1}</p>
                 </div>
