@@ -282,7 +282,7 @@ export default function NewBorrowDownPaymentInBC(props: MyProps) {
     qualifyingDescription,
     commonConcernsData,
     talkTitle,
-    talkDescription
+    talkDescription,
   } = props;
 
   return (
@@ -341,25 +341,14 @@ export default function NewBorrowDownPaymentInBC(props: MyProps) {
             </Col>
           </Row>
         </Container>
-        {/* <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <h2 className="text-center">{reasonTitle}</h2>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: reasonDescription,
-            }}
-          ></div>
-        </Container> */}
+
         <ServiceSection
           textLeft={reasonLeftText}
           textRight={reasonRightText}
           imageLeft={reasonLeftImage}
           imageRight={reasonRightImage}
         />
-        
+
         <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
         <Container>
           <Row
