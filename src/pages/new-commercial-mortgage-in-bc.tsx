@@ -374,6 +374,7 @@ export default function NewCommercialMortgageBC(props: MyProps) {
                 content={meta?.seo?.openGraph?.image?.url}
               />
               <meta name="robots" content="noindex,nofollow" />
+              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}

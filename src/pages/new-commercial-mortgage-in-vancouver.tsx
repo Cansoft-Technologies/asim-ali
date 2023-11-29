@@ -303,11 +303,18 @@ console.log(settings);
               <meta name="description" content={meta?.seo?.description} />
               <link rel="canonical" href={meta?.seo?.canonicalUrl} />
               <meta property="og:title" content={meta?.seo?.title} />
-              <meta property="og:description" content={meta?.seo?.description} />
-              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <meta
+                property="og:description"
+                content={meta?.seo?.description}
+              />
+              <meta
+                property="og:image"
+                content={meta?.seo?.openGraph?.image?.url}
+              />
               <meta name="robots" content="noindex,nofollow" />
+              <meta name="googlebot" content="noindex,nofollow" />
             </>
-          )
+          );
         })}
       </Head>
         <Header settings={settings} mainMenus={mainMenus} />
