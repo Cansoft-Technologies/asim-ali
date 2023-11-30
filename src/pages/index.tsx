@@ -456,52 +456,9 @@ export default function Page(props: MyProps) {
         <div className="desktop-banner">
           <Banner sliders={sliders} />
         </div>
-        {msliders?.homeSlider[0]?.mobileImage &&
-        msliders?.homeSlider[0]?.sliderTitle &&
-        msliders?.homeSlider[0]?.sliderDescription ? (
-          <div className="mobile-banner">
-            <MobileBanner msliders={msliders} />
-          </div>
-        ) : (
-          <div style={{ height: "500px", width: "100%" }}>
-            <Placeholder as="p" animation="glow">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="wave">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="glow">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="wave">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="glow">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="wave">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="glow">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="wave">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="glow">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="wave">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="glow">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="wave">
-              <Placeholder xs={12} />
-            </Placeholder>
-          </div>
-        )}
+        <div className="mobile-banner">
+          <MobileBanner msliders={msliders} />
+        </div>
         <Container>
           <div className="ms-auto mt-5 footer-partner-logo">
             {bottomPartnerLogoSection?.map((singleLogo) => {
