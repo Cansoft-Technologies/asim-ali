@@ -23,65 +23,62 @@ const MobileBanner = (props: MyProps) => {
         </Head>
 
         <Carousel fade controls={false}>
-          {msliders?.homeSlider.map(
-            (slide, idx) => {
-              return (
-                <Carousel.Item key={idx}>
-                  <div
-                    className={styles.overlay}
-                    style={{
-                      position: "relative",
-                      height: "500px",
-                      width: "100%",
-                      clipPath: "inset(0 0 0 0)",
-                    }}
-                  ></div>
-                  <div>
-                    <Image
-                      alt="Asim Ali Slider"
-                      src={slide?.mobileImage?.sourceUrl}
-                      fill
-                      priority={true}
-                    />
-                  </div>
+          {msliders?.homeSlider.map((slide, idx) => {
+            return (
+              <Carousel.Item key={idx}>
+                <div
+                  className={styles.overlay}
+                  style={{
+                    position: "relative",
+                    height: "500px",
+                    width: "100%",
+                    clipPath: "inset(0 0 0 0)",
+                  }}
+                ></div>
+                <div>
+                  <Image
+                    alt="Asim Ali Slider"
+                    src={slide?.mobileImage?.sourceUrl}
+                    fill
+                  />
+                </div>
 
-                  <div className={styles.overlay}>
-                    <Carousel.Caption className={styles.carouselcaption}>
-                      <Row className="align-items-center">
-                        <Col className="text-center" xs={12} lg="6">
-                          <div className={styles.bannerCaption}>
-                            <p className={styles.sliderSubtitle}>
-                              {slide?.sliderSubtitle || ""}
-                            </p>
-                            <p className={styles.sliderTitle}>
-                              {slide?.sliderTitle || ""}
-                            </p>
-                            <p>{slide?.sliderDescription || ""}</p>
-                          </div>
+                <div className={styles.overlay}>
+                  <Carousel.Caption className={styles.carouselcaption}>
+                    <Row className="align-items-center">
+                      <Col className="text-center" xs={12} lg="6">
+                        <div className={styles.bannerCaption}>
+                          <p className={styles.sliderSubtitle}>
+                            {slide?.sliderSubtitle || ""}
+                          </p>
+                          <p className={styles.sliderTitle}>
+                            {slide?.sliderTitle || ""}
+                          </p>
+                          <p>{slide?.sliderDescription || ""}</p>
+                        </div>
+                      </Col>
+                      {slide.sliderButtonUrl == null ? (
+                        ""
+                      ) : (
+                        <Col className="text-center mt-0" xs={12} lg="6">
+                          <Link href={slide.sliderButtonUrl.url}>
+                            <Button className={styles.bannerBtn}>
+                              Get <span>Approved</span>
+                            </Button>
+                          </Link>
+                          <Link href="/apply-now">
+                            <Button className={styles.bannerBtn}>
+                              <span>Apply Now</span>
+                            </Button>
+                          </Link>
                         </Col>
-                        {slide.sliderButtonUrl == null ? (
-                          ""
-                        ) : (
-                          <Col className="text-center mt-0" xs={12} lg="6">
-                            <Link href={slide.sliderButtonUrl.url}>
-                              <Button className={styles.bannerBtn}>
-                                Get <span>Approved</span>
-                              </Button>
-                            </Link>
-                            <Link href="/apply-now">
-                              <Button className={styles.bannerBtn}>
-                                <span>Apply Now</span>
-                              </Button>
-                            </Link>
-                          </Col>
-                        )}
-                      </Row>
-                    </Carousel.Caption>
-                  </div>
-                </Carousel.Item>
-              );
-            } 
-          )}
+                      )}
+                    </Row>
+                  </Carousel.Caption>
+                </div>
+              </Carousel.Item>
+            );
+          })}
         </Carousel>
       </div>
     </div>
