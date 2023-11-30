@@ -27,7 +27,6 @@ const MobileBanner = (props: MyProps) => {
             return (
               <Carousel.Item key={idx}>
                 <div
-                  className={styles.overlay}
                   style={{
                     position: "relative",
                     height: "500px",
@@ -40,6 +39,8 @@ const MobileBanner = (props: MyProps) => {
                     alt="Asim Ali Slider"
                     src={slide?.mobileImage?.sourceUrl}
                     fill
+                    style={{ objectFit: "cover" }}
+                    priority={true}
                   />
                 </div>
 

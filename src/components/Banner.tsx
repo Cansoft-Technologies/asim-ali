@@ -14,7 +14,6 @@ type MyProps = {
 
 const Banner = (props: MyProps) => {
   const { sliders } = props;
-console.log(sliders);
 
   return (
     <div>
