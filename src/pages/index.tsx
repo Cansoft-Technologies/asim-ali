@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Placeholder, Row } from "react-bootstrap";
 const ContactSection = dynamic(() => import("components/ContactSection"));
 const FlexibilityTab = dynamic(() => import("components/FlexibilityTab"));
 const HomeBuyerSection = dynamic(() => import("components/HomeBuyerSection"));
@@ -456,9 +456,52 @@ export default function Page(props: MyProps) {
         <div className="desktop-banner">
           <Banner sliders={sliders} />
         </div>
-        <div className="mobile-banner">
-          <MobileBanner msliders={msliders} />
-        </div>
+        {msliders?.homeSlider[0]?.mobileImage &&
+        msliders?.homeSlider[0]?.sliderTitle &&
+        msliders?.homeSlider[0]?.sliderDescription ? (
+          <div className="mobile-banner">
+            <MobileBanner msliders={msliders} />
+          </div>
+        ) : (
+          <div style={{ height: "500px", width: "100%" }}>
+            <Placeholder as="p" animation="glow">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="wave">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="glow">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="wave">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="glow">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="wave">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="glow">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="wave">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="glow">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="wave">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="glow">
+              <Placeholder xs={12} />
+            </Placeholder>
+            <Placeholder as="p" animation="wave">
+              <Placeholder xs={12} />
+            </Placeholder>
+          </div>
+        )}
         <Container>
           <div className="ms-auto mt-5 footer-partner-logo">
             {bottomPartnerLogoSection?.map((singleLogo) => {

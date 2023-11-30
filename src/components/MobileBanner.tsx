@@ -31,7 +31,7 @@ const MobileBanner = (props: MyProps) => {
                     className={styles.overlay}
                     style={{
                       position: "relative",
-                      height: "60vh",
+                      height: "500px",
                       width: "100%",
                       clipPath: "inset(0 0 0 0)",
                     }}
