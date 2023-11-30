@@ -1,43 +1,7 @@
-import { gql } from "@apollo/client";
-import { apolloClient } from "lib/apollo";
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
-export async function getStaticProps() {
-  const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        pages(where: { id: 14 }) {
-          nodes {
-            HomeLandingPage {
-              splitImageRightSection {
-                splitTitle
-                splitDescription
-                splitImagesRight {
-                  altText
-                  sourceUrl
-                }
-                hideSection
-                splitButton {
-                  url
-                  title
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-  });
-
-  return {
-    props: {
-      splitImagesRight: data?.pages?.nodes,
-    },
-    revalidate: 60,
-  };
-}
 
 type MyProps = {
   splitImagesRight: any;

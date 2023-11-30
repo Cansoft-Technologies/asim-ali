@@ -7,7 +7,6 @@ type MyProps = {
 };
 export default function MortgageFeaturedHome(props: MyProps) {
   const { advisorData } = props;
-  console.log(advisorData)
   return (
     <section className="split_section mt-5">
       <Container>

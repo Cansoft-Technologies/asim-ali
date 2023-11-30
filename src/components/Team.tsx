@@ -1,8 +1,6 @@
 import { Container } from "react-bootstrap";
 import styles from "scss/components/Banner.module.scss";
 
-
-
 type MyProps = {
   teams: any;
 };

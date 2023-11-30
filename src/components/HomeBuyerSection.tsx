@@ -1,13 +1,11 @@
-import Image from "next/image";
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 type MyProps = {
   homebuyerData: any;
 };
 export default function HomeBuyerSection(props: MyProps) {
   const { homebuyerData } = props;
-  console.log(homebuyerData);
   return (
     <section className="my-5">
       <Container>
@@ -24,14 +22,14 @@ export default function HomeBuyerSection(props: MyProps) {
                 <div className="card-index">
                   <p className="">{index + 1}</p>
                 </div>
-                  <h3 className="card-title">{data?.title}</h3>
+                <h3 className="card-title">{data?.title}</h3>
                 <div className="card-body text-center">
                   <div
-                      className="text-center"
-                      dangerouslySetInnerHTML={{
-                        __html: data?.description,
-                      }}
-                    ></div>
+                    className="text-center"
+                    dangerouslySetInnerHTML={{
+                      __html: data?.description,
+                    }}
+                  ></div>
                 </div>
               </div>
             );
