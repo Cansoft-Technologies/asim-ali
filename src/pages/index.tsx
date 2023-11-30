@@ -1,17 +1,19 @@
 import { gql } from "@apollo/client";
-import ContactSection from "components/ContactSection";
-import FlexibilityTab from "components/FlexibilityTab";
-import HomeBuyerSection from "components/HomeBuyerSection";
-import MortgageAdvisor from "components/MortgageAdvisor";
-import MortgageFeaturedHome from "components/MortgageFeaturedHome";
-import ServiceSection from "components/ServiceSection";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+const ContactSection = dynamic(() => import("components/ContactSection"));
+const FlexibilityTab = dynamic(() => import("components/FlexibilityTab"));
+const HomeBuyerSection = dynamic(() => import("components/HomeBuyerSection"));
+const MortgageAdvisor = dynamic(() => import("components/MortgageAdvisor"));
+const MortgageFeaturedHome = dynamic(
+  () => import("components/MortgageFeaturedHome")
+);
+const ServiceSection = dynamic(() => import("components/ServiceSection"));
+const Footer = dynamic(() => import("../components/Footer"));
+const Header = dynamic(() => import("../components/Header"));
 import { apolloClient } from "../lib/apollo";
 const CTA = dynamic(() => import("../components/CTA"));
 const Banner = dynamic(() => import("../components/Banner"));
