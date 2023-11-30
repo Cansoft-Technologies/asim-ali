@@ -196,6 +196,7 @@ const Current = (props: MyProps) => {
                   <div className="col-md-12">
                     <div className="current-rate">
                       <div className="current-container">
+                        <h1 className="mb-1">Current Rates</h1>
                         {data?.CurrentRates?.currentMortgageRate == null ? (
                           ""
                         ) : (
