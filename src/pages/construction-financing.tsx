@@ -1,373 +1,489 @@
-import { gql } from "@apollo/client";
-import { CTA, Footer, Header, Hero } from "components";
-import MortgageAdvisor from "components/MortgageAdvisor";
-import { apolloClient } from "lib/apollo";
+import dynamic from "next/dynamic";
 import Head from "next/head";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+const CTA = dynamic(() => import("../components/CTA"));
+const Banner = dynamic(() => import("../components/Banner"));
+const WeHelp = dynamic(() => import("../components/WeHelp"));
+const Team = dynamic(() => import("components/Team"));
+const Meeting = dynamic(() => import("components/Meeting"));
+const PartnerLogo = dynamic(() => import("components/PartnerLogo"));
+const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
+const FAQ = dynamic(() => import("components/FAQ"));
+const Gallery = dynamic(() => import("components/Gallery"));
+const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
+const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
+import { apolloClient } from "../lib/apollo";
+import { gql } from "@apollo/client";
+import ClientReviews from "components/ClientReviews";
+import MortgageAdvisor from "components/MortgageAdvisor";
+import { Col, Container, Row } from "react-bootstrap";
+import ContactSection from "components/ContactSection";
+import FlexibilityTab from "components/FlexibilityTab";
 import Image from "next/image";
-import { useState } from "react";
-import { Accordion, Col, Container, Row, Tab, Tabs } from "react-bootstrap";
-import "react-multi-carousel/lib/styles.css";
+import MortgageFeatured from "components/MortgageFeatured";
+import ServiceSection from "components/ServiceSection";
+import HomeBuyerSection from "components/HomeBuyerSection";
+import { Hero } from "components";
+import AccordionSection from "components/AccordionSection";
+import TabNewBC from "components/TabNewBC";
+import AccordionNewBC from "components/AccordionNewBC";
+import HomeBuyerNewBC from "components/HomeBuyerNewBC";
+import ServiceSectionNewBC from "components/ServiceSectionNewBC";
+import BorrowingPayment from "components/BorrowingPayment";
+
+const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        pages(where: { id: 2762 }) {
-          nodes {
-            seo {
-              title
-              description
-              canonicalUrl
-              focusKeywords
-              openGraph {
-                image {
-                  url
-                }
-              }
+    query: gql`query{
+      pages(where: {id: 4380}) {
+      nodes {
+        seo {
+          title
+          description
+          canonicalUrl
+          focusKeywords
+          openGraph {
+            image {
+              url
             }
-            construction {
-              serviceBannerTitle
+          }
+          jsonLd {
+            raw
+          }
+        }
+        newConstructionFinancing {
+          serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
               serviceBannerImage {
                 altText
                 sourceUrl
               }
-              productsTitle
-              productsDescription
-              productsRightText
-              productsLeftText
-              brokerTitle
-              brokerDescription
-              bottomBrokerTitle
-              bottomBrokerDescription
               aboutText
               aboutImage {
                 altText
                 sourceUrl
               }
-              productsImage {
-                altText
-                sourceUrl
-              }
-              renovation {
-                title
-                description
-              }
-              advisorData {
-                advisorCards {
-                  title
-                  description
-                }
-                advisorTitle
-                advisorDescriptionTop
-                advisorImage {
-                  altText
-                  sourceUrl
-                }
-              }
-              renovateImageFirst {
-                altText
-                sourceUrl
-              }
+          
+          reasonTitle
+          reasonDescription
+          reasonLeftText
+          reasonRightText
+          reasonLeftImage {
+            altText
+            sourceUrl
+          }
+          reasonRightImage {
+            altText
+            sourceUrl
+          }
+          processBorrowing {
+            advisorTitle
+            advisorDescriptionTop
+            advisorCards{
+              title
+              description
             }
           }
-        }
-
-        settingsOptions {
-          AsimOptions {
-            headerSettings {
-              uploadLogo {
-                sourceUrl
-                altText
-              }
-            }
-            footerSettings {
-              socialUrl {
-                facebook
-                tiktok
-                linkedin
-                instagram
-              }              
-              copyrightText
-              footerLeftWidget {
-                title
-                phoneNumber
-                emailAddress
-              }
-              footerLogoSection {
-                logoText
-                logoUpload {
-                  altText
-                  sourceUrl
-                }
-              }
-              footerRightWidget {
-                title
-                address
-              }
+          borrowingPayment{
+            borrowingTitle
+            borrowingDescriptionTop
+            borrowingRightDescription
+            borrowingImage {
+              sourceUrl
+              altText
             }
           }
-        }
+          expertsHelp{
+            expertsHelpTitle
+            expertsHelpDescription
+            helpLeftText
+            helpRightText
+            helpLeftImage{
+                sourceUrl
+                altText
+            }
+            helpRightImage{
+                sourceUrl
+                altText
+            }    
+          }
+          ratesTitle
+          ratesDescription
+          
+          tabWhyChoose{
+            tabHeading
+            tabDescription
+            tabDetails{
+              title
+              description
+            }
+          }
+          loanTitle
+          reasonLeftTextCopy
+          reasonRightTextCopy
+          reasonLeftImageCopy {
+            altText
+            sourceUrl
+          }
+          reasonRightImageCopy {
+            altText
+            sourceUrl
+          }
 
-        menus(where: { location: PRIMARY }) {
+          qualifyingTitle
+          qualifyingDescription
+          commonConcerns {
+            advisorTitle
+            advisorDescription
+            advisorImage {
+              sourceUrl
+              altText
+            }
+            advisorCards{
+              title
+              description
+            }
+          }
+          talkTitle
+          talkDescription
+          
+        }
+     
+     
+      }
+     
+    
+    
+ 
+  }
+   settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        generalSettings {
+            schemaProductRating
+        }
+        footerSettings {
+          socialUrl {
+            facebook
+            tiktok
+            linkedin
+            instagram
+          }
+          copyrightText
+          footerLeftWidget {
+            title
+            phoneNumber
+            emailAddress
+          }
+          footerLogoSection {
+            logoText
+            logoUpload {
+              altText
+              sourceUrl
+            }
+          }
+          footerRightWidget {
+            title
+            address
+          }
+        }
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
           nodes {
-            name
-            slug
-            menuItems(first: 50) {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
               nodes {
-                url
-                target
-                parentId
+                uri
                 label
-                cssClasses
-                description
-                id
-                childItems {
-                  nodes {
-                    uri
-                    label
-                  }
-                }
               }
             }
           }
         }
       }
-    `,
+    }
+}`,
   });
 
   return {
     props: {
-      constructionData: data?.pages?.nodes,
-      metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
+      metaData: data?.pages?.nodes,
+      serviceBannerData: data?.pages?.nodes[0]?.newConstructionFinancing,
+      reasonTitle: data?.pages?.nodes[0]?.newConstructionFinancing?.reasonTitle,
+      reasonDescription:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonDescription,
+      reasonLeftText:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonLeftText,
+      reasonRightImage:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonRightImage,
+      reasonRightText:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonRightText,
+      reasonLeftImage:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonLeftImage,
+      loanTitle: data?.pages?.nodes[0]?.newConstructionFinancing?.loanTitle,
+      reasonLeftTextCopy:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonLeftTextCopy,
+      reasonRightImageCopy:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonRightImageCopy,
+      reasonRightTextCopy:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonRightTextCopy,
+      reasonLeftImageCopy:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonLeftImageCopy,
+      borrowingPaymentData:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.borrowingPayment,
+
+      expertsHelpData:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.expertsHelp,
+      tabWhyChooseData:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.tabWhyChoose,
+      borrowingProcessData:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.processBorrowing,
+      qualifyingTitle:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.qualifyingTitle,
+      qualifyingDescription:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.qualifyingDescription,
+      commonConcernsData:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.newConstructionFinancing?.talkTitle,
+      talkDescription:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.talkDescription,
+      ratesTitle: data?.pages?.nodes[0]?.newConstructionFinancing?.ratesTitle,
+      ratesDescription:
+        data?.pages?.nodes[0]?.newConstructionFinancing?.ratesDescription,
     },
     revalidate: 60,
   };
 }
 
 type MyProps = {
-  constructionData: any;
-  metaData: any;
   settings: any;
   mainMenus: any;
+  metaData: any;
+  serviceBannerData: any;
+  reasonTitle: any;
+  reasonDescription: any;
+  reasonLeftText: any;
+  reasonRightText: any;
+  reasonLeftImage: any;
+  reasonRightImage: any;
+  loanTitle: any;
+  reasonLeftTextCopy: any;
+  reasonRightTextCopy: any;
+  reasonLeftImageCopy: any;
+  reasonRightImageCopy: any;
+  borrowingPaymentData: any;
+  expertsHelpData: any;
+  tabWhyChooseData: any;
+  borrowingProcessData: any;
+  qualifyingTitle: any;
+  qualifyingDescription: any;
+  commonConcernsData: any;
+  talkTitle: any;
+  talkDescription: any;
+  ratesTitle: any;
+  ratesDescription: any;
 };
 
-const ConstructionFinancing = (props: MyProps) => {
-  const { settings, mainMenus, constructionData, metaData } = props;
-  const [key, setKey] = useState(null);
+export default function NewConstructionFinancing(props: MyProps) {
+  const {
+    settings,
+    mainMenus,
+    metaData,
+    serviceBannerData,
+    reasonTitle,
+    loanTitle,
+    reasonDescription,
+    reasonLeftText,
+    reasonRightText,
+    reasonLeftImage,
+    reasonRightImage,
+    reasonLeftTextCopy,
+    reasonRightTextCopy,
+    reasonLeftImageCopy,
+    reasonRightImageCopy,
+    borrowingPaymentData,
+    expertsHelpData,
+    tabWhyChooseData,
+    borrowingProcessData,
+    qualifyingTitle,
+    qualifyingDescription,
+    commonConcernsData,
+    talkTitle,
+    talkDescription,
+    ratesTitle,
+    ratesDescription,
+  } = props;
+
   return (
     <>
-      {constructionData?.map((data, index) => {
-        return (
-          <div key={index} className="our-services">
-            <Head>
-              {metaData.map((meta) => {
-                return (
-                  <>
-                    <title>{meta?.seo?.title}</title>
-                    <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl} />
-                    <meta property="og:title" content={meta?.seo?.title} />
-                    <meta
-                      property="og:description"
-                      content={meta?.seo?.description}
-                    />
-                    <meta
-                      property="og:image"
-                      content={meta?.seo?.openGraph?.image?.url}
-                    />
-                  </>
-                );
-              })}
-            </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
-            <main className="content">
-              {data?.construction?.serviceBannerTitle == null ? (
-                ""
-              ) : (
-                <Hero
-                  title={data?.construction?.serviceBannerTitle}
-                  heading={data?.construction?.serviceBannerHeading}
-                  description={data?.construction?.serviceBannerDescription}
-                  bgImage={data?.construction?.serviceBannerImage?.sourceUrl}
-                />
-              )}
+      <Head>
+        {metaData?.map((meta) => {
+          return (
+            <>
+              <title>{meta?.seo?.title}</title>
+              <meta name="description" content={meta?.seo?.description} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <meta property="og:title" content={meta?.seo?.title} />
+              <meta
+                property="og:description"
+                content={meta?.seo?.description}
+              />
+              <meta
+                property="og:image"
+                content={meta?.seo?.openGraph?.image?.url}
+              />
+            </>
+          );
+        })}
+      </Head>
+      <Header settings={settings} mainMenus={mainMenus} />
+      <main className="content">
+        {serviceBannerData?.serviceBannerTitle == null ? (
+          ""
+        ) : (
+          <Hero
+            title={serviceBannerData?.serviceBannerTitle}
+            heading={serviceBannerData?.serviceBannerHeading}
+            description={serviceBannerData?.serviceBannerDescription}
+            bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+          />
+        )}
+        <Container className="mb-5">
+          <Row className="coquitlam-grid my-5">
+            <Col md={7}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: serviceBannerData?.aboutText,
+                }}
+              ></div>
+            </Col>
+            <Col md={5}>
+              <Image
+                src={serviceBannerData?.aboutImage?.sourceUrl}
+                alt={serviceBannerData?.aboutImage?.altText}
+                width="390"
+                height="400"
+                priority={true}
+                style={{ width: "100%", objectFit: "cover" }}
+              />
+            </Col>
+          </Row>
+        </Container>
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <h2 className="text-center">{reasonTitle}</h2>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: reasonDescription,
+            }}
+          ></div>
+        </Container>
 
-              <Container className="my-5">
-                <Row className="coquitlam-grid my-5">
-                  <Col md={7}>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.construction?.aboutText,
-                      }}
-                    ></div>
-                  </Col>
-                  <Col md={5}>
-                    <Image
-                      src={data?.construction?.aboutImage?.sourceUrl}
-                      alt={data?.construction?.aboutImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "cover" }}
-                    />
-                  </Col>
-                </Row>
-                <Row className="product-service">
-                  <Col className="px-5" md={1}></Col>
-                  <Col
-                    className="py-3"
-                    md={10}
-                    style={{
-                      border: "1px solid #f0b254",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <h2 className="text-center">
-                      {data?.construction?.productsTitle}
-                    </h2>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.construction?.productsDescription,
-                      }}
-                      className="text-center"
-                    ></div>
-                  </Col>
-                  <Col className="px-5" md={1}></Col>
-                </Row>
-                {data.construction.renovation == null ? (
-                  ""
-                ) : (
-                  <Row
-                    className="renovation-tab-row"
-                    style={{ marginTop: "80px" }}
-                  >
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 0 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-3 renovation"
-                    >
-                      {data.construction.renovation.map((tab, item) => {
-                        return (
-                          <Tab
-                            key={item}
-                            eventKey={item.toString()}
-                            title={
-                              <h3 className="location-tab-title">
-                                {tab.title}
-                              </h3>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: tab.description,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )}
-                <Row
-                  className="mortgage-broker text-center"
-                  style={{ marginTop: "80px" }}
-                >
-                  <Col>
-                    <h2 className="headering-title">
-                      {data?.construction?.brokerTitle}
-                    </h2>
-                    <div
-                          className="service-content"
-                          dangerouslySetInnerHTML={{
-                            __html: data?.construction?.brokerDescription,
-                          }}
-                        ></div>
-                  </Col>
-                </Row>
-                <div className="service-row my-5">
-                  <Container>
-                    <Row>
-                      <Col className="service-texts" lg={6}>
-                        <div
-                          className="service-content"
-                          dangerouslySetInnerHTML={{
-                            __html: data?.construction?.productsLeftText,
-                          }}
-                        ></div>
-                      </Col>
-                      <Col className="service-texts" lg={6}>
-                        <div className="service-image">
-                          <Image
-                            src={data?.construction?.productsImage?.sourceUrl}
-                            alt={data?.construction?.productsImage?.altText}
-                            width="390"
-                            height="400"
-                            style={{ width: "100%", objectFit: "cover" }}
-                          />
-                        </div>
-                      </Col>
-                    </Row>
-                  </Container>
-                </div>
-                <div className="service-row my-5">
-                  <Container>
-                    <Row>
-                      <Col className="service-texts" lg={6}>
-                        <div className="service-image">
-                          <Image
-                            src={data?.construction?.renovateImageFirst?.sourceUrl}
-                            alt={data?.construction?.renovateImageFirst?.altText}
-                            width="390"
-                            height="400"
-                            style={{ width: "100%", objectFit: "cover" }}
-                          />
-                        </div>
-                      </Col>
-                      <Col className="service-texts" lg={6}>
-                        <div
-                          className="service-content"
-                          dangerouslySetInnerHTML={{
-                            __html: data?.construction?.productsRightText,
-                          }}
-                        ></div>
-                      </Col>
-                    </Row>
-                  </Container>
-                </div>
-                <Row className="my-5">
-                  <Container>
-                    <div className="my-5">
-                      <MortgageAdvisor
-                        advisorData={data?.construction?.advisorData}
-                      />
-                    </div>
-                  </Container>
-                </Row>
-                <Row className="mortgage-broker-bottom text-center mt-5">
-                  <Col>
-                    <h2>{data?.construction?.bottomBrokerTitle}</h2>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.construction?.bottomBrokerDescription,
-                      }}
-                    ></div>
-                  </Col>
-                </Row>
-              </Container>
-              <CTA />
-            </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
-          </div>
-        );
-      })}
+        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+
+        <Container>
+          <Row
+            className="mortgage-broker text-center"
+            style={{ marginTop: "80px" }}
+          >
+            <Col>
+              <h2 className="headering-title">
+                {expertsHelpData?.expertsHelpTitle}
+              </h2>
+              <p className="service-content">
+                {expertsHelpData?.expertsHelpDescription}
+              </p>
+            </Col>
+          </Row>
+        </Container>
+        <ServiceSection
+          textLeft={expertsHelpData?.helpLeftText}
+          textRight={expertsHelpData?.helpRightText}
+          imageLeft={expertsHelpData?.helpLeftImage}
+          imageRight={expertsHelpData?.helpRightImage}
+        />
+
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: ratesTitle,
+            }}
+          ></div>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: ratesDescription,
+            }}
+          ></div>
+        </Container>
+
+        <ServiceSection
+          textLeft={reasonLeftText}
+          textRight={reasonRightText}
+          imageLeft={reasonLeftImage}
+          imageRight={reasonRightImage}
+        />
+
+        <TabNewBC tabData={tabWhyChooseData} />
+        <HomeBuyerNewBC advisorData={borrowingProcessData} />
+
+        <h2 className="text-center  ">{loanTitle}</h2>
+        <hr
+          style={{
+            width: "350px",
+            margin: "0 auto",
+            border: "1.75px solid #F0B254",
+            borderRadius: "10px",
+          }}
+          className="mb-5"
+        />
+        <ServiceSection
+          textLeft={reasonLeftTextCopy}
+          textRight={reasonRightTextCopy}
+          imageLeft={reasonLeftImageCopy}
+          imageRight={reasonRightImageCopy}
+        />
+
+        <AccordionNewBC homebuyerData={commonConcernsData} />
+        <Container className="mb-5">
+          <h2 className="text-center service-title">{talkTitle}</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: talkDescription,
+            }}
+            className="text-lg text-center"
+          ></div>
+        </Container>
+      </main>
+      <Footer settings={settings} mainMenus={mainMenus} />
     </>
   );
-};
-
-export default ConstructionFinancing;
+}
