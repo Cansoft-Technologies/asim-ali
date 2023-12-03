@@ -17,7 +17,7 @@ import { apolloClient } from "../lib/apollo";
 import { gql } from "@apollo/client";
 import ClientReviews from "components/ClientReviews";
 import MortgageAdvisor from "components/MortgageAdvisor";
-import { Col, Container, Row } from "react-bootstrap";
+import { Accordion, Col, Container, Row } from "react-bootstrap";
 import ContactSection from "components/ContactSection";
 import FlexibilityTab from "components/FlexibilityTab";
 import Image from "next/image";
@@ -37,7 +37,7 @@ const MobileBanner = dynamic(() => import("components/MobileBanner"));
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 4314}) {
+      pages(where: {id: 4458}) {
       nodes {
         seo {
           title
@@ -53,7 +53,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        newBorrowDownBc {
+        newMortgageSelfEmployedBc {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -70,12 +70,22 @@ export async function getStaticProps() {
           reasonTitle
           reasonDescription
           reasonLeftText
+          differenceLeftText
+          mortgageLeftText
           reasonRightText
           reasonLeftImage {
             altText
             sourceUrl
           }
           reasonRightImage {
+            altText
+            sourceUrl
+          }
+          differenceRightImage {
+            altText
+            sourceUrl
+          }
+          mortgageRightImage {
             altText
             sourceUrl
           }
@@ -213,28 +223,44 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.newBorrowDownBc,
-      reasonTitle: data?.pages?.nodes[0]?.newBorrowDownBc?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.newMortgageSelfEmployedBc,
+      reasonTitle:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.newBorrowDownBc?.reasonDescription,
-      reasonLeftText: data?.pages?.nodes[0]?.newBorrowDownBc?.reasonLeftText,
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.reasonDescription,
+      reasonLeftText:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.reasonLeftText,
+      differenceLeftText:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.differenceLeftText,
+      mortgageLeftText:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.mortgageLeftText,
       reasonRightImage:
-        data?.pages?.nodes[0]?.newBorrowDownBc?.reasonRightImage,
-      reasonRightText: data?.pages?.nodes[0]?.newBorrowDownBc?.reasonRightText,
-      reasonLeftImage: data?.pages?.nodes[0]?.newBorrowDownBc?.reasonLeftImage,
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.reasonRightImage,
+      differenceRightImage:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.differenceRightImage,
+      mortgageRightImage:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.mortgageRightImage,
+      reasonRightText:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.reasonRightText,
+      reasonLeftImage:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.reasonLeftImage,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.newBorrowDownBc?.borrowingPayment,
-      expertsHelpData: data?.pages?.nodes[0]?.newBorrowDownBc?.expertsHelp,
-      tabWhyChooseData: data?.pages?.nodes[0]?.newBorrowDownBc?.tabWhyChoose,
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.borrowingPayment,
+      expertsHelpData:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.expertsHelp,
+      tabWhyChooseData:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.tabWhyChoose,
       borrowingProcessData:
-        data?.pages?.nodes[0]?.newBorrowDownBc?.processBorrowing,
-      qualifyingTitle: data?.pages?.nodes[0]?.newBorrowDownBc?.qualifyingTitle,
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.processBorrowing,
+      qualifyingTitle:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.qualifyingTitle,
       qualifyingDescription:
-        data?.pages?.nodes[0]?.newBorrowDownBc?.qualifyingDescription,
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.qualifyingDescription,
       commonConcernsData:
-        data?.pages?.nodes[0]?.newBorrowDownBc?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.newBorrowDownBc?.talkTitle,
-      talkDescription: data?.pages?.nodes[0]?.newBorrowDownBc?.talkDescription,
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.talkTitle,
+      talkDescription:
+        data?.pages?.nodes[0]?.newMortgageSelfEmployedBc?.talkDescription,
     },
     revalidate: 60,
   };
@@ -248,9 +274,13 @@ type MyProps = {
   reasonTitle: any;
   reasonDescription: any;
   reasonLeftText: any;
+  differenceLeftText: any;
+  mortgageLeftText: any;
   reasonRightText: any;
   reasonLeftImage: any;
   reasonRightImage: any;
+  differenceRightImage: any;
+  mortgageRightImage: any;
   borrowingPaymentData: any;
   expertsHelpData: any;
   tabWhyChooseData: any;
@@ -262,7 +292,7 @@ type MyProps = {
   talkDescription: any;
 };
 
-export default function NewBorrowDownPaymentInBC(props: MyProps) {
+export default function NewMortgageSelfEmployedInBC(props: MyProps) {
   const {
     settings,
     mainMenus,
@@ -283,6 +313,10 @@ export default function NewBorrowDownPaymentInBC(props: MyProps) {
     commonConcernsData,
     talkTitle,
     talkDescription,
+    differenceLeftText,
+    differenceRightImage,
+    mortgageLeftText,
+    mortgageRightImage,
   } = props;
 
   return (
@@ -303,6 +337,8 @@ export default function NewBorrowDownPaymentInBC(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
+              <meta name="robots" content="noindex,nofollow" />
+              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}
@@ -341,14 +377,82 @@ export default function NewBorrowDownPaymentInBC(props: MyProps) {
           </Row>
         </Container>
 
+        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+        <section className="my-5">
+          <div className="service-row">
+            <Container>
+              <Row>
+                <Col className="service-texts" lg={6}>
+                  <div
+                    className="service-content"
+                    dangerouslySetInnerHTML={{
+                      __html: differenceLeftText,
+                    }}
+                  ></div>
+                </Col>
+                <Col className="service-texts" lg={6}>
+                  <div className="service-image">
+                    <Image
+                      src={differenceRightImage?.sourceUrl}
+                      alt={differenceRightImage?.altText}
+                      width="390"
+                      height="400"
+                      style={{ width: "100%", objectFit: "cover" }}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </section>
+
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <h2 className="text-center">{reasonTitle}</h2>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: reasonDescription,
+            }}
+          ></div>
+        </Container>
+
         <ServiceSection
           textLeft={reasonLeftText}
           textRight={reasonRightText}
           imageLeft={reasonLeftImage}
           imageRight={reasonRightImage}
         />
+        <section className="my-5">
+          <div className="service-row">
+            <Container>
+              <Row>
+                <Col className="service-texts" lg={6}>
+                  <div
+                    className="service-content"
+                    dangerouslySetInnerHTML={{
+                      __html: mortgageLeftText,
+                    }}
+                  ></div>
+                </Col>
+                <Col className="service-texts" lg={6}>
+                  <div className="service-image">
+                    <Image
+                      src={mortgageRightImage?.sourceUrl}
+                      alt={mortgageRightImage?.altText}
+                      width="390"
+                      height="400"
+                      style={{ width: "100%", objectFit: "cover" }}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </section>
 
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
         <Container>
           <Row
             className="mortgage-broker text-center"
@@ -370,21 +474,59 @@ export default function NewBorrowDownPaymentInBC(props: MyProps) {
           imageLeft={expertsHelpData?.helpLeftImage}
           imageRight={expertsHelpData?.helpRightImage}
         />
+        {/*  */}
         <TabNewBC tabData={tabWhyChooseData} />
         <HomeBuyerNewBC advisorData={borrowingProcessData} />
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <h2 className="text-center">{qualifyingTitle}</h2>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: qualifyingDescription,
-            }}
-          ></div>
+
+        {/*  */}
+        <Container>
+          <div>
+            <div className=" my-5">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: commonConcernsData?.advisorTitle,
+                }}
+                className="text-center service-title text-lg tab-head"
+              ></div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: commonConcernsData?.advisorDescription,
+                }}
+                className="text-center text-sm"
+              ></div>
+            </div>
+            <div className="service-row my-5">
+              <Container>
+                <Row>
+                  <Col>
+                    <div className="faq-accordion">
+                      <Accordion defaultActiveKey="0">
+                        {commonConcernsData?.advisorCards?.map((qa, index) => {
+                          return (
+                            <Accordion.Item
+                              key={index}
+                              eventKey={index.toString()}
+                            >
+                              <Accordion.Header as="h3">
+                                {qa?.title}
+                              </Accordion.Header>
+                              <Accordion.Body
+                                dangerouslySetInnerHTML={{
+                                  __html: qa?.description,
+                                }}
+                              ></Accordion.Body>
+                            </Accordion.Item>
+                          );
+                        })}
+                      </Accordion>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+            </div>
+          </div>
         </Container>
-        <AccordionNewBC homebuyerData={commonConcernsData} />
+
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div
