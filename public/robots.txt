@@ -7,3 +7,4 @@ Host: https://asimali.ca/
 
 # Sitemaps
 Sitemap: https://asimali.ca/sitemap.xml
+Sitemap: https://asimali.ca/server-sitemap.xml
