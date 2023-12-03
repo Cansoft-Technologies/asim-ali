@@ -12,7 +12,6 @@ export default function HomeBuyerNewBC(props: MyProps) {
   );
   const [colGap, setColGap] = useState({});
 
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleResize = () => {
@@ -31,7 +30,7 @@ export default function HomeBuyerNewBC(props: MyProps) {
     if (
       advisorData?.advisorCards?.length === 5 &&
       typeof window !== "undefined" &&
-      windowWidth > 1600
+      windowWidth > 1200
     ) {
       setColGap({ columnGap: "60px" });
     }

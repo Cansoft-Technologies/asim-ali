@@ -196,8 +196,12 @@ const CommercialVancouver = (props: MyProps) => {
                 <Hero
                   title={data?.commercialvancouver?.serviceBannerTitle}
                   heading={data?.commercialvancouver?.serviceBannerHeading}
-                  description={data?.commercialvancouver?.serviceBannerDescription}
-                  bgImage={data?.commercialvancouver?.serviceBannerImage?.sourceUrl}
+                  description={
+                    data?.commercialvancouver?.serviceBannerDescription
+                  }
+                  bgImage={
+                    data?.commercialvancouver?.serviceBannerImage?.sourceUrl
+                  }
                 />
               )}
 
@@ -313,8 +317,13 @@ const CommercialVancouver = (props: MyProps) => {
                       <Col className="service-texts" lg={6}>
                         <div className="service-image">
                           <Image
-                            src={data?.commercialvancouver?.productsImage?.sourceUrl}
-                            alt={data?.commercialvancouver?.productsImage?.altText}
+                            src={
+                              data?.commercialvancouver?.productsImage
+                                ?.sourceUrl
+                            }
+                            alt={
+                              data?.commercialvancouver?.productsImage?.altText
+                            }
                             width="390"
                             height="400"
                             style={{ width: "100%", objectFit: "cover" }}
@@ -330,8 +339,14 @@ const CommercialVancouver = (props: MyProps) => {
                       <Col className="service-texts" lg={6}>
                         <div className="service-image">
                           <Image
-                            src={data?.commercialvancouver?.renovateImageFirst?.sourceUrl}
-                            alt={data?.commercialvancouver?.renovateImageFirst?.altText}
+                            src={
+                              data?.commercialvancouver?.renovateImageFirst
+                                ?.sourceUrl
+                            }
+                            alt={
+                              data?.commercialvancouver?.renovateImageFirst
+                                ?.altText
+                            }
                             width="390"
                             height="400"
                             style={{ width: "100%", objectFit: "cover" }}
@@ -342,7 +357,8 @@ const CommercialVancouver = (props: MyProps) => {
                         <div
                           className="service-content"
                           dangerouslySetInnerHTML={{
-                            __html: data?.commercialvancouver?.productsRightText,
+                            __html:
+                              data?.commercialvancouver?.productsRightText,
                           }}
                         ></div>
                       </Col>
@@ -354,7 +370,8 @@ const CommercialVancouver = (props: MyProps) => {
                     <h2>{data?.commercialvancouver?.bottomBrokerTitle}</h2>
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: data?.commercialvancouver?.bottomBrokerDescription,
+                        __html:
+                          data?.commercialvancouver?.bottomBrokerDescription,
                       }}
                     ></div>
                   </Col>
@@ -362,18 +379,23 @@ const CommercialVancouver = (props: MyProps) => {
                 {/* faq section start */}
                 <div className="faq-accordion">
                   <Accordion defaultActiveKey="0">
-                    {data?.commercialvancouver?.faqAccordion?.map((qa, index) => {
-                      return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="h3">
-                            {qa.question}
-                          </Accordion.Header>
-                          <Accordion.Body
-                            dangerouslySetInnerHTML={{ __html: qa.answer }}
-                          ></Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
+                    {data?.commercialvancouver?.faqAccordion?.map(
+                      (qa, index) => {
+                        return (
+                          <Accordion.Item
+                            key={index}
+                            eventKey={index.toString()}
+                          >
+                            <Accordion.Header as="h3">
+                              {qa.question}
+                            </Accordion.Header>
+                            <Accordion.Body
+                              dangerouslySetInnerHTML={{ __html: qa.answer }}
+                            ></Accordion.Body>
+                          </Accordion.Item>
+                        );
+                      }
+                    )}
                   </Accordion>
                 </div>
 
