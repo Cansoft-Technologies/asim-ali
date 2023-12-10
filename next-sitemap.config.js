@@ -34,5 +34,5 @@ module.exports = {
   },
   // (optional)
   // ...other options
-  outDir: "./public",
+  // outDir: "./public",
 };
