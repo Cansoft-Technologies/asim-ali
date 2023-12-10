@@ -56,6 +56,11 @@ module.exports = withBundleAnalyzer ( withFaust ( withPWA({
           destination: 'https://asimali.ca',
           permanent: true,
         },
+        {
+          source: '/our-locations',
+          destination: 'https://asimali.ca',
+          permanent: false,
+        },
       ]
     },
     async headers() {
