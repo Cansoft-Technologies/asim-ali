@@ -1,11 +1,30 @@
-const siteUrl = 'https://asimali.ca/';
+const siteUrl = "https://asimali.ca/";
+const locationRoutes = [
+  "/mortgage-broker-in-abbotsford",
+  "/mortgage-broker-in-coquitlam",
+  "/mortgage-brokers-in-prince-george",
+  "/mortgage-brokers-in-delta",
+  "/mortgage-brokers-in-maple-ridge",
+  "/mortgage-brokers-in-kamloops",
+  "/mortgage-brokers-in-kelowna",
+  "/langley-mortgage-broker",
+  "/mortgage-broker-in-vancouver",
+];
+
 module.exports = {
   siteUrl,
   generateRobotsTxt: true,
   sitemapSize: 7000,
   priority: 0.9,
   exclude: [
-    '/new-mortgage-for-self-employed-in-bc', '/new-construction-financing', '/new-commercial-mortgage-in-vancouver', '/new-commercial-mortgage-in-bc', '/new-borrow-down-payment-in-bc','/server-sitemap.xml'
+    "/new-mortgage-for-self-employed-in-bc",
+    "/new-construction-financing",
+    "/new-commercial-mortgage-in-vancouver",
+    "/new-commercial-mortgage-in-bc",
+    "/new-borrow-down-payment-in-bc",
+    "/server-sitemap.xml",
+    "/location-sitemap.xml",
+    ...locationRoutes,
   ],
   robotsTxtOptions: {
     // policies: [
@@ -30,6 +49,7 @@ module.exports = {
     additionalSitemaps: [
       `${siteUrl}sitemap.xml`,
       `${siteUrl}server-sitemap.xml`,
+      `${siteUrl}location-sitemap.xml`,
     ],
   },
   // (optional)
