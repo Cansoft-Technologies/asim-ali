@@ -192,7 +192,6 @@ const Blog = (props: MyProps) => {
       });
   }, [page]);
 
-
   return (
     <div>
       <Head>
@@ -258,10 +257,12 @@ const Blog = (props: MyProps) => {
                               By Asim Ali |{" "}
                               <Moment format="MMM D, YYYY">{blog.date}</Moment>
                             </span>
-                            {/* <p dangerouslySetInnerHTML={{__html: blog?.content.textContent }}className="card-text my-3"></p> */}
-                            <p className="blog-content">
-                              {blog?.content.replace(/(<([^>]+)>)/gi, "")}
-                            </p>
+                            <p
+                              className="blog-content"
+                              dangerouslySetInnerHTML={{
+                                __html: blog?.excerpt,
+                              }}
+                            ></p>
                           </div>
                           <div className="card-footers p-3">
                             <Link href={blog.uri}>
