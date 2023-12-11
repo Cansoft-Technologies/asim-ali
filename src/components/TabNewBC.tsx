@@ -19,7 +19,7 @@ export default function TabNewBC(props: MyProps) {
         dangerouslySetInnerHTML={{
           __html: tabData?.tabDescription,
         }}
-        className="text-center"
+        className="text-center mb-5"
       ></div>
       {tabData?.tabDetails == null ? (
         ""
