@@ -23,6 +23,7 @@ module.exports = {
     "/new-commercial-mortgage-in-bc",
     "/new-borrow-down-payment-in-bc",
     "/new-dominion-lending-mortgage-rates",
+    "/new-discharge-mortgage-in-bc",
     "/server-sitemap.xml",
     "/location-sitemap.xml",
     ...locationRoutes,
