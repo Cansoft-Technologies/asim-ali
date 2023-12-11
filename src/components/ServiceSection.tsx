@@ -30,7 +30,7 @@ export default function ServiceSection(props: MyProps) {
                   alt={imageRight?.altText}
                   width="390"
                   height="400"
-                  style={{ width: "100%", objectFit: "cover" }}
+                  style={{ width: "100%", objectFit: "cover", height: "45vh" }}
                 />
               </div>
             </Col>
@@ -39,7 +39,7 @@ export default function ServiceSection(props: MyProps) {
       </div>
       <div className="service-row my-5">
         <Container>
-          <Row>
+          <Row className="">
             <Col className="service-texts" lg={6}>
               <div className="service-image">
                 <Image
@@ -47,7 +47,7 @@ export default function ServiceSection(props: MyProps) {
                   alt={imageLeft?.altText}
                   width="390"
                   height="400"
-                  style={{ width: "100%", objectFit: "cover" }}
+                  style={{ width: "100%", objectFit: "cover", height: "45vh" }}
                 />
               </div>
             </Col>
