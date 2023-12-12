@@ -25,6 +25,7 @@ module.exports = {
     "/new-dominion-lending-mortgage-rates",
     "/new-discharge-mortgage-in-bc",
     "/new-fixed-mortgage-rates-in-bc",
+    "/new-mortgage-broker-in-burnaby",
     "/server-sitemap.xml",
     "/location-sitemap.xml",
     ...locationRoutes,
