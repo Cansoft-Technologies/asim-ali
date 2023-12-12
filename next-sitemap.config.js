@@ -26,6 +26,7 @@ module.exports = {
     "/new-discharge-mortgage-in-bc",
     "/new-fixed-mortgage-rates-in-bc",
     "/new-mortgage-broker-in-burnaby",
+    "/new-mortgage-broker-in-nanaimo",
     "/server-sitemap.xml",
     "/location-sitemap.xml",
     ...locationRoutes,
