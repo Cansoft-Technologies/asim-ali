@@ -27,6 +27,8 @@ module.exports = {
     "/new-fixed-mortgage-rates-in-bc",
     "/new-mortgage-broker-in-burnaby",
     "/new-mortgage-broker-in-nanaimo",
+    "/new-mortgage-broker-in-campbell-river",
+    "/new-transparent-vacant-land-mortgage",
     "/server-sitemap.xml",
     "/location-sitemap.xml",
     ...locationRoutes,
