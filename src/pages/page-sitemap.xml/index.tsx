@@ -30,25 +30,40 @@ const excludeItems = [
   "/sitemap-0.xml",
   ...locationRoutes,
 ];
+const data = [
+  "/",
+  "/aaa-mortgage-in-bc",
+  "/apply-now",
+  "/b-lender-bc-mortgage",
+  "/blog",
+  "/blogs",
+  "/borrow-down-payment-services",
+  "/commercial-mortgage-in-bc",
+  "/commercial-mortgage-in-surrey",
+  "/commercial-mortgage-in-vancouver",
+  "/construction-financing",
+  "/contact-us",
+  "/current-rates",
+  "/financing-for-business-in-bc",
+  "/how-it-works",
+  "/how-to-apply",
+  "/mortgage-calculator",
+  "/mortgage-for-self-employed",
+  "/mortgage-refinance-calculator-bc",
+  "/our-locations",
+  "/our-services",
+  "/private-lenders-bc",
+  "/testimonials",
+  "/uninsured-mortgage-solutions",
+];
 
 export default function PageSitemap() {
   return null;
 }
 
 export const getServerSideProps = async ({ res }) => {
-  const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        pages(first: 100) {
-          nodes {
-            uri
-          }
-        }
-      }
-    `,
-  });
-  const postsSitemaps = data?.pages?.nodes
-    .filter((item:any) => !excludeItems.includes(item.uri))
+  
+  const postsSitemaps = data?.filter((item:any) => !excludeItems.includes(item.uri))
     .map((item:any) => ({
       loc: `https://asimali.ca${item?.uri?.toString()}`,
       lastmod: new Date().toISOString(),
