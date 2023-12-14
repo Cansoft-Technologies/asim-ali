@@ -1,5 +1,4 @@
 import { gql } from "@apollo/client";
-import { getServerSideSitemap } from "next-sitemap";
 import { apolloClient } from "lib/apollo";
 
 export default function ServerSitemap() {
@@ -9,7 +8,7 @@ export const getServerSideProps = async ({res}) => {
   const { data } = await apolloClient.query({
     query: gql`
       query {
-        posts(first: 100) {
+        pages(first: 100) {
           nodes {
             uri
           }

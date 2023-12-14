@@ -29,8 +29,10 @@ module.exports = {
     "/new-mortgage-broker-in-nanaimo",
     "/new-mortgage-broker-in-campbell-river",
     "/new-transparent-vacant-land-mortgage",
-    "/server-sitemap.xml",
+    "/post-sitemap.xml",
+    "/page-sitemap.xml",
     "/location-sitemap.xml",
+    "/sitemap-0.xml",
     ...locationRoutes,
   ],
   robotsTxtOptions: {
@@ -54,8 +56,8 @@ module.exports = {
     //   { userAgent: "yahoo-blogs/v3.9", disallow: "" },
     // ],
     additionalSitemaps: [
-      `${siteUrl}sitemap.xml`,
-      `${siteUrl}server-sitemap.xml`,
+      `${siteUrl}post-sitemap.xml`,
+      `${siteUrl}page-sitemap.xml`,
       `${siteUrl}location-sitemap.xml`,
     ],
   },
