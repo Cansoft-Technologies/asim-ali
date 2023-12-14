@@ -1,8 +1,7 @@
 import { gql } from "@apollo/client";
-import { getServerSideSitemap } from "next-sitemap";
 import { apolloClient } from "lib/apollo";
 
-export default function ServerSitemap() {
+export default function PostSitemap() {
   return null;
 }
 export const getServerSideProps = async ({res}) => {
@@ -17,8 +16,8 @@ export const getServerSideProps = async ({res}) => {
       }
       `,});
 
-  const postsSitemaps = data.posts.nodes.map((item) => ({
-    loc: `https://asimali.ca${item.uri.toString()}`,
+  const postsSitemaps = data?.posts?.nodes.map((item) => ({
+    loc: `https://asimali.ca${item?.uri?.toString()}`,
     lastmod: new Date().toISOString(),
     changefreq: "daily",
     priority: 0.9,
