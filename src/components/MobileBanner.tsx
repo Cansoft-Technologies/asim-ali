@@ -14,7 +14,11 @@ const MobileBanner = (props: MyProps) => {
   return (
     <div>
       <div className="home-slider">
-        <div>
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
           <div
             style={{
               position: "relative",
@@ -28,7 +32,9 @@ const MobileBanner = (props: MyProps) => {
               alt="Asim Ali Slider"
               src={msliders?.homeSlider[0].mobileImage?.sourceUrl}
               fill
-              style={{ objectFit: "cover" }}
+              style={{
+                objectFit: "cover",
+              }}
               priority={true}
             />
           </div>
