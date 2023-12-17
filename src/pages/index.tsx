@@ -488,8 +488,8 @@ export default function Page(props: MyProps) {
             </div>
           )}
         </Container>
-        <WeHelp helps={helps} />
 
+        <WeHelp helps={helps} />
         <div ref={sectionRef}>
           {loadOnView && (
             <>

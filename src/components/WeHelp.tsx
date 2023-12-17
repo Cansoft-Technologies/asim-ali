@@ -16,10 +16,10 @@ const WeHelp = (props: MyProps) => {
   return (
     <>
       <section ref={videoRef} className="wehelp_section mb-5">
-        <Container>
-          <Row>
-            <Col lg={6}>
-              {load && (
+        {load && (
+          <Container>
+            <Row>
+              <Col lg={6}>
                 <div className="wehelp_image">
                   <video
                     autoPlay
@@ -34,37 +34,37 @@ const WeHelp = (props: MyProps) => {
                     />
                   </video>
                 </div>
-              )}
-            </Col>
-            <Col lg={6}>
-              <div>
-                <div className="wehelp_text">
-                  <div
-                    className="wehelp_title"
-                    dangerouslySetInnerHTML={{
-                      __html: helps?.helpTitle,
-                    }}
-                  ></div>
-                  <div
-                    className="wehelp_description"
-                    dangerouslySetInnerHTML={{
-                      __html: helps?.helpDescription,
-                    }}
-                  ></div>
-                  {helps?.helpButton == null ? (
-                    ""
-                  ) : (
-                    <Link href={helps?.helpButton?.url}>
-                      <Button className="SplitBtn">
-                        Get <span>Approved</span>
-                      </Button>
-                    </Link>
-                  )}
+              </Col>
+              <Col lg={6}>
+                <div>
+                  <div className="wehelp_text">
+                    <div
+                      className="wehelp_title"
+                      dangerouslySetInnerHTML={{
+                        __html: helps?.helpTitle,
+                      }}
+                    ></div>
+                    <div
+                      className="wehelp_description"
+                      dangerouslySetInnerHTML={{
+                        __html: helps?.helpDescription,
+                      }}
+                    ></div>
+                    {helps?.helpButton == null ? (
+                      ""
+                    ) : (
+                      <Link href={helps?.helpButton?.url}>
+                        <Button className="SplitBtn">
+                          Get <span>Approved</span>
+                        </Button>
+                      </Link>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+              </Col>
+            </Row>
+          </Container>
+        )}
       </section>
     </>
   );
