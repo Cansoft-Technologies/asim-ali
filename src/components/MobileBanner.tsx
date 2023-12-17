@@ -31,9 +31,12 @@ const MobileBanner = (props: MyProps) => {
             <Image
               alt="Asim Ali Slider"
               src={msliders?.homeSlider[0].mobileImage?.sourceUrl}
-              fill
+              width={400}
+              height={500}
               style={{
                 objectFit: "cover",
+                width: "100%",
+                height: "500px",
               }}
               priority={true}
             />

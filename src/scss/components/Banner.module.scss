@@ -33,6 +33,58 @@
     }
   }
 }
+.bannerDescStyle {
+  position: absolute;
+  top: 120px;
+  display: flex;
+  // z-index: 999;
+  padding: 0 20px;
+  .bannerCaption {
+    font-family: "AvenirBook";
+    .sliderTitle {
+      color: $color-secondary;
+      margin: 0 auto;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 40px;
+    }
+    .sliderSubtitle {
+      font-family: "AvenirBook";
+      color: $color-white;
+      font-size: 40px;
+      font-weight: 100;
+      margin: 0 auto;
+    }
+    p {
+      font-family: "AvenirBook";
+      color: $color-white;
+      font-size: 16px;
+      font-weight: 100;
+      margin-top: 10px;
+    }
+  }
+
+  .bannerBtn {
+    background: transparent;
+    border: 2px solid $color-white;
+    text-transform: uppercase;
+    font-family: "AvenirBook";
+    font-size: 14px;
+    border-radius: 0;
+    padding-top: 11px;
+    margin-right: 20px;
+    span {
+      color: $color-secondary;
+      font-family: "AvenirBlack";
+    }
+    &:hover {
+      background: transparent;
+      border: 2px solid $color-secondary;
+      color: $color-white;
+      opacity: 0.5;
+    }
+  }
+}
 .carouselcaption {
   top: 0;
   bottom: 0;
