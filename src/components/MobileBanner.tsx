@@ -40,6 +40,16 @@ const MobileBanner = (props: MyProps) => {
               }}
               priority={true}
             />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background: "rgba(0,0,0,0.65)",
+              }}
+            ></div>
           </div>
 
           <BannerInfo slide={msliders?.homeSlider[0]} />
