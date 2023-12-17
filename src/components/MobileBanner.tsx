@@ -14,14 +14,6 @@ const MobileBanner = (props: MyProps) => {
   return (
     <div>
       <div className="home-slider">
-        <Head>
-          <link
-            rel="preload"
-            href={msliders?.homeSlider[0].mobileImage?.sourceUrl}
-            as="image"
-          />
-        </Head>
-
         <Carousel fade controls={false}>
           <Carousel.Item>
             <div
