@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
-import { Button, Col, Container, Placeholder, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 const ContactSection = dynamic(() => import("components/ContactSection"));
 const FlexibilityTab = dynamic(() => import("components/FlexibilityTab"));
 const HomeBuyerSection = dynamic(() => import("components/HomeBuyerSection"));
@@ -16,16 +16,11 @@ const ServiceSection = dynamic(() => import("components/ServiceSection"));
 const Footer = dynamic(() => import("../components/Footer"));
 const Header = dynamic(() => import("../components/Header"));
 import { apolloClient } from "../lib/apollo";
-const CTA = dynamic(() => import("../components/CTA"));
 const Banner = dynamic(() => import("../components/Banner"));
 const WeHelp = dynamic(() => import("../components/WeHelp"));
 const Team = dynamic(() => import("components/Team"));
 const Meeting = dynamic(() => import("components/Meeting"));
-const PartnerLogo = dynamic(() => import("components/PartnerLogo"));
 const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
-const FAQ = dynamic(() => import("components/FAQ"));
-const Gallery = dynamic(() => import("components/Gallery"));
-const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
 const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
@@ -429,7 +424,11 @@ export default function Page(props: MyProps) {
     mortgageInterestData,
     homebuyerSectionData,
   } = props;
-  const { ref: imgRef, inView: load } = useInView({
+  const { ref: imgsRef, inView: load } = useInView({
+    triggerOnce: true,
+    fallbackInView: true,
+  });
+  const { ref: sectionRef, inView: loadOnView } = useInView({
     triggerOnce: true,
     fallbackInView: true,
   });
@@ -452,6 +451,11 @@ export default function Page(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
+              <link
+                rel="preload"
+                href={msliders?.homeSlider[0].mobileImage?.sourceUrl}
+                as="image"
+              />
             </>
           );
         })}
@@ -464,7 +468,7 @@ export default function Page(props: MyProps) {
         <div className="mobile-banner">
           <MobileBanner msliders={msliders} />
         </div>
-        <Container ref={imgRef}>
+        <Container ref={imgsRef}>
           {load && (
             <div className="ms-auto mt-5 footer-partner-logo">
               {bottomPartnerLogoSection?.map((singleLogo) => {
@@ -485,142 +489,160 @@ export default function Page(props: MyProps) {
           )}
         </Container>
         <WeHelp helps={helps} />
-        <Team teams={teamData} />
-        <ServiceSection
-          textLeft={featuredTextLeft}
-          textRight={featuredTextRight}
-          imageLeft={featuredImageLeft}
-          imageRight={featuredImageRight}
-        />
-        <Container className="apply-now-home">
-          <div className="text-center mt-5 mb-5">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: approvalRenovationData?.tabHeading,
-              }}
-            ></div>
-          </div>
-          <div className="mt-5">
-            <Row className="apply-step">
-              <Col md={4}>
-                {approvalRenovationData?.tabDetails[0] == null ? (
-                  ""
-                ) : (
-                  <div className="apply">
-                    <span>01</span>
-                    <p className="title">
-                      {approvalRenovationData?.tabDetails[0]?.title}
-                    </p>
-                    <div
-                      className="desc"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          approvalRenovationData?.tabDetails[0]?.description,
-                      }}
-                    ></div>
-                    <div className="apply-border"></div>
-                  </div>
-                )}
-              </Col>
-              <Col md={4}>
-                {(approvalRenovationData?.tabDetails[1] == null) == null ? (
-                  ""
-                ) : (
-                  <div className="approved">
-                    <span>02</span>
-                    <p className="title">
-                      {approvalRenovationData?.tabDetails[1]?.title}
-                    </p>
-                    <div
-                      className="desc"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          approvalRenovationData?.tabDetails[1]?.description,
-                      }}
-                    ></div>
-                  </div>
-                )}
-              </Col>
-              <Col md={4}>
-                {(approvalRenovationData?.tabDetails[2] == null) == null ? (
-                  ""
-                ) : (
-                  <div className="apply">
-                    <span>03</span>
-                    <p className="title">
-                      {approvalRenovationData?.tabDetails[2]?.title}
-                    </p>
-                    <div
-                      className="desc"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          approvalRenovationData?.tabDetails[2]?.description,
-                      }}
-                    ></div>
-                    <div className="apply-border"></div>
-                  </div>
-                )}
-              </Col>
-              {sliders?.homeSlider[0].sliderButtonUrl == null ? (
-                ""
-              ) : (
-                <Col className="text-start mt-5 link-banner" xs={12} lg="12">
-                  <Link href={sliders?.homeSlider[0].sliderButtonUrl.url}>
-                    <Button className="apply-button">
-                      Get <span>Approved</span>
-                    </Button>
-                  </Link>
-                  <Link href="/apply-now">
-                    <Button className="apply-button">
-                      <span>Apply Now</span>
-                    </Button>
-                  </Link>
-                </Col>
-              )}
-            </Row>
-          </div>
-        </Container>
-        <Meeting meetings={meetings} />
-        <MortgageAdvisor advisorData={advisorData} />
-        <SplitImageRight splitImagesRight={splitImagesRight} />
-        <MortgageFeaturedHome advisorData={mortgageInterestData} />
-        <SplitImageLeft splitImagesLeft={splitImagesLeft} />
-        <FlexibilityTab tabData={tabRenovationData} />
-        <MortgageAdvisor advisorData={mortgageServiceData} />
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <h2 className="text-center">{tipsTitle}</h2>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: tipsDescription,
-            }}
-          ></div>
-        </Container>
-        <ServiceSection
-          textLeft={tipsLeftText}
-          textRight={tipsRightText}
-          imageLeft={tipsImageLeft}
-          imageRight={tipsImageRight}
-        />
-        <HomeBuyerSection homebuyerData={homebuyerSectionData} />
-        <Container className="mb-5">
-          <h2 className="text-center service-title">{contactData?.title}</h2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: contactData?.description,
-            }}
-            className="text-lg text-start"
-          ></div>
-        </Container>
-        <Container className="mt-5">
-          <div className="my-5">
-            <p className="text-center service-title">Contact Us</p>
-          </div>
-          <ContactSection />
-        </Container>
+
+        <div ref={sectionRef}>
+          {loadOnView && (
+            <>
+              <Team teams={teamData} />
+              <ServiceSection
+                textLeft={featuredTextLeft}
+                textRight={featuredTextRight}
+                imageLeft={featuredImageLeft}
+                imageRight={featuredImageRight}
+              />
+              <Container className="apply-now-home">
+                <div className="text-center mt-5 mb-5">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: approvalRenovationData?.tabHeading,
+                    }}
+                  ></div>
+                </div>
+                <div className="mt-5">
+                  <Row className="apply-step">
+                    <Col md={4}>
+                      {approvalRenovationData?.tabDetails[0] == null ? (
+                        ""
+                      ) : (
+                        <div className="apply">
+                          <span>01</span>
+                          <p className="title">
+                            {approvalRenovationData?.tabDetails[0]?.title}
+                          </p>
+                          <div
+                            className="desc"
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                approvalRenovationData?.tabDetails[0]
+                                  ?.description,
+                            }}
+                          ></div>
+                          <div className="apply-border"></div>
+                        </div>
+                      )}
+                    </Col>
+                    <Col md={4}>
+                      {(approvalRenovationData?.tabDetails[1] == null) ==
+                      null ? (
+                        ""
+                      ) : (
+                        <div className="approved">
+                          <span>02</span>
+                          <p className="title">
+                            {approvalRenovationData?.tabDetails[1]?.title}
+                          </p>
+                          <div
+                            className="desc"
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                approvalRenovationData?.tabDetails[1]
+                                  ?.description,
+                            }}
+                          ></div>
+                        </div>
+                      )}
+                    </Col>
+                    <Col md={4}>
+                      {(approvalRenovationData?.tabDetails[2] == null) ==
+                      null ? (
+                        ""
+                      ) : (
+                        <div className="apply">
+                          <span>03</span>
+                          <p className="title">
+                            {approvalRenovationData?.tabDetails[2]?.title}
+                          </p>
+                          <div
+                            className="desc"
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                approvalRenovationData?.tabDetails[2]
+                                  ?.description,
+                            }}
+                          ></div>
+                          <div className="apply-border"></div>
+                        </div>
+                      )}
+                    </Col>
+                    {sliders?.homeSlider[0].sliderButtonUrl == null ? (
+                      ""
+                    ) : (
+                      <Col
+                        className="text-start mt-5 link-banner"
+                        xs={12}
+                        lg="12"
+                      >
+                        <Link href={sliders?.homeSlider[0].sliderButtonUrl.url}>
+                          <Button className="apply-button">
+                            Get <span>Approved</span>
+                          </Button>
+                        </Link>
+                        <Link href="/apply-now">
+                          <Button className="apply-button">
+                            <span>Apply Now</span>
+                          </Button>
+                        </Link>
+                      </Col>
+                    )}
+                  </Row>
+                </div>
+              </Container>
+              <Meeting meetings={meetings} />
+              <MortgageAdvisor advisorData={advisorData} />
+              <SplitImageRight splitImagesRight={splitImagesRight} />
+              <MortgageFeaturedHome advisorData={mortgageInterestData} />
+              <SplitImageLeft splitImagesLeft={splitImagesLeft} />
+              <FlexibilityTab tabData={tabRenovationData} />
+              <MortgageAdvisor advisorData={mortgageServiceData} />
+              <Container
+                className="mb-5 px-3 py-3"
+                style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+              >
+                <h2 className="text-center">{tipsTitle}</h2>
+                <div
+                  className="text-center"
+                  dangerouslySetInnerHTML={{
+                    __html: tipsDescription,
+                  }}
+                ></div>
+              </Container>
+              <ServiceSection
+                textLeft={tipsLeftText}
+                textRight={tipsRightText}
+                imageLeft={tipsImageLeft}
+                imageRight={tipsImageRight}
+              />
+              <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+              <Container className="mb-5">
+                <h2 className="text-center service-title">
+                  {contactData?.title}
+                </h2>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: contactData?.description,
+                  }}
+                  className="text-lg text-start"
+                ></div>
+              </Container>
+              <Container className="mt-5">
+                <div className="my-5">
+                  <p className="text-center service-title">Contact Us</p>
+                </div>
+                <ContactSection />
+              </Container>
+            </>
+          )}
+        </div>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
     </>
