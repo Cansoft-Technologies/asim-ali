@@ -1,67 +1,10 @@
-import { gql } from "@apollo/client";
-import { MenuLocationEnum, client } from "client";
-import { apolloClient } from "lib/apollo";
-import Head from "next/head";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 
-export async function getStaticProps() {
-  const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        settingsOptions {
-          AsimOptions {
-            headerSettings {
-              uploadLogo {
-                sourceUrl
-                altText
-              }
-            }
-            generalSettings {
-              schemaProductRating
-            }
-          }
-        }
-
-        menus(where: { location: PRIMARY }) {
-          nodes {
-            name
-            slug
-            menuItems(first: 50) {
-              nodes {
-                url
-                target
-                parentId
-                label
-                cssClasses
-                description
-                id
-                childItems {
-                  nodes {
-                    uri
-                    label
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-  });
-
-  return {
-    props: {
-      settings: data?.settingsOptions?.AsimOptions,
-      mainMenus: data?.menus?.nodes,
-    },
-    revalidate: 60,
-  };
-}
 
 type MyProps = {
   settings: any;
@@ -71,17 +14,9 @@ type MyProps = {
 function Header(props: MyProps) {
   const { settings, mainMenus } = props;
   const router = useRouter();
-  const { menuItems } = client.useQuery();
 
   return (
     <>
-      <Head>
-        <link
-          rel="preload"
-          href={settings?.headerSettings?.uploadLogo?.sourceUrl}
-          as="image"
-        />
-      </Head>
       <Container style={{ maxWidth: "100%", backgroundColor: "#12143a" }}>
         <Container style={{ maxWidth: "1450px" }}>
           <div className="top-nav">
@@ -111,17 +46,16 @@ function Header(props: MyProps) {
       <Navbar bg="light" expand="lg">
         <Container style={{ maxWidth: "1450px" }}>
           <Navbar.Brand>
-            {(settings as any)?.headerSettings?.uploadLogo == null ? (
+            {settings?.headerSettings?.uploadLogo == null ? (
               ""
             ) : (
               <Link href="/">
                 <Image
-                  src={(settings as any)?.headerSettings?.uploadLogo?.sourceUrl}
+                  src={settings?.headerSettings?.uploadLogo?.sourceUrl}
                   alt="Logo"
                   style={{ cursor: "pointer" }}
                   width={180}
                   height={43}
-                  priority={true}
                 />
               </Link>
             )}

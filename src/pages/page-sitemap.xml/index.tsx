@@ -62,10 +62,10 @@ export default function PageSitemap() {
 }
 
 export const getServerSideProps = async ({ res }) => {
-  
-  const postsSitemaps = data?.filter((item:any) => !excludeItems.includes(item.uri))
-    .map((item:any) => ({
-      loc: `https://asimali.ca${item?.uri?.toString()}`,
+  const postsSitemaps = data
+    ?.filter((item: any) => !excludeItems.includes(item))
+    .map((item: any) => ({
+      loc: `https://asimali.ca${item?.toString()}`,
       lastmod: new Date().toISOString(),
       changefreq: "daily",
       priority: 0.9,
