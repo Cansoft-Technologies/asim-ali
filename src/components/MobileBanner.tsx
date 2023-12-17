@@ -29,6 +29,7 @@ const MobileBanner = (props: MyProps) => {
               src={msliders?.homeSlider[0].mobileImage?.sourceUrl}
               fill
               style={{ objectFit: "cover" }}
+              priority={true}
             />
           </div>
 
