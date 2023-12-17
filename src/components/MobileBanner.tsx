@@ -14,28 +14,26 @@ const MobileBanner = (props: MyProps) => {
   return (
     <div>
       <div className="home-slider">
-        <Carousel fade controls={false}>
-          <Carousel.Item>
-            <div
-              style={{
-                position: "relative",
-                height: "500px",
-                width: "100%",
-                clipPath: "inset(0 0 0 0)",
-              }}
-            >
-              <Image
-                alt="Asim Ali Slider"
-                src={msliders?.homeSlider[0].mobileImage?.sourceUrl}
-                fill
-                style={{ objectFit: "cover" }}
-                priority={true}
-              />
-            </div>
+        <div>
+          <div
+            style={{
+              position: "relative",
+              height: "500px",
+              width: "100%",
+              clipPath: "inset(0 0 0 0)",
+              zIndex: 0,
+            }}
+          >
+            <Image
+              alt="Asim Ali Slider"
+              src={msliders?.homeSlider[0].mobileImage?.sourceUrl}
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
 
-            <BannerInfo slide={msliders?.homeSlider[0]} />
-          </Carousel.Item>
-        </Carousel>
+          <BannerInfo slide={msliders?.homeSlider[0]} />
+        </div>
       </div>
     </div>
   );
@@ -43,8 +41,8 @@ const MobileBanner = (props: MyProps) => {
 
 const BannerInfo = ({ slide }) => {
   return (
-    <div className={styles.overlay}>
-      <Carousel.Caption className={styles.carouselcaption}>
+    <div>
+      <div className={styles.bannerDescStyle}>
         <Row className="align-items-center">
           <Col className="text-center" xs={12} lg="6">
             <div className={styles.bannerCaption}>
@@ -72,7 +70,7 @@ const BannerInfo = ({ slide }) => {
             </Col>
           )}
         </Row>
-      </Carousel.Caption>
+      </div>
     </div>
   );
 };
