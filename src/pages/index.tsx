@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
+import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import { Button, Col, Container, Placeholder, Row } from "react-bootstrap";
 const ContactSection = dynamic(() => import("components/ContactSection"));
@@ -428,6 +429,10 @@ export default function Page(props: MyProps) {
     mortgageInterestData,
     homebuyerSectionData,
   } = props;
+  const { ref: imgRef, inView: load } = useInView({
+    triggerOnce: true,
+    fallbackInView: true,
+  });
 
   return (
     <>
@@ -459,22 +464,25 @@ export default function Page(props: MyProps) {
         <div className="mobile-banner">
           <MobileBanner msliders={msliders} />
         </div>
-        <Container>
-          <div className="ms-auto mt-5 footer-partner-logo">
-            {bottomPartnerLogoSection?.map((singleLogo) => {
-              return (
-                <div key={singleLogo.sourceUrl}>
-                  <Image
-                    src={singleLogo.sourceUrl}
-                    width="350"
-                    height="150"
-                    alt={singleLogo.altText}
-                    style={{ objectFit: "contain", width: "100%" }}
-                  />
-                </div>
-              );
-            })}
-          </div>
+        <Container ref={imgRef}>
+          {load && (
+            <div className="ms-auto mt-5 footer-partner-logo">
+              {bottomPartnerLogoSection?.map((singleLogo) => {
+                return (
+                  <div key={singleLogo.sourceUrl}>
+                    <Image
+                      src={singleLogo.sourceUrl}
+                      width="350"
+                      height="150"
+                      alt={singleLogo.altText}
+                      style={{ objectFit: "contain", width: "100%" }}
+                      loading="lazy"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </Container>
         <WeHelp helps={helps} />
         <Team teams={teamData} />

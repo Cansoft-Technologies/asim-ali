@@ -68,28 +68,48 @@ type MyProps = {
   mainMenus: any;
 };
 
-
 function Header(props: MyProps) {
   const { settings, mainMenus } = props;
   const router = useRouter();
   const { menuItems } = client.useQuery();
-  console.log(mainMenus);
 
   return (
     <>
       <Head>
+        <link
+          rel="preload"
+          href={settings?.headerSettings?.uploadLogo?.sourceUrl}
+          as="image"
+        />
       </Head>
-      <Container style={{maxWidth:"100%",backgroundColor: "#12143a"}}> 
-      <Container style={{maxWidth:"1450px"}}> 
-      <div className="top-nav">
-      <p className="brand-mail"><span style={{cursor: "pointer"}} onClick={()=>{router.push("mailto:admin@asimali.ca")}}><FontAwesomeIcon icon={faEnvelope} /> admin@asimali.ca</span> <span>| Licensed in BC & AB</span></p>
-        <a href="tel:+1 (604) 591 3590"><p className="brand-cell"> <span><FontAwesomeIcon icon={faPhone} /> </span>+1 (604) 591 3590 </p></a>
-      </div>
-      </Container>
-      
+      <Container style={{ maxWidth: "100%", backgroundColor: "#12143a" }}>
+        <Container style={{ maxWidth: "1450px" }}>
+          <div className="top-nav">
+            <p className="brand-mail">
+              <span
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  router.push("mailto:admin@asimali.ca");
+                }}
+              >
+                <FontAwesomeIcon icon={faEnvelope} /> admin@asimali.ca
+              </span>{" "}
+              <span>| Licensed in BC & AB</span>
+            </p>
+            <a href="tel:+1 (604) 591 3590">
+              <p className="brand-cell">
+                {" "}
+                <span>
+                  <FontAwesomeIcon icon={faPhone} />{" "}
+                </span>
+                +1 (604) 591 3590{" "}
+              </p>
+            </a>
+          </div>
+        </Container>
       </Container>
       <Navbar bg="light" expand="lg">
-        <Container style={{maxWidth:"1450px"}}>
+        <Container style={{ maxWidth: "1450px" }}>
           <Navbar.Brand>
             {(settings as any)?.headerSettings?.uploadLogo == null ? (
               ""
@@ -127,70 +147,75 @@ function Header(props: MyProps) {
                                 </span>
                               </Nav.Link>
                               <ul className="submenu">
-                                {item.childItems.nodes.map((submenu) => {   
+                                {item.childItems.nodes.map((submenu) => {
                                   return (
                                     <li key={submenu.uri}>
-                                     <span>
-                                     <Nav.Link
-                                        as={Link}
-                                        href={`${submenu.uri}`}
-                                      >
-                                        <span
-                                          className="sublink"
-                                          onClick={() => submenu.uri}
+                                      <span>
+                                        <Nav.Link
+                                          as={Link}
+                                          href={`${submenu.uri}`}
                                         >
-                                          {submenu.label}
-                                        </span>
-                                      </Nav.Link>
-                                      
-                                      {submenu?.label == "Commercial Mortgages" ? (
-                                        <ul className="submenu-child">
+                                          <span
+                                            className="sublink"
+                                            onClick={() => submenu.uri}
+                                          >
+                                            {submenu.label}
+                                          </span>
+                                        </Nav.Link>
 
-                                    <li>
-                                      <Nav.Link
-                                        as={Link}
-                                        href={'/commercial-mortgage-in-surrey'}
-                                      >
-                                        <span
-                                          className="sublink"
-                                          onClick={() => submenu.uri}
-                                        >
-                                          Surrey
-                                        </span>
-                                      </Nav.Link>
-                                      
-                                    </li>
-                                    <li>
-                                      <Nav.Link
-                                        as={Link}
-                                        href={'/commercial-mortgage-in-vancouver'}
-                                      >
-                                        <span
-                                          className="sublink"
-                                          onClick={() => submenu.uri}
-                                        >
-                                          Vancouver
-                                        </span>
-                                      </Nav.Link>
-                                      
-                                    </li>
-                                    <li>
-                                      <Nav.Link
-                                        as={Link}
-                                        href={'/commercial-mortgage-in-bc'}
-                                      >
-                                        <span
-                                          className="sublink"
-                                          onClick={() => submenu.uri}
-                                        >
-                                          British Columbia
-                                        </span>
-                                      </Nav.Link>
-                                      
-                                    </li>
-                                        </ul>
-                                      ): ""}
-                                     </span>
+                                        {submenu?.label ==
+                                        "Commercial Mortgages" ? (
+                                          <ul className="submenu-child">
+                                            <li>
+                                              <Nav.Link
+                                                as={Link}
+                                                href={
+                                                  "/commercial-mortgage-in-surrey"
+                                                }
+                                              >
+                                                <span
+                                                  className="sublink"
+                                                  onClick={() => submenu.uri}
+                                                >
+                                                  Surrey
+                                                </span>
+                                              </Nav.Link>
+                                            </li>
+                                            <li>
+                                              <Nav.Link
+                                                as={Link}
+                                                href={
+                                                  "/commercial-mortgage-in-vancouver"
+                                                }
+                                              >
+                                                <span
+                                                  className="sublink"
+                                                  onClick={() => submenu.uri}
+                                                >
+                                                  Vancouver
+                                                </span>
+                                              </Nav.Link>
+                                            </li>
+                                            <li>
+                                              <Nav.Link
+                                                as={Link}
+                                                href={
+                                                  "/commercial-mortgage-in-bc"
+                                                }
+                                              >
+                                                <span
+                                                  className="sublink"
+                                                  onClick={() => submenu.uri}
+                                                >
+                                                  British Columbia
+                                                </span>
+                                              </Nav.Link>
+                                            </li>
+                                          </ul>
+                                        ) : (
+                                          ""
+                                        )}
+                                      </span>
                                     </li>
                                   );
                                 })}
@@ -203,12 +228,12 @@ function Header(props: MyProps) {
                       );
                     })}
                     <li>
-                  <Nav.Link href="/apply-now">
-                  <Button className="HeadBtn">
-                            <span>Apply Now</span>
-                          </Button>
-                  </Nav.Link>
-                </li>
+                      <Nav.Link href="/apply-now">
+                        <Button className="HeadBtn">
+                          <span>Apply Now</span>
+                        </Button>
+                      </Nav.Link>
+                    </li>
                   </ul>
                 );
               })}
