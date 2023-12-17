@@ -489,10 +489,10 @@ export default function Page(props: MyProps) {
           )}
         </Container>
 
+        <WeHelp helps={helps} />
         <div ref={sectionRef}>
           {loadOnView && (
             <>
-              <WeHelp helps={helps} />
               <Team teams={teamData} />
               <ServiceSection
                 textLeft={featuredTextLeft}
