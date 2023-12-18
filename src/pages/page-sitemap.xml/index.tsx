@@ -25,6 +25,7 @@ const excludeItems = [
   "/new-mortgage-broker-in-nanaimo",
   "/new-mortgage-broker-in-campbell-river",
   "/new-transparent-vacant-land-mortgage",
+  "/new-trusted-mortgage-broker-in-chilliwack",
   "/posts-sitemap.xml",
   "/location-sitemap.xml",
   "/sitemap-0.xml",
