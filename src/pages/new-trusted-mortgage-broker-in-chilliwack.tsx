@@ -1,38 +1,15 @@
-import dynamic from "next/dynamic";
-import Head from "next/head";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-const CTA = dynamic(() => import("../components/CTA"));
-const Banner = dynamic(() => import("../components/Banner"));
-const WeHelp = dynamic(() => import("../components/WeHelp"));
-const Team = dynamic(() => import("components/Team"));
-const Meeting = dynamic(() => import("components/Meeting"));
-const PartnerLogo = dynamic(() => import("components/PartnerLogo"));
-const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
-const FAQ = dynamic(() => import("components/FAQ"));
-const Gallery = dynamic(() => import("components/Gallery"));
-const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
-const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
-import { apolloClient } from "../lib/apollo";
 import { gql } from "@apollo/client";
-import ClientReviews from "components/ClientReviews";
-import MortgageAdvisor from "components/MortgageAdvisor";
-import { Col, Container, Row } from "react-bootstrap";
-import ContactSection from "components/ContactSection";
-import FlexibilityTab from "components/FlexibilityTab";
-import Image from "next/image";
-import MortgageFeatured from "components/MortgageFeatured";
-import ServiceSection from "components/ServiceSection";
-import HomeBuyerSection from "components/HomeBuyerSection";
 import { Hero } from "components";
-import AccordionSection from "components/AccordionSection";
-import TabNewBC from "components/TabNewBC";
 import AccordionNewBC from "components/AccordionNewBC";
-import HomeBuyerNewBC from "components/HomeBuyerNewBC";
-import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import BorrowingPayment from "components/BorrowingPayment";
-
-const MobileBanner = dynamic(() => import("components/MobileBanner"));
+import ServiceSection from "components/ServiceSection";
+import TabNewBC from "components/TabNewBC";
+import Head from "next/head";
+import Image from "next/image";
+import { Col, Container, Row } from "react-bootstrap";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { apolloClient } from "../lib/apollo";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -79,14 +56,7 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
-          processBorrowing {
-            advisorTitle
-            advisorDescriptionTop
-            advisorCards{
-              title
-              description
-            }
-          }
+          
           borrowingPayment{
             borrowingTitle
             borrowingDescriptionTop
@@ -165,7 +135,7 @@ export async function getStaticProps() {
               description
             }
           }
-          loanTitle
+          
           reasonLeftTextCopy
           reasonRightTextCopy
           reasonLeftImageCopy {
@@ -176,9 +146,7 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
-
-          qualifyingTitle
-          qualifyingDescription
+ 
           commonConcerns {
             advisorTitle
             advisorDescription
@@ -195,13 +163,7 @@ export async function getStaticProps() {
           talkDescription
           
         }
-     
-     
       }
-     
-    
-    
- 
   }
    settingsOptions {
       AsimOptions {
@@ -285,7 +247,6 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightText,
       reasonLeftImage:
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftImage,
-      loanTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.loanTitle,
       reasonLeftTextCopy:
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftTextCopy,
       reasonRightImageCopy:
@@ -300,7 +261,6 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeyRightImage,
       borrowingPaymentData:
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.borrowingPayment,
-
       expertsHelpData:
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.expertsHelp,
       servicesSectionData:
@@ -311,12 +271,6 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeySection1,
       tabWhyChooseData:
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.tabWhyChoose,
-      borrowingProcessData:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.processBorrowing,
-      qualifyingTitle:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.qualifyingTitle,
-      qualifyingDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.qualifyingDescription,
       commonConcernsData:
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.commonConcerns,
       talkTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.talkTitle,
@@ -341,7 +295,6 @@ type MyProps = {
   reasonRightText: any;
   reasonLeftImage: any;
   reasonRightImage: any;
-  loanTitle: any;
   reasonLeftTextCopy: any;
   reasonRightTextCopy: any;
   reasonLeftImageCopy: any;
@@ -350,9 +303,6 @@ type MyProps = {
   expertsHelpData: any;
   servicesSectionData: any;
   tabWhyChooseData: any;
-  borrowingProcessData: any;
-  qualifyingTitle: any;
-  qualifyingDescription: any;
   commonConcernsData: any;
   talkTitle: any;
   talkDescription: any;
@@ -371,7 +321,6 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
     metaData,
     serviceBannerData,
     reasonTitle,
-    loanTitle,
     reasonDescription,
     reasonLeftText,
     reasonRightText,
@@ -385,9 +334,6 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
     expertsHelpData,
     servicesSectionData,
     tabWhyChooseData,
-    borrowingProcessData,
-    qualifyingTitle,
-    qualifyingDescription,
     commonConcernsData,
     talkTitle,
     talkDescription,
@@ -577,8 +523,7 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
           </Container>
         </div>
 
-        
-        <div style={{ height: "100px" }}></div> 
+        <div style={{ height: "100px" }}></div>
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div
