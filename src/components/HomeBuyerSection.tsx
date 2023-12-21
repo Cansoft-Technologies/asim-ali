@@ -39,7 +39,7 @@ export default function HomeBuyerSection(props: MyProps) {
                   <p className="">{index + 1}</p>
                 </div>
                 <h3 className="card-title">{data?.title}</h3>
-                <div className="card-body text-center">
+                <div className="card-body card-pc text-center">
                   {index === hoveredIndex ? (
                     <div
                       className="text-center"
@@ -57,6 +57,14 @@ export default function HomeBuyerSection(props: MyProps) {
                       ></div>
                     </div>
                   )}
+                </div>
+                <div className="card-body card-mobile text-center">
+                  <div
+                    className="text-center"
+                    dangerouslySetInnerHTML={{
+                      __html: data?.description,
+                    }}
+                  ></div>
                 </div>
               </div>
             );
