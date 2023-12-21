@@ -1040,7 +1040,7 @@ q.review-content {
   .card {
     padding-top: 15px;
     width: 300px;
-    height: 285px;
+    height: 450px;
     overflow-y: hidden;
     .card-index {
       display: flex;
@@ -1085,7 +1085,7 @@ q.review-content {
   .card {
     padding-top: 15px;
     width: 300px;
-    height: 285px;
+    height: 520px;
     overflow-y: hidden;
     .card-index {
       display: flex;
@@ -3010,16 +3010,10 @@ p.testimonials-name {
     .card {
       height: auto;
     }
-    .card-pc {
-      display: none;
-    }
   }
   .homebuyer-items-bc {
     .card {
       height: auto;
-    }
-    .card-pc {
-      display: none;
     }
   }
 }
@@ -3035,24 +3029,5 @@ p.testimonials-name {
     color: #f0b254;
     font-weight: 700;
   }
-  .homebuyer-items:hover {
-    align-items: start;
-    .card:hover {
-      height: auto;
-      cursor: text;
-      transition: all 300s ease-in-out;
-    }
-  }
-   .card-mobile {
-      display: none;
-    }
-  .homebuyer-items-bc:hover {
-    align-items: start;
-    .card:hover {
-      height: auto;
-      cursor: text;
-      transition: all 300s ease-in-out;
-    }
-    
-  }
+ 
 }
