@@ -1040,7 +1040,7 @@ q.review-content {
   .card {
     padding-top: 15px;
     width: 300px;
-    height: 275px;
+    height: 285px;
     overflow-y: hidden;
     .card-index {
       display: flex;
@@ -1061,6 +1061,7 @@ q.review-content {
       }
     }
     .card-body {
+      margin-top: -10px;
       .card-title {
         font-size: 24px;
         font-weight: 700;
@@ -1084,7 +1085,7 @@ q.review-content {
   .card {
     padding-top: 15px;
     width: 300px;
-    height: 275px;
+    height: 285px;
     overflow-y: hidden;
     .card-index {
       display: flex;
@@ -1105,6 +1106,7 @@ q.review-content {
       }
     }
     .card-body {
+      margin-top: -10px;
       .card-title {
         font-size: 24px;
         font-weight: 700;
@@ -3004,6 +3006,22 @@ p.testimonials-name {
     color: #f0b254;
     font-weight: 700;
   }
+  .homebuyer-items {
+    .card {
+      height: auto;
+    }
+    .card-pc {
+      display: none;
+    }
+  }
+  .homebuyer-items-bc {
+    .card {
+      height: auto;
+    }
+    .card-pc {
+      display: none;
+    }
+  }
 }
 @media screen and (min-width: 992px) {
   .service-row {
@@ -3025,6 +3043,9 @@ p.testimonials-name {
       transition: all 300s ease-in-out;
     }
   }
+   .card-mobile {
+      display: none;
+    }
   .homebuyer-items-bc:hover {
     align-items: start;
     .card:hover {
@@ -3032,5 +3053,6 @@ p.testimonials-name {
       cursor: text;
       transition: all 300s ease-in-out;
     }
+    
   }
 }

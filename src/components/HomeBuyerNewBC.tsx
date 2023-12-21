@@ -84,7 +84,7 @@ export default function HomeBuyerNewBC(props: MyProps) {
                   <p className="">{index + 1}</p>
                 </div>
                 <h3 className="card-title">{data?.title}</h3>
-                <div className="card-body text-center">
+                <div className="card-body card-pc text-center">
                   {index === hoveredIndex ? (
                     <div
                       className="text-center"
@@ -97,11 +97,19 @@ export default function HomeBuyerNewBC(props: MyProps) {
                       <div
                         className="text-center"
                         dangerouslySetInnerHTML={{
-                          __html: sliceDescription(data?.description, 20),
+                          __html: sliceDescription(data?.description, 15),
                         }}
                       ></div>
                     </div>
                   )}
+                </div>
+                <div className="card-body card-mobile text-center">
+                  <div
+                    className="text-center"
+                    dangerouslySetInnerHTML={{
+                      __html: data?.description,
+                    }}
+                  ></div>
                 </div>
               </div>
             );
