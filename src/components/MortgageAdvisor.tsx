@@ -18,6 +18,9 @@ export default function MortgageAdvisor(props: MyProps) {
               }}
               className="text-start service-title"
             ></div>
+            <h3 className="advisor-title">
+              {advisorData?.advisorDescriptionTitle}
+            </h3>
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorDescriptionTop,
@@ -35,7 +38,7 @@ export default function MortgageAdvisor(props: MyProps) {
           <Col lg={5}>
             {advisorData?.advisorCards?.map((data, item) => {
               return (
-                <div key={item} className="split_text mb-5">
+                <div key={item} className="split_text mb-0">
                   <h3 className="advisor-title">{data.title}</h3>
                   <div
                     dangerouslySetInnerHTML={{

@@ -38,18 +38,20 @@ export default function HomeBuyerNewBC(props: MyProps) {
   return (
     <section className="my-5">
       <Container>
-        <div
-          className="text-center"
-          dangerouslySetInnerHTML={{
-            __html: advisorData?.advisorTitle,
-          }}
-        ></div>
-        <p
-          className="text-center mx-4"
-          dangerouslySetInnerHTML={{
-            __html: advisorData?.advisorDescriptionTop,
-          }}
-        ></p>
+        <div style={{ padding: "0 10px", maxWidth: "1100px", margin: "0 auto" }}>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: advisorData?.advisorTitle,
+            }}
+          ></div>
+          <p
+            className="text-center mx-4"
+            dangerouslySetInnerHTML={{
+              __html: advisorData?.advisorDescriptionTop,
+            }}
+          ></p>
+        </div>
         <div
           className={`row row-cols-1 row-cols-md-4 g-4 homebuyer-items-bc mt-5 `}
           style={colGap}
