@@ -7,24 +7,11 @@ type MyProps = {
 };
 export default function HomeBuyerNewBC(props: MyProps) {
   const { advisorData } = props;
-  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
   );
   const [colGap, setColGap] = useState({});
-
-  const sliceDescription = (description: string, maxLength: number): string => {
-    // return `${description.slice(0, maxLength)}...`;
-    const words = description.split(" ");
-    // console.log("words", words);
-    if (words.length <= maxLength) {
-      return `${description}...`;
-    } else {
-      const slicedWords = words.slice(0, maxLength).join(" ");
-      return `${slicedWords}...`;
-    }
-  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -74,42 +61,20 @@ export default function HomeBuyerNewBC(props: MyProps) {
         >
           {advisorData?.advisorCards?.map((data, index) => {
             return (
-              <div
-                onMouseOver={() => setHoveredIndex(index)}
-                onMouseOut={() => setHoveredIndex(null)}
-                key={index}
-                className="card text-center"
-              >
+              <div key={index} className="card text-center">
                 <div className="card-index">
                   <p className="">{index + 1}</p>
                 </div>
                 <h3 className="card-title">{data?.title}</h3>
-                <div className="card-body card-pc text-center">
-                  {index === hoveredIndex ? (
+                <div className="card-body text-center">
+                  <div className="card-body text-center">
                     <div
                       className="text-center"
                       dangerouslySetInnerHTML={{
                         __html: data?.description,
                       }}
                     ></div>
-                  ) : (
-                    <div>
-                      <div
-                        className="text-center"
-                        dangerouslySetInnerHTML={{
-                          __html: sliceDescription(data?.description, 15),
-                        }}
-                      ></div>
-                    </div>
-                  )}
-                </div>
-                <div className="card-body card-mobile text-center">
-                  <div
-                    className="text-center"
-                    dangerouslySetInnerHTML={{
-                      __html: data?.description,
-                    }}
-                  ></div>
+                  </div>
                 </div>
               </div>
             );
