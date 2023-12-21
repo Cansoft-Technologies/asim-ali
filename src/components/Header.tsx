@@ -43,7 +43,7 @@ function Header(props: MyProps) {
           </div>
         </Container>
       </Container>
-      <Navbar bg="light" expand="lg">
+      <Navbar expand="lg">
         <Container style={{ maxWidth: "1450px" }}>
           <Navbar.Brand>
             {settings?.headerSettings?.uploadLogo == null ? (
