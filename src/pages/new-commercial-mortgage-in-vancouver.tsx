@@ -26,6 +26,7 @@ import ServiceSection from "components/ServiceSection";
 import HomeBuyerSection from "components/HomeBuyerSection";
 import { Hero } from "components";
 import AccordionSection from "components/AccordionSection";
+import ServiceSection2 from "components/ServiceSection2";
 
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
@@ -413,7 +414,7 @@ export default function NewComVancouver(props: MyProps) {
             }}
           ></div>
         </Container>
-        <ServiceSection
+        <ServiceSection2
           textLeft={tipsLeftText}
           textRight={tipsRightText}
           imageLeft={tipsImageLeft}
