@@ -18,6 +18,9 @@ export default function BorrowingPayment(props: MyProps) {
               }}
               className="text-start"
             ></div>
+            <h2 className="text-start borrowing-title">
+              {borrowingPaymentData?.borrowingTitle2}
+            </h2>
             <div
               dangerouslySetInnerHTML={{
                 __html: borrowingPaymentData?.borrowingDescriptionTop,
