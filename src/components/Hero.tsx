@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
-import styles from 'scss/components/Hero.module.scss';
+import Link from "next/link";
+import React from "react";
+import { Button, Col, Row } from "react-bootstrap";
+import styles from "scss/components/Hero.module.scss";
 
 interface Props {
   title: string;
@@ -17,7 +17,7 @@ interface Props {
 }
 
 function Hero({
-  title = 'Hero Title',
+  title = "Hero Title",
   heading,
   description,
   id,
@@ -32,37 +32,39 @@ function Hero({
     <section
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...(id && { id })}
-      style={{ backgroundImage: bgImage ? `url(${bgImage})` : 'none' }}
-      className={styles.hero}>
+      style={{ backgroundImage: bgImage ? `url(${bgImage})` : "none" }}
+      className={styles.hero}
+    >
       <div className={styles.wrap}>
         <div className="hero-title-col col-xl-6 offset-xl-6">
-          <p className="hero-title">{title?.split(" ")[0]}
+          <p className="hero-title">
+            {title?.split(" ")[0]}
             <span>{title?.split(" ")[1]}</span>
           </p>
         </div>
         <div className="banner-bottom col-md-11 offset-md-1 mt-5">
-          <p className='heading'>{heading}</p>
-          <p className='description'>{description}</p>
+          <p className="heading">{heading}</p>
+          <p className="description">{description}</p>
         </div>
         <Row className="align-items-center home-slide">
-        <Col className="text-center mt-5 link_banner">
+          <Col className="text-center mt-5 link_banner">
             {/* <div className={styles.children}>{children}</div> */}
             {buttonText && buttonURL && (
               <Link href={buttonURL}>
-              <Button className={styles.bannerBtn}>
-              <span>{buttonText}</span>
-              </Button>
-            </Link>
+                <Button className={styles.bannerBtn}>
+                  <span>{buttonText}</span>
+                </Button>
+              </Link>
             )}
             {button2Text && button2URL && (
               <Link href={button2URL}>
-              <Button className={styles.bannerBtn}>
-                <span>{button2Text}</span>
-              </Button>
-            </Link>
+                <Button className={styles.bannerBtn}>
+                  <span>{button2Text}</span>
+                </Button>
+              </Link>
             )}
           </Col>
-          </Row>
+        </Row>
       </div>
     </section>
   );

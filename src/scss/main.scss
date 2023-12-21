@@ -51,7 +51,7 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     height: 3px;
     content: " ";
     background-color: $color-secondary;
-    right: -30%;
+    right: -35%;
     top: 25%;
   }
   &:before {
@@ -2980,8 +2980,8 @@ p.testimonials-name {
   }
 }
 
-@media screen and (max-width: $breakpoint-small) {
-  .homebuyer-items-bc {
+@media screen and (max-width: 767px) {
+  .homebuyer-items-bc, .homebuyer-items {
     .card {
       height: auto;
     }
@@ -2992,6 +2992,9 @@ p.testimonials-name {
     .hide-sm {
       display: none;
     }
+  }
+  .margin-top {
+    margin-top: -50px;
   }
 }
 @media screen and (min-width: 992px) {

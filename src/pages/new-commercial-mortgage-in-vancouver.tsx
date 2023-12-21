@@ -135,6 +135,7 @@ export async function getStaticProps() {
           mortgageBenifits {
             advisorTitle
             advisorDescriptionTop
+            advisorDescriptionTitle
             advisorImage {
               sourceUrl
               altText
@@ -392,6 +393,7 @@ export default function NewComVancouver(props: MyProps) {
           ></div>
         </Container>
         <MortgageAdvisor advisorData={mortgageBenefitsData} />
+        <div className="margin-top"></div>
         <ServiceSection
           textLeft={featuredTextLeft}
           textRight={featuredTextRight}
