@@ -89,6 +89,7 @@ export async function getStaticProps() {
           }
           borrowingPayment{
             borrowingTitle
+            borrowingTitle2
             borrowingDescriptionTop
             borrowingRightDescription
             borrowingImage {

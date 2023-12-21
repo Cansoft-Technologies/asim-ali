@@ -2981,7 +2981,8 @@ p.testimonials-name {
 }
 
 @media screen and (max-width: 767px) {
-  .homebuyer-items-bc, .homebuyer-items {
+  .homebuyer-items-bc,
+  .homebuyer-items {
     .card {
       height: auto;
     }
@@ -2996,11 +2997,23 @@ p.testimonials-name {
   .margin-top {
     margin-top: -50px;
   }
+  .borrowing-title {
+    font-family: "AvenirBook";
+    font-size: 24px;
+    color: #f0b254;
+    font-weight: 700;
+  }
 }
 @media screen and (min-width: 992px) {
   .service-row {
     .hide-pc {
       display: none;
     }
+  }
+  .borrowing-title {
+    font-family: "AvenirBook";
+    font-size: 38px;
+    color: #f0b254;
+    font-weight: 700;
   }
 }
