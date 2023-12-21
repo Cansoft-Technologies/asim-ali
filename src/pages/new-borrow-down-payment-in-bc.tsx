@@ -351,7 +351,9 @@ export default function NewBorrowDownPaymentInBC(props: MyProps) {
         />
 
         <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
-        <Container>
+        <Container
+          style={{ padding: "0 10px", maxWidth: "1100px", margin: "0 auto" }}
+        >
           <Row
             className="mortgage-broker text-center"
             style={{ marginTop: "80px" }}

@@ -2979,3 +2979,25 @@ p.testimonials-name {
     left: -8px;
   }
 }
+
+@media screen and (max-width: $breakpoint-small) {
+  .homebuyer-items-bc {
+    .card {
+      height: auto;
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .service-row {
+    .hide-sm {
+      display: none;
+    }
+  }
+}
+@media screen and (min-width: 992px) {
+  .service-row {
+    .hide-pc {
+      display: none;
+    }
+  }
+}

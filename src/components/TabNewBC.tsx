@@ -9,18 +9,20 @@ export default function TabNewBC(props: MyProps) {
   const [key, setKey] = useState(null);
   return (
     <Container className="my-5">
-      <div
-        dangerouslySetInnerHTML={{
-          __html: tabData?.tabHeading,
-        }}
-        className="text-lg text-center tab-head"
-      ></div>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: tabData?.tabDescription,
-        }}
-        className="text-center mb-5"
-      ></div>
+      <div style={{ padding: "0 10px", maxWidth: "1100px", margin: "0 auto" }}>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: tabData?.tabHeading,
+          }}
+          className="text-lg text-center tab-head"
+        ></div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: tabData?.tabDescription,
+          }}
+          className="text-center mb-5"
+        ></div>
+      </div>
       {tabData?.tabDetails == null ? (
         ""
       ) : (
