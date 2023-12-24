@@ -1,12 +1,15 @@
 import {
   Body,
+  Column,
   Container,
   Head,
-  Heading,
+  Hr,
   Html,
   Img,
   Link,
   Preview,
+  Row,
+  Section,
   Text,
 } from "@react-email/components";
 import * as React from "react";
@@ -16,102 +19,209 @@ interface MyProps {
   lname: string;
 }
 
-export const AutoReply = ({
-  fname,
-  lname,
-}: MyProps) => (
+const AutoReply = ({ fname, lname }: MyProps) => (
   <Html>
     <Head />
     <Preview>
-    Thank you so much for contacting us on our website {fname}
+      Thank you so much for contacting us on our website {fname}
     </Preview>
     <Body style={main}>
-        <Heading style={h1}>
-        Thank you so much for contacting us on our website {fname} 
-        </Heading>
+      <Container style={container}>
+        <Section style={paragraphContent}>
+          <Hr style={hr} />
+          <Text style={heading}>
+            Thank you so much for contacting us on our website {fname}
+          </Text>
+          <Text style={paragraph}>Dear {name}</Text>
+          <Text style={paragraph}>
+            Thank you so much for contacting us on our website {fname},
+            we&apos;re looking forward to providing you with the mortgage advice
+            and service all of our clients and referrals have come to expect. 
+          </Text>
+        </Section>
+        <Section style={paragraphList}>
+          <Text style={paragraph}>
+            A little about our brokerage: We&apos;re a full-service mortgage
+            broker, specializing in getting you the best rate and most suitable
+            mortgage for your needs while making sure you understand the
+            mortgage process as well as your actual mortgage. We do this so you
+            can feel comfortable with your home financing. We also go over how
+            to take advantage of mortgage options for you to pay less interest
+            and become mortgage free sooner.
+          </Text>
+        </Section>
+        <Section style={paragraphContent}>
+          <Text style={paragraph}>
+            Do you have time for a chat or a meeting this week? We&apos;re
+            generally available with a day or two notice. We work evenings and
+            weekends as well - we know how important that is for people who work
+            9-5.
+          </Text>
+          <Hr style={hr} />
+        </Section>
 
-        <Text style={{ ...text, marginBottom: "14px" }}>Hello {fname} {lname},</Text>
-        <Text style={{ ...text, marginBottom: "14px" }}>
-        Thank you so much for contacting us on our website {fname}, we&apos;re looking forward to providing you with the mortgage advice and service all of our clients and referrals have come to expect. 
-        </Text>
-        <Text style={{ ...text, marginBottom: "10px" }}>
-        A little about our brokerage: We&apos;re a full-service mortgage broker, specializing in getting you the best rate and most suitable mortgage for your needs while making sure you understand the mortgage process as well as your actual mortgage. We do this so you can feel comfortable with your home financing. We also go over how to take advantage of mortgage options for you to pay less interest and become mortgage free sooner.
-        </Text>
-        <Text style={{ ...text, marginBottom: "10px" }}>
-        Do you have time for a chat or a meeting this week? We&apos;re generally available with a day or two notice. We work evenings and weekends as well - we know how important that is for people who work 9-5.
-        </Text>
-
-        <Text style={footer}>
-          Best wishes,
-        </Text>
-        <Text style={footer}>
-        Asim Ali Mortgage Team
-        </Text>
+        <Section style={paragraphContent}>
+          <Text style={paragraph}>Best wishes,</Text>
+          <Text style={{ ...paragraph, fontSize: "20px", ...headerBlue }}>
+            Asim Ali Mortgage Team
+          </Text>
+        </Section>
+        <Container style={footerContainer}>
+          <Row style={{ ...footSecond, marginTop: 30 }}>
+            <Column>
+              <Img
+                style={{ marginLeft: "20px" }}
+                width="150"
+                height="32"
+                src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/01/logo.webp"
+              />
+              <Text
+                style={{ ...paragraph, color: "#12143A", marginLeft: "20px" }}
+              >
+                Client Care Data Analyst
+              </Text>
+              <Link
+                href="tel:+1 (604) 591 3590"
+                style={{ ...footFirst, marginLeft: "20px" }}
+              >
+                <Img
+                  width="18"
+                  height="18"
+                  src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/iphone-se-50.png"
+                />
+                <Text style={{ color: "#12143A" }}>+1 (604) 591 3590</Text>
+              </Link>
+              <Row>
+                <Column style={footFirst}>
+                  <Link href="mailto:admin@asimali.ca" style={footFirst}>
+                    <Img
+                      width="18"
+                      height="18"
+                      src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
+                    />
+                    <Text style={{ color: "#12143A" }}>admin@asimali.ca</Text>
+                  </Link>
+                  <Link href="https://asimali.ca" style={footFirst}>
+                    <Img
+                      width="18"
+                      height="18"
+                      src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/web-24.png"
+                    />
+                    <Text style={{ color: "#12143A" }}>www.asimali.ca</Text>
+                  </Link>
+                </Column>
+              </Row>
+            </Column>
+            <Column style={{ marginTop: "20px" }}>
+              <Img
+                style={{ display: "block", margin: "0 60px" }}
+                width="50"
+                height="50"
+                src="http://asimaliprod.wpengine.com/wp-content/uploads/2022/11/favicon.png"
+              />
+              <Text style={{ ...paragraph, color: "#12143A" }}>
+                Asim Ali Mortgage Team
+              </Text>
+            </Column>
+          </Row>
+          <Section
+            style={{ ...paragraphContent, paddingBottom: 30, marginTop: 30 }}
+          >
+            <Text
+              style={{
+                ...paragraph,
+                fontSize: "12px",
+                textAlign: "center",
+                margin: 0,
+                color: "#12143A",
+                paddingBottom: 10,
+              }}
+            >
+              © {new Date().getFullYear()} Asim Ali 7327 137 St Suite 311,
+              Surrey, BC V3W 1A4, Canada
+            </Text>
+          </Section>
+        </Container>
+      </Container>
     </Body>
   </Html>
 );
-
 export default AutoReply;
-
 const main = {
-  backgroundColor: "#ffffff",
+  backgroundColor: "#dbddde",
+  fontFamily:
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+};
+
+const sectionLogo = {
+  padding: "0 40px",
+};
+const footFirst = {
+  display: "flex",
+  alignItems: "center",
+  margin: "0 10px",
+};
+const footSecond = {
+  padding: "20px",
+};
+
+const headerBlue = {
+  color: "#0F2650",
 };
 
 const container = {
-  paddingLeft: "12px",
-  paddingRight: "12px",
-  // width: "100%",
+  margin: "30px auto",
+  width: "100%",
+  backgroundColor: "#fff",
+  borderRadius: 5,
+  overflow: "hidden",
+};
+const footerContainer = {
+  width: "100%",
+  backgroundImage:
+    "url(http://asimaliprod.wpengine.com/wp-content/uploads/2023/03/mortgage-broker-surrey-7.webp)",
+  overflow: "hidden",
+};
+const footComponent = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "20px",
+};
+const containerContact = {
+  width: "90%",
+  borderRadius: "5px",
+  overflow: "hidden",
+  paddingLeft: "20px",
 };
 
-const h1 = {
-  color: "#333",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "24px",
-  fontWeight: "bold",
-  margin: "10px 0",
-  padding: "0",
+const heading = {
+  fontSize: "14px",
+  lineHeight: "26px",
+  fontWeight: "700",
+  color: "#004dcf",
+};
+
+const paragraphContent = {
+  padding: "0 40px",
+};
+
+const paragraphList = {
+  paddingLeft: 40,
+};
+
+const paragraph = {
+  fontSize: "14px",
+  lineHeight: "22px",
+  color: "#3c4043",
 };
 
 const link = {
-  color: "#2754C5",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "14px",
-  textDecoration: "underline",
+  ...paragraph,
+  color: "#004dcf",
 };
 
-const text = {
-  color: "#333",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "14px",
-  margin: "5px 0",
-};
-const span = {
-  color: "#333",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "16px",
-  fontWeight: "bold",
-};
-
-const footer = {
-  color: "blueviolet",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "16px",
-  lineHeight: "22px",
-  marginTop: "12px",
-  marginBottom: "24px",
-};
-
-const code = {
-  display: "inline-block",
-  padding: "16px 4.5%",
-  width: "90.5%",
-  backgroundColor: "#f4f4f4",
-  borderRadius: "5px",
-  border: "1px solid #eee",
-  color: "#333",
+const hr = {
+  borderColor: "#e8eaed",
+  margin: "20px 0",
 };
