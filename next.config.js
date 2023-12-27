@@ -27,41 +27,46 @@ module.exports = withBundleAnalyzer ( withFaust ( withPWA({
     async redirects() {
       return [
         {
-          source: '/b-lender-mortgage-bc',
-          destination: '/b-lender-bc-mortgage',
+          source: "/b-lender-mortgage-bc",
+          destination: "/b-lender-bc-mortgage",
           permanent: true,
         },
         {
-          source: '/refinance-your-mortgage-in-vancouver',
-          destination: 'https://asimali.ca',
+          source: "/refinance-your-mortgage-in-vancouver",
+          destination: "https://asimali.ca",
           permanent: true,
         },
         {
-          source: '/best-mortgage-rates-in-vancouver',
-          destination: 'https://asimali.ca',
+          source: "/best-mortgage-rates-in-vancouver",
+          destination: "https://asimali.ca",
           permanent: true,
         },
         {
-          source: '/vancouver-empty-home-tax',
-          destination: 'https://asimali.ca',
+          source: "/vancouver-empty-home-tax",
+          destination: "https://asimali.ca",
           permanent: true,
         },
         {
-          source: '/vancity-mortgage-calculator',
-          destination: 'https://asimali.ca',
+          source: "/vancity-mortgage-calculator",
+          destination: "https://asimali.ca",
           permanent: true,
         },
         {
-          source: '/mortgage-fund-canada',
-          destination: 'https://asimali.ca',
+          source: "/mortgage-fund-canada",
+          destination: "https://asimali.ca",
           permanent: true,
         },
         {
-          source: '/our-locations',
-          destination: 'https://asimali.ca',
+          source: "/our-locations",
+          destination: "https://asimali.ca",
           permanent: false,
         },
-      ]
+        {
+          source: "/borrow-down-bc",
+          destination: "https://asimali.ca/borrow-down-payment-services",
+          permanent: false,
+        },
+      ];
     },
     async headers() {
       return [
