@@ -23,16 +23,16 @@ const AutoReply = ({ fname, lname }: MyProps) => (
   <Html>
     <Head />
     <Preview>
-      Thank you so much for contacting us on our website {fname}
+      Thank you so much for contacting us on our website {fname} {lname}
     </Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={paragraphContent}>
           <Hr style={hr} />
           <Text style={heading}>
-            Thank you so much for contacting us on our website {fname}
+            Thank you so much for contacting us on our website {fname} {lname}
           </Text>
-          <Text style={paragraph}>Dear {name}</Text>
+          <Text style={paragraph}>Dear {fname}</Text>
           <Text style={paragraph}>
             Thank you so much for contacting us on our website {fname},
             we&apos;re looking forward to providing you with the mortgage advice
@@ -70,56 +70,60 @@ const AutoReply = ({ fname, lname }: MyProps) => (
           <Row style={{ ...footSecond, marginTop: 30 }}>
             <Column>
               <Img
-                style={{ marginLeft: "20px" }}
                 width="150"
                 height="32"
-                src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/01/logo.webp"
+                src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/logo.png"
               />
               <Text
-                style={{ ...paragraph, color: "#12143A", marginLeft: "20px" }}
+                style={{ ...paragraph, color: "#12143A",fontSize: "16px", }}
               >
                 Client Care Data Analyst
               </Text>
-              <Link
+              <Row>
+                <Link
                 href="tel:+1 (604) 591 3590"
-                style={{ ...footFirst, marginLeft: "20px" }}
+                style={{ ...footFirst}}
               >
                 <Img
+                style={{marginRight: "10px"}}
                   width="18"
                   height="18"
                   src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/iphone-se-50.png"
                 />
-                <Text style={{ color: "#12143A" }}>+1 (604) 591 3590</Text>
+                +1 (604) 591 3590
               </Link>
+              </Row>
               <Row>
-                <Column style={footFirst}>
+              <Column style={{ ...footFirst,marginTop: "10px" }}>
                   <Link href="mailto:admin@asimali.ca" style={footFirst}>
                     <Img
+                    style={{marginRight: "10px"}}
                       width="18"
                       height="18"
                       src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
                     />
-                    <Text style={{ color: "#12143A" }}>admin@asimali.ca</Text>
+                    admin@asimali.ca
                   </Link>
-                  <Link href="https://asimali.ca" style={footFirst}>
+                  <Link href="https://asimali.ca" style={{ ...footFirst, marginLeft: "20px" }}>
                     <Img
+                    style={{marginRight: "10px"}}
                       width="18"
                       height="18"
                       src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/web-24.png"
                     />
-                    <Text style={{ color: "#12143A" }}>www.asimali.ca</Text>
+                    www.asimali.ca
                   </Link>
                 </Column>
               </Row>
             </Column>
             <Column style={{ marginTop: "20px" }}>
               <Img
-                style={{ display: "block", margin: "0 60px" }}
+                style={{ display: "block", margin: "0 50px" }}
                 width="50"
                 height="50"
                 src="http://asimaliprod.wpengine.com/wp-content/uploads/2022/11/favicon.png"
               />
-              <Text style={{ ...paragraph, color: "#12143A" }}>
+              <Text style={{ ...paragraph, color: "#12143A",fontSize: "14px", }}>
                 Asim Ali Mortgage Team
               </Text>
             </Column>
@@ -159,10 +163,14 @@ const sectionLogo = {
 const footFirst = {
   display: "flex",
   alignItems: "center",
-  margin: "0 10px",
+  justifyContent: "center",
+  gap: "5x",
+  color: "#12143A",
+  fontSize: "16px",
 };
 const footSecond = {
   padding: "20px",
+  fontSize: "16px",
 };
 
 const headerBlue = {
@@ -170,7 +178,7 @@ const headerBlue = {
 };
 
 const container = {
-  margin: "30px auto",
+  // margin: "30px auto",
   width: "100%",
   backgroundColor: "#fff",
   borderRadius: 5,

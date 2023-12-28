@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useInView } from "react-intersection-observer";
 import { apolloClient } from "../lib/apollo";
+import AutoReply from "emails_template/auto_reply";
+import ApplyNowEmail from "emails_template/contact_form";
 const ContactSection = dynamic(() => import("components/ContactSection"));
 const FlexibilityTab = dynamic(() => import("components/FlexibilityTab"));
 const HomeBuyerSection = dynamic(() => import("components/HomeBuyerSection"));
@@ -504,6 +506,7 @@ export default function Page(props: MyProps) {
                 imageLeft={featuredImageLeft}
                 imageRight={featuredImageRight}
               />
+            <ApplyNowEmail  fname='Pulok' lname='C' mail='dasjida@gmail.com' phone='093829328' message='Test' province='Langley'/>
               <Container className="apply-now-home">
                 <div className="text-center mt-5 mb-5">
                   <div
