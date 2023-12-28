@@ -1,12 +1,15 @@
 import {
   Body,
+  Column,
   Container,
   Head,
-  Heading,
+  Hr,
   Html,
   Img,
   Link,
   Preview,
+  Row,
+  Section,
   Text,
 } from "@react-email/components";
 import * as React from "react";
@@ -30,7 +33,7 @@ interface MyProps {
   about?: string;
 }
 
-export const ApplyNowEmail = ({
+const ApplyNowEmail = ({
   fname,
   lname,
   mail,
@@ -51,77 +54,86 @@ export const ApplyNowEmail = ({
   <Html>
     <Head />
     <Preview>
-      New Form Submission: {fname} {lname}
+    New Form Submission: {fname} {lname}
     </Preview>
     <Body style={main}>
-        <Heading style={h1}>
-        New Form Submission: {fname} {lname} 
-        </Heading>
-
-        <Text style={{ ...text, marginBottom: "14px" }}>Dear Asim Ali,</Text>
-        <Text style={{ ...text, marginBottom: "14px" }}>
+      <Container style={container}>
+        <Section style={paragraphContent}>
+          <Hr style={hr} />
+          <Text style={heading}>
+          New Form Submission: {fname} {lname}
+          </Text>
+          <Text style={paragraph}>Dear Asim Ali,</Text>
+          <Text style={paragraph}>
           A new form submission has been received with the following details:
+          </Text>
+        </Section>
+        <Section style={paragraphList}>
+        <Text style={{ ...text, marginBottom: "10px" }}>
+        <span style={{...span}}>Name: </span>{fname} {lname}
         </Text>
         <Text style={{ ...text, marginBottom: "10px" }}>
-        <Text style={{...span}}>Name: </Text>{fname} {lname}
+        <span style={{...span}}>Email: </span>{mail}
         </Text>
-        <Text style={{ ...text, marginBottom: "10px" }}>Email: {mail}</Text>
+        
         {phone?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}><Text style={{...span}}>Phone:</Text> {phone}</Text>
+          <Text style={{ ...text, marginBottom: "10px" }}><span style={{...span}}>Phone:</span> {phone}</Text>
         )}
         {contact?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>How Should We Contact You?:</Text> {contact}
+            <span style={{...span}}>How Should We Contact You?:</span> {contact}
           </Text>
         )}
         {about?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Please Contact Me About:</Text> {about}
+            <span style={{...span}}>Please Contact Me About:</span> {about}
           </Text>
         )}
         {referred?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Referred by:</Text> {referred}
+            <span style={{...span}}>Referred by:</span> {referred}
           </Text>
         )}
         {homeowner?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Homeowner:</Text> {homeowner}
+            <span style={{...span}}>Homeowner:</span> {homeowner}
           </Text>
         )}
         {city?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}><Text style={{...span}}>City:</Text> {city}</Text>
+          <span style={{ ...text, marginBottom: "10px" }}><Text style={{...span}}>City:</Text> {city}</span>
         )}
         {province?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Province:</Text> {province}
+            <span style={{...span}}>Province:</span> {province}
           </Text>
         )}
         {mortgage?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Do You Have A Mortgage:</Text> {mortgage} $
+            <span style={{...span}}>Do You Have A Mortgage:</span> {mortgage} $
           </Text>
         )}
         {property?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Property Value:</Text> {property} $
+            <span style={{...span}}>Property Value:</span> {property} $
           </Text>
         )}
         {balance?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Current Mortgage Balance:</Text> {balance} $
+            <span style={{...span}}>Current Mortgage Balance:</span> {balance} $
           </Text>
         )}
         {amount?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Requested Loan Ammount:</Text> {amount} $
+            <span style={{...span}}>Requested Loan Ammount:</span> {amount} $
           </Text>
         )}
         {preferred?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <Text style={{...span}}>Preferred Contact Method:</Text> {preferred}
+            <span style={{...span}}>Preferred Contact Method:</span> {preferred}
           </Text>
         )}
+        </Section>
+        <Section style={paragraphContent}>
         <Text style={{ ...text, marginBottom: "14px" }}>
         <Text style={{...span}}>Message:</Text> {message}
         </Text>
@@ -129,47 +141,106 @@ export const ApplyNowEmail = ({
           Please review the provided information and take appropriate action as
           necessary.
         </Text>
+          <Hr style={hr} />
+        </Section>
 
-        <Text style={footer}>
-          Best regards,
-        </Text>
-        <Text style={footer}>
+        <Section style={paragraphContent}>
+          <Text style={paragraph}>Best regards,</Text>
+          <Text style={{ ...paragraph, fontSize: "20px", ...headerBlue }}>
           {fname} {lname}
-        </Text>
+          </Text>
+        </Section>
+        <Container style={footerContainer}>
+          <Row style={{ ...footSecond, marginTop: 30 }}>
+            <Column>
+              <Img
+                width="150"
+                height="32"
+                src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/logo.png"
+              />
+              <Text
+                style={{ ...paragraph, color: "#12143A",fontSize: "16px", }}
+              >
+                Client Care Data Analyst
+              </Text>
+              <Row>
+                <Link
+                href="tel:+1 (604) 591 3590"
+                style={{ ...footFirst}}
+              >
+                <Img
+                style={{marginRight: "10px"}}
+                  width="18"
+                  height="18"
+                  src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/iphone-se-50.png"
+                />
+                +1 (604) 591 3590
+              </Link>
+              </Row>
+              <Row>
+              <Column style={{ ...footFirst,marginTop: "10px" }}>
+                  <Link href="mailto:admin@asimali.ca" style={footFirst}>
+                    <Img
+                    style={{marginRight: "10px"}}
+                      width="18"
+                      height="18"
+                      src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
+                    />
+                    admin@asimali.ca
+                  </Link>
+                  <Link href="https://asimali.ca" style={{ ...footFirst, marginLeft: "20px" }}>
+                    <Img
+                    style={{marginRight: "10px"}}
+                      width="18"
+                      height="18"
+                      src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/web-24.png"
+                    />
+                    www.asimali.ca
+                  </Link>
+                </Column>
+              </Row>
+            </Column>
+            <Column style={{ marginTop: "20px" }}>
+              <Img
+                style={{ display: "block", margin: "0 50px" }}
+                width="50"
+                height="50"
+                src="http://asimaliprod.wpengine.com/wp-content/uploads/2022/11/favicon.png"
+              />
+              <Text style={{ ...paragraph, color: "#12143A",fontSize: "14px", }}>
+                Asim Ali Mortgage Team
+              </Text>
+            </Column>
+          </Row>
+          <Section
+            style={{ ...paragraphContent, paddingBottom: 30, marginTop: 30 }}
+          >
+            <Text
+              style={{
+                ...paragraph,
+                fontSize: "12px",
+                textAlign: "center",
+                margin: 0,
+                color: "#12143A",
+                paddingBottom: 10,
+              }}
+            >
+              © {new Date().getFullYear()} Asim Ali 7327 137 St Suite 311,
+              Surrey, BC V3W 1A4, Canada
+            </Text>
+          </Section>
+        </Container>
+      </Container>
     </Body>
   </Html>
 );
-
 export default ApplyNowEmail;
-
 const main = {
-  backgroundColor: "#ffffff",
-};
-
-const container = {
-  paddingLeft: "12px",
-  paddingRight: "12px",
-  // width: "100%",
-};
-
-const h1 = {
-  color: "#333",
+  backgroundColor: "#dbddde",
+  width: "100%",
   fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "24px",
-  fontWeight: "bold",
-  margin: "10px 0",
-  padding: "0",
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 };
-
-const link = {
-  color: "#2754C5",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-  fontSize: "14px",
-  textDecoration: "underline",
-};
-
 const text = {
   color: "#333",
   fontFamily:
@@ -185,22 +256,62 @@ const span = {
   fontWeight: "bold",
 };
 
-const footer = {
-  color: "blueviolet",
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+
+const footFirst = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "5x",
+  color: "#12143A",
   fontSize: "16px",
-  lineHeight: "22px",
-  marginTop: "12px",
-  marginBottom: "24px",
+};
+const footSecond = {
+  padding: "20px",
+  fontSize: "16px",
 };
 
-const code = {
-  display: "inline-block",
-  padding: "16px 4.5%",
-  width: "90.5%",
-  backgroundColor: "#f4f4f4",
-  borderRadius: "5px",
-  border: "1px solid #eee",
-  color: "#333",
+const headerBlue = {
+  color: "#0F2650",
+};
+
+const container = {
+  // margin: "30px auto",
+  width: "100%",
+  backgroundColor: "#fff",
+  borderRadius: 5,
+  overflow: "hidden",
+};
+const footerContainer = {
+  width: "100%",
+  backgroundImage:
+    "url(http://asimaliprod.wpengine.com/wp-content/uploads/2023/03/mortgage-broker-surrey-7.webp)",
+  overflow: "hidden",
+};
+
+
+const heading = {
+  fontSize: "14px",
+  lineHeight: "26px",
+  fontWeight: "700",
+  color: "#004dcf",
+};
+
+const paragraphContent = {
+  padding: "0 40px",
+};
+
+const paragraphList = {
+  paddingLeft: 40,
+};
+
+const paragraph = {
+  fontSize: "14px",
+  lineHeight: "22px",
+  color: "#3c4043",
+};
+
+
+const hr = {
+  borderColor: "#e8eaed",
+  margin: "20px 0",
 };

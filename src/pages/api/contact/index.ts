@@ -15,7 +15,7 @@ export default async function handler(
     try {
       const data = await JSON.parse(req.body);
       const { fromEmail, toEmail, emailSubject, fname, lname, mail, phone, contact, about,province,message } = data;
-      console.log(toEmail);
+
       await sendEmail({
         from: fromEmail,
         to: toEmail,
