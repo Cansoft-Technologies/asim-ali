@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useInView } from "react-intersection-observer";
 import { apolloClient } from "../lib/apollo";
-import AutoReply from "emails_template/auto_reply";
 const ContactSection = dynamic(() => import("components/ContactSection"));
 const FlexibilityTab = dynamic(() => import("components/FlexibilityTab"));
 const HomeBuyerSection = dynamic(() => import("components/HomeBuyerSection"));
@@ -598,7 +597,6 @@ export default function Page(props: MyProps) {
                   </Row>
                 </div>
               </Container>
-              <AutoReply fname='Pulok' lname='C'/>
               <Meeting meetings={meetings} />
               <MortgageAdvisor advisorData={advisorData} />
               <SplitImageRight splitImagesRight={splitImagesRight} />
