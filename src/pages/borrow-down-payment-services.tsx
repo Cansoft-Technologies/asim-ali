@@ -151,6 +151,10 @@ export async function getStaticProps() {
             sourceUrl
             altText
           }
+          uploadLogoMobile {
+            sourceUrl
+            altText
+          }
         }
         generalSettings {
             schemaProductRating

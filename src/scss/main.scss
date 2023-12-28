@@ -1030,6 +1030,12 @@ q.review-content {
     }
   }
 }
+.desc-logo{
+  display: block;
+}
+.mobile-logo{
+  display: none;
+}
 .homebuyer-items {
   gap: 10px;
   display: flex;
@@ -2828,6 +2834,12 @@ p.testimonials-name {
     .col-md-5 {
       margin-top: 20px;
     }
+  }
+  .mobile-logo{
+    display: block;
+  }
+  .desc-logo{
+    display: none;
   }
   .footer-partner-logo {
     display: flex;
