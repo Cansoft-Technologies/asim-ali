@@ -56,6 +56,21 @@ function Header(props: MyProps) {
                   style={{ cursor: "pointer" }}
                   width={180}
                   height={43}
+                  className="desc-logo"
+                />
+              </Link>
+            )}
+            {settings?.headerSettings?.uploadLogoMobile == null ? (
+              ""
+            ) : (
+              <Link href="/">
+                <Image
+                  src={settings?.headerSettings?.uploadLogoMobile?.sourceUrl}
+                  alt="Logo"
+                  style={{ cursor: "pointer" }}
+                  width={180}
+                  height={43}
+                  className="mobile-logo"
                 />
               </Link>
             )}
