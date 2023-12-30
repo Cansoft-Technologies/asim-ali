@@ -102,7 +102,7 @@ const AutoReply = ({ fname, lname }: MyProps) => (
                       height="18"
                       src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
                     />
-                    admin@asimali.ca
+                    clientcare@asimali.ca
                   </Link>
                   <Link href="https://asimali.ca" style={{ ...footFirst, marginLeft: "20px" }}>
                     <Img
