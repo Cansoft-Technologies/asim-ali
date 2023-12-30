@@ -20,7 +20,7 @@ export default function ApplySection() {
 
     const bodyData = JSON.stringify({
       fromEmail: "noreply@asimali.ca",
-      toEmail: "admin@asimali.ca",
+      toEmail: "clientcare@asimali.ca",
       emailSubject: "New Form Submission from :" + formData.fname + " " + formData.lname,
       fname: formData.fname.toString() || "",
       lname: formData.lname.toString() || "",
