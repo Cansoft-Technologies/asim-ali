@@ -39,7 +39,14 @@ function Hero({
         <div className="hero-title-col col-xl-6 offset-xl-6">
           <p className="hero-title">
             {title?.split(" ")[0]}
-            <span>{title?.split(" ")[1]}</span>
+            {title?.split(" ")[1] && title?.split(" ")[2] ? (
+              <span>
+                {title?.split(" ")[1]} {title?.split(" ")[2]}
+              </span>
+            ) : (
+              <span>{title?.split(" ")[1]}</span>
+            )}
+            {/* <span>{title?.split(" ")[1]}</span> */}
           </p>
         </div>
         <div className="banner-bottom col-md-11 offset-md-1 mt-5">
