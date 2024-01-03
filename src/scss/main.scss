@@ -176,6 +176,11 @@ body {
         align-items: center;
         display: none;
         width: 240px;
+        &:hover {
+          ul.submenu-child {
+            opacity: 1;
+          }
+        }
         li {
           position: relative;
           &:hover {
@@ -200,18 +205,20 @@ body {
             padding-left: 0px !important;
             display: flex;
             flex-direction: column;
-            position: absolute;
-            top: 80%;
+            position: relative;
+            top: 100%;
             z-index: 99;
-            width: 100%;
-            margin-left: 40px;
-            margin-top: 10px;
+            // width: 100%;
+            margin-left: 30px;
+            // margin-top: 10px;
             background: #eed892;
             text-align: center;
             justify-content: center;
             align-items: center;
             display: none;
-            width: 240px;
+            width: 210px;
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             li {
               span.sublink {
                 padding: 5px;
@@ -1030,10 +1037,10 @@ q.review-content {
     }
   }
 }
-.desc-logo{
+.desc-logo {
   display: block;
 }
-.mobile-logo{
+.mobile-logo {
   display: none;
 }
 .homebuyer-items {
@@ -2835,10 +2842,10 @@ p.testimonials-name {
       margin-top: 20px;
     }
   }
-  .mobile-logo{
+  .mobile-logo {
     display: block;
   }
-  .desc-logo{
+  .desc-logo {
     display: none;
   }
   .footer-partner-logo {
@@ -3004,6 +3011,7 @@ p.testimonials-name {
   }
 }
 @media screen and (max-width: 991px) {
+  
   .service-row {
     .hide-sm {
       display: none;
@@ -3041,5 +3049,4 @@ p.testimonials-name {
     color: #f0b254;
     font-weight: 700;
   }
- 
 }
