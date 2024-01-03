@@ -35,7 +35,8 @@ export default function ApplySection() {
       balance: formData.balance.toString() || "",
       preferred: formData.preferred.toString() || "",
       amount: formData.loan.toString() || "",
-      message : formData.message.toString() || ""
+      message : formData.message.toString() || "",
+      usingFor : "apply-now"
     })
     console.log(bodyData);
    try{

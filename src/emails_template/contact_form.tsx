@@ -31,6 +31,7 @@ interface MyProps {
   amount?: string;
   contact?: string;
   about?: string;
+  usingFor?: string;
 }
 
 const ApplyNowEmail = ({
@@ -50,6 +51,7 @@ const ApplyNowEmail = ({
   message,
   about,
   contact,
+  usingFor,
 }: MyProps) => (
   <Html>
     <Head />
@@ -161,7 +163,7 @@ const ApplyNowEmail = ({
               <Text
                 style={{ ...paragraph, color: "#12143A",fontSize: "16px", }}
               >
-                Client Care Data Analyst
+                {usingFor === 'apply-now' ? 'Client Care Data Analyst' : 'Your Ideal Mortgage Partner'}
               </Text>
               <Row>
                 <Link
@@ -179,14 +181,14 @@ const ApplyNowEmail = ({
               </Row>
               <Row>
               <Column style={{ ...footFirst,marginTop: "10px" }}>
-                  <Link href="mailto:admin@asimali.ca" style={footFirst}>
+                  <Link href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'admin@asimali.ca'}`} style={footFirst}>
                     <Img
                     style={{marginRight: "10px"}}
                       width="18"
                       height="18"
                       src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
                     />
-                    clientcare@asimali.ca
+                    {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'admin@asimali.ca'}
                   </Link>
                   <Link href="https://asimali.ca" style={{ ...footFirst, marginLeft: "20px" }}>
                     <Img

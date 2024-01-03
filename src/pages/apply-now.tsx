@@ -160,7 +160,7 @@ function ApplyNow(props: MyProps) {
               })}
             </Head>
             <main className="content">
-              <Header settings={settings} mainMenus={mainMenus} />
+              <Header settings={settings} mainMenus={mainMenus} usingFor='apply-now'/>
               <Hero
                 title={data?.ApplyNow?.bannerTitle}
                 bgImage={data?.ApplyNow?.bannerBackgroundImage?.sourceUrl}

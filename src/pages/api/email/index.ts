@@ -14,14 +14,13 @@ export default async function handler(
 
     try {
       const data = await JSON.parse(req.body);
-      const { fromEmail, toEmail, emailSubject, fname, lname, mail, phone, referred, homeowner, city, province, mortgage, property, balance, preferred, message, amount } = data;
-      console.log(toEmail);
+      const { fromEmail, toEmail, emailSubject, fname, lname, mail, phone, referred, homeowner, city, province, mortgage, property, balance, preferred, message, amount, usingFor } = data;
       await sendEmail({
         from: fromEmail,
         to: toEmail,
         subject: emailSubject,
         html: render(ApplyNowEmail({
-          fname, lname, mail, phone, referred, homeowner, city, province, mortgage, property, balance, preferred, message , amount
+          fname, lname, mail, phone, referred, homeowner, city, province, mortgage, property, balance, preferred, message , amount, usingFor
         }))
       });
       await sendEmail({
@@ -29,7 +28,7 @@ export default async function handler(
         to: mail,
         subject: "Thank you so much for contacting us on our website "+ fname,
         html: render(AutoReply({
-          fname, lname
+          fname, lname, usingFor
         }))
       });
       return res.send({ status: 200, message: 'Form Submission Success' });
