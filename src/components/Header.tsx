@@ -2,7 +2,6 @@ import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 
 
@@ -14,7 +13,6 @@ type MyProps = {
 
 function Header(props: MyProps) {
   const { settings, mainMenus, usingFor } = props;
-  const router = useRouter();
 
   return (
     <>

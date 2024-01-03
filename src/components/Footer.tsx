@@ -13,10 +13,11 @@ import styles from "scss/components/Footer.module.scss";
 type MyProps = {
   settings: any;
   mainMenus: any;
+  usingFor?: string;
 };
 
 const Footer = (props: MyProps) => {
-  const { settings, mainMenus } = props;
+  const { settings, mainMenus, usingFor } = props;
 
   const prefixSettings = (settings as any).footerSettings;
 
@@ -40,9 +41,9 @@ const Footer = (props: MyProps) => {
                   }}
                 ></p>
                 <a
-                  href={`mailto:${prefixSettings?.footerLeftWidget?.emailAddress}`}
+                  href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : prefixSettings?.footerLeftWidget?.emailAddress}`}
                 >
-                  {prefixSettings?.footerLeftWidget?.emailAddress}
+                  {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : prefixSettings?.footerLeftWidget?.emailAddress}
                 </a>
 
                 <a
