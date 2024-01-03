@@ -242,7 +242,7 @@ function ApplyNow(props: MyProps) {
                   </div>
                 </Container>
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} mainMenus={mainMenus} usingFor='apply-now' />
           </div>
         );
       })}
