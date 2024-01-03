@@ -23,7 +23,7 @@ function Header(props: MyProps) {
                 href={`mailto:${
                   usingFor === "apply-now"
                     ? "clientcare@asimali.ca"
-                    : "admin@asimali.ca"
+                    : "clientcare@asimali.ca"
                 }`}
                 className=""
               >
@@ -31,7 +31,7 @@ function Header(props: MyProps) {
                   <FontAwesomeIcon icon={faEnvelope} />{" "}
                   {usingFor === "apply-now"
                     ? "clientcare@asimali.ca"
-                    : "admin@asimali.ca"}
+                    : "clientcare@asimali.ca"}
                 </span>
               </a>{" "}
               <span>| Licensed in BC & AB</span>
