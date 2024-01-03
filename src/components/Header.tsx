@@ -9,10 +9,11 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 type MyProps = {
   settings: any;
   mainMenus: any;
+  usingFor?: string;
 };
 
 function Header(props: MyProps) {
-  const { settings, mainMenus } = props;
+  const { settings, mainMenus, usingFor } = props;
   const router = useRouter();
 
   return (
@@ -21,14 +22,13 @@ function Header(props: MyProps) {
         <Container style={{ maxWidth: "1450px" }}>
           <div className="top-nav">
             <p className="brand-mail">
+              <a href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'admin@asimali.ca'}`} className="">
               <span
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  router.push("mailto:admin@asimali.ca");
-                }}
               >
-                <FontAwesomeIcon icon={faEnvelope} /> admin@asimali.ca
-              </span>{" "}
+                <FontAwesomeIcon icon={faEnvelope} /> {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'admin@asimali.ca'}
+              </span>
+              </a>{" "}
               <span>| Licensed in BC & AB</span>
             </p>
             <a href="tel:+1 (604) 591 3590">
