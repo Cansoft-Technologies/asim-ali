@@ -355,7 +355,7 @@ const HowItWorks = (props: MyProps) => {
                 <h2 className="text-end works-title">
                   {data?.HowItWorks?.sixthTitle}
                 </h2>
-                <Row>
+                {/* <Row>
                   <Col md={6}>
                     <Image
                       src={data?.HowItWorks?.sixthImage?.sourceUrl}
@@ -376,7 +376,7 @@ const HowItWorks = (props: MyProps) => {
                       style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
-                </Row>
+                </Row> */}
                 {/* <Row>
                         <Col md={8}>
                             
