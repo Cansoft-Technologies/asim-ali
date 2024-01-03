@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 
-
 type MyProps = {
   settings: any;
   mainMenus: any;
@@ -20,12 +19,20 @@ function Header(props: MyProps) {
         <Container style={{ maxWidth: "1450px" }}>
           <div className="top-nav">
             <p className="brand-mail">
-              <a href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'admin@asimali.ca'}`} className="">
-              <span
-                style={{ cursor: "pointer" }}
+              <a
+                href={`mailto:${
+                  usingFor === "apply-now"
+                    ? "clientcare@asimali.ca"
+                    : "admin@asimali.ca"
+                }`}
+                className=""
               >
-                <FontAwesomeIcon icon={faEnvelope} /> {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'admin@asimali.ca'}
-              </span>
+                <span style={{ cursor: "pointer" }}>
+                  <FontAwesomeIcon icon={faEnvelope} />{" "}
+                  {usingFor === "apply-now"
+                    ? "clientcare@asimali.ca"
+                    : "admin@asimali.ca"}
+                </span>
               </a>{" "}
               <span>| Licensed in BC & AB</span>
             </p>
@@ -117,6 +124,21 @@ function Header(props: MyProps) {
                                               <Nav.Link
                                                 as={Link}
                                                 href={
+                                                  "/commercial-mortgage-in-bc"
+                                                }
+                                              >
+                                                <span
+                                                  className="sublink"
+                                                  onClick={() => submenu.uri}
+                                                >
+                                                  British Columbia
+                                                </span>
+                                              </Nav.Link>
+                                            </li>
+                                            <li>
+                                              <Nav.Link
+                                                as={Link}
+                                                href={
                                                   "/commercial-mortgage-in-surrey"
                                                 }
                                               >
@@ -140,21 +162,6 @@ function Header(props: MyProps) {
                                                   onClick={() => submenu.uri}
                                                 >
                                                   Vancouver
-                                                </span>
-                                              </Nav.Link>
-                                            </li>
-                                            <li>
-                                              <Nav.Link
-                                                as={Link}
-                                                href={
-                                                  "/commercial-mortgage-in-bc"
-                                                }
-                                              >
-                                                <span
-                                                  className="sublink"
-                                                  onClick={() => submenu.uri}
-                                                >
-                                                  British Columbia
                                                 </span>
                                               </Nav.Link>
                                             </li>
