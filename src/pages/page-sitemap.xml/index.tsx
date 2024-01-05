@@ -37,7 +37,6 @@ const data = [
   "/apply-now",
   "/b-lender-bc-mortgage",
   "/blog",
-  "/blogs",
   "/borrow-down-payment-services",
   "/commercial-mortgage-in-bc",
   "/commercial-mortgage-in-surrey",

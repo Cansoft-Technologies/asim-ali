@@ -19,7 +19,7 @@ type MyProps = {
 const Footer = (props: MyProps) => {
   const { settings, mainMenus, usingFor } = props;
 
-  const prefixSettings = (settings as any).footerSettings;
+  const prefixSettings = (settings as any)?.footerSettings;
 
   const socialNull =
     prefixSettings?.socialUrl?.facebook == null &&
@@ -90,7 +90,7 @@ const Footer = (props: MyProps) => {
           <Row>
             <Container>
               <div className="ms-auto py-5 my-5 my-lg-0 footer-menu">
-                {mainMenus.map((link) => {
+                {mainMenus?.map((link) => {
                   return (
                     <ul key={`${link.label}$-menu`}>
                       {link.menuItems.nodes.map((item) => {
