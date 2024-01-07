@@ -54,7 +54,7 @@ function CustomHeader(): JSX.Element {
                     cssClasses
                     description
                     id
-                    childItems {
+                    childItems (first: 50) {
                       nodes {
                         uri
                         label
