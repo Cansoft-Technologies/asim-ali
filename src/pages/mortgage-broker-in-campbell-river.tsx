@@ -37,7 +37,7 @@ const MobileBanner = dynamic(() => import("components/MobileBanner"));
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 4651}) {
+      pages(where: {id: 4933}) {
       nodes {
         seo {
           title
@@ -53,7 +53,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        dischargeMortgageBc {
+        mortgageBrokerCampbell {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -87,6 +87,7 @@ export async function getStaticProps() {
               description
             }
           }
+          processBelowDesc
           borrowingPayment{
             borrowingTitle
             borrowingDescriptionTop
@@ -122,8 +123,6 @@ export async function getStaticProps() {
             }
           }
           loanTitle
-          processTitle
-          processDescription
           reasonLeftTextCopy
           reasonRightTextCopy
           reasonLeftImageCopy {
@@ -235,50 +234,50 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.dischargeMortgageBc,
-      reasonTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.mortgageBrokerCampbell,
+      reasonTitle: data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonDescription,
-      processTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.processTitle,
-      processDescription:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.processDescription,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonDescription,
       reasonLeftText:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftText,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonLeftText,
       reasonRightImage:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightImage,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonRightImage,
       reasonRightText:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightText,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonRightText,
       reasonLeftImage:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftImage,
-      loanTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.loanTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonLeftImage,
+      loanTitle: data?.pages?.nodes[0]?.mortgageBrokerCampbell?.loanTitle,
       reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftTextCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonLeftTextCopy,
       reasonRightImageCopy:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightImageCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonRightImageCopy,
       reasonRightTextCopy:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightTextCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonRightTextCopy,
       reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftImageCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonLeftImageCopy,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.borrowingPayment,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.borrowingPayment,
 
-      expertsHelpData: data?.pages?.nodes[0]?.dischargeMortgageBc?.expertsHelp,
+      expertsHelpData:
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.expertsHelp,
       tabWhyChooseData:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.tabWhyChoose,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.tabWhyChoose,
       borrowingProcessData:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.processBorrowing,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.processBorrowing,
       qualifyingTitle:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.qualifyingTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.qualifyingTitle,
       qualifyingDescription:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.qualifyingDescription,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.qualifyingDescription,
       commonConcernsData:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.talkTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.mortgageBrokerCampbell?.talkTitle,
       talkDescription:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.talkDescription,
-      ratesTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.ratesTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.talkDescription,
+      processBelowDesc:
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.processBelowDesc,
+      ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerCampbell?.ratesTitle,
       ratesDescription:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.ratesDescription,
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.ratesDescription,
     },
     revalidate: 60,
   };
@@ -291,8 +290,6 @@ type MyProps = {
   serviceBannerData: any;
   reasonTitle: any;
   reasonDescription: any;
-  processTitle: any;
-  processDescription: any;
   reasonLeftText: any;
   reasonRightText: any;
   reasonLeftImage: any;
@@ -311,19 +308,18 @@ type MyProps = {
   commonConcernsData: any;
   talkTitle: any;
   talkDescription: any;
+  processBelowDesc: any;
   ratesTitle: any;
   ratesDescription: any;
 };
 
-export default function DischargeMortgageBc(props: MyProps) {
+export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
   const {
     settings,
     mainMenus,
     metaData,
     serviceBannerData,
     reasonTitle,
-    processTitle,
-    processDescription,
     loanTitle,
     reasonDescription,
     reasonLeftText,
@@ -345,6 +341,7 @@ export default function DischargeMortgageBc(props: MyProps) {
     talkDescription,
     ratesTitle,
     ratesDescription,
+    processBelowDesc,
   } = props;
 
   return (
@@ -365,8 +362,6 @@ export default function DischargeMortgageBc(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
-              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}
@@ -404,18 +399,8 @@ export default function DischargeMortgageBc(props: MyProps) {
             </Col>
           </Row>
         </Container>
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <h2 className="text-center">{reasonTitle}</h2>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: reasonDescription,
-            }}
-          ></div>
-        </Container>
+
+        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
 
         <ServiceSection
           textLeft={expertsHelpData?.helpLeftText}
@@ -423,6 +408,33 @@ export default function DischargeMortgageBc(props: MyProps) {
           imageLeft={expertsHelpData?.helpLeftImage}
           imageRight={expertsHelpData?.helpRightImage}
         />
+        <div style={{ height: "15px" }}></div>
+        <HomeBuyerNewBC advisorData={borrowingProcessData} />
+        <Container>
+          <p
+            className="text-lg text-center my-5"
+            dangerouslySetInnerHTML={{
+              __html: processBelowDesc,
+            }}
+          ></p>
+        </Container>
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: ratesTitle,
+            }}
+          ></div>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: ratesDescription,
+            }}
+          ></div>
+        </Container>
 
         <ServiceSection
           textLeft={reasonLeftText}
@@ -431,28 +443,14 @@ export default function DischargeMortgageBc(props: MyProps) {
           imageRight={reasonRightImage}
         />
 
-        <TabNewBC tabData={tabWhyChooseData} />
-        <HomeBuyerNewBC advisorData={borrowingProcessData} />
-
-        <AccordionNewBC homebuyerData={commonConcernsData} />
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <h2 className="text-center">{processTitle}</h2>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: processDescription,
-            }}
-          ></div>
-        </Container>
         <ServiceSection
           textLeft={reasonLeftTextCopy}
           textRight={reasonRightTextCopy}
           imageLeft={reasonLeftImageCopy}
           imageRight={reasonRightImageCopy}
         />
+
+        <AccordionNewBC homebuyerData={commonConcernsData} />
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div

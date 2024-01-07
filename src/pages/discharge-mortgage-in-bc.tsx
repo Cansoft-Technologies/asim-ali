@@ -37,7 +37,7 @@ const MobileBanner = dynamic(() => import("components/MobileBanner"));
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 4583}) {
+      pages(where: {id: 4651}) {
       nodes {
         seo {
           title
@@ -53,7 +53,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        dominionLendingMortgageRates {
+        dischargeMortgageBc {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -122,6 +122,8 @@ export async function getStaticProps() {
             }
           }
           loanTitle
+          processTitle
+          processDescription
           reasonLeftTextCopy
           reasonRightTextCopy
           reasonLeftImageCopy {
@@ -233,54 +235,50 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.dominionLendingMortgageRates,
-      reasonTitle:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.dischargeMortgageBc,
+      reasonTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonDescription,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonDescription,
+      processTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.processTitle,
+      processDescription:
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.processDescription,
       reasonLeftText:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonLeftText,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftText,
       reasonRightImage:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonRightImage,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightImage,
       reasonRightText:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonRightText,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightText,
       reasonLeftImage:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonLeftImage,
-      loanTitle: data?.pages?.nodes[0]?.dominionLendingMortgageRates?.loanTitle,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftImage,
+      loanTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.loanTitle,
       reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonLeftTextCopy,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftTextCopy,
       reasonRightImageCopy:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates
-          ?.reasonRightImageCopy,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightImageCopy,
       reasonRightTextCopy:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates
-          ?.reasonRightTextCopy,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightTextCopy,
       reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates
-          ?.reasonLeftImageCopy,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftImageCopy,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.borrowingPayment,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.borrowingPayment,
 
-      expertsHelpData:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.expertsHelp,
+      expertsHelpData: data?.pages?.nodes[0]?.dischargeMortgageBc?.expertsHelp,
       tabWhyChooseData:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.tabWhyChoose,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.tabWhyChoose,
       borrowingProcessData:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.processBorrowing,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.processBorrowing,
       qualifyingTitle:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.qualifyingTitle,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.qualifyingTitle,
       qualifyingDescription:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates
-          ?.qualifyingDescription,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.qualifyingDescription,
       commonConcernsData:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.dominionLendingMortgageRates?.talkTitle,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.talkTitle,
       talkDescription:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.talkDescription,
-      ratesTitle:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.ratesTitle,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.talkDescription,
+      ratesTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.ratesTitle,
       ratesDescription:
-        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.ratesDescription,
+        data?.pages?.nodes[0]?.dischargeMortgageBc?.ratesDescription,
     },
     revalidate: 60,
   };
@@ -293,6 +291,8 @@ type MyProps = {
   serviceBannerData: any;
   reasonTitle: any;
   reasonDescription: any;
+  processTitle: any;
+  processDescription: any;
   reasonLeftText: any;
   reasonRightText: any;
   reasonLeftImage: any;
@@ -315,13 +315,15 @@ type MyProps = {
   ratesDescription: any;
 };
 
-export default function NewDominionLendingMortgageRates(props: MyProps) {
+export default function DischargeMortgageBc(props: MyProps) {
   const {
     settings,
     mainMenus,
     metaData,
     serviceBannerData,
     reasonTitle,
+    processTitle,
+    processDescription,
     loanTitle,
     reasonDescription,
     reasonLeftText,
@@ -363,8 +365,6 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
-              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}
@@ -415,54 +415,12 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
           ></div>
         </Container>
 
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
-        <div className="service-row my-5">
-          <Container>
-            <Row>
-              <Col className="service-texts" lg={6}>
-                <div
-                  className="service-content"
-                  dangerouslySetInnerHTML={{
-                    __html: expertsHelpData?.helpLeftText,
-                  }}
-                ></div>
-              </Col>
-              <Col className="service-texts" lg={6}>
-                <div className="service-image">
-                  <Image
-                    src={expertsHelpData?.helpRightImage?.sourceUrl}
-                    alt={expertsHelpData?.helpRightImage?.altText}
-                    width="390"
-                    height="400"
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      height: "60vh",
-                    }}
-                  />
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesTitle,
-            }}
-          ></div>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesDescription,
-            }}
-          ></div>
-        </Container>
+        <ServiceSection
+          textLeft={expertsHelpData?.helpLeftText}
+          textRight={expertsHelpData?.helpRightText}
+          imageLeft={expertsHelpData?.helpLeftImage}
+          imageRight={expertsHelpData?.helpRightImage}
+        />
 
         <ServiceSection
           textLeft={reasonLeftText}
@@ -471,15 +429,28 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
           imageRight={reasonRightImage}
         />
 
+        <TabNewBC tabData={tabWhyChooseData} />
+        <HomeBuyerNewBC advisorData={borrowingProcessData} />
+
+        <AccordionNewBC homebuyerData={commonConcernsData} />
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <h2 className="text-center">{processTitle}</h2>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: processDescription,
+            }}
+          ></div>
+        </Container>
         <ServiceSection
           textLeft={reasonLeftTextCopy}
           textRight={reasonRightTextCopy}
           imageLeft={reasonLeftImageCopy}
           imageRight={reasonRightImageCopy}
         />
-        <TabNewBC tabData={tabWhyChooseData} />
-
-        <AccordionNewBC homebuyerData={commonConcernsData} />
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div

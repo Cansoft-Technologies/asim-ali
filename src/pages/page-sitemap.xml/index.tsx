@@ -11,6 +11,10 @@ const locationRoutes = [
   "/mortgage-brokers-in-kelowna",
   "/langley-mortgage-broker",
   "/mortgage-broker-in-vancouver",
+  "/mortgage-broker-in-burnaby",
+  "/mortgage-broker-in-nanaimo",
+  "/mortgage-broker-in-campbell-river",
+  "/trusted-mortgage-broker-in-chilliwack",
 ];
 const excludeItems = [
   "/new-mortgage-for-self-employed-in-bc",
@@ -55,6 +59,10 @@ const data = [
   "/private-lenders-bc",
   "/testimonials",
   "/uninsured-mortgage-solutions",
+  "/fixed-mortgage-rates-in-bc",
+  "/discharge-mortgage-in-bc",
+  "/dominion-lending-mortgage-rates",
+  "/transparent-vacant-land-mortgage",
 ];
 
 export default function PageSitemap() {

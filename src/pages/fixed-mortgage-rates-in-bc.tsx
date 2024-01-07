@@ -37,7 +37,7 @@ const MobileBanner = dynamic(() => import("components/MobileBanner"));
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 4862}) {
+      pages(where: {id: 4720}) {
       nodes {
         seo {
           title
@@ -53,7 +53,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        mortgageBrokerNanaimo {
+        fixedMortgageRatesBc {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -92,6 +92,7 @@ export async function getStaticProps() {
               description
             }
           }
+          processBelowDesc
           borrowingPayment{
             borrowingTitle
             borrowingDescriptionTop
@@ -105,6 +106,7 @@ export async function getStaticProps() {
             expertsHelpTitle
             expertsHelpDescription
             helpLeftText
+            helpLeftText2
             helpRightText
             helpLeftImage{
                 sourceUrl
@@ -114,11 +116,13 @@ export async function getStaticProps() {
                 sourceUrl
                 altText
             }    
+            helpRightImage2{
+                sourceUrl
+                altText
+            }    
           }
           ratesTitle
           ratesDescription
-          ratesTitle2
-          ratesDescription2
           
           tabWhyChoose{
             tabHeading
@@ -240,55 +244,53 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.mortgageBrokerNanaimo,
-      reasonTitle: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.fixedMortgageRatesBc,
+      reasonTitle: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonDescription,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonDescription,
       reasonLeftText:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftText,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftText,
       reasonLeftText2:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftText2,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftText2,
       reasonRightImage:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightImage,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightImage,
       reasonRightImage2:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightImage2,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightImage2,
       reasonRightText:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightText,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightText,
       reasonLeftImage:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftImage,
-      loanTitle: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.loanTitle,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftImage,
+      loanTitle: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.loanTitle,
       reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftTextCopy,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftTextCopy,
       reasonRightImageCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightImageCopy,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightImageCopy,
       reasonRightTextCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightTextCopy,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightTextCopy,
       reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftImageCopy,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftImageCopy,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.borrowingPayment,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.borrowingPayment,
+      processBelowDesc:
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.processBelowDesc,
 
-      expertsHelpData:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.expertsHelp,
+      expertsHelpData: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.expertsHelp,
       tabWhyChooseData:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.tabWhyChoose,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.tabWhyChoose,
       borrowingProcessData:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.processBorrowing,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.processBorrowing,
       qualifyingTitle:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.qualifyingTitle,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.qualifyingTitle,
       qualifyingDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.qualifyingDescription,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.qualifyingDescription,
       commonConcernsData:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.talkTitle,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.talkTitle,
       talkDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.talkDescription,
-      ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.ratesTitle,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.talkDescription,
+      ratesTitle: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.ratesTitle,
       ratesDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.ratesDescription,
-      ratesTitle2: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.ratesTitle2,
-      ratesDescription2:
-        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.ratesDescription2,
+        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.ratesDescription,
     },
     revalidate: 60,
   };
@@ -313,6 +315,7 @@ type MyProps = {
   reasonLeftImageCopy: any;
   reasonRightImageCopy: any;
   borrowingPaymentData: any;
+  processBelowDesc: any;
   expertsHelpData: any;
   tabWhyChooseData: any;
   borrowingProcessData: any;
@@ -323,11 +326,9 @@ type MyProps = {
   talkDescription: any;
   ratesTitle: any;
   ratesDescription: any;
-  ratesTitle2: any;
-  ratesDescription2: any;
 };
 
-export default function NewMortgageBrokerInNanaimo(props: MyProps) {
+export default function NewFixedMortgageRatesBC(props: MyProps) {
   const {
     settings,
     mainMenus,
@@ -347,6 +348,7 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
     reasonLeftImageCopy,
     reasonRightImageCopy,
     borrowingPaymentData,
+    processBelowDesc,
     expertsHelpData,
     tabWhyChooseData,
     borrowingProcessData,
@@ -357,8 +359,6 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
     talkDescription,
     ratesTitle,
     ratesDescription,
-    ratesTitle2,
-    ratesDescription2,
   } = props;
 
   return (
@@ -379,8 +379,6 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
-              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}
@@ -418,10 +416,6 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
             </Col>
           </Row>
         </Container>
-
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
-
-        <div style={{ height: "50px" }}></div>
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -434,13 +428,13 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
             }}
           ></div>
         </Container>
+
         <ServiceSection
           textLeft={expertsHelpData?.helpLeftText}
           textRight={expertsHelpData?.helpRightText}
           imageLeft={expertsHelpData?.helpLeftImage}
           imageRight={expertsHelpData?.helpRightImage}
         />
-
         <div className="service-row">
           <Container>
             <Row>
@@ -448,15 +442,15 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
                 <div
                   className="service-content"
                   dangerouslySetInnerHTML={{
-                    __html: reasonLeftText,
+                    __html: expertsHelpData?.helpLeftText2,
                   }}
                 ></div>
               </Col>
               <Col className="service-texts" lg={6}>
                 <div className="service-image">
                   <Image
-                    src={reasonRightImage?.sourceUrl}
-                    alt={reasonRightImage?.altText}
+                    src={expertsHelpData?.helpRightImage2?.sourceUrl}
+                    alt={expertsHelpData?.helpRightImage2?.altText}
                     width="390"
                     height="400"
                     style={{
@@ -471,30 +465,31 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
           </Container>
         </div>
 
-        <AccordionNewBC homebuyerData={commonConcernsData} />
+        <div className="mt-5">
+          <Container
+            className="mb-5 px-3 py-3"
+            style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+          >
+            <div
+              className="text-center"
+              dangerouslySetInnerHTML={{
+                __html: ratesTitle,
+              }}
+            ></div>
+            <div
+              className="text-center"
+              dangerouslySetInnerHTML={{
+                __html: ratesDescription,
+              }}
+            ></div>
+          </Container>
+        </div>
 
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesTitle2,
-            }}
-          ></div>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesDescription2,
-            }}
-          ></div>
-        </Container>
         <ServiceSection
-          textLeft={reasonLeftTextCopy}
-          textRight={reasonRightTextCopy}
-          imageLeft={reasonLeftImageCopy}
-          imageRight={reasonRightImageCopy}
+          textLeft={reasonLeftText}
+          textRight={reasonRightText}
+          imageLeft={reasonLeftImage}
+          imageRight={reasonRightImage}
         />
         <div className="service-row">
           <Container>
@@ -526,7 +521,19 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
           </Container>
         </div>
 
-        <div style={{ height: "50px" }}></div>
+        <TabNewBC tabData={tabWhyChooseData} />
+        <HomeBuyerNewBC advisorData={borrowingProcessData} />
+
+        <Container>
+          <p
+            className="text-lg text-center my-5"
+            dangerouslySetInnerHTML={{
+              __html: processBelowDesc,
+            }}
+          ></p>
+        </Container>
+
+        <AccordionNewBC homebuyerData={commonConcernsData} />
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div

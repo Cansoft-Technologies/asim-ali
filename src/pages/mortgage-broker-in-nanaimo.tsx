@@ -37,7 +37,7 @@ const MobileBanner = dynamic(() => import("components/MobileBanner"));
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 5000}) {
+      pages(where: {id: 4862}) {
       nodes {
         seo {
           title
@@ -53,7 +53,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        transparentVacantLandMortgage {
+        mortgageBrokerNanaimo {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -70,12 +70,17 @@ export async function getStaticProps() {
           reasonTitle
           reasonDescription
           reasonLeftText
+          reasonLeftText2
           reasonRightText
           reasonLeftImage {
             altText
             sourceUrl
           }
           reasonRightImage {
+            altText
+            sourceUrl
+          }
+          reasonRightImage2 {
             altText
             sourceUrl
           }
@@ -110,9 +115,10 @@ export async function getStaticProps() {
                 altText
             }    
           }
-          belowDesc
           ratesTitle
           ratesDescription
+          ratesTitle2
+          ratesDescription2
           
           tabWhyChoose{
             tabHeading
@@ -130,16 +136,6 @@ export async function getStaticProps() {
             sourceUrl
           }
           reasonRightImageCopy {
-            altText
-            sourceUrl
-          }
-          reasonLeftText2
-          reasonRightText2
-          reasonLeftImage2 {
-            altText
-            sourceUrl
-          }
-          reasonRightImage2 {
             altText
             sourceUrl
           }
@@ -244,67 +240,55 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.transparentVacantLandMortgage,
-      reasonTitle:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.mortgageBrokerNanaimo,
+      reasonTitle: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonDescription,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonDescription,
       reasonLeftText:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonLeftText,
-      reasonRightImage:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonRightImage,
-      reasonRightText:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonRightText,
-      reasonLeftImage:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonLeftImage,
-      loanTitle:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.loanTitle,
-      reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage
-          ?.reasonLeftTextCopy,
-      reasonRightImageCopy:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage
-          ?.reasonRightImageCopy,
-      reasonRightTextCopy:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage
-          ?.reasonRightTextCopy,
-      reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage
-          ?.reasonLeftImageCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftText,
       reasonLeftText2:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonLeftText2,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftText2,
+      reasonRightImage:
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightImage,
       reasonRightImage2:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonRightImage2,
-      reasonRightText2:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonRightText2,
-      reasonLeftImage2:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonLeftImage2,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightImage2,
+      reasonRightText:
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightText,
+      reasonLeftImage:
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftImage,
+      loanTitle: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.loanTitle,
+      reasonLeftTextCopy:
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftTextCopy,
+      reasonRightImageCopy:
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightImageCopy,
+      reasonRightTextCopy:
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonRightTextCopy,
+      reasonLeftImageCopy:
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.reasonLeftImageCopy,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.borrowingPayment,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.borrowingPayment,
 
       expertsHelpData:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.expertsHelp,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.expertsHelp,
       tabWhyChooseData:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.tabWhyChoose,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.tabWhyChoose,
       borrowingProcessData:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.processBorrowing,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.processBorrowing,
       qualifyingTitle:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.qualifyingTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.qualifyingTitle,
       qualifyingDescription:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage
-          ?.qualifyingDescription,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.qualifyingDescription,
       commonConcernsData:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.commonConcerns,
-      talkTitle:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.talkTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.talkTitle,
       talkDescription:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.talkDescription,
-      ratesTitle:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.ratesTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.talkDescription,
+      ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.ratesTitle,
       ratesDescription:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.ratesDescription,
-      belowDesc:
-        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.belowDesc,
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.ratesDescription,
+      ratesTitle2: data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.ratesTitle2,
+      ratesDescription2:
+        data?.pages?.nodes[0]?.mortgageBrokerNanaimo?.ratesDescription2,
     },
     revalidate: 60,
   };
@@ -318,18 +302,16 @@ type MyProps = {
   reasonTitle: any;
   reasonDescription: any;
   reasonLeftText: any;
+  reasonLeftText2: any;
   reasonRightText: any;
   reasonLeftImage: any;
   reasonRightImage: any;
+  reasonRightImage2: any;
   loanTitle: any;
   reasonLeftTextCopy: any;
   reasonRightTextCopy: any;
   reasonLeftImageCopy: any;
   reasonRightImageCopy: any;
-  reasonLeftText2: any;
-  reasonRightText2: any;
-  reasonLeftImage2: any;
-  reasonRightImage2: any;
   borrowingPaymentData: any;
   expertsHelpData: any;
   tabWhyChooseData: any;
@@ -341,10 +323,11 @@ type MyProps = {
   talkDescription: any;
   ratesTitle: any;
   ratesDescription: any;
-  belowDesc: any;
+  ratesTitle2: any;
+  ratesDescription2: any;
 };
 
-export default function NewTransparentVacantLandMortgage(props: MyProps) {
+export default function NewMortgageBrokerInNanaimo(props: MyProps) {
   const {
     settings,
     mainMenus,
@@ -354,17 +337,15 @@ export default function NewTransparentVacantLandMortgage(props: MyProps) {
     loanTitle,
     reasonDescription,
     reasonLeftText,
+    reasonLeftText2,
     reasonRightText,
     reasonLeftImage,
     reasonRightImage,
+    reasonRightImage2,
     reasonLeftTextCopy,
     reasonRightTextCopy,
     reasonLeftImageCopy,
     reasonRightImageCopy,
-    reasonLeftText2,
-    reasonRightText2,
-    reasonLeftImage2,
-    reasonRightImage2,
     borrowingPaymentData,
     expertsHelpData,
     tabWhyChooseData,
@@ -376,7 +357,8 @@ export default function NewTransparentVacantLandMortgage(props: MyProps) {
     talkDescription,
     ratesTitle,
     ratesDescription,
-    belowDesc,
+    ratesTitle2,
+    ratesDescription2,
   } = props;
 
   return (
@@ -397,8 +379,6 @@ export default function NewTransparentVacantLandMortgage(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
-              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}
@@ -436,6 +416,10 @@ export default function NewTransparentVacantLandMortgage(props: MyProps) {
             </Col>
           </Row>
         </Container>
+
+        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+
+        <div style={{ height: "50px" }}></div>
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -448,46 +432,44 @@ export default function NewTransparentVacantLandMortgage(props: MyProps) {
             }}
           ></div>
         </Container>
-
-        {/* <BorrowingPayment borrowingPaymentData={borrowingPaymentData} /> */}
-
-        {/* <Container>
-          <Row
-            className="mortgage-broker text-center"
-            style={{ marginTop: "80px" }}
-          >
-            <Col>
-              <h2 className="headering-title">
-                {expertsHelpData?.expertsHelpTitle}
-              </h2>
-              <p className="service-content">
-                {expertsHelpData?.expertsHelpDescription}
-              </p>
-            </Col>
-          </Row>
-        </Container> */}
         <ServiceSection
           textLeft={expertsHelpData?.helpLeftText}
           textRight={expertsHelpData?.helpRightText}
           imageLeft={expertsHelpData?.helpLeftImage}
           imageRight={expertsHelpData?.helpRightImage}
         />
-        <ServiceSection
-          textLeft={reasonLeftText}
-          textRight={reasonRightText}
-          imageLeft={reasonLeftImage}
-          imageRight={reasonRightImage}
-        />
-        <Container>
-          <p
-            className="text-lg text-center "
-            dangerouslySetInnerHTML={{
-              __html: belowDesc,
-            }}
-          ></p>
-        </Container>
 
-        <TabNewBC tabData={tabWhyChooseData} />
+        <div className="service-row">
+          <Container>
+            <Row>
+              <Col className="service-texts" lg={6}>
+                <div
+                  className="service-content"
+                  dangerouslySetInnerHTML={{
+                    __html: reasonLeftText,
+                  }}
+                ></div>
+              </Col>
+              <Col className="service-texts" lg={6}>
+                <div className="service-image">
+                  <Image
+                    src={reasonRightImage?.sourceUrl}
+                    alt={reasonRightImage?.altText}
+                    width="390"
+                    height="400"
+                    style={{
+                      width: "100%",
+                      objectFit: "cover",
+                      height: "45vh",
+                    }}
+                  />
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+
+        <AccordionNewBC homebuyerData={commonConcernsData} />
 
         <Container
           className="mb-5 px-3 py-3"
@@ -496,43 +478,53 @@ export default function NewTransparentVacantLandMortgage(props: MyProps) {
           <div
             className="text-center"
             dangerouslySetInnerHTML={{
-              __html: ratesTitle,
+              __html: ratesTitle2,
             }}
           ></div>
           <div
             className="text-center"
             dangerouslySetInnerHTML={{
-              __html: ratesDescription,
+              __html: ratesDescription2,
             }}
           ></div>
         </Container>
-
-        {/* <HomeBuyerNewBC advisorData={borrowingProcessData} /> */}
-
-        {/* <h2 className="text-center  ">{loanTitle}</h2>
-        <hr
-          style={{
-            width: "350px",
-            margin: "0 auto",
-            border: "1.75px solid #F0B254",
-            borderRadius: "10px",
-          }}
-          className="mb-5"
-        /> */}
         <ServiceSection
           textLeft={reasonLeftTextCopy}
           textRight={reasonRightTextCopy}
           imageLeft={reasonLeftImageCopy}
           imageRight={reasonRightImageCopy}
         />
-        <ServiceSection
-          textLeft={reasonLeftText2}
-          textRight={reasonRightText2}
-          imageLeft={reasonLeftImage2}
-          imageRight={reasonRightImage2}
-        />
+        <div className="service-row">
+          <Container>
+            <Row>
+              <Col className="service-texts" lg={6}>
+                <div
+                  className="service-content"
+                  dangerouslySetInnerHTML={{
+                    __html: reasonLeftText2,
+                  }}
+                ></div>
+              </Col>
+              <Col className="service-texts" lg={6}>
+                <div className="service-image">
+                  <Image
+                    src={reasonRightImage2?.sourceUrl}
+                    alt={reasonRightImage2?.altText}
+                    width="390"
+                    height="400"
+                    style={{
+                      width: "100%",
+                      objectFit: "cover",
+                      height: "45vh",
+                    }}
+                  />
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
 
-        {/* <AccordionNewBC homebuyerData={commonConcernsData} /> */}
+        <div style={{ height: "50px" }}></div>
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div
