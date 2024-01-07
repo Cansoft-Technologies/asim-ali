@@ -136,6 +136,23 @@ const Footer = (props: MyProps) => {
                                                   <Nav.Link
                                                     as={Link}
                                                     href={
+                                                      "/commercial-mortgage-in-bc"
+                                                    }
+                                                  >
+                                                    <span
+                                                      className="link"
+                                                      onClick={() =>
+                                                        submenu.uri
+                                                      }
+                                                    >
+                                                      British Columbia
+                                                    </span>
+                                                  </Nav.Link>
+                                                </li>
+                                                <li>
+                                                  <Nav.Link
+                                                    as={Link}
+                                                    href={
                                                       "/commercial-mortgage-in-surrey"
                                                     }
                                                   >
@@ -163,23 +180,6 @@ const Footer = (props: MyProps) => {
                                                       }
                                                     >
                                                       Vancouver
-                                                    </span>
-                                                  </Nav.Link>
-                                                </li>
-                                                <li>
-                                                  <Nav.Link
-                                                    as={Link}
-                                                    href={
-                                                      "/commercial-mortgage-in-bc"
-                                                    }
-                                                  >
-                                                    <span
-                                                      className="link"
-                                                      onClick={() =>
-                                                        submenu.uri
-                                                      }
-                                                    >
-                                                      British Columbia
                                                     </span>
                                                   </Nav.Link>
                                                 </li>

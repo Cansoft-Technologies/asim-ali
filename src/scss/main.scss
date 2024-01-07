@@ -681,10 +681,10 @@ footer {
               }
               ul.submenu-child {
                 display: none;
-                position: absolute;
+                position: relative;
                 padding-left: 0px !important;
-                // top: 23px;
-                // left: 0;
+                // top: 15px;
+                // left: 0px;
                 background-color: #12143a;
                 color: $color-secondary;
                 width: 190px;
@@ -693,6 +693,8 @@ footer {
                 margin-top: 5px;
                 li {
                   float: none;
+                  margin-left: 20px;
+                  width: 170px;
                   padding: 5px;
                   cursor: pointer;
                   span {
