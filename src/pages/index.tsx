@@ -2,8 +2,7 @@ import { gql } from "@apollo/client";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useInView } from "react-intersection-observer";
 import { apolloClient } from "../lib/apollo";
 const ApplyApprovedSection = dynamic(

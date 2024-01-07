@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button, Carousel, Col, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import styles from "scss/components/Banner.module.scss";
 
 type MyProps = {

@@ -1,32 +1,30 @@
-import 'faust.config';
+import "faust.config";
 
-import { FaustProvider } from '@faustjs/next';
-import React from 'react';
-import 'scss/main.scss';
+import { FaustProvider } from "@faustjs/next";
+import React from "react";
+import "scss/main.scss";
 
-import { client } from 'client';
+import { client } from "client";
 
-import type { AppProps } from 'next/app';
+import type { AppProps } from "next/app";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-svg-core/styles.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import Script from "next/script";
 import { TRACKING_ID } from "./../../utils/variables";
 
-
-
 export default function MyApp({ Component, pageProps }: AppProps) {
-
-
   return (
     <>
       {/* Google tag (gtag.js) */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
+        strategy="worker"
       ></Script>
       {/* 👇 gtag function definition. notice that we don't send page views at this point.  */}
       <Script
         id="gtag-init"
+        strategy="worker"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -43,6 +41,3 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
-
-
