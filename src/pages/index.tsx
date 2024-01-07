@@ -5,25 +5,11 @@ import Image from "next/image";
 import { Container } from "react-bootstrap";
 import { useInView } from "react-intersection-observer";
 import { apolloClient } from "../lib/apollo";
-const ApplyApprovedSection = dynamic(
-  () => import("components/ApplyApprovedSection")
-);
-const ContactSection = dynamic(() => import("components/ContactSection"));
-const FlexibilityTab = dynamic(() => import("components/FlexibilityTab"));
-const HomeBuyerSection = dynamic(() => import("components/HomeBuyerSection"));
-const MortgageAdvisor = dynamic(() => import("components/MortgageAdvisor"));
-const MortgageFeaturedHome = dynamic(
-  () => import("components/MortgageFeaturedHome")
-);
-const ServiceSection = dynamic(() => import("components/ServiceSection"));
+const HomeComponents = dynamic(() => import("components/HomeComponents"));
 const Footer = dynamic(() => import("../components/Footer"));
 const Header = dynamic(() => import("../components/Header"));
 const Banner = dynamic(() => import("../components/Banner"));
 const WeHelp = dynamic(() => import("../components/WeHelp"));
-const Team = dynamic(() => import("components/Team"));
-const Meeting = dynamic(() => import("components/Meeting"));
-const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
-const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
 export async function getStaticProps() {
@@ -499,60 +485,30 @@ export default function Page(props: MyProps) {
         <div ref={sectionRef}>
           {loadOnView && (
             <>
-              <Team teams={teamData} />
-              <ServiceSection
-                textLeft={featuredTextLeft}
-                textRight={featuredTextRight}
-                imageLeft={featuredImageLeft}
-                imageRight={featuredImageRight}
-              />
-              <ApplyApprovedSection
+              <HomeComponents
+                teamData={teamData}
+                featuredTextLeft={featuredTextLeft}
+                featuredTextRight={featuredTextRight}
+                featuredImageLeft={featuredImageLeft}
+                featuredImageRight={featuredImageRight}
                 approvalRenovationData={approvalRenovationData}
                 sliders={sliders}
+                meetings={meetings}
+                advisorData={advisorData}
+                splitImagesRight={splitImagesRight}
+                mortgageInterestData={mortgageInterestData}
+                splitImagesLeft={splitImagesLeft}
+                tabRenovationData={tabRenovationData}
+                mortgageServiceData={mortgageServiceData}
+                tipsTitle={tipsTitle}
+                tipsDescription={tipsDescription}
+                tipsLeftText={tipsLeftText}
+                tipsRightText={tipsRightText}
+                tipsImageLeft={tipsImageLeft}
+                tipsImageRight={tipsImageRight}
+                homebuyerSectionData={homebuyerSectionData}
+                contactData={contactData}
               />
-              <Meeting meetings={meetings} />
-              <MortgageAdvisor advisorData={advisorData} />
-              <SplitImageRight splitImagesRight={splitImagesRight} />
-              <MortgageFeaturedHome advisorData={mortgageInterestData} />
-              <SplitImageLeft splitImagesLeft={splitImagesLeft} />
-              <FlexibilityTab tabData={tabRenovationData} />
-              <MortgageAdvisor advisorData={mortgageServiceData} />
-              <Container
-                className="mb-5 px-3 py-3"
-                style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-              >
-                <h2 className="text-center">{tipsTitle}</h2>
-                <div
-                  className="text-center"
-                  dangerouslySetInnerHTML={{
-                    __html: tipsDescription,
-                  }}
-                ></div>
-              </Container>
-              <ServiceSection
-                textLeft={tipsLeftText}
-                textRight={tipsRightText}
-                imageLeft={tipsImageLeft}
-                imageRight={tipsImageRight}
-              />
-              <HomeBuyerSection homebuyerData={homebuyerSectionData} />
-              <Container className="mb-5">
-                <h2 className="text-center service-title">
-                  {contactData?.title}
-                </h2>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: contactData?.description,
-                  }}
-                  className="text-lg text-start"
-                ></div>
-              </Container>
-              <Container className="mt-5">
-                <div className="my-5">
-                  <p className="text-center service-title">Contact Us</p>
-                </div>
-                <ContactSection />
-              </Container>
             </>
           )}
         </div>
