@@ -19,12 +19,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       {/* Google tag (gtag.js) */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
-        strategy="worker"
+        strategy="lazyOnload"
       ></Script>
       {/* 👇 gtag function definition. notice that we don't send page views at this point.  */}
       <Script
         id="gtag-init"
-        strategy="worker"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
