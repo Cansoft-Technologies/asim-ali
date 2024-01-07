@@ -15,7 +15,7 @@ interface Props {
 }
 
 function CustomHero({
-  title = "Hero Title",
+  title = "",
   heading,
   description,
   id,

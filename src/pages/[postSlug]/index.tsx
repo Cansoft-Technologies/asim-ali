@@ -131,19 +131,19 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
       {/* <CustomHeader /> */}
       <Header settings={settings} mainMenus={mainMenus} />
 
-      <CustomHero
-        title={post?.title()}
-        bgImage={post?.featuredImage?.node?.sourceUrl()}
-      />
-      <main className="content content-single">
-        <div className="wrap">
-          <h1>{post?.title()}</h1>
-          <span className="asim-post-meta">
-            By Asim Ali | <Moment format="MMM D, YYYY">{post.date}</Moment>
-          </span>
-          <div dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }} />
-        </div>
-      </main>
+      {post && (
+        <><CustomHero
+          title={post?.title()}
+          bgImage={post?.featuredImage?.node?.sourceUrl()} /><main className="content content-single">
+            <div className="wrap">
+              <h1>{post?.title()}</h1>
+              <span className="asim-post-meta">
+                By Asim Ali | <Moment format="MMM D, YYYY">{post.date}</Moment>
+              </span>
+              <div dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }} />
+            </div>
+          </main></>
+      )}
 
       {/* <CustomFooter /> */}
       <Footer settings={settings} mainMenus={mainMenus} />
@@ -258,6 +258,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   return {
     props: { seo, settings, mainMenus },
+    notFound: await is404(context, { client }),
   };
 
   // return getNextStaticProps(context, {
