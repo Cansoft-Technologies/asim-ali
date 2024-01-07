@@ -1,9 +1,6 @@
-import { gql } from "@apollo/client";
-import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { Button, Carousel, Col, Row } from "react-bootstrap";
 import styles from "scss/components/Banner.module.scss";
 
@@ -34,7 +31,6 @@ const Banner = (props: MyProps) => {
                   (slide) => {
                     return (
                       <Carousel.Item key={slide?.sliderTitle}>
-                        {/* <div className={styles.overlay}></div> */}
 
                         <div
                           style={{
@@ -99,7 +95,7 @@ const Banner = (props: MyProps) => {
                         </div>
                       </Carousel.Item>
                     );
-                  } //  --
+                  } 
                 )}
         </Carousel>
       </div>

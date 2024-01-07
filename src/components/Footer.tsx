@@ -41,9 +41,15 @@ const Footer = (props: MyProps) => {
                   }}
                 ></p>
                 <a
-                  href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : prefixSettings?.footerLeftWidget?.emailAddress}`}
+                  href={`mailto:${
+                    usingFor === "apply-now"
+                      ? "clientcare@asimali.ca"
+                      : prefixSettings?.footerLeftWidget?.emailAddress
+                  }`}
                 >
-                  {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : prefixSettings?.footerLeftWidget?.emailAddress}
+                  {usingFor === "apply-now"
+                    ? "clientcare@asimali.ca"
+                    : prefixSettings?.footerLeftWidget?.emailAddress}
                 </a>
 
                 <a
@@ -90,12 +96,12 @@ const Footer = (props: MyProps) => {
           <Row>
             <Container>
               <div className="ms-auto py-5 my-5 my-lg-0 footer-menu">
-                {mainMenus?.map((link) => {
+                {mainMenus?.map((link, index: number) => {
                   return (
-                    <ul key={`${link.label}$-menu`}>
-                      {link.menuItems.nodes.map((item) => {
+                    <ul key={index}>
+                      {link.menuItems.nodes.map((item, idx: number) => {
                         return (
-                          <li key={`${item.label}$-menu`}>
+                          <li key={idx}>
                             {item.parentId == null ? (
                               <span>
                                 <Nav.Link href={`${item.url}`}>
@@ -107,77 +113,85 @@ const Footer = (props: MyProps) => {
                                   </span>
                                 </Nav.Link>
                                 <ul className="submenu">
-                                  {item.childItems.nodes.map((submenu) => {
-                                    return (
-                                      <li key={submenu.uri}>
-                                        <span>
-                                          <Nav.Link
-                                            as={Link}
-                                            href={`${submenu.uri}`}
-                                          >
-                                            <span
-                                              className="link"
-                                              onClick={() => submenu.uri}
+                                  {item.childItems.nodes.map(
+                                    (submenu, id: number) => {
+                                      return (
+                                        <li key={id}>
+                                          <span>
+                                            <Nav.Link
+                                              as={Link}
+                                              href={`${submenu.uri}`}
                                             >
-                                              {submenu.label}
-                                            </span>
-                                          </Nav.Link>
-                                          {submenu?.label ==
-                                          "Commercial Mortgages" ? (
-                                            <ul className="submenu-child">
-                                              <li>
-                                                <Nav.Link
-                                                  as={Link}
-                                                  href={
-                                                    "/commercial-mortgage-in-surrey"
-                                                  }
-                                                >
-                                                  <span
-                                                    className="link"
-                                                    onClick={() => submenu.uri}
+                                              <span
+                                                className="link"
+                                                onClick={() => submenu.uri}
+                                              >
+                                                {submenu.label}
+                                              </span>
+                                            </Nav.Link>
+                                            {submenu?.label ==
+                                            "Commercial Mortgages" ? (
+                                              <ul className="submenu-child">
+                                                <li>
+                                                  <Nav.Link
+                                                    as={Link}
+                                                    href={
+                                                      "/commercial-mortgage-in-surrey"
+                                                    }
                                                   >
-                                                    Surrey
-                                                  </span>
-                                                </Nav.Link>
-                                              </li>
-                                              <li>
-                                                <Nav.Link
-                                                  as={Link}
-                                                  href={
-                                                    "/commercial-mortgage-in-vancouver"
-                                                  }
-                                                >
-                                                  <span
-                                                    className="link"
-                                                    onClick={() => submenu.uri}
+                                                    <span
+                                                      className="link"
+                                                      onClick={() =>
+                                                        submenu.uri
+                                                      }
+                                                    >
+                                                      Surrey
+                                                    </span>
+                                                  </Nav.Link>
+                                                </li>
+                                                <li>
+                                                  <Nav.Link
+                                                    as={Link}
+                                                    href={
+                                                      "/commercial-mortgage-in-vancouver"
+                                                    }
                                                   >
-                                                    Vancouver
-                                                  </span>
-                                                </Nav.Link>
-                                              </li>
-                                              <li>
-                                                <Nav.Link
-                                                  as={Link}
-                                                  href={
-                                                    "/commercial-mortgage-in-bc"
-                                                  }
-                                                >
-                                                  <span
-                                                    className="link"
-                                                    onClick={() => submenu.uri}
+                                                    <span
+                                                      className="link"
+                                                      onClick={() =>
+                                                        submenu.uri
+                                                      }
+                                                    >
+                                                      Vancouver
+                                                    </span>
+                                                  </Nav.Link>
+                                                </li>
+                                                <li>
+                                                  <Nav.Link
+                                                    as={Link}
+                                                    href={
+                                                      "/commercial-mortgage-in-bc"
+                                                    }
                                                   >
-                                                    British Columbia
-                                                  </span>
-                                                </Nav.Link>
-                                              </li>
-                                            </ul>
-                                          ) : (
-                                            ""
-                                          )}
-                                        </span>
-                                      </li>
-                                    );
-                                  })}
+                                                    <span
+                                                      className="link"
+                                                      onClick={() =>
+                                                        submenu.uri
+                                                      }
+                                                    >
+                                                      British Columbia
+                                                    </span>
+                                                  </Nav.Link>
+                                                </li>
+                                              </ul>
+                                            ) : (
+                                              ""
+                                            )}
+                                          </span>
+                                        </li>
+                                      );
+                                    }
+                                  )}
                                 </ul>
                               </span>
                             ) : (
