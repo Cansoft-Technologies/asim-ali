@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Carousel, Col, Row } from "react-bootstrap";
