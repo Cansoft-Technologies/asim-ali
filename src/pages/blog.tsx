@@ -83,7 +83,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems {
+                childItems (first: 50) {
                   nodes {
                     uri
                     label
