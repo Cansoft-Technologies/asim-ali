@@ -37,7 +37,7 @@ const MobileBanner = dynamic(() => import("components/MobileBanner"));
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 4846}) {
+      pages(where: {id: 5000}) {
       nodes {
         seo {
           title
@@ -53,7 +53,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        mortgageBrokerBurnaby {
+        transparentVacantLandMortgage {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -79,16 +79,6 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
-          reasonLeftText2
-          reasonRightText2
-          reasonLeftImage2 {
-            altText
-            sourceUrl
-          }
-          reasonRightImage2 {
-            altText
-            sourceUrl
-          }
           processBorrowing {
             advisorTitle
             advisorDescriptionTop
@@ -97,7 +87,6 @@ export async function getStaticProps() {
               description
             }
           }
-          processBelowDesc
           borrowingPayment{
             borrowingTitle
             borrowingDescriptionTop
@@ -121,6 +110,7 @@ export async function getStaticProps() {
                 altText
             }    
           }
+          belowDesc
           ratesTitle
           ratesDescription
           
@@ -140,6 +130,16 @@ export async function getStaticProps() {
             sourceUrl
           }
           reasonRightImageCopy {
+            altText
+            sourceUrl
+          }
+          reasonLeftText2
+          reasonRightText2
+          reasonLeftImage2 {
+            altText
+            sourceUrl
+          }
+          reasonRightImage2 {
             altText
             sourceUrl
           }
@@ -244,58 +244,67 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.mortgageBrokerBurnaby,
-      reasonTitle: data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.transparentVacantLandMortgage,
+      reasonTitle:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonDescription,
-      processBelowDesc:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.processBelowDesc,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonDescription,
       reasonLeftText:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonLeftText,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonLeftText,
       reasonRightImage:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonRightImage,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonRightImage,
       reasonRightText:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonRightText,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonRightText,
       reasonLeftImage:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonLeftImage,
-      reasonLeftText2:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonLeftText2,
-      reasonRightImage2:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonRightImage2,
-      reasonRightText2:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonRightText2,
-      reasonLeftImage2:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonLeftImage2,
-      loanTitle: data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.loanTitle,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonLeftImage,
+      loanTitle:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.loanTitle,
       reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonLeftTextCopy,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage
+          ?.reasonLeftTextCopy,
       reasonRightImageCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonRightImageCopy,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage
+          ?.reasonRightImageCopy,
       reasonRightTextCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonRightTextCopy,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage
+          ?.reasonRightTextCopy,
       reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reasonLeftImageCopy,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage
+          ?.reasonLeftImageCopy,
+      reasonLeftText2:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonLeftText2,
+      reasonRightImage2:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonRightImage2,
+      reasonRightText2:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonRightText2,
+      reasonLeftImage2:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.reasonLeftImage2,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.borrowingPayment,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.borrowingPayment,
 
       expertsHelpData:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.expertsHelp,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.expertsHelp,
       tabWhyChooseData:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.tabWhyChoose,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.tabWhyChoose,
       borrowingProcessData:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.processBorrowing,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.processBorrowing,
       qualifyingTitle:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.qualifyingTitle,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.qualifyingTitle,
       qualifyingDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.qualifyingDescription,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage
+          ?.qualifyingDescription,
       commonConcernsData:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.talkTitle,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.commonConcerns,
+      talkTitle:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.talkTitle,
       talkDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.talkDescription,
-      ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.ratesTitle,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.talkDescription,
+      ratesTitle:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.ratesTitle,
       ratesDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.ratesDescription,
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.ratesDescription,
+      belowDesc:
+        data?.pages?.nodes[0]?.transparentVacantLandMortgage?.belowDesc,
     },
     revalidate: 60,
   };
@@ -308,20 +317,19 @@ type MyProps = {
   serviceBannerData: any;
   reasonTitle: any;
   reasonDescription: any;
-  processBelowDesc: any;
   reasonLeftText: any;
   reasonRightText: any;
   reasonLeftImage: any;
   reasonRightImage: any;
-  reasonLeftText2: any;
-  reasonRightText2: any;
-  reasonLeftImage2: any;
-  reasonRightImage2: any;
   loanTitle: any;
   reasonLeftTextCopy: any;
   reasonRightTextCopy: any;
   reasonLeftImageCopy: any;
   reasonRightImageCopy: any;
+  reasonLeftText2: any;
+  reasonRightText2: any;
+  reasonLeftImage2: any;
+  reasonRightImage2: any;
   borrowingPaymentData: any;
   expertsHelpData: any;
   tabWhyChooseData: any;
@@ -333,9 +341,10 @@ type MyProps = {
   talkDescription: any;
   ratesTitle: any;
   ratesDescription: any;
+  belowDesc: any;
 };
 
-export default function NewMortgageBrokerInBurnaby(props: MyProps) {
+export default function NewTransparentVacantLandMortgage(props: MyProps) {
   const {
     settings,
     mainMenus,
@@ -344,19 +353,18 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
     reasonTitle,
     loanTitle,
     reasonDescription,
-    processBelowDesc,
     reasonLeftText,
     reasonRightText,
     reasonLeftImage,
     reasonRightImage,
-    reasonLeftText2,
-    reasonRightText2,
-    reasonLeftImage2,
-    reasonRightImage2,
     reasonLeftTextCopy,
     reasonRightTextCopy,
     reasonLeftImageCopy,
     reasonRightImageCopy,
+    reasonLeftText2,
+    reasonRightText2,
+    reasonLeftImage2,
+    reasonRightImage2,
     borrowingPaymentData,
     expertsHelpData,
     tabWhyChooseData,
@@ -368,6 +376,7 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
     talkDescription,
     ratesTitle,
     ratesDescription,
+    belowDesc,
   } = props;
 
   return (
@@ -388,8 +397,6 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
-              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}
@@ -420,92 +427,64 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
                 src={serviceBannerData?.aboutImage?.sourceUrl}
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="390"
-                height="200"
+                height="400"
                 priority={true}
                 style={{ width: "100%", objectFit: "cover" }}
               />
             </Col>
           </Row>
         </Container>
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <h2 className="text-center">{reasonTitle}</h2>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: reasonDescription,
+            }}
+          ></div>
+        </Container>
 
-        <div className="service-row my-5">
-          <Container>
-            <Row className="">
-              <Col className="service-texts" lg={6}>
-                <div className="service-image">
-                  <Image
-                    src={expertsHelpData?.helpRightImage?.sourceUrl}
-                    alt={expertsHelpData?.helpRightImage?.altText}
-                    width="390"
-                    height="400"
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      height: "45vh",
-                    }}
-                  />
-                </div>
-              </Col>
-              <Col className="service-texts my-5" lg={6}>
-                <div
-                  className="service-content"
-                  dangerouslySetInnerHTML={{
-                    __html: expertsHelpData?.helpLeftText,
-                  }}
-                ></div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+        {/* <BorrowingPayment borrowingPaymentData={borrowingPaymentData} /> */}
 
+        {/* <Container>
+          <Row
+            className="mortgage-broker text-center"
+            style={{ marginTop: "80px" }}
+          >
+            <Col>
+              <h2 className="headering-title">
+                {expertsHelpData?.expertsHelpTitle}
+              </h2>
+              <p className="service-content">
+                {expertsHelpData?.expertsHelpDescription}
+              </p>
+            </Col>
+          </Row>
+        </Container> */}
         <ServiceSection
-          textLeft={expertsHelpData?.helpRightText}
-          textRight={reasonLeftText}
-          imageLeft={reasonRightImage}
-          imageRight={expertsHelpData?.helpLeftImage}
+          textLeft={expertsHelpData?.helpLeftText}
+          textRight={expertsHelpData?.helpRightText}
+          imageLeft={expertsHelpData?.helpLeftImage}
+          imageRight={expertsHelpData?.helpRightImage}
         />
-
-        <div className="service-row">
-          <Container>
-            <Row>
-              <Col className="service-texts" lg={6}>
-                <div
-                  className="service-content"
-                  dangerouslySetInnerHTML={{
-                    __html: reasonRightText,
-                  }}
-                ></div>
-              </Col>
-              <Col className="service-texts" lg={6}>
-                <div className="service-image">
-                  <Image
-                    src={reasonLeftImage?.sourceUrl}
-                    alt={reasonLeftImage?.altText}
-                    width="390"
-                    height="400"
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      height: "45vh",
-                    }}
-                  />
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-
-        <div style={{ height: "50px" }}></div>
-
-        <HomeBuyerNewBC advisorData={borrowingProcessData} />
+        <ServiceSection
+          textLeft={reasonLeftText}
+          textRight={reasonRightText}
+          imageLeft={reasonLeftImage}
+          imageRight={reasonRightImage}
+        />
         <Container>
           <p
-            className="text-lg text-center my-5"
+            className="text-lg text-center "
             dangerouslySetInnerHTML={{
-              __html: processBelowDesc,
+              __html: belowDesc,
             }}
           ></p>
         </Container>
+
         <TabNewBC tabData={tabWhyChooseData} />
 
         <Container
@@ -525,6 +504,19 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
             }}
           ></div>
         </Container>
+
+        {/* <HomeBuyerNewBC advisorData={borrowingProcessData} /> */}
+
+        {/* <h2 className="text-center  ">{loanTitle}</h2>
+        <hr
+          style={{
+            width: "350px",
+            margin: "0 auto",
+            border: "1.75px solid #F0B254",
+            borderRadius: "10px",
+          }}
+          className="mb-5"
+        /> */}
         <ServiceSection
           textLeft={reasonLeftTextCopy}
           textRight={reasonRightTextCopy}
@@ -539,7 +531,6 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
         />
 
         {/* <AccordionNewBC homebuyerData={commonConcernsData} /> */}
-        <div style={{ height: "50px" }}></div>
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div

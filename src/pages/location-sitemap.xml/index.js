@@ -11,6 +11,10 @@ const locationRoutes = [
   "/mortgage-brokers-in-kelowna",
   "/langley-mortgage-broker",
   "/mortgage-broker-in-vancouver",
+  "/mortgage-broker-in-burnaby",
+  "/mortgage-broker-in-nanaimo",
+  "/mortgage-broker-in-campbell-river",
+  "/trusted-mortgage-broker-in-chilliwack",
 ];
 
 export default function LocationSitemap() {
@@ -25,7 +29,7 @@ export const getServerSideProps = async ({ res }) => {
   }));
 
   const fields = [...locationSitemaps];
-//   console.log(fields);
+  //   console.log(fields);
   if (!Array.isArray(fields)) {
     console.error("fields is not an array:", fields);
     return { notFound: true }; // Return a 404 page or an error page as needed.

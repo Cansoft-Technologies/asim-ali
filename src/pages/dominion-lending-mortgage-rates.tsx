@@ -1,20 +1,43 @@
-import { gql } from "@apollo/client";
-import { Hero } from "components";
-import AccordionNewBC from "components/AccordionNewBC";
-import BorrowingPayment from "components/BorrowingPayment";
-import ServiceSection from "components/ServiceSection";
-import TabNewBC from "components/TabNewBC";
+import dynamic from "next/dynamic";
 import Head from "next/head";
-import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+const CTA = dynamic(() => import("../components/CTA"));
+const Banner = dynamic(() => import("../components/Banner"));
+const WeHelp = dynamic(() => import("../components/WeHelp"));
+const Team = dynamic(() => import("components/Team"));
+const Meeting = dynamic(() => import("components/Meeting"));
+const PartnerLogo = dynamic(() => import("components/PartnerLogo"));
+const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
+const FAQ = dynamic(() => import("components/FAQ"));
+const Gallery = dynamic(() => import("components/Gallery"));
+const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
+const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
 import { apolloClient } from "../lib/apollo";
+import { gql } from "@apollo/client";
+import ClientReviews from "components/ClientReviews";
+import MortgageAdvisor from "components/MortgageAdvisor";
+import { Col, Container, Row } from "react-bootstrap";
+import ContactSection from "components/ContactSection";
+import FlexibilityTab from "components/FlexibilityTab";
+import Image from "next/image";
+import MortgageFeatured from "components/MortgageFeatured";
+import ServiceSection from "components/ServiceSection";
+import HomeBuyerSection from "components/HomeBuyerSection";
+import { Hero } from "components";
+import AccordionSection from "components/AccordionSection";
+import TabNewBC from "components/TabNewBC";
+import AccordionNewBC from "components/AccordionNewBC";
+import HomeBuyerNewBC from "components/HomeBuyerNewBC";
+import ServiceSectionNewBC from "components/ServiceSectionNewBC";
+import BorrowingPayment from "components/BorrowingPayment";
+
+const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 5072}) {
+      pages(where: {id: 4583}) {
       nodes {
         seo {
           title
@@ -30,7 +53,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        mortgageBrokerChilliwack {
+        dominionLendingMortgageRates {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -56,7 +79,14 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
-          
+          processBorrowing {
+            advisorTitle
+            advisorDescriptionTop
+            advisorCards{
+              title
+              description
+            }
+          }
           borrowingPayment{
             borrowingTitle
             borrowingDescriptionTop
@@ -65,18 +95,6 @@ export async function getStaticProps() {
               sourceUrl
               altText
             }
-          }
-          servicesSection{
-            helpLeftText
-            helpRightText
-            helpLeftImage{
-                sourceUrl
-                altText
-            }
-            helpRightImage{
-                sourceUrl
-                altText
-            }    
           }
           expertsHelp{
             expertsHelpTitle
@@ -92,38 +110,6 @@ export async function getStaticProps() {
                 altText
             }    
           }
-          journeySection{
-            title
-            description
-            helpLeftText
-            helpRightText
-            helpLeftImage{
-                sourceUrl
-                altText
-            }
-            helpRightImage{
-                sourceUrl
-                altText
-            }    
-          }
-          journeySection1{
-            helpLeftText
-            helpRightText
-            helpLeftImage{
-                sourceUrl
-                altText
-            }
-            helpRightImage{
-                sourceUrl
-                altText
-            }    
-          }
-          journeyLeftText
-          journeyRightImage {
-            altText
-            sourceUrl
-          }
-
           ratesTitle
           ratesDescription
           
@@ -135,7 +121,7 @@ export async function getStaticProps() {
               description
             }
           }
-          
+          loanTitle
           reasonLeftTextCopy
           reasonRightTextCopy
           reasonLeftImageCopy {
@@ -146,7 +132,9 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
- 
+
+          qualifyingTitle
+          qualifyingDescription
           commonConcerns {
             advisorTitle
             advisorDescription
@@ -163,7 +151,13 @@ export async function getStaticProps() {
           talkDescription
           
         }
+     
+     
       }
+     
+    
+    
+ 
   }
    settingsOptions {
       AsimOptions {
@@ -239,50 +233,54 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.mortgageBrokerChilliwack,
-      reasonTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.dominionLendingMortgageRates,
+      reasonTitle:
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonDescription,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonDescription,
       reasonLeftText:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftText,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonLeftText,
       reasonRightImage:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightImage,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonRightImage,
       reasonRightText:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightText,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonRightText,
       reasonLeftImage:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftImage,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonLeftImage,
+      loanTitle: data?.pages?.nodes[0]?.dominionLendingMortgageRates?.loanTitle,
       reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftTextCopy,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.reasonLeftTextCopy,
       reasonRightImageCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightImageCopy,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates
+          ?.reasonRightImageCopy,
       reasonRightTextCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightTextCopy,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates
+          ?.reasonRightTextCopy,
       reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftImageCopy,
-      journeyLeftText:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeyLeftText,
-      journeyRightImage:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeyRightImage,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates
+          ?.reasonLeftImageCopy,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.borrowingPayment,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.borrowingPayment,
+
       expertsHelpData:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.expertsHelp,
-      servicesSectionData:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.servicesSection,
-      journeySectionData:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeySection,
-      journeySectionData1:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeySection1,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.expertsHelp,
       tabWhyChooseData:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.tabWhyChoose,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.tabWhyChoose,
+      borrowingProcessData:
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.processBorrowing,
+      qualifyingTitle:
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.qualifyingTitle,
+      qualifyingDescription:
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates
+          ?.qualifyingDescription,
       commonConcernsData:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.talkTitle,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.dominionLendingMortgageRates?.talkTitle,
       talkDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.talkDescription,
-      ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.ratesTitle,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.talkDescription,
+      ratesTitle:
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.ratesTitle,
       ratesDescription:
-        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.ratesDescription,
+        data?.pages?.nodes[0]?.dominionLendingMortgageRates?.ratesDescription,
     },
     revalidate: 60,
   };
@@ -299,32 +297,32 @@ type MyProps = {
   reasonRightText: any;
   reasonLeftImage: any;
   reasonRightImage: any;
+  loanTitle: any;
   reasonLeftTextCopy: any;
   reasonRightTextCopy: any;
   reasonLeftImageCopy: any;
   reasonRightImageCopy: any;
   borrowingPaymentData: any;
   expertsHelpData: any;
-  servicesSectionData: any;
   tabWhyChooseData: any;
+  borrowingProcessData: any;
+  qualifyingTitle: any;
+  qualifyingDescription: any;
   commonConcernsData: any;
   talkTitle: any;
   talkDescription: any;
   ratesTitle: any;
   ratesDescription: any;
-  journeySectionData: any;
-  journeySectionData1: any;
-  journeyLeftText: any;
-  journeyRightImage: any;
 };
 
-export default function NewMortgageBrokerChilliwack(props: MyProps) {
+export default function NewDominionLendingMortgageRates(props: MyProps) {
   const {
     settings,
     mainMenus,
     metaData,
     serviceBannerData,
     reasonTitle,
+    loanTitle,
     reasonDescription,
     reasonLeftText,
     reasonRightText,
@@ -336,17 +334,15 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
     reasonRightImageCopy,
     borrowingPaymentData,
     expertsHelpData,
-    servicesSectionData,
     tabWhyChooseData,
+    borrowingProcessData,
+    qualifyingTitle,
+    qualifyingDescription,
     commonConcernsData,
     talkTitle,
     talkDescription,
     ratesTitle,
     ratesDescription,
-    journeySectionData,
-    journeySectionData1,
-    journeyLeftText,
-    journeyRightImage,
   } = props;
 
   return (
@@ -367,8 +363,6 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
-              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}
@@ -406,8 +400,6 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
             </Col>
           </Row>
         </Container>
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
-        <div style={{ height: "50px" }}></div>
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -421,19 +413,36 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
           ></div>
         </Container>
 
-        <ServiceSection
-          textLeft={expertsHelpData?.helpLeftText}
-          textRight={expertsHelpData?.helpRightText}
-          imageLeft={expertsHelpData?.helpLeftImage}
-          imageRight={expertsHelpData?.helpRightImage}
-        />
-        <ServiceSection
-          textLeft={reasonLeftText}
-          textRight={reasonRightText}
-          imageLeft={reasonLeftImage}
-          imageRight={reasonRightImage}
-        />
-        <TabNewBC tabData={tabWhyChooseData} />
+        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+        <div className="service-row my-5">
+          <Container>
+            <Row>
+              <Col className="service-texts" lg={6}>
+                <div
+                  className="service-content"
+                  dangerouslySetInnerHTML={{
+                    __html: expertsHelpData?.helpLeftText,
+                  }}
+                ></div>
+              </Col>
+              <Col className="service-texts" lg={6}>
+                <div className="service-image">
+                  <Image
+                    src={expertsHelpData?.helpRightImage?.sourceUrl}
+                    alt={expertsHelpData?.helpRightImage?.altText}
+                    width="390"
+                    height="400"
+                    style={{
+                      width: "100%",
+                      objectFit: "cover",
+                      height: "60vh",
+                    }}
+                  />
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
 
         <Container
           className="mb-5 px-3 py-3"
@@ -454,80 +463,21 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
         </Container>
 
         <ServiceSection
+          textLeft={reasonLeftText}
+          textRight={reasonRightText}
+          imageLeft={reasonLeftImage}
+          imageRight={reasonRightImage}
+        />
+
+        <ServiceSection
           textLeft={reasonLeftTextCopy}
           textRight={reasonRightTextCopy}
           imageLeft={reasonLeftImageCopy}
           imageRight={reasonRightImageCopy}
         />
-        <ServiceSection
-          textLeft={servicesSectionData?.helpLeftText}
-          textRight={servicesSectionData?.helpRightText}
-          imageLeft={servicesSectionData?.helpLeftImage}
-          imageRight={servicesSectionData?.helpRightImage}
-        />
+        <TabNewBC tabData={tabWhyChooseData} />
 
         <AccordionNewBC homebuyerData={commonConcernsData} />
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: journeySectionData?.title,
-            }}
-          ></div>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: journeySectionData?.description,
-            }}
-          ></div>
-        </Container>
-
-        <ServiceSection
-          textLeft={journeySectionData?.helpLeftText}
-          textRight={journeySectionData?.helpRightText}
-          imageLeft={journeySectionData?.helpLeftImage}
-          imageRight={journeySectionData?.helpRightImage}
-        />
-        <ServiceSection
-          textLeft={journeySectionData1?.helpLeftText}
-          textRight={journeySectionData1?.helpRightText}
-          imageLeft={journeySectionData1?.helpLeftImage}
-          imageRight={journeySectionData1?.helpRightImage}
-        />
-        <div className="service-row">
-          <Container>
-            <Row>
-              <Col className="service-texts" lg={6}>
-                <div
-                  className="service-content"
-                  dangerouslySetInnerHTML={{
-                    __html: journeyLeftText,
-                  }}
-                ></div>
-              </Col>
-              <Col className="service-texts" lg={6}>
-                <div className="service-image">
-                  <Image
-                    src={journeyRightImage?.sourceUrl}
-                    alt={journeyRightImage?.altText}
-                    width="390"
-                    height="400"
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      height: "45vh",
-                    }}
-                  />
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-
-        <div style={{ height: "100px" }}></div>
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div

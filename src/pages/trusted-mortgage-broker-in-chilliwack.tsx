@@ -1,43 +1,20 @@
-import dynamic from "next/dynamic";
-import Head from "next/head";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-const CTA = dynamic(() => import("../components/CTA"));
-const Banner = dynamic(() => import("../components/Banner"));
-const WeHelp = dynamic(() => import("../components/WeHelp"));
-const Team = dynamic(() => import("components/Team"));
-const Meeting = dynamic(() => import("components/Meeting"));
-const PartnerLogo = dynamic(() => import("components/PartnerLogo"));
-const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
-const FAQ = dynamic(() => import("components/FAQ"));
-const Gallery = dynamic(() => import("components/Gallery"));
-const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
-const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
-import { apolloClient } from "../lib/apollo";
 import { gql } from "@apollo/client";
-import ClientReviews from "components/ClientReviews";
-import MortgageAdvisor from "components/MortgageAdvisor";
-import { Col, Container, Row } from "react-bootstrap";
-import ContactSection from "components/ContactSection";
-import FlexibilityTab from "components/FlexibilityTab";
-import Image from "next/image";
-import MortgageFeatured from "components/MortgageFeatured";
-import ServiceSection from "components/ServiceSection";
-import HomeBuyerSection from "components/HomeBuyerSection";
 import { Hero } from "components";
-import AccordionSection from "components/AccordionSection";
-import TabNewBC from "components/TabNewBC";
 import AccordionNewBC from "components/AccordionNewBC";
-import HomeBuyerNewBC from "components/HomeBuyerNewBC";
-import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import BorrowingPayment from "components/BorrowingPayment";
-
-const MobileBanner = dynamic(() => import("components/MobileBanner"));
+import ServiceSection from "components/ServiceSection";
+import TabNewBC from "components/TabNewBC";
+import Head from "next/head";
+import Image from "next/image";
+import { Col, Container, Row } from "react-bootstrap";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { apolloClient } from "../lib/apollo";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 4720}) {
+      pages(where: {id: 5072}) {
       nodes {
         seo {
           title
@@ -53,7 +30,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        fixedMortgageRatesBc {
+        mortgageBrokerChilliwack {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -70,7 +47,6 @@ export async function getStaticProps() {
           reasonTitle
           reasonDescription
           reasonLeftText
-          reasonLeftText2
           reasonRightText
           reasonLeftImage {
             altText
@@ -80,19 +56,7 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
-          reasonRightImage2 {
-            altText
-            sourceUrl
-          }
-          processBorrowing {
-            advisorTitle
-            advisorDescriptionTop
-            advisorCards{
-              title
-              description
-            }
-          }
-          processBelowDesc
+          
           borrowingPayment{
             borrowingTitle
             borrowingDescriptionTop
@@ -102,11 +66,8 @@ export async function getStaticProps() {
               altText
             }
           }
-          expertsHelp{
-            expertsHelpTitle
-            expertsHelpDescription
+          servicesSection{
             helpLeftText
-            helpLeftText2
             helpRightText
             helpLeftImage{
                 sourceUrl
@@ -116,11 +77,53 @@ export async function getStaticProps() {
                 sourceUrl
                 altText
             }    
-            helpRightImage2{
+          }
+          expertsHelp{
+            expertsHelpTitle
+            expertsHelpDescription
+            helpLeftText
+            helpRightText
+            helpLeftImage{
+                sourceUrl
+                altText
+            }
+            helpRightImage{
                 sourceUrl
                 altText
             }    
           }
+          journeySection{
+            title
+            description
+            helpLeftText
+            helpRightText
+            helpLeftImage{
+                sourceUrl
+                altText
+            }
+            helpRightImage{
+                sourceUrl
+                altText
+            }    
+          }
+          journeySection1{
+            helpLeftText
+            helpRightText
+            helpLeftImage{
+                sourceUrl
+                altText
+            }
+            helpRightImage{
+                sourceUrl
+                altText
+            }    
+          }
+          journeyLeftText
+          journeyRightImage {
+            altText
+            sourceUrl
+          }
+
           ratesTitle
           ratesDescription
           
@@ -132,7 +135,7 @@ export async function getStaticProps() {
               description
             }
           }
-          loanTitle
+          
           reasonLeftTextCopy
           reasonRightTextCopy
           reasonLeftImageCopy {
@@ -143,9 +146,7 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
-
-          qualifyingTitle
-          qualifyingDescription
+ 
           commonConcerns {
             advisorTitle
             advisorDescription
@@ -162,13 +163,7 @@ export async function getStaticProps() {
           talkDescription
           
         }
-     
-     
       }
-     
-    
-    
- 
   }
    settingsOptions {
       AsimOptions {
@@ -244,53 +239,50 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.fixedMortgageRatesBc,
-      reasonTitle: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.mortgageBrokerChilliwack,
+      reasonTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonDescription,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonDescription,
       reasonLeftText:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftText,
-      reasonLeftText2:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftText2,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftText,
       reasonRightImage:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightImage,
-      reasonRightImage2:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightImage2,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightImage,
       reasonRightText:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightText,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightText,
       reasonLeftImage:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftImage,
-      loanTitle: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.loanTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftImage,
       reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftTextCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftTextCopy,
       reasonRightImageCopy:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightImageCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightImageCopy,
       reasonRightTextCopy:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonRightTextCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonRightTextCopy,
       reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.reasonLeftImageCopy,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reasonLeftImageCopy,
+      journeyLeftText:
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeyLeftText,
+      journeyRightImage:
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeyRightImage,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.borrowingPayment,
-      processBelowDesc:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.processBelowDesc,
-
-      expertsHelpData: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.expertsHelp,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.borrowingPayment,
+      expertsHelpData:
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.expertsHelp,
+      servicesSectionData:
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.servicesSection,
+      journeySectionData:
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeySection,
+      journeySectionData1:
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.journeySection1,
       tabWhyChooseData:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.tabWhyChoose,
-      borrowingProcessData:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.processBorrowing,
-      qualifyingTitle:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.qualifyingTitle,
-      qualifyingDescription:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.qualifyingDescription,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.tabWhyChoose,
       commonConcernsData:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.talkTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.talkTitle,
       talkDescription:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.talkDescription,
-      ratesTitle: data?.pages?.nodes[0]?.fixedMortgageRatesBc?.ratesTitle,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.talkDescription,
+      ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.ratesTitle,
       ratesDescription:
-        data?.pages?.nodes[0]?.fixedMortgageRatesBc?.ratesDescription,
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.ratesDescription,
     },
     revalidate: 60,
   };
@@ -304,61 +296,57 @@ type MyProps = {
   reasonTitle: any;
   reasonDescription: any;
   reasonLeftText: any;
-  reasonLeftText2: any;
   reasonRightText: any;
   reasonLeftImage: any;
   reasonRightImage: any;
-  reasonRightImage2: any;
-  loanTitle: any;
   reasonLeftTextCopy: any;
   reasonRightTextCopy: any;
   reasonLeftImageCopy: any;
   reasonRightImageCopy: any;
   borrowingPaymentData: any;
-  processBelowDesc: any;
   expertsHelpData: any;
+  servicesSectionData: any;
   tabWhyChooseData: any;
-  borrowingProcessData: any;
-  qualifyingTitle: any;
-  qualifyingDescription: any;
   commonConcernsData: any;
   talkTitle: any;
   talkDescription: any;
   ratesTitle: any;
   ratesDescription: any;
+  journeySectionData: any;
+  journeySectionData1: any;
+  journeyLeftText: any;
+  journeyRightImage: any;
 };
 
-export default function NewFixedMortgageRatesBC(props: MyProps) {
+export default function NewMortgageBrokerChilliwack(props: MyProps) {
   const {
     settings,
     mainMenus,
     metaData,
     serviceBannerData,
     reasonTitle,
-    loanTitle,
     reasonDescription,
     reasonLeftText,
-    reasonLeftText2,
     reasonRightText,
     reasonLeftImage,
     reasonRightImage,
-    reasonRightImage2,
     reasonLeftTextCopy,
     reasonRightTextCopy,
     reasonLeftImageCopy,
     reasonRightImageCopy,
     borrowingPaymentData,
-    processBelowDesc,
     expertsHelpData,
+    servicesSectionData,
     tabWhyChooseData,
-    borrowingProcessData,
-    qualifyingTitle,
-    qualifyingDescription,
     commonConcernsData,
     talkTitle,
     talkDescription,
     ratesTitle,
     ratesDescription,
+    journeySectionData,
+    journeySectionData1,
+    journeyLeftText,
+    journeyRightImage,
   } = props;
 
   return (
@@ -379,8 +367,6 @@ export default function NewFixedMortgageRatesBC(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <meta name="robots" content="noindex,nofollow" />
-              <meta name="googlebot" content="noindex,nofollow" />
             </>
           );
         })}
@@ -418,6 +404,8 @@ export default function NewFixedMortgageRatesBC(props: MyProps) {
             </Col>
           </Row>
         </Container>
+        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+        <div style={{ height: "50px" }}></div>
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -437,61 +425,75 @@ export default function NewFixedMortgageRatesBC(props: MyProps) {
           imageLeft={expertsHelpData?.helpLeftImage}
           imageRight={expertsHelpData?.helpRightImage}
         />
-        <div className="service-row">
-          <Container>
-            <Row>
-              <Col className="service-texts" lg={6}>
-                <div
-                  className="service-content"
-                  dangerouslySetInnerHTML={{
-                    __html: expertsHelpData?.helpLeftText2,
-                  }}
-                ></div>
-              </Col>
-              <Col className="service-texts" lg={6}>
-                <div className="service-image">
-                  <Image
-                    src={expertsHelpData?.helpRightImage2?.sourceUrl}
-                    alt={expertsHelpData?.helpRightImage2?.altText}
-                    width="390"
-                    height="400"
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      height: "45vh",
-                    }}
-                  />
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-
-        <div className="mt-5">
-          <Container
-            className="mb-5 px-3 py-3"
-            style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-          >
-            <div
-              className="text-center"
-              dangerouslySetInnerHTML={{
-                __html: ratesTitle,
-              }}
-            ></div>
-            <div
-              className="text-center"
-              dangerouslySetInnerHTML={{
-                __html: ratesDescription,
-              }}
-            ></div>
-          </Container>
-        </div>
-
         <ServiceSection
           textLeft={reasonLeftText}
           textRight={reasonRightText}
           imageLeft={reasonLeftImage}
           imageRight={reasonRightImage}
+        />
+        <TabNewBC tabData={tabWhyChooseData} />
+
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: ratesTitle,
+            }}
+          ></div>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: ratesDescription,
+            }}
+          ></div>
+        </Container>
+
+        <ServiceSection
+          textLeft={reasonLeftTextCopy}
+          textRight={reasonRightTextCopy}
+          imageLeft={reasonLeftImageCopy}
+          imageRight={reasonRightImageCopy}
+        />
+        <ServiceSection
+          textLeft={servicesSectionData?.helpLeftText}
+          textRight={servicesSectionData?.helpRightText}
+          imageLeft={servicesSectionData?.helpLeftImage}
+          imageRight={servicesSectionData?.helpRightImage}
+        />
+
+        <AccordionNewBC homebuyerData={commonConcernsData} />
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: journeySectionData?.title,
+            }}
+          ></div>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: journeySectionData?.description,
+            }}
+          ></div>
+        </Container>
+
+        <ServiceSection
+          textLeft={journeySectionData?.helpLeftText}
+          textRight={journeySectionData?.helpRightText}
+          imageLeft={journeySectionData?.helpLeftImage}
+          imageRight={journeySectionData?.helpRightImage}
+        />
+        <ServiceSection
+          textLeft={journeySectionData1?.helpLeftText}
+          textRight={journeySectionData1?.helpRightText}
+          imageLeft={journeySectionData1?.helpLeftImage}
+          imageRight={journeySectionData1?.helpRightImage}
         />
         <div className="service-row">
           <Container>
@@ -500,15 +502,15 @@ export default function NewFixedMortgageRatesBC(props: MyProps) {
                 <div
                   className="service-content"
                   dangerouslySetInnerHTML={{
-                    __html: reasonLeftText2,
+                    __html: journeyLeftText,
                   }}
                 ></div>
               </Col>
               <Col className="service-texts" lg={6}>
                 <div className="service-image">
                   <Image
-                    src={reasonRightImage2?.sourceUrl}
-                    alt={reasonRightImage2?.altText}
+                    src={journeyRightImage?.sourceUrl}
+                    alt={journeyRightImage?.altText}
                     width="390"
                     height="400"
                     style={{
@@ -523,19 +525,7 @@ export default function NewFixedMortgageRatesBC(props: MyProps) {
           </Container>
         </div>
 
-        <TabNewBC tabData={tabWhyChooseData} />
-        <HomeBuyerNewBC advisorData={borrowingProcessData} />
-
-        <Container>
-          <p
-            className="text-lg text-center my-5"
-            dangerouslySetInnerHTML={{
-              __html: processBelowDesc,
-            }}
-          ></p>
-        </Container>
-
-        <AccordionNewBC homebuyerData={commonConcernsData} />
+        <div style={{ height: "100px" }}></div>
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div
