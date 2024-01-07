@@ -1,7 +1,7 @@
 import "faust.config";
 
 import { FaustProvider } from "@faustjs/next";
-import React from "react";
+import React, { useEffect } from "react";
 import "scss/main.scss";
 
 import { client } from "client";
@@ -12,29 +12,37 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Script from "next/script";
 import { TRACKING_ID } from "./../../utils/variables";
+import { useRouter } from "next/router";
+import { pageview } from "lib/gtm";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url: any) => {
+      pageview(url);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <>
-      {/* Google tag (gtag.js) */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
-        strategy="lazyOnload"
-      ></Script>
-      {/* 👇 gtag function definition. notice that we don't send page views at this point.  */}
-      <Script
-        id="gtag-init"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-  
-            gtag('config', '${TRACKING_ID}');
-          `,
-        }}
+        strategy="afterInteractive"
       />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${TRACKING_ID}');
+        `}
+      </Script>
       <FaustProvider client={client} pageProps={pageProps}>
         <Component {...pageProps} />
       </FaustProvider>
