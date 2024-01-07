@@ -100,7 +100,7 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
   //               cssClasses
   //               description
   //               id
-  //               childItems {
+  //               childItems (first: 50) {
   //                 nodes {
   //                   uri
   //                   label
@@ -238,7 +238,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
                 cssClasses
                 description
                 id
-                childItems {
+                childItems (first: 50) {
                   nodes {
                     uri
                     label
