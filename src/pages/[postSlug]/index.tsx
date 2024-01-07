@@ -258,6 +258,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   return {
     props: { seo, settings, mainMenus },
+    notFound: await is404(context, { client }),
   };
 
   // return getNextStaticProps(context, {
