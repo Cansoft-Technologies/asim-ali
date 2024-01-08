@@ -17,23 +17,15 @@ export const getServerSideProps = async ({ res }) => {
       `,
   });
 
-  const newUrl = ["/refinancing-blog", "/purchase-plus-improvements"];
-
   const postsSitemaps = data?.posts?.nodes.map((item) => ({
     loc: `https://asimali.ca${item?.uri?.toString()}`,
     lastmod: new Date().toISOString(),
     changefreq: "daily",
     priority: 0.9,
   }));
-  const newPostsSitemaps = newUrl.map((item) => ({
-    loc: `https://asimali.ca${item.toString()}`,
-    lastmod: new Date().toISOString(),
-    changefreq: "daily",
-    priority: 0.9,
-  }));
 
-  const fields = [...postsSitemaps, ...newPostsSitemaps];
-  console.log(fields);
+  const fields = [...postsSitemaps];
+  // console.log(fields);
   if (!Array.isArray(fields)) {
     console.error("fields is not an array:", fields);
     return { notFound: true }; // Return a 404 page or an error page as needed.
