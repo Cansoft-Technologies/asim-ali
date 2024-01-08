@@ -3,7 +3,6 @@ import { apolloClient } from "lib/apollo";
 
 const locationRoutes = [
   "/mortgage-broker-in-abbotsford",
-  "/mortgage-broker-in-abbotsford/",
   "/mortgage-broker-in-coquitlam",
   "/mortgage-brokers-in-prince-george",
   "/mortgage-brokers-in-delta",
@@ -40,13 +39,11 @@ const excludeItems = [
 const data = [
   "/",
   "/aaa-mortgage-in-bc",
-  "/aaa-mortgage-in-bc/",
   "/apply-now",
   "/b-lender-bc-mortgage",
   "/blog",
   "/borrow-down-payment-services",
   "/commercial-mortgage-in-bc",
-  "/commercial-mortgage-in-bc/",
   "/commercial-mortgage-in-surrey",
   "/commercial-mortgage-in-vancouver",
   "/construction-financing",
@@ -57,7 +54,6 @@ const data = [
   "/how-to-apply",
   "/mortgage-calculator",
   "/mortgage-for-self-employed",
-  "/mortgage-for-self-employed/",
   "/mortgage-refinance-calculator-bc",
   "/our-services",
   "/private-lenders-bc",
