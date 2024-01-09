@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Moment from "react-moment";
+
 export interface PostProps {
   post: Post | Post["preview"]["node"] | null | undefined;
   seo: any;
@@ -132,17 +133,25 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
       <Header settings={settings} mainMenus={mainMenus} />
 
       {post && (
-        <><CustomHero
-          title={post?.title()}
-          bgImage={post?.featuredImage?.node?.sourceUrl()} /><main className="content content-single">
+        <>
+          <CustomHero
+            title={post?.title()}
+            bgImage={post?.featuredImage?.node?.sourceUrl()}
+          />
+          <main className="content content-single">
             <div className="wrap">
               <h1>{post?.title()}</h1>
               <span className="asim-post-meta">
                 By Asim Ali | <Moment format="MMM D, YYYY">{post.date}</Moment>
               </span>
-              <div dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }} />
+              <div
+                style={{ overflowX: "hidden" }}
+                className="post-content"
+                dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }}
+              />
             </div>
-          </main></>
+          </main>
+        </>
       )}
 
       {/* <CustomFooter /> */}
