@@ -22,6 +22,7 @@ export interface PostProps {
 
 export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
   const [metaData, setMetaData] = useState([]);
+  const [loading, setLoading] = useState(true);
   // const [settings, setSettings] = useState();
   // const [mainMenus, setMainMenus] = useState();
 
@@ -118,7 +119,12 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
 
   //     });
   // }, [post]);
-
+  useEffect(() => {
+    if (post?.title) {
+      setLoading(false);
+    }
+  }, [post]);
+  // console.log("postttt", post);
   return (
     <>
       <Head>
@@ -131,8 +137,14 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
       </Head>
       {/* <CustomHeader /> */}
       <Header settings={settings} mainMenus={mainMenus} />
-
-      {post && (
+      {loading && (
+        <div className="text-center py-5">
+          <div className="spinner-border text-dark" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
+      {!loading && (
         <>
           <CustomHero
             title={post?.title()}
@@ -153,6 +165,11 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
           </main>
         </>
       )}
+      {/* {!loading ? (
+       
+      ) : (
+        
+      )} */}
 
       {/* <CustomFooter /> */}
       <Footer settings={settings} mainMenus={mainMenus} />
@@ -263,10 +280,11 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const settings = data?.settingsOptions?.AsimOptions;
   const mainMenus = data?.menus?.nodes;
 
-  console.log("seo", seo);
+  // console.log("seo", seo);
 
   return {
     props: { seo, settings, mainMenus },
+    revalidate: 10,
     notFound: await is404(context, { client }),
   };
 
