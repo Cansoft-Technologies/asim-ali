@@ -17,7 +17,7 @@ import { apolloClient } from "../lib/apollo";
 import { gql } from "@apollo/client";
 import ClientReviews from "components/ClientReviews";
 import MortgageAdvisor from "components/MortgageAdvisor";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import ContactSection from "components/ContactSection";
 import FlexibilityTab from "components/FlexibilityTab";
 import Image from "next/image";
@@ -31,6 +31,7 @@ import AccordionNewBC from "components/AccordionNewBC";
 import HomeBuyerNewBC from "components/HomeBuyerNewBC";
 import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import BorrowingPayment from "components/BorrowingPayment";
+import Link from "next/link";
 
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
@@ -376,6 +377,8 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}
             bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+            button2Text="CONTACT US"
+            button2URL="/contact-us"
           />
         )}
         <Container className="mb-5">
@@ -400,16 +403,49 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
           </Row>
         </Container>
 
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+        <section className="split_section">
+          <Container>
+            <Row>
+              <Col lg={5} className="text-hide-pc">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+              <Col lg={7}>
+                <div className="split_image">
+                  <Image
+                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
+                    fill
+                    alt={borrowingPaymentData?.borrowingImage?.altText}
+                  />
+                </div>
+              </Col>
+              <Col lg={5} className="text-hide-sm">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
 
-        <ServiceSection
-          textLeft={expertsHelpData?.helpLeftText}
-          textRight={expertsHelpData?.helpRightText}
-          imageLeft={expertsHelpData?.helpLeftImage}
-          imageRight={expertsHelpData?.helpRightImage}
-        />
+        <div className="margin-sm">
+          <ServiceSection
+            textLeft={expertsHelpData?.helpLeftText}
+            textRight={expertsHelpData?.helpRightText}
+            imageLeft={expertsHelpData?.helpLeftImage}
+            imageRight={expertsHelpData?.helpRightImage}
+          />
+        </div>
         <div style={{ height: "15px" }}></div>
         <HomeBuyerNewBC advisorData={borrowingProcessData} />
+
         <Container>
           <p
             className="text-lg text-center my-5"
@@ -418,6 +454,7 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
             }}
           ></p>
         </Container>
+
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -449,7 +486,13 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
           imageLeft={reasonLeftImageCopy}
           imageRight={reasonRightImageCopy}
         />
-
+        <div className="tab-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">
+              Apply <span>Now</span>
+            </Button>
+          </Link>
+        </div>
         <AccordionNewBC homebuyerData={commonConcernsData} />
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>

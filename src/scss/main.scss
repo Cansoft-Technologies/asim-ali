@@ -3029,6 +3029,12 @@ p.testimonials-name {
   .apply-border {
     display: none;
   }
+  .text-hide-sm {
+    display: none;
+  }
+  .margin-sm {
+    margin-top: -40px;
+  }
   .content-single {
     .wrap {
       p {
@@ -3040,6 +3046,11 @@ p.testimonials-name {
         }
       }
     }
+  }
+}
+@media screen and (min-width: 768px) {
+  .text-hide-pc {
+    display: none;
   }
 }
 @media screen and (max-width: 991px) {
