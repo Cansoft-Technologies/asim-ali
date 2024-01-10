@@ -17,7 +17,7 @@ import { apolloClient } from "../lib/apollo";
 import { gql } from "@apollo/client";
 import ClientReviews from "components/ClientReviews";
 import MortgageAdvisor from "components/MortgageAdvisor";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import ContactSection from "components/ContactSection";
 import FlexibilityTab from "components/FlexibilityTab";
 import Image from "next/image";
@@ -31,6 +31,7 @@ import AccordionNewBC from "components/AccordionNewBC";
 import HomeBuyerNewBC from "components/HomeBuyerNewBC";
 import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import BorrowingPayment from "components/BorrowingPayment";
+import Link from "next/link";
 
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
@@ -377,6 +378,8 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}
             bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+            button2Text="CONTACT US"
+            button2URL="/contact-us"
           />
         )}
         <Container className="mb-5">
@@ -388,7 +391,7 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
                 }}
               ></div>
             </Col>
-            <Col md={5}>
+            <Col md={5} className="text-hide-sm">
               <Image
                 src={serviceBannerData?.aboutImage?.sourceUrl}
                 alt={serviceBannerData?.aboutImage?.altText}
@@ -396,6 +399,16 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
                 height="400"
                 priority={true}
                 style={{ width: "100%", objectFit: "cover" }}
+              />
+            </Col>
+            <Col md={5} className="text-hide-pc">
+              <Image
+                src={serviceBannerData?.aboutImage?.sourceUrl}
+                alt={serviceBannerData?.aboutImage?.altText}
+                width="300"
+                height="300"
+                priority={true}
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
               />
             </Col>
           </Row>
@@ -413,7 +426,29 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
           ></div>
         </Container>
 
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+        <section className="split_section">
+          <Container>
+            <Row>
+              <Col lg={7}>
+                <div className="split_image">
+                  <Image
+                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
+                    fill
+                    alt={borrowingPaymentData?.borrowingImage?.altText}
+                  />
+                </div>
+              </Col>
+              <Col lg={5} className="service-texts">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className="service-content"
+                ></div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
         <div className="service-row my-5">
           <Container>
             <Row>
@@ -475,6 +510,13 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
           imageLeft={reasonLeftImageCopy}
           imageRight={reasonRightImageCopy}
         />
+        <div className="tab-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">
+              Apply <span>Now</span>
+            </Button>
+          </Link>
+        </div>
         <TabNewBC tabData={tabWhyChooseData} />
 
         <AccordionNewBC homebuyerData={commonConcernsData} />

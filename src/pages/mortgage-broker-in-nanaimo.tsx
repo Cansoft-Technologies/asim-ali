@@ -17,7 +17,7 @@ import { apolloClient } from "../lib/apollo";
 import { gql } from "@apollo/client";
 import ClientReviews from "components/ClientReviews";
 import MortgageAdvisor from "components/MortgageAdvisor";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import ContactSection from "components/ContactSection";
 import FlexibilityTab from "components/FlexibilityTab";
 import Image from "next/image";
@@ -31,6 +31,7 @@ import AccordionNewBC from "components/AccordionNewBC";
 import HomeBuyerNewBC from "components/HomeBuyerNewBC";
 import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import BorrowingPayment from "components/BorrowingPayment";
+import Link from "next/link";
 
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
@@ -393,6 +394,8 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}
             bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+            button2Text="CONTACT US"
+            button2URL="/contact-us"
           />
         )}
         <Container className="mb-5">
@@ -417,7 +420,52 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
           </Row>
         </Container>
 
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+        <section className="split_section">
+          <Container>
+            <Row>
+              <Col lg={5} className="text-hide-pc">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+              <Col lg={7}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingTitle,
+                  }}
+                  className="text-start"
+                ></div>
+                <h2 className="text-start borrowing-title">
+                  {borrowingPaymentData?.borrowingTitle2}
+                </h2>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingDescriptionTop,
+                  }}
+                  className=""
+                ></div>
+                <div className="split_image">
+                  <Image
+                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
+                    fill
+                    alt={borrowingPaymentData?.borrowingImage?.altText}
+                  />
+                </div>
+              </Col>
+              <Col lg={5} className="text-hide-sm">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
 
         <div style={{ height: "50px" }}></div>
         <Container
@@ -469,6 +517,13 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
           </Container>
         </div>
 
+        <div className="tab-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">
+              Apply <span>Now</span>
+            </Button>
+          </Link>
+        </div>
         <AccordionNewBC homebuyerData={commonConcernsData} />
 
         <Container

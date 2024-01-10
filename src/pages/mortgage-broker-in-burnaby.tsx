@@ -17,7 +17,7 @@ import { apolloClient } from "../lib/apollo";
 import { gql } from "@apollo/client";
 import ClientReviews from "components/ClientReviews";
 import MortgageAdvisor from "components/MortgageAdvisor";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import ContactSection from "components/ContactSection";
 import FlexibilityTab from "components/FlexibilityTab";
 import Image from "next/image";
@@ -31,6 +31,7 @@ import AccordionNewBC from "components/AccordionNewBC";
 import HomeBuyerNewBC from "components/HomeBuyerNewBC";
 import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import BorrowingPayment from "components/BorrowingPayment";
+import Link from "next/link";
 
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
@@ -402,6 +403,8 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}
             bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+            button2Text="CONTACT US"
+            button2URL="/contact-us"
           />
         )}
         <Container className="mb-5">
@@ -429,6 +432,14 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
         <div className="service-row my-5">
           <Container>
             <Row className="">
+              <Col className="service-texts mt-0 mb-2 text-hide-pc" lg={6}>
+                <div
+                  className="service-content"
+                  dangerouslySetInnerHTML={{
+                    __html: expertsHelpData?.helpLeftText,
+                  }}
+                ></div>
+              </Col>
               <Col className="service-texts" lg={6}>
                 <div className="service-image">
                   <Image
@@ -444,7 +455,7 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
                   />
                 </div>
               </Col>
-              <Col className="service-texts my-5" lg={6}>
+              <Col className="service-texts my-5 text-hide-sm" lg={6}>
                 <div
                   className="service-content"
                   dangerouslySetInnerHTML={{
@@ -504,6 +515,13 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
             }}
           ></p>
         </Container>
+        <div className="tab-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">
+              Apply <span>Now</span>
+            </Button>
+          </Link>
+        </div>
         <TabNewBC tabData={tabWhyChooseData} />
 
         <Container

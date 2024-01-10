@@ -6,10 +6,11 @@ import ServiceSection from "components/ServiceSection";
 import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -381,6 +382,8 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}
             bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+            button2Text="CONTACT US"
+            button2URL="/contact-us"
           />
         )}
         <Container className="mb-5">
@@ -404,7 +407,38 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
             </Col>
           </Row>
         </Container>
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+
+        <section className="split_section">
+          <Container>
+            <Row>
+              <Col lg={5} className="text-hide-pc">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+              <Col lg={7}>
+                <div className="split_image">
+                  <Image
+                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
+                    fill
+                    alt={borrowingPaymentData?.borrowingImage?.altText}
+                  />
+                </div>
+              </Col>
+              <Col lg={5} className="text-hide-sm">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
         <div style={{ height: "50px" }}></div>
         <Container
           className="mb-5 px-3 py-3"
@@ -431,6 +465,13 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
           imageLeft={reasonLeftImage}
           imageRight={reasonRightImage}
         />
+        <div className="tab-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">
+              Apply <span>Now</span>
+            </Button>
+          </Link>
+        </div>
         <TabNewBC tabData={tabWhyChooseData} />
 
         <Container
