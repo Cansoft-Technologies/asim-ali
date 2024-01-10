@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Header, Hero, Footer } from '../components';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { useRouter } from 'next/router';
 
 
 export async function getStaticProps() {
@@ -95,7 +96,11 @@ type MyProps = {
 
 export default function Page(props: MyProps): JSX.Element {
   const { settings, mainMenus } = props;
+  const router = useRouter();
 
+useEffect(() => {
+  router.replace('/');
+})
 
   return (
     <>
