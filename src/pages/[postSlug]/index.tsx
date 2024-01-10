@@ -10,6 +10,7 @@ import { apolloClient } from "lib/apollo";
 import { GetStaticPropsContext } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Moment from "react-moment";
 
@@ -22,7 +23,7 @@ export interface PostProps {
 
 export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
   const [metaData, setMetaData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const router = useRouter();
   // const [settings, setSettings] = useState();
   // const [mainMenus, setMainMenus] = useState();
 
@@ -119,12 +120,6 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
 
   //     });
   // }, [post]);
-  useEffect(() => {
-    if (post?.title) {
-      setLoading(false);
-    }
-  }, [post]);
-  // console.log("postttt", post);
   return (
     <>
       <Head>
@@ -137,34 +132,27 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
       </Head>
       {/* <CustomHeader /> */}
       <Header settings={settings} mainMenus={mainMenus} />
-      {loading && (
-        <div className="text-center py-5">
-          <div className="spinner-border text-dark" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
-      )}
-      {!loading && (
         <>
           <CustomHero
-            title={post?.title()}
-            bgImage={post?.featuredImage?.node?.sourceUrl()}
+            title={String(post?.title)}
+            bgImage={String(post?.featuredImage?.node?.sourceUrl)}
           />
           <main className="content content-single">
             <div className="wrap">
-              <h1>{post?.title()}</h1>
+              <h1>{post?.title}</h1>
               <span className="asim-post-meta">
-                By Asim Ali | <Moment format="MMM D, YYYY">{post.date}</Moment>
+                By {post?.author?.node?.name} |{" "}
+                <Moment format="MMM D, YYYY">{post?.date}</Moment>
               </span>
               <div
                 style={{ overflowX: "hidden" }}
                 className="post-content"
-                dangerouslySetInnerHTML={{ __html: post?.content() ?? "" }}
-              />
+                dangerouslySetInnerHTML={{ __html: String(post?.content) }}
+              ></div>
             </div>
           </main>
         </>
-      )}
+      
       {/* {!loading ? (
        
       ) : (
@@ -177,9 +165,9 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
   );
 }
 
-export default function Page({ seo, settings, mainMenus }) {
-  const { usePost } = client;
-  const post = usePost();
+export default function Page({ seo, settings, mainMenus, post }) {
+  // const { usePost } = client;
+  // const post = usePost();
 
   return (
     <PostComponent
@@ -191,11 +179,25 @@ export default function Page({ seo, settings, mainMenus }) {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const id = context.params.postSlug;
+export async function getStaticProps({params}) {
+  const id = params?.postSlug;
   const { data } = await apolloClient.query({
     query: gql`query{
         post(id: "${id}", idType: URI) {
+          date
+    content(format: RENDERED)
+    featuredImage {
+      node {
+        altText
+        sourceUrl
+      }
+    }
+    author {
+      node {
+        name
+      }
+    }
+    title(format: RENDERED)
           seo {
               title
               description
@@ -279,13 +281,14 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const seo = data?.post?.seo;
   const settings = data?.settingsOptions?.AsimOptions;
   const mainMenus = data?.menus?.nodes;
+  const post = data?.post;
 
   // console.log("seo", seo);
 
   return {
-    props: { seo, settings, mainMenus },
+    props: { seo, settings, mainMenus, post },
     revalidate: 10,
-    notFound: await is404(context, { client }),
+    notFound: !post?.title ? true : false,
   };
 
   // return getNextStaticProps(context, {
@@ -297,9 +300,20 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   // });
 }
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const { data } = await apolloClient.query({
+    query: gql`query{
+      posts {
+        nodes {
+          uri
+        }
+      }
+    }`,});
+    const paths = data?.posts?.nodes?.map((post: { uri: any; }) => ({
+      params: { postSlug: post?.uri },
+    }));
   return {
-    paths: [],
+    paths,
     fallback: "blocking",
   };
 }
