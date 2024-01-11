@@ -394,8 +394,11 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}
             bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
-            button2Text="CONTACT US"
-            button2URL="/contact-us"
+            buttonLeft={true}
+            buttonText="GET APPROVED"
+            buttonURL="/contact-us"
+            button2Text="APPLY NOW"
+            button2URL="/apply-now"
           />
         )}
         <Container className="mb-5">
@@ -588,6 +591,13 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
             }}
             className="text-lg text-center"
           ></div>
+          <div className="tab-btn">
+            <Link href={"/contact-us"}>
+              <Button className="HeadBtn">
+                Contact <span>Us</span>
+              </Button>
+            </Link>
+          </div>
         </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
