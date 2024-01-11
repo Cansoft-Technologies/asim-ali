@@ -82,14 +82,17 @@
     margin-bottom: 2%;
     max-width: 50%;
   }
-  .bannerBtn {
-    font-size: 14px;
-    margin-top: 10px;
-  }
+  //   .bannerBtn {
+  //     font-size: 14px;
+  //     margin-top: 10px;
+  //   }
 }
 @media screen and (max-width: $breakpoint-medium) {
   .textPosition {
     text-align: center;
     margin-top: 48px;
+  }
+  .bannerBtn {
+    font-size: 14px;
   }
 }
