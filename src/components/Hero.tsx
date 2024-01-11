@@ -14,6 +14,7 @@ interface Props {
   button2Text?: string;
   button2URL?: string;
   children?: React.ReactNode;
+  buttonLeft?: boolean;
 }
 
 function Hero({
@@ -27,6 +28,7 @@ function Hero({
   button2Text,
   button2URL,
   children,
+  buttonLeft,
 }: Props): JSX.Element {
   return (
     <section
@@ -52,26 +54,47 @@ function Hero({
         <div className="banner-bottom col-md-11 offset-md-1 mt-5">
           <p className="heading">{heading}</p>
           <p className="description">{description}</p>
+          {buttonLeft && (
+            <Row className="align-items-center home-slide">
+              <Col className={styles.textPosition}>
+                {buttonText && buttonURL && (
+                  <Link href={buttonURL}>
+                    <Button className={styles.bannerBtn}>
+                      <span>{buttonText}</span>
+                    </Button>
+                  </Link>
+                )}
+                {button2Text && button2URL && (
+                  <Link href={button2URL}>
+                    <Button className={styles.bannerBtn}>
+                      <span>{button2Text}</span>
+                    </Button>
+                  </Link>
+                )}
+              </Col>
+            </Row>
+          )}
         </div>
-        <Row className="align-items-center home-slide">
-          <Col className="text-center mt-5 link_banner">
-            {/* <div className={styles.children}>{children}</div> */}
-            {buttonText && buttonURL && (
-              <Link href={buttonURL}>
-                <Button className={styles.bannerBtn}>
-                  <span>{buttonText}</span>
-                </Button>
-              </Link>
-            )}
-            {button2Text && button2URL && (
-              <Link href={button2URL}>
-                <Button className={styles.bannerBtn}>
-                  <span>{button2Text}</span>
-                </Button>
-              </Link>
-            )}
-          </Col>
-        </Row>
+        {!buttonLeft && (
+          <Row className="align-items-center home-slide">
+            <Col className="text-center mt-5 link_banner">
+              {buttonText && buttonURL && (
+                <Link href={buttonURL}>
+                  <Button className={styles.bannerBtn}>
+                    <span>{buttonText}</span>
+                  </Button>
+                </Link>
+              )}
+              {button2Text && button2URL && (
+                <Link href={button2URL}>
+                  <Button className={styles.bannerBtn}>
+                    <span>{button2Text}</span>
+                  </Button>
+                </Link>
+              )}
+            </Col>
+          </Row>
+        )}
       </div>
     </section>
   );

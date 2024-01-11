@@ -2,87 +2,94 @@
 
 @import "scss/variables";
 
-
 .hero {
-	background-color: $color-dark-gray;
-	background-position: 48% 72%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: $color-white;
-	padding: 7em 0 9em;
-	position: relative;
+  background-color: $color-dark-gray;
+  background-position: 48% 72%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: $color-white;
+  padding: 7em 0 9em;
+  position: relative;
 }
 
 .wrap {
-	margin: 0 auto;
-	max-width: $content-width;
-	overflow: auto;
-	padding: 0 10px;
-	position: relative;
-	z-index: 1;
-	overflow-x: hidden;
+  margin: 0 auto;
+  max-width: $content-width;
+  overflow: auto;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
 }
-.bannerBtn{
-	background: transparent;
-	border: 2px solid $color-white;
-	text-transform: uppercase;
-	font-family: 'AvenirBook';
-	font-size: 16px;
-	border-radius: 0;
-	padding-top: 11px;
-	margin-right: 20px;
-	color: #f0B254;
-	span{
-			color: #f0B254;
-			font-family: 'AvenirBlack';
-	}
-	&:hover{
-			background: transparent;
-			border: 2px solid $color-secondary;
-			color: $color-white;
-			opacity: .5;
-	}
-	
+.bannerBtn {
+  background: transparent;
+  border: 2px solid $color-white;
+  text-transform: uppercase;
+  font-family: "AvenirBook";
+  font-size: 16px;
+  border-radius: 0;
+  padding-top: 11px;
+  margin-right: 20px;
+  color: #f0b254;
+  span {
+    color: #f0b254;
+    font-family: "AvenirBlack";
+  }
+  &:hover {
+    background: transparent;
+    border: 2px solid $color-secondary;
+    color: $color-white;
+    opacity: 0.5;
+  }
 }
 
 @media screen and (min-width: $content-width) {
-	.wrap {
-		padding: 0;
-	}
+  .wrap {
+    padding: 0;
+  }
 }
 
 .hero::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: inherit;
-	opacity: 0.8;
-	z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: inherit;
+  opacity: 0.8;
+  z-index: 1;
 }
 
 .hero a {
-	color: $color-white;
+  color: $color-white;
 }
 
 .children a:focus,
 .children a:hover {
-	color: darken($color-white, 25);
+  color: darken($color-white, 25);
 }
 
 @media screen and (min-width: $breakpoint-medium) {
-	.hero h1 {
-		max-width: 100%;
-	}
-
-	.intro {
-		margin-bottom: 2%;
-		max-width: 50%;
-	}
-	.bannerBtn{
-		font-size: 14px;
-		margin-top: 10px;
+  .hero h1 {
+    max-width: 100%;
+  }
+  .textPosition {
+    text-align: left;
+    margin-top: 3em;
+  }
+  .intro {
+    margin-bottom: 2%;
+    max-width: 50%;
+  }
+  .bannerBtn {
+    font-size: 14px;
+    margin-top: 10px;
+  }
 }
+@media screen and (max-width: $breakpoint-medium) {
+  .textPosition {
+    text-align: center;
+    margin-top: 48px;
+  }
 }
