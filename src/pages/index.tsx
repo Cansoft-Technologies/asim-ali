@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 import { apolloClient } from "../lib/apollo";
 const HomeComponents = dynamic(() => import("components/HomeComponents"));
 const Footer = dynamic(() => import("../components/Footer"));
-const Header = dynamic(() => import("../components/Header"));
+import Header from "../components/Header";
 const Banner = dynamic(() => import("../components/Banner"));
 const WeHelp = dynamic(() => import("../components/WeHelp"));
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
