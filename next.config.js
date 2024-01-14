@@ -99,6 +99,10 @@ module.exports = withBundleAnalyzer(
                 key: "Cache-Control",
                 value: "public, max-age=9999999999, must-revalidate",
               },
+              {
+                key: 'Strict-Transport-Security',
+                value: 'max-age=31536000; includeSubDomains; preload',
+              },
             ],
           },
         ];
