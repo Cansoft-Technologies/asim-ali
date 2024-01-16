@@ -3,11 +3,10 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
 import { Container } from "react-bootstrap";
-import { useInView } from "react-intersection-observer";
 import { apolloClient } from "../lib/apollo";
 const HomeComponents = dynamic(() => import("components/HomeComponents"));
 const Footer = dynamic(() => import("../components/Footer"));
-import Header from "../components/Header";
+const Header = dynamic(() => import("../components/Header"));
 const Banner = dynamic(() => import("../components/Banner"));
 const WeHelp = dynamic(() => import("../components/WeHelp"));
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
@@ -416,14 +415,6 @@ export default function Page(props: MyProps) {
     mortgageInterestData,
     homebuyerSectionData,
   } = props;
-  const { ref: imgsRef, inView: load } = useInView({
-    triggerOnce: true,
-    fallbackInView: true,
-  });
-  const { ref: sectionRef, inView: loadOnView } = useInView({
-    triggerOnce: true,
-    fallbackInView: true,
-  });
 
   return (
     <>
@@ -460,57 +451,51 @@ export default function Page(props: MyProps) {
         <div className="mobile-banner">
           <MobileBanner msliders={msliders} />
         </div>
-        <Container ref={imgsRef}>
-          {load && (
-            <div className="ms-auto mt-5 footer-partner-logo">
-              {bottomPartnerLogoSection?.map((singleLogo) => {
-                return (
-                  <div key={singleLogo.sourceUrl}>
-                    <Image
-                      src={singleLogo.sourceUrl}
-                      width="350"
-                      height="150"
-                      alt={singleLogo.altText}
-                      style={{ objectFit: "contain", width: "100%" }}
-                      loading="lazy"
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          )}
+        <Container>
+          <div className="ms-auto mt-5 footer-partner-logo">
+            {bottomPartnerLogoSection?.map((singleLogo) => {
+              return (
+                <div key={singleLogo.sourceUrl}>
+                  <Image
+                    src={singleLogo.sourceUrl}
+                    width="350"
+                    height="150"
+                    alt={singleLogo.altText}
+                    style={{ objectFit: "contain", width: "100%" }}
+                    loading="lazy"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </Container>
 
         <WeHelp helps={helps} />
-        <div ref={sectionRef}>
-          {loadOnView && (
-            <>
-              <HomeComponents
-                teamData={teamData}
-                featuredTextLeft={featuredTextLeft}
-                featuredTextRight={featuredTextRight}
-                featuredImageLeft={featuredImageLeft}
-                featuredImageRight={featuredImageRight}
-                approvalRenovationData={approvalRenovationData}
-                sliders={sliders}
-                meetings={meetings}
-                advisorData={advisorData}
-                splitImagesRight={splitImagesRight}
-                mortgageInterestData={mortgageInterestData}
-                splitImagesLeft={splitImagesLeft}
-                tabRenovationData={tabRenovationData}
-                mortgageServiceData={mortgageServiceData}
-                tipsTitle={tipsTitle}
-                tipsDescription={tipsDescription}
-                tipsLeftText={tipsLeftText}
-                tipsRightText={tipsRightText}
-                tipsImageLeft={tipsImageLeft}
-                tipsImageRight={tipsImageRight}
-                homebuyerSectionData={homebuyerSectionData}
-                contactData={contactData}
-              />
-            </>
-          )}
+        <div>
+          <HomeComponents
+            teamData={teamData}
+            featuredTextLeft={featuredTextLeft}
+            featuredTextRight={featuredTextRight}
+            featuredImageLeft={featuredImageLeft}
+            featuredImageRight={featuredImageRight}
+            approvalRenovationData={approvalRenovationData}
+            sliders={sliders}
+            meetings={meetings}
+            advisorData={advisorData}
+            splitImagesRight={splitImagesRight}
+            mortgageInterestData={mortgageInterestData}
+            splitImagesLeft={splitImagesLeft}
+            tabRenovationData={tabRenovationData}
+            mortgageServiceData={mortgageServiceData}
+            tipsTitle={tipsTitle}
+            tipsDescription={tipsDescription}
+            tipsLeftText={tipsLeftText}
+            tipsRightText={tipsRightText}
+            tipsImageLeft={tipsImageLeft}
+            tipsImageRight={tipsImageRight}
+            homebuyerSectionData={homebuyerSectionData}
+            contactData={contactData}
+          />
         </div>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
