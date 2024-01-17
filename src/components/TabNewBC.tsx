@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { Button, Container, Row, Tab, Tabs } from "react-bootstrap";
 type MyProps = {
   tabData: any;
+  buttonText?: any;
+  buttonUrl?: any;
 };
 export default function TabNewBC(props: MyProps) {
-  const { tabData } = props;
+  const { tabData, buttonText, buttonUrl } = props;
   const [key, setKey] = useState(null);
   return (
     <Container className="my-5">
@@ -20,8 +22,18 @@ export default function TabNewBC(props: MyProps) {
           dangerouslySetInnerHTML={{
             __html: tabData?.tabDescription,
           }}
-          className="text-center mb-5"
+          className={`${buttonText ? "" : "mb-5"} text-center`}
         ></div>
+        {buttonText && (
+          <div
+            className="tab-btn-left mb-5"
+            style={{ alignItems: "center", justifyContent: "center" }}
+          >
+            <Link href={buttonUrl}>
+              <Button className="HeadBtn">{buttonText}</Button>
+            </Link>
+          </div>
+        )}
       </div>
       {tabData?.tabDetails == null ? (
         ""

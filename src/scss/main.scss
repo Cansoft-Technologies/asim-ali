@@ -98,6 +98,30 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     }
   }
 }
+.tab-btn-left {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  margin-top: 20px;
+  .HeadBtn {
+    width: 270px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: $color-white;
+    // color: $color-secondary;
+    font-family: "AvenirBlack";
+    background: $color-black;
+    // background: transparent;
+    border: 2px solid $color-primary;
+    // border: 2px solid $color-black;
+    text-transform: uppercase;
+    &:hover {
+      background: $color-white;
+      color: $color-secondary;
+      border: 2px solid $color-primary;
+    }
+  }
+}
 .hero-title-post {
   position: relative;
   .hero-title {
