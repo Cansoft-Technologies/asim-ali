@@ -32,6 +32,7 @@ const excludeItems = [
   "/new-trusted-mortgage-broker-in-chilliwack",
   "/our-locations",
   "/new-readvanceable-mortgage-bc",
+  "/new-fthbi-calculator-bc",
   "/posts-sitemap.xml",
   "/location-sitemap.xml",
   "/sitemap-0.xml",
