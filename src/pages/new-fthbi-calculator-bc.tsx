@@ -32,14 +32,13 @@ import HomeBuyerNewBC from "components/HomeBuyerNewBC";
 import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import BorrowingPayment from "components/BorrowingPayment";
 import Link from "next/link";
-import HeroReadvanceable from "components/HeroReadvanceable";
 
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 5243}) {
+      pages(where: {id: 5336}) {
       nodes {
         seo {
           title
@@ -55,7 +54,7 @@ export async function getStaticProps() {
             raw
           }
         }
-        readvanceableMortgageInBC {
+        fthbiCalculatorBc {
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -135,11 +134,7 @@ export async function getStaticProps() {
           processTitle
           processDescription
           reasonLeftTextCopy
-          reasonRightTextCopy
-          reasonLeftImageCopy {
-            altText
-            sourceUrl
-          }
+          
           reasonRightImageCopy {
             altText
             sourceUrl
@@ -151,6 +146,16 @@ export async function getStaticProps() {
           }
           leftText2
           rightImage2 {
+            altText
+            sourceUrl
+          }
+          leftText3
+          rightImage3 {
+            altText
+            sourceUrl
+          }
+          leftText4
+          rightImage4 {
             altText
             sourceUrl
           }
@@ -255,67 +260,60 @@ export async function getStaticProps() {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
-      serviceBannerData: data?.pages?.nodes[0]?.readvanceableMortgageInBC,
-      reasonTitle:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonTitle,
+      serviceBannerData: data?.pages?.nodes[0]?.fthbiCalculatorBc,
+      reasonTitle: data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonTitle,
       reasonDescription:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonDescription,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonDescription,
       readvanceableTitle:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.readvanceableTitle,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.readvanceableTitle,
       readvanceableDescription:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC
-          ?.readvanceableDescription,
-      processTitle:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.processTitle,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.readvanceableDescription,
+      processTitle: data?.pages?.nodes[0]?.fthbiCalculatorBc?.processTitle,
       processDescription:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.processDescription,
-      reasonLeftText:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonLeftText,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.processDescription,
+      reasonLeftText: data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonLeftText,
       reasonLeftText2:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonLeftText2,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonLeftText2,
       reasonRightImage:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonRightImage,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonRightImage,
       reasonRightImage2:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonRightImage2,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonRightImage2,
       reasonRightText:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonRightText,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonRightText,
       reasonLeftImage:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonLeftImage,
-      loanTitle: data?.pages?.nodes[0]?.readvanceableMortgageInBC?.loanTitle,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonLeftImage,
+      loanTitle: data?.pages?.nodes[0]?.fthbiCalculatorBc?.loanTitle,
       reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonLeftTextCopy,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonLeftTextCopy,
       reasonRightImageCopy:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonRightImageCopy,
-      leftText: data?.pages?.nodes[0]?.readvanceableMortgageInBC?.leftText,
-      rightImage: data?.pages?.nodes[0]?.readvanceableMortgageInBC?.rightImage,
-      leftText2: data?.pages?.nodes[0]?.readvanceableMortgageInBC?.leftText2,
-      rightImage2:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.rightImage2,
-      reasonRightTextCopy:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonRightTextCopy,
-      reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.reasonLeftImageCopy,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.reasonRightImageCopy,
+      leftText: data?.pages?.nodes[0]?.fthbiCalculatorBc?.leftText,
+      rightImage: data?.pages?.nodes[0]?.fthbiCalculatorBc?.rightImage,
+      leftText2: data?.pages?.nodes[0]?.fthbiCalculatorBc?.leftText2,
+      rightImage2: data?.pages?.nodes[0]?.fthbiCalculatorBc?.rightImage2,
+      leftText3: data?.pages?.nodes[0]?.fthbiCalculatorBc?.leftText3,
+      rightImage3: data?.pages?.nodes[0]?.fthbiCalculatorBc?.rightImage3,
+      leftText4: data?.pages?.nodes[0]?.fthbiCalculatorBc?.leftText4,
+      rightImage4: data?.pages?.nodes[0]?.fthbiCalculatorBc?.rightImage4,
       borrowingPaymentData:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.borrowingPayment,
-      expertsHelpData:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.expertsHelp,
-      tabWhyChooseData:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.tabWhyChoose,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.borrowingPayment,
+      expertsHelpData: data?.pages?.nodes[0]?.fthbiCalculatorBc?.expertsHelp,
+      tabWhyChooseData: data?.pages?.nodes[0]?.fthbiCalculatorBc?.tabWhyChoose,
       borrowingProcessData:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.processBorrowing,
-      bottomText: data?.pages?.nodes[0]?.readvanceableMortgageInBC?.bottomText,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.processBorrowing,
+      bottomText: data?.pages?.nodes[0]?.fthbiCalculatorBc?.bottomText,
       qualifyingTitle:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.qualifyingTitle,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.qualifyingTitle,
       qualifyingDescription:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.qualifyingDescription,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.qualifyingDescription,
       commonConcernsData:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.readvanceableMortgageInBC?.talkTitle,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.commonConcerns,
+      talkTitle: data?.pages?.nodes[0]?.fthbiCalculatorBc?.talkTitle,
       talkDescription:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.talkDescription,
-      ratesTitle: data?.pages?.nodes[0]?.readvanceableMortgageInBC?.ratesTitle,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.talkDescription,
+      ratesTitle: data?.pages?.nodes[0]?.fthbiCalculatorBc?.ratesTitle,
       ratesDescription:
-        data?.pages?.nodes[0]?.readvanceableMortgageInBC?.ratesDescription,
+        data?.pages?.nodes[0]?.fthbiCalculatorBc?.ratesDescription,
     },
     revalidate: 60,
   };
@@ -340,8 +338,6 @@ type MyProps = {
   reasonRightImage2: any;
   loanTitle: any;
   reasonLeftTextCopy: any;
-  reasonRightTextCopy: any;
-  reasonLeftImageCopy: any;
   reasonRightImageCopy: any;
   borrowingPaymentData: any;
   expertsHelpData: any;
@@ -358,10 +354,14 @@ type MyProps = {
   rightImage: any;
   leftText2: any;
   rightImage2: any;
+  leftText3: any;
+  rightImage3: any;
+  leftText4: any;
+  rightImage4: any;
   bottomText: any;
 };
 
-export default function ReadvanceableMortgageInBC(props: MyProps) {
+export default function FTHBICalculatorInBC(props: MyProps) {
   const {
     settings,
     mainMenus,
@@ -381,8 +381,6 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
     reasonRightImage,
     reasonRightImage2,
     reasonLeftTextCopy,
-    reasonRightTextCopy,
-    reasonLeftImageCopy,
     reasonRightImageCopy,
     borrowingPaymentData,
     expertsHelpData,
@@ -399,6 +397,10 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
     rightImage,
     leftText2,
     rightImage2,
+    leftText3,
+    rightImage3,
+    leftText4,
+    rightImage4,
     bottomText,
   } = props;
 
@@ -431,7 +433,7 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
         {serviceBannerData?.serviceBannerTitle == null ? (
           ""
         ) : (
-          <HeroReadvanceable
+          <Hero
             title={serviceBannerData?.serviceBannerTitle}
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}
@@ -453,7 +455,7 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
               ></div>
               <div className="tab-btn-left">
                 <Link href={"/contact-us"}>
-                  <Button className="HeadBtn">Unlock Your Freedom!</Button>
+                  <Button className="HeadBtn">Explore FTHBI Now!</Button>
                 </Link>
               </div>
             </Col>
@@ -481,7 +483,10 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
             }}
           ></div>
         </Container>
-        <Container className="mb-5 px-3 py-3">
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
           <h2 className="text-center" style={{ color: "#f0b254" }}>
             {reasonTitle}
           </h2>
@@ -491,14 +496,6 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
               __html: reasonDescription,
             }}
           ></div>
-          <div
-            className="tab-btn-left"
-            style={{ alignItems: "center", justifyContent: "center" }}
-          >
-            <Link href={"/apply-now"}>
-              <Button className="HeadBtn">Elevate Your Finances!</Button>
-            </Link>
-          </div>
         </Container>
 
         <ServiceSection
@@ -515,45 +512,15 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
           imageRight={reasonRightImage}
         />
 
-        <div className="service-row">
-          <Container>
-            <Row>
-              <Col className="service-texts" lg={6}>
-                <div
-                  className="service-content"
-                  dangerouslySetInnerHTML={{
-                    __html: reasonLeftText2,
-                  }}
-                ></div>
-              </Col>
-              <Col className="service-texts" lg={6}>
-                <div className="service-image">
-                  <Image
-                    src={reasonRightImage2?.sourceUrl}
-                    alt={reasonRightImage2?.altText}
-                    width="390"
-                    height="400"
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      height: "45vh",
-                    }}
-                  />
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-
         <Container
           className="mb-5 px-3 py-3 mt-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
         >
-          <h2 className="text-center">{processTitle}</h2>
+          <h2 className="text-center">{ratesTitle}</h2>
           <div
             className="text-center"
             dangerouslySetInnerHTML={{
-              __html: processDescription,
+              __html: ratesDescription,
             }}
           ></div>
           <div
@@ -561,15 +528,21 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
             style={{ alignItems: "center", justifyContent: "center" }}
           >
             <Link href={"/apply-now"}>
-              <Button className="HeadBtn">Unlock Equity Flexibility!</Button>
+              <Button className="HeadBtn">Start Your Journey!</Button>
             </Link>
           </div>
         </Container>
         <ServiceSection
-          textLeft={reasonLeftTextCopy}
-          textRight={reasonRightTextCopy}
-          imageLeft={reasonLeftImageCopy}
-          imageRight={reasonRightImageCopy}
+          textLeft={reasonLeftText2}
+          textRight={reasonLeftTextCopy}
+          imageLeft={reasonRightImageCopy}
+          imageRight={reasonRightImage2}
+        />
+        <ServiceSection
+          textLeft={leftText}
+          textRight={leftText2}
+          imageLeft={rightImage2}
+          imageRight={rightImage}
         />
         <div className="service-row">
           <Container>
@@ -578,15 +551,15 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
                 <div
                   className="service-content"
                   dangerouslySetInnerHTML={{
-                    __html: leftText,
+                    __html: leftText3,
                   }}
                 ></div>
               </Col>
               <Col className="service-texts" lg={6}>
                 <div className="service-image">
                   <Image
-                    src={rightImage?.sourceUrl}
-                    alt={rightImage?.altText}
+                    src={rightImage3?.sourceUrl}
+                    alt={rightImage3?.altText}
                     width="390"
                     height="400"
                     style={{
@@ -600,18 +573,7 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
             </Row>
           </Container>
         </div>
-
-        <TabNewBC
-          tabData={tabWhyChooseData}
-          buttonText="Empower Your Future!"
-          buttonUrl="/contact-us"
-        />
-        <HomeBuyerNewBC
-          advisorData={borrowingProcessData}
-          buttonText="Apply With Ease"
-          buttonUrl="/apply-now"
-        />
-        <Container>
+        <Container className="my-5">
           <div
             dangerouslySetInnerHTML={{
               __html: bottomText,
@@ -620,25 +582,32 @@ export default function ReadvanceableMortgageInBC(props: MyProps) {
           ></div>
         </Container>
 
-        
+        <TabNewBC
+          tabData={tabWhyChooseData}
+          buttonText="Unlock Home Dreams!"
+          buttonUrl="/apply-now"
+        />
+
         <Container className="mb-5">
           <Row className="coquitlam-grid my-5">
             <Col md={6}>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: leftText2,
+                  __html: leftText4,
                 }}
               ></div>
               <div className="tab-btn-left">
                 <Link href={"/apply-now"}>
-                  <Button className="HeadBtn">Unlock Your Equity!</Button>
+                  <Button className="HeadBtn">
+                    Explore Your Possibilities!
+                  </Button>
                 </Link>
               </div>
             </Col>
             <Col md={6}>
               <Image
-                src={rightImage2?.sourceUrl}
-                alt={rightImage2?.altText}
+                src={rightImage4?.sourceUrl}
+                alt={rightImage4?.altText}
                 width="390"
                 height="400"
                 priority={true}

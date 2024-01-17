@@ -76,6 +76,40 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     }
   }
 }
+.hero-title-col-new {
+  position: relative;
+  &:after {
+    position: absolute;
+    overflow: hidden;
+    width: 70%;
+    height: 3px;
+    content: " ";
+    background-color: $color-secondary;
+    right: -55%;
+    top: 25%;
+  }
+  &:before {
+    position: absolute;
+    overflow: hidden;
+    width: 70%;
+    height: 3px;
+    content: " ";
+    background-color: $color-secondary;
+    right: 105%;
+    bottom: 28%;
+  }
+  .hero-title {
+    font-size: 72px;
+    font-family: "AvenirBook";
+
+    span {
+      font-family: "AvenirBlack";
+      color: $color-secondary;
+      display: block;
+      font-weight: 900;
+    }
+  }
+}
 .tab-btn {
   // margin: 40px 0px 0px 40px;
   display: flex;
@@ -104,7 +138,7 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
   justify-content: start;
   margin-top: 20px;
   .HeadBtn {
-    width: 270px;
+    width: 280px;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     color: $color-white;
@@ -2564,6 +2598,14 @@ p.testimonials-name {
     display: inline;
     margin-left: 20px;
   }
+  .hero-title-col-new .hero-title,
+  .banner-bottom {
+    text-align: center;
+  }
+  .hero-title-col-new .hero-title span {
+    display: inline;
+    margin-left: 20px;
+  }
   .pagination {
     display: block !important;
   }
@@ -2769,6 +2811,9 @@ p.testimonials-name {
   .hero-title-col .hero-title {
     font-size: 50px;
   }
+  .hero-title-col-new .hero-title {
+    font-size: 50px;
+  }
   .flexability-slider .carouselcaption .bannerCaption .sliderTitle {
     font-size: 40px;
   }
@@ -2914,6 +2959,19 @@ p.testimonials-name {
       }
     }
   }
+  .hero-title-col-new {
+    .hero-title {
+      font-size: 50px;
+      font-family: "AvenirBook";
+
+      span {
+        font-family: "AvenirBlack";
+        color: $color-secondary;
+        display: block;
+        font-weight: 900;
+      }
+    }
+  }
   .service-description p {
     font-size: 14px;
   }
@@ -3044,6 +3102,11 @@ p.testimonials-name {
 }
 
 @media screen and (max-width: 767px) {
+  .coquitlam-grid {
+    .tab-btn-left {
+      margin-bottom: 30px;
+    }
+  }
   .homebuyer-items-bc,
   .homebuyer-items {
     .card {

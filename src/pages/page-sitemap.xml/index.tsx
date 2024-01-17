@@ -31,6 +31,7 @@ const excludeItems = [
   "/new-transparent-vacant-land-mortgage",
   "/new-trusted-mortgage-broker-in-chilliwack",
   "/our-locations",
+  "/new-readvanceable-mortgage-bc",
   "/posts-sitemap.xml",
   "/location-sitemap.xml",
   "/sitemap-0.xml",
