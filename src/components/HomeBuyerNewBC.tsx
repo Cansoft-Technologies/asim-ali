@@ -1,12 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 type MyProps = {
   advisorData: any;
+  buttonText?: any;
+  buttonUrl?: any;
 };
 export default function HomeBuyerNewBC(props: MyProps) {
-  const { advisorData } = props;
+  const { advisorData, buttonText, buttonUrl } = props;
 
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
@@ -54,6 +57,16 @@ export default function HomeBuyerNewBC(props: MyProps) {
               __html: advisorData?.advisorDescriptionTop,
             }}
           ></p>
+          {buttonText && (
+            <div
+              className="tab-btn-left"
+              style={{ alignItems: "center", justifyContent: "center" }}
+            >
+              <Link href={buttonUrl}>
+                <Button className="HeadBtn">{buttonText}</Button>
+              </Link>
+            </div>
+          )}
         </div>
         <div
           className={`row row-cols-1 row-cols-md-4 g-4 homebuyer-items-bc mt-5 `}
