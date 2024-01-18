@@ -32,6 +32,7 @@ import HomeBuyerNewBC from "components/HomeBuyerNewBC";
 import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import BorrowingPayment from "components/BorrowingPayment";
 import Link from "next/link";
+import FirstTimeHomeBuyerCalculator from "components/Fthb";
 
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 
@@ -482,6 +483,9 @@ export default function FTHBICalculatorInBC(props: MyProps) {
               __html: readvanceableDescription,
             }}
           ></div>
+        </Container>
+        <Container className="mb-5">
+          <FirstTimeHomeBuyerCalculator />
         </Container>
         <Container
           className="mb-5 px-3 py-3"
