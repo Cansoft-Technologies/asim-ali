@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
-import { Header, Hero, Footer } from '../components';
-import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { useRouter } from 'next/router';
-
+import React, { useEffect } from "react";
+import { Header, Hero, Footer } from "../components";
+import { gql } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { useRouter } from "next/router";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -79,10 +78,10 @@ export async function getStaticProps() {
   });
 
   return {
-    redirect: {
-      permanent: true,
-      destination: "/"
-    }
+    props: {
+      settings: data.settingsOptions.AsimOptions,
+      mainMenus: data.menus.nodes,
+    },
   };
 }
 
@@ -91,15 +90,13 @@ type MyProps = {
   mainMenus: any;
 };
 
-
-
 export default function Page(props: MyProps): JSX.Element {
   const { settings, mainMenus } = props;
   const router = useRouter();
 
-useEffect(() => {
-  router.replace('/');
-})
+  useEffect(() => {
+    router.replace("/");
+  });
 
   return (
     <>
