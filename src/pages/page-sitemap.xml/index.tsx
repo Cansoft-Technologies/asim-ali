@@ -39,7 +39,6 @@ const excludeItems = [
   ...locationRoutes,
 ];
 const data = [
-  "/",
   "/aaa-mortgage-in-bc",
   "/apply-now",
   "/b-lender-bc-mortgage",
@@ -81,7 +80,16 @@ export const getServerSideProps = async ({ res }) => {
       priority: 0.9,
     }));
 
-  const fields = [...postsSitemaps];
+  const fields = [
+    {
+      loc: "https://asimali.ca/",
+      lastmod: new Date().toISOString(),
+      changefreq: "daily",
+      priority: 0.9,
+    },
+    ...postsSitemaps,
+  ];
+  // console.log(fields);
 
   if (!Array.isArray(fields)) {
     console.error("fields is not an array:", fields);
