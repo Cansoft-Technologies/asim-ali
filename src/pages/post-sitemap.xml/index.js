@@ -38,7 +38,7 @@ export const getServerSideProps = async ({ res }) => {
     .map(
       (field) => `
   <url>
-    <loc>${field.loc}</loc>
+    <loc>${field.loc.endsWith("/")? field.loc.slice(0, -1) : field.loc}</loc>
     <lastmod>${field.lastmod}</lastmod>
     <changefreq>${field.changefreq}</changefreq>
     <priority>${field.priority}</priority>

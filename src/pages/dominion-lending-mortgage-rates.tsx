@@ -337,7 +337,7 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl} />
+              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta
                 property="og:description"
