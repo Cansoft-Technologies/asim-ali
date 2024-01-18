@@ -200,6 +200,130 @@ body {
   // 	align-items: center;
   // }
 }
+.first-buyer-calculator {
+  max-width: 1000px;
+  margin: auto;
+  padding: 25px;
+}
+
+.first-buyer-calculator-card {
+  border: 1px solid;
+  border-color: rgb(23 25 28 / 20%);
+  border-top-width: 4px;
+  box-shadow: 1px 1px 4px rgb(23 25 28 / 20%);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+}
+
+.input-group-prepend-custom {
+  position: absolute;
+  z-index: 4;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.input-group-text {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.input-group-prepend-custom .input-group-text {
+  background: #f3f3f3;
+  border-radius: 4px !important;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  color: var(--color-sterling-gray);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.first-buyer-calculator .input-group input {
+  height: 48px;
+  border: 1.5px solid #e1e0e0;
+  border-radius: 7px;
+}
+
+.padding-left-40 {
+  padding-left: 40px;
+}
+
+.end-0 {
+  right: 0;
+}
+
+.font-symbol {
+  align-items: center;
+  display: flex;
+  padding: 0 15px;
+}
+
+.calculator-left {
+  border-right: 2px solid rgb(237, 242, 247);
+  padding: 25px 20px;
+}
+
+.calculator-right {
+  padding: 30px 40px;
+}
+
+.mui-svg-icon-root {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.divider {
+  margin: 16px 25% 8px;
+  border: 1px solid rgb(0, 0, 0, 0.2);
+}
+
+.font-2rem {
+  font-size: 2rem;
+}
+
+#property-type {
+  height: 48px;
+  width: 100%;
+  border: 1.5px solid #e1e0e0;
+  border-radius: 7px;
+}
+
+.message-wrapper {
+  padding: 25px 10px;
+  align-items: center;
+}
+
+.message-warning {
+  --tw-text-opacity: 1;
+  color: rgb(116, 66, 16);
+  background: hsl(50, 100%, 90%);
+}
+
+.text-red-800 {
+  --tw-text-opacity: 1;
+  color: rgba(155, 44, 44, var(--tw-text-opacity));
+}
 .advisor-title {
   font-size: 22px;
   font-weight: 600;

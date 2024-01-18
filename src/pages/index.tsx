@@ -469,7 +469,6 @@ export default function Page(props: MyProps) {
             })}
           </div>
         </Container>
-
         <WeHelp helps={helps} />
         <div>
           <HomeComponents
