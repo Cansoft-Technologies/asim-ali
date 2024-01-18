@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { Hero } from 'components';
+import { Hero, Team } from 'components';
 import AccordionSection from 'components/AccordionSection';
 import FlexibilityTab from 'components/FlexibilityTab';
 import MortgageAdvisor from 'components/MortgageAdvisor';
