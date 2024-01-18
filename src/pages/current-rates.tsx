@@ -114,7 +114,14 @@ export async function getStaticProps() {
       }
     `,
   });
-
+  if(!data){
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/"
+      }
+    }
+  }
   return {
     props: {
       currentData: data?.pages?.nodes,

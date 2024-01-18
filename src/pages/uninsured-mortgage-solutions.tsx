@@ -4,26 +4,12 @@ import FlexibilityTab from 'components/FlexibilityTab';
 import HomeBuyerSection from 'components/HomeBuyerSection';
 import MortgageAdvisor from 'components/MortgageAdvisor';
 import ServiceSection from 'components/ServiceSection';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Col, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
-const CTA = dynamic(() => import('../components/CTA'));
-const Banner = dynamic(() => import('../components/Banner'));
-const WeHelp = dynamic(() => import('../components/WeHelp'));
-const Team = dynamic(() => import('components/Team'));
-const Meeting = dynamic(() => import('components/Meeting'));
-const PartnerLogo = dynamic(() => import('components/PartnerLogo'));
-const SplitImageLeft = dynamic(() => import('../components/SplitImageLeft'));
-const FAQ = dynamic(() => import('components/FAQ'));
-const Gallery = dynamic(() => import('components/Gallery'));
-const FlexabilitySlider = dynamic(() => import('components/FlexabilitySlider'));
-const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
-
-const MobileBanner = dynamic(() => import('components/MobileBanner'));
 
 
 
@@ -215,7 +201,14 @@ export async function getStaticProps() {
     }
 }`,
   });
-
+  if(!data){
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/"
+      }
+    }
+  }
   return {
     props: {
       settings: data?.settingsOptions?.AsimOptions,

@@ -1,6 +1,3 @@
-import { gql } from "@apollo/client";
-import { getServerSideSitemap } from "next-sitemap";
-import { apolloClient } from "lib/apollo";
 const locationRoutes = [
   "/mortgage-broker-in-abbotsford",
   "/mortgage-broker-in-coquitlam",

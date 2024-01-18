@@ -128,7 +128,14 @@ export async function getStaticProps() {
       }
     `,
   });
-
+  if(!data){
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/"
+      }
+    }
+  }
   return {
     props: {
       calculatorData: data?.pages?.nodes,

@@ -4,13 +4,12 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { Accordion, Col, Container, Row } from "react-bootstrap";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+import MortgageAdvisor from "components/MortgageAdvisor";
 import { apolloClient } from "lib/apollo";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import MortgageAdvisor from "components/MortgageAdvisor";
 
 const responsive = {
   superLargeDesktop: {
@@ -166,7 +165,14 @@ export async function getStaticProps() {
       }
     `,
   });
-
+  if(!data){
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/"
+      }
+    }
+  }
   return {
     props: {
       bLenderData: data?.pages?.nodes,
