@@ -1,5 +1,3 @@
-import { gql } from "@apollo/client";
-import { apolloClient } from "lib/apollo";
 
 const locationRoutes = [
   "/mortgage-broker-in-abbotsford",

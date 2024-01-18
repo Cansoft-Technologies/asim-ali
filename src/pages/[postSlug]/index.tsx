@@ -284,11 +284,18 @@ export async function getStaticProps({params}) {
   const post = data?.post;
 
   // console.log("seo", seo);
+  if(post?.title === undefined || seo?.title === undefined || settings?.headerSettings?.uploadLogo?.sourceUrl === undefined || mainMenus?.length === 0){
+    return {
+      redirect: {
+        permanent: true,
+        destination: "/"
+      }
+    }
+  }
 
   return {
     props: { seo, settings, mainMenus, post },
     revalidate: 10,
-    notFound: !post?.title ? true : false,
   };
 
   // return getNextStaticProps(context, {

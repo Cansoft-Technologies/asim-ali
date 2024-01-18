@@ -1,16 +1,15 @@
 import { gql } from "@apollo/client";
 import { Hero } from "components";
 import AccordionNewBC from "components/AccordionNewBC";
-import BorrowingPayment from "components/BorrowingPayment";
 import ServiceSection from "components/ServiceSection";
 import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
-import Link from "next/link";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -234,7 +233,14 @@ export async function getStaticProps() {
     }
 }`,
   });
-
+  if(!data){
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/"
+      }
+    }
+  }
   return {
     props: {
       settings: data?.settingsOptions?.AsimOptions,

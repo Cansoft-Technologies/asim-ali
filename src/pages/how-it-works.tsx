@@ -140,7 +140,14 @@ export async function getStaticProps() {
       }
     `,
   });
-
+  if(!data){
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/"
+      }
+    }
+  }
   return {
     props: {
       howItWorksData: data?.pages?.nodes,

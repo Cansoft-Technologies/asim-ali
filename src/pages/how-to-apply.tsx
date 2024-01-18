@@ -1,7 +1,6 @@
 import { gql } from "@apollo/client";
 import emailjs from "@emailjs/browser";
 import { Footer, Header, Hero } from "components";
-import ApplySection from "components/ApplySection";
 import ContactSection from "components/ContactSection";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
@@ -112,7 +111,14 @@ export async function getStaticProps() {
       }
     `,
   });
-
+  if(!data){
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/"
+      }
+    }
+  }
   return {
     props: {
       howApplyData: data?.pages?.nodes,

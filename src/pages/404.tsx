@@ -79,11 +79,10 @@ export async function getStaticProps() {
   });
 
   return {
-    props: {
-      settings: data?.settingsOptions?.AsimOptions,
-      mainMenus: data?.menus?.nodes,
-    },
-    revalidate: 60
+    redirect: {
+      permanent: true,
+      destination: "/"
+    }
   };
 }
 
