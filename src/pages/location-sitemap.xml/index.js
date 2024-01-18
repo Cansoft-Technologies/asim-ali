@@ -19,7 +19,7 @@ export default function LocationSitemap() {
 }
 export const getServerSideProps = async ({ res }) => {
   const locationSitemaps = locationRoutes.map((item) => ({
-    loc: `https://asimali.ca${item?.toString()}/`,
+    loc: `https://asimali.ca${item?.toString()}`,
     lastmod: new Date().toISOString(),
     changefreq: "daily",
     priority: 0.9,

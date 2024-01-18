@@ -125,7 +125,7 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
       <Head>
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
-        <link rel="canonical" href={seo?.canonicalUrl} />
+        <link rel="canonical" href={seo?.canonicalUrl?.endsWith("/") ? seo?.canonicalUrl?.slice(0, -1) : seo?.canonicalUrl} />
         <meta property="og:title" content={seo?.title} />
         <meta property="og:description" content={seo?.description} />
         <meta property="og:image" content={seo?.openGraph?.image?.url} />
