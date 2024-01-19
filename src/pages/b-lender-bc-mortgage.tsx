@@ -195,7 +195,10 @@ const BLender = (props: MyProps) => {
   const { settings, mainMenus, bLenderData, metaData } = props;
 
   const [key, setKey] = useState(null);
-
+  // console.log(
+  //   "b lender bc mortgage",
+  //   metaData[0]?.seo?.canonicalUrl?.slice(0, -5)
+  // );
   return (
     <>
       {bLenderData?.map((data, index) => {
@@ -212,7 +215,7 @@ const BLender = (props: MyProps) => {
                       href={
                         meta?.seo?.canonicalUrl?.endsWith("/")
                           ? meta?.seo?.canonicalUrl?.slice(0, -1)
-                          : meta?.seo?.canonicalUrl?.slice(0, -4)
+                          : meta?.seo?.canonicalUrl?.slice(0, -5)
                       }
                     />
                     <meta property="og:title" content={meta?.seo?.title} />
