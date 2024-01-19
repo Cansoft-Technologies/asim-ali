@@ -165,13 +165,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -207,7 +207,14 @@ const BLender = (props: MyProps) => {
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl.replace("%20","")} />
+                    <link
+                      rel="canonical"
+                      href={
+                        meta?.seo?.canonicalUrl?.endsWith("/")
+                          ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                          : meta?.seo?.canonicalUrl?.slice(0, -4)
+                      }
+                    />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
                       property="og:description"
@@ -268,7 +275,14 @@ const BLender = (props: MyProps) => {
                 </Row>
                 <Row className="product-service">
                   <Col className="px-5" md={1}></Col>
-                  <Col className="py-3" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                  <Col
+                    className="py-3"
+                    md={10}
+                    style={{
+                      border: "1px solid #f0b254",
+                      borderRadius: "10px",
+                    }}
+                  >
                     <h2 className="text-center">
                       {data?.BLender?.productsTitle}
                     </h2>
@@ -334,7 +348,9 @@ const BLender = (props: MyProps) => {
                 <Row className="my-5">
                   <Container>
                     <div className="my-5">
-                      <MortgageAdvisor advisorData={data?.BLender?.advisorData} />
+                      <MortgageAdvisor
+                        advisorData={data?.BLender?.advisorData}
+                      />
                     </div>
                   </Container>
                 </Row>
@@ -384,14 +400,14 @@ const BLender = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                  <Row className="mortgage-broker-bottom text-center mt-5">
+                <Row className="mortgage-broker-bottom text-center mt-5">
                   <Col>
                     <h2>{data?.BLender?.bottomBrokerTitle}</h2>
                     <div
-                              dangerouslySetInnerHTML={{
-                                __html: data?.BLender?.bottomBrokerDescription,
-                              }}
-                            ></div>
+                      dangerouslySetInnerHTML={{
+                        __html: data?.BLender?.bottomBrokerDescription,
+                      }}
+                    ></div>
                   </Col>
                 </Row>
                 {/* faq section start */}
