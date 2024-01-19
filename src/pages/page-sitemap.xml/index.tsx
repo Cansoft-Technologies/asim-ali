@@ -80,7 +80,7 @@ export const getServerSideProps = async ({ res }) => {
 
   const fields = [
     {
-      loc: "https://asimali.ca/",
+      loc: "https://asimali.ca",
       lastmod: new Date().toISOString(),
       changefreq: "daily",
       priority: 0.9,
