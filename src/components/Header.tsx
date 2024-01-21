@@ -12,7 +12,7 @@ type MyProps = {
 
 function Header(props: MyProps) {
   const { settings, mainMenus, usingFor } = props;
-  
+
   return (
     <>
       <Container style={{ maxWidth: "100%", backgroundColor: "#12143a" }}>
@@ -91,10 +91,15 @@ function Header(props: MyProps) {
                         <li key={idx}>
                           {item.parentId == null ? (
                             <span>
-                              <Nav.Link as={Link} href={`${item.url}`}>
-                                <span className="link" onClick={() => item.url}>
-                                  {item.label}
-                                </span>
+                              <Nav.Link
+                                as={Link}
+                                href={`${
+                                  item.url.endsWith("/")
+                                    ? item.url.slice(0, -1)
+                                    : item.url
+                                }`}
+                              >
+                                <span className="link">{item.label}</span>
                               </Nav.Link>
                               {item.label !== "Current Rates" && (
                                 <ul className="submenu">
@@ -110,12 +115,13 @@ function Header(props: MyProps) {
                                             <span>
                                               <Nav.Link
                                                 as={Link}
-                                                href={`${submenu.uri}`}
+                                                href={`${
+                                                  submenu.uri.endsWith("/")
+                                                    ? submenu.uri.slice(0, -1)
+                                                    : submenu.uri
+                                                }`}
                                               >
-                                                <span
-                                                  className="sublink"
-                                                  onClick={() => submenu.uri}
-                                                >
+                                                <span className="sublink">
                                                   {submenu.label}
                                                 </span>
                                               </Nav.Link>
@@ -130,12 +136,7 @@ function Header(props: MyProps) {
                                                         "/commercial-mortgage-in-bc"
                                                       }
                                                     >
-                                                      <span
-                                                        className="sublink"
-                                                        onClick={() =>
-                                                          submenu.uri
-                                                        }
-                                                      >
+                                                      <span className="sublink">
                                                         British Columbia
                                                       </span>
                                                     </Nav.Link>
@@ -147,12 +148,7 @@ function Header(props: MyProps) {
                                                         "/commercial-mortgage-in-surrey"
                                                       }
                                                     >
-                                                      <span
-                                                        className="sublink"
-                                                        onClick={() =>
-                                                          submenu.uri
-                                                        }
-                                                      >
+                                                      <span className="sublink">
                                                         Surrey
                                                       </span>
                                                     </Nav.Link>
@@ -164,12 +160,7 @@ function Header(props: MyProps) {
                                                         "/commercial-mortgage-in-vancouver"
                                                       }
                                                     >
-                                                      <span
-                                                        className="sublink"
-                                                        onClick={() =>
-                                                          submenu.uri
-                                                        }
-                                                      >
+                                                      <span className="sublink">
                                                         Vancouver
                                                       </span>
                                                     </Nav.Link>

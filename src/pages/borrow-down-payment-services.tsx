@@ -22,7 +22,7 @@ const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
 const FAQ = dynamic(() => import("components/FAQ"));
 const Gallery = dynamic(() => import("components/Gallery"));
 const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
-const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
+
 
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
 

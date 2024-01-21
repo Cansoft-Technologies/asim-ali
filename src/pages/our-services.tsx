@@ -112,13 +112,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -172,7 +172,14 @@ const Services = (props: MyProps) => {
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+                    <link
+                      rel="canonical"
+                      href={
+                        meta?.seo?.canonicalUrl?.endsWith("/")
+                          ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                          : meta?.seo?.canonicalUrl
+                      }
+                    />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
                       property="og:description"
@@ -211,7 +218,14 @@ const Services = (props: MyProps) => {
                     {data?.services?.ourServices?.map((slide, i) => {
                       return (
                         <div key={i}>
-                          <a className="slide-text" href={`${slide?.serviceLink || '#'}`}>
+                          <a
+                            className="slide-text"
+                            href={`${
+                              slide?.serviceLink?.endsWith("/")
+                                ? slide?.serviceLink?.slice(0, -1)
+                                : slide?.serviceLink || "#"
+                            }`}
+                          >
                             {slide?.serviceTitle}
                           </a>
                         </div>

@@ -114,13 +114,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -176,7 +176,14 @@ const Current = (props: MyProps) => {
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+                    <link
+                      rel="canonical"
+                      href={
+                        meta?.seo?.canonicalUrl?.endsWith("/")
+                          ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                          : meta?.seo?.canonicalUrl
+                      }
+                    />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
                       property="og:description"
@@ -306,7 +313,7 @@ const Current = (props: MyProps) => {
 
               <div className="calculator-cta">
                 <h2>{data?.CurrentRates?.paymentCalculatorTitle}</h2>
-                <Link href={data?.CurrentRates?.paymentCalculatorLink?.url}>
+                <Link href="/mortgage-calculator">
                   <Button className="contactBtn">Mortgage Calculator</Button>
                 </Link>
               </div>

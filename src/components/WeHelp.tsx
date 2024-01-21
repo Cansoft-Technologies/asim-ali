@@ -47,7 +47,13 @@ const WeHelp = (props: MyProps) => {
                   {helps?.helpButton == null ? (
                     ""
                   ) : (
-                    <Link href={helps?.helpButton?.url}>
+                    <Link
+                      href={`${
+                        helps?.helpButton?.url?.endsWith("/")
+                          ? helps?.helpButton?.url?.slice(0, -1)
+                          : helps?.helpButton?.url
+                      }`}
+                    >
                       <Button className="SplitBtn">
                         Get <span>Approved</span>
                       </Button>

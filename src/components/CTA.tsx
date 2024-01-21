@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 type MyProps = {
   contactData?: any;
-}
+};
 const CTA = (props: MyProps) => {
   const [catSections, setCatSections] = useState([]);
   const { contactData } = props;
@@ -96,15 +96,17 @@ const CTA = (props: MyProps) => {
                   </div>
                 </div>
                 <div className="cta-details">
-                <Container className="mb-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: contactData?.description,
-        }}
-        className="text-lg text-start"
-      ></div>
-        </Container>
+                  <Container className="mb-5">
+                    <h2 className="text-center service-title">
+                      {contactData?.title}
+                    </h2>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: contactData?.description,
+                      }}
+                      className="text-lg text-start"
+                    ></div>
+                  </Container>
                 </div>
                 <div className="cta_text mt-5">
                   <p>

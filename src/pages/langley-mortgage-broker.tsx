@@ -1,19 +1,16 @@
-import { gql } from '@apollo/client';
-import { Hero } from 'components';
-import FlexibilityTab from 'components/FlexibilityTab';
-import MortgageAdvisor from 'components/MortgageAdvisor';
-import ServiceSection from 'components/ServiceSection';
-import Head from 'next/head';
-import Image from 'next/image';
-import { Col, Container, Row } from 'react-bootstrap';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import { gql } from "@apollo/client";
+import { Hero } from "components";
+import FlexibilityTab from "components/FlexibilityTab";
+import MortgageAdvisor from "components/MortgageAdvisor";
+import ServiceSection from "components/ServiceSection";
+import Head from "next/head";
+import Image from "next/image";
+import { Col, Container, Row } from "react-bootstrap";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
 
-
-
 export async function getStaticProps() {
-
   const { data } = await apolloClient.query({
     query: gql`query{
       pages(where: {id: 3271}) {
@@ -179,13 +176,13 @@ export async function getStaticProps() {
     }
 }`,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -198,10 +195,14 @@ export async function getStaticProps() {
       featuredImageLeft: data?.pages?.nodes[0]?.NewLangley?.featuredImageLeft,
       featuredImageRight: data?.pages?.nodes[0]?.NewLangley?.featuredImageRight,
       featuredTextRight: data?.pages?.nodes[0]?.NewLangley?.featuredTextRight,
-      bottomFeaturedTextLeft: data?.pages?.nodes[0]?.NewLangley?.bottomFeaturedTextLeft,
-      bottomFeaturedImageLeft: data?.pages?.nodes[0]?.NewLangley?.bottomFeaturedImageLeft,
-      bottomFeaturedImageRight: data?.pages?.nodes[0]?.NewLangley?.bottomFeaturedImageRight,
-      bottomFeaturedTextRight: data?.pages?.nodes[0]?.NewLangley?.bottomFeaturedTextRight,
+      bottomFeaturedTextLeft:
+        data?.pages?.nodes[0]?.NewLangley?.bottomFeaturedTextLeft,
+      bottomFeaturedImageLeft:
+        data?.pages?.nodes[0]?.NewLangley?.bottomFeaturedImageLeft,
+      bottomFeaturedImageRight:
+        data?.pages?.nodes[0]?.NewLangley?.bottomFeaturedImageRight,
+      bottomFeaturedTextRight:
+        data?.pages?.nodes[0]?.NewLangley?.bottomFeaturedTextRight,
       contactData: data?.pages?.nodes[0]?.NewLangley?.homeContactSection,
       tabRenovationData: data?.pages?.nodes[0]?.NewLangley?.tabRenovation,
       tipsTitle: data?.pages?.nodes[0]?.NewLangley?.tipsTitle,
@@ -213,7 +214,7 @@ export async function getStaticProps() {
       benefitTitle: data?.pages?.nodes[0]?.NewLangley?.benefitTitle,
       benefitDescription: data?.pages?.nodes[0]?.NewLangley?.benefitDescription,
     },
-    revalidate: 60
+    revalidate: 60,
   };
 }
 
@@ -231,7 +232,7 @@ type MyProps = {
   bottomFeaturedImageLeft: any;
   bottomFeaturedImageRight: any;
   bottomFeaturedTextRight: any;
-  tipsImageRight  : any;
+  tipsImageRight: any;
   tipsTitle: any;
   tipsDescription: any;
   tipsLeftText: any;
@@ -244,94 +245,147 @@ type MyProps = {
 };
 
 export default function NewLangley(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,mortgageBenefitsData,bottomFeaturedTextLeft,bottomFeaturedImageLeft,bottomFeaturedImageRight,bottomFeaturedTextRight,serviceBannerData,benefitTitle,benefitDescription } = props;
+  const {
+    settings,
+    mainMenus,
+    metaData,
+    contactData,
+    tabRenovationData,
+    featuredTextLeft,
+    featuredImageLeft,
+    featuredImageRight,
+    featuredTextRight,
+    tipsImageRight,
+    tipsLeftText,
+    tipsRightText,
+    tipsDescription,
+    tipsTitle,
+    tipsImageLeft,
+    mortgageBenefitsData,
+    bottomFeaturedTextLeft,
+    bottomFeaturedImageLeft,
+    bottomFeaturedImageRight,
+    bottomFeaturedTextRight,
+    serviceBannerData,
+    benefitTitle,
+    benefitDescription,
+  } = props;
 
-console.log(settings);
+  console.log(settings);
   return (
     <>
       <Head>
         {metaData?.map((meta) => {
-
           return (
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+              <link
+                rel="canonical"
+                href={
+                  meta?.seo?.canonicalUrl?.endsWith("/")
+                    ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                    : meta?.seo?.canonicalUrl
+                }
+              />
               <meta property="og:title" content={meta?.seo?.title} />
-              <meta property="og:description" content={meta?.seo?.description} />
-              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <meta
+                property="og:description"
+                content={meta?.seo?.description}
+              />
+              <meta
+                property="og:image"
+                content={meta?.seo?.openGraph?.image?.url}
+              />
             </>
-          )
+          );
         })}
       </Head>
-        <Header settings={settings} mainMenus={mainMenus} />
+      <Header settings={settings} mainMenus={mainMenus} />
       <main className="content">
         {serviceBannerData?.serviceBannerTitle == null ? (
-                ""
-              ) : (
-                <Hero
-                  title={serviceBannerData?.serviceBannerTitle}
-                  heading={serviceBannerData?.serviceBannerHeading}
-                  description={serviceBannerData?.serviceBannerDescription}
-                  bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
-                />
-              )}
-              <Container className="mb-5">
-              <Row className="coquitlam-grid my-5">
-                  <Col md={7}>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: serviceBannerData?.aboutText,
-                      }}
-                    ></div>
-                  </Col>
-                  <Col md={5}>
-                    <Image
-                      src={serviceBannerData?.aboutImage?.sourceUrl}
-                      alt={serviceBannerData?.aboutImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "cover" }}
-                    />
-                  </Col>
-                </Row>
-                </Container>
-                <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
-                    <h2 className="text-center">
-                      {benefitTitle}
-                    </h2>
-                    <div
-                      className="text-center"
-                      dangerouslySetInnerHTML={{
-                        __html: benefitDescription,
-                      }}
-                    ></div>
-                  </Container>
-        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
-        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
-                    <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
-                    <h2 className="text-center">
-                      {tipsTitle}
-                    </h2>
-                    <div
-                      className="text-center"
-                      dangerouslySetInnerHTML={{
-                        __html: tipsDescription,
-                      }}
-                    ></div>
-                  </Container>
-        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-        <FlexibilityTab tabData={tabRenovationData}/>
-        <ServiceSection textLeft={bottomFeaturedTextLeft} textRight={bottomFeaturedTextRight} imageLeft={bottomFeaturedImageLeft} imageRight={bottomFeaturedImageRight}/>
+          ""
+        ) : (
+          <Hero
+            title={serviceBannerData?.serviceBannerTitle}
+            heading={serviceBannerData?.serviceBannerHeading}
+            description={serviceBannerData?.serviceBannerDescription}
+            bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
+          />
+        )}
         <Container className="mb-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: contactData?.description,
-        }}
-        className="text-lg text-start"
-      ></div>
+          <Row className="coquitlam-grid my-5">
+            <Col md={7}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: serviceBannerData?.aboutText,
+                }}
+              ></div>
+            </Col>
+            <Col md={5}>
+              <Image
+                src={serviceBannerData?.aboutImage?.sourceUrl}
+                alt={serviceBannerData?.aboutImage?.altText}
+                width="390"
+                height="400"
+                priority={true}
+                style={{ width: "100%", objectFit: "cover" }}
+              />
+            </Col>
+          </Row>
+        </Container>
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <h2 className="text-center">{benefitTitle}</h2>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: benefitDescription,
+            }}
+          ></div>
+        </Container>
+        <ServiceSection
+          textLeft={featuredTextLeft}
+          textRight={featuredTextRight}
+          imageLeft={featuredImageLeft}
+          imageRight={featuredImageRight}
+        />
+        <MortgageAdvisor advisorData={mortgageBenefitsData} />
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+        >
+          <h2 className="text-center">{tipsTitle}</h2>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: tipsDescription,
+            }}
+          ></div>
+        </Container>
+        <ServiceSection
+          textLeft={tipsLeftText}
+          textRight={tipsRightText}
+          imageLeft={tipsImageLeft}
+          imageRight={tipsImageRight}
+        />
+        <FlexibilityTab tabData={tabRenovationData} />
+        <ServiceSection
+          textLeft={bottomFeaturedTextLeft}
+          textRight={bottomFeaturedTextRight}
+          imageLeft={bottomFeaturedImageLeft}
+          imageRight={bottomFeaturedImageRight}
+        />
+        <Container className="mb-5">
+          <h2 className="text-center service-title">{contactData?.title}</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: contactData?.description,
+            }}
+            className="text-lg text-start"
+          ></div>
         </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />

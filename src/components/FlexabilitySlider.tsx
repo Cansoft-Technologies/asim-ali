@@ -57,11 +57,14 @@ const FlexabilitySlider = (props: MyProps) => {
                   return (
                     <Carousel.Item key={slide.sliderTitle}>
                       <div className="overlay"></div>
-                      <div className="slider-images" style={{
-                        position: "relative",
-                        height: "80vh",
-                        width: "100%",
-                      }}>
+                      <div
+                        className="slider-images"
+                        style={{
+                          position: "relative",
+                          height: "80vh",
+                          width: "100%",
+                        }}
+                      >
                         <Image
                           src={slide?.sliderImage?.sourceUrl}
                           style={{
@@ -85,7 +88,16 @@ const FlexabilitySlider = (props: MyProps) => {
                                   {slide?.sliderSubtitle}
                                 </p>
                                 <p>{slide?.sliderDescription}</p>
-                                <Link href={slide?.sliderButtonUrl?.url}>
+                                <Link
+                                  href={`${
+                                    slide?.sliderButtonUrl?.url?.endsWith("/")
+                                      ? slide?.sliderButtonUrl?.url?.slice(
+                                          0,
+                                          -1
+                                        )
+                                      : slide?.sliderButtonUrl?.url
+                                  }`}
+                                >
                                   <Button className="bannerBtn">
                                     Get <span>Approved</span>
                                   </Button>

@@ -50,17 +50,21 @@ export default function OurServices(props: MyProps) {
         })}
       </div>
       <div className="service-bottom-section">
-      <div className="service-text-after">
-      <p> What <br/>We <span style={{fontWeight:"700"}}>Do </span></p>
-      </div>
-      <Image
-      className="service-image-after"
-                  height={200}
-                  width={300}
-                  style={{ objectFit: "cover" }}
-                  src={serviceData?.serviceImage?.sourceUrl}
-                  alt={serviceData?.serviceImageAfter?.altText}
-                />
+        <div className="service-text-after">
+          <p>
+            {" "}
+            What <br />
+            We <span style={{ fontWeight: "700" }}>Do </span>
+          </p>
+        </div>
+        <Image
+          className="service-image-after"
+          height={200}
+          width={300}
+          style={{ objectFit: "cover" }}
+          src={serviceData?.serviceImage?.sourceUrl}
+          alt={serviceData?.serviceImageAfter?.altText}
+        />
       </div>
     </Container>
   );

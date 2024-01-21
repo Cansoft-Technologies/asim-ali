@@ -104,13 +104,14 @@ const Footer = (props: MyProps) => {
                           <li key={idx}>
                             {item.parentId == null ? (
                               <span>
-                                <Nav.Link href={`${item.url}`}>
-                                  <span
-                                    className="link"
-                                    onClick={() => item.url}
-                                  >
-                                    {item.label}
-                                  </span>
+                                <Nav.Link
+                                  href={`${
+                                    item.url.endsWith("/")
+                                      ? item.url.slice(0, -1)
+                                      : item.url
+                                  }`}
+                                >
+                                  <span className="link">{item.label}</span>
                                 </Nav.Link>
                                 <ul className="submenu">
                                   {item.childItems.nodes.map(
@@ -120,12 +121,13 @@ const Footer = (props: MyProps) => {
                                           <span>
                                             <Nav.Link
                                               as={Link}
-                                              href={`${submenu.uri}`}
+                                              href={`${
+                                                submenu.uri.endsWith("/")
+                                                  ? submenu.uri.slice(0, -1)
+                                                  : submenu.uri
+                                              }`}
                                             >
-                                              <span
-                                                className="link"
-                                                onClick={() => submenu.uri}
-                                              >
+                                              <span className="link">
                                                 {submenu.label}
                                               </span>
                                             </Nav.Link>
@@ -139,12 +141,7 @@ const Footer = (props: MyProps) => {
                                                       "/commercial-mortgage-in-bc"
                                                     }
                                                   >
-                                                    <span
-                                                      className="link"
-                                                      onClick={() =>
-                                                        submenu.uri
-                                                      }
-                                                    >
+                                                    <span className="link">
                                                       British Columbia
                                                     </span>
                                                   </Nav.Link>
@@ -156,12 +153,7 @@ const Footer = (props: MyProps) => {
                                                       "/commercial-mortgage-in-surrey"
                                                     }
                                                   >
-                                                    <span
-                                                      className="link"
-                                                      onClick={() =>
-                                                        submenu.uri
-                                                      }
-                                                    >
+                                                    <span className="link">
                                                       Surrey
                                                     </span>
                                                   </Nav.Link>
@@ -173,12 +165,7 @@ const Footer = (props: MyProps) => {
                                                       "/commercial-mortgage-in-vancouver"
                                                     }
                                                   >
-                                                    <span
-                                                      className="link"
-                                                      onClick={() =>
-                                                        submenu.uri
-                                                      }
-                                                    >
+                                                    <span className="link">
                                                       Vancouver
                                                     </span>
                                                   </Nav.Link>

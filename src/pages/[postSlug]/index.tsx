@@ -2,9 +2,7 @@ import { gql } from "@apollo/client";
 import { getNextStaticProps, is404 } from "@faustjs/next";
 import { Post, client } from "client";
 const Footer = dynamic(() => import("../../components/Footer"));
-import CustomFooter from "components/CustomFooter";
 const Header = dynamic(() => import("../../components/Header"));
-import CustomHeader from "components/CustomHeader";
 import CustomHero from "components/CustomHero";
 import { apolloClient } from "lib/apollo";
 import { GetStaticPropsContext } from "next";
@@ -125,41 +123,41 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
       <Head>
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
-        <link rel="canonical" href={seo?.canonicalUrl?.endsWith("/") ? seo?.canonicalUrl?.slice(0, -1) : seo?.canonicalUrl} />
+        <link
+          rel="canonical"
+          href={
+            seo?.canonicalUrl?.endsWith("/")
+              ? seo?.canonicalUrl?.slice(0, -1)
+              : seo?.canonicalUrl
+          }
+        />
         <meta property="og:title" content={seo?.title} />
         <meta property="og:description" content={seo?.description} />
         <meta property="og:image" content={seo?.openGraph?.image?.url} />
       </Head>
-      {/* <CustomHeader /> */}
-      <Header settings={settings} mainMenus={mainMenus} />
-        <>
-          <CustomHero
-            title={String(post?.title)}
-            bgImage={String(post?.featuredImage?.node?.sourceUrl)}
-          />
-          <main className="content content-single">
-            <div className="wrap">
-              <h1>{post?.title}</h1>
-              <span className="asim-post-meta">
-                By {post?.author?.node?.name} |{" "}
-                <Moment format="MMM D, YYYY">{post?.date}</Moment>
-              </span>
-              <div
-                style={{ overflowX: "hidden" }}
-                className="post-content"
-                dangerouslySetInnerHTML={{ __html: String(post?.content) }}
-              ></div>
-            </div>
-          </main>
-        </>
-      
-      {/* {!loading ? (
-       
-      ) : (
-        
-      )} */}
 
-      {/* <CustomFooter /> */}
+      <Header settings={settings} mainMenus={mainMenus} />
+      <>
+        <CustomHero
+          title={String(post?.title)}
+          bgImage={String(post?.featuredImage?.node?.sourceUrl)}
+        />
+        <main className="content content-single">
+          <div className="wrap">
+            <h1>{post?.title}</h1>
+            <span className="asim-post-meta">
+              By {post?.author?.node?.name} |{" "}
+              <Moment format="MMM D, YYYY">{post?.date}</Moment>
+            </span>
+            <div
+              style={{ overflowX: "hidden" }}
+              className="post-content"
+              dangerouslySetInnerHTML={{ __html: String(post?.content) }}
+            ></div>
+          </div>
+        </main>
+      </>
+
       <Footer settings={settings} mainMenus={mainMenus} />
     </>
   );
@@ -179,7 +177,7 @@ export default function Page({ seo, settings, mainMenus, post }) {
   );
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps({ params }) {
   const id = params?.postSlug;
   const { data } = await apolloClient.query({
     query: gql`query{
@@ -284,13 +282,18 @@ export async function getStaticProps({params}) {
   const post = data?.post;
 
   // console.log("seo", seo);
-  if(post?.title === undefined || seo?.title === undefined || settings?.headerSettings?.uploadLogo?.sourceUrl === undefined || mainMenus?.length === 0){
+  if (
+    post?.title === undefined ||
+    seo?.title === undefined ||
+    settings?.headerSettings?.uploadLogo?.sourceUrl === undefined ||
+    mainMenus?.length === 0
+  ) {
     return {
       redirect: {
         permanent: true,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
 
   return {
@@ -315,10 +318,11 @@ export async function getStaticPaths() {
           uri
         }
       }
-    }`,});
-    const paths = data?.posts?.nodes?.map((post: { uri: any; }) => ({
-      params: { postSlug: post?.uri },
-    }));
+    }`,
+  });
+  const paths = data?.posts?.nodes?.map((post: { uri: any }) => ({
+    params: { postSlug: post?.uri },
+  }));
   return {
     paths,
     fallback: "blocking",
