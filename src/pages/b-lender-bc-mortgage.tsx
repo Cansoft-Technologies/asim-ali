@@ -195,10 +195,7 @@ const BLender = (props: MyProps) => {
   const { settings, mainMenus, bLenderData, metaData } = props;
 
   const [key, setKey] = useState(null);
-  // console.log(
-  //   "b lender bc mortgage",
-  //   metaData[0]?.seo?.canonicalUrl?.slice(0, -5)
-  // );
+  
   return (
     <>
       {bLenderData?.map((data, index) => {
