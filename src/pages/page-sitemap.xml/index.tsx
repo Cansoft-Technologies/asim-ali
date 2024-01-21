@@ -1,4 +1,3 @@
-
 const locationRoutes = [
   "/mortgage-broker-in-abbotsford",
   "/mortgage-broker-in-coquitlam",
@@ -62,6 +61,8 @@ const data = [
   "/discharge-mortgage-in-bc",
   "/dominion-lending-mortgage-rates",
   "/transparent-vacant-land-mortgage",
+  "/fthbi-calculator-bc",
+  "/readvanceable-mortgage-bc",
 ];
 
 export default function PageSitemap() {
