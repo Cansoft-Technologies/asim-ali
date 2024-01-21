@@ -12,7 +12,7 @@ type MyProps = {
 
 function Header(props: MyProps) {
   const { settings, mainMenus, usingFor } = props;
-  console.log("maddf", mainMenus);
+  
   return (
     <>
       <Container style={{ maxWidth: "100%", backgroundColor: "#12143a" }}>
