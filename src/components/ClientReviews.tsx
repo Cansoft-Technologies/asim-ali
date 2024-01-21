@@ -70,7 +70,7 @@ type MyProps = {
 const ClientReviews = (props: MyProps) => {
   const { reviews } = props;
   const router = useRouter();
-  console.log(reviews);
+  
   return (
     <>
       {reviews?.reviewCard?.length > 1 && (

@@ -76,7 +76,13 @@ const BannerInfo = ({ slide }) => {
             ""
           ) : (
             <Col className="text-center mt-0" xs={12} lg="6">
-              <Link href={slide.sliderButtonUrl.url}>
+              <Link
+                href={`${
+                  slide?.sliderButtonUrl.url.endsWith("/")
+                    ? slide?.sliderButtonUrl.url?.slice(0, -1)
+                    : slide?.sliderButtonUrl.url
+                }`}
+              >
                 <Button className={styles.bannerBtn}>
                   Get <span>Approved</span>
                 </Button>

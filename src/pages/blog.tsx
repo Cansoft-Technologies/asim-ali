@@ -96,13 +96,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -198,7 +198,7 @@ const Blog = (props: MyProps) => {
         setBlogs(result?.data?.posts?.nodes);
       });
   }, [page]);
-
+  // console.log("blogs", blogs);
   return (
     <div>
       <Head>
@@ -207,7 +207,14 @@ const Blog = (props: MyProps) => {
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+              <link
+                rel="canonical"
+                href={
+                  meta?.seo?.canonicalUrl?.endsWith("/")
+                    ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                    : meta?.seo?.canonicalUrl
+                }
+              />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta
                 property="og:description"
@@ -257,7 +264,13 @@ const Blog = (props: MyProps) => {
                             />
                           </div>
                           <div className="card-body">
-                            <Link href={blog.uri}>
+                            <Link
+                              href={`${
+                                blog.uri.endsWith("/")
+                                  ? blog.uri.slice(0, -1)
+                                  : blog.uri
+                              }`}
+                            >
                               <h2 className="card-title">{blog?.title}</h2>
                             </Link>
                             <span>
@@ -272,7 +285,13 @@ const Blog = (props: MyProps) => {
                             ></p>
                           </div>
                           <div className="card-footers p-3">
-                            <Link href={blog.uri}>
+                            <Link
+                              href={`${
+                                blog.uri.endsWith("/")
+                                  ? blog.uri.slice(0, -1)
+                                  : blog.uri
+                              }`}
+                            >
                               <Button className="readMoreBtn">
                                 Read <span>More</span>
                               </Button>
