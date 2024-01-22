@@ -868,6 +868,8 @@ footer {
               cursor: pointer;
               span {
                 float: none;
+                display: block;
+                margin: 5px 5px;
               }
               &:hover {
                 ul.submenu-child {
