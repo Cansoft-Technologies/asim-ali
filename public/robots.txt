@@ -2,6 +2,33 @@
 User-agent: *
 Allow: /
 
+# Disallow specific routes
+Disallow: /blog?lang=fr
+Disallow: /?ignorenitro=
+Disallow: /?3x=
+Disallow: /how-to-apply?refinance=
+Disallow: /blog?et_blog=
+Disallow: /?lang=fr
+Disallow: /?refinance=
+Disallow: /?page_id=
+Disallow: /?pagename=testimonials&desktop=true&lang=fr
+Disallow: /current-rates?lang=fr
+Disallow: /?author=1
+Disallow: /contact-us?desktop=true
+Disallow: /?fbclid=
+Disallow: /current-rates?refinance=
+Disallow: /testimonials?desktop=true
+Disallow: /?desktop=true
+Disallow: /mortgage-affordability-calculator-blog/?lang=fr
+Disallow: /testimonials/?desktop=true
+Disallow: /how-to-apply/?homepurchase
+Disallow: /blog/?desktop=true
+Disallow: /?pagename=testimonials&desktop=true&lang=en
+Disallow: /blog/?lang=fr&et_blog
+Disallow: /?et_core_page_resource
+Disallow: /blog/?desktop=true&et_blog
+Disallow: /mortgages/how-to-apply/?refinance
+
 # Host
 Host: https://asimali.ca/
 
