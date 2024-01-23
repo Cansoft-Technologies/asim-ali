@@ -40,9 +40,9 @@ const SplitImageRight = (props: MyProps) => {
                 ) : (
                   <Link
                     href={`${
-                      splitImagesRight?.splitButton.url?.endsWith("/")
-                        ? splitImagesRight?.splitButton.url?.slice(0, -1)
-                        : splitImagesRight?.splitButton.url
+                      splitImagesRight?.splitButton?.url?.endsWith("/")
+                        ? splitImagesRight?.splitButton?.url?.slice(0, -1)
+                        : splitImagesRight?.splitButton?.url
                     }`}
                   >
                     <Button className="SplitBtn">
