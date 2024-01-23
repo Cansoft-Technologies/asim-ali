@@ -86,9 +86,9 @@ const ApplyApprovedSection = (props: Props) => {
               <Col className="text-start mt-5 link-banner" xs={12} lg="12">
                 <Link
                   href={`${
-                    sliders?.homeSlider[0].sliderButtonUrl.url?.endsWith("/")
-                      ? sliders?.homeSlider[0].sliderButtonUrl.url?.slice(0, -1)
-                      : sliders?.homeSlider[0].sliderButtonUrl.url
+                    sliders?.homeSlider[0]?.sliderButtonUrl?.url?.endsWith("/")
+                      ? sliders?.homeSlider[0]?.sliderButtonUrl?.url?.slice(0, -1)
+                      : sliders?.homeSlider[0]?.sliderButtonUrl?.url
                   }`}
                 >
                   <Button className="apply-button">

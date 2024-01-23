@@ -77,9 +77,9 @@ const Banner = (props: MyProps) => {
                           >
                             <Link
                               href={`${
-                                slide?.sliderButtonUrl.url.endsWith("/")
-                                  ? slide?.sliderButtonUrl.url?.slice(0, -1)
-                                  : slide?.sliderButtonUrl.url
+                                slide?.sliderButtonUrl?.url?.endsWith("/")
+                                  ? slide?.sliderButtonUrl?.url?.slice(0, -1)
+                                  : slide?.sliderButtonUrl?.url
                               }`}
                             >
                               <Button className={styles.bannerBtn}>
