@@ -160,7 +160,6 @@ const inValidUrls = [
   "/new-com-coquitlam",
   "/new-mortgage-broker-in-delta",
   "/category/uncategorized/after/YXJyYXljb25uZWN0aW9uOjE2MzI=",
-  "/pre-approval-blog",
   "/cdn-cgi/l/email-protection",
   "/category/uncategorized/after/YXJyYXljb25uZWN0aW9uOjE2MjM=",
   "/category/uncategorized/page/3",
