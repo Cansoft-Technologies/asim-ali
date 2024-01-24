@@ -39,7 +39,6 @@ Disallow: /cdn-cgi/l/email-protection
 Disallow: /category/uncategorized/page/3/
 Disallow: /tag/mortgage/
 Disallow: /mortgages/current-rates/?refinance
-Disallow: /m
 Disallow: /tools/current-rates/?lang=fr
 Disallow: /contact-a-mortgage-broker?desktop=true
 Disallow: /wp-content/uploads/2020/08/ApplicationForm_AsimAli_20200810.pdf
