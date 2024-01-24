@@ -37,11 +37,6 @@ module.exports = withBundleAnalyzer(
       async redirects() {
         return [
           {
-            source: "/b-lender-mortgage-bc",
-            destination: "/b-lender-bc-mortgage",
-            permanent: true,
-          },
-          {
             source: "/refinance-your-mortgage-in-vancouver",
             destination: "/",
             permanent: true,
