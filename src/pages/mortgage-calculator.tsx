@@ -128,13 +128,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -168,7 +168,10 @@ const Calculator = (props: MyProps) => {
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+                    <link
+                      rel="canonical"
+                      href="https://asimali.ca/mortgage-calculator"
+                    />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
                       property="og:description"
@@ -184,19 +187,20 @@ const Calculator = (props: MyProps) => {
             </Head>
             <Header settings={settings} mainMenus={mainMenus} />
             <div>
-            <main className="content">
-              {data?.newMortgagecalculator?.calculatorBannerTitle == null ? (
-                ""
-              ) : (
-                <Hero
-                  title={data?.newMortgagecalculator?.calculatorBannerTitle}
-                  bgImage={
-                    data?.newMortgagecalculator?.calculatorBannerImage?.sourceUrl
-                  }
-                />
-              )}
+              <main className="content">
+                {data?.newMortgagecalculator?.calculatorBannerTitle == null ? (
+                  ""
+                ) : (
+                  <Hero
+                    title={data?.newMortgagecalculator?.calculatorBannerTitle}
+                    bgImage={
+                      data?.newMortgagecalculator?.calculatorBannerImage
+                        ?.sourceUrl
+                    }
+                  />
+                )}
 
-                  <Container className="my-5">
+                <Container className="my-5">
                   <Row className="mortgagecalculator-heading text-center my-5 service-title">
                     <p>
                       {
@@ -213,60 +217,65 @@ const Calculator = (props: MyProps) => {
                       </span>
                     </p>
                   </Row>
-                     <div
-                     className="mortgagecalculator-content my-5"
-                      dangerouslySetInnerHTML={{
-                        __html: data?.newMortgagecalculator?.calculatorPageContent,
-                      }}
-                    ></div>
+                  <div
+                    className="mortgagecalculator-content my-5"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        data?.newMortgagecalculator?.calculatorPageContent,
+                    }}
+                  ></div>
                   <div className="tab-btn">
-                  <Link
-                            href={"/apply-now"}
-                          >
-                            <Button className="HeadBtn">
-                              Apply <span>Now</span>
-                            </Button>
-                          </Link>
+                    <Link href={"/apply-now"}>
+                      <Button className="HeadBtn">
+                        Apply <span>Now</span>
+                      </Button>
+                    </Link>
                   </div>
                 </Container>
-              <Container className="my-5">
-                <Row className="coquitlam-grid my-5">
-            <Col md={7}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: data?.newMortgagecalculator?.aboutText,
-                }}
-              ></div>
-            </Col>
-            <Col md={5}>
-              <Image
-                src={data?.newMortgagecalculator?.aboutImage?.sourceUrl}
-                alt={data?.newMortgagecalculator?.aboutImage?.altText}
-                width="390"
-                height="400"
-                priority={true}
-                style={{ width: "100%", objectFit: "cover" }}
-              />
-            </Col>
-          </Row>
-              </Container>
-                <FeaturedSection featuredData={data?.newMortgagecalculator?.homebuyerSection} />
-        <ServiceSection
-          textLeft={data?.newMortgagecalculator?.tipsLeftText}
-          textRight={data?.newMortgagecalculator?.tipsRightText}
-          imageLeft={data?.newMortgagecalculator?.tipsImageLeft}
-          imageRight={data?.newMortgagecalculator?.tipsImageRight}
-        />
-        <Container className="mb-5">
-          <h2 className="text-center service-title">{data?.newMortgagecalculator?.homeContactSection?.title}</h2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: data?.newMortgagecalculator?.homeContactSection?.description,
-            }}
-            className="text-lg text-start"
-          ></div>
-        </Container>
-            </main>
+                <Container className="my-5">
+                  <Row className="coquitlam-grid my-5">
+                    <Col md={7}>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: data?.newMortgagecalculator?.aboutText,
+                        }}
+                      ></div>
+                    </Col>
+                    <Col md={5}>
+                      <Image
+                        src={data?.newMortgagecalculator?.aboutImage?.sourceUrl}
+                        alt={data?.newMortgagecalculator?.aboutImage?.altText}
+                        width="390"
+                        height="400"
+                        priority={true}
+                        style={{ width: "100%", objectFit: "cover" }}
+                      />
+                    </Col>
+                  </Row>
+                </Container>
+                <FeaturedSection
+                  featuredData={data?.newMortgagecalculator?.homebuyerSection}
+                />
+                <ServiceSection
+                  textLeft={data?.newMortgagecalculator?.tipsLeftText}
+                  textRight={data?.newMortgagecalculator?.tipsRightText}
+                  imageLeft={data?.newMortgagecalculator?.tipsImageLeft}
+                  imageRight={data?.newMortgagecalculator?.tipsImageRight}
+                />
+                <Container className="mb-5">
+                  <h2 className="text-center service-title">
+                    {data?.newMortgagecalculator?.homeContactSection?.title}
+                  </h2>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        data?.newMortgagecalculator?.homeContactSection
+                          ?.description,
+                    }}
+                    className="text-lg text-start"
+                  ></div>
+                </Container>
+              </main>
             </div>
             <Footer settings={settings} mainMenus={mainMenus} />
           </div>
