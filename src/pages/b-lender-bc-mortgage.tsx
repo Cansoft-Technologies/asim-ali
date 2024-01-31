@@ -195,7 +195,7 @@ const BLender = (props: MyProps) => {
   const { settings, mainMenus, bLenderData, metaData } = props;
 
   const [key, setKey] = useState(null);
-  
+
   return (
     <>
       {bLenderData?.map((data, index) => {
@@ -209,11 +209,7 @@ const BLender = (props: MyProps) => {
                     <meta name="description" content={meta?.seo?.description} />
                     <link
                       rel="canonical"
-                      href={
-                        meta?.seo?.canonicalUrl?.endsWith("/")
-                          ? meta?.seo?.canonicalUrl?.slice(0, -1)
-                          : meta?.seo?.canonicalUrl?.slice(0, -5)
-                      }
+                      href="https://asimali.ca/b-lender-bc-mortgage"
                     />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
