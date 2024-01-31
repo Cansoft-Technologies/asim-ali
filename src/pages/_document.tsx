@@ -44,7 +44,7 @@ class MyDocument extends Document {
       },
       offers: {
         "@type": "Offer",
-        url: "https://asimali.ca/",
+        url: "https://asimali.ca",
         priceCurrency: "CAD",
         price: "499",
         priceValidUntil: "2020-12-31",
