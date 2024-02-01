@@ -7,50 +7,47 @@ class MyDocument extends Document {
   }
 
   render() {
-    const schema = {
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      name: "Mortgage Brokers",
-      image: [
-        "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-9.webp",
-        "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/home-banner.webp",
-        "https://hy3nzzcq6pe8xlv2r634wluzm.js.wpenginepowered.com/wp-content/uploads/2023/03/mortgage-broker-surrey-8.webp",
-      ],
-      description:
-        "Asim Ali and his team of the best mortgage brokers in Surrey will help you with the best mortgage rates available.",
-      sku: "CAN1971SEO",
-      mpn: "925872",
-      brand: {
-        "@type": "Brand",
-        name: "Asim Ali",
-      },
-      review: {
-        "@type": "Review",
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
-        },
-        author: {
-          "@type": "Person",
-          name: "Ghazala Sarwar",
-        },
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        bestRating: "5",
-        ratingCount: "213",
-      },
-      offers: {
-        "@type": "Offer",
-        url: "https://asimali.ca",
-        priceCurrency: "CAD",
-        price: "499",
-        priceValidUntil: "2020-12-31",
-        availability: "https://schema.org/InStock",
-      },
-    };
+    const schema = { 
+    "@context" : "http://schema.org",
+
+    "@type" : "Organization", 
+
+    address : {
+
+        "@type": "PostalAddress",
+
+         addressCountry: "CANADA",
+
+        addressLocality: "Surrey", 
+
+        addressRegion: "BC", 
+
+        postalCode: "V3W 1A4", 
+
+        streetAddress: "7327 137 St Suite 311"
+
+        }, 
+
+    name:"Expert Mortgage Broker for Tailored Financing Solutions",
+
+    image:"https://asimali.ca/_next/image?url=https%3A%2F%2Fasimaliprod.wpengine.com%2Fwp-content%2Fuploads%2F2022%2F11%2Flogo.png&w=384&q=75",
+
+    url:"https://asimali.ca",
+
+    email:"clientcare@asimali.ca",
+
+    telephone:"+1 604-591-3590",
+    
+    aggregateRating:{
+
+        "@type":"AggregateRating",
+
+        ratingValue:"4.8",
+
+        reviewCount:"226"
+
+        }
+};
   return (
     <Html lang="en-US">
       <Head>
