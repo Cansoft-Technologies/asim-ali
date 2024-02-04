@@ -29,6 +29,9 @@ module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
       optimizeImages: true,
+      experimental: {
+        nextScriptWorkers: true,
+      },
       images: {
         domains: ["localhost", "asimaliprod.wpengine.com"],
         optimized: false,
