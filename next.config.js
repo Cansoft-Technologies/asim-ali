@@ -28,10 +28,7 @@ function oldPageRedirectRules() {
 module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
-      optimizeImages: true,
-      experimental: {
-        nextScriptWorkers: true,
-      },
+      optimizeImages: false,
       images: {
         domains: ["localhost", "asimaliprod.wpengine.com"],
         optimized: false,

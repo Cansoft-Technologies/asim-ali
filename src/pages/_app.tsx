@@ -31,11 +31,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Script
-        defer
         src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
-        strategy="worker"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="worker">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
