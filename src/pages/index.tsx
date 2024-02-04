@@ -470,6 +470,7 @@ export default function Page(props: MyProps) {
                     alt={singleLogo.altText}
                     style={{ objectFit: "contain", width: "100%" }}
                     loading="lazy"
+                    quality={100}
                   />
                 </div>
               );

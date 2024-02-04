@@ -31,7 +31,7 @@ module.exports = withBundleAnalyzer(
       optimizeImages: true,
       images: {
         domains: ["localhost", "asimaliprod.wpengine.com"],
-        optimized: true,
+        optimized: false,
         allowFutureImage: true,
       },
       async redirects() {
