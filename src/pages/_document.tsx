@@ -80,6 +80,7 @@ class MyDocument extends Document {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           key="product-jsonld"
+          defer
         />
       </Head>
       <body>
