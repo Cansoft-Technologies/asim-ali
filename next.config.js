@@ -92,7 +92,7 @@ module.exports = withBundleAnalyzer(
             headers: [
               {
                 key: "Cache-Control",
-                value: "public, max-age=9999999999, must-revalidate",
+                value: "Cache-Control: public, max-age=31536000, immutable",
               },
             ],
           },
