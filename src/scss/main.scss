@@ -797,6 +797,13 @@ body {
 .brand-mail span {
   color: $color-secondary;
 }
+
+.apply-form-title {
+  font-size: 32px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
 // footer style
 
 footer {
@@ -3259,6 +3266,9 @@ p.testimonials-name {
         }
       }
     }
+  }
+  .apply-form-title {
+    font-size: 24px;
   }
 }
 @media screen and (min-width: 768px) {

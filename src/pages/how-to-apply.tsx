@@ -111,13 +111,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -172,7 +172,14 @@ function HowtoApply(props) {
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+                    <link
+                      rel="canonical"
+                      href={
+                        meta?.seo?.canonicalUrl?.endsWith("/")
+                          ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                          : meta?.seo?.canonicalUrl
+                      }
+                    />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
                       property="og:description"
@@ -225,39 +232,14 @@ function HowtoApply(props) {
                   <Row>
                     <Col md={12}>
                       <div className="easyapplication-title">
-                        <h2>{data?.HowToApply?.fromTitle}</h2>
+                        <p style={{ fontWeight: 500 }} className="apply-form-title">
+                          {data?.HowToApply?.fromTitle}
+                        </p>
                         <p>{data?.HowToApply?.fromSubtitle}</p>
                       </div>
 
-                      {/* <div className="application-container">
-                        <form ref={form} onSubmit={sendEmail}>
-                          <input
-                            placeholder="Full Name"
-                            type="text"
-                            name="fullname"
-                          />
-                          <input
-                            placeholder="Email"
-                            type="email"
-                            name="email"
-                          />
-                          <input placeholder="Phone" type="text" name="phone" />
-                          <input
-                            value="Send"
-                            type="submit"
-                            className="contactBt"
-                          />
-                          {success && (
-                            <div
-                              className="alert alert-success mt-4"
-                              role="alert"
-                            >
-                              Your message was sent Successfully
-                            </div>
-                          )}
-                        </form>
-                      </div> */}
-                      <ContactSection/>
+                      
+                      <ContactSection />
                     </Col>
                     <Col md={6}></Col>
                   </Row>
