@@ -19,6 +19,7 @@ const SplitImageLeft = (props: MyProps) => {
                   src={splitImagesLeft?.splitImage?.sourceUrl}
                   fill
                   alt={splitImagesLeft?.splitImage?.altText}
+                  quality={100}
                 />
               </div>
             </Col>

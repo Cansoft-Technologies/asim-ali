@@ -49,6 +49,7 @@ const Meeting = (props: MyProps) => {
                       fill
                       style={{ height: "100%", width: "100%" }}
                       alt={meetings?.meetingImage?.altText}
+                      quality={100}
                     />
                   </div>
                 </Col>

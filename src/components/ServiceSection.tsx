@@ -31,6 +31,7 @@ export default function ServiceSection(props: MyProps) {
                   width="390"
                   height="400"
                   style={{ width: "100%", objectFit: "cover", height: "45vh" }}
+                  quality={100}
                 />
               </div>
             </Col>
@@ -56,6 +57,7 @@ export default function ServiceSection(props: MyProps) {
                   width="390"
                   height="400"
                   style={{ width: "100%", objectFit: "cover", height: "45vh" }}
+                  quality={100}
                 />
               </div>
             </Col>

@@ -32,6 +32,7 @@ export default function MortgageAdvisor(props: MyProps) {
                 src={advisorData?.advisorImage?.sourceUrl}
                 fill
                 alt={advisorData?.advisorImage?.altText}
+                quality={100}
               />
             </div>
           </Col>
