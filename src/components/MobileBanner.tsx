@@ -37,7 +37,7 @@ const MobileBanner = (props: MyProps) => {
                 width: "100%",
                 height: "500px",
               }}
-              priority={true}
+              quality={100}
             />
             <div
               style={{
