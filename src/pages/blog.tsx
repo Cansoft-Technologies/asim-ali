@@ -143,6 +143,7 @@ const Blog = (props: MyProps) => {
                 featuredImage {
                   node {
                     sourceUrl
+                    altText
                   }
                 }
                 excerpt
@@ -177,6 +178,7 @@ const Blog = (props: MyProps) => {
                 featuredImage {
                   node {
                     sourceUrl
+                    altText
                   }
                 }
                 excerpt
