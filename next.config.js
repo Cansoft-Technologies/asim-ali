@@ -30,7 +30,19 @@ module.exports = withBundleAnalyzer(
     withPWA({
       optimizeImages: false,
       images: {
-        domains: ["localhost", "asimaliprod.wpengine.com"],
+        // domains: ["localhost", "asimaliprod.wpengine.com"],
+        remotePatterns: [
+          {
+            protocol: "https",
+            hostname: "asimaliprod.wpengine.com",
+            pathname: "**",
+          },
+          {
+            protocol: "http",
+            hostname: "localhost",
+            pathname: "**",
+          },
+        ],
         optimized: false,
         allowFutureImage: true,
       },
