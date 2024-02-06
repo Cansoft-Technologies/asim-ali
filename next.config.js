@@ -93,6 +93,11 @@ module.exports = withBundleAnalyzer(
             destination: "/blog",
             permanent: true,
           },
+          {
+            source: "/how-to-apply",
+            destination: "/apply-now",
+            permanent: true,
+          },
           ...oldPageRedirectRules(),
         ];
       },

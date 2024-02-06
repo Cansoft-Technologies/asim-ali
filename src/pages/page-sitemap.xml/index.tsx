@@ -49,7 +49,6 @@ const data = [
   "/current-rates",
   "/financing-for-business-in-bc",
   "/how-it-works",
-  "/how-to-apply",
   "/mortgage-calculator",
   "/mortgage-for-self-employed",
   "/mortgage-refinance-calculator-bc",
