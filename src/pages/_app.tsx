@@ -43,7 +43,7 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext);
 
   if (appContext.ctx.res?.statusCode === 404) {
-    appContext.ctx.res.writeHead(302, { Location: "/" });
+    appContext.ctx.res.writeHead(301, { Location: "/" });
     appContext.ctx.res.end();
   }
 
