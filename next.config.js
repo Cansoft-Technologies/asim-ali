@@ -46,14 +46,6 @@ module.exports = withBundleAnalyzer(
         optimized: false,
         allowFutureImage: true,
       },
-      async rewrites() {
-        return [
-          {
-            source: '/:path*',
-            destination: '/',
-          },
-        ];
-    },
       async redirects() {
         return [
           {
