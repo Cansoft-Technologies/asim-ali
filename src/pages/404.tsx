@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { Header, Hero, Footer } from "../components";
-import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { Footer, Header, Hero } from "../components";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -100,7 +99,21 @@ export default function Page(props: MyProps): JSX.Element {
 
   return (
     <>
-      
+      <Header settings={settings} mainMenus={mainMenus} />
+      <main className="content content-page">
+        <Hero title={`Oops! That page can’t be found.`} />
+        <div className="wrap">
+          <div>
+            <div>
+              <p>
+                The page you were looking for does not exist or is no longer
+                available.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+      <Footer settings={settings} mainMenus={mainMenus} />
     </>
   );
 }
