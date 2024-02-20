@@ -1,16 +1,12 @@
 import { gql } from "@apollo/client";
-import { getNextStaticProps, is404 } from "@faustjs/next";
-import { Post, client } from "client";
-const Footer = dynamic(() => import("../../components/Footer"));
-const Header = dynamic(() => import("../../components/Header"));
+import { Post } from "client";
 import CustomHero from "components/CustomHero";
 import { apolloClient } from "lib/apollo";
-import { GetStaticPropsContext } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import Moment from "react-moment";
+const Footer = dynamic(() => import("../../components/Footer"));
+const Header = dynamic(() => import("../../components/Header"));
 
 export interface PostProps {
   post: Post | Post["preview"]["node"] | null | undefined;
@@ -20,104 +16,6 @@ export interface PostProps {
 }
 
 export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
-  const [metaData, setMetaData] = useState([]);
-  const router = useRouter();
-  // const [settings, setSettings] = useState();
-  // const [mainMenus, setMainMenus] = useState();
-
-  // useEffect(() => {
-  //   apolloClient
-  //     .query({
-  //       query: gql`query{
-  //       posts(where: {id: ${post?.postId}}) {
-  //         nodes {
-  //           seo {
-  //             title
-  //             description
-  //             canonicalUrl
-  //             focusKeywords
-  //             openGraph {
-  //               image {
-  //                 url
-  //               }
-  //             }
-  //           }
-
-  //         }
-  //       }
-  //       settingsOptions {
-  //         AsimOptions {
-  //           headerSettings {
-  //             uploadLogo {
-  //               sourceUrl
-  //               altText
-  //             }
-  //             uploadLogoMobile {
-  //               sourceUrl
-  //               altText
-  //             }
-  //           }
-  //           generalSettings {
-  //               schemaProductRating
-  //           }
-  //           footerSettings {
-  //             socialUrl {
-  //               facebook
-  //               tiktok
-  //               linkedin
-  //               instagram
-  //             }
-  //             copyrightText
-  //             footerLeftWidget {
-  //               title
-  //               phoneNumber
-  //               emailAddress
-  //             }
-  //             footerLogoSection {
-  //               logoText
-  //               logoUpload {
-  //                 altText
-  //                 sourceUrl
-  //               }
-  //             }
-  //             footerRightWidget {
-  //               title
-  //               address
-  //             }
-  //           }
-  //         }
-  //       }
-
-  //       menus(where: {location: PRIMARY}) {
-  //         nodes {
-  //           name
-  //           slug
-  //           menuItems(first: 50){
-  //             nodes {
-  //               url
-  //               target
-  //               parentId
-  //               label
-  //               cssClasses
-  //               description
-  //               id
-  //               childItems (first: 50) {
-  //                 nodes {
-  //                   uri
-  //                   label
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }`,
-  //     })
-  //     .then((result) => {
-  //       setMetaData(result?.data?.posts?.nodes);
-
-  //     });
-  // }, [post]);
   return (
     <>
       <Head>
@@ -164,9 +62,6 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
 }
 
 export default function Page({ seo, settings, mainMenus, post }) {
-  // const { usePost } = client;
-  // const post = usePost();
-
   return (
     <PostComponent
       post={post}
@@ -281,7 +176,6 @@ export async function getStaticProps({ params }) {
   const mainMenus = data?.menus?.nodes;
   const post = data?.post;
 
-  // console.log("seo", seo);
   if (
     post?.title === undefined ||
     seo?.title === undefined ||
@@ -300,14 +194,6 @@ export async function getStaticProps({ params }) {
     props: { seo, settings, mainMenus, post },
     revalidate: 10,
   };
-
-  // return getNextStaticProps(context, {
-  //   seo,
-  //   settings,
-  //   mainMenus,
-  //   client,
-  //   notFound: await is404(context, { client }),
-  // });
 }
 
 export async function getStaticPaths() {
