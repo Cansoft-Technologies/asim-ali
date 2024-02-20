@@ -106,13 +106,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -146,7 +146,14 @@ const Contact = (props: MyProps) => {
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+                    <link
+                      rel="canonical"
+                      href={
+                        meta?.seo?.canonicalUrl?.endsWith("/")
+                          ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                          : meta?.seo?.canonicalUrl
+                      }
+                    />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
                       property="og:description"
@@ -160,7 +167,11 @@ const Contact = (props: MyProps) => {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} usingFor='apply-now'/>
+            <Header
+              settings={settings}
+              mainMenus={mainMenus}
+              usingFor="apply-now"
+            />
 
             <main className="content">
               <Hero
@@ -213,7 +224,7 @@ const Contact = (props: MyProps) => {
                     )}
 
                     <Col xs={12} lg="8">
-                      <ContactSection/>
+                      <ContactSection />
                     </Col>
                   </Row>
                 </Container>
@@ -225,7 +236,11 @@ const Contact = (props: MyProps) => {
                 ></div>
               </div>
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} usingFor='apply-now'/>
+            <Footer
+              settings={settings}
+              mainMenus={mainMenus}
+              usingFor="apply-now"
+            />
           </div>
         );
       })}
