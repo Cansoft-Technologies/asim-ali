@@ -362,45 +362,7 @@ const HowItWorks = (props: MyProps) => {
                 <h2 className="text-end works-title">
                   {data?.HowItWorks?.sixthTitle}
                 </h2>
-                {/* <Row>
-                  <Col md={6}>
-                    <Image
-                      src={data?.HowItWorks?.sixthImage?.sourceUrl}
-                      alt={data?.HowItWorks?.sixthImage?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "cover" }}
-                    />
-                  </Col>
-                  <Col md={6}>
-                    <Image
-                      src={data?.HowItWorks?.sixthImage2?.sourceUrl}
-                      alt={data?.HowItWorks?.sixthImage2?.altText}
-                      width="390"
-                      height="400"
-                      priority={true}
-                      style={{ width: "100%", objectFit: "cover" }}
-                    />
-                  </Col>
-                </Row> */}
-                {/* <Row>
-                        <Col md={8}>
-                            
-                            </Col>
-                            <Col md={4}>
-                            <Image 
-                               src={data?.HowItWorks?.sixthImage2?.sourceUrl}
-                               loader={myLoader}
-                               alt={data?.HowItWorks?.sixthImage2?.altText}
-                               width="190" 
-                               height="150" 
-                               layout="responsive" 
-                               objectFit="contain"
-                                />
-                            </Col>
-                            
-                        </Row> */}
+                
               </Container>
             </main>
             <Footer settings={settings} mainMenus={mainMenus} />

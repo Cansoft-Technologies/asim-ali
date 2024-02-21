@@ -200,7 +200,7 @@ const Blog = (props: MyProps) => {
         setBlogs(result?.data?.posts?.nodes);
       });
   }, [page]);
-  // console.log("blogs", blogs);
+  
   return (
     <div>
       <Head>
