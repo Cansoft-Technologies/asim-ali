@@ -21,7 +21,7 @@ function oldPageRedirectRules() {
     return {
       source: `${url}`,
       destination: `/`,
-      permanent: true,
+      statusCode: 301,
     };
   });
 }
@@ -51,52 +51,57 @@ module.exports = withBundleAnalyzer(
           {
             source: "/refinance-your-mortgage-in-vancouver",
             destination: "/",
-            permanent: true,
+            statusCode: 301,
           },
           {
             source: "/best-mortgage-rates-in-vancouver",
             destination: "/",
-            permanent: true,
+            statusCode: 301,
           },
           {
             source: "/vancouver-empty-home-tax",
             destination: "/",
-            permanent: true,
+            statusCode: 301,
           },
           {
             source: "/vancity-mortgage-calculator",
             destination: "/",
-            permanent: true,
+            statusCode: 301,
           },
           {
             source: "/mortgage-fund-canada",
             destination: "/",
-            permanent: true,
+            statusCode: 301,
           },
           {
             source: "/our-locations",
             destination: "/",
-            permanent: false,
+            statusCode: 301,
           },
           {
             source: "/what-we-do",
             destination: "/",
-            permanent: false,
+            statusCode: 301,
           },
           {
             source: "/borrow-down-bc",
             destination: "/borrow-down-payment-services",
-            permanent: true,
+            statusCode: 301,
           },
           {
             source: "/blogs",
             destination: "/blog",
-            permanent: true,
+            statusCode: 301,
           },
           {
             source: "/how-to-apply",
             destination: "/apply-now",
-            permanent: true,
+            statusCode: 301,
+          },
+          {
+            source: "/:slug/",
+            destination: "/:slug",
+            statusCode: 301,
           },
           ...oldPageRedirectRules(),
         ];
