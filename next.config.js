@@ -29,6 +29,7 @@ module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
       optimizeImages: false,
+      trailingSlash: false,
       images: {
         // domains: ["localhost", "asimaliprod.wpengine.com"],
         remotePatterns: [
