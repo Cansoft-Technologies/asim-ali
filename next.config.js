@@ -29,6 +29,7 @@ module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
       optimizeImages: false,
+      skipTrailingSlashRedirect: true,
       trailingSlash: false,
       pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
       images: {

@@ -1,27 +1,21 @@
-import type { NextRequest } from 'next/server'
-
-import { NextResponse } from 'next/server'
+import { NextRequest, NextFetchEvent, NextResponse } from "next/server";
 
 // Block Poland, prefer Canada
-const BLOCKED_COUNTRY = 'PL'
+const BLOCKED_COUNTRY = ["PL"];
 
-// Limit middleware pathname config
-export const config = {
-  matcher: '/',
-}
 
-export function middleware(req: NextRequest) {
+export function middleware(req: NextRequest, _next: NextFetchEvent, res: NextResponse) {
   // Extract country
-  const country = req.geo.country;
-  if(req.nextUrl.pathname === '/blocked') {
-    if (country === BLOCKED_COUNTRY) {
+  const country = req.geo?.country ?? "";
+  // Specify the correct pathname
+  if (BLOCKED_COUNTRY?.includes(country)) {
+    return NextResponse.redirect(new URL("/blocked", req.url));
+  }
+  if(req.nextUrl?.pathname === "/blocked") {
+    if (BLOCKED_COUNTRY?.includes(country)) {
       return NextResponse.next();
     }
-    return NextResponse.redirect('/');
+    return NextResponse.redirect(new URL("/", req.url));
   }
-
-  // Specify the correct pathname
-  if (country === BLOCKED_COUNTRY) {
-    return NextResponse.redirect('/blocked');
-  }
+  
 }
