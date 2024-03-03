@@ -29,9 +29,8 @@ module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
       optimizeImages: false,
-      skipTrailingSlashRedirect: true,
       trailingSlash: false,
-      pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
+      pageExtensions: ['ts', 'tsx'],
       images: {
         // domains: ["localhost", "asimaliprod.wpengine.com"],
         remotePatterns: [
