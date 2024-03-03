@@ -30,6 +30,7 @@ module.exports = withBundleAnalyzer(
     withPWA({
       optimizeImages: false,
       trailingSlash: false,
+      pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
       images: {
         // domains: ["localhost", "asimaliprod.wpengine.com"],
         remotePatterns: [
