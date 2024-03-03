@@ -3,8 +3,9 @@ import { NextRequest, NextFetchEvent, NextResponse } from "next/server";
 // Block Poland, prefer Canada
 const BLOCKED_COUNTRY = ["PL"];
 export const config = {
-  matcher: "/",
-}
+  matcher: ["/"], // paths on which middleware will work
+};
+
 
 export function middleware(req: NextRequest, _next: NextFetchEvent, res: NextResponse) {
   // Extract country
