@@ -9,6 +9,7 @@ interface Props {
   description?: string;
   id?: string;
   bgImage?: string;
+  usingFor?: string;
   buttonText?: string;
   buttonURL?: string;
   button2Text?: string;
@@ -29,7 +30,11 @@ function Hero({
   button2URL,
   children,
   buttonLeft,
+  usingFor,
 }: Props): JSX.Element {
+  var words = title.split(' ');
+  var first = words.shift();
+  var others = words.join(' ');
   return (
     <section
       // eslint-disable-next-line react/jsx-props-no-spreading
@@ -39,7 +44,16 @@ function Hero({
     >
       <div className={styles.wrap}>
         <div className="hero-title-col col-xl-6 offset-xl-6">
-          <p className="hero-title">
+          {
+            usingFor === 'blocked' ? (
+              <p className="hero-title">
+            {first}
+              <span>
+                {others}
+              </span>
+          </p>
+            ) : (
+              <p className="hero-title">
             {title?.split(" ")[0]}
             {title?.split(" ")[1] && title?.split(" ")[2] ? (
               <span>
@@ -50,6 +64,8 @@ function Hero({
             )}
             {/* <span>{title?.split(" ")[1]}</span> */}
           </p>
+            )
+          }
         </div>
         <div className="banner-bottom col-md-11 offset-md-1 mt-5">
           <p className="heading">{heading}</p>
