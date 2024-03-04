@@ -29,6 +29,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           // If my ip country code is in blacklist
           router.push('/access-denied') // Access denied error
         }
+        if (!blacklist_countries.includes(result.country) && router.pathname === '/access-denied') {
+          // If my ip country code is in blacklist
+          router.push('/') // redirect to homepage
+        }
       })
       .catch((error) => console.log("error", error));
   }
