@@ -21,6 +21,18 @@ const blacklist_countries = [
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  function get_country_code(api_url: string) {
+    fetch(api_url, { method: "GET" })
+      .then((response) => response.json()) // Getting ip info as json
+      .then((result) => {
+        if (blacklist_countries.includes(result.country)) {
+          // If my ip country code is in blacklist
+          router.push('/access-denied') // Access denied error
+        }
+      })
+      .catch((error) => console.log("error", error));
+  }
+  get_country_code("https://get.geojs.io/v1/ip/country.json");
   useEffect(() => {
     const handleRouteChange = (url: any) => {
       pageview(url);
@@ -49,17 +61,5 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
     appContext.ctx.res.writeHead(301, { Location: "/" });
     appContext.ctx.res.end();
   }
-  function get_country_code(api_url: string) {
-    fetch(api_url, { method: "GET" })
-      .then((response) => response.json()) // Getting ip info as json
-      .then((result) => {
-        if (blacklist_countries.includes(result.country)) {
-          // If my ip country code is in blacklist
-          appContext.ctx.res.writeHead(403, { Location: "/access-denied" }); // Access denied error
-        }
-      })
-      .catch((error) => console.log("error", error));
-  }
-  get_country_code("https://get.geojs.io/v1/ip/country.json");
   return { ...appProps };
 };
