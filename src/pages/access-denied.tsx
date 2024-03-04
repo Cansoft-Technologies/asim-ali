@@ -6,7 +6,7 @@ export default function Page(): JSX.Element {
     <>
       <Head>
         <>
-          <title>Blocked For Legal Reasons</title>
+          <title>Access Denied!!!</title>
           <meta name="robots" content="noindex,nofollow" />
         </>
       </Head>
