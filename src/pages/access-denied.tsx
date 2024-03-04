@@ -11,7 +11,7 @@ export default function Page(): JSX.Element {
         </>
       </Head>
       <main className="content content-page">
-        <Hero usingFor="blocked" title={`Sorry! This Site is Restricted.`} />
+        <Hero usingFor="blocked" title={`Sorry! Access is Denied!`} />
         <div className="wrap">
           <div>
             <div>
