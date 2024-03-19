@@ -31,11 +31,11 @@ const SplitImageRight = (props: MyProps) => {
                     __html: splitImagesRight?.splitTitle,
                   }}
                 ></h2>
-                <p
+                <div
                   dangerouslySetInnerHTML={{
                     __html: splitImagesRight?.splitDescription,
                   }}
-                ></p>
+                ></div>
                 {splitImagesRight?.splitButton == null ? (
                   ""
                 ) : (

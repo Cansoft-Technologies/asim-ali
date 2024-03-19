@@ -3,7 +3,7 @@ import "faust.config";
 import { FaustProvider } from "@faustjs/next";
 import { useEffect } from "react";
 import "scss/main.scss";
-
+import { SSRProvider } from 'react-bootstrap';
 import { client } from "client";
 
 import App, { AppContext } from "next/app";
@@ -49,11 +49,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
   return (
+    <SSRProvider>
     <>
       <FaustProvider client={client} pageProps={pageProps}>
         <Component {...pageProps} />
       </FaustProvider>
     </>
+    </SSRProvider>
   );
 }
 
