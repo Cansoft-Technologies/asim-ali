@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Container } from "react-bootstrap";
 import { apolloClient } from "../lib/apollo";
+import { Fragment } from "react";
 const HomeComponents = dynamic(() => import("components/HomeComponents"));
 const Footer = dynamic(() => import("../components/Footer"));
 const Header = dynamic(() => import("../components/Header"));
@@ -426,9 +427,9 @@ export default function Page(props: MyProps) {
   return (
     <>
       <Head>
-        {metaData?.map((meta) => {
+        {metaData?.map((meta, index) => {
           return (
-            <>
+            <Fragment key={index}>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
               <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
@@ -441,12 +442,7 @@ export default function Page(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
-              <link
-                rel="preload"
-                href={msliders?.homeSlider[0].mobileImage?.sourceUrl}
-                as="image"
-              />
-            </>
+            </Fragment>
           );
         })}
       </Head>
@@ -462,12 +458,12 @@ export default function Page(props: MyProps) {
           <div className="ms-auto mt-5 footer-partner-logo">
             {bottomPartnerLogoSection?.map((singleLogo) => {
               return (
-                <div key={singleLogo.sourceUrl}>
+                <div key={singleLogo?.sourceUrl}>
                   <Image
-                    src={singleLogo.sourceUrl}
+                    src={singleLogo?.sourceUrl}
                     width="350"
                     height="150"
-                    alt={singleLogo.altText}
+                    alt={singleLogo?.altText}
                     style={{ objectFit: "contain", width: "100%" }}
                     loading="lazy"
                     quality={100}

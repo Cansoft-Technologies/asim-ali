@@ -45,7 +45,7 @@ Disallow: /wp-content/uploads/2020/08/ApplicationForm_AsimAli_20200810.pdf
 Disallow: /ApplicationForm_AsimAli_20200810.pdf
 
 # Host
-Host: https://asimali.ca/
+Host: https://asimali.ca
 
 # Sitemaps
 Sitemap: https://asimali.ca/sitemap.xml

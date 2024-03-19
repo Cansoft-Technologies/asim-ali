@@ -23,19 +23,23 @@ const Team = (props: MyProps) => {
                 backgroundImage: `url("${teams?.teamImage?.sourceUrl}")`,
               }}
             >
-              <div className={styles.overlay}>
+              {
+                teams?.teamTitle && teams?.teamDescription && (
+                  <div className={styles.overlay}>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: teams?.teamTitle,
                   }}
                 ></div>
-                <p
+                <div
                   className={styles.description}
                   dangerouslySetInnerHTML={{
                     __html: teams?.teamDescription,
                   }}
-                ></p>
+                ></div>
               </div>
+                )
+              }
             </div>
           )}
         </div>
