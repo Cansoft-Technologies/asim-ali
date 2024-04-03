@@ -98,6 +98,12 @@ module.exports = withBundleAnalyzer(
             statusCode: 301,
           },
           {
+            source: "/b-lender-mortgage-bc",
+            destination: "/b-lender-bc-mortgage",
+            permanent: true,
+            statusCode: 301,
+          },
+          {
             source: "/blogs",
             destination: "/blog",
             permanent: true,
