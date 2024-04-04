@@ -69,23 +69,23 @@ const HomeComponents = (props: Props) => {
   } = props;
   return (
     <>
+      <Meeting meetings={meetings} />
+      <MortgageFeaturedHome advisorData={mortgageInterestData} />
+      <MortgageAdvisor advisorData={advisorData} />
+      <FlexibilityTab tabData={tabRenovationData} />
+      <ApplyApprovedSection
+        approvalRenovationData={approvalRenovationData}
+        sliders={sliders}
+      />
+      <SplitImageLeft splitImagesLeft={splitImagesLeft} />
       <Team teams={teamData} />
-      <ServiceSection
+      <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+      {/* <ServiceSection
         textLeft={featuredTextLeft}
         textRight={featuredTextRight}
         imageLeft={featuredImageLeft}
         imageRight={featuredImageRight}
       />
-      <ApplyApprovedSection
-        approvalRenovationData={approvalRenovationData}
-        sliders={sliders}
-      />
-      <Meeting meetings={meetings} />
-      <MortgageAdvisor advisorData={advisorData} />
-      <SplitImageRight splitImagesRight={splitImagesRight} />
-      <MortgageFeaturedHome advisorData={mortgageInterestData} />
-      <SplitImageLeft splitImagesLeft={splitImagesLeft} />
-      <FlexibilityTab tabData={tabRenovationData} />
       <MortgageAdvisor advisorData={mortgageServiceData} />
       <Container
         className="mb-5 px-3 py-3"
@@ -104,8 +104,7 @@ const HomeComponents = (props: Props) => {
         textRight={tipsRightText}
         imageLeft={tipsImageLeft}
         imageRight={tipsImageRight}
-      />
-      <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+      /> */}
       <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
         <div
