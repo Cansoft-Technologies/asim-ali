@@ -14,6 +14,65 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
   width: 19px;
   display: block;
 }
+
+.rates-table {
+  overflow: hidden;
+  position: relative;
+  margin-top: 25px;
+  padding: 30px 15px;
+  background: #fff;
+  border: 1px solid #DDE6E9;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(27, 27, 27, 0.15);
+  color: #000000;
+  // &:before {
+  //   content: "";
+  //   width: 37.5%;
+  //   height: 100%;
+  //   top: 0;
+  //   bottom: 0;
+  //   right: 0;
+  //   position: absolute;
+  //   background-color: #004282;
+  // }
+}
+.variable-prime-rates {
+  padding: 20px;
+  border: 1px solid #DDE6E9;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.rates > .row:nth-child(even) .col-2:nth-child(n+4) {
+  background: #002141;
+  border-radius: 0;
+}
+.rates > .row:nth-child(even) .col-2:nth-child(n+4) {
+  border-right: none;
+}
+.rates > .row .col-2:nth-child(4) {
+  background: transparent;
+}
+.rates > .row .col-2:nth-child(n+4) {
+  background: #004282;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+}
+.rates > .row:nth-child(even) .col-2 {
+  background: #F5F5F8;
+  border-top: 1px solid #DDE6E9;
+  border-bottom: 1px solid #DDE6E9;
+}
+.rates .col-2 {
+  text-align: right;
+  padding: 10px 15px;
+}
+
+.rates .col-2 {
+  font-size: 14px;
+}
 .link-banner {
   display: flex;
   align-items: center;
