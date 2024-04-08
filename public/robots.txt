@@ -32,7 +32,6 @@ Disallow: /_next/image?url=https%3A%2F%2Fasimaliprod.wpengine.com%2Fwp-content%2
 Disallow: /_next/image?url=https%3A%2F%2Fasimaliprod.wpengine.com%2Fwp-content%2Fuploads%2F2023%2F03%2Fmortgage-broker-surrey-8.webp&w=3840&q=75
 Disallow: /blog/page/4?et_blog=&lang=fr
 Disallow: /category/uncategorized/after/YXJyYXljb25uZWN0aW9uOjQ4Mg==
-Disallow: /mortgage/Mortgage-Calculator.html
 Disallow: /category/uncategorized
 Disallow: /blog/page/2?desktop=true&et_blog=
 Disallow: /cdn-cgi/l/email-protection
