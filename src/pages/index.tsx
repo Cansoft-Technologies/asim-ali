@@ -71,6 +71,13 @@ export async function getStaticProps() {
               sourceUrl
               altText
             }
+            teamImages {
+              image {
+                sourceUrl
+                altText
+              }
+              linkUrl
+            }
           }
           featuredTextLeft
           featuredTextRight

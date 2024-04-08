@@ -264,7 +264,11 @@ body {
   margin: auto;
   padding: 25px;
 }
-
+.split_section {
+  a{
+  color: #495057;
+  }
+}
 .first-buyer-calculator-card {
   border: 1px solid;
   border-color: rgb(23 25 28 / 20%);
@@ -1927,7 +1931,37 @@ textarea#comment {
     margin: 10px;
   }
 }
-
+.slide-div{
+  .slide-card{
+    // border: 1px solid $color-secondary;
+    border-radius: 10px;
+    margin: 13px;
+    padding: 10px;
+    text-align: center;
+    background-color: #ffffff;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    box-shadow: #7a7a7a 0px 0px 10px 0px;
+  }
+    .react-multiple-carousel__arrow {
+      background-color: transparent;
+      &:before {
+        color: $color-secondary;
+      }
+      &:hover {
+        background: transparent;
+      }
+    }
+    .react-multiple-carousel__arrow--left {
+      left: calc(0% + -15px);
+    }
+    .react-multiple-carousel__arrow--right {
+      right: calc(0% + -15px);
+    }
+}
 .our-services {
   a.slide-text {
     border: 1px solid $color-secondary;
@@ -2967,7 +3001,6 @@ p.testimonials-name {
       width: 100%;
     }
   }
-
   .team_section h2,
   .meeting_section h3,
   .split_section .split_text h2 {
