@@ -59,7 +59,9 @@ const Team = (props: MyProps) => {
                     __html: teams?.teamDescription,
                   }}
                 ></div>
-                <Container className="my-5 slide-div">
+              {
+                teams?.teamImages && (
+                  <Container className="my-5 slide-div">
                 {teams?.teamImages === null ? (
                   ""
                 ) : (
@@ -88,6 +90,8 @@ const Team = (props: MyProps) => {
                   </Carousel>
                 )}
                 </Container>
+                )
+              }
               </div>
                 )
               }

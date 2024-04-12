@@ -163,7 +163,7 @@ const Calculator = (props: MyProps) => {
         return (
           <div key={index} className="our-locations">
             <Head>
-              {metaData?.map((meta) => {
+              {metaData?.map((meta,index) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>

@@ -10,6 +10,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
+import { Fragment } from 'react';
 
 
 
@@ -268,17 +269,17 @@ console.log(settings);
   return (
     <>
       <Head>
-        {metaData?.map((meta) => {
+        {metaData?.map((meta,index) => {
 
           return (
-            <>
+            <Fragment key={index}>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
               <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta property="og:description" content={meta?.seo?.description} />
               <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
-            </>
+            </Fragment>
           )
         })}
       </Head>

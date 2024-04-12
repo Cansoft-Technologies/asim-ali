@@ -275,7 +275,7 @@ export default function NewLangley(props: MyProps) {
   return (
     <>
       <Head>
-        {metaData?.map((meta) => {
+        {metaData?.map((meta,index) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
