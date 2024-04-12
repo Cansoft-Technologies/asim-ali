@@ -204,7 +204,7 @@ const Blog = (props: MyProps) => {
   return (
     <div>
       <Head>
-        {metaData?.map((meta) => {
+        {metaData?.map((meta,index) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
