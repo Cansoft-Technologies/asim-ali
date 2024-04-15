@@ -374,18 +374,62 @@ export default function NewUninsured(props: MyProps) {
             }}
           ></div>
         </Container>
-        <ServiceSection
+        <Container
+          className="mb-5 py-3 my-5"
+          style={{ border: "1px solid #000000", borderRadius: "10px" }}
+        >
+          <table>
+  <tbody>
+    <tr style={{ borderBottom: "1px solid #000000", backgroundColor: "#f0b254", fontSize: "20px"}}>
+      <td><strong>Insurable</strong></td>
+      <td><strong>Uninsurable</strong></td>
+    </tr>
+    <tr style={{ borderBottom: "1px solid #000000"}}>
+      <td>Purchase price less than $1 million</td>
+      <td>Purchase price of $1 million or more</td>
+    </tr>
+    <tr style={{ borderBottom: "1px solid #000000"}}>
+      <td>Property is located in Canada</td>
+      <td>Property is outside Canada</td>
+    </tr>
+    <tr style={{ borderBottom: "1px solid #000000"}}>
+      <td>Amortization period of 25 years or less</td>
+      <td>Amortization period that is longer than 25 years</td>
+    </tr>
+    <tr style={{ borderBottom: "1px solid #000000"}}>
+      <td>Owner occupied residence</td>
+      <td>Single-unit non-owner occupied rental property</td>
+    </tr>
+    <tr style={{ borderBottom: "1px solid #000000"}}>
+      <td>New purchase or mortgage renewal.</td>
+      <td>Increasing the mortgage amount when refinancing your mortgage</td>
+    </tr>
+    <tr>
+      <td>Meets CMHC requirements, including: <br />
+A credit score above 600
+• A gross debt service ratio of 39% or less 
+A total debt service ratio of 44% or less</td>
+      <td>Does not meet CMHC requirements, such as: <br />
+A bad credit score below 600 
+A gross debt service ratio greater than 39%
+A total debt service ratio greater than 44%</td>
+    </tr>
+  </tbody>
+</table>
+        </Container>
+
+        {/* <ServiceSection
           textLeft={tipsLeftText}
           textRight={tipsRightText}
           imageLeft={tipsImageLeft}
           imageRight={tipsImageRight}
-        />
-        <ServiceSection
+        /> */}
+        {/* <ServiceSection
           textLeft={serviceLeftText}
           textRight={serviceRightText}
           imageLeft={serviceImageLeft}
           imageRight={serviceImageRight}
-        />
+        /> */}
         <FlexibilityTab tabData={tabRenovationData} />
         <HomeBuyerSection homebuyerData={homebuyerSectionData} />
         <Container className="mb-5">
