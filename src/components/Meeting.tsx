@@ -47,13 +47,13 @@ const Meeting = (props: MyProps) => {
             <Row>
               <Col lg={12} md={6}>
                 <div className="variable-prime-rates">
-                  <h2>6.30 <span>%</span></h2>
+                  <p>6.30 <span>%</span></p>
                   <span className="small-print">Current Variable Rate</span>
                 </div>
               </Col>
               <Col lg={12} md={6}>
                 <div className="variable-prime-rates">
-                  <h2>7.20 <span>%</span></h2>
+                  <p>7.20 <span>%</span></p>
                   <span className="small-print">Current Prime Rate</span>
                 </div>
               </Col>

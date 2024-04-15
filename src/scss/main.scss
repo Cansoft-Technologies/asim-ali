@@ -42,6 +42,11 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
   border-radius: 5px;
   margin-bottom: 20px;
   text-align: center;
+  p{
+    font-size: 30px;
+    font-weight: 700;
+    color: $color-secondary;
+  }
 }
 
 .rates > .row:nth-child(even) .col-2:nth-child(n+4) {
