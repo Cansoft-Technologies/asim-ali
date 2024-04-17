@@ -12,6 +12,12 @@ const locationRoutes = [
   "/mortgage-broker-in-nanaimo",
   "/mortgage-broker-in-campbell-river",
   "/trusted-mortgage-broker-in-chilliwack",
+  "/mortgage-broker-in-yaletown",
+  "/mortgage-broker-in-kitsilano",
+  "/mortgage-broker-in-fairview",
+  "/mortgage-broker-in-kerrisdale",
+  "/mortgage-broker-in-shaughnessy",
+  "/mortgage-broker-in-gastown",
 ];
 
 export default function LocationSitemap() {

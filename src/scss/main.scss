@@ -220,6 +220,54 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     }
   }
 }
+.tb-btn-left {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  margin-top: 30px;
+  .HeadBtn {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: $color-secondary;
+    // color: $color-secondary;
+    font-family: "AvenirBlack";
+    background: $color-white;
+    // background: transparent;
+    border: 1px solid $color-primary;
+    // border: 2px solid $color-black;
+    text-transform: uppercase;
+    &:hover {
+      background: $color-black;
+      color: $color-secondary;
+      border: 1px solid $color-primary;
+    }
+  }
+}
+.tb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  .HeadBtn {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: $color-secondary;
+    // color: $color-secondary;
+    font-family: "AvenirBlack";
+    background: $color-white;
+    // background: transparent;
+    border: 1px solid $color-primary;
+    // border: 2px solid $color-black;
+    text-transform: uppercase;
+    &:hover {
+      background: $color-black;
+      color: $color-secondary;
+      border: 1px solid $color-primary;
+    }
+  }
+}
 .hero-title-post {
   position: relative;
   .hero-title {
