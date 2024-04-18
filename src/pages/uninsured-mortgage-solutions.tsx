@@ -6,7 +6,7 @@ import MortgageAdvisor from "components/MortgageAdvisor";
 import ServiceSection from "components/ServiceSection";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
@@ -40,6 +40,11 @@ export async function getStaticProps() {
               }
               aboutText
               aboutImage {
+                altText
+                sourceUrl
+              }
+              shortText
+              shortImage {
                 altText
                 sourceUrl
               }
@@ -355,12 +360,34 @@ export default function NewUninsured(props: MyProps) {
           </Row>
         </Container>
         <MortgageAdvisor advisorData={mortgageBenefitsData} />
+        <Container className="mb-5">
+          <Row className="coquitlam-grid my-5">
+            <Col md={7}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: serviceBannerData?.shortText,
+                }}
+              ></div>
+            </Col>
+            <Col md={5}>
+              <Image
+                src={serviceBannerData?.shortImage?.sourceUrl}
+                alt={serviceBannerData?.shortImage?.altText}
+                width="390"
+                height="400"
+                priority={true}
+                style={{ width: "100%", objectFit: "cover" }}
+              />
+            </Col>
+          </Row>
+        </Container>
         <ServiceSection
           textLeft={featuredTextLeft}
           textRight={featuredTextRight}
           imageLeft={featuredImageLeft}
           imageRight={featuredImageRight}
         />
+        <FlexibilityTab tabData={tabRenovationData} />
         <MortgageAdvisor advisorData={advisorData} />
         <Container
           className="mb-5 px-3 py-3 my-5"
@@ -378,44 +405,54 @@ export default function NewUninsured(props: MyProps) {
           className="mb-5 py-3 my-5"
           style={{ border: "1px solid #000000", borderRadius: "10px" }}
         >
-          <table>
-  <tbody>
-    <tr style={{ borderBottom: "1px solid #000000", backgroundColor: "#f0b254", fontSize: "20px"}}>
-      <td><strong>Insurable</strong></td>
-      <td><strong>Uninsurable</strong></td>
-    </tr>
-    <tr style={{ borderBottom: "1px solid #000000"}}>
-      <td>Purchase price less than $1 million</td>
-      <td>Purchase price of $1 million or more</td>
-    </tr>
-    <tr style={{ borderBottom: "1px solid #000000"}}>
-      <td>Property is located in Canada</td>
-      <td>Property is outside Canada</td>
-    </tr>
-    <tr style={{ borderBottom: "1px solid #000000"}}>
-      <td>Amortization period of 25 years or less</td>
-      <td>Amortization period that is longer than 25 years</td>
-    </tr>
-    <tr style={{ borderBottom: "1px solid #000000"}}>
-      <td>Owner occupied residence</td>
-      <td>Single-unit non-owner occupied rental property</td>
-    </tr>
-    <tr style={{ borderBottom: "1px solid #000000"}}>
-      <td>New purchase or mortgage renewal.</td>
-      <td>Increasing the mortgage amount when refinancing your mortgage</td>
-    </tr>
-    <tr>
-      <td>Meets CMHC requirements, including: <br />
-A credit score above 600
-• A gross debt service ratio of 39% or less 
-A total debt service ratio of 44% or less</td>
-      <td>Does not meet CMHC requirements, such as: <br />
-A bad credit score below 600 
-A gross debt service ratio greater than 39%
-A total debt service ratio greater than 44%</td>
-    </tr>
-  </tbody>
-</table>
+          <div style={{ border: '1px solid #dee2e6', borderRadius: '5px', marginBottom: '15px' }}>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Criteria</th>
+              <th>Insured Mortgages</th>
+              <th>Uninsured Mortgages</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Insurance Coverage</td>
+              <td>Backed by government or private insurance.</td>
+              <td>No mortgage insurance.</td>
+            </tr>
+            <tr>
+              <td>Down Payment</td>
+              <td>Lower down payment requirements (e.g., 5% in Canada).</td>
+              <td>Requires a larger down payment (typically 20% or more).</td>
+            </tr>
+            <tr>
+              <td>Interest Rates</td>
+              <td>Generally lower due to insurance coverage.</td>
+              <td>Slightly higher due to increased lender risk.</td>
+            </tr>
+            <tr>
+              <td>Eligibility Criteria</td>
+              <td>More lenient for credit scores and down payments.</td>
+              <td>Stricter requirements for credit and income stability.</td>
+            </tr>
+            <tr>
+              <td>Loan Limits</td>
+              <td>Limited by government or insurer guidelines.</td>
+              <td>No specific loan limits.</td>
+            </tr>
+            <tr>
+              <td>Cost of Insurance</td>
+              <td>Premiums are added to monthly payments.</td>
+              <td>No insurance costs.</td>
+            </tr>
+            <tr>
+              <td>Property Type</td>
+              <td>Restrictions on property types (e.g., primary residence).</td>
+              <td>More flexibility in financing different property types.</td>
+            </tr>
+          </tbody>
+        </Table>
+      </div>
         </Container>
 
         {/* <ServiceSection
@@ -430,7 +467,7 @@ A total debt service ratio greater than 44%</td>
           imageLeft={serviceImageLeft}
           imageRight={serviceImageRight}
         /> */}
-        <FlexibilityTab tabData={tabRenovationData} />
+        
         <HomeBuyerSection homebuyerData={homebuyerSectionData} />
         <Container className="mb-5">
           <h2 className="text-center service-title">{contactData?.title}</h2>
