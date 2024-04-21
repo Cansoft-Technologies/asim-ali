@@ -20,6 +20,7 @@ const locationRoutes = [
   "/mortgage-broker-in-gastown",
   "/mortgage-broker-in-mount-pleasant",
   "/mortgage-broker-in-oakridge",
+  "/mortgage-broker-in-cloverdale",
 ];
 
 export default function LocationSitemap() {

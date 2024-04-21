@@ -7,7 +7,7 @@ import ServiceSection from "components/ServiceSection";
 import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
@@ -393,6 +393,50 @@ export default function NewConstructionFinancing(props: MyProps) {
         </Container>
 
         <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
+        <Container className="mt-5" style={{ border: '1px solid #dee2e6', borderRadius: '5px', padding: '15px' }}>
+        <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Draw Stage</th>
+          <th>Required Building Completion</th>
+          <th>Construction Stage</th>
+          <th>% of Total Mortgage Amount Advanced</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1st Draw (Optional)</td>
+          <td><strong>15% complete</strong></td>
+          <td>Excavation and foundation complete</td>
+          <td>15%</td>
+        </tr>
+        <tr>
+        <td>2nd Draw</td>
+        <td><strong>40% complete</strong></td>
+        <td>Rooftop is on, the building is weather-protected (i.e. airtight, access secured)</td>
+        <td>25%</td>
+        </tr>
+        <tr>
+        <td>3rd Draw</td>
+        <td><strong>65% complete</strong></td>
+        <td>Plumbing and wiring is started, plaster/ drywall is complete, furnace installed, exterior wall cladding complete, etc.</td>
+          <td>20%</td>
+        </tr>
+        <tr>
+        <td>4th Draw</td>
+        <td><strong>65% complete</strong></td>
+        <td>Kitchen cupboards installed, bathroom completed, doors have been hung, etc.</td>
+          <td>20%</td>
+        </tr>
+        <tr>
+        <td>5th Draw</td>
+        <td><strong>100% complete</strong></td>
+        <td>Ready for occupancy with seasonal and exterior work completed</td>
+        <td>15%</td>
+        </tr>
+      </tbody>
+    </Table>
+        </Container>
 
         {/* <Container>
           <Row

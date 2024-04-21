@@ -177,35 +177,23 @@ function Header(props: MyProps) {
                                                     <Nav.Link
                                                       as={Link}
                                                       href={
-                                                        "/mortgage-broker-in-yaletown"
-                                                      }
-                                                    >
-                                                      <span className="sublink">
-                                                        Yaletown
-                                                      </span>
-                                                    </Nav.Link>
-                                                  </li>
-                                                  <li>
-                                                    <Nav.Link
-                                                      as={Link}
-                                                      href={
-                                                        "/mortgage-broker-in-kitsilano"
-                                                      }
-                                                    >
-                                                      <span className="sublink">
-                                                        Kitsilano
-                                                      </span>
-                                                    </Nav.Link>
-                                                  </li>
-                                                  <li>
-                                                    <Nav.Link
-                                                      as={Link}
-                                                      href={
                                                         "/mortgage-broker-in-fairview"
                                                       }
                                                     >
                                                       <span className="sublink">
                                                         Fairview
+                                                      </span>
+                                                    </Nav.Link>
+                                                  </li>
+                                                  <li>
+                                                    <Nav.Link
+                                                      as={Link}
+                                                      href={
+                                                        "/mortgage-broker-in-gastown"
+                                                      }
+                                                    >
+                                                      <span className="sublink">
+                                                      Gastown
                                                       </span>
                                                     </Nav.Link>
                                                   </li>
@@ -225,23 +213,11 @@ function Header(props: MyProps) {
                                                     <Nav.Link
                                                       as={Link}
                                                       href={
-                                                        "/mortgage-broker-in-shaughnessy"
+                                                        "/mortgage-broker-in-kitsilano"
                                                       }
                                                     >
                                                       <span className="sublink">
-                                                      Shaughnessy
-                                                      </span>
-                                                    </Nav.Link>
-                                                  </li>
-                                                  <li>
-                                                    <Nav.Link
-                                                      as={Link}
-                                                      href={
-                                                        "/mortgage-broker-in-gastown"
-                                                      }
-                                                    >
-                                                      <span className="sublink">
-                                                      Gastown
+                                                        Kitsilano
                                                       </span>
                                                     </Nav.Link>
                                                   </li>
@@ -269,6 +245,74 @@ function Header(props: MyProps) {
                                                       </span>
                                                     </Nav.Link>
                                                   </li>
+                                                  <li>
+                                                    <Nav.Link
+                                                      as={Link}
+                                                      href={
+                                                        "/mortgage-broker-in-shaughnessy"
+                                                      }
+                                                    >
+                                                      <span className="sublink">
+                                                      Shaughnessy
+                                                      </span>
+                                                    </Nav.Link>
+                                                  </li>
+                                                  <li>
+                                                    <Nav.Link
+                                                      as={Link}
+                                                      href={
+                                                        "/mortgage-broker-in-yaletown"
+                                                      }
+                                                    >
+                                                      <span className="sublink">
+                                                        Yaletown
+                                                      </span>
+                                                    </Nav.Link>
+                                                  </li>
+
+                                                </ul>
+                                              ) : (
+                                                ""
+                                              )}
+                                              {submenu?.label ==
+                                              "Surrey" ? (
+                                                <ul className="submenu-child">
+                                                  <li>
+                                                    <Nav.Link
+                                                      as={Link}
+                                                      href={
+                                                        "/mortgage-broker-in-cloverdale"
+                                                      }
+                                                    >
+                                                      <span className="sublink">
+                                                        Cloverdale
+                                                      </span>
+                                                    </Nav.Link>
+                                                  </li>
+                                                  {/* <li>
+                                                    <Nav.Link
+                                                      as={Link}
+                                                      href={
+                                                        "/commercial-mortgage-in-surrey"
+                                                      }
+                                                    >
+                                                      <span className="sublink">
+                                                        Surrey
+                                                      </span>
+                                                    </Nav.Link>
+                                                  </li>
+                                                  <li>
+                                                    <Nav.Link
+                                                      as={Link}
+                                                      href={
+                                                        "/commercial-mortgage-in-vancouver"
+                                                      }
+                                                    >
+                                                      <span className="sublink">
+                                                        Vancouver
+                                                      </span>
+                                                    </Nav.Link>
+                                                  </li> */}
                                                 </ul>
                                               ) : (
                                                 ""
