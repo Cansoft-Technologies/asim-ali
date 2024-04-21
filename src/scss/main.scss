@@ -1370,15 +1370,18 @@ q.review-content {
 .homebuyer-items {
   gap: 10px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
 
   .card {
     padding-top: 15px;
     width: 300px;
-    height: 450px;
-    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    border: 1px solid $color-black; /* Ensure all cards have the same border width */
+
     .card-index {
       display: flex;
       align-items: center;
@@ -1395,18 +1398,15 @@ q.review-content {
         font-weight: 700;
         color: #f0b254;
         line-height: 2.5rem;
+        margin-bottom: 10px; /* Adjust spacing between index and title */
       }
     }
+
     .card-body {
-      margin-top: -10px;
       .card-title {
         font-size: 24px;
         font-weight: 700;
-      }
-      p {
-        span {
-          font-size: 14px;
-        }
+        margin-bottom: 10px; /* Adjust spacing between title and description */
       }
     }
   }

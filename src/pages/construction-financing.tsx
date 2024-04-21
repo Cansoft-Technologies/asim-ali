@@ -394,7 +394,7 @@ export default function NewConstructionFinancing(props: MyProps) {
 
         <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
 
-        <Container>
+        {/* <Container>
           <Row
             className="mortgage-broker text-center"
             style={{ marginTop: "80px" }}
@@ -408,13 +408,14 @@ export default function NewConstructionFinancing(props: MyProps) {
               </p>
             </Col>
           </Row>
-        </Container>
+        </Container> */}
         <ServiceSection
           textLeft={expertsHelpData?.helpLeftText}
           textRight={expertsHelpData?.helpRightText}
           imageLeft={expertsHelpData?.helpLeftImage}
           imageRight={expertsHelpData?.helpRightImage}
         />
+        <AccordionNewBC homebuyerData={commonConcernsData} />
 
         <Container
           className="mb-5 px-3 py-3"
@@ -441,10 +442,10 @@ export default function NewConstructionFinancing(props: MyProps) {
           imageRight={reasonRightImage}
         />
 
-        <TabNewBC tabData={tabWhyChooseData} />
-        <HomeBuyerNewBC advisorData={borrowingProcessData} />
+        {/* <TabNewBC tabData={tabWhyChooseData} />
+        <HomeBuyerNewBC advisorData={borrowingProcessData} /> */}
 
-        <h2 className="text-center  ">{loanTitle}</h2>
+        {/* <h2 className="text-center  ">{loanTitle}</h2>
         <hr
           style={{
             width: "350px",
@@ -459,9 +460,7 @@ export default function NewConstructionFinancing(props: MyProps) {
           textRight={reasonRightTextCopy}
           imageLeft={reasonLeftImageCopy}
           imageRight={reasonRightImageCopy}
-        />
-
-        <AccordionNewBC homebuyerData={commonConcernsData} />
+        /> */}
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div
