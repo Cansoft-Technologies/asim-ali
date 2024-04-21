@@ -18,6 +18,8 @@ const locationRoutes = [
   "/mortgage-broker-in-kerrisdale",
   "/mortgage-broker-in-shaughnessy",
   "/mortgage-broker-in-gastown",
+  "/mortgage-broker-in-mount-pleasant",
+  "/mortgage-broker-in-oakridge",
 ];
 
 export default function LocationSitemap() {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
 type MyProps = {
@@ -6,6 +6,7 @@ type MyProps = {
 };
 export default function HomeBuyerSection(props: MyProps) {
   const { homebuyerData } = props;
+
 
   return (
     <section className="my-5">
