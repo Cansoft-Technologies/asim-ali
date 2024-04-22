@@ -21,6 +21,9 @@ const locationRoutes = [
   "/mortgage-broker-in-mount-pleasant",
   "/mortgage-broker-in-oakridge",
   "/mortgage-broker-in-cloverdale",
+  "/mortgage-broker-in-port-kells",
+  "/mortgage-broker-in-whalley",
+  "/mortgage-broker-in-guildford",
 ];
 
 export default function LocationSitemap() {

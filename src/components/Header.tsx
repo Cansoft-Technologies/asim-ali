@@ -289,15 +289,15 @@ function Header(props: MyProps) {
                                                       </span>
                                                     </Nav.Link>
                                                   </li>
-                                                  {/* <li>
+                                                  <li>
                                                     <Nav.Link
                                                       as={Link}
                                                       href={
-                                                        "/commercial-mortgage-in-surrey"
+                                                        "/mortgage-broker-in-guildford"
                                                       }
                                                     >
                                                       <span className="sublink">
-                                                        Surrey
+                                                        Guildford
                                                       </span>
                                                     </Nav.Link>
                                                   </li>
@@ -305,14 +305,26 @@ function Header(props: MyProps) {
                                                     <Nav.Link
                                                       as={Link}
                                                       href={
-                                                        "/commercial-mortgage-in-vancouver"
+                                                        "/mortgage-broker-in-port-kells"
                                                       }
                                                     >
                                                       <span className="sublink">
-                                                        Vancouver
+                                                      Port Kells
                                                       </span>
                                                     </Nav.Link>
-                                                  </li> */}
+                                                  </li>
+                                                  <li>
+                                                    <Nav.Link
+                                                      as={Link}
+                                                      href={
+                                                        "/mortgage-broker-in-whalley"
+                                                      }
+                                                    >
+                                                      <span className="sublink">
+                                                      Whalley
+                                                      </span>
+                                                    </Nav.Link>
+                                                  </li>
                                                 </ul>
                                               ) : (
                                                 ""
