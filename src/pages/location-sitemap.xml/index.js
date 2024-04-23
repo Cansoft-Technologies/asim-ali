@@ -24,6 +24,7 @@ const locationRoutes = [
   "/mortgage-broker-in-port-kells",
   "/mortgage-broker-in-whalley",
   "/mortgage-broker-in-guildford",
+  "/mortgage-broker-in-fraser-heights",
 ];
 
 export default function LocationSitemap() {
