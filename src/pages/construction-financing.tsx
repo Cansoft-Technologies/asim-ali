@@ -7,7 +7,7 @@ import ServiceSection from "components/ServiceSection";
 import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Row, Table } from "react-bootstrap";
+import { Alert, Col, Container, Row, Table } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
@@ -437,6 +437,24 @@ export default function NewConstructionFinancing(props: MyProps) {
       </tbody>
     </Table>
         </Container>
+    <Container>
+    <div className="mt-4 row">
+                <Col lg={10} className="offset-lg-1 px-0">
+                  <Alert variant="info">
+                    <div className="meeting_text">
+                      <p className="">
+                        Please Note: Rates you see may change, and the rate you
+                        get from any bank or lender, or whether you’re approved
+                        or not, depends on your situation. The rates you see are
+                        just estimates and might not be exact. It’s best to talk
+                        to us for the most accurate info and to find out if you
+                        qualify.
+                      </p>
+                    </div>
+                  </Alert>
+                </Col>
+              </div>
+    </Container>
 
         {/* <Container>
           <Row

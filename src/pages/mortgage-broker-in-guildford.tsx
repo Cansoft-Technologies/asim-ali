@@ -12,6 +12,7 @@ import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
 import { Fragment } from 'react';
 import Link from 'next/link';
+import ContactSection from 'components/ContactSection';
 
 
 
@@ -353,6 +354,9 @@ export default function Page(props: MyProps) {
         }}
         className="text-lg text-start ct-btn"
       ></div>
+      <div className="mt-5">
+      <ContactSection />
+      </div>
         </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
