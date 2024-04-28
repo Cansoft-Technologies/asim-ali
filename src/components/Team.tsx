@@ -11,7 +11,6 @@ type MyProps = {
 
 const Team = (props: MyProps) => {
   const { teams } = props;
-  console.log(teams);
   
   const responsive = {
     superLargeDesktop: {
