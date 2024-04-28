@@ -11,6 +11,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
 import { Fragment } from 'react';
+import OurRates from 'components/OurRates';
+import OurLenders from 'components/OurLenders';
 
 
 
@@ -251,7 +253,17 @@ type MyProps = {
 export default function NewMaple(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData } = props;
 
-console.log(settings);
+  const teamTitle =
+  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  "";
+const teamDescription =
+  `<p><span style="font-weight: 400;">We have good relationships with more than 100 lenders. This wide range of networks includes big banks, local credit unions, and specialty finance companies. Our connections give us the flexibility to find you the best rates and terms, making your dream home more attainable. We're here to find the right fit for you in this wide world of financing. </span></p>\n` +
+  "";
+  const rateTitle = `
+<h2>Mortgage Rates</h2>
+<p>When it comes to mortgage rates, don't stress because Asim Ali your local mortgage broker in Maple Ridge, BC is here to lead you to the right decision. Interest rate on mortgage changes, which can impact the amount you pay for the house. We monitor these rates closely to give you choices that make the home-buying process more affordable. We aim to collaborate with you to determine the rates that fit your budget.</p>
+
+`;
   return (
     <>
       <Head>
@@ -302,8 +314,6 @@ console.log(settings);
                   </Col>
                 </Row>
                 </Container>
-        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
-        <MortgageAdvisor advisorData={advisorData}/>
         <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
@@ -317,8 +327,11 @@ console.log(settings);
                   </Container>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>         
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
+        <OurRates title={rateTitle}/>
                       <FlexibilityTab tabData={tabRenovationData}/>
+                      <MortgageAdvisor advisorData={mortgageBenefitsData}/>
         <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+        <OurLenders title={teamTitle} description={teamDescription} />
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
       <div

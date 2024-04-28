@@ -10,6 +10,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import OurRates from "components/OurRates";
+import OurLenders from "components/OurLenders";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -272,7 +274,17 @@ export default function NewAbbotsford(props: MyProps) {
     mortgageBenefitsData,
   } = props;
 
-  console.log(settings);
+  const teamTitle =
+      '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+      "";
+   const teamDescription =
+      `<p><span style="font-weight: 400;">Asim Ali is your trusted mortgage broker in Abbotsford, we're proud to work with more than 100 lenders. This means we have a lot of choices to help find the perfect loan for you. We work with big banks, special loan places, and other types of lenders. Our goal is to make sure you get a great loan that makes you happy. </span></p>\n` +
+      "";
+      const rateTitle = `
+  <h2>Our Rates</h2>
+<p>As your go-to mortgage broker in Abbotsford, BC Asim Ali wants to make sure you get a great deal. Our rates are very friendly, and we work hard to find you loans that won't break the bank. We chat with lots of lenders to make sure you get a rate that fits just right with what you need. Remember, different people need different rates, and we're here to help find the best one for you.</p>
+
+  `;
   return (
     <>
       <Head>
@@ -335,15 +347,7 @@ export default function NewAbbotsford(props: MyProps) {
             </Col>
           </Row>
         </Container>
-        <MortgageAdvisor advisorData={mortgageBenefitsData} />
-        <ServiceSection
-          textLeft={featuredTextLeft}
-          textRight={featuredTextRight}
-          imageLeft={featuredImageLeft}
-          imageRight={featuredImageRight}
-        />
-        <FlexibilityTab tabData={tabRenovationData} />
-        <MortgageAdvisor advisorData={advisorData} />
+        
         <Container
           className="mb-5 px-3 py-3 my-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -362,7 +366,16 @@ export default function NewAbbotsford(props: MyProps) {
           imageLeft={tipsImageLeft}
           imageRight={tipsImageRight}
         />
-        <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+        <ServiceSection
+          textLeft={featuredTextLeft}
+          textRight={featuredTextRight}
+          imageLeft={featuredImageLeft}
+          imageRight={featuredImageRight}
+        />
+        <OurRates title={rateTitle} />
+        <MortgageAdvisor advisorData={mortgageBenefitsData} />
+        <FlexibilityTab tabData={tabRenovationData} />
+        <OurLenders title={teamTitle} description={teamDescription} />
         <Container className="mb-5">
           <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
