@@ -8,7 +8,7 @@ type MyProps = {
 export default function MortgageAdvisor(props: MyProps) {
   const { advisorData } = props;
   return (
-    <section className="split_section">
+    <section className="split_section mt-5">
       <Container>
         <Row>
           <Col lg={7}>
