@@ -299,7 +299,7 @@ const OurLenders = (props: MyProps) => {
       <Container>
         <div>
             <div
-              className="team_section my-5"
+              className="team_section my-5 mt-5"
               style={{
                 backgroundImage: 'https://asimaliprod.wpengine.com/wp-content/uploads/2023/03/mortgage-broker-surrey-7.webp',
               }}

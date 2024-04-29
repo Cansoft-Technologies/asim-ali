@@ -80,7 +80,7 @@ export default function OurRates(props: MyProps) {
                 <div>
                   <Col>
                     <div
-                      className="text-center"
+                      className="text-center mt-5"
                       dangerouslySetInnerHTML={{
                         __html: title,
                       }}
