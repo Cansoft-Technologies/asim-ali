@@ -10,28 +10,31 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import OurRates from "components/OurRates";
+import OurLenders from "components/OurLenders";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
-    query: gql`query{
-      pages(where: {id: 4933}) {
-      nodes {
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-          openGraph {
-            image {
-              url
+    query: gql`
+      query {
+        pages(where: { id: 4933 }) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+              jsonLd {
+                raw
+              }
             }
-          }
-          jsonLd {
-            raw
-          }
-        }
-        mortgageBrokerCampbell {
-          serviceBannerTitle
+            mortgageBrokerCampbell {
+              serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
               serviceBannerImage {
@@ -43,175 +46,169 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-          
-          reasonTitle
-          reasonDescription
-          reasonLeftText
-          reasonRightText
-          reasonLeftImage {
-            altText
-            sourceUrl
-          }
-          reasonRightImage {
-            altText
-            sourceUrl
-          }
-          processBorrowing {
-            advisorTitle
-            advisorDescriptionTop
-            advisorCards{
-              title
-              description
+
+              reasonTitle
+              reasonDescription
+              reasonLeftText
+              reasonRightText
+              reasonLeftImage {
+                altText
+                sourceUrl
+              }
+              reasonRightImage {
+                altText
+                sourceUrl
+              }
+              processBorrowing {
+                advisorTitle
+                advisorDescriptionTop
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              processBelowDesc
+              borrowingPayment {
+                borrowingTitle
+                borrowingDescriptionTop
+                borrowingRightDescription
+                borrowingImage {
+                  sourceUrl
+                  altText
+                }
+              }
+              expertsHelp {
+                expertsHelpTitle
+                expertsHelpDescription
+                helpLeftText
+                helpRightText
+                helpLeftImage {
+                  sourceUrl
+                  altText
+                }
+                helpRightImage {
+                  sourceUrl
+                  altText
+                }
+              }
+              ratesTitle
+              ratesDescription
+
+              tabWhyChoose {
+                tabHeading
+                tabDescription
+                tabDetails {
+                  title
+                  description
+                }
+              }
+              loanTitle
+              reasonLeftTextCopy
+              reasonRightTextCopy
+              reasonLeftImageCopy {
+                altText
+                sourceUrl
+              }
+              reasonRightImageCopy {
+                altText
+                sourceUrl
+              }
+
+              qualifyingTitle
+              qualifyingDescription
+              commonConcerns {
+                advisorTitle
+                advisorDescription
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              talkTitle
+              talkDescription
             }
           }
-          processBelowDesc
-          borrowingPayment{
-            borrowingTitle
-            borrowingDescriptionTop
-            borrowingRightDescription
-            borrowingImage {
-              sourceUrl
-              altText
-            }
-          }
-          expertsHelp{
-            expertsHelpTitle
-            expertsHelpDescription
-            helpLeftText
-            helpRightText
-            helpLeftImage{
+        }
+        settingsOptions {
+          AsimOptions {
+            headerSettings {
+              uploadLogo {
                 sourceUrl
                 altText
-            }
-            helpRightImage{
+              }
+              uploadLogoMobile {
                 sourceUrl
                 altText
-            }    
-          }
-          ratesTitle
-          ratesDescription
-          
-          tabWhyChoose{
-            tabHeading
-            tabDescription
-            tabDetails{
-              title
-              description
+              }
+            }
+            generalSettings {
+              schemaProductRating
+            }
+            footerSettings {
+              socialUrl {
+                facebook
+                tiktok
+                linkedin
+                instagram
+              }
+              copyrightText
+              footerLeftWidget {
+                title
+                phoneNumber
+                emailAddress
+              }
+              footerLogoSection {
+                logoText
+                logoUpload {
+                  altText
+                  sourceUrl
+                }
+              }
+              footerRightWidget {
+                title
+                address
+              }
             }
           }
-          loanTitle
-          reasonLeftTextCopy
-          reasonRightTextCopy
-          reasonLeftImageCopy {
-            altText
-            sourceUrl
-          }
-          reasonRightImageCopy {
-            altText
-            sourceUrl
-          }
+        }
 
-          qualifyingTitle
-          qualifyingDescription
-          commonConcerns {
-            advisorTitle
-            advisorDescription
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-            }
-          }
-          talkTitle
-          talkDescription
-          
-        }
-     
-     
-      }
-     
-    
-    
- 
-  }
-   settingsOptions {
-      AsimOptions {
-        headerSettings {
-          uploadLogo {
-            sourceUrl
-            altText
-          }
-          uploadLogoMobile {
-            sourceUrl
-            altText
-          }
-        }
-        generalSettings {
-            schemaProductRating
-        }
-        footerSettings {
-          socialUrl {
-            facebook
-            tiktok
-            linkedin
-            instagram
-          }
-          copyrightText
-          footerLeftWidget {
-            title
-            phoneNumber
-            emailAddress
-          }
-          footerLogoSection {
-            logoText
-            logoUpload {
-              altText
-              sourceUrl
-            }
-          }
-          footerRightWidget {
-            title
-            address
-          }
-        }
-      }
-    }
-
-    menus(where: {location: PRIMARY}) {
-      nodes {
-        name
-        slug
-        menuItems(first: 50){
+        menus(where: { location: PRIMARY }) {
           nodes {
-            url
-            target
-            parentId
-            label
-            cssClasses
-            description
-            id
-            childItems (first: 50) {
+            name
+            slug
+            menuItems(first: 50) {
               nodes {
-                uri
+                url
+                target
+                parentId
                 label
+                cssClasses
+                description
+                id
+                childItems(first: 50) {
+                  nodes {
+                    uri
+                    label
+                  }
+                }
               }
             }
           }
         }
       }
-    }
-}`,
+    `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -327,16 +324,33 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
     ratesDescription,
     processBelowDesc,
   } = props;
+  const teamTitle =
+    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+    "";
+  const teamDescription =
+    `<p><span style="font-weight: 400;">With our expansive network of over 100 lenders, we've got your back when it comes to exploring every imaginable financing option. This diverse network includes both traditional banks and alternative lending institutions, granting us access to the most favorable rates and terms customized to your unique circumstances. Our relationships with these lenders are built on trust and years of experience, affording us the ability to advocate on your behalf with confidence.
+  </span></p>\n` + "";
+  const rateTitle = `
+<h2>Current Mortgage Rates</h2>
+<p>These days, mortgage rates can be as unpredictable as the weather, shifting frequently. We keep an eye on these rates every day to find the best deals for you. Rates can go up and down daily, so it's important to check with us for the most recent information. We promise to help you understand these rates and show you how they fit into your home-buying plans.</p>
 
+`;
   return (
     <>
       <Head>
-        {metaData?.map((meta,index) => {
+        {metaData?.map((meta, index) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+              <link
+                rel="canonical"
+                href={
+                  meta?.seo?.canonicalUrl?.endsWith("/")
+                    ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                    : meta?.seo?.canonicalUrl
+                }
+              />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta
                 property="og:description"
@@ -388,59 +402,6 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
             </Col>
           </Row>
         </Container>
-
-        <section className="split_section">
-          <Container>
-            <Row>
-              <Col lg={5} className="text-hide-pc">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-              <Col lg={7}>
-                <div className="split_image">
-                  <Image
-                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
-                    fill
-                    alt={borrowingPaymentData?.borrowingImage?.altText}
-                  />
-                </div>
-              </Col>
-              <Col lg={5} className="text-hide-sm">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-
-        <div className="margin-sm">
-          <ServiceSection
-            textLeft={expertsHelpData?.helpLeftText}
-            textRight={expertsHelpData?.helpRightText}
-            imageLeft={expertsHelpData?.helpLeftImage}
-            imageRight={expertsHelpData?.helpRightImage}
-          />
-        </div>
-        <div style={{ height: "15px" }}></div>
-        <HomeBuyerNewBC advisorData={borrowingProcessData} />
-
-        <Container>
-          <p
-            className="text-lg text-center my-5"
-            dangerouslySetInnerHTML={{
-              __html: processBelowDesc,
-            }}
-          ></p>
-        </Container>
-
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -472,15 +433,54 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
           imageLeft={reasonLeftImageCopy}
           imageRight={reasonRightImageCopy}
         />
-        <div className="tab-btn">
-          <Link href={"/apply-now"}>
-            <Button className="HeadBtn">
-              Apply <span>Now</span>
-            </Button>
-          </Link>
-        </div>
+        <OurRates title={rateTitle} />
         <AccordionNewBC homebuyerData={commonConcernsData} />
-        <Container className="mb-5">
+        <section className="split_section mt-5">
+          <Container>
+            <Row>
+              <Col lg={5} className="text-hide-pc">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+              <Col lg={7}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingTitle,
+                  }}
+                  className=""
+                ></div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingDescriptionTop,
+                  }}
+                  className="mt-5"
+                ></div>
+                <div className="split_image">
+                  <Image
+                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
+                    fill
+                    alt={borrowingPaymentData?.borrowingImage?.altText}
+                  />
+                </div>
+              </Col>
+              <Col lg={5} className="text-hide-sm">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+        <OurLenders title={teamTitle} description={teamDescription} />
+        <div style={{ height: "15px" }}></div>
+        <Container className="mb-5 mt-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
           <div
             dangerouslySetInnerHTML={{
@@ -488,13 +488,6 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
             }}
             className="text-lg text-center"
           ></div>
-          <div className="tab-btn">
-            <Link href={"/contact-us"}>
-              <Button className="HeadBtn">
-                Contact <span>Us</span>
-              </Button>
-            </Link>
-          </div>
         </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />

@@ -10,6 +10,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import OurRates from "components/OurRates";
+import OurLenders from "components/OurLenders";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -355,7 +357,17 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
     journeyLeftText,
     journeyRightImage,
   } = props;
+  const teamTitle =
+  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  "";
+const teamDescription =
+  `<p><span style="font-weight: 400;">At Asim Ali, our strength lies in our extensive network, boasting connections with over 100 lenders. This diverse array of financial institutions and private lenders ensures that we can cater to a wide variety of needs and situations. Our partnerships enable us to present our clients with a multitude of mortgage options, from conventional loans to more specialized financing solutions.
+</span></p>\n` + "";
+const rateTitle = `
+<h2>Our Rates</h2>
+<p>We believe in transparency and providing value to our clients. While our rates are competitive and designed to suit various financial situations, they are subject to market conditions and individual creditworthiness. We work diligently to secure the most favorable rates for you by leveraging our extensive network of lenders. To get a detailed understanding of our current rates and how they can be tailored to your specific needs, we encourage a one-on-one consultation. This approach ensures that you receive the most accurate and personalized rate information possible.</p>
 
+`;
   return (
     <>
       <Head>
@@ -416,39 +428,6 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
             </Col>
           </Row>
         </Container>
-
-        <section className="split_section">
-          <Container>
-            <Row>
-              <Col lg={5} className="text-hide-pc">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-              <Col lg={7}>
-                <div className="split_image">
-                  <Image
-                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
-                    fill
-                    alt={borrowingPaymentData?.borrowingImage?.altText}
-                  />
-                </div>
-              </Col>
-              <Col lg={5} className="text-hide-sm">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-        <div style={{ height: "50px" }}></div>
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -474,107 +453,55 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
           imageLeft={reasonLeftImage}
           imageRight={reasonRightImage}
         />
-        <div className="tab-btn">
-          <Link href={"/apply-now"}>
-            <Button className="HeadBtn">
-              Apply <span>Now</span>
-            </Button>
-          </Link>
-        </div>
-        <TabNewBC tabData={tabWhyChooseData} />
-
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesTitle,
-            }}
-          ></div>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesDescription,
-            }}
-          ></div>
-        </Container>
-
-        <ServiceSection
-          textLeft={reasonLeftTextCopy}
-          textRight={reasonRightTextCopy}
-          imageLeft={reasonLeftImageCopy}
-          imageRight={reasonRightImageCopy}
-        />
-        <ServiceSection
-          textLeft={servicesSectionData?.helpLeftText}
-          textRight={servicesSectionData?.helpRightText}
-          imageLeft={servicesSectionData?.helpLeftImage}
-          imageRight={servicesSectionData?.helpRightImage}
-        />
-
-        <AccordionNewBC homebuyerData={commonConcernsData} />
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: journeySectionData?.title,
-            }}
-          ></div>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: journeySectionData?.description,
-            }}
-          ></div>
-        </Container>
-
-        <ServiceSection
-          textLeft={journeySectionData?.helpLeftText}
-          textRight={journeySectionData?.helpRightText}
-          imageLeft={journeySectionData?.helpLeftImage}
-          imageRight={journeySectionData?.helpRightImage}
-        />
-        <ServiceSection
-          textLeft={journeySectionData1?.helpLeftText}
-          textRight={journeySectionData1?.helpRightText}
-          imageLeft={journeySectionData1?.helpLeftImage}
-          imageRight={journeySectionData1?.helpRightImage}
-        />
-        <div className="service-row">
+        <OurRates title={rateTitle} />
+        <section className="split_section">
           <Container>
             <Row>
-              <Col className="service-texts" lg={6}>
+              <Col lg={5} className="text-hide-pc">
                 <div
-                  className="service-content"
                   dangerouslySetInnerHTML={{
-                    __html: journeyLeftText,
+                    __html: borrowingPaymentData?.borrowingRightDescription,
                   }}
+                  className=""
                 ></div>
               </Col>
-              <Col className="service-texts" lg={6}>
-                <div className="service-image">
+              <Col lg={7}>
+              <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingTitle,
+                  }}
+                  className=""
+                ></div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingDescriptionTop,
+                  }}
+                  className="mt-5"
+                ></div>
+                <div className="split_image">
                   <Image
-                    src={journeyRightImage?.sourceUrl}
-                    alt={journeyRightImage?.altText}
-                    width="390"
-                    height="400"
-                    style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      height: "45vh",
-                    }}
+                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
+                    fill
+                    alt={borrowingPaymentData?.borrowingImage?.altText}
                   />
                 </div>
               </Col>
+              <Col lg={5} className="text-hide-sm">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
             </Row>
           </Container>
-        </div>
+        </section>
+        <div style={{ height: "50px" }}></div>
 
+
+        <AccordionNewBC homebuyerData={commonConcernsData} />
+        <OurLenders title={teamTitle} description={teamDescription} />
         <div style={{ height: "100px" }}></div>
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
@@ -584,13 +511,6 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
             }}
             className="text-lg text-center"
           ></div>
-          <div className="tab-btn">
-            <Link href={"/contact-us"}>
-              <Button className="HeadBtn">
-                Contact <span>Us</span>
-              </Button>
-            </Link>
-          </div>
         </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
