@@ -12,6 +12,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
 import { Fragment } from 'react';
+import OurRates from 'components/OurRates';
+import OurLenders from 'components/OurLenders';
 
 
 export async function getStaticProps() {
@@ -265,7 +267,19 @@ type MyProps = {
 export default function NewCoquitlam(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData } = props;
 
-console.log(settings);
+  const teamTitle =
+  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  "";
+const teamDescription =
+  `<p><span style="font-weight: 400;">We've built a broad network over the years. We're talking about relationships with more than 100 lenders. This isn't just a number; it's a gateway to finding the perfect match for your mortgage needs. Each lender offers something unique, and having such a wide array to choose from ensures that we have tailored solutions that fit you just right. We believe in making this experience as human and personal as possible, and our vast network is a big part of that promise to you.
+
+</span></p>\n` + "";
+const rateTitle = `
+<h2>Mortgage Rates</h2>
+<p>Mortgage rates fluctuate a lot. We always search for the best rates for you. Our job is to find rates that save money. We're here to make things easy and clear by helping you find the right rate for your dream home.
+</p>
+
+`;
   return (
     <>
       <Head>
@@ -316,10 +330,7 @@ console.log(settings);
                   </Col>
                 </Row>
                 </Container>
-        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
-        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
-        <FlexibilityTab tabData={tabRenovationData}/>
-        <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+        <Container className="mb-5 px-3 py-3 mt-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
                     </h2>
@@ -330,11 +341,12 @@ console.log(settings);
                       }}
                     ></div>
                   </Container>
+        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-        <MortgageFeatured advisorData={advisorData}/>
-        <MortgageAdvisor advisorData={mortgageServiceData}/>
-                    
-        <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+        <OurRates title={rateTitle}/>
+        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
+        <FlexibilityTab tabData={tabRenovationData}/>
+        <OurLenders title={teamTitle} description={teamDescription}/>
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
       <div
