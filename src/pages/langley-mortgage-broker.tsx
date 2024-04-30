@@ -9,6 +9,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import OurLenders from "components/OurLenders";
+import OurRates from "components/OurRates";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -271,7 +273,18 @@ export default function NewLangley(props: MyProps) {
     benefitDescription,
   } = props;
 
-  console.log(settings);
+  const teamTitle =
+    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+    "";
+  const teamDescription =
+    `<p><span style="font-weight: 400;">We're proud to work with a big team of over 100 lenders! This means we can find just the right one for you. Think of it like having a huge box of crayons to color your dream home - the more colors you have, the better you can paint your perfect picture. Our lenders are friendly and understand all kinds of situations, so no matter what your story is, we can match you with someone who gets it.
+</span></p>\n` + "";
+  const rateTitle = `
+<h2>Rates</h2>
+<p>Talking about rates can seem a bit tricky, but it's just about finding out how much it costs to borrow money for your house. We work hard to make sure you get a great deal. Think of it like this: if you were buying a new car and one dealership had it for less money than another, you'd want to go to the cheaper dealership, right? It's the same with borrowing money for a house. We look around at lots of different places to find you a rate that's like getting your new car at the best price!
+</p>
+
+`;
   return (
     <>
       <Head>
@@ -352,32 +365,16 @@ export default function NewLangley(props: MyProps) {
           imageLeft={featuredImageLeft}
           imageRight={featuredImageRight}
         />
-        <MortgageAdvisor advisorData={mortgageBenefitsData} />
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <h2 className="text-center">{tipsTitle}</h2>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: tipsDescription,
-            }}
-          ></div>
-        </Container>
         <ServiceSection
           textLeft={tipsLeftText}
           textRight={tipsRightText}
           imageLeft={tipsImageLeft}
           imageRight={tipsImageRight}
         />
+        
+        <OurRates title={rateTitle} />
         <FlexibilityTab tabData={tabRenovationData} />
-        <ServiceSection
-          textLeft={bottomFeaturedTextLeft}
-          textRight={bottomFeaturedTextRight}
-          imageLeft={bottomFeaturedImageLeft}
-          imageRight={bottomFeaturedImageRight}
-        />
+        <OurLenders title={teamTitle} description={teamDescription} />
         <Container className="mb-5">
           <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
