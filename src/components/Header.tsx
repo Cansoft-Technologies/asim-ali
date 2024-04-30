@@ -118,7 +118,8 @@ function Header(props: MyProps) {
                                                 as={Link}
                                                 href={`${
                                                   submenu.uri.endsWith("/")
-                                                    ? submenu.uri.slice(0, -1)
+                                                    ? submenu.uri.slice(0, -1) :
+                                                    submenu?.label === 'Surrey' ? '/'
                                                     : submenu.uri
                                                 }`}
                                               >
