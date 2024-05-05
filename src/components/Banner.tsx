@@ -22,10 +22,10 @@ const Banner = (props: MyProps) => {
           />
         </Head>
 
-        <Carousel fade controls={false}>
+        <div>
           {sliders?.homeSlider.map((slide) => {
             return (
-              <Carousel.Item key={slide?.sliderTitle}>
+              <div key={slide?.sliderTitle}>
                 <div
                   style={{
                     position: "relative",
@@ -46,16 +46,16 @@ const Banner = (props: MyProps) => {
                     <div className="slider-images">
                       <Image
                         alt="Asim Ali Slider"
-                        src={slide?.sliderImage?.sourceUrl}
                         fill
-                        style={{ objectFit: "cover" }}
+                        src={slide?.sliderImage?.sourceUrl}
+                        style={{ objectFit: "cover"}}
                         priority={true}
                       />
                     </div>
                   </div>
                 </div>
-                <div className={styles.overlay}>
-                  <Carousel.Caption className={styles.carouselcaption}>
+                <div className={styles.banner_overlay}>
+                  <div className={styles.carouselcaption}>
                     <Row className="align-items-center home-slide">
                       <Col className="text-start" xs={12} lg={8}>
                         <div className={styles.bannerCaption}>
@@ -95,12 +95,12 @@ const Banner = (props: MyProps) => {
                         )}
                       </Col>
                     </Row>
-                  </Carousel.Caption>
+                  </div>
                 </div>
-              </Carousel.Item>
+              </div>
             );
           })}
-        </Carousel>
+        </div>
       </div>
     </div>
   );
