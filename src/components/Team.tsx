@@ -42,6 +42,7 @@ const Team = (props: MyProps) => {
               className="team_section my-5"
               style={{
                 backgroundImage: `url("${teams?.teamImage?.sourceUrl}")`,
+                backgroundSize: "cover",
               }}
             >
               {
