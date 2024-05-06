@@ -463,7 +463,7 @@ export default function Page(props: MyProps) {
         </div>
         <Container>
           <div className="ms-auto mt-5 footer-partner-logo">
-            {bottomPartnerLogoSection?.map((singleLogo) => {
+            {bottomPartnerLogoSection?.map((singleLogo:any) => {
               return (
                 <div key={singleLogo?.sourceUrl}>
                   <Image
