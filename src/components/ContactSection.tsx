@@ -21,7 +21,7 @@ export default function ContactSection() {
 
     const bodyData = JSON.stringify({
       fromEmail: "noreply@asimali.ca",
-      toEmail: "admin@asimali.ca",
+      toEmail: "clientcare@asimali.ca",
       emailSubject:
         formData.subject + "-" + formData.fname + " " + formData.lname,
       fname: formData.fname.toString() || "",
