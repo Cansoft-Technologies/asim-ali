@@ -60,7 +60,7 @@ function Header(props: MyProps) {
                   alt="Logo"
                   style={{ cursor: "pointer" }}
                   width={180}
-                  height={73}
+                  height={43}
                   className="desc-logo"
                 />
               </Link>
