@@ -154,7 +154,7 @@ const ApplyNowEmail = ({
         </Section>
         <Container style={footerContainer}>
           <Row style={{ ...footSecond, marginTop: 30 }}>
-            <Column>
+          <Column>
               <Img
                 width="150"
                 height="32"
@@ -179,18 +179,19 @@ const ApplyNowEmail = ({
                 +1 (604) 591 3590
               </Link>
               </Row>
-              <Row>
-              <Column style={{ ...footFirst,marginTop: "10px" }}>
-                  <Link href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'admin@asimali.ca'}`} style={footFirst}>
+              <Row style={{marginTop: "10px" }}>
+                  <Link href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'clientcare@asimali.ca'}`} style={footFirst}>
                     <Img
                     style={{marginRight: "10px"}}
                       width="18"
                       height="18"
                       src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
                     />
-                    {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'admin@asimali.ca'}
+                   {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'clientcare@asimali.ca'}
                   </Link>
-                  <Link href="https://asimali.ca" style={{ ...footFirst, marginLeft: "20px" }}>
+              </Row>
+              <Row style={{marginTop: "10px" }}>
+              <Link href="https://asimali.ca" style={footFirst}>
                     <Img
                     style={{marginRight: "10px"}}
                       width="18"
@@ -199,17 +200,16 @@ const ApplyNowEmail = ({
                     />
                     www.asimali.ca
                   </Link>
-                </Column>
               </Row>
             </Column>
             <Column style={{ marginTop: "20px" }}>
               <Img
-                style={{ display: "block", margin: "0 50px" }}
+                style={{ display: "block", margin: "0 50px", alignItems: "center" }}
                 width="50"
                 height="50"
                 src="http://asimaliprod.wpengine.com/wp-content/uploads/2022/11/favicon.png"
               />
-              <Text style={{ ...paragraph, color: "#12143A",fontSize: "14px", }}>
+              <Text style={{ ...paragraph,textAlign: "center", color: "#12143A",fontSize: "14px", }}>
                 Asim Ali Mortgage Team
               </Text>
             </Column>
