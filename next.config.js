@@ -80,12 +80,6 @@ module.exports = withBundleAnalyzer(
             statusCode: 301,
           },
           {
-            source: "/our-locations",
-            destination: "/",
-            permanent: true,
-            statusCode: 301,
-          },
-          {
             source: "/what-we-do",
             destination: "/",
             permanent: true,
