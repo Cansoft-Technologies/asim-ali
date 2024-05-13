@@ -47,6 +47,9 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     font-weight: 700;
     color: $color-secondary;
   }
+  &:hover{
+    box-shadow: 10px 10px 10px rgba(36, 36, 36, 0.5);
+  }
 }
 
 .rates > .row:nth-child(even) .col-2:nth-child(n+4) {
@@ -788,8 +791,11 @@ body {
     // margin-top: 120px;
   }
 }
-.service-content h3 {
+.service-content { 
+  padding: 20px 0px 20px 0px;
+  h3 {
   font-size: 22px;
+}
 }
 .coquitlam-grid {
   display: flex;
@@ -1888,6 +1894,7 @@ textarea#comment {
   .easy-application {
     background-repeat: no-repeat;
     // background-size: 120% 100%;
+    margin-top: -80px;
     background-size: cover;
     background-position: center center;
     width: 100%;
@@ -1938,6 +1945,10 @@ textarea#comment {
         padding: 10px 20px 6px 20px;
         color: $color-black !important;
         border-radius: 15px 15px 15px 0;
+        margin-bottom: 20px;
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
   }
@@ -1974,6 +1985,9 @@ textarea#comment {
     color: $color-black !important;
     border-radius: 0px 0px 15px 15px;
     cursor: ponter;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 .pagination {
@@ -2126,6 +2140,7 @@ textarea#comment {
             height: 100%;
             object-fit: cover;
           }
+          padding: 20px 0px 20px 0px;
         }
       }
     }
@@ -2742,6 +2757,9 @@ textarea#comment {
 }
 
 .works-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .works-title {
     font-size: 45px;
     font-family: "Oswald", sans-serif;
@@ -2769,6 +2787,9 @@ p.testimonials-name {
 .testimonial-box {
   height: 100% !important;
   box-shadow: -1px -3px 12px -5px #000;
+  &:hover {
+    box-shadow: 10px 10px 20px rgba(36, 36, 36, 0.5);
+  }
 }
 .Bc-Coquitlam .broker-coquitlam span svg {
   width: 10px;

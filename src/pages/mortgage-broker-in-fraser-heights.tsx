@@ -1,18 +1,17 @@
 import { gql } from '@apollo/client';
-import { Hero, Team } from 'components';
+import { Hero } from 'components';
 import AccordionSection from 'components/AccordionSection';
-import FlexibilityTab from 'components/FlexibilityTab';
+import ContactSection from 'components/ContactSection';
 import MortgageAdvisor from 'components/MortgageAdvisor';
 import ServiceSection from 'components/ServiceSection';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Fragment } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
-import { Fragment } from 'react';
-import Link from 'next/link';
-import ContactSection from 'components/ContactSection';
 
 
 

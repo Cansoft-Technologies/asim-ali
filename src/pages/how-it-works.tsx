@@ -127,7 +127,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems (first: 50) {
+                childItems(first: 50) {
                   nodes {
                     uri
                     label
@@ -140,13 +140,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -175,12 +175,19 @@ const HowItWorks = (props: MyProps) => {
         return (
           <div key={key}>
             <Head>
-              {metaData?.map((meta,index) => {
+              {metaData?.map((meta, index) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+                    <link
+                      rel="canonical"
+                      href={
+                        meta?.seo?.canonicalUrl?.endsWith("/")
+                          ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                          : meta?.seo?.canonicalUrl
+                      }
+                    />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
                       property="og:description"
@@ -200,10 +207,10 @@ const HowItWorks = (props: MyProps) => {
                 title={data?.HowItWorks?.bannerTitle}
                 bgImage={data?.HowItWorks?.bannerBackgroundImage?.sourceUrl}
               />
-              <Container className="my-5 works-container">
-                <h1 className="works-title">{data?.HowItWorks?.firstTitle}</h1>
-                <Row className="my-5">
+              <Container className="works-container">
+                <Row className="mt-5">
                   <Col md={8}>
+                <h1 className="works-title">{data?.HowItWorks?.firstTitle}</h1>
                     <div className="works-content">
                       <div
                         dangerouslySetInnerHTML={{
@@ -218,20 +225,18 @@ const HowItWorks = (props: MyProps) => {
                         src={data?.HowItWorks?.firstImage?.sourceUrl}
                         alt={data?.HowItWorks?.firstImage?.altText}
                         width="390"
-                        height="400"
-                        priority={true}
-                        style={{ width: "100%", objectFit: "cover" }}
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "cover" }}
+                      quality={100}
                       />
                     </div>
                   </Col>
                 </Row>
               </Container>
-              <Container className="my-5 works-container">
-                <h2 className="text-end works-title">
-                  {data?.HowItWorks?.secondTitle}
-                </h2>
-                <Row className="my-5">
-                  <Col md={4}>
+              <Container className="mt-5 works-container">
+                <Row className="">
+                  <Col md={4} className="mt-5">
                     <Image
                       src={data?.HowItWorks?.secondImage?.sourceUrl}
                       alt={data?.HowItWorks?.secondImage?.altText}
@@ -239,9 +244,13 @@ const HowItWorks = (props: MyProps) => {
                       height="400"
                       priority={true}
                       style={{ width: "100%", objectFit: "cover" }}
+                      quality={100}
                     />
                   </Col>
                   <Col md={8}>
+                <h2 className="text-end works-title mt-5">
+                  {data?.HowItWorks?.secondTitle}
+                </h2>
                     <div className="works-content">
                       <div
                         dangerouslySetInnerHTML={{
@@ -254,7 +263,7 @@ const HowItWorks = (props: MyProps) => {
               </Container>
               <Container>
                 <Row>
-                  <Col md={12}>
+                  <Col md={12} className="mt-5">
                     <Image
                       src={data?.HowItWorks?.firstBanner?.sourceUrl}
                       alt={data?.HowItWorks?.firstBanner?.altText}
@@ -262,14 +271,15 @@ const HowItWorks = (props: MyProps) => {
                       height="400"
                       priority={true}
                       style={{ width: "100%", objectFit: "cover" }}
+                      quality={100}
                     />
                   </Col>
                 </Row>
               </Container>
-              <Container className="my-5 works-container">
-                <h2 className="works-title">{data?.HowItWorks?.thirdTitle}</h2>
-                <Row className="my-5">
+              <Container className="works-container">
+                <Row className="mt-5">
                   <Col md={8}>
+                <h2 className="works-title">{data?.HowItWorks?.thirdTitle}</h2>
                     <div className="works-content">
                       <div
                         dangerouslySetInnerHTML={{
@@ -284,19 +294,17 @@ const HowItWorks = (props: MyProps) => {
                         src={data?.HowItWorks?.thirdImage?.sourceUrl}
                         alt={data?.HowItWorks?.thirdImage?.altText}
                         width="390"
-                        height="400"
-                        priority={true}
-                        style={{ width: "100%", objectFit: "cover" }}
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "cover" }}
+                      quality={100}
                       />
                     </div>
                   </Col>
                 </Row>
               </Container>
-              <Container className="my-5 works-container">
-                <h2 className="text-end works-title">
-                  {data?.HowItWorks?.fourthTitle}
-                </h2>
-                <Row className="my-5">
+              <Container className=" works-container">
+                <Row className="mt-5">
                   <Col md={4}>
                     <Image
                       src={data?.HowItWorks?.fourthImage?.sourceUrl}
@@ -305,9 +313,13 @@ const HowItWorks = (props: MyProps) => {
                       height="400"
                       priority={true}
                       style={{ width: "100%", objectFit: "cover" }}
+                      quality={100}
                     />
                   </Col>
                   <Col md={8}>
+                      <h2 className="text-end works-title my-5">
+                        {data?.HowItWorks?.fourthTitle}
+                      </h2>
                     <div className="works-content">
                       <div
                         dangerouslySetInnerHTML={{
@@ -319,9 +331,9 @@ const HowItWorks = (props: MyProps) => {
                 </Row>
               </Container>
               <Container className="my-5 works-container">
-                <h2 className="works-title">{data?.HowItWorks?.fifthTitle}</h2>
                 <Row className="my-5">
                   <Col md={8}>
+                <h2 className="works-title">{data?.HowItWorks?.fifthTitle}</h2>
                     <div className="works-content">
                       <div
                         dangerouslySetInnerHTML={{
@@ -336,9 +348,10 @@ const HowItWorks = (props: MyProps) => {
                         src={data?.HowItWorks?.fifthImage?.sourceUrl}
                         alt={data?.HowItWorks?.fifthImage?.altText}
                         width="390"
-                        height="400"
-                        priority={true}
-                        style={{ width: "100%", objectFit: "cover" }}
+                      height="400"
+                      priority={true}
+                      style={{ width: "100%", objectFit: "cover" }}
+                      quality={100}
                       />
                     </div>
                   </Col>
@@ -353,7 +366,11 @@ const HowItWorks = (props: MyProps) => {
                       width="390"
                       height="400"
                       priority={true}
-                      style={{ width: "100%", objectFit: "cover" }}
+                      sizes="100vw"
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                      }}
                     />
                   </Col>
                 </Row>
@@ -362,7 +379,6 @@ const HowItWorks = (props: MyProps) => {
                 <h2 className="text-end works-title">
                   {data?.HowItWorks?.sixthTitle}
                 </h2>
-                
               </Container>
             </main>
             <Footer settings={settings} mainMenus={mainMenus} />
