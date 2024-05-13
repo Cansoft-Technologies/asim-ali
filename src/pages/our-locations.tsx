@@ -262,7 +262,7 @@ const Locations = (props: MyProps) => {
                                 width="390"
                                 height="400"
                                 priority={true}
-                                style={{ width: "100%", objectFit: "cover" }}
+                                style={{ width: "100%", objectFit: "cover", height: "auto"}}
                               />
                               <div>
                                 <a href={fImage?.locationLink?.url}>
@@ -295,7 +295,8 @@ const Locations = (props: MyProps) => {
                                   priority={true}
                                   style={{
                                     width: "100%",
-                                    objectFit: "contain",
+                                    objectFit: "cover",
+                                    height: "auto",
                                   }}
                                 />
                                 <div>

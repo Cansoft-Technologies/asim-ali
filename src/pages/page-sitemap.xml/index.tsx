@@ -55,6 +55,7 @@ const data = [
   "/our-services",
   "/private-lenders-bc",
   "/testimonials",
+  "/our-locations",
   "/uninsured-mortgage-solutions",
   "/fixed-mortgage-rates-in-bc",
   "/discharge-mortgage-in-bc",
