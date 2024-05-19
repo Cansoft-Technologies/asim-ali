@@ -343,7 +343,17 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
     ratesTitle2,
     ratesDescription2,
   } = props;
+  const teamTitle =
+  '<h2 style="font-size: 40px;">Lenders We Work With</h2>\n' +
+  "";
+const teamDescription =
+  `<p><span style="font-weight: 400;">We're proud to have forged strong relationships with over 100 lenders. This vast network includes big banks, credit unions, and private lending institutions, ensuring a diverse range of financing options. This extensive access not only broadens your choices but also enhances our ability to secure the most advantageous terms for you.  </span></p>\n` +
+  "";
+  const rateTitle = `
+<h2>Our Mortgage Rates</h2>
+<p>Asim Ali understands that getting a good mortgage rate is super important for saving money. That's why we work hard to find you the best rates out there for you. We connect with lots of different lenders to make sure you get a rate that feels right for your wallet. Remember, rates can change, so we're always here to give you the latest info and help you pick the best option.</p>
 
+`;
   return (
     <>
       <Head>
@@ -405,53 +415,6 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
           </Row>
         </Container>
 
-        <section className="split_section">
-          <Container>
-            <Row>
-              <Col lg={5} className="text-hide-pc">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-              <Col lg={7}>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingTitle,
-                  }}
-                  className="text-start"
-                ></div>
-                <h2 className="text-start borrowing-title">
-                  {borrowingPaymentData?.borrowingTitle2}
-                </h2>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingDescriptionTop,
-                  }}
-                  className=""
-                ></div>
-                <div className="split_image">
-                  <Image
-                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
-                    fill
-                    alt={borrowingPaymentData?.borrowingImage?.altText}
-                  />
-                </div>
-              </Col>
-              <Col lg={5} className="text-hide-sm">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-
         <div style={{ height: "50px" }}></div>
         <Container
           className="mb-5 px-3 py-3"
@@ -501,55 +464,14 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
             </Row>
           </Container>
         </div>
-
-        <div className="tab-btn">
-          <Link href={"/apply-now"}>
-            <Button className="HeadBtn">
-              Apply <span>Now</span>
-            </Button>
-          </Link>
-        </div>
-        <AccordionNewBC homebuyerData={commonConcernsData} />
-
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesTitle2,
-            }}
-          ></div>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesDescription2,
-            }}
-          ></div>
-        </Container>
-        <ServiceSection
-          textLeft={reasonLeftTextCopy}
-          textRight={reasonRightTextCopy}
-          imageLeft={reasonLeftImageCopy}
-          imageRight={reasonRightImageCopy}
-        />
-        <div className="service-row">
+        <div className="service-row mt-5">
           <Container>
             <Row>
-              <Col className="service-texts" lg={6}>
-                <div
-                  className="service-content"
-                  dangerouslySetInnerHTML={{
-                    __html: reasonLeftText2,
-                  }}
-                ></div>
-              </Col>
-              <Col className="service-texts" lg={6}>
+            <Col className="service-texts" lg={6}>
                 <div className="service-image">
                   <Image
-                    src={reasonRightImage2?.sourceUrl}
-                    alt={reasonRightImage2?.altText}
+                    src={reasonLeftImage?.sourceUrl}
+                    alt={reasonLeftImage?.altText}
                     width="390"
                     height="400"
                     style={{
@@ -560,9 +482,72 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
                   />
                 </div>
               </Col>
+              <Col className="service-texts" lg={6}>
+                <div
+                  className="service-content"
+                  dangerouslySetInnerHTML={{
+                    __html: reasonRightText,
+                  }}
+                ></div>
+              </Col>
             </Row>
           </Container>
         </div>
+        <section className="split_section mt-5">
+          <Container>
+            <Row>
+              <Col lg={5} className="text-hide-pc">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+              <Col lg={7}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingTitle,
+                  }}
+                  className="text-start"
+                ></div>
+                <h2 className="text-start borrowing-title">
+                  {borrowingPaymentData?.borrowingTitle2}
+                </h2>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingDescriptionTop,
+                  }}
+                  className=""
+                ></div>
+                <div className="split_image">
+                  <Image
+                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
+                    fill
+                    alt={borrowingPaymentData?.borrowingImage?.altText}
+                  />
+                </div>
+              </Col>
+              <Col lg={5} className="text-hide-sm">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: borrowingPaymentData?.borrowingRightDescription,
+                  }}
+                  className=""
+                ></div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        <div className="tab-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">
+              Apply <span>Now</span>
+            </Button>
+          </Link>
+        </div>
+        <AccordionNewBC homebuyerData={commonConcernsData} />
 
         <div style={{ height: "50px" }}></div>
         <Container className="mb-5">
@@ -573,13 +558,6 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
             }}
             className="text-lg text-center"
           ></div>
-          <div className="tab-btn">
-            <Link href={"/contact-us"}>
-              <Button className="HeadBtn">
-                Contact <span>Us</span>
-              </Button>
-            </Link>
-          </div>
         </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
