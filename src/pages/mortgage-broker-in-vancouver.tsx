@@ -11,6 +11,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
 import { Fragment } from 'react';
+import OurRates from 'components/OurRates';
+import OurLenders from 'components/OurLenders';
 
 
 
@@ -265,7 +267,17 @@ type MyProps = {
 export default function NewVancouver(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
 
-console.log(settings);
+  const teamTitle =
+  '<h2 style="font-size: 40px;">Lenders We Work With</h2>\n' +
+  "";
+const teamDescription =
+  `<p><span style="font-weight: 400;">We're proud to have forged strong relationships with over 100 lenders. This vast network includes big banks, credit unions, and private lending institutions, ensuring a diverse range of financing options. This extensive access not only broadens your choices but also enhances our ability to secure the most advantageous terms for you.  </span></p>\n` +
+  "";
+  const rateTitle = `
+<h2>Our Mortgage Rates</h2>
+<p>Asim Ali understands that getting a good mortgage rate is super important for saving money. That's why we work hard to find you the best rates out there for you. We connect with lots of different lenders to make sure you get a rate that feels right for your wallet. Remember, rates can change, so we're always here to give you the latest info and help you pick the best option.</p>
+
+`;
   return (
     <>
       <Head>
@@ -316,9 +328,6 @@ console.log(settings);
                   </Col>
                 </Row>
                 </Container>
-        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
-        <Team teams={teamData} />
-        <MortgageAdvisor advisorData={advisorData}/>
         <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
@@ -332,8 +341,10 @@ console.log(settings);
                   </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-                      <AccordionSection advisorData={mortgageInterestData}/>
+        <OurRates title={rateTitle} />
         <FlexibilityTab tabData={tabRenovationData}/>
+                      <AccordionSection advisorData={mortgageInterestData}/>
+                      <OurLenders title={teamTitle} description={teamDescription} />
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
       <div
