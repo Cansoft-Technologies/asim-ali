@@ -261,7 +261,7 @@ export default function NewPrince(props: MyProps) {
   '<h2 style="font-size: 40px;">Lenders</h2>\n' +
   "";
 const teamDescription =
-  `<p><span style="font-weight: 400;">We have partnered with 100+ lenders! We work together with banks, for instance, big banks, local credit unions, and specialized lenders. Because of our extensive partner base, we can find a mortgage that is tailored to your needs. Whether you are a perfect credit holder, self-employed, or buying your first house we will make you covered.  </span></p>\n` +
+  `<p><span style="font-weight: 400;">We have partnered with 100+ lenders! We work together with banks, for instance, big banks, local credit unions, and specialized lenders. Because of our extensive partner base, we can find a mortgage that is tailored to your needs. Whether you are a perfect credit holder, self-employed, or buying your first house we will make you covered.   </span></p>\n` +
   "";
   const rateTitle = `
 <h2>Rates</h2>
