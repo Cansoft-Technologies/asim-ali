@@ -9,6 +9,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import OurRates from "components/OurRates";
+import OurLenders from "components/OurLenders";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -344,14 +346,14 @@ export default function NewMortgageBrokerInNanaimo(props: MyProps) {
     ratesDescription2,
   } = props;
   const teamTitle =
-  '<h2 style="font-size: 40px;">Lenders We Work With</h2>\n' +
+  '<h2 style="font-size: 40px;"><span style="color: #f0b243;">Lenders </span></h2>\n' +
   "";
 const teamDescription =
-  `<p><span style="font-weight: 400;">We're proud to have forged strong relationships with over 100 lenders. This vast network includes big banks, credit unions, and private lending institutions, ensuring a diverse range of financing options. This extensive access not only broadens your choices but also enhances our ability to secure the most advantageous terms for you.  </span></p>\n` +
+  `<p><span style="font-weight: 400;">Lenders play a crucial role in the mortgage process and as a top mortgage broker service, we work closely with a diverse network of lenders (100 to be exact!) to offer our clients a range of loan options tailored to their unique needs and financial situations. </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Our Mortgage Rates</h2>
-<p>Asim Ali understands that getting a good mortgage rate is super important for saving money. That's why we work hard to find you the best rates out there for you. We connect with lots of different lenders to make sure you get a rate that feels right for your wallet. Remember, rates can change, so we're always here to give you the latest info and help you pick the best option.</p>
+<h2>Our Rates</h2>
+<p>Everyone likes saving money. That's why we are dedicated to searching for the best deals available out there for you. Our rates are like a special secret recipe that helps you pay less every month. We collaborate with multiple lenders to make sure you get a rate that makes you smile.</p>
 
 `;
   return (
@@ -493,6 +495,7 @@ const teamDescription =
             </Row>
           </Container>
         </div>
+        <OurRates title={rateTitle} />
         <section className="split_section mt-5">
           <Container>
             <Row>
@@ -548,7 +551,7 @@ const teamDescription =
           </Link>
         </div>
         <AccordionNewBC homebuyerData={commonConcernsData} />
-
+        <OurLenders title={teamTitle} description={teamDescription} />
         <div style={{ height: "50px" }}></div>
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
