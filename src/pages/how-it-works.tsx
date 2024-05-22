@@ -248,7 +248,7 @@ const HowItWorks = (props: MyProps) => {
                     />
                   </Col>
                   <Col md={8}>
-                <h2 className="text-end works-title mt-5">
+                <h2 className="text-start works-title mt-5">
                   {data?.HowItWorks?.secondTitle}
                 </h2>
                     <div className="works-content">
@@ -321,7 +321,7 @@ const HowItWorks = (props: MyProps) => {
                     />
                   </Col>
                   <Col md={8}>
-                      <h2 className="text-end works-title my-5">
+                      <h2 className="text-start works-title my-5">
                         {data?.HowItWorks?.fourthTitle}
                       </h2>
                     <div className="works-content">
@@ -381,7 +381,7 @@ const HowItWorks = (props: MyProps) => {
                 </Row>
               </Container>
               <Container className="my-5 works-container">
-                <h2 className="text-end works-title">
+                <h2 className="text-start works-title">
                   {data?.HowItWorks?.sixthTitle}
                 </h2>
               </Container>
