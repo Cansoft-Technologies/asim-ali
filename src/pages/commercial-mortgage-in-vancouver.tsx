@@ -317,7 +317,6 @@ export default function NewComVancouver(props: MyProps) {
     mortgageInterestData,
   } = props;
 
-  console.log(settings);
   return (
     <>
       <Head>

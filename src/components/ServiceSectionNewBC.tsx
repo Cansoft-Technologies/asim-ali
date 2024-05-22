@@ -32,7 +32,13 @@ export default function ServiceSectionNewBC(props: MyProps) {
                   alt={imageRight?.altText}
                   width="390"
                   height="400"
-                  style={{ width: "100%", objectFit: "cover" }}
+                  sizes="100vw"
+                  priority={true}
+                      style={{
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                      quality={100}
                 />
               </div>
             </Col>
@@ -49,7 +55,14 @@ export default function ServiceSectionNewBC(props: MyProps) {
                   alt={imageLeft?.altText}
                   width="390"
                   height="400"
-                  style={{ width: "100%", objectFit: "cover" }}
+                  priority={true}
+                      sizes="100vw"
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                      }}
+                      quality={100}
                 />
               </div>
             </Col>
@@ -82,7 +95,13 @@ export default function ServiceSectionNewBC(props: MyProps) {
                   alt={leftImage?.altText}
                   width="390"
                   height="400"
-                  style={{ width: "100%", objectFit: "cover" }}
+                  priority={true}
+                      sizes="100vw"
+                      style={{
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                      quality={100}
                 />
               </div>
             </Col>

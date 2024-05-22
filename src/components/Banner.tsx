@@ -59,11 +59,11 @@ const Banner = (props: MyProps) => {
                     <Row className="align-items-center home-slide">
                       <Col className="text-start" xs={12} lg={8}>
                         <div className={styles.bannerCaption}>
-                          <p className={styles.sliderSubtitle}>
-                            {slide?.sliderSubtitle || ""}
-                          </p>
                           <p className={styles.sliderTitle}>
                             {slide?.sliderTitle || ""}
+                          </p>
+                          <p className={styles.sliderSubtitle}>
+                            {slide?.sliderSubtitle || ""}
                           </p>
                           <p>{slide?.sliderDescription || ""}</p>
                         </div>

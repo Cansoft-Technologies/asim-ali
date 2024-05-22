@@ -11,7 +11,7 @@ export default function MortgageFeaturedHome(props: MyProps) {
     <section className="split_section mt-5">
       <Container>
         <Row>
-          <Col lg={5}>
+          <Col lg={6}>
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
@@ -44,7 +44,7 @@ export default function MortgageFeaturedHome(props: MyProps) {
               className="service-description"
             ></div>
           </Col>
-          <Col lg={2}></Col>
+          <Col lg={1}></Col>
           <Col lg={5}>
             <div className="split_image" style={{ marginTop: "100px" }}>
               <Image
