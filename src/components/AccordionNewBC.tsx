@@ -37,8 +37,15 @@ const AccordionNewBC = (props: MyProps) => {
                       src={homebuyerData?.advisorImage?.sourceUrl}
                       alt={homebuyerData?.advisorImage?.altText}
                       width="390"
-                      height="400"
-                      style={{ width: "100%", objectFit: "cover" }}
+                  height="400"
+                  priority={true}
+                      sizes="100vw"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                      quality={100}
                     />
                   </div>
                 </Col>

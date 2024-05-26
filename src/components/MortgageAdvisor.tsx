@@ -11,7 +11,7 @@ export default function MortgageAdvisor(props: MyProps) {
     <section className="split_section mt-5">
       <Container>
         <Row>
-          <Col lg={7}>
+          <Col lg={6}>
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
@@ -30,13 +30,20 @@ export default function MortgageAdvisor(props: MyProps) {
             <div className="split_image">
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
-                fill
+                width="390"
+                      height="400"
                 alt={advisorData?.advisorImage?.altText}
-                quality={100}
+                priority={true}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                      quality={100}
               />
             </div>
           </Col>
-          <Col lg={5}>
+          <Col lg={6}>
             {advisorData?.advisorCards?.map((data, item) => {
               return (
                 <div key={item} className="split_text mb-0">
