@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
@@ -39,9 +40,18 @@ function Hero({
     <section
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...(id && { id })}
-      style={{ backgroundImage: bgImage ? `url(${bgImage})` : "none" }}
+      style={{ position: "relative"}}
       className={styles.hero}
     >
+      <div>
+                      <Image
+                        alt="Asim Ali Slider"
+                        fill
+                        src={bgImage}
+                        style={{ objectFit: "cover"}}
+                        priority={true}
+                      />
+                    </div>
       <div className={styles.wrap}>
         <div className="hero-title-col col-xl-6 offset-xl-6">
           {
