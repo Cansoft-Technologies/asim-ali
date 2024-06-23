@@ -454,85 +454,76 @@ body {
     list-style: none;
     display: flex;
     margin-top: revert;
+
     li {
       position: relative;
+
       &:hover {
         ul.submenu {
-          display: block;
+          display: grid;
         }
       }
+
       ul.submenu {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        /* left: 0; */
-        top: 80%;
-        z-index: 99;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        font-size: 14px;
-        background: #fff;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
         display: none;
-        width: 240px;
-        &:hover {
-          ul.submenu-child {
-            opacity: 1;
-          }
-        }
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 99;
+        background: #fff;
+        padding: 2px;
+        font-size: 14px;
+        // border: 1px solid #ddd;
+
         li {
+          // padding: 2px;
+          box-sizing: border-box;
           position: relative;
+
           &:hover {
             ul.submenu-child {
               display: block;
             }
           }
+
           span.sublink {
-            padding: 5px;
+            padding: 2px;
             display: block;
             cursor: pointer;
             text-transform: uppercase;
-            // margin: 0;
-
             border-bottom: 2px solid $color-secondary;
+
             &:hover {
               background: $color-secondary;
               color: $color-white;
             }
           }
-          ul.submenu-child {
-            padding-left: 0px !important;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            top: 100%;
-            z-index: 99;
-            // width: 100%;
-            margin-left: 30px;
-            // margin-top: 10px;
-            background: #fff;
-            // background: #eed892;
-            font-size: 14px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            display: none;
-            width: 210px;
-            opacity: 0;
-            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            li {
-              span.sublink {
-                padding: 5px;
-                display: block;
-                cursor: pointer;
-                text-transform: uppercase;
-                // margin: 0;
-                font-size: 12px;
 
+          ul.submenu-child {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: #fff;
+            // border: 1px solid #ddd;
+            width: auto;
+            min-width: 200px;
+
+            li {
+              width: 100%;
+
+              span.sublink {
+                // padding: 2px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor: pointer;
+
+                text-transform: uppercase;
+                font-size: 12px;
                 border-bottom: 2px solid $color-secondary;
+
                 &:hover {
                   background: $color-secondary;
                   color: $color-white;
@@ -540,8 +531,46 @@ body {
               }
             }
           }
+
+          &.commercial-mortgages {
+            &:hover {
+              background: $color-secondary;
+              color: $color-white;
+              ul.submenu-child {
+                display: block;
+                right: auto;
+                right: 100%;
+                top: 0;
+              }
+            }
+          }
+          &.vancouver {
+            &:hover {
+              background: $color-secondary;
+              color: $color-white;
+              ul.submenu-child {
+                display: block;
+                right: auto;
+                right: 100%;
+                top: -275px;
+              }
+            }
+          }
+          &.surrey {
+            &:hover {
+              background: $color-secondary;
+              color: $color-white;
+              ul.submenu-child {
+                display: block;
+                right: auto;
+                right: 100%;
+                top: -72px;
+              }
+            }
+          }
         }
       }
+
       .HeadBtn {
         width: 150px;
         padding-top: 1.5px;
@@ -551,6 +580,7 @@ body {
         background: transparent;
         border: 2px solid $color-black;
         text-transform: uppercase;
+
         &:hover {
           background: $color-black;
           border: 2px solid $color-secondary;
@@ -559,8 +589,8 @@ body {
       }
     }
   }
+
   span.link {
-    // font-family: 'AvenirBook';
     cursor: pointer;
     text-transform: uppercase;
     margin-left: 10px;
@@ -575,6 +605,9 @@ body {
     text-align: center;
   }
 }
+
+
+
 
 .wrap {
   margin: 0 auto;
