@@ -466,8 +466,8 @@ body {
 
       ul.submenu {
         display: none;
-        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(2, minmax(230px, 1fr));
+        grid-template-rows: auto;
         position: absolute;
         top: 100%;
         left: 0;
@@ -484,7 +484,7 @@ body {
 
           &:hover {
             ul.submenu-child {
-              display: block;
+              display: grid;
             }
           }
 
@@ -533,41 +533,34 @@ body {
             }
           }
 
-          &.commercial-mortgages {
-            &:hover {
-              background: $color-secondary;
-              color: $color-white;
-              ul.submenu-child {
-                display: block;
-                right: auto;
-                right: 100%;
-                top: 0;
-              }
-            }
-          }
-          &.vancouver {
-            &:hover {
-              background: $color-secondary;
-              color: $color-white;
-              ul.submenu-child {
-                display: block;
-                right: auto;
-                right: 100%;
-                top: -275px;
-              }
-            }
-          }
+          &.commercial-mortgages,
+          &.vancouver,
           &.surrey {
             &:hover {
               background: $color-secondary;
               color: $color-white;
               ul.submenu-child {
-                display: block;
-                right: auto;
-                right: 100%;
-                top: -72px;
+                display: grid;
               }
             }
+          }
+
+          &.commercial-mortgages ul.submenu-child {
+            right: auto;
+            right: 100%;
+            top: 0;
+          }
+
+          &.vancouver ul.submenu-child {
+            left: auto;
+            left: -100%;
+            top: 05px;
+          }
+
+          &.surrey ul.submenu-child {
+            left: auto;
+            left: -100%;
+            top: -115px;
           }
         }
       }
@@ -606,6 +599,7 @@ body {
     text-align: center;
   }
 }
+
 
 
 
@@ -866,9 +860,14 @@ body {
     }
   }
 }
-
+.advisorDivDesc{
+  display: block;
+}
+.advisorDivMob{
+  display: none;
+}
 .meeting_section {
-  padding: 80px 0;
+  // padding: 80px 0;
   h3 {
     font-family: "AvenirBook";
     font-size: 50px;
@@ -3258,6 +3257,15 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
+  .advisorDivDesc{
+    display: none;
+  }
+  .advisorDivMob{
+    display: block;
+  }
+  .meeting_section{
+    margin-top: -10px;
+  }
   .coquitlam-grid {
     .col-md-5 {
       margin-top: 20px;

@@ -12,6 +12,7 @@ export default function MortgageFeaturedHome(props: MyProps) {
       <Container>
         <Row>
           <Col lg={6}>
+            <div className="d-none d-lg-block">
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
@@ -43,6 +44,40 @@ export default function MortgageFeaturedHome(props: MyProps) {
               }}
               className="service-description"
             ></div>
+            </div>
+            <div className="d-block d-lg-none">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: advisorData?.advisorTitle,
+              }}
+              className="text-start service-title text-center"
+            ></div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: advisorData?.advisorDescriptionTop,
+              }}
+              className="mt-5"
+            ></div>
+            {advisorData?.advisorCards?.map((data, item) => {
+              return (
+                <div key={item} className="split_text mb-5">
+                  <h3 className="advisor-title text-center">{data.title}</h3>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: data.description,
+                    }}
+                    className="renovation-content-list text-center"
+                  ></div>
+                </div>
+              );
+            })}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: advisorData?.advisorDescriptionBottom,
+              }}
+              className="service-description"
+            ></div>
+            </div>
           </Col>
           <Col lg={1}></Col>
           <Col lg={5}>
