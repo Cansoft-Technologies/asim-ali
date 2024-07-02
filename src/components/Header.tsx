@@ -13,6 +13,7 @@ type MyProps = {
 
 function Header(props: MyProps) {
   const { settings, mainMenus, usingFor } = props;
+  console.log(mainMenus)
   const [alignmentClasses, setAlignmentClasses] = useState([]);
 
   useEffect(() => {
@@ -126,7 +127,7 @@ function Header(props: MyProps) {
                     >
                       <span className="link">{item.label}</span>
                     </Nav.Link>
-                    {item.label !== 'Current Rates' && (
+                    {item.label === 'Our Services' ? (
                       <ul
                         className={`submenu ${alignmentClasses[index + '-' + idx]}`}
                         id={`submenu-${index}-${idx}`}
@@ -176,6 +177,45 @@ function Header(props: MyProps) {
                                         </li>
                                       </>
                                     )}
+                                  </ul>
+                                </span>
+                              </li>
+                            );
+                          }
+                          return null;
+                        })}
+                      </ul>
+                    ) : item.label === 'Our Locations' ? (
+                      <ul
+                        className={`submenu-loc ${alignmentClasses[index + '-' + idx]}`}
+                        id={`submenu-${index}-${idx}`}
+                      >
+                        {item.childItems.nodes.map((submenu, id) => {
+                          if (
+                            submenu.label !== 'FTHBI Calculator' &&
+                            submenu.label !== 'Readvanceable Mortgage'
+                          ) {
+                            return (
+                              <li
+                                key={id}
+                                className={
+                                   submenu.label === 'Commercial Mortgages' ? 'commercial-mortgages' : submenu.label === 'Vancouver' ? 'vancouver' : submenu.label === 'Surrey' ? 'surrey' : ''
+                                }
+                              >
+                                <span>
+                                  <Nav.Link
+                                    as={Link}
+                                    href={
+                                      submenu.uri.endsWith('/')
+                                        ? submenu.uri.slice(0, -1)
+                                        : submenu.label === 'Surrey'
+                                        ? '/'
+                                        : submenu.uri
+                                    }
+                                  >
+                                    <span className="sublink">{submenu.label}</span>
+                                  </Nav.Link>
+                                  <ul className="submenu-child">
                                     {submenu.label === 'Vancouver' && (
                                       <>
                                         <li>
@@ -252,7 +292,45 @@ function Header(props: MyProps) {
                           return null;
                         })}
                       </ul>
-                    )}
+                    ) : item.label === 'How It Works' ? (
+                      <ul
+                        className={`submenu ${alignmentClasses[index + '-' + idx]}`}
+                        id={`submenu-${index}-${idx}`}
+                      >
+                        {item.childItems.nodes.map((submenu, id) => {
+                          if (
+                            submenu.label !== 'FTHBI Calculator' &&
+                            submenu.label !== 'Readvanceable Mortgage'
+                          ) {
+                            return (
+                              <li
+                                key={id}
+                                className={
+                                   submenu.label === 'Commercial Mortgages' ? 'commercial-mortgages' : submenu.label === 'Vancouver' ? 'vancouver' : submenu.label === 'Surrey' ? 'surrey' : ''
+                                }
+                              >
+                                <span>
+                                  <Nav.Link
+                                    as={Link}
+                                    href={
+                                      submenu.uri.endsWith('/')
+                                        ? submenu.uri.slice(0, -1)
+                                        : submenu.label === 'Surrey'
+                                        ? '/'
+                                        : submenu.uri
+                                    }
+                                  >
+                                    <span className="sublink">{submenu.label}</span>
+                                  </Nav.Link>
+                                </span>
+                              </li>
+                            );
+                          }
+                          return null;
+                        })}
+                      </ul>
+                    ): null}
+                    
                   </span>
                 ) : (
                   ''
