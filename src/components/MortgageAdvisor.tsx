@@ -69,7 +69,7 @@ export default function MortgageAdvisor(props: MyProps) {
       </Container>
     </section>
     <section className="split_section mt-5 d-block d-md-none ">
-      <Container>
+      <Container className="d-flex justify-content-center align-items-center">
         <Row>
         <Col lg={6}>
             {advisorData?.advisorCards?.map((data, item) => {
@@ -108,7 +108,7 @@ export default function MortgageAdvisor(props: MyProps) {
               }}
               className=""
             ></div>
-            <div className="split_image">
+            <div className="split_image justify-content-sm-center">
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
                 width="390"

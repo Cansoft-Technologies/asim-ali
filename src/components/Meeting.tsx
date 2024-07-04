@@ -41,7 +41,7 @@ const Meeting = (props: MyProps) => {
                 </Col>
               </Row>
               <Row lg={12} className="text-center mt-5">
-      <Col className="rates-table" lg={10} md={{ span: 10, offset: 1 }}>
+      <Col className="rates-table d-none d-md-block" lg={10} md={{ span: 10, offset: 1 }}>
         <Row>
           <Col lg={3}>
             <Row>
@@ -87,14 +87,72 @@ const Meeting = (props: MyProps) => {
         </Row>
         
       </Col>
-      <div className="mt-4 row">
-      <Col lg={10} className="offset-lg-1 px-0">
-        <Alert variant="info">
+      <Col className="rates-table d-block d-md-none" sm={12}>
+        <Row>
+          <Col sm={12}>
+            <Row>
+              <Col sm={12} xs={6}>
+                <div className="variable-prime-rates">
+                  <p>6.30 <span>%</span></p>
+                  <span className="small-print">Current Variable Rate</span>
+                </div>
+              </Col>
+              <Col sm={12} xs={6}>
+                <div className="variable-prime-rates">
+                  <p>7.20 <span>%</span></p>
+                  <span className="small-print">Current Prime Rate</span>
+                </div>
+              </Col>
+              <Col sm={12}>
+                <Alert variant="info" className="small">
+                  <p><b>Please Note:</b> Some conditions may apply. Rates may vary from Province to Province. Rates subject to change without notice. Posted rates may be high ratio and/or quick close which can differ from conventional rates. *O.A.C. & E.O</p>
+                </Alert>
+              </Col>
+            </Row>
+          </Col>
+          </Row>
+          <Row>
+          <Col sm={12} className="rates" >
+            <Row>
+              <Col xs={4}><b>Terms</b></Col>
+              <Col xs={4}><b>Bank Rates</b></Col>
+              <Col xs={4}><b>Payment Per $100K</b></Col>
+            </Row>
+            {dataRates.map((rate, index) => (
+              <Row key={index}>
+                <Col xs={4}>{rate.term}</Col>
+                <Col xs={4}>{rate.bankRate}</Col>
+                <Col xs={4}>{rate.bankPayment}</Col>
+              </Row>
+            ))}
+          </Col>
+          <Col sm={12} className="rates mt-4" >
+            <Row>
+              <Col xs={3}><b>Terms</b></Col>
+              <Col xs={3}><b>Our Rates</b></Col>
+              <Col xs={3}><b>Payment Per $100K</b></Col>
+              <Col xs={3}><b>Savings</b></Col>
+            </Row>
+            {dataRates.map((rate, index) => (
+              <Row key={index}>
+                <Col xs={3}>{rate.term}</Col>
+                <Col xs={3}>{rate.ourRate}</Col>
+                <Col xs={3}>{rate.ourPayment}</Col>
+                <Col xs={3}>{rate.savings}</Col>
+              </Row>
+            ))}
+          </Col>
+        </Row>
+        
+      </Col>
+      <div className="mt-4">
+      <Col lg={12} className="">
+        <Alert variant="info" className="small">
         <div
                     dangerouslySetInnerHTML={{
                       __html: meetings?.meetingDescription,
                     }}
-                    className="meeting_text"
+                    className="text-center"
                   ></div>
         </Alert>
       </Col>

@@ -3258,6 +3258,17 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
+  button.react-multiple-carousel__arrow.react-multiple-carousel__arrow-right {
+    position: absolute;
+    right: -8px;
+  }
+  button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right,
+  button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
+    font-size: 10px !important;
+    color: $color-secondary;
+    width: 19px;
+    display: block;
+  }
   .advisorDivDesc{
     display: none;
   }
