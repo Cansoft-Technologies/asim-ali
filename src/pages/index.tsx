@@ -11,6 +11,8 @@ const Header = dynamic(() => import("../components/Header"));
 const Banner = dynamic(() => import("../components/Banner"));
 const WeHelp = dynamic(() => import("../components/WeHelp"));
 const MobileBanner = dynamic(() => import("components/MobileBanner"));
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -430,7 +432,25 @@ export default function Page(props: MyProps) {
     mortgageInterestData,
     homebuyerSectionData,
   } = props;
-
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   return (
     <>
       <Head>
@@ -461,7 +481,7 @@ export default function Page(props: MyProps) {
         <div className="mobile-banner">
           <MobileBanner msliders={msliders} />
         </div>
-        <Container>
+        <Container className="d-none d-md-block">
           <div className="ms-auto mt-5 footer-partner-logo">
             {bottomPartnerLogoSection?.map((singleLogo:any) => {
               return (
@@ -480,6 +500,34 @@ export default function Page(props: MyProps) {
             })}
           </div>
         </Container>
+        <Container className="my-5 d-block d-md-none">
+                {bottomPartnerLogoSection == null ? (
+                  ""
+                ) : (
+                  <Carousel
+                    autoPlay={true}
+                    infinite={true}
+                    responsive={responsive}
+                  >
+                    {bottomPartnerLogoSection?.map((singleLogo, i) => {
+                      return (
+                        <div key={singleLogo?.sourceUrl}>
+                  <Image
+                  className="slide-text"
+                    src={singleLogo?.sourceUrl}
+                    width="350"
+                    height="150"
+                    alt={singleLogo?.altText}
+                    style={{ objectFit: "contain", width: "100%" }}
+                    loading="lazy"
+                    quality={100}
+                  />
+                </div>
+                      );
+                    })}
+                  </Carousel>
+                )}
+              </Container>
         <WeHelp helps={helps} />
         <div>
           <HomeComponents
