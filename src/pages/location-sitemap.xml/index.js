@@ -25,6 +25,11 @@ const locationRoutes = [
   "/mortgage-broker-in-whalley",
   "/mortgage-broker-in-guildford",
   "/mortgage-broker-in-fraser-heights",
+  "/mortgage-broker-in-marlborough",
+  "/aldergrove-east-mortgage-broker",
+  "/mortgage-broker-in-willoughby",
+  "/mortgage-broker-in-walnut-grove",
+  "/mortgage-broker-in-campbellton",
 ];
 
 export default function LocationSitemap() {
