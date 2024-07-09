@@ -509,6 +509,7 @@ body {
             }
 
             ul.submenu-child {
+              z-index: 1000;
               display: none;
               position: absolute;
               top: 0;
