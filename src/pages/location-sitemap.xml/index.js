@@ -30,6 +30,9 @@ const locationRoutes = [
   "/mortgage-broker-in-willoughby",
   "/mortgage-broker-in-walnut-grove",
   "/mortgage-broker-in-campbellton",
+  "/mortgage-broker-in-lochdale",
+  "/metrotown-mortgage-broker",
+  "/mortgage-broker-in-aberdeen",
 ];
 
 export default function LocationSitemap() {
