@@ -13,14 +13,23 @@ import type { AppProps } from "next/app";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { pageview } from "lib/gtm";
+import { gtmPageView, pageview } from "lib/gtm";
 import { useRouter } from "next/router";
+import Script from "next/script";
 const blacklist_countries = [
   "PL", // Poland
 ];
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  
+  useEffect(() => {
+    const props = {
+      page_title: pageProps.slug || null,
+    };
+    gtmPageView(props);
+  }, [pageProps]);
+
   function get_country_code(api_url: string) {
     fetch(api_url, { method: "GET" })
       .then((response) => response.json()) // Getting ip info as json
@@ -52,6 +61,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <SSRProvider>
     <>
       <FaustProvider client={client} pageProps={pageProps}>
+      <Script id="gtm" strategy="afterInteractive">
+      {`
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KQV4VW3G');
+      `}
+    </Script>
         <Component {...pageProps} />
       </FaustProvider>
     </>
