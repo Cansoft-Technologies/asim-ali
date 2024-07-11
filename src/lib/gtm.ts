@@ -15,3 +15,11 @@ export const event = ({ action, category, label, value }) => {
     });
   }
 };
+
+export const gtmPageView = (rest) => {
+  (window as any).dataLayer?.push({
+    event: "page_view",
+    url: window.location.href,
+    ...rest,
+  });
+};
