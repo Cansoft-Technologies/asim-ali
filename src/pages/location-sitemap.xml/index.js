@@ -33,6 +33,8 @@ const locationRoutes = [
   "/mortgage-broker-in-lochdale",
   "/metrotown-mortgage-broker",
   "/mortgage-broker-in-aberdeen",
+  "/mortgage-broker-in-ocean-grove",
+  "/mortgage-broker-in-huntingdon",
 ];
 
 export default function LocationSitemap() {
