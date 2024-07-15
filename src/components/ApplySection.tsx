@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 function isInputNamedElement(
@@ -42,12 +43,32 @@ export default function ApplySection() {
       message: formData.message.toString() || "",
       usingFor: "apply-now",
     });
-    console.log(bodyData);
+    const postBodyData = JSON.stringify({
+      name: formData.fname.toString() + " " + formData.lname.toString() || "",
+      email: formData.mail.toString() || "",
+      phone: formData.phone.toString() || "",
+      referred: formData.referred.toString() || "",
+      homeowner: formData.homeowner.toString() || "",
+      city: formData.city.toString() || "",
+      province: formData.province.toString() || "",
+      mortgage: formData.mortgage.toString() || "",
+      property: formData.property.toString() || "",
+      balance: formData.balance.toString() || "",
+      preferred: formData.preferred.toString() || "",
+      amount: formData.loan.toString() || "",
+      message: formData.message.toString() || "",
+    });
     try {
       const response = await fetch("/api/email", {
         method: "POST",
         body: bodyData,
       });
+      const post_config = {
+        method: 'POST',
+        url: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/api/v1/add-applied-submission/`,
+        data: postBodyData,
+      };
+      const post_response = await axios(post_config);
       const data = await response.json();
       console.log(data);
       setSuccess(data.message);

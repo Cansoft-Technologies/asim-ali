@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 function isInputNamedElement(
@@ -28,16 +29,34 @@ export default function ContactSection() {
       lname: formData.lname.toString() || "",
       mail: formData.mail.toString() || "",
       phone: formData.phone.toString() || "",
+      province: formData.province.toString() || "",
       contact: formData.contact.toString() || "",
       about: formData.about.toString() || "",
       message: formData.message.toString() || "",
     });
-
+    const postBodyData = JSON.stringify({
+      emailSubject:
+        formData.subject + "-" + formData.fname + " " + formData.lname,
+      name: formData.fname.toString() + " " + formData.lname.toString() || "",
+      email: formData.mail.toString() || "",
+      phone: formData.phone.toString() || "",
+      province: formData.province.toString() || "",
+      contact: formData.contact.toString() || "",
+      about: formData.about.toString() || "",
+      message: formData.message.toString() || "",
+    });
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         body: bodyData,
       });
+
+      const post_config = {
+        method: 'POST',
+        url: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/custom/v1/contact-form/`,
+        data: postBodyData,
+      };
+      const post_response = await axios(post_config);
       const data = await response.json();
 
       setSuccess(data.message);
