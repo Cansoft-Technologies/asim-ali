@@ -9,9 +9,10 @@ function isInputNamedElement(
 export default function ContactSection() {
   const form = useRef();
   const [success, setSuccess] = useState(null);
-
+  const [btnLoader, setBtnLoader] = useState(false);
   async function sendEmail(e) {
     e.preventDefault();
+    setBtnLoader(true);
     const formData: Record<string, string> = {};
     Array.from(e.currentTarget.elements)
       .filter(isInputNamedElement)
@@ -34,17 +35,17 @@ export default function ContactSection() {
       about: formData.about.toString() || "",
       message: formData.message.toString() || "",
     });
-    const postBodyData = JSON.stringify({
-      emailSubject:
-        formData.subject + "-" + formData.fname + " " + formData.lname,
-      name: formData.fname.toString() + " " + formData.lname.toString() || "",
-      email: formData.mail.toString() || "",
-      phone: formData.phone.toString() || "",
-      province: formData.province.toString() || "",
-      contact: formData.contact.toString() || "",
-      about: formData.about.toString() || "",
-      message: formData.message.toString() || "",
-    });
+    const postBodyData = new FormData();
+
+postBodyData.set('email_subject', formData.subject + "-" + formData.fname + " " + formData.lname);
+postBodyData.set('name', formData.fname.toString() + " " + formData.lname.toString() || "");
+postBodyData.set('email', formData.mail.toString() || "");
+postBodyData.set('phone', formData.phone.toString() || "");
+postBodyData.set('province', formData.province.toString() || "");
+postBodyData.set('contact', formData.contact.toString() || "");
+postBodyData.set('about', formData.about.toString() || "");
+postBodyData.set('message', formData.message.toString() || "");
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -53,12 +54,12 @@ export default function ContactSection() {
 
       const post_config = {
         method: 'POST',
-        url: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/custom/v1/contact-form/`,
+        url: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/api/v1/contact-form/`,
         data: postBodyData,
       };
       const post_response = await axios(post_config);
       const data = await response.json();
-
+      setBtnLoader(false);
       setSuccess(data.message);
       e.target.reset();
     } catch (error) {}
@@ -168,7 +169,7 @@ export default function ContactSection() {
           <input
             className="contactBtn mt-3"
             type="submit"
-            value="Send Message"
+            value={btnLoader ? "Loading..." : "Send Message"}
           />
         </div>
         {success && (

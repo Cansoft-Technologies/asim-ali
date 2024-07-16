@@ -11,9 +11,10 @@ export default function ApplySection() {
   const form = useRef();
   const [success, setSuccess] = useState("");
   // const [metaData, setMetaData] = useState([]);
-
+  const [btnLoader, setBtnLoader] = useState(false);
   async function sendEmail(e) {
     e.preventDefault();
+    setBtnLoader(true);
     const formData: Record<string, string> = {};
     Array.from(e.currentTarget.elements)
       .filter(isInputNamedElement)
@@ -43,21 +44,22 @@ export default function ApplySection() {
       message: formData.message.toString() || "",
       usingFor: "apply-now",
     });
-    const postBodyData = JSON.stringify({
-      name: formData.fname.toString() + " " + formData.lname.toString() || "",
-      email: formData.mail.toString() || "",
-      phone: formData.phone.toString() || "",
-      referred: formData.referred.toString() || "",
-      homeowner: formData.homeowner.toString() || "",
-      city: formData.city.toString() || "",
-      province: formData.province.toString() || "",
-      mortgage: formData.mortgage.toString() || "",
-      property: formData.property.toString() || "",
-      balance: formData.balance.toString() || "",
-      preferred: formData.preferred.toString() || "",
-      amount: formData.loan.toString() || "",
-      message: formData.message.toString() || "",
-    });
+    const postBodyData = new FormData();
+
+postBodyData.set('name', formData.fname.toString() + " " + formData.lname.toString() || "");
+postBodyData.set('email', formData.mail.toString() || "");
+postBodyData.set('phone', formData.phone.toString() || "");
+postBodyData.set('referred', formData.referred.toString() || "");
+postBodyData.set('homeowner', formData.homeowner.toString() || "");
+postBodyData.set('city', formData.city.toString() || "");
+postBodyData.set('province', formData.province.toString() || "");
+postBodyData.set('mortgage', formData.mortgage.toString() || "");
+postBodyData.set('property', formData.property.toString() || "");
+postBodyData.set('balance', formData.balance.toString() || "");
+postBodyData.set('preferred', formData.preferred.toString() || "");
+postBodyData.set('amount', formData.loan.toString() || "");
+postBodyData.set('message', formData.message.toString() || "");
+
     try {
       const response = await fetch("/api/email", {
         method: "POST",
@@ -71,6 +73,7 @@ export default function ApplySection() {
       const post_response = await axios(post_config);
       const data = await response.json();
       console.log(data);
+      setBtnLoader(false);
       setSuccess(data.message);
       e.target.reset();
     } catch (error) {
@@ -242,7 +245,7 @@ export default function ApplySection() {
               ></textarea>
             </div>
           </div>
-          <input className="contactBtn mt-3" type="submit" value="Apply Now" />
+          <input className="contactBtn mt-3" type="submit" value={btnLoader ? "Loading ..." : "Apply Now"} />
         </div>
         {success && (
           <div className="alert alert-success mt-4" role="alert">
