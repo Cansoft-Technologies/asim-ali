@@ -277,7 +277,7 @@ const teamDescription =
 </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Ou Rates</h2>
+<h2>Our Rates</h2>
 <p>Discover competitive mortgage rates in Lochdale with Asim Ali, offering a spectrum of options to suit your financial scenario. Our extensive lender network enables us to secure favorable rates. s
 </p>
 

@@ -3302,6 +3302,24 @@ p.testimonials-name {
       height: 50px;
     }
   }
+  .wehelp_section {
+    .wehelp_image{
+      width: 100%;
+    }
+  }
+  .team_section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      padding-top:20px ;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+    }
+  }
   .hero-title-col {
     .hero-title {
       font-size: 50px;
@@ -3408,7 +3426,7 @@ p.testimonials-name {
       height: 70vh;
       margin-bottom: 30px;
       object-fit: cover;
-      width: 90%;
+      width: 100%;
     }
   }
   .cta_section .cta_first {
