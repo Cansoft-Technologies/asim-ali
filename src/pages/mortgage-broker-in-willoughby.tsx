@@ -352,6 +352,12 @@ const teamDescription =
                     ></div>
                   </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
+        <ServiceSection
+          textLeft={tipsLeftText}
+          textRight={tipsRightText}
+          imageLeft={tipsImageLeft}
+          imageRight={tipsImageRight}
+        />
         <MortgageAdvisor advisorData={mortgageBenefitsData}/>
         <OurLenders title={teamTitle} description={teamDescription} />
         <AccordionSection advisorData={mortgageInterestData}/>
