@@ -72,27 +72,6 @@ export default function MortgageAdvisor(props: MyProps) {
       <Container className="d-flex justify-content-center align-items-center">
         <Row>
         <Col lg={6}>
-            {advisorData?.advisorCards?.map((data, item) => {
-              return (
-                <div key={item} className="split_text mb-0 text-center">
-                  <h3 className="advisor-title">{data.title}</h3>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data.description,
-                    }}
-                    className="renovation-content-list"
-                  ></div>
-                </div>
-              );
-            })}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: advisorData?.advisorDescriptionBottom,
-              }}
-              className="service-description"
-            ></div>
-          </Col>
-          <Col lg={6}>
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
@@ -123,6 +102,27 @@ export default function MortgageAdvisor(props: MyProps) {
                       quality={100}
               />
             </div>
+          </Col>
+        <Col lg={6}>
+            {advisorData?.advisorCards?.map((data, item) => {
+              return (
+                <div key={item} className="split_text mb-0 text-center">
+                  <h3 className="advisor-title">{data.title}</h3>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: data.description,
+                    }}
+                    className="renovation-content-list"
+                  ></div>
+                </div>
+              );
+            })}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: advisorData?.advisorDescriptionBottom,
+              }}
+              className="service-description"
+            ></div>
           </Col>
         </Row>
       </Container>

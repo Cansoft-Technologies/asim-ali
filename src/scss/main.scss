@@ -2924,6 +2924,26 @@ p.testimonials-name {
   display: none;
 }
 @media all and (max-width: 820px) {
+  .renovation-tab-row {
+    .tab-content {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      margin-left: 10px;
+    }
+    .renovation.nav-tabs {
+      margin-top: 20px;
+      .nav-link {
+        display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+        margin-top: 5px;
+        width: 400px;
+        padding: 10px;
+      }
+    }
+  }
   .cta_section .cta_first {
     height: 30vh;
   }
@@ -3008,6 +3028,11 @@ p.testimonials-name {
           right: 0%;
         }
       }
+    }
+  }
+  .split_text {
+    .advisor-title{
+      padding-top: 15px;
     }
   }
   .wehelp_section .wehelp_text h1.wehelp_title {
@@ -3259,6 +3284,25 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
+  .service-content { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3{
+      font-size: 25px;
+      font-weight: bold !important;
+    }
+    p{
+      text-align: center;
+      padding-top: 10px;
+    }
+  }
+  .advisor-title {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: "AvenirBook";
+    color: $color-secondary;
+  }
   button.react-multiple-carousel__arrow.react-multiple-carousel__arrow-right {
     position: absolute;
     right: -8px;
@@ -3388,8 +3432,8 @@ p.testimonials-name {
       }
     }
   }
-  .service-title {
-    font-size: 30px;
+  .service-title h2 {
+    font-size: 40px;
   }
   .service-top-section {
     .service-top-card {
