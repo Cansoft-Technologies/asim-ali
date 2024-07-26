@@ -2924,6 +2924,96 @@ p.testimonials-name {
   display: none;
 }
 @media all and (max-width: 820px) {
+  .navbar-nav {
+    ul {
+      li {
+        &:hover {
+          ul.submenu,
+          ul.submenu-loc {
+            display: flex;
+          }
+        }
+  
+        ul {
+          &.submenu,
+          &.submenu-loc {
+            display: none;
+            position: relative;
+            top: 100%;
+            left: 0;
+            z-index: 99;
+            background: #fff;
+            padding: 2px;
+            font-size: 12px;
+            &.submenu-loc {
+              top: 10;
+              left:0;
+            }
+  
+            li {
+              box-sizing: border-box;
+              position: relative;
+  
+              &:hover {
+                ul.submenu-child {
+                  display: flex;
+                }
+              }
+              ul.submenu-child {
+                z-index: 1000;
+                display: none;
+                position: relative;
+                left:0;
+                background: #fff;
+                width: 100%;
+                min-width: 100px;
+  
+                li {
+                  width: 100%;
+                }
+                span.sublink {
+                  font-size: 10px !important;
+                }
+              }
+  
+              &.commercial-mortgages,
+              &.vancouver,
+              &.surrey {
+                &:hover {
+                  background: $color-secondary;
+                  color: $color-white;
+  
+                  ul.submenu-child {
+                    display: flex;
+                  }
+                }
+              }
+  
+              &.commercial-mortgages ul.submenu-child {
+                right: 100%;
+                top: 0;
+              }
+  
+              &.vancouver ul.submenu-child {
+                left: 0;
+                top: 5px;
+              }
+  
+              &.surrey ul.submenu-child {
+                left: 0;
+                top: 0;
+              }
+            }
+          }
+        }
+        span.link {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  
+
   .renovation-tab-row {
     .tab-content {
       display: flex;
@@ -3284,6 +3374,15 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
+  .brand-mail{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+  .brand-cell{
+    font-size: 12px;
+    color: $color-secondary;
+  }
   .service-content { 
     display: flex;
     flex-direction: column;
