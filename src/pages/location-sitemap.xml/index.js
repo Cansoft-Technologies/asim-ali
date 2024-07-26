@@ -35,6 +35,8 @@ const locationRoutes = [
   "/mortgage-broker-in-aberdeen",
   "/mortgage-broker-in-ocean-grove",
   "/mortgage-broker-in-huntingdon",
+  "/hope-mortgage-broker",
+  "/mortgage-broker-in-white-rock",
 ];
 
 export default function LocationSitemap() {
