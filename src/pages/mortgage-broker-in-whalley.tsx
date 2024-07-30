@@ -184,7 +184,7 @@ export async function getStaticProps() {
       nodes {
         name
         slug
-        menuItems(first: 50){
+        menuItems(first: 150){
           nodes {
             url
             target
@@ -193,7 +193,7 @@ export async function getStaticProps() {
             cssClasses
             description
             id
-            childItems (first: 50) {
+            childItems (first: 150) {
               nodes {
                 uri
                 label

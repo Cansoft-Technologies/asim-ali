@@ -72,7 +72,7 @@ const CustomFooter = () => {
               nodes {
                 name
                 slug
-                menuItems(first: 50) {
+                menuItems(first: 150) {
                   nodes {
                     url
                     target
