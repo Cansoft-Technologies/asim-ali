@@ -45,7 +45,7 @@ function CustomHeader(): JSX.Element {
               nodes {
                 name
                 slug
-                menuItems(first: 50) {
+                menuItems(first: 150) {
                   nodes {
                     url
                     target
@@ -54,7 +54,7 @@ function CustomHeader(): JSX.Element {
                     cssClasses
                     description
                     id
-                    childItems (first: 50) {
+                    childItems (first: 150) {
                       nodes {
                         uri
                         label
