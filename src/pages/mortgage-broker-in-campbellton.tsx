@@ -363,6 +363,13 @@ const teamDescription =
             }}
             className="text-lg text-center"
           ></div>
+          <div className="tb-btn">
+                    <Link href={"/contact-us"}>
+                      <Button className="HeadBtn">
+                      CONTACT US
+                      </Button>
+                    </Link>
+                  </div>
         </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
