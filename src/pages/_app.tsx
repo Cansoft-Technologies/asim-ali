@@ -12,7 +12,7 @@ import type { AppProps } from "next/app";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { useReportWebVitals } from 'next/web-vitals'
 import { gtmPageView, pageview } from "lib/gtm";
 import { useRouter } from "next/router";
 import Script from "next/script";
@@ -22,7 +22,9 @@ const blacklist_countries = [
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  
+  useReportWebVitals((metric) => {
+    console.log(metric)
+  })
   useEffect(() => {
     const props = {
       page_title: pageProps.slug || null,
