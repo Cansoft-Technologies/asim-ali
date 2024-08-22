@@ -328,6 +328,14 @@ const Refinance = (props: MyProps) => {
                   </Row>
                 )}
                 <Row className="mortgage-broker">
+                <Col>
+                <h2 className="headering-title">
+                      Refinance Mortgage Calculator
+                    </h2>
+                    <iframe title="Mortgage Refinancing Savings Calculator - BMO" src="https://calculators.bmo.com/response/bmo/calc/home11?hide=logo" scrolling="auto" height="1420"  width="100%" id="persRefinanceSavingsCalc" style={{overflow: "hidden",border: "none"}}></iframe>
+            </Col>
+                </Row>
+                <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
                       {data?.Refinance?.brokerTitle}

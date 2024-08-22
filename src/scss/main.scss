@@ -109,6 +109,36 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     }
   }
 }
+.info-table-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+
+  .info-table-title {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #343a40;
+  }
+
+  .info-table {
+    th, td {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    td {
+      font-size: 1rem;
+      color: #495057;
+    }
+  }
+}
 .hero-title-col {
   position: relative;
   &:after {
@@ -2924,6 +2954,36 @@ p.testimonials-name {
   display: none;
 }
 @media all and (max-width: 820px) {
+  .info-table {
+      thead {
+        display: none;
+      }
+
+      tbody, tr, td {
+        display: block;
+        width: 100%;
+      }
+
+      tr {
+        margin-bottom: 15px;
+      }
+
+      td {
+        text-align: left;
+        padding-left: 50%;
+        position: relative;
+
+        &:before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 45%;
+          padding-left: 15px;
+          font-weight: bold;
+          white-space: nowrap;
+        }
+      }
+    }
   .navbar-nav {
     ul {
       li {
