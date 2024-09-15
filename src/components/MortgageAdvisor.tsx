@@ -69,24 +69,24 @@ export default function MortgageAdvisor(props: MyProps) {
       </Container>
     </section>
     <section className="split_section mt-5 d-block d-md-none ">
-      <Container className="d-flex justify-content-center align-items-center">
-        <Row>
-        <Col lg={6}>
-            <div
+      <Container>
+      <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
               }}
-              className="text-start service-title"
+              className="text-center service-title"
             ></div>
-            <h3 className="advisor-title">
+            <h3 className="advisor-title text-center">
               {advisorData?.advisorDescriptionTitle}
             </h3>
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorDescriptionTop,
               }}
-              className=""
+              className="text-center"
             ></div>
+        <Row>
+        <Col lg={6}>
             <div className="split_image justify-content-sm-center">
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
