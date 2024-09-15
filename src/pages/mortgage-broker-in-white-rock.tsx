@@ -343,7 +343,7 @@ export default function Page(props: MyProps) {
         <div className="tb-btn">
                     <Link href={"/contact-us"}>
                       <Button className="HeadBtn">
-                      CWe Are Ready To Help!
+                      We Are Ready To Help!
                       </Button>
                     </Link>
                   </div>

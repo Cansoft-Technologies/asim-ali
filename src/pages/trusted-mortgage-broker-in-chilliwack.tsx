@@ -454,7 +454,7 @@ const rateTitle = `
           imageRight={reasonRightImage}
         />
         <OurRates title={rateTitle} />
-        <section className="split_section">
+        <section className="split_section mt-5">
           <Container>
             <Row>
               <Col lg={5} className="text-hide-pc">
@@ -465,7 +465,7 @@ const rateTitle = `
                   className=""
                 ></div>
               </Col>
-              <Col lg={7}>
+              <Col lg={6}>
               <div
                   dangerouslySetInnerHTML={{
                     __html: borrowingPaymentData?.borrowingTitle,
@@ -486,7 +486,7 @@ const rateTitle = `
                   />
                 </div>
               </Col>
-              <Col lg={5} className="text-hide-sm">
+              <Col lg={6} className="text-hide-sm">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: borrowingPaymentData?.borrowingRightDescription,
