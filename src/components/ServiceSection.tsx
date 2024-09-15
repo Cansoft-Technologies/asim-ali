@@ -15,7 +15,15 @@ export default function ServiceSection(props: MyProps) {
       <div className="service-row">
         <Container>
           <Row>
-            <Col className="service-texts" lg={6}>
+            <Col className="service-texts hide-pc" lg={6}>
+              <div
+                className="service-content text-center"
+                dangerouslySetInnerHTML={{
+                  __html: textLeft,
+                }}
+              ></div>
+            </Col>
+            <Col className="service-texts hide-sm" lg={6}>
               <div
                 className="service-content"
                 dangerouslySetInnerHTML={{
@@ -43,7 +51,7 @@ export default function ServiceSection(props: MyProps) {
           <Row className="">
             <Col className="service-texts mb-5 hide-pc" lg={6}>
               <div
-                className="service-content"
+                className="service-content text-center"
                 dangerouslySetInnerHTML={{
                   __html: textRight,
                 }}
