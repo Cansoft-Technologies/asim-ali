@@ -294,7 +294,7 @@ function Header(props: MyProps) {
                       </ul>
                     ) : item.label === 'How It Works' ? (
                       <ul
-                        className={`submenu ${alignmentClasses[index + '-' + idx]}`}
+                        className={`submenu_level`}
                         id={`submenu-${index}-${idx}`}
                       >
                         {item.childItems.nodes.map((submenu, id) => {
