@@ -13,7 +13,6 @@ type MyProps = {
 
 function Header(props: MyProps) {
   const { settings, mainMenus, usingFor } = props;
-  console.log(mainMenus)
   const [alignmentClasses, setAlignmentClasses] = useState([]);
 
   useEffect(() => {
@@ -294,7 +293,7 @@ function Header(props: MyProps) {
                       </ul>
                     ) : item.label === 'How It Works' ? (
                       <ul
-                        className={`submenu ${alignmentClasses[index + '-' + idx]}`}
+                        className={`submenu_level`}
                         id={`submenu-${index}-${idx}`}
                       >
                         {item.childItems.nodes.map((submenu, id) => {
