@@ -13,7 +13,6 @@ type MyProps = {
 
 function Header(props: MyProps) {
   const { settings, mainMenus, usingFor } = props;
-  console.log(mainMenus)
   const [alignmentClasses, setAlignmentClasses] = useState([]);
 
   useEffect(() => {

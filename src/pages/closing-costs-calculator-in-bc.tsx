@@ -422,7 +422,7 @@ export default function Page(props: MyProps) {
       <div className="service-row my-5">
         <Container>
           <Row className="">
-            <Col className="service-texts mb-5 hide-pc" lg={6}>
+            <Col className="service-texts mb-5" lg={6}>
               <div
                 className="service-content"
                 dangerouslySetInnerHTML={{
@@ -442,14 +442,7 @@ export default function Page(props: MyProps) {
                 />
               </div>
             </Col>
-            <Col className="service-texts my-5 hide-sm" lg={6}>
-              <div
-                className="service-content"
-                dangerouslySetInnerHTML={{
-                  __html: tipsRightText,
-                }}
-              ></div>
-            </Col>
+            
           </Row>
         </Container>
       </div>
@@ -457,24 +450,24 @@ export default function Page(props: MyProps) {
         <>
     <section className="split_section mt-5 d-none d-md-block">
       <Container>
-        <Row>
-          <Col lg={6}>
-            <div
+      <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
               }}
-              className="text-start service-title"
+              className="text-center service-title"
             ></div>
-            <h3 className="advisor-title">
+            <h3 className="advisor-title text-center">
               {advisorData?.advisorDescriptionTitle}
             </h3>
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorDescriptionTop,
               }}
-              className=""
+              className="text-center"
             ></div>
-            <div className="split_image">
+        <Row>
+          <Col lg={6}>
+            <div className="split_image mt-5">
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
                 width="390"
@@ -515,24 +508,24 @@ export default function Page(props: MyProps) {
       </Container>
     </section>
     <section className="split_section mt-5 d-block d-md-none ">
-      <Container className="d-flex justify-content-center align-items-center">
-        <Row>
-        <Col lg={6}>
-            <div
+      <Container>
+      <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
               }}
-              className="text-start service-title"
+              className="text-center service-title"
             ></div>
-            <h3 className="advisor-title">
+            <h3 className="advisor-title text-center">
               {advisorData?.advisorDescriptionTitle}
             </h3>
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorDescriptionTop,
               }}
-              className=""
+              className="text-center"
             ></div>
+        <Row>
+        <Col lg={6}>
             <div className="split_image justify-content-sm-center">
               <Image
                 src={advisorData?.advisorImage?.sourceUrl}
