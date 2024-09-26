@@ -23,7 +23,7 @@ export async function getStaticProps() {
 
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 6089}) {
+      pages(where: {id: 1580}) {
       nodes {
         seo {
           title
@@ -269,19 +269,6 @@ type MyProps = {
 export default function Page(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
 
-//   const teamTitle =
-//   '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
-//   "";
-// const teamDescription =
-//   `<p><span style="font-weight: 400;">Our network includes partnerships with over 100 lenders, ranging from the most reputable major banks to specialized financing institutions. This expansive array of lending partners enables us to provide a comprehensive selection of mortgage options, designed to cater to the diverse financial situations and goals of our clients.
-// </span></p>\n` +
-//   "";
-//   const rateTitle = `
-// <h2>Ou Rates</h2>
-// <p>Discover competitive mortgage rates in Lochdale with Asim Ali, offering a spectrum of options to suit your financial scenario. Our extensive lender network enables us to secure favorable rates. s
-// </p>
-
-// `;
   return (
     <>
       <Head>
@@ -322,7 +309,7 @@ export default function Page(props: MyProps) {
                     <div className="tb-btn-left">
                     <Link href={"/apply-now"}>
                       <Button className="HeadBtn">
-                      Book A Meeting With Us
+                      Secure Your Funding
                       </Button>
                     </Link>
                   </div>
@@ -339,15 +326,6 @@ export default function Page(props: MyProps) {
                   </Col>
                 </Row>
                 </Container>
-                <MortgageAdvisor advisorData={mortgageBenefitsData}/>
-        <div className="tb-btn">
-                    <Link href={"/contact-us"}>
-                      <Button className="HeadBtn">
-                      We Are Ready To Help!
-                      </Button>
-                    </Link>
-                  </div>
-                {/* <OurRates title={rateTitle} /> */}
         <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
@@ -361,23 +339,31 @@ export default function Page(props: MyProps) {
                     <div className="tb-btn">
                     <Link href={"/contact-us"}>
                       <Button className="HeadBtn">
-                      Apply Now!
+                      Find Your Loan
                       </Button>
                     </Link>
                   </div>
                   </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-        
-        {/* <OurLenders title={teamTitle} description={teamDescription} /> */}
         <AccordionSection advisorData={mortgageInterestData}/>
-        {/* <div className="tb-btn">
+        <div className="tb-btn">
                     <Link href={"/contact-us"}>
                       <Button className="HeadBtn">
-                      Calculate Your Mortgage
+                      Get Expert Advice
                       </Button>
                     </Link>
-                  </div> */}
+                  </div>
+                <MortgageAdvisor advisorData={mortgageBenefitsData}/>
+        <div className="tb-btn">
+                    <Link href={"/contact-us"}>
+                      <Button className="HeadBtn">
+                      Connect with Us
+                      </Button>
+                    </Link>
+                  </div>
+        
+        {/* <OurLenders title={teamTitle} description={teamDescription} /> */}
         <Container className="mb-5 mt-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
         <div
@@ -389,7 +375,7 @@ export default function Page(props: MyProps) {
           <div className="tb-btn">
                     <Link href={"/contact-us"}>
                       <Button className="HeadBtn">
-                      CONTACT US
+                      Apply for Financing
                       </Button>
                     </Link>
                   </div>
