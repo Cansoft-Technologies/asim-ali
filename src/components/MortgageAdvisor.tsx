@@ -39,6 +39,7 @@ export default function MortgageAdvisor(props: MyProps) {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
+                        backgroundColor: "#ffffff",
                       }}
                       quality={100}
               />
