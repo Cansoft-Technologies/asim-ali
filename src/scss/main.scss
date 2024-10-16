@@ -1027,9 +1027,10 @@ body {
   }
   .flex-row-reverse {
     .split_image {
-      width: 90%;
+      width: 100%;
       float: right;
       object-fit: cover;
+      background-color: white !important;
     }
   }
   .split_image {
