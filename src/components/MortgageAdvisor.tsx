@@ -94,14 +94,12 @@ export default function MortgageAdvisor(props: MyProps) {
                 width="390"
                       height="400"
                 alt={advisorData?.advisorImage?.altText}
-                // priority={true}
                       style={{
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
                       }}
                       quality={100}
-                      unoptimized={true}
               />
             </div>
           </Col>
