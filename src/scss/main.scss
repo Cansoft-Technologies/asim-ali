@@ -479,6 +479,7 @@ body {
   font-family: "AvenirBook";
   color: $color-secondary;
 }
+
 .navbar-nav {
   ul {
     list-style: none;
@@ -992,6 +993,19 @@ body {
 .split_section {
   .row {
     align-items: center;
+  }
+  .split_text_home{
+    h2 {
+      font-family: "AvenirBook";
+      font-size: 22px;
+      color: $color-secondary;
+      position: relative;
+      span {
+        font-family: "AvenirBlack";
+        color: $color-secondary;
+        display: block;
+      }
+    }
   }
   .split_text {
     h2 {
