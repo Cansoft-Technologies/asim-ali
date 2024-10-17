@@ -6,9 +6,9 @@ const ApplyApprovedSection = dynamic(
 const ContactSection = dynamic(() => import("components/ContactSection"));
 const FlexibilityTab = dynamic(() => import("components/FlexibilityTab"));
 const HomeBuyerSection = dynamic(() => import("components/HomeBuyerSection"));
-const MortgageAdvisor = dynamic(() => import("components/MortgageAdvisor"));
-const MortgageFeaturedHome = dynamic(
-  () => import("components/MortgageFeaturedHome")
+const MortgageAdvisorHome = dynamic(() => import("components/MortgageAdvisorHome"));
+const MortgageFeaturedHomePage = dynamic(
+  () => import("components/MortgageFeaturedHomePage")
 );
 const Team = dynamic(() => import("components/Team"));
 const Meeting = dynamic(() => import("components/Meeting"));
@@ -54,8 +54,8 @@ const HomeComponents = (props: Props) => {
   return (
     <>
       <Meeting meetings={meetings} />
-      <MortgageFeaturedHome advisorData={mortgageInterestData} />
-      <MortgageAdvisor advisorData={advisorData} />
+      <MortgageFeaturedHomePage advisorData={mortgageInterestData} />
+      <MortgageAdvisorHome advisorData={advisorData} />
       <FlexibilityTab tabData={tabRenovationData} />
       <ApplyApprovedSection
         approvalRenovationData={approvalRenovationData}
