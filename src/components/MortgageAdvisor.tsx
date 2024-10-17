@@ -39,6 +39,7 @@ export default function MortgageAdvisor(props: MyProps) {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
+                        backgroundColor: "#ffffff",
                       }}
                       quality={100}
               />
@@ -93,13 +94,14 @@ export default function MortgageAdvisor(props: MyProps) {
                 width="390"
                       height="400"
                 alt={advisorData?.advisorImage?.altText}
-                priority={true}
+                // priority={true}
                       style={{
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
                       }}
                       quality={100}
+                      unoptimized={true}
               />
             </div>
           </Col>
