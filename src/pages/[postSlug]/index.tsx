@@ -42,7 +42,7 @@ export function PostComponent({ post, seo, settings, mainMenus }: PostProps) {
         />
         <main className="content content-single">
           <div className="wrap">
-            <h1>{post?.title()}</h1>
+            <h1>{post?.title?.toString()}</h1>
             <span className="asim-post-meta">
               By {post?.author?.node?.name} |{" "}
               <Moment format="MMM D, YYYY">{post?.date}</Moment>
