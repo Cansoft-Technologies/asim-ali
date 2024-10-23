@@ -233,25 +233,12 @@ const Services = (props: MyProps) => {
                     })}
                   </Carousel>
                 )}
-
-                <Row className="refinance-text">
-                  <Col md={5}>
-                    {data?.services?.refinancingTitle == null ? (
-                      ""
-                    ) : (
-                      <h1>
-                        {data?.services?.refinancingTitle.split(" ")[0]}{" "}
-                        <span>
-                          {data?.services?.refinancingTitle.split(" ")[1]}
-                        </span>
-                      </h1>
-                    )}
-                  </Col>
-                  <Col md={7}>
-                    <span>{data?.services?.refinancingDescription}</span>
-                  </Col>
-                </Row>
                 <Row>
+                <div className="service-container mt-5">
+                <h1 className="text-center">
+                  {data?.services?.ourMortgageServicesTitle}
+                </h1>
+                </div>
                   <Col>
                     {data?.services?.servicesDescription == null ? (
                       ""
@@ -265,12 +252,25 @@ const Services = (props: MyProps) => {
                     )}
                   </Col>
                 </Row>
+                <Row className="refinance-text">
+                  <Col md={5}>
+                    {data?.services?.refinancingTitle == null ? (
+                      ""
+                    ) : (
+                      <h2>
+                        {data?.services?.refinancingTitle.split(" ")[0]}{" "}
+                        <span>
+                          {data?.services?.refinancingTitle.split(" ")[1]}
+                        </span>
+                      </h2>
+                    )}
+                  </Col>
+                  <Col md={7}>
+                    <span>{data?.services?.refinancingDescription}</span>
+                  </Col>
+                </Row>
               </Container>
               <div className="service-container">
-                <h2 className="text-center">
-                  {data?.services?.ourMortgageServicesTitle}
-                </h2>
-
                 {data?.services?.ourServices.map((service, key) => {
                   return (
                     <div className="service-row" id={key} key={key}>
