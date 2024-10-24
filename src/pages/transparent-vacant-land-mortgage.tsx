@@ -509,7 +509,7 @@ export default function NewTransparentVacantLandMortgage(props: MyProps) {
 
         {/* <AccordionNewBC homebuyerData={commonConcernsData} /> */}
         <Container className="mb-5">
-          <h2 className="text-center service-title">{talkTitle}</h2>
+          <p className="text-center service-title">{talkTitle}</p>
           <div
             dangerouslySetInnerHTML={{
               __html: talkDescription,
