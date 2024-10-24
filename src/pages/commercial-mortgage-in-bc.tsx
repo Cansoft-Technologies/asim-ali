@@ -463,7 +463,7 @@ export default function NewCommercialMortgageBC(props: MyProps) {
         <AccordionNewBC homebuyerData={homebuyerSectionData} />
 
         <Container className="mb-5">
-          <h2 className="text-center service-title">{contactData?.title}</h2>
+          <p className="text-center service-title">{contactData?.title}</p>
           <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,

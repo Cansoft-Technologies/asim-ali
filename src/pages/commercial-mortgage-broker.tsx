@@ -327,9 +327,9 @@ export default function Page(props: MyProps) {
                 </Row>
                 </Container>
         <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
-                    <h2 className="text-center">
+                    <p className="text-center service-title">
                       {tipsTitle}
-                    </h2>
+                    </p>
                     <div
                       className="text-center"
                       dangerouslySetInnerHTML={{
