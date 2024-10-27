@@ -275,13 +275,13 @@ export default function NewAbbotsford(props: MyProps) {
   } = props;
 
   const teamTitle =
-      '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+      '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders in Abbotsford </span></h2>\n' +
       "";
    const teamDescription =
       `<p><span style="font-weight: 400;">Asim Ali is your trusted mortgage broker in Abbotsford, we're proud to work with more than 100 lenders. This means we have a lot of choices to help find the perfect loan for you. We work with big banks, special loan places, and other types of lenders. Our goal is to make sure you get a great loan that makes you happy. </span></p>\n` +
       "";
       const rateTitle = `
-  <h2>Our Rates</h2>
+  <h2>Current Mortgage Rates In Abbotsford</h2>
 <p>As your go-to mortgage broker in Abbotsford, BC Asim Ali wants to make sure you get a great deal. Our rates are very friendly, and we work hard to find you loans that won't break the bank. We chat with lots of lenders to make sure you get a rate that fits just right with what you need. Remember, different people need different rates, and we're here to help find the best one for you.</p>
 
   `;
@@ -352,7 +352,7 @@ export default function NewAbbotsford(props: MyProps) {
           className="mb-5 px-3 py-3 my-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
         >
-          <h2 className="text-center">{tipsTitle}</h2>
+          <p className="text-center service-title">{tipsTitle}</p>
           <div
             className="text-center"
             dangerouslySetInnerHTML={{
@@ -377,7 +377,7 @@ export default function NewAbbotsford(props: MyProps) {
         <FlexibilityTab tabData={tabRenovationData} />
         <OurLenders title={teamTitle} description={teamDescription} />
         <Container className="mb-5">
-          <h2 className="text-center service-title">{contactData?.title}</h2>
+          <p className="text-center service-title">{contactData?.title}</p>
           <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,

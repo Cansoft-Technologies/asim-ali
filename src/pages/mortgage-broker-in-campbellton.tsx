@@ -270,14 +270,14 @@ export default function Page(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
 
   const teamTitle =
-  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Mortgage Lenders </span></h2>\n' +
   "";
 const teamDescription =
   `<p><span style="font-weight: 400;">Our network encompasses connections with over 100 lenders, ensuring a broad range of options for our clients. This extensive collaboration allows us to secure the most competitive rates and terms tailored to individual needs. Each lender in our portfolio has been carefully selected to provide diverse and flexible financing solutions.
 </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Our Rate</h2>
+<h2>Current Mortgage Rates​ In Campbellton</h2>
 <p>We're dedicated to offering competitive mortgage rates in Willoughby that reflect the current mortgage market. Our team tirelessly negotiates with lenders to bring you deals that make financial sense for your unique situation, ensuring you get the most favorable terms available.
 </p>
 
@@ -356,7 +356,7 @@ const teamDescription =
         <OurLenders title={teamTitle} description={teamDescription} />
         <MortgageAdvisor advisorData={mortgageBenefitsData}/>
         <Container className="mb-5 mt-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
+        <p className="text-center service-title">{contactData?.title}</p>
         <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,
