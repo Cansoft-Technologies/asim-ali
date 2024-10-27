@@ -292,13 +292,13 @@ export default function NewKelowna(props: MyProps) {
   } = props;
 
   const teamTitle =
-    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders In Kelowna </span></h2>\n' +
     "";
   const teamDescription =
     `<p><span style="font-weight: 400;">We pride ourselves on our strong relationships with over 100 lenders. This extensive network includes major banks, credit unions, and private lenders, all offering a variety of mortgage products. This diversity guarantees that we can get you a good product to fit your financial background and homeownership dreams. Our mission is to come up with an offer that is the best fit for you so that your homeownership ride will be smooth.
 </span></p>\n` + "";
   const rateTitle = `
-<h2>Rates</h2>
+<h2>Current Mortgage Rates Kelowna</h2>
 <p>Exploring mortgage rates can feel like navigating a maze, but don't worry, we've got your back. Our job is to hunt down rates that not only fit your budget but also make your dream of homeownership more achievable. Each client's financial situation is unique, which is why we offer a personalized approach, ensuring the rates we find are tailored just for you. Keep in mind, that mortgage rates fluctuate due to market conditions, but our commitment to finding you the best deal remains steadfast.
 </p>
 
@@ -362,7 +362,7 @@ export default function NewKelowna(props: MyProps) {
           className="mb-5 px-3 py-3 my-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
         >
-          <h2 className="text-center">{tipsTitle}</h2>
+          <p className="text-center service-title">{tipsTitle}</p>
           <div
             className="text-center"
             dangerouslySetInnerHTML={{
@@ -387,7 +387,7 @@ export default function NewKelowna(props: MyProps) {
         <AccordionSection advisorData={mortgageInterestData} />
        <OurLenders title={teamTitle} description={teamDescription} />
         <Container className="mb-5">
-          <h2 className="text-center service-title">{contactData?.title}</h2>
+          <p className="text-center service-title">{contactData?.title}</p>
           <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,

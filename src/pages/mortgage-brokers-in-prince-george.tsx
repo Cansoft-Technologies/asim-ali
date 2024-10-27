@@ -258,13 +258,13 @@ export default function NewPrince(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData} = props;
 
   const teamTitle =
-  '<h2 style="font-size: 40px;">Lenders</h2>\n' +
+  '<h2 style="font-size: 40px;">Our Lenders in Prince George</h2>\n' +
   "";
 const teamDescription =
   `<p><span style="font-weight: 400;">We have partnered with 100+ lenders! We work together with banks, for instance, big banks, local credit unions, and specialized lenders. Because of our extensive partner base, we can find a mortgage that is tailored to your needs. Whether you are a perfect credit holder, self-employed, or buying your first house we will make you covered.   </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Rates</h2>
+<h2>Current Mortgage Rates</h2>
 <p>We make sure you get the best ones that fit your pocket. Whether you're buying a house for the first time or looking to get a new place, we work hard to find rates that are just right for you. We keep our eyes on all the rate changes to make sure you don’t have to pay more than you should. With us, it's all about getting you a deal that makes you smile.</p>
 
 `;
@@ -319,9 +319,9 @@ const teamDescription =
                 </Row>
                 </Container>
                     <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
-                    <h2 className="text-center">
+                    <p className="text-center service-title">
                       {tipsTitle}
-                    </h2>
+                    </p>
                     <div
                       className="text-center"
                       dangerouslySetInnerHTML={{

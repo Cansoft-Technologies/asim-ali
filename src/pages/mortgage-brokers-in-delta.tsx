@@ -267,7 +267,7 @@ export default function NewDelta(props: MyProps) {
   } = props;
 
   const teamTitle =
-    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Mortgage Lenders  In Delta </span></h2>\n' +
     "";
   const teamDescription =
     `<p><span style="font-weight: 400;">We pride ourselves on our robust network of over 100 lenders. This extensive connection ensures we can offer a vast array of financing options to fit every unique situation. From major banks to specialized financial institutions, our relationships with these lenders are grounded in trust and mutual respect. Our access to this diverse group allows us to negotiate the best possible terms for you, ensuring your mortgage plan is as unique as your dream home.
@@ -344,7 +344,7 @@ export default function NewDelta(props: MyProps) {
           className="mb-5 px-3 py-3 my-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
         >
-          <h2 className="text-center">{tipsTitle}</h2>
+          <p className="text-center service-title">{tipsTitle}</p>
           <div
             className="text-center"
             dangerouslySetInnerHTML={{

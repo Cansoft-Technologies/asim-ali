@@ -270,14 +270,14 @@ export default function Page(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
 
   const teamTitle =
-  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Mortgage Lenders In Marlborough </span></h2>\n' +
   "";
 const teamDescription =
   `<p><span style="font-weight: 400;">We have partnered with more than 100 lenders to bring you a wide array of mortgage options. This diverse network includes big banks, credit unions, and private lenders, ensuring we can tailor a loan solution that's just right for your financial situation and home-buying goals.
 </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Rate</h2>
+<p className="service-title">Rate</p>
 <p>Understanding mortgage rates can be pivotal in selecting the right home loan. We pride ourselves on offering competitive rates designed to match your financial goals and market conditions in Marlborough.
 </p>
 
@@ -341,9 +341,9 @@ const teamDescription =
                 </Container>
                 <OurRates title={rateTitle} />
         <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
-                    <h2 className="text-center">
+                    <p className="text-center service-title">
                       {tipsTitle}
-                    </h2>
+                    </p>
                     <div
                       className="text-center"
                       dangerouslySetInnerHTML={{

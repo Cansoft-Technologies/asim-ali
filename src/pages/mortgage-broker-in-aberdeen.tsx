@@ -277,7 +277,7 @@ const teamDescription =
 </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Rates</h2>
+<h2>Current Mortgage Rates</h2>
 <p>Navigating the fluctuating mortgage rates can be challenging, but our dedicated team works tirelessly to secure the most competitive rates for our clients, ensuring your financing plan is both affordable and suited to your financial landscape.
 </p>
 

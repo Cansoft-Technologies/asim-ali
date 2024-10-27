@@ -325,13 +325,13 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
     processBelowDesc,
   } = props;
   const teamTitle =
-    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Campbell River Mortgage Lender </span></h2>\n' +
     "";
   const teamDescription =
     `<p><span style="font-weight: 400;">With our expansive network of over 100 lenders, we've got your back when it comes to exploring every imaginable financing option. This diverse network includes both traditional banks and alternative lending institutions, granting us access to the most favorable rates and terms customized to your unique circumstances. Our relationships with these lenders are built on trust and years of experience, affording us the ability to advocate on your behalf with confidence.
   </span></p>\n` + "";
   const rateTitle = `
-<h2>Current Mortgage Rates</h2>
+<h2>Current Mortgage Rates In Campbell River</h2>
 <p>These days, mortgage rates can be as unpredictable as the weather, shifting frequently. We keep an eye on these rates every day to find the best deals for you. Rates can go up and down daily, so it's important to check with us for the most recent information. We promise to help you understand these rates and show you how they fit into your home-buying plans.</p>
 
 `;
@@ -481,7 +481,7 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
         <OurLenders title={teamTitle} description={teamDescription} />
         <div style={{ height: "15px" }}></div>
         <Container className="mb-5 mt-5">
-          <h2 className="text-center service-title">{talkTitle}</h2>
+          <p className="text-center service-title">{talkTitle}</p>
           <div
             dangerouslySetInnerHTML={{
               __html: talkDescription,
