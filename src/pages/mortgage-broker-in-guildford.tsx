@@ -347,7 +347,7 @@ export default function Page(props: MyProps) {
         <AccordionSection advisorData={mortgageInterestData}/>
         <MortgageAdvisor advisorData={mortgageBenefitsData}/>
         <Container className="mb-5 mt-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
+        <p className="text-center service-title">{contactData?.title}</p>
       <div
         dangerouslySetInnerHTML={{
           __html: contactData?.description,
