@@ -270,14 +270,14 @@ export default function Page(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
 
   const teamTitle =
-  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Expert Mortgage Lenders </span></h2>\n' +
   "";
 const teamDescription =
   `<p><span style="font-weight: 400;">We have established partnerships with more than 100 lenders, ensuring a wide range of mortgage options to fit every financial scenario. Our extensive network includes major banks, credit unions, and specialty lenders, providing you with access to the best rates and terms available. This diverse selection allows us to tailor financing solutions that align perfectly with your needs and goals.
 </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Ou Rates</h2>
+<h2>Our Current Mortgage Rates In Metrotown</h2>
 <p>We're committed to providing you with the most competitive rates available in the Metrotown area. Our connections with a wide array of lenders allow us to offer customized rate options designed to fit your financial situation perfectly.
 </p>
 
@@ -339,7 +339,6 @@ const teamDescription =
                   </Col>
                 </Row>
                 </Container>
-                <OurRates title={rateTitle} />
         <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
@@ -359,10 +358,11 @@ const teamDescription =
           imageRight={tipsImageRight}
         />
         <AccordionSection advisorData={mortgageInterestData}/>
+        <OurRates title={rateTitle} />
         <OurLenders title={teamTitle} description={teamDescription} />
         <MortgageAdvisor advisorData={mortgageBenefitsData}/>
         <Container className="mb-5 mt-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
+        <p className="text-center service-title">{contactData?.title}</p>
         <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,
