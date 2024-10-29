@@ -53,10 +53,10 @@ const HomeComponents = (props: Props) => {
   } = props;
   return (
     <>
-      <Meeting meetings={meetings} />
       <MortgageFeaturedHomePage advisorData={mortgageInterestData} />
       <MortgageAdvisorHome advisorData={advisorData} />
       <FlexibilityTab tabData={tabRenovationData} />
+      <Meeting meetings={meetings} />
       <ApplyApprovedSection
         approvalRenovationData={approvalRenovationData}
         sliders={sliders}
