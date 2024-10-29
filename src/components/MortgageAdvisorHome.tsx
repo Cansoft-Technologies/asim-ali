@@ -17,9 +17,9 @@ export default function MortgageAdvisorHome(props: MyProps) {
               }}
               className="text-center service-title"
             ></div>
-            <h2 className="advisor-title-home text-center">
+            <h3 className="advisor-title-home text-center">
               {advisorData?.advisorDescriptionTitle}
-            </h2>
+            </h3>
             <div
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorDescriptionTop,
@@ -49,7 +49,7 @@ export default function MortgageAdvisorHome(props: MyProps) {
             {advisorData?.advisorCards?.map((data, item) => {
               return (
                 <div key={item} className="split_text_home mb-0">
-                  <h2 className="advisor-title">{data.title}</h2>
+                  <h3 className="advisor-title">{data.title}</h3>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: data.description,
