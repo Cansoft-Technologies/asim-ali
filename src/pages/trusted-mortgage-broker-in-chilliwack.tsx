@@ -358,13 +358,13 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
     journeyRightImage,
   } = props;
   const teamTitle =
-  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Mortgage Lenders  </span></h2>\n' +
   "";
 const teamDescription =
   `<p><span style="font-weight: 400;">At Asim Ali, our strength lies in our extensive network, boasting connections with over 100 lenders. This diverse array of financial institutions and private lenders ensures that we can cater to a wide variety of needs and situations. Our partnerships enable us to present our clients with a multitude of mortgage options, from conventional loans to more specialized financing solutions.
 </span></p>\n` + "";
 const rateTitle = `
-<h2>Our Rates</h2>
+<h2>Our Current Mortgage Rates Chilliwack​</h2>
 <p>We believe in transparency and providing value to our clients. While our rates are competitive and designed to suit various financial situations, they are subject to market conditions and individual creditworthiness. We work diligently to secure the most favorable rates for you by leveraging our extensive network of lenders. To get a detailed understanding of our current rates and how they can be tailored to your specific needs, we encourage a one-on-one consultation. This approach ensures that you receive the most accurate and personalized rate information possible.</p>
 
 `;

@@ -270,14 +270,14 @@ export default function Page(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
 
   const teamTitle =
-  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Mortgage Lenders </span></h2>\n' +
   "";
 const teamDescription =
   `<p><span style="font-weight: 400;">We partner with a vast network of over 100 lenders, each offering diverse mortgage products and services. This wide selection enables us to match you with the perfect lender, considering your specific financial situation and goals. Our extensive connections include major banks, credit unions, and specialty finance companies, ensuring we have the flexibility to find the most advantageous rates and terms for you.
 </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Our Rates</h2>
+<h2>Our Current Mortgage Rates Aldergrove East, BC​</h2>
 <p>Discover competitive rates designed to fit your budget and financial goals.</p>
 
 `;
@@ -355,7 +355,7 @@ const teamDescription =
         <OurLenders title={teamTitle} description={teamDescription} />
         <AccordionSection advisorData={mortgageInterestData}/>
         <Container className="mb-5 mt-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
+        <p className="text-center service-title">{contactData?.title}</p>
         <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,
