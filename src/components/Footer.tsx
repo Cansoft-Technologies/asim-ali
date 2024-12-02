@@ -61,6 +61,7 @@ const Footer = (props: MyProps) => {
             </Col>
             <Col lg={4}>
               <div className="footer-logo">
+                <div className="footer-logo-image">
                 <Link href="/">
                   <Image
                     src={
@@ -72,6 +73,16 @@ const Footer = (props: MyProps) => {
                     style={{ objectFit: "cover" }}
                   />
                 </Link>
+                <Link href="/">
+                  <Image
+                    src='https://asimaliprod.wpengine.com/wp-content/uploads/2024/12/AIMI-Without-Backgroun_White-Text.png'
+                    alt={prefixSettings?.footerLogoSection?.logoUpload?.altText}
+                    width="130"
+                    height="108"
+                    style={{ objectFit: "cover" }}
+                  />
+                </Link>
+                </div>
                 <p className="copyright">
                   {prefixSettings?.footerLogoSection?.logoText}
                 </p>
