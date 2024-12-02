@@ -7,71 +7,16 @@ type MyProps = {
 export default function OurRates(props: MyProps) {
   const {  title } = props;
   const dataRates = [
-    {
-      term: "6 Months",
-      bankRate: "6.59 %",
-      bankPayment: "$675.29",
-      ourRate: "7.49 %",
-      ourPayment: "$730.93",
-      savings: "$-55.64",
-    },
-    {
-      term: "1 Year",
-      bankRate: "7.84 %",
-      bankPayment: "$753.03",
-      ourRate: "6.93 %",
-      ourPayment: "$696.10",
-      savings: "$56.93",
-    },
-    {
-      term: "2 Years",
-      bankRate: "7.34 %",
-      bankPayment: "$721.53",
-      ourRate: "6.37 %",
-      ourPayment: "$661.96",
-      savings: "$59.57",
-    },
-    {
-      term: "3 Years",
-      bankRate: "6.99 %",
-      bankPayment: "$699.80",
-      ourRate: "5.44 %",
-      ourPayment: "$606.90",
-      savings: "$92.90",
-    },
-    {
-      term: "4 Years",
-      bankRate: "6.79 %",
-      bankPayment: "$687.50",
-      ourRate: "5.52 %",
-      ourPayment: "$611.56",
-      savings: "$75.94",
-    },
-    {
-      term: "5 Years",
-      bankRate: "6.84 %",
-      bankPayment: "$690.57",
-      ourRate: "4.99 %",
-      ourPayment: "$581.04",
-      savings: "$109.53",
-    },
-    {
-      term: "7 Years",
-      bankRate: "7.10 %",
-      bankPayment: "$706.60",
-      ourRate: "6.09 %",
-      ourPayment: "$645.17",
-      savings: "$61.43",
-    },
-    {
-      term: "10 Years",
-      bankRate: "7.25 %",
-      bankPayment: "$715.92",
-      ourRate: "6.14 %",
-      ourPayment: "$648.15",
-      savings: "$67.77",
-    },
+    { term: '6 Months', bankRate: '7.89 %', bankPayment: '$756.21', ourRate: '7.49 %', ourPayment: '$730.93', savings: '$25.28' },
+    { term: '1 Year', bankRate: '7.74 %', bankPayment: '$746.69', ourRate: '5.59 %', ourPayment: '$615.64', savings: '$131.05' },
+    { term: '2 Years', bankRate: '7.34 %', bankPayment: '$721.53', ourRate: '5.44 %', ourPayment: '$606.90', savings: '$114.63' },
+    { term: '3 Years', bankRate: '6.94 %', bankPayment: '$696.72', ourRate: '4.64 %', ourPayment: '$561.28', savings: '$135.43' },
+    { term: '4 Years', bankRate: '6.74 %', bankPayment: '$684.44', ourRate: '4.64 %', ourPayment: '$561.28', savings: '$123.16' },
+    { term: '5 Years', bankRate: '6.79 %', bankPayment: '$687.50', ourRate: '4.54 %', ourPayment: '$555.70', savings: '$131.80' },
+    { term: '7 Years', bankRate: '7.10 %', bankPayment: '$706.60', ourRate: '5.40 %', ourPayment: '$604.58', savings: '$102.02' },
+    { term: '10 Years', bankRate: '7.25 %', bankPayment: '$715.92', ourRate: '5.80 %', ourPayment: '$627.97', savings: '$87.95' }
   ];
+  
   return (
     <div>
           <Container>
@@ -96,13 +41,13 @@ export default function OurRates(props: MyProps) {
             <Row>
               <Col lg={12} md={6}>
                 <div className="variable-prime-rates">
-                  <p>6.30 <span>%</span></p>
+                  <p>5.05 <span>%</span></p>
                   <span className="small-print">Current Variable Rate</span>
                 </div>
               </Col>
               <Col lg={12} md={6}>
                 <div className="variable-prime-rates">
-                  <p>7.20 <span>%</span></p>
+                  <p>5.95 <span>%</span></p>
                   <span className="small-print">Current Prime Rate</span>
                 </div>
               </Col>
@@ -142,13 +87,13 @@ export default function OurRates(props: MyProps) {
             <Row>
               <Col sm={12} xs={6}>
                 <div className="variable-prime-rates">
-                  <p>6.30 <span>%</span></p>
+                  <p>5.05 <span>%</span></p>
                   <span className="small-print">Current Variable Rate</span>
                 </div>
               </Col>
               <Col sm={12} xs={6}>
                 <div className="variable-prime-rates">
-                  <p>7.20 <span>%</span></p>
+                  <p>5.95 <span>%</span></p>
                   <span className="small-print">Current Prime Rate</span>
                 </div>
               </Col>
@@ -199,12 +144,7 @@ export default function OurRates(props: MyProps) {
         <Alert variant="info" className="small">
         <div className="text-center">
                       <p className="">
-                        Please Note: Rates you see may change, and the rate you
-                        get from any bank or lender, or whether you’re approved
-                        or not, depends on your situation. The rates you see are
-                        just estimates and might not be exact. It’s best to talk
-                        to us for the most accurate info and to find out if you
-                        qualify.
+                      Please Note: Advertised rates are not guaranteed and the rate provided by any financial institution listed, or any approval or decline you receive, will be based solely on your personal situation. The advertised rates are provided as guidance only and the accuracy of these rates is not guaranteed. You are encouraged to speak with a Dominion Lending Centres Mortgage Professional for the most accurate information and to determine your eligibility.
                       </p>
                     </div>
         </Alert>
