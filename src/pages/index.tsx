@@ -287,6 +287,10 @@ export async function getStaticProps() {
               altText
               sourceUrl
             }
+            logoUploadTwo {
+              altText
+              sourceUrl
+            }
           }
           footerRightWidget {
             title

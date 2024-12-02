@@ -2947,6 +2947,13 @@ p.testimonials-name {
 .location-tab-title {
   font-size: 15px;
 }
+.footer-logo-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-left: -40px;
+}
 @media all and (max-width: 1400px) {
   .footer-menu ul {
     li {
@@ -3517,6 +3524,14 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
+  .footer-logo-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-left: 0;
+  }
   .brand-mail{
     display: flex;
     flex-direction: column;
