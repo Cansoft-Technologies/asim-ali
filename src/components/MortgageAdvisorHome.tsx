@@ -87,22 +87,7 @@ export default function MortgageAdvisorHome(props: MyProps) {
               className="text-center"
             ></div>
         <Row>
-        <Col lg={6}>
-            <div className="split_image justify-content-sm-center">
-              <Image
-                src={advisorData?.advisorImage?.sourceUrl}
-                width="390"
-                      height="400"
-                alt={advisorData?.advisorImage?.altText}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                      quality={100}
-              />
-            </div>
-          </Col>
+        
         <Col lg={6}>
             {advisorData?.advisorCards?.map((data, item) => {
               return (
@@ -123,6 +108,22 @@ export default function MortgageAdvisorHome(props: MyProps) {
               }}
               className="service-description"
             ></div>
+          </Col>
+          <Col lg={6}>
+            <div className="split_image justify-content-sm-center">
+              <Image
+                src={advisorData?.advisorImage?.sourceUrl}
+                width="390"
+                      height="400"
+                alt={advisorData?.advisorImage?.altText}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                      quality={100}
+              />
+            </div>
           </Col>
         </Row>
       </Container>
