@@ -85,20 +85,33 @@ function Header(props: MyProps) {
             {settings?.headerSettings?.uploadLogo == null ? (
               ""
             ) : (
+              <div className="header-logo-image">
               <Link href="/">
                 <Image
                   src={settings?.headerSettings?.uploadLogo?.sourceUrl}
                   alt="Logo"
                   style={{ cursor: "pointer" }}
-                  width={180}
+                  width={160}
                   height={43}
                   className="desc-logo"
                 />
               </Link>
+              <Link href="/">
+                <Image
+                  src='https://asimaliprod.wpengine.com/wp-content/uploads/2024/12/AIMI-logo.png'
+                  alt="Logo"
+                  style={{ cursor: "pointer" }}
+                  width={70}
+                  height={43}
+                  className="desc-logo"
+                />
+              </Link>
+              </div>
             )}
             {settings?.headerSettings?.uploadLogoMobile == null ? (
               ""
             ) : (
+              <div className="header-logo-image">
               <Link href="/">
                 <Image
                   src={settings?.headerSettings?.uploadLogoMobile?.sourceUrl}
@@ -109,6 +122,17 @@ function Header(props: MyProps) {
                   className="mobile-logo"
                 />
               </Link>
+              <Link href="/">
+                <Image
+                  src='https://asimaliprod.wpengine.com/wp-content/uploads/2024/12/AIMI-logo.png'
+                  alt="Logo"
+                  style={{ cursor: "pointer" }}
+                  width={80}
+                  height={43}
+                  className="mobile-logo"
+                />
+              </Link>
+              </div>
             )}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />

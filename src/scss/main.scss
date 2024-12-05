@@ -2954,6 +2954,12 @@ p.testimonials-name {
   gap: 4px;
   margin-left: -40px;
 }
+.header-logo-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
 @media all and (max-width: 1400px) {
   .footer-menu ul {
     li {
@@ -3524,6 +3530,13 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
+  .header-logo-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    margin-left: 0;
+  }
   .footer-logo-image{
     display: flex;
     flex-direction: column;
