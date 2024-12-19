@@ -15,6 +15,7 @@ import Link from 'next/link';
 import ContactSection from 'components/ContactSection';
 import OurRates from 'components/OurRates';
 import OurLenders from 'components/OurLenders';
+import LocationHero from 'components/LocationHero';
 
 
 
@@ -304,7 +305,7 @@ const teamDescription =
         {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
               ) : (
-                <Hero
+                <LocationHero
                   title={serviceBannerData?.serviceBannerTitle}
                   heading={serviceBannerData?.serviceBannerHeading}
                   description={serviceBannerData?.serviceBannerDescription}

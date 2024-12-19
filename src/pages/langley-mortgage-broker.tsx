@@ -11,6 +11,7 @@ import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
 import OurLenders from "components/OurLenders";
 import OurRates from "components/OurRates";
+import LocationHero from "components/LocationHero";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -319,7 +320,7 @@ export default function NewLangley(props: MyProps) {
         {serviceBannerData?.serviceBannerTitle == null ? (
           ""
         ) : (
-          <Hero
+          <LocationHero
             title={serviceBannerData?.serviceBannerTitle}
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}

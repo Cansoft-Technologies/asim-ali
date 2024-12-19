@@ -173,6 +173,41 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     }
   }
 }
+.location-hero-title-col {
+  position: relative;
+  z-index: 10;
+  &:after {
+    position: absolute;
+    overflow: hidden;
+    width: 70%;
+    height: 3px;
+    content: " ";
+    background-color: $color-secondary;
+    right: 10%;
+    top: 25%;
+  }
+  &:before {
+    position: absolute;
+    overflow: hidden;
+    width: 70%;
+    height: 3px;
+    content: " ";
+    background-color: $color-secondary;
+    right: 155%;
+    bottom: 28%;
+  }
+  .location-hero-title {
+    font-size: 72px;
+    font-family: "AvenirBook";
+    margin-left: -125px;
+    span {
+      font-family: "AvenirBlack";
+      color: $color-secondary;
+      display: block;
+      font-weight: 900;
+    }
+  }
+}
 .hero-title-col-new {
   position: relative;
   &:after {
@@ -890,7 +925,11 @@ body {
     }
   }
 }
-
+.form-div {
+  border-radius: 0px 20px 0px 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+}
 .team_section {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -3652,6 +3691,19 @@ p.testimonials-name {
       font-size: 50px;
       font-family: "AvenirBook";
 
+      span {
+        font-family: "AvenirBlack";
+        color: $color-secondary;
+        display: block;
+        font-weight: 900;
+      }
+    }
+  }
+  .location-hero-title-col {
+    .location-hero-title {
+      font-size: 50px;
+      font-family: "AvenirBook";
+      margin-left: 0;
       span {
         font-family: "AvenirBlack";
         color: $color-secondary;

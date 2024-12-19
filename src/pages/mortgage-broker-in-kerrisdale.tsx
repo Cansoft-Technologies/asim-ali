@@ -13,6 +13,7 @@ import { apolloClient } from "../lib/apollo";
 import { Fragment } from 'react';
 import Link from 'next/link';
 import ContactSection from 'components/ContactSection';
+import LocationHero from 'components/LocationHero';
 
 
 
@@ -290,7 +291,7 @@ console.log(settings);
         {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
               ) : (
-                <Hero
+                <LocationHero
                   title={serviceBannerData?.serviceBannerTitle}
                   heading={serviceBannerData?.serviceBannerHeading}
                   description={serviceBannerData?.serviceBannerDescription}
