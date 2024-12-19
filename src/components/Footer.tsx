@@ -83,7 +83,7 @@ const Footer = (props: MyProps) => {
                   />
                 </Link>
                 </div>
-                <p className="copyright">
+                <p className="copyright mt-3">
                   {prefixSettings?.footerLogoSection?.logoText}
                 </p>
               </div>

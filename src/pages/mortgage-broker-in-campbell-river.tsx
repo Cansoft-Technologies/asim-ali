@@ -12,6 +12,7 @@ import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
 import OurRates from "components/OurRates";
 import OurLenders from "components/OurLenders";
+import LocationHero from "components/LocationHero";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -369,7 +370,7 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
         {serviceBannerData?.serviceBannerTitle == null ? (
           ""
         ) : (
-          <Hero
+          <LocationHero
             title={serviceBannerData?.serviceBannerTitle}
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}

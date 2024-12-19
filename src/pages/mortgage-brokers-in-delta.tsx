@@ -13,6 +13,7 @@ import { apolloClient } from "../lib/apollo";
 import { Fragment } from "react";
 import OurRates from "components/OurRates";
 import OurLenders from "components/OurLenders";
+import LocationHero from "components/LocationHero";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -312,7 +313,7 @@ export default function NewDelta(props: MyProps) {
         {serviceBannerData?.serviceBannerTitle == null ? (
           ""
         ) : (
-          <Hero
+          <LocationHero
             title={serviceBannerData?.serviceBannerTitle}
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}

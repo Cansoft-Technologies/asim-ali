@@ -13,6 +13,7 @@ import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
 import { Fragment } from "react";
 import Link from "next/link";
+import LocationHero from "components/LocationHero";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -667,7 +668,7 @@ export default function NewKamloops(props: MyProps) {
         {serviceBannerData?.serviceBannerTitle == null ? (
           ""
         ) : (
-          <Hero
+          <LocationHero
             title={serviceBannerData?.serviceBannerTitle}
             heading={serviceBannerData?.serviceBannerHeading}
             description={serviceBannerData?.serviceBannerDescription}

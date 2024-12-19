@@ -12,6 +12,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
+import LocationHero from 'components/LocationHero';
 
 
 
@@ -288,7 +289,7 @@ export default function Page(props: MyProps) {
         {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
               ) : (
-                <Hero
+                <LocationHero
                   title={serviceBannerData?.serviceBannerTitle}
                   heading={serviceBannerData?.serviceBannerHeading}
                   description={serviceBannerData?.serviceBannerDescription}
