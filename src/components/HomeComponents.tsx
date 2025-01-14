@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { Container } from "react-bootstrap";
+import CategoryTabs from "./CatagoryTabs";
 const ApplyApprovedSection = dynamic(
   () => import("components/ApplyApprovedSection")
 );
@@ -15,6 +16,7 @@ const Meeting = dynamic(() => import("components/Meeting"));
 const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
 type Props = {
   teamData: any;
+  planData: any;
   featuredTextLeft: any;
   featuredTextRight: any;
   featuredImageLeft: any;
@@ -41,6 +43,7 @@ type Props = {
 const HomeComponents = (props: Props) => {
   const {
     teamData,
+    planData,
     approvalRenovationData,
     sliders,
     meetings,
@@ -74,10 +77,10 @@ const HomeComponents = (props: Props) => {
         ></div>
       </Container>
       <Container className="mt-5">
-        <div className="my-5">
-          <p className="text-center service-title">Contact Us</p>
-        </div>
         <ContactSection />
+        <div className="my-5">
+          <CategoryTabs planData={planData} />
+        </div>
       </Container>
     </>
   );

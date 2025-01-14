@@ -139,6 +139,27 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     }
   }
 }
+.category-tabs {
+  .category-button {
+      margin: 0.5rem;
+      border: 2px solid $color-black;
+      &:hover {
+        background: $color-black;
+        border: 2px solid $color-secondary;
+        color: $color-white;
+        span {
+          color: $color-white;
+        }
+      }
+  }
+  .category-item {
+      padding: 0.5rem;
+      border: 1px solid $color-black;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+  }
+}
+
 .hero-title-col {
   position: relative;
   &:after {
