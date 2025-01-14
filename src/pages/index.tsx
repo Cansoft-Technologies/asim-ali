@@ -133,6 +133,13 @@ export async function getStaticProps() {
               }
             }
           }
+          planSection {
+            planTitle
+            linkUrls {
+              linkText
+              url
+            }
+          }
           meetingSection {
             meetingTitle
             meetingDescription
@@ -349,6 +356,8 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.HomePage?.mortgageServiceSection,
       bottomPartnerLogoSection:
         data?.pages?.nodes[0]?.HomePage?.bottomPartnerLogoSection,
+      planSection:
+        data?.pages?.nodes[0]?.HomePage?.planSection,
       splitImagesRight: data?.pages?.nodes[0]?.HomePage?.splitImageRightSection,
       splitImagesLeft: data?.pages?.nodes[0]?.HomePage?.splitImageLeftSection,
       featuredTextLeft: data?.pages?.nodes[0]?.HomePage?.featuredTextLeft,
@@ -389,6 +398,7 @@ type MyProps = {
   tabRenovationData: any;
   approvalRenovationData: any;
   bottomPartnerLogoSection: any;
+  planSection: any;
   featuredTextLeft: any;
   featuredImageLeft: any;
   featuredImageRight: any;
@@ -421,6 +431,7 @@ export default function Page(props: MyProps) {
     tabRenovationData,
     approvalRenovationData,
     bottomPartnerLogoSection,
+    planSection,
     featuredTextLeft,
     featuredImageLeft,
     featuredImageRight,
@@ -557,6 +568,7 @@ export default function Page(props: MyProps) {
             tipsImageRight={tipsImageRight}
             homebuyerSectionData={homebuyerSectionData}
             contactData={contactData}
+            planData={planSection}
           />
         </div>
       </main>
