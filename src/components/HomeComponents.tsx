@@ -55,14 +55,14 @@ const HomeComponents = (props: Props) => {
     <>
       <MortgageFeaturedHomePage advisorData={mortgageInterestData} />
       <MortgageAdvisorHome advisorData={advisorData} />
-      <FlexibilityTab tabData={tabRenovationData} />
+      {/* <FlexibilityTab tabData={tabRenovationData} /> */}
       <Meeting meetings={meetings} />
       <ApplyApprovedSection
         approvalRenovationData={approvalRenovationData}
         sliders={sliders}
       />
       <SplitImageLeft splitImagesLeft={splitImagesLeft} />
-      <Team teams={teamData} />
+      {/* <Team teams={teamData} /> */}
       <HomeBuyerSection homebuyerData={homebuyerSectionData} />
       <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
