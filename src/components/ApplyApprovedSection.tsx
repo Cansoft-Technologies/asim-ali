@@ -27,9 +27,9 @@ const ApplyApprovedSection = (props: Props) => {
               ) : (
                 <div className="apply">
                   <span>01</span>
-                  <p className="title">
+                  <h3 className="title">
                     {approvalRenovationData?.tabDetails[0]?.title}
-                  </p>
+                  </h3>
                   <div
                     className="desc"
                     dangerouslySetInnerHTML={{
@@ -47,9 +47,9 @@ const ApplyApprovedSection = (props: Props) => {
               ) : (
                 <div className="approved">
                   <span>02</span>
-                  <p className="title">
+                  <h3 className="title">
                     {approvalRenovationData?.tabDetails[1]?.title}
-                  </p>
+                  </h3>
                   <div
                     className="desc"
                     dangerouslySetInnerHTML={{
@@ -66,9 +66,9 @@ const ApplyApprovedSection = (props: Props) => {
               ) : (
                 <div className="apply">
                   <span>03</span>
-                  <p className="title">
+                  <h3 className="title">
                     {approvalRenovationData?.tabDetails[2]?.title}
-                  </p>
+                  </h3>
                   <div
                     className="desc"
                     dangerouslySetInnerHTML={{
