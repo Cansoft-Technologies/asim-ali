@@ -92,7 +92,7 @@ const ApplyApprovedSection = (props: Props) => {
                   }`}
                 >
                   <Button className="apply-button">
-                    Get <span>Approved</span>
+                    Contact <span>Us</span>
                   </Button>
                 </Link>
                 <Link href="/apply-now">
