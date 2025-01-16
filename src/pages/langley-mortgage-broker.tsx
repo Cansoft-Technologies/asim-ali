@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { Hero } from "components";
+import { FAQ, Hero } from "components";
 import FlexibilityTab from "components/FlexibilityTab";
 import MortgageAdvisor from "components/MortgageAdvisor";
 import ServiceSection from "components/ServiceSection";
@@ -12,6 +12,8 @@ import { apolloClient } from "../lib/apollo";
 import OurLenders from "components/OurLenders";
 import OurRates from "components/OurRates";
 import LocationHero from "components/LocationHero";
+import FeaturedTab from "components/FeaturedTab";
+import CategoryTabs from "components/CatagoryTabs";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -89,6 +91,38 @@ export async function getStaticProps() {
             advisorCards{
               title
               description
+            }
+          }
+          faqSection {
+            hideSection
+            faqTitle
+            faqSubitle
+            faqImage {
+              altText
+              sourceUrl
+            }
+            faqAccordion {
+              question
+              answer
+            }
+          }
+          planSection {
+            planTitle
+            linkUrls {
+              linkText
+              url
+            }
+          }
+          reviewSection {
+            reviewTitle
+            reviewDescription
+            reviewCard{
+              author
+              reviewText
+              clientImage{
+                sourceUrl
+                altText
+              }
             }
           }
           tabRenovation{
@@ -216,6 +250,10 @@ export async function getStaticProps() {
       tipsImageLeft: data?.pages?.nodes[0]?.NewLangley?.tipsImageLeft,
       benefitTitle: data?.pages?.nodes[0]?.NewLangley?.benefitTitle,
       benefitDescription: data?.pages?.nodes[0]?.NewLangley?.benefitDescription,
+      faqData: data?.pages?.nodes[0]?.NewLangley?.faqSection,
+      planSection:
+        data?.pages?.nodes[0]?.NewLangley?.planSection,
+      reviewSection: data?.pages?.nodes[0]?.NewLangley?.reviewSection,
     },
     revalidate: 60,
   };
@@ -245,6 +283,9 @@ type MyProps = {
   serviceBannerData: any;
   benefitTitle: any;
   benefitDescription: any;
+  faqData: any;
+  planSection: any;
+  reviewSection: any;
 };
 
 export default function NewLangley(props: MyProps) {
@@ -252,6 +293,9 @@ export default function NewLangley(props: MyProps) {
     settings,
     mainMenus,
     metaData,
+    faqData,
+    planSection,
+    reviewSection,
     contactData,
     tabRenovationData,
     featuredTextLeft,
@@ -275,13 +319,13 @@ export default function NewLangley(props: MyProps) {
   } = props;
 
   const teamTitle =
-    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Private Lenders For Mortgage </span></h2>\n' +
+    '<h2 style="font-size: 40px;">Lenders <span style="color: #f0b243;">We Work With</span></h2>\n' +
     "";
   const teamDescription =
     `<p><span style="font-weight: 400;">We're proud to work with a big team of over 100 lenders! This means we can find just the right one for you. Think of it like having a huge box of crayons to color your dream home - the more colors you have, the better you can paint your perfect picture. Our lenders are friendly and understand all kinds of situations, so no matter what your story is, we can match you with someone who gets it.
 </span></p>\n` + "";
   const rateTitle = `
-<h2>Langley Mortgage Rates</h2>
+<h2>Current Mortgage Rates in Langley</h2>
 <p>Talking about rates can seem a bit tricky, but it's just about finding out how much it costs to borrow money for your house. We work hard to make sure you get a great deal. Think of it like this: if you were buying a new car and one dealership had it for less money than another, you'd want to go to the cheaper dealership, right? It's the same with borrowing money for a house. We look around at lots of different places to find you a rate that's like getting your new car at the best price!
 </p>
 
@@ -374,9 +418,11 @@ export default function NewLangley(props: MyProps) {
         />
         
         <OurRates title={rateTitle} />
-        <FlexibilityTab tabData={tabRenovationData} />
+        <FeaturedTab tabData={tabRenovationData} />
         <OurLenders title={teamTitle} description={teamDescription} />
-        <Container className="mb-5">
+        <FAQ faqsections={faqData} />
+        <CategoryTabs planData={planSection} />
+        <Container className="mt-5">
           <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
             dangerouslySetInnerHTML={{

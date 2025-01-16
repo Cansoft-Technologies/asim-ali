@@ -109,6 +109,15 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
     }
   }
 }
+// components/EmbeddedMap.module.scss
+.mapContainer {
+  padding: 20px;
+  iframe {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
 .info-table-container {
   margin: 20px;
   padding: 20px;

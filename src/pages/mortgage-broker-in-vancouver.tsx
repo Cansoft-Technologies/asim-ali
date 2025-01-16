@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { Hero, Team } from 'components';
+import { FAQ, Hero, Team } from 'components';
 import AccordionSection from 'components/AccordionSection';
 import FlexibilityTab from 'components/FlexibilityTab';
 import MortgageAdvisor from 'components/MortgageAdvisor';
@@ -14,6 +14,10 @@ import { Fragment } from 'react';
 import OurRates from 'components/OurRates';
 import OurLenders from 'components/OurLenders';
 import LocationHero from 'components/LocationHero';
+import FeaturedTab from 'components/FeaturedTab';
+import ClientReviews from 'components/ClientReviews';
+import CategoryTabs from 'components/CatagoryTabs';
+import EmbeddedMap from 'components/EmbeddedMap';
 
 
 
@@ -106,6 +110,38 @@ export async function getStaticProps() {
               description
             }
           }
+          faqSection {
+            hideSection
+            faqTitle
+            faqSubitle
+            faqImage {
+              altText
+              sourceUrl
+            }
+            faqAccordion {
+              question
+              answer
+            }
+          }
+          planSection {
+            planTitle
+            linkUrls {
+              linkText
+              url
+            }
+          }
+          reviewSection {
+            reviewTitle
+            reviewDescription
+            reviewCard{
+              author
+              reviewText
+              clientImage{
+                sourceUrl
+                altText
+              }
+            }
+          }
           mortgageBenifits {
             advisorTitle
             advisorDescriptionTop
@@ -117,6 +153,10 @@ export async function getStaticProps() {
               title
               description
             }
+          }
+          mapSection {
+            mapTitle
+            mapUrl
           }
           tabRenovation{
             tabHeading
@@ -236,6 +276,11 @@ export async function getStaticProps() {
       tipsRightText: data?.pages?.nodes[0]?.NewVancouver?.tipsRightText,
       tipsImageRight: data?.pages?.nodes[0]?.NewVancouver?.tipsImageRight,
       tipsImageLeft: data?.pages?.nodes[0]?.NewVancouver?.tipsImageLeft,
+      faqData: data?.pages?.nodes[0]?.NewVancouver?.faqSection,
+      planSection:
+        data?.pages?.nodes[0]?.NewVancouver?.planSection,
+      reviewSection: data?.pages?.nodes[0]?.NewVancouver?.reviewSection,
+      mapSection: data?.pages?.nodes[0]?.NewVancouver?.mapSection,
     },
     revalidate: 60
   };
@@ -263,10 +308,14 @@ type MyProps = {
   serviceBannerData: any;
   advisorData: any;
   mortgageInterestData: any;
+  faqData: any;
+  planSection: any;
+  reviewSection: any;
+  mapSection: any;
 };
 
 export default function NewVancouver(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData,faqData, planSection, reviewSection,mapSection} = props;
 
   const teamTitle =
   '<h2 style="font-size: 40px;">Lenders We Work With</h2>\n' +
@@ -275,8 +324,8 @@ const teamDescription =
   `<p><span style="font-weight: 400;">We're proud to have forged strong relationships with over 100 lenders. This vast network includes big banks, credit unions, and private lending institutions, ensuring a diverse range of financing options. This extensive access not only broadens your choices but also enhances our ability to secure the most advantageous terms for you.  </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Our Mortgage Rates</h2>
-<p>Asim Ali understands that getting a good mortgage rate is super important for saving money. That's why we work hard to find you the best rates out there for you. We connect with lots of different lenders to make sure you get a rate that feels right for your wallet. Remember, rates can change, so we're always here to give you the latest info and help you pick the best option.</p>
+<h2>Current Mortgage Rates in Vancouver</h2>
+<p></p>
 
 `;
   return (
@@ -343,10 +392,13 @@ const teamDescription =
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
         <OurRates title={rateTitle} />
-        <FlexibilityTab tabData={tabRenovationData}/>
-                      <AccordionSection advisorData={mortgageInterestData}/>
-                      <OurLenders title={teamTitle} description={teamDescription} />
-        <Container className="mb-5">
+        <FeaturedTab tabData={tabRenovationData}/>
+        <OurLenders title={teamTitle} description={teamDescription} />
+                      {/* <AccordionSection advisorData={mortgageInterestData}/> */}
+        <ClientReviews reviews={reviewSection} />
+        <FAQ faqsections={faqData} />
+        <CategoryTabs planData={planSection} />
+        <Container className="mt-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
       <div
         dangerouslySetInnerHTML={{
@@ -355,6 +407,7 @@ const teamDescription =
         className="text-lg text-start"
       ></div>
         </Container>
+        <EmbeddedMap mapData={mapSection} />
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
     </>
