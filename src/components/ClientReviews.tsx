@@ -110,8 +110,8 @@ const ClientReviews = (props: MyProps) => {
                       <div className="review-img">
                         <Image
                           src={
-                            review?.clientImage.src
-                              ? review?.clientImage.src
+                            review?.clientImage?.src
+                              ? review?.clientImage?.src
                               : userLogo.src
                           }
                           

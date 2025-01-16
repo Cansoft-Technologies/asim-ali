@@ -255,14 +255,14 @@ export default function NewMaple(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData } = props;
 
   const teamTitle =
-  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  '<p style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></p>\n' +
   "";
 const teamDescription =
-  `<p><span style="font-weight: 400;">We have good relationships with more than 100 lenders. This wide range of networks includes big banks, local credit unions, and specialty finance companies. Our connections give us the flexibility to find you the best rates and terms, making your dream home more attainable. We're here to find the right fit for you in this wide world of financing. </span></p>\n` +
+  `<p><span style="font-weight: 400;">We have good relationships with more than 100 lenders. This lender network includes big banks, local credit unions, and specialty finance companies. It will help us find you the best rates and terms. We're here to find the right fit for you in this wide world of financing. </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Mortgage Rates</h2>
-<p>When it comes to mortgage rates, don't stress because Asim Ali your local mortgage broker in Maple Ridge, BC is here to lead you to the right decision. Interest rate on mortgage changes, which can impact the amount you pay for the house. We monitor these rates closely to give you choices that make the home-buying process more affordable. We aim to collaborate with you to determine the rates that fit your budget.</p>
+<h2>Current Mortgage Rates in Maple Ridge</h2>
+<p></p>
 
 `;
   return (

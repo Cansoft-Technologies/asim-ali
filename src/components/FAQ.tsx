@@ -48,39 +48,34 @@ const FAQ = (props: MyProps) => {
 
   return (
     <>
-      {faqsections?.map((faq) => {
-        return (
-          <Container key={faq}>
-            {faq?.HomeLandingPage?.faqSection?.hideSection == true ? (
-              ""
-            ) : (
+          <Container>
               <div>
                 <div
                   style={{
-                    backgroundImage: `url("${faq?.HomeLandingPage?.faqSection?.faqImage?.sourceUrl}")`,
+                    backgroundImage: `url("${faqsections?.faqImage?.sourceUrl}")`,
                   }}
                   className="faq_section"
                 >
                   <div className="faq_text">
                     <h2>
                       <span className="faq-span">
-                        {faq?.HomeLandingPage?.faqSection?.faqTitle}{" "}
+                        {faqsections?.faqTitle}{" "}
                       </span>
                       <span
                         className="faq-span"
                         dangerouslySetInnerHTML={{
-                          __html: faq?.HomeLandingPage?.faqSection?.faqSubitle,
+                          __html: faqsections?.faqSubitle,
                         }}
                       ></span>
                     </h2>
                   </div>
                 </div>
                 <div className="faq-accordion">
-                  {faq?.HomeLandingPage?.faqSection?.faqAccordion == null ? (
+                  {faqsections?.faqAccordion == null ? (
                     ""
                   ) : (
                     <Accordion defaultActiveKey="0">
-                      {faq?.HomeLandingPage?.faqSection?.faqAccordion.map(
+                      {faqsections?.faqAccordion?.map(
                         (qa, index) => {
                           return (
                             <Accordion.Item
@@ -88,7 +83,7 @@ const FAQ = (props: MyProps) => {
                               eventKey={index.toString()}
                             >
                               <Accordion.Header as="h3">
-                                {qa.question}
+                                {qa?.question}
                               </Accordion.Header>
                               <Accordion.Body
                                 dangerouslySetInnerHTML={{ __html: qa.answer }}
@@ -101,10 +96,7 @@ const FAQ = (props: MyProps) => {
                   )}
                 </div>
               </div>
-            )}
           </Container>
-        );
-      })}
     </>
   );
 };
