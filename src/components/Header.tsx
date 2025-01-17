@@ -148,7 +148,7 @@ function Header(props: MyProps) {
                       as={Link}
                       href={item.url.endsWith('/') ? item.url.slice(0, -1) : item.url}
                     >
-                      <span className="link">{item.label}</span>
+                      {item.label !== 'Our Locations' && <span className="link">{item.label}</span>}
                     </Nav.Link>
                     {item.label === 'Our Services' ? (
                       <ul
@@ -208,114 +208,117 @@ function Header(props: MyProps) {
                           return null;
                         })}
                       </ul>
-                    ) : item.label === 'Our Locations' ? (
-                      <ul
-                        className={`submenu-loc ${alignmentClasses[index + '-' + idx]}`}
-                        id={`submenu-${index}-${idx}`}
-                      >
-                        {item.childItems.nodes.map((submenu, id) => {
-                          if (
-                            submenu.label !== 'FTHBI Calculator' &&
-                            submenu.label !== 'Readvanceable Mortgage'
-                          ) {
-                            return (
-                              <li
-                                key={id}
-                                className={
-                                   submenu.label === 'Commercial Mortgages' ? 'commercial-mortgages' : submenu.label === 'Vancouver' ? 'vancouver' : submenu.label === 'Surrey' ? 'surrey' : ''
-                                }
-                              >
-                                <span>
-                                  <Nav.Link
-                                    as={Link}
-                                    href={
-                                      submenu.uri.endsWith('/')
-                                        ? submenu.uri.slice(0, -1)
-                                        : submenu.label === 'Surrey'
-                                        ? '/'
-                                        : submenu.uri
-                                    }
-                                  >
-                                    <span className="sublink">{submenu.label}</span>
-                                  </Nav.Link>
-                                  <ul className="submenu-child">
-                                    {submenu.label === 'Vancouver' && (
-                                      <>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-fairview">
-                                            <span className="sublink">Fairview</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-gastown">
-                                            <span className="sublink">Gastown</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-kerrisdale">
-                                            <span className="sublink">Kerrisdale</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-kitsilano">
-                                            <span className="sublink">Kitsilano</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-mount-pleasant">
-                                            <span className="sublink">Mount Pleasant</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-oakridge">
-                                            <span className="sublink">Oakridge</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-shaughnessy">
-                                            <span className="sublink">Shaughnessy</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-yaletown">
-                                            <span className="sublink">Yaletown</span>
-                                          </Nav.Link>
-                                        </li>
-                                      </>
-                                    )}
-                                    {submenu.label === 'Surrey' && (
-                                      <>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-cloverdale">
-                                            <span className="sublink">Cloverdale</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-guildford">
-                                            <span className="sublink">Guildford</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-port-kells">
-                                            <span className="sublink">Port Kells</span>
-                                          </Nav.Link>
-                                        </li>
-                                        <li>
-                                          <Nav.Link as={Link} href="/mortgage-broker-in-whalley">
-                                            <span className="sublink">Whalley</span>
-                                          </Nav.Link>
-                                        </li>
-                                      </>
-                                    )}
-                                  </ul>
-                                </span>
-                              </li>
-                            );
-                          }
-                          return null;
-                        })}
-                      </ul>
-                    ) : item.label === 'How It Works' ? (
+                    ) 
+                    // : item.label === 'Our Locations' ? (
+                    //   <ul
+                    //     className={`submenu-loc ${alignmentClasses[index + '-' + idx]}`}
+                    //     id={`submenu-${index}-${idx}`}
+                    //   >
+                    //     {item.childItems.nodes.map((submenu, id) => {
+                    //       if (
+                    //         submenu.label !== 'FTHBI Calculator' &&
+                    //         submenu.label !== 'Readvanceable Mortgage'
+                    //       ) {
+                    //         return (
+                    //           <li
+                    //             key={id}
+                    //             className={
+                    //                submenu.label === 'Commercial Mortgages' ? 'commercial-mortgages' : submenu.label === 'Vancouver' ? 'vancouver' : submenu.label === 'Surrey' ? 'surrey' : ''
+                    //             }
+                    //           >
+                    //             <span>
+                    //               <Nav.Link
+                    //                 as={Link}
+                    //                 href={
+                    //                   submenu.uri.endsWith('/')
+                    //                     ? submenu.uri.slice(0, -1)
+                    //                     : submenu.label === 'Surrey'
+                    //                     ? '/'
+                    //                     : submenu.uri
+                    //                 }
+                    //               >
+                    //                 <span className="sublink">{submenu.label}</span>
+                    //               </Nav.Link>
+                    //               <ul className="submenu-child">
+                    //                 {submenu.label === 'Vancouver' && (
+                    //                   <>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-fairview">
+                    //                         <span className="sublink">Fairview</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-gastown">
+                    //                         <span className="sublink">Gastown</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-kerrisdale">
+                    //                         <span className="sublink">Kerrisdale</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-kitsilano">
+                    //                         <span className="sublink">Kitsilano</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-mount-pleasant">
+                    //                         <span className="sublink">Mount Pleasant</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-oakridge">
+                    //                         <span className="sublink">Oakridge</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-shaughnessy">
+                    //                         <span className="sublink">Shaughnessy</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-yaletown">
+                    //                         <span className="sublink">Yaletown</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                   </>
+                    //                 )}
+                    //                 {submenu.label === 'Surrey' && (
+                    //                   <>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-cloverdale">
+                    //                         <span className="sublink">Cloverdale</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-guildford">
+                    //                         <span className="sublink">Guildford</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-port-kells">
+                    //                         <span className="sublink">Port Kells</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                     <li>
+                    //                       <Nav.Link as={Link} href="/mortgage-broker-in-whalley">
+                    //                         <span className="sublink">Whalley</span>
+                    //                       </Nav.Link>
+                    //                     </li>
+                    //                   </>
+                    //                 )}
+                    //               </ul>
+                    //             </span>
+                    //           </li>
+                    //         );
+                    //       }
+                    //       return null;
+                    //     })}
+                    //   </ul>
+                    // ) 
+                    : item.label === 'Our Locations' ? null
+                    : item.label === 'How It Works' ? (
                       <ul
                         className={`submenu_level`}
                         id={`submenu-${index}-${idx}`}
