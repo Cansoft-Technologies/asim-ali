@@ -75,7 +75,7 @@ const ClientReviews = (props: MyProps) => {
     <>
       {reviews?.reviewCard?.length > 1 && (
         <Container className="review mb-5">
-          <h2 className="my-5 text-start service-title mt-5">
+          <h2 className="my-5 text-center service-title mt-5">
             {reviews?.reviewTitle?.split(" ")?.[0]} {reviews?.reviewTitle?.split(" ")?.[1]} {reviews?.reviewTitle?.split(" ")?.[2]} {" "}
             <span style={{ color: "#f0b254" }}>
               {reviews?.reviewTitle?.split(" ")?.[3]} {reviews?.reviewTitle?.split(" ")?.[4]}
