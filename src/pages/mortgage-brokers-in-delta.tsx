@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { Hero } from "components";
+import { FAQ, Hero } from "components";
 import FlexibilityTab from "components/FlexibilityTab";
 import HomeBuyerSection from "components/HomeBuyerSection";
 import MortgageAdvisor from "components/MortgageAdvisor";
@@ -14,6 +14,9 @@ import { Fragment } from "react";
 import OurRates from "components/OurRates";
 import OurLenders from "components/OurLenders";
 import LocationHero from "components/LocationHero";
+import FeaturedTab from "components/FeaturedTab";
+import ClientReviews from "components/ClientReviews";
+import CategoryTabs from "components/CatagoryTabs";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -112,6 +115,38 @@ export async function getStaticProps() {
                   description
                 }
               }
+                faqSection {
+            hideSection
+            faqTitle
+            faqSubitle
+            faqImage {
+              altText
+              sourceUrl
+            }
+            faqAccordion {
+              question
+              answer
+            }
+          }
+          planSection {
+            planTitle
+            linkUrls {
+              linkText
+              url
+            }
+          }
+          reviewSection {
+            reviewTitle
+            reviewDescription
+            reviewCard{
+              author
+              reviewText
+              clientImage{
+                sourceUrl
+                altText
+              }
+            }
+          }
               homeContactSection {
                 title
                 description
@@ -217,6 +252,10 @@ export async function getStaticProps() {
       tipsRightText: data?.pages?.nodes[0]?.NewDelta?.tipsRightText,
       tipsImageRight: data?.pages?.nodes[0]?.NewDelta?.tipsImageRight,
       tipsImageLeft: data?.pages?.nodes[0]?.NewDelta?.tipsImageLeft,
+      faqData: data?.pages?.nodes[0]?.NewDelta?.faqSection,
+      planSection:
+        data?.pages?.nodes[0]?.NewDelta?.planSection,
+      reviewSection: data?.pages?.nodes[0]?.NewDelta?.reviewSection,
     },
     revalidate: 60,
   };
@@ -242,6 +281,9 @@ type MyProps = {
   homebuyerSectionData: any;
   serviceBannerData: any;
   advisorData: any;
+  faqData: any;
+  planSection: any;
+  reviewSection: any;
 };
 
 export default function NewDelta(props: MyProps) {
@@ -265,17 +307,20 @@ export default function NewDelta(props: MyProps) {
     serviceBannerData,
     advisorData,
     mortgageBenefitsData,
+    faqData,
+    planSection,
+    reviewSection,
   } = props;
 
   const teamTitle =
-    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Mortgage Lenders  In Delta </span></h2>\n' +
+    '<h2 style="font-size: 40px;">Lenders <span style="color: #f0b243;">We Work With</span></h2>\n' +
     "";
   const teamDescription =
-    `<p><span style="font-weight: 400;">We pride ourselves on our robust network of over 100 lenders. This extensive connection ensures we can offer a vast array of financing options to fit every unique situation. From major banks to specialized financial institutions, our relationships with these lenders are grounded in trust and mutual respect. Our access to this diverse group allows us to negotiate the best possible terms for you, ensuring your mortgage plan is as unique as your dream home.
+    `<p><span style="font-weight: 400;">
 </span></p>\n` + "";
   const rateTitle = `
-<h2>Mortgage Rates We Offer</h2>
-<p>We simplify this journey for you by offering a variety of competitive mortgage rates designed to fit your unique financial situation. Whether you're buying your first home or looking for an investment property, our goal is to connect you with rates that make sense for your budget and goals. Let us help you find a rate that feels right for you.
+<h2>Current Mortgage Rates in Delta</h2>
+<p>
 </p>
 
 `;
@@ -366,10 +411,13 @@ export default function NewDelta(props: MyProps) {
           imageRight={tipsImageRight}
         />
         <OurRates title={rateTitle} />
-        <MortgageAdvisor advisorData={mortgageBenefitsData} />
-        <FlexibilityTab tabData={tabRenovationData} />
+        {/* <MortgageAdvisor advisorData={mortgageBenefitsData} /> */}
+        <FeaturedTab tabData={tabRenovationData} />
         <OurLenders title={teamTitle} description={teamDescription} />
-        <Container className="mb-5">
+        <ClientReviews reviews={reviewSection} />
+        <CategoryTabs planData={planSection} />
+        <FAQ faqsections={faqData} />
+        <Container className="mt-5">
           <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
             dangerouslySetInnerHTML={{

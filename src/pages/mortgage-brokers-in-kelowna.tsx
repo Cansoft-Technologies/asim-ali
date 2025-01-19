@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { Hero } from "components";
+import { FAQ, Hero } from "components";
 import AccordionSection from "components/AccordionSection";
 import FlexibilityTab from "components/FlexibilityTab";
 import MortgageAdvisor from "components/MortgageAdvisor";
@@ -14,6 +14,9 @@ import { apolloClient } from "../lib/apollo";
 import OurRates from "components/OurRates";
 import OurLenders from "components/OurLenders";
 import LocationHero from "components/LocationHero";
+import ClientReviews from "components/ClientReviews";
+import CategoryTabs from "components/CatagoryTabs";
+import FeaturedTab from "components/FeaturedTab";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -123,6 +126,38 @@ export async function getStaticProps() {
                   description
                 }
               }
+                faqSection {
+            hideSection
+            faqTitle
+            faqSubitle
+            faqImage {
+              altText
+              sourceUrl
+            }
+            faqAccordion {
+              question
+              answer
+            }
+          }
+          planSection {
+            planTitle
+            linkUrls {
+              linkText
+              url
+            }
+          }
+          reviewSection {
+            reviewTitle
+            reviewDescription
+            reviewCard{
+              author
+              reviewText
+              clientImage{
+                sourceUrl
+                altText
+              }
+            }
+          }
               homeContactSection {
                 title
                 description
@@ -234,6 +269,10 @@ export async function getStaticProps() {
       tipsRightText: data?.pages?.nodes[0]?.NewKelowna?.tipsRightText,
       tipsImageRight: data?.pages?.nodes[0]?.NewKelowna?.tipsImageRight,
       tipsImageLeft: data?.pages?.nodes[0]?.NewKelowna?.tipsImageLeft,
+      faqData: data?.pages?.nodes[0]?.NewKelowna?.faqSection,
+      planSection:
+        data?.pages?.nodes[0]?.NewKelowna?.planSection,
+      reviewSection: data?.pages?.nodes[0]?.NewKelowna?.reviewSection,
     },
     revalidate: 60,
   };
@@ -263,6 +302,9 @@ type MyProps = {
   mortgageBenefitsData: any;
   serviceBannerData: any;
   advisorData: any;
+  faqData: any;
+  planSection: any;
+  reviewSection: any;
 };
 
 export default function NewKelowna(props: MyProps) {
@@ -290,17 +332,20 @@ export default function NewKelowna(props: MyProps) {
     serviceImageLeft,
     serviceImageRight,
     mortgageInterestData,
+    faqData,
+    planSection,
+    reviewSection,
   } = props;
 
   const teamTitle =
-    '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders In Kelowna </span></h2>\n' +
+    '<h2 style="font-size: 40px;">Lenders <span style="color: #f0b243;">We Work With </span></h2>\n' +
     "";
   const teamDescription =
-    `<p><span style="font-weight: 400;">We pride ourselves on our strong relationships with over 100 lenders. This extensive network includes major banks, credit unions, and private lenders, all offering a variety of mortgage products. This diversity guarantees that we can get you a good product to fit your financial background and homeownership dreams. Our mission is to come up with an offer that is the best fit for you so that your homeownership ride will be smooth.
+    `<p><span style="font-weight: 400;">
 </span></p>\n` + "";
   const rateTitle = `
 <h2>Current Mortgage Rates Kelowna</h2>
-<p>Exploring mortgage rates can feel like navigating a maze, but don't worry, we've got your back. Our job is to hunt down rates that not only fit your budget but also make your dream of homeownership more achievable. Each client's financial situation is unique, which is why we offer a personalized approach, ensuring the rates we find are tailored just for you. Keep in mind, that mortgage rates fluctuate due to market conditions, but our commitment to finding you the best deal remains steadfast.
+<p>
 </p>
 
 `;
@@ -384,11 +429,15 @@ export default function NewKelowna(props: MyProps) {
           imageRight={serviceImageRight}
         />
         <OurRates title={rateTitle} />
-        <MortgageAdvisor advisorData={mortgageBenefitsData} />
-        <AccordionSection advisorData={mortgageInterestData} />
+        {/* <MortgageAdvisor advisorData={mortgageBenefitsData} /> */}
+        {/* <AccordionSection advisorData={mortgageInterestData} /> */}
+        <FeaturedTab tabData={tabRenovationData} />
        <OurLenders title={teamTitle} description={teamDescription} />
-        <Container className="mb-5">
-          <p className="text-center service-title">{contactData?.title}</p>
+       <ClientReviews reviews={reviewSection} />
+        <FAQ faqsections={faqData} />
+        <CategoryTabs planData={planSection} />
+        <Container className="mt-5">
+          <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,
