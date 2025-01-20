@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import { Container } from "react-bootstrap";
 import CategoryTabs from "./CatagoryTabs";
+import HomeBuyerLoc from "./HomebuyerLoc";
+import ApplyApprovedLoc from "./ApplyApprovedLoc";
 const ApplyApprovedSection = dynamic(
   () => import("components/ApplyApprovedSection")
 );
@@ -60,13 +62,13 @@ const HomeComponents = (props: Props) => {
       <MortgageAdvisorHome advisorData={advisorData} />
       {/* <FlexibilityTab tabData={tabRenovationData} /> */}
       <Meeting meetings={meetings} />
-      <ApplyApprovedSection
+      <ApplyApprovedLoc
         approvalRenovationData={approvalRenovationData}
         sliders={sliders}
       />
       <SplitImageLeft splitImagesLeft={splitImagesLeft} />
       {/* <Team teams={teamData} /> */}
-      <HomeBuyerSection homebuyerData={homebuyerSectionData} />
+      <HomeBuyerLoc homebuyerData={homebuyerSectionData} />
       <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
         <div

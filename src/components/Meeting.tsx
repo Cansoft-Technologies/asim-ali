@@ -21,7 +21,7 @@ const Meeting = (props: MyProps) => {
 
   return (
     <>
-      <section className="meeting_section">
+      <section className="meeting_section mt-5">
         <div>
           {meetings?.hideSection == true ? (
             ""
