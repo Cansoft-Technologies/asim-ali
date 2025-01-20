@@ -18,6 +18,7 @@ import FeaturedTab from 'components/FeaturedTab';
 import ClientReviews from 'components/ClientReviews';
 import CategoryTabs from 'components/CatagoryTabs';
 import EmbeddedMap from 'components/EmbeddedMap';
+import ContactSection from 'components/ContactSection';
 
 
 
@@ -398,6 +399,9 @@ const teamDescription =
         <ClientReviews reviews={reviewSection} />
         <FAQ faqsections={faqData} />
         <CategoryTabs planData={planSection} />
+        <div className="mt-5">
+        <ContactSection />
+        </div>
         <Container className="mt-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
       <div

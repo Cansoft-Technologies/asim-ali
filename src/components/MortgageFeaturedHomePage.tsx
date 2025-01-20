@@ -23,7 +23,7 @@ export default function MortgageFeaturedHomePage(props: MyProps) {
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorDescriptionTop,
               }}
-              className=""
+              className="mt-0"
             ></div>
             {advisorData?.advisorCards?.map((data, item) => {
               return (

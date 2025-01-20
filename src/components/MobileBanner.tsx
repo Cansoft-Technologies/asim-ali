@@ -81,7 +81,7 @@ const BannerInfo = ({ slide }) => {
                 }`}
               >
                 <Button className={styles.bannerBtn}>
-                  Get <span>Approved</span>
+                  Contact <span>Us</span>
                 </Button>
               </Link>
               <Link href="/apply-now">
