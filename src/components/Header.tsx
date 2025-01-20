@@ -144,13 +144,15 @@ function Header(props: MyProps) {
               <li key={idx}>
                 {item.parentId == null ? (
                   <span>
+                    {item.label !== 'Our Locations' && 
                     <Nav.Link
                       as={Link}
                       href={item.url.endsWith('/') ? item.url.slice(0, -1) : item.url}
                     >
-                      {item.label !== 'Our Locations' && <span className="link">{item.label}</span>}
+                       <span className="link">{item.label}</span>
                       {/* <span className="link">{item.label}</span> */}
                     </Nav.Link>
+                    }
                     {item.label === 'Our Services' ? (
                       <ul
                         className={`submenu ${alignmentClasses[index + '-' + idx]}`}

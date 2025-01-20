@@ -23,11 +23,11 @@ export default function MortgageFeaturedHomePage(props: MyProps) {
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorDescriptionTop,
               }}
-              className="mt-5"
+              className=""
             ></div>
             {advisorData?.advisorCards?.map((data, item) => {
               return (
-                <div key={item} className="split_text_home mb-5">
+                <div key={item} className="split_text_home">
                   <h3 className="advisor-title">{data.title}</h3>
                   <div
                     dangerouslySetInnerHTML={{
@@ -56,11 +56,11 @@ export default function MortgageFeaturedHomePage(props: MyProps) {
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorDescriptionTop,
               }}
-              className="mt-5"
+              className=""
             ></div>
             {advisorData?.advisorCards?.map((data, item) => {
               return (
-                <div key={item} className="split_text_home mb-5">
+                <div key={item} className="split_text_home">
                   <h3 className="advisor-title text-center">{data.title}</h3>
                   <div
                     dangerouslySetInnerHTML={{

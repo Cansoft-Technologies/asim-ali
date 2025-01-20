@@ -1,8 +1,9 @@
 import { gql } from "@apollo/client";
-import { Hero } from "components";
-import FlexibilityTab from "components/FlexibilityTab";
-import HomeBuyerSection from "components/HomeBuyerSection";
-import MortgageAdvisor from "components/MortgageAdvisor";
+import FeaturedTab from "components/FeaturedTab";
+import LocationHero from "components/LocationHero";
+import MortgageAdvisorLoc from "components/MortgageAdvisorLoc";
+import OurLenders from "components/OurLenders";
+import OurRates from "components/OurRates";
 import ServiceSection from "components/ServiceSection";
 import Head from "next/head";
 import Image from "next/image";
@@ -10,9 +11,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
-import OurRates from "components/OurRates";
-import OurLenders from "components/OurLenders";
-import LocationHero from "components/LocationHero";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -374,8 +372,8 @@ export default function NewAbbotsford(props: MyProps) {
           imageRight={featuredImageRight}
         />
         <OurRates title={rateTitle} />
-        <MortgageAdvisor advisorData={mortgageBenefitsData} />
-        <FlexibilityTab tabData={tabRenovationData} />
+        <MortgageAdvisorLoc advisorData={mortgageBenefitsData} />
+        <FeaturedTab tabData={tabRenovationData} />
         <OurLenders title={teamTitle} description={teamDescription} />
         <Container className="mb-5">
           <p className="text-center service-title">{contactData?.title}</p>
