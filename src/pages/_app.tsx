@@ -63,7 +63,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <SSRProvider>
     <>
       <FaustProvider client={client} pageProps={pageProps}>
-      <Script id="gtm" strategy="afterInteractive">
+      <Script id="gtm" strategy="lazyOnload">
       {`
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -75,7 +75,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     {/* Clarity Tracking Script */}
     <Script
         id="clarity-script"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             (function(c,l,a,r,i,t,y){
