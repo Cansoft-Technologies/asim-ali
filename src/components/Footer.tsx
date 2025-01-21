@@ -83,9 +83,10 @@ const Footer = (props: MyProps) => {
                   />
                 </Link>
                 </div>
+                <Link href="https://dominionlending.ca/mortgage-broker/asimali">
                 <p className="copyright mt-3">
                   {prefixSettings?.footerLogoSection?.logoText}
-                </p>
+                </p></Link>
               </div>
             </Col>
             <Col lg={4}>
