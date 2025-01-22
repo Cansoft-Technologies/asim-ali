@@ -319,7 +319,7 @@ export default function NewVancouver(props: MyProps) {
   const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData,faqData, planSection, reviewSection,mapSection} = props;
 
   const teamTitle =
-  '<h2 style="font-size: 40px;">Lenders We Work With</h2>\n' +
+  '<p style="font-size: 40px;">Lenders We Work With</p>\n' +
   "";
 const teamDescription =
   `<p><span style="font-weight: 400;">We're proud to have forged strong relationships with over 100 lenders. This vast network includes big banks, credit unions, and private lending institutions, ensuring a diverse range of financing options. This extensive access not only broadens your choices but also enhances our ability to secure the most advantageous terms for you.  </span></p>\n` +
