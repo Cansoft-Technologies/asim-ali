@@ -9,7 +9,7 @@ const CategoryTabs = (props: Props) => {
     const { planData } = props;
     return (
         <Container className="category-tabs">
-          <h2 className="text-center service-title">{planData?.planTitle}</h2>
+          <p className="text-center service-title">{planData?.planTitle}</p>
             <div className="justify-content-center mt-5 d-flex align-items-center gap-3">
                 {planData?.linkUrls?.map((category, index) => (
                     <div className="" key={index}>
