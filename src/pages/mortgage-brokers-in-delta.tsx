@@ -313,7 +313,7 @@ export default function NewDelta(props: MyProps) {
   } = props;
 
   const teamTitle =
-    '<p style="font-size: 40px;">Lenders <span style="color: #f0b243;">We Work With</span></p>\n' +
+    '<h2 style="font-size: 40px;">Lenders <span style="color: #f0b243;">We Work With</span></h2>\n' +
     "";
   const teamDescription =
     `<p><span style="font-weight: 400;">
