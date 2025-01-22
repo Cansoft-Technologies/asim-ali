@@ -1,8 +1,10 @@
 import { gql } from "@apollo/client";
-import { Hero, Team } from "components";
-import HomeBuyerNewBC from "components/HomeBuyerNewBC";
+import { FAQ, Team } from "components";
+import CategoryTabs from "components/CatagoryTabs";
+import ContactSection from "components/ContactSection";
+import FeaturedTab from "components/FeaturedTab";
+import LocationHero from "components/LocationHero";
 import ServiceSection from "components/ServiceSection";
-import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +12,7 @@ import { Alert, Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
-import LocationHero from "components/LocationHero";
+import ClientReviews from "components/ClientReviews";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -122,7 +124,38 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-
+faqSection {
+            hideSection
+            faqTitle
+            faqSubitle
+            faqImage {
+              altText
+              sourceUrl
+            }
+            faqAccordion {
+              question
+              answer
+            }
+          }
+          planSection {
+            planTitle
+            linkUrls {
+              linkText
+              url
+            }
+          }
+          reviewSection {
+            reviewTitle
+            reviewDescription
+            reviewCard{
+              author
+              reviewText
+              clientImage{
+                sourceUrl
+                altText
+              }
+            }
+          }
               qualifyingTitle
               qualifyingDescription
               commonConcerns {
@@ -276,6 +309,10 @@ export async function getStaticProps() {
       ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.ratesTitle,
       ratesDescription:
         data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.ratesDescription,
+        faqData: data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.faqSection,
+      planSection:
+        data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.planSection,
+      reviewSection: data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reviewSection,
     },
     revalidate: 60,
   };
@@ -313,6 +350,9 @@ type MyProps = {
   talkDescription: any;
   ratesTitle: any;
   ratesDescription: any;
+  faqData: any;
+  planSection: any;
+  reviewSection: any;
 };
 
 export default function NewMortgageBrokerInBurnaby(props: MyProps) {
@@ -348,6 +388,9 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
     talkDescription,
     ratesTitle,
     ratesDescription,
+    faqData,
+    planSection,
+    reviewSection,
   } = props;
   const dataRates = [
     {
@@ -416,17 +459,17 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
     },
   ];
   const meetingTitle = `
-  <h2>Our Rates</h2>
-<p>We work hard to find you the best deals. Our team talks to many lenders to make sure you get low costs that fit your budget. We understand everyone wants a good deal, so we use our connections to help you save money. Our rates are competitive, which means we match or beat the costs you might see elsewhere. We make it simple for you to pick a mortgage that works best for you, without all the extra stress.</p>
+  <h2>Current Mortgage Rates in Burnaby</h2>
+<p></p>
 
   `;
   const lendersData = {
     __typename: "Page_Homepage_TeamSection",
     teamTitle:
-      '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+      '<h2 style="font-size: 40px;"><span style="color: #f0b243;">Lenders</span> We Work With </h2>\n' +
       "",
     teamDescription:
-      `<p><span style="font-weight: 400;">We have a close connection with over 100 lenders at our disposal. This large network has many diverse types of lenders to ensure that your needs are met perfectly. Big banks, small credit unions, and credit cooperatives together make up our group. It is now possible to provide an unlimited number of options and to always offer you the best rate. With a lot of mortgage products to choose from, getting the right home loan with the most favorable conditions is more of an easy task today than ever before. </span></p>\n` +
+      `<p><span style="font-weight: 400;"></span></p>\n` +
       "",
     hideSection: null,
     teamImage: {
@@ -754,7 +797,7 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
               ></div>
               <div className="tb-btn-left">
                 <Link href={"/apply-now"}>
-                  <Button className="HeadBtn">Embark on Homeownership!</Button>
+                  <Button className="HeadBtn">Book Your Meeting With Our Mortgage Experts</Button>
                 </Link>
               </div>
             </Col>
@@ -783,7 +826,7 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
           ></div>
           <div className="tb-btn">
             <Link href={"/apply-now"}>
-              <Button className="HeadBtn">Explore Your Options!</Button>
+              <Button className="HeadBtn">Loan Options</Button>
             </Link>
           </div>
         </Container>
@@ -969,44 +1012,11 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
             </Row>
           </Container>
         </div>
-        <TabNewBC tabData={tabWhyChooseData} />
-
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesTitle,
-            }}
-          ></div>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesDescription,
-            }}
-          ></div>
-          <div className="tb-btn">
-            <Link href={"/apply-now"}>
-              <Button className="HeadBtn">Take Action Now!</Button>
-            </Link>
-          </div>
-        </Container>
-        <ServiceSection
-          textLeft={reasonLeftTextCopy}
-          textRight={reasonRightTextCopy}
-          imageLeft={reasonLeftImageCopy}
-          imageRight={reasonRightImageCopy}
-        />
-        <ServiceSection
-          textLeft={reasonLeftText2}
-          textRight={reasonRightText2}
-          imageLeft={reasonLeftImage2}
-          imageRight={reasonRightImage2}
-        />
-
+        <FeaturedTab tabData={tabWhyChooseData} />
         <Team teams={lendersData} />
+        <ClientReviews reviews={reviewSection} />
+        <FAQ faqsections={faqData} />
+        <CategoryTabs planData={planSection} />
         <div style={{ height: "50px" }}></div>
         <Container className="mt-5">
           <h2 className="text-center service-title">{talkTitle}</h2>
@@ -1016,12 +1026,8 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
             }}
             className="text-lg text-center"
           ></div>
-          <div className="tab-btn">
-            <Link href={"/contact-us"}>
-              <Button className="HeadBtn">
-                Contact <span>Us</span>
-              </Button>
-            </Link>
+          <div className="mt-5">
+            <ContactSection />
           </div>
         </Container>
       </main>
