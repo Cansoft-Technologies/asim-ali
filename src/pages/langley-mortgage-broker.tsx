@@ -323,7 +323,7 @@ export default function NewLangley(props: MyProps) {
     '<h2 style="font-size: 40px;">Lenders <span style="color: #f0b243;">We Work With</span></h2>\n' +
     "";
   const teamDescription =
-    `<p><span style="font-weight: 400;">We're proud to work with a big team of over 100 lenders! This means we can find just the right one for you. Think of it like having a huge box of crayons to color your dream home - the more colors you have, the better you can paint your perfect picture. Our lenders are friendly and understand all kinds of situations, so no matter what your story is, we can match you with someone who gets it.
+    `<p><span style="font-weight: 400;">
 </span></p>\n` + "";
   const rateTitle = `
 <h2>Current Mortgage Rates in Langley</h2>
