@@ -1,7 +1,9 @@
 import { gql } from "@apollo/client";
+import { FAQ } from "components";
+import CategoryTabs from "components/CatagoryTabs";
+import ClientReviews from "components/ClientReviews";
 import FeaturedTab from "components/FeaturedTab";
 import LocationHero from "components/LocationHero";
-import MortgageAdvisorLoc from "components/MortgageAdvisorLoc";
 import OurLenders from "components/OurLenders";
 import OurRates from "components/OurRates";
 import ServiceSection from "components/ServiceSection";
@@ -99,6 +101,38 @@ export async function getStaticProps() {
             advisorCards{
               title
               description
+            }
+          }
+            faqSection {
+            hideSection
+            faqTitle
+            faqSubitle
+            faqImage {
+              altText
+              sourceUrl
+            }
+            faqAccordion {
+              question
+              answer
+            }
+          }
+          planSection {
+            planTitle
+            linkUrls {
+              linkText
+              url
+            }
+          }
+          reviewSection {
+            reviewTitle
+            reviewDescription
+            reviewCard{
+              author
+              reviewText
+              clientImage{
+                sourceUrl
+                altText
+              }
             }
           }
           tabRenovation{
@@ -223,6 +257,10 @@ export async function getStaticProps() {
       tipsRightText: data?.pages?.nodes[0]?.NewAbbotsford?.tipsRightText,
       tipsImageRight: data?.pages?.nodes[0]?.NewAbbotsford?.tipsImageRight,
       tipsImageLeft: data?.pages?.nodes[0]?.NewAbbotsford?.tipsImageLeft,
+      faqData: data?.pages?.nodes[0]?.NewAbbotsford?.faqSection,
+      planSection:
+        data?.pages?.nodes[0]?.NewAbbotsford?.planSection,
+      reviewSection: data?.pages?.nodes[0]?.NewAbbotsford?.reviewSection,
     },
     revalidate: 60,
   };
@@ -248,6 +286,9 @@ type MyProps = {
   homebuyerSectionData: any;
   serviceBannerData: any;
   advisorData: any;
+  faqData: any;
+  planSection: any;
+  reviewSection: any;
 };
 
 export default function NewAbbotsford(props: MyProps) {
@@ -271,17 +312,20 @@ export default function NewAbbotsford(props: MyProps) {
     serviceBannerData,
     advisorData,
     mortgageBenefitsData,
+    faqData,
+    planSection,
+    reviewSection,
   } = props;
 
   const teamTitle =
-      '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders in Abbotsford </span></h2>\n' +
+      '<h2 style="font-size: 40px;">Lenders <span style="color: #f0b243;">We Work With </span></h2>\n' +
       "";
    const teamDescription =
-      `<p><span style="font-weight: 400;">Asim Ali is your trusted mortgage broker in Abbotsford, we're proud to work with more than 100 lenders. This means we have a lot of choices to help find the perfect loan for you. We work with big banks, special loan places, and other types of lenders. Our goal is to make sure you get a great loan that makes you happy. </span></p>\n` +
+      `<p><span style="font-weight: 400;"></span></p>\n` +
       "";
       const rateTitle = `
   <h2>Current Mortgage Rates In Abbotsford</h2>
-<p>As your go-to mortgage broker in Abbotsford, BC Asim Ali wants to make sure you get a great deal. Our rates are very friendly, and we work hard to find you loans that won't break the bank. We chat with lots of lenders to make sure you get a rate that fits just right with what you need. Remember, different people need different rates, and we're here to help find the best one for you.</p>
+<p></p>
 
   `;
   return (
@@ -346,7 +390,7 @@ export default function NewAbbotsford(props: MyProps) {
             </Col>
           </Row>
         </Container>
-        
+        <OurRates title={rateTitle} />
         <Container
           className="mb-5 px-3 py-3 my-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -371,11 +415,13 @@ export default function NewAbbotsford(props: MyProps) {
           imageLeft={featuredImageLeft}
           imageRight={featuredImageRight}
         />
-        <OurRates title={rateTitle} />
-        <MortgageAdvisorLoc advisorData={mortgageBenefitsData} />
+        {/* <MortgageAdvisorLoc advisorData={mortgageBenefitsData} /> */}
         <FeaturedTab tabData={tabRenovationData} />
         <OurLenders title={teamTitle} description={teamDescription} />
-        <Container className="mb-5">
+        <ClientReviews reviews={reviewSection} />
+        <FAQ faqsections={faqData} />
+        <CategoryTabs planData={planSection} />
+        <Container className="mt-5">
           <p className="text-center service-title">{contactData?.title}</p>
           <div
             dangerouslySetInnerHTML={{
