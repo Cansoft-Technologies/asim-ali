@@ -83,7 +83,7 @@ const Banner = (props: MyProps) => {
                               }`}
                             >
                               <Button className={styles.bannerBtn}>
-                                Contact <span>Us</span>
+                                <span>Contact Us</span>
                               </Button>
                             </Link>
                             <Link href="/apply-now">
