@@ -14,6 +14,7 @@ import OurRates from "components/OurRates";
 import LocationHero from "components/LocationHero";
 import FeaturedTab from "components/FeaturedTab";
 import CategoryTabs from "components/CatagoryTabs";
+import ClientReviews from "components/ClientReviews";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -420,6 +421,7 @@ export default function NewLangley(props: MyProps) {
         <OurRates title={rateTitle} />
         <FeaturedTab tabData={tabRenovationData} />
         <OurLenders title={teamTitle} description={teamDescription} />
+        <ClientReviews reviews={reviewSection} />
         <FAQ faqsections={faqData} />
         <CategoryTabs planData={planSection} />
         <Container className="mt-5">
