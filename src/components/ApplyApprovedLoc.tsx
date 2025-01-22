@@ -92,7 +92,7 @@ const ApplyApprovedLoc = (props: Props) => {
                   }`}
                 >
                   <Button className="apply-button">
-                    Contact <span>Us</span>
+                    <span>Contact Us</span>
                   </Button>
                 </Link>
                 <Link href="/apply-now">

@@ -337,8 +337,6 @@ export default function NewCoquitlam(props: MyProps) {
     `<p><span style="font-weight: 400;"></span></p>\n` + "";
   const rateTitle = `
 <h2>Current Mortgage Rates in Coquitlam</h2>
-<p>Mortgage rates fluctuate a lot. That’s why we're here to make things easy and clear by helping you find the right rate.
-</p>
 
 `;
   return (
