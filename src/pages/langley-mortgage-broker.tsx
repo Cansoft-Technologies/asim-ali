@@ -15,6 +15,7 @@ import LocationHero from "components/LocationHero";
 import FeaturedTab from "components/FeaturedTab";
 import CategoryTabs from "components/CatagoryTabs";
 import ClientReviews from "components/ClientReviews";
+import EmbeddedMap from "components/EmbeddedMap";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -125,6 +126,10 @@ export async function getStaticProps() {
                 altText
               }
             }
+          }
+          mapSection {
+            mapTitle
+            mapUrl
           }
           tabRenovation{
             tabHeading
@@ -255,6 +260,7 @@ export async function getStaticProps() {
       planSection:
         data?.pages?.nodes[0]?.NewLangley?.planSection,
       reviewSection: data?.pages?.nodes[0]?.NewLangley?.reviewSection,
+      mapSection: data?.pages?.nodes[0]?.NewLangley?.mapSection,
     },
     revalidate: 60,
   };
@@ -287,6 +293,7 @@ type MyProps = {
   faqData: any;
   planSection: any;
   reviewSection: any;
+  mapSection: any;
 };
 
 export default function NewLangley(props: MyProps) {
@@ -317,6 +324,7 @@ export default function NewLangley(props: MyProps) {
     serviceBannerData,
     benefitTitle,
     benefitDescription,
+    mapSection
   } = props;
 
   const teamTitle =
@@ -433,6 +441,7 @@ export default function NewLangley(props: MyProps) {
             className="text-lg text-start"
           ></div>
         </Container>
+        <EmbeddedMap mapData={mapSection}/>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />
     </>
