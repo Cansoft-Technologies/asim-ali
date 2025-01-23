@@ -34,6 +34,7 @@ const MobileBanner = (props: MyProps) => {
               style={{
                 objectFit: "cover",
               }}
+              priority={true}
             />
             <div
               style={{
@@ -80,7 +81,7 @@ const BannerInfo = ({ slide }) => {
                 }`}
               >
                 <Button className={styles.bannerBtn}>
-                  Contact <span>Us</span>
+                  <span>Contact Us</span>
                 </Button>
               </Link>
               <Link href="/apply-now">
