@@ -39,7 +39,7 @@ const Team = (props: MyProps) => {
             ""
           ) : (
             <div
-              className="team_section my-5"
+              className="team_section"
               style={{
                 backgroundImage: `url("${teams?.teamImage?.sourceUrl}")`,
                 backgroundSize: "cover",
@@ -48,17 +48,19 @@ const Team = (props: MyProps) => {
               {
                 teams?.teamTitle && teams?.teamDescription && (
                   <div className={styles.overlay}>
+                <div className="mt-5">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: teams?.teamTitle,
                   }}
                 ></div>
                 <div
-                  className={styles.description}
+                  // className={styles.description}
                   dangerouslySetInnerHTML={{
                     __html: teams?.teamDescription,
                   }}
                 ></div>
+                </div>
               {
                 teams?.teamImages && (
                   <Container className="my-5 slide-div">
