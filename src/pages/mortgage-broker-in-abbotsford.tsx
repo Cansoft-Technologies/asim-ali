@@ -395,7 +395,7 @@ export default function NewAbbotsford(props: MyProps) {
           className="mb-5 px-3 py-3 my-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
         >
-          <p className="text-center service-title">{tipsTitle}</p>
+          <h2 className="text-center service-title">{tipsTitle}</h2>
           <div
             className="text-center"
             dangerouslySetInnerHTML={{
@@ -422,7 +422,7 @@ export default function NewAbbotsford(props: MyProps) {
         <FAQ faqsections={faqData} />
         <CategoryTabs planData={planSection} />
         <Container className="mt-5">
-          <p className="text-center service-title">{contactData?.title}</p>
+          <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,

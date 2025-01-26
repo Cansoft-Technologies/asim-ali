@@ -392,6 +392,7 @@ const teamDescription =
                   </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
         <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
+        <Team teams={teamData} />
         <OurRates title={rateTitle} />
         <FeaturedTab tabData={tabRenovationData}/>
         <OurLenders title={teamTitle} description={teamDescription} />

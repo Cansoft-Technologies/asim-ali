@@ -11,7 +11,7 @@ const EmbeddedMap = (props: Props) => {
   const { mapData } = props;
     return (
         <Container className='mapContainer'>
-          <h3 className="my-5 text-center service-title mt-5">{mapData?.mapTitle}</h3>
+          <p className="my-5 text-center service-title mt-5">{mapData?.mapTitle}</p>
             <iframe
                 src={mapData?.mapUrl}
                 width="100%"

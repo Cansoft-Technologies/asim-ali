@@ -44,13 +44,13 @@ export default function FeaturedTab(props: MyProps) {
           </Tabs>
         </Row>
       )}
-      <div className="tab-btn">
+      {/* <div className="tab-btn">
         <Link href={"/apply-now"}>
           <Button className="HeadBtn">
             Apply <span>Now</span>
           </Button>
         </Link>
-      </div>
+      </div> */}
     </Container>
   );
 }
