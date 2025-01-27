@@ -49,7 +49,7 @@ const Banner = (props: MyProps) => {
                         fill
                         src={slide?.sliderImage?.sourceUrl}
                         style={{ objectFit: "cover"}}
-                        priority={true}
+                        
                       />
                     </div>
                   </div>

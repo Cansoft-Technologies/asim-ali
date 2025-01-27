@@ -261,7 +261,7 @@ const Locations = (props: MyProps) => {
                                 alt={fImage?.locationImage?.altText}
                                 width="390"
                                 height="400"
-                                priority={true}
+                                
                                 style={{ width: "100%", objectFit: "cover", height: "auto"}}
                               />
                               <div>
@@ -292,7 +292,7 @@ const Locations = (props: MyProps) => {
                                   alt={sImage?.locationImage?.altText}
                                   width="390"
                                   height="400"
-                                  priority={true}
+                                  
                                   style={{
                                     width: "100%",
                                     objectFit: "cover",

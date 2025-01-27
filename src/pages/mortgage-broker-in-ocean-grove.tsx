@@ -336,7 +336,7 @@ export default function Page(props: MyProps) {
                       alt={serviceBannerData?.aboutImage?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>

@@ -383,7 +383,7 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="390"
                 height="400"
-                priority={true}
+                
                 style={{ width: "100%", objectFit: "cover" }}
               />
             </Col>
@@ -393,7 +393,7 @@ export default function NewDominionLendingMortgageRates(props: MyProps) {
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="300"
                 height="300"
-                priority={true}
+                
                 style={{ width: "100%", height: "100%", objectFit: "contain" }}
               />
             </Col>

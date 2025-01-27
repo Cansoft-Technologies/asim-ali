@@ -49,7 +49,7 @@ function Hero({
                         fill
                         src={bgImage}
                         style={{ objectFit: "cover"}}
-                        priority={true}
+                        
                       />
                     </div>
       <div className={styles.wrap}>

@@ -33,7 +33,7 @@ export default function ServiceSectionNewBC(props: MyProps) {
                   width="390"
                   height="400"
                   sizes="100vw"
-                  priority={true}
+                  
                       style={{
                         width: "100%",
                         objectFit: "cover",
@@ -55,7 +55,7 @@ export default function ServiceSectionNewBC(props: MyProps) {
                   alt={imageLeft?.altText}
                   width="390"
                   height="400"
-                  priority={true}
+                  
                       sizes="100vw"
                       style={{
                         width: "100%",
@@ -95,7 +95,7 @@ export default function ServiceSectionNewBC(props: MyProps) {
                   alt={leftImage?.altText}
                   width="390"
                   height="400"
-                  priority={true}
+                  
                       sizes="100vw"
                       style={{
                         width: "100%",
