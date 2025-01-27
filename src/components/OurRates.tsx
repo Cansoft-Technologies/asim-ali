@@ -69,10 +69,17 @@ export default function OurRates(props: MyProps) {
     fetchRates();
   }, []);
 
-  console.log(dataRates);
- // Helper function to calculate monthly payments
- const calculatePayment = (rate: number, loanAmount: number = 100000, years: number = 25) => {
-  const monthlyRate = rate / 100 / 12;
+// Helper function to calculate the monthly rate from the semi-annual compounded rate
+const getMonthlyRateFromAnnual = (annualRate: number) => {
+  const semiAnnualRate = (1 + annualRate / 100 / 2); // Semi-annual compounding
+  const effectiveAnnualRate = Math.pow(semiAnnualRate, 2) - 1; // EAR based on semi-annual compounding
+  const monthlyRate = Math.pow(1 + effectiveAnnualRate, 1 / 12) - 1; // Convert EAR to monthly rate
+  return monthlyRate;
+};
+
+// Helper function to calculate monthly payments
+const calculatePayment = (annualRate: number, loanAmount: number = 100000, years: number = 25) => {
+  const monthlyRate = getMonthlyRateFromAnnual(annualRate);
   const totalPayments = years * 12;
   return (
     (loanAmount * monthlyRate) /
@@ -81,7 +88,7 @@ export default function OurRates(props: MyProps) {
 };
 
 // Calculate dynamic data with payment and savings
-const updatedRates = dataRates.map((rate:any) => {
+const updatedRates = dataRates.map((rate: any) => {
   const bankPayment = calculatePayment(parseFloat(rate.bankRate));
   const ourPayment = calculatePayment(parseFloat(rate.ourRate));
   const savings = (parseFloat(bankPayment) - parseFloat(ourPayment)).toFixed(2);
@@ -92,6 +99,7 @@ const updatedRates = dataRates.map((rate:any) => {
     savings: `$${savings}`,
   };
 });
+
   return (
     <div>
       <Container>
