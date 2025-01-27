@@ -394,7 +394,7 @@ export default function NewCommercialMortgageBC(props: MyProps) {
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="390"
                 height="400"
-                priority={true}
+                
                       sizes="100vw"
                       style={{
                         width: "100%",

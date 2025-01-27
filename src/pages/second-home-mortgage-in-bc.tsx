@@ -333,7 +333,7 @@ const teamDescription =
                       alt={serviceBannerData?.aboutImage?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
@@ -391,7 +391,7 @@ const teamDescription =
                 width="390"
                       height="400"
                 alt={advisorData?.advisorImage?.altText}
-                priority={true}
+                
                       style={{
                         width: "100%",
                         height: "100%",
@@ -450,7 +450,7 @@ const teamDescription =
                 width="390"
                       height="400"
                 alt={advisorData?.advisorImage?.altText}
-                priority={true}
+                
                       style={{
                         width: "100%",
                         height: "100%",

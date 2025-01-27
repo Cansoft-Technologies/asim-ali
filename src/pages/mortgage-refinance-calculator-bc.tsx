@@ -267,7 +267,7 @@ const Refinance = (props: MyProps) => {
                       alt={data?.Refinance?.aboutImage?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
@@ -413,7 +413,7 @@ const Refinance = (props: MyProps) => {
                       alt={data?.Refinance?.brokerImage?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>

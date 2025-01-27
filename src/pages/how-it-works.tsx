@@ -226,7 +226,7 @@ const HowItWorks = (props: MyProps) => {
                         alt={data?.HowItWorks?.firstImage?.altText}
                         width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                       quality={100}
                       />
@@ -242,7 +242,7 @@ const HowItWorks = (props: MyProps) => {
                       alt={data?.HowItWorks?.secondImage?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                       quality={100}
                     />
@@ -269,7 +269,7 @@ const HowItWorks = (props: MyProps) => {
                       alt={data?.HowItWorks?.firstBanner?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       sizes="100vw"
                       style={{
                         width: "100%",
@@ -299,7 +299,7 @@ const HowItWorks = (props: MyProps) => {
                         alt={data?.HowItWorks?.thirdImage?.altText}
                         width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                       quality={100}
                       />
@@ -315,7 +315,7 @@ const HowItWorks = (props: MyProps) => {
                       alt={data?.HowItWorks?.fourthImage?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                       quality={100}
                     />
@@ -353,7 +353,7 @@ const HowItWorks = (props: MyProps) => {
                         alt={data?.HowItWorks?.fifthImage?.altText}
                         width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                       quality={100}
                       />
@@ -369,7 +369,7 @@ const HowItWorks = (props: MyProps) => {
                       alt={data?.HowItWorks?.secondBanner?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       sizes="100vw"
                       style={{
                         width: "100%",

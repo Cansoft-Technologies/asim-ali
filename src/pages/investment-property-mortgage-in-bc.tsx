@@ -333,7 +333,7 @@ const teamDescription =
                       alt={serviceBannerData?.aboutImage?.altText}
                       width="390"
                       height="400"
-                      priority={true}
+                      
                       style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
