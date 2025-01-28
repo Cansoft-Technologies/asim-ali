@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { Hero } from "components";
+import { FAQ, Hero } from "components";
 import AccordionNewBC from "components/AccordionNewBC";
 import ServiceSection from "components/ServiceSection";
 import TabNewBC from "components/TabNewBC";
@@ -13,6 +13,10 @@ import { apolloClient } from "../lib/apollo";
 import OurRates from "components/OurRates";
 import OurLenders from "components/OurLenders";
 import LocationHero from "components/LocationHero";
+import HomeBuyerSection from "components/HomeBuyerSection";
+import HomeBuyerLoc from "components/HomebuyerLoc";
+import ClientReviews from "components/ClientReviews";
+import CategoryTabs from "components/CatagoryTabs";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -149,7 +153,49 @@ export async function getStaticProps() {
             altText
             sourceUrl
           }
- 
+          homebuyerSection {
+            advisorTitle
+            advisorCards{
+              title
+              description
+              image{
+                sourceUrl
+                altText
+              }
+            }
+          }
+          planSection {
+            planTitle
+            linkUrls {
+              linkText
+              url
+            }
+          }
+          reviewSection {
+            reviewTitle
+            reviewDescription
+            reviewCard{
+              author
+              reviewText
+              clientImage{
+                sourceUrl
+                altText
+              }
+            }
+          }
+          faqSection {
+            hideSection
+            faqTitle
+            faqSubitle
+            faqImage {
+              altText
+              sourceUrl
+            }
+            faqAccordion {
+              question
+              answer
+            }
+          }
           commonConcerns {
             advisorTitle
             advisorDescription
@@ -293,6 +339,11 @@ export async function getStaticProps() {
       ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.ratesTitle,
       ratesDescription:
         data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.ratesDescription,
+        faqData: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.faqSection,
+      planSection:
+        data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.planSection,
+      reviewSection: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.reviewSection,
+      homebuyerSectionData: data?.pages?.nodes[0]?.mortgageBrokerChilliwack?.homebuyerSection,
     },
     revalidate: 60,
   };
@@ -326,6 +377,10 @@ type MyProps = {
   journeySectionData1: any;
   journeyLeftText: any;
   journeyRightImage: any;
+  faqData: any;
+  planSection: any;
+  reviewSection: any;
+  homebuyerSectionData: any;
 };
 
 export default function NewMortgageBrokerChilliwack(props: MyProps) {
@@ -357,16 +412,21 @@ export default function NewMortgageBrokerChilliwack(props: MyProps) {
     journeySectionData1,
     journeyLeftText,
     journeyRightImage,
+    faqData,
+    planSection,
+    reviewSection,
+    homebuyerSectionData,
   } = props;
   const teamTitle =
-  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Mortgage Lenders  </span></h2>\n' +
+  '<h2 style="font-size: 40px;">Lenders<span style="color: #f0b243;"> We Work With  </span></h2>\n' +
   "";
 const teamDescription =
-  `<p><span style="font-weight: 400;">At Asim Ali, our strength lies in our extensive network, boasting connections with over 100 lenders. This diverse array of financial institutions and private lenders ensures that we can cater to a wide variety of needs and situations. Our partnerships enable us to present our clients with a multitude of mortgage options, from conventional loans to more specialized financing solutions.
+  `<p><span style="font-weight: 400;">
 </span></p>\n` + "";
 const rateTitle = `
-<h2>Our Current Mortgage Rates Chilliwack​</h2>
-<p>We believe in transparency and providing value to our clients. While our rates are competitive and designed to suit various financial situations, they are subject to market conditions and individual creditworthiness. We work diligently to secure the most favorable rates for you by leveraging our extensive network of lenders. To get a detailed understanding of our current rates and how they can be tailored to your specific needs, we encourage a one-on-one consultation. This approach ensures that you receive the most accurate and personalized rate information possible.</p>
+<h2>Current Mortgage Rates in Chilliwack​</h2>
+<p>We believe in transparency and providing value to our clients. Our rates are competitive and suit various financial situations. But, they depend on market conditions and individual credit scores. For a detailed understanding of our rates, please consult us. We can tailor them to your needs. This approach gives you the most accurate, personalized rate info.
+</p>
 
 `;
   return (
@@ -441,68 +501,33 @@ const rateTitle = `
             }}
           ></div>
         </Container>
-
-        <ServiceSection
-          textLeft={expertsHelpData?.helpLeftText}
-          textRight={expertsHelpData?.helpRightText}
-          imageLeft={expertsHelpData?.helpLeftImage}
-          imageRight={expertsHelpData?.helpRightImage}
-        />
-        <ServiceSection
-          textLeft={reasonLeftText}
-          textRight={reasonRightText}
-          imageLeft={reasonLeftImage}
-          imageRight={reasonRightImage}
-        />
-        <OurRates title={rateTitle} />
-        <section className="split_section mt-5">
-          <Container>
-            <Row>
-              <Col lg={5} className="text-hide-pc">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-              <Col lg={6}>
+        <Container className="mb-5">
+          <Row className="coquitlam-grid my-5">
+            <Col md={7}>
               <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingTitle,
-                  }}
-                  className=""
-                ></div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingDescriptionTop,
-                  }}
-                  className="mt-5"
-                ></div>
-                <div className="split_image">
-                  <Image
-                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
-                    fill
-                    alt={borrowingPaymentData?.borrowingImage?.altText}
-                  />
-                </div>
-              </Col>
-              <Col lg={6} className="text-hide-sm">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-        <div style={{ height: "50px" }}></div>
-
-
-        <AccordionNewBC homebuyerData={commonConcernsData} />
+                dangerouslySetInnerHTML={{
+                  __html: expertsHelpData?.helpLeftText,
+                }}
+              ></div>
+            </Col>
+            <Col md={5}>
+              <Image
+                src={expertsHelpData?.helpRightImage?.sourceUrl}
+                alt={expertsHelpData?.helpRightImage?.altText}
+                width="390"
+                height="400"
+                
+                style={{ width: "100%", objectFit: "cover" }}
+              />
+            </Col>
+          </Row>
+        </Container>
+        <OurRates title={rateTitle} />
+        <HomeBuyerLoc homebuyerData={homebuyerSectionData} />
         <OurLenders title={teamTitle} description={teamDescription} />
+        <ClientReviews reviews={reviewSection} />
+        <FAQ faqsections={faqData} />
+        <CategoryTabs planData={planSection} />
         <div style={{ height: "100px" }}></div>
         <Container className="mb-5">
           <h2 className="text-center service-title">{talkTitle}</h2>

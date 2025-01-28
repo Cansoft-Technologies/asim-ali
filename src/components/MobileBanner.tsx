@@ -34,7 +34,7 @@ const MobileBanner = (props: MyProps) => {
               style={{
                 objectFit: "cover",
               }}
-              
+              loading="eager"
             />
             <div
               style={{

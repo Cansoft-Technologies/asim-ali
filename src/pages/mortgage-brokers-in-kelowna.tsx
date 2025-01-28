@@ -422,12 +422,12 @@ export default function NewKelowna(props: MyProps) {
           imageLeft={tipsImageLeft}
           imageRight={tipsImageRight}
         />
-        <ServiceSection
+        {/* <ServiceSection
           textLeft={serviceLeftText}
           textRight={serviceRightText}
           imageLeft={serviceImageLeft}
           imageRight={serviceImageRight}
-        />
+        /> */}
         <OurRates title={rateTitle} />
         {/* <MortgageAdvisor advisorData={mortgageBenefitsData} /> */}
         {/* <AccordionSection advisorData={mortgageInterestData} /> */}
