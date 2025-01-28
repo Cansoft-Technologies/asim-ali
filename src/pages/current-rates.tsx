@@ -1,6 +1,9 @@
 import { gql } from "@apollo/client";
 import emailjs from "@emailjs/browser";
 import { Footer, Header, Hero } from "components";
+import ApplySection from "components/ApplySection";
+import ContactSection from "components/ContactSection";
+import OurRates from "components/OurRates";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import Link from "next/link";
@@ -209,54 +212,10 @@ const Current = (props: MyProps) => {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="current-rate">
-                      <div className="current-container">
-                        <h1 className="mb-1">Current Rates</h1>
-                        {data?.CurrentRates?.currentMortgageRate == null ? (
-                          ""
-                        ) : (
-                          <p>
-                            Current Variable Mortgage Rate is{" "}
-                            <b>{data?.CurrentRates?.currentMortgageRate}</b>
-                          </p>
-                        )}
-                        {data?.CurrentRates?.currentPrimeRate == null ? (
-                          ""
-                        ) : (
-                          <p>
-                            Current Prime Rate is{" "}
-                            <b>{data?.CurrentRates?.currentPrimeRate}</b>
-                          </p>
-                        )}
-
-                        <table className="text-center table table-striped table-hover">
-                          <thead className="table-light">
-                            <tr>
-                              <th scope="col">Terms</th>
-                              <th scope="col">Bank Rates</th>
-                              <th scope="col">Dominion</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {data?.CurrentRates?.tableRateInformation.map(
-                              (info, i) => {
-                                return (
-                                  <tr key={i}>
-                                    <td>{info?.terms}</td>
-                                    <td>{info?.bankRates}%</td>
-                                    <td>{info?.dominion}%</td>
-                                  </tr>
-                                );
-                              }
-                            )}
-                          </tbody>
-                        </table>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: data?.CurrentRates?.tableBottomNotes,
-                          }}
-                          className="notes fst-italic"
-                        ></div>
-                      </div>
+                      <Container className="mt-5">
+                        <h1 className="pt-5 text-center">Current Rates</h1>
+                        <OurRates/>
+                      </Container>
                     </div>
                   </div>
                 </div>
@@ -266,48 +225,11 @@ const Current = (props: MyProps) => {
                 style={{
                   backgroundImage: `url("${data?.CurrentRates?.easyApplicationBackground?.sourceUrl}")`,
                 }}
-                className="easy-application"
+                className="howto-application"
               >
                 <div className="overlay"></div>
                 <Container className="py-1">
-                  <Row>
-                    <Col md={6}>
-                      <div className="easyapplication-title">
-                        <h2>{data?.CurrentRates?.easyApplicationTitle}</h2>
-                        <p>{data?.CurrentRates?.easyApplicationSubtitle}</p>
-                      </div>
-
-                      <div className="application-container">
-                        <form ref={form2} onSubmit={sendEmail2}>
-                          <input
-                            placeholder="Full Name"
-                            type="text"
-                            name="fullname"
-                          />
-                          <input
-                            placeholder="Email"
-                            type="email"
-                            name="email"
-                          />
-                          <input placeholder="Phone" type="text" name="phone" />
-                          <input
-                            value="Send"
-                            type="submit"
-                            className="contactBt"
-                          />
-                          {success2 && (
-                            <div
-                              className="alert alert-success mt-4"
-                              role="alert"
-                            >
-                              Your message was sent Successfully
-                            </div>
-                          )}
-                        </form>
-                      </div>
-                    </Col>
-                    <Col md={6}></Col>
-                  </Row>
+                  <ApplySection />
                 </Container>
               </div>
 
