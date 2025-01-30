@@ -404,12 +404,12 @@ export default function NewDelta(props: MyProps) {
           imageLeft={featuredImageLeft}
           imageRight={featuredImageRight}
         />
-        <ServiceSection
+        {/* <ServiceSection
           textLeft={tipsLeftText}
           textRight={tipsRightText}
           imageLeft={tipsImageLeft}
           imageRight={tipsImageRight}
-        />
+        /> */}
         <OurRates title={rateTitle} />
         {/* <MortgageAdvisor advisorData={mortgageBenefitsData} /> */}
         <FeaturedTab tabData={tabRenovationData} />
