@@ -409,12 +409,12 @@ export default function NewAbbotsford(props: MyProps) {
           imageLeft={tipsImageLeft}
           imageRight={tipsImageRight}
         />
-        <ServiceSection
+        {/* <ServiceSection
           textLeft={featuredTextLeft}
           textRight={featuredTextRight}
           imageLeft={featuredImageLeft}
           imageRight={featuredImageRight}
-        />
+        /> */}
         {/* <MortgageAdvisorLoc advisorData={mortgageBenefitsData} /> */}
         <FeaturedTab tabData={tabRenovationData} />
         <OurLenders title={teamTitle} description={teamDescription} />
