@@ -1001,6 +1001,31 @@ body {
 }.card {
   border: none; // Remove card border
 }
+.calculator-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+
+    h4 {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+  }
+}
 .form-div {
   border-radius: 0px 20px 0px 20px;
   background-color: rgba(255, 255, 255, 0.8);

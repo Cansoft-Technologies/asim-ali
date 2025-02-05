@@ -13,6 +13,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import DownPaymentCalculator from "components/DownPaymentCalculator";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -421,6 +422,7 @@ export default function NewAbbotsford(props: MyProps) {
         <ClientReviews reviews={reviewSection} />
         <FAQ faqsections={faqData} />
         <CategoryTabs planData={planSection} />
+        {/* <iframe title="Mortgage Down Payment Calculator - BMO" src="https://calculators.bmo.com/response/bmo/calc/home07?hide=logo" scrolling="auto" height="1500" className="width--100" width="100%" id="persMortgageDownPaymentCalc" style={{ overflow: 'hidden', border: 'none' }}></iframe> */}
         <Container className="mt-5">
           <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
