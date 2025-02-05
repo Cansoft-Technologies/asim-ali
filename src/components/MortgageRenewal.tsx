@@ -108,7 +108,7 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
                 type="number"
                 name="amount"
                 value={mortgageData.amount}
-                onChange={handleInputChange}
+                onChange={(e)=>handleInputChange}
               />
             </Col>
           </Form.Group>
@@ -120,7 +120,7 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
                 type="number"
                 name="amortization"
                 value={mortgageData.amortization}
-                onChange={handleInputChange}
+                onChange={(e)=>handleInputChange}
               />
             </Col>
           </Form.Group>
@@ -137,7 +137,7 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
                         type="number"
                         name="rate1"
                         value={mortgageData.rate1}
-                        onChange={handleInputChange}
+                        onChange={(e)=>handleInputChange}
                       />
                     </Col>
                   </Form.Group>
@@ -156,7 +156,7 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
                         type="number"
                         name="rate2"
                         value={mortgageData.rate2}
-                        onChange={handleInputChange}
+                        onChange={(e)=>handleInputChange}
                       />
                     </Col>
                   </Form.Group>

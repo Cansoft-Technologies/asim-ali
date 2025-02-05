@@ -70,7 +70,7 @@ const ReverseMortgageCalculator = () => {
                         <Row className="mb-3">
                             <Form.Label column sm={4}>Select Estimated Home Value</Form.Label>
                             <Col sm={8}>
-                            <Form.Control as="select" name="homeValue" value={mortgageData.homeValue} onChange={handleInputChange}>
+                            <Form.Control as="select" name="homeValue" value={mortgageData.homeValue} onChange={(e)=>handleInputChange}>
       <option disabled value="">Select Home Value</option>
       <option value="150000">$100,001 - $150,000</option>
       <option value="200000">$150,001 - $200,000</option>
@@ -137,7 +137,7 @@ const ReverseMortgageCalculator = () => {
                         <Row className="mb-3">
                             <Form.Label column sm={4}>Select Mortgage Balance</Form.Label>
                             <Col sm={8}>
-                            <Form.Control as="select" name="mortgageBalance" value={mortgageData.mortgageBalance} onChange={handleInputChange}>
+                            <Form.Control as="select" name="mortgageBalance" value={mortgageData.mortgageBalance} onChange={(e)=>handleInputChange}>
       <option disabled value="">Select Mortgage Balance</option>
       <option value="1">$1 - $25,000</option>
       <option value="25001">$25,001 - $50,000</option>
@@ -190,7 +190,7 @@ const ReverseMortgageCalculator = () => {
                                     as="select"
                                     name="age"
                                     value={mortgageData.age}
-                                    onChange={handleInputChange}
+                                    onChange={(e)=>handleInputChange}
                                 >
                                     <option disabled value="">Select Age</option>
                                     <option value="59">Under 60</option>
