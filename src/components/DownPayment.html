@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Mortgage Down Payment Calculator - BMO</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="googlebot" value="noindex, indexifembedded">
+
+  <link rel="canonical" href="https://calculators.bmo.com/response/bmo/calc/home07">
+<script src="//calculators.bmo.com/response/content/clients/bmo/launch/5aebfc6032e6/2ee44ddde2cc/launch-5e848378ca59.min.js"></script><script src="https://calculators.bmo.com/response/content/clients/bmo/launch/5aebfc6032e6/2ee44ddde2cc/25e4b50b4c55/EX86dbad0dcc9a4d329c6e2c1876aa1ff9-libraryCode_source.min.js" async=""></script><script>
+
+sitePrefix = 'BMOH';
+
+var pageNameMapping = {};
+
+</script><script>
+// Search for BMOINFO on page, if not:
+if (typeof BMOINFO == "undefined") {
+
+  // Page Variables, change when necessary
+  var pageLang = "en";
+  var pageCountry = "Can";
+  var pageTemplate = "BlankTemplate";
+  var pageContentType = "channel";
+
+  var parser = document.createElement('a');
+
+  // Call the URI of the current page 
+  parser.href = location;
+
+  // For IE, fix issue of empty protocol
+  if (parser.host == "") {
+      parser.href = parser.href;
+  }
+
+  // Split components of the url
+  parser.protocol; // "http:"
+  parser.host; // "bmo.com:3000"
+  parser.hostname; // "bmo.com"
+  parser.pathname; // "/path/"
+  parser.search; // "?search=test"
+  parser.hash; // "#hash"
+
+  // Split pathname for individual sections
+  var pathName = parser.pathname;
+  var pathArray = parser.pathname.split('/');
+  var siteName = parser.hostname;
+
+  // If browser does not have filter
+  if (!Array.prototype.filter) {
+      Array.prototype.filter = function (fun /*, thisp */ ) {
+          "use strict";
+          if (this === void 0 || this === null) throw new TypeError();
+          var t = Object(this);
+          var len = t.length >>> 0;
+          if (typeof fun !== "function") throw new TypeError();
+          var res = [];
+          var thisp = arguments[1];
+          for (var i = 0; i < len; i++) {
+              if (i in t) {
+                  var val = t[i]; // in case fun mutates this
+                  if (fun.call(thisp, val, i, t)) res.push(val);
+              }
+          }
+          return res;
+      };
+  }
+
+  // Filter empty elements in array    
+  pathArray = pathArray.filter(function (n) {
+      return n != ""
+  });
+
+  // Create BMOINFO Object
+  var BMOINFO = {
+      pageName: document.title,
+      language: pageLang,
+      country: pageCountry,
+      template: pageTemplate,
+      contentType: pageContentType,
+      topic: "",
+      site: siteName,
+      Sections: pathArray,
+  }
+
+}
+//End BMOINFO Creator
+
+
+//DTM Object
+var DTM = (function(){
+  
+/* Avoid "console" errors in browsers that lack a console. */
+(function() {
+  var method;
+  var noop = function () {};
+  var methods = [
+    'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+    'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+    'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+    'timeStamp', 'trace', 'warn'
+  ];
+  var length = methods.length;
+  var console = (window.console = window.console || {});
+
+  while (length--) {
+    method = methods[length];
+
+    // Only stub undefined methods.
+    if (!console[method]) {
+      console[method] = noop;
+    }
+  }
+})();
+
+/* fix indexOf issue with internet explorer */
+(function() {
+  if (!window.dojo) {
+    if (!Array.indexOf) {
+      Array.prototype.indexOf = function (obj) {
+        for (var i = 0; i < this.length; i++) {
+          if (this[i] == obj) {
+            return i;
+          }
+        }
+        return -1;
+      }
+    }
+  }
+})();
+
+function getLevels(){
+  //Get levels from BMOINFO Global Object
+  var levels = BMOINFO.Sections;
+  //Elements to remove from levels
+  var toRemove = ['Staging','Home','Main'];
+  //removing elements from toRemove Array
+  levels = levels.filter( function( el ) {
+    return toRemove.indexOf( el ) < 0;
+  } );
+  
+  //sitePrefix in index 0 of the levels array (sitePrefix is a global function in the Mapping file of each site)
+  levels.splice(0, 0, sitePrefix);
+  
+  //Changing the name of the levels for the mapping file ones.
+  for (i = 0 ; i < levels.length ; i++){
+    if (pageNameMapping[levels[i]])
+      levels[i] = pageNameMapping[levels[i]]
+  }
+  
+  return levels;
+}
+
+function getSiteSections(){
+  if (BMOINFO.dtmSiteSections && BMOINFO.dtmSiteSections.length > 0) return BMOINFO.dtmSiteSections;
+  var levels = getLevels();
+  var siteSections = {};
+  for (i = 1; i <= levels.length; i++){
+    ssToCat = levels.slice(0,i);
+    siteSections[i] = ssToCat.join(':');
+  }
+  
+  return siteSections;
+}
+
+function getPageName(){	
+  var levels = getLevels();
+  var pageName = levels.join(':');
+  
+  return pageName;
+}
+
+function getHierarchy(){
+  var levels = getLevels();
+  var hierarchy = levels.join(':');
+  
+  return hierarchy;
+}
+
+// Linktracking Functions
+function _linkTracking(link41, pos42, name43, linkType){
+  linkType = linkType || "Linktracking solution";
+  s.linkTrackVars = "prop41,prop42,prop43";
+  s.prop41 = link41;
+  s.prop42 = pos42;
+  s.prop43 = name43;
+  s.tl(this,'o',linkType,null,'navigate');
+}
+
+//Form tracking
+function _setFormTracking(link41, pos42, name43, linkType){
+  linkType = linkType || "FormTracking solution";
+  s.linkTrackVars = "prop41,prop42,prop43";
+  s.prop41 = link41;
+  s.prop42 = pos42;
+  s.prop43 = name43;
+  s.tl(this,'o',linkType,null,'formTracker');
+  //console.log(formData);
+}
+
+function _setCookie(c_name,value,expiredays) {
+  var exdate=new Date();
+  var cookieDomain = _getOnlyDomain(document.domain);
+  exdate.setDate(exdate.getDate()+expiredays);
+  document.cookie=c_name+ "=" +escape(value)+ ((expiredays==null) ? "" : ";expires="+exdate.toGMTString()) + ";domain="+cookieDomain+";path=/";
+}
+
+function _getCookie(c_name) {
+  if (document.cookie.length>0) {
+    c_start=document.cookie.indexOf(c_name + "=");
+    if (c_start!=-1) {
+      c_start=c_start + c_name.length+1;
+      c_end=document.cookie.indexOf(";",c_start);
+      if (c_end==-1) c_end=document.cookie.length;
+      return unescape(document.cookie.substring(c_start,c_end));
+    }
+  }
+  return "";
+}
+
+function _deleteCookie( name, path, domain ) {
+  if( _getCookie( name ) ) {
+    document.cookie = name + "=" + ((path) ? ";path="+path:"") + ((domain)?";domain="+domain:"") + ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  }
+}
+
+
+
+function _getOnlyDomain(dom){
+  domain = dom.split('.');
+  domain = domain.splice(-2,2);
+  domain = domain.join('.');
+  return domain
+}
+
+function _setLTVarsFromCookie(){
+  var s_v = _getCookie('s_lt');
+  if (s_v!=null && s_v!=""){
+    cookie = s_v.split(';');
+    s.prop41 = cookie[0].substring(cookie[0].indexOf('=')+1);
+    s.prop42 = cookie[1].substring(cookie[1].indexOf('=')+1);
+    s.prop43 = cookie[2].substring(cookie[2].indexOf('=')+1);
+    _deleteCookie('s_lt', '/', _getOnlyDomain(document.domain));
+  }
+}
+
+return{
+  pageName: getPageName(),
+  hierarchy: getHierarchy(),
+  linkTraking: _linkTracking,
+  setFormTracking: _setFormTracking,
+  siteSections: getSiteSections(),
+  setLTVarsFromCookie: _setLTVarsFromCookie,
+  getOnlyDomain: _getOnlyDomain,
+  setCookie: _setCookie,
+  getCookie: _getCookie,
+  deleteCookie: _deleteCookie
+}
+
+})();
+</script>
+
+  <script>
+      var LF_SYS_TOOL_CONTEXT = (function () {
+          var campaign = "";
+          var category = "home";
+          var siteId = "bmo";
+          var solverAvailable = "";
+          var toolId = "home07";
+          var isPathway = "false";
+          return {
+              getCampaign: function () {
+                  return campaign;
+              },
+              getCategory: function () {
+                  return category;
+              },
+              getSiteId: function () {
+                  return siteId;
+              },
+              isSolverAvailable: function () {
+                  return solverAvailable;
+              },
+              getToolId: function () {
+                  return toolId;
+              },
+              isPathway: function () {
+                  return isPathway;
+              },
+              getToolIdWithPathway: function () {
+                  if (isPathway == "true") {
+                      return "pathway/" + toolId;
+                  } else {
+                      return toolId;
+                  }
+              }
+          }
+      })();
+
+  </script>
+  <link href="/assets/pft/css/calc-plugins-1.0.css" updateviacache="all" rel="stylesheet">
+  <link href="/assets/pft/css/fonts.css" rel="stylesheet" media="screen">
+  <link href="/assets/pft/css/plugins.css" rel="stylesheet" media="screen">
+  <link href="/response/bmo/artifact/home07/assets/css/common.css" rel="stylesheet">
+  <link href="/response/bmo/artifact/home07/assets/css/categories.css" rel="stylesheet" media="screen">
+  <link href="/response/bmo/artifact/home07/assets/css/simple-plus.css" rel="stylesheet" media="screen">
+  <link href="/response/bmo/artifact/home07/assets/css/mobile.css" rel="stylesheet">
+  <link href="/assets/pft/css/glyphicons.css" rel="stylesheet">
+  <link href="/response/bmo/artifact/home07/assets/css/client-skin.css" rel="stylesheet" media="screen">
+  <link rel="icon" type="image/x-icon" href="/response/bmo/artifact/home07/assets/images/favicon.ico">
+  <style>
+      html, body {
+          overflow: auto;
+          -webkit-overflow-scrolling: touch;
+      }
+  </style>
+<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i" rel="stylesheet" type="text/css"></head>
+
+<body class="lf-home07 lf-simple-plus lf-calculator lf-not-touch" onload="OnLoadHandler()" data-new-gr-c-s-check-loaded="14.1220.0" data-gr-ext-installed="">
+
+<noscript class="aria-hide">
+  <div class="lf-error lf-centered lf-nojs">
+      Please enable JavaScript in your browser to utilize our calculators.
+  </div>
+</noscript>
+
+<div id="lf-ajax-loader" class="lf-ajax-loader" aria-hidden="true" style="display: none;">
+  <img width="16" height="16" aria-hidden="true" alt="loading" src="/response/bmo/artifact/home07/assets/images/working.gif">
+  <div id="lf_working_label" class="lf-ajax-working" aria-hidden="true">Loading...</div>
+</div>
+<div id="lf-busy-overlay" class="ui-widget-overlay lf-busy-overlay" style="display: none;"></div>
+
+<input type="hidden" id="querystring" value="hide=logo">
+
+<div class="lf-centered" id="lf_main" role="main" aria-busy="false">
+  <div class="lf-meter lf-main-inner">
+      <div class="lf-meter lf-question">
+          <div id="lf-branding-logo-link" style="display: none;">
+    <img style="height:50px; width:182px; margin:0; padding:0; cursor:default;" border="0" src="/response/bmo/artifact/home07/assets/images/bmoLogo.svg" alt="BMO Logo">
+  </div>
+          <h1 id="lf_title_label" tabindex="-1" aria-label="How much should I put down for a new home?">How much should I put down for a new home?</h1>
+          <div id="lf_Help" class="">
+              <button type="button" id="lf_help_tab" class="lf-help-tab">
+                  <span id="lf_help_label" class="lf-help-label">Help</span>
+              </button>
+          </div>
+      </div>
+      <div id="structure-explanation" class="visually-hidden" aria-level="2" role="heading">In this tool, the results display before the inputs.</div>
+      <div class="lf-meter lf-meter-content">
+          <div class="lf-meter lf-error lf-hidden" id="lf-server-error" role="alert" style="display: none;"></div>
+          <div class="lf-meter lf-error lf-hidden lf-crossfield-error" id="lf_crossfield_error_container" style="display: none;">
+          </div>
+          <div class="lf-cm-65 lf-left-col">
+              <div class="lf-results-section lf-graphs  lf-long-answer"><h3 class="lf-results-mobile" style="display: none; font-size: 24px; font-weight: 900; margin: 0px 0px 10px; text-align: center;">Results</h3>
+                  <div id="results-section" class="visually-hidden" aria-level="2" role="heading">Results</div>
+                  <div id="lf_answer_hidden_content">
+                      <span id="lf_answer_hidden">The smaller down payment will <span style="font-weight:bold">cost</span> you <span style="font-weight:bold">$86,884</span> over the 25 years.</span>
+                  </div>
+                  <div class="lf-answer">
+                      <h2><span id="lf_answer" style="">The smaller down payment will <span style="font-weight:bold">cost</span> you <span style="font-weight:bold">$86,884</span> over the 25 years.</span></h2>
+
+                      <button aria-expanded="false" aria-controls="lf_answer_text_details" id="lf_answer_more_info" class="lf-more-info lf-secondary-gradient" aria-label="Show details">Show details</button>
+
+                      <div id="lf_answer_text_details" class="">
+
+                          <div id="lf-more-info-table-placeholder">
+                              <table class="lf-results-table" id="lf-results-table-main"><caption class="visually-hidden">Results details</caption>
+                                  <thead>
+                                  <tr>
+                                      <td></td>
+                                      <th class="lf-results-header tableCellADA" scope="col">Less Down</th>
+                                      <th class="lf-results-header tableCellADA" scope="col">More Down</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+
+                                  <tr id="lf_LoanAmtHome07_results">
+                                      <th id="lf_LoanAmtHome07_result_label" class="tableCellADA" scope="row">
+                                          Loan amount
+                                      </th>
+                                      <td id="lf_LoanAmtHome07_result_value" class="tableCellADA "><span class="lf-nbsp-number">$230,000</span>
+                                      </td>
+                                      <td id="lf_LoanAmt2Home07_result_value" class="tableCellADA "><span class="lf-nbsp-number">$200,000</span>
+                                      </td>
+                                  </tr>
+                                  <tr id="lf_PrincAndIntHome07_results">
+                                      <th id="lf_PrincAndIntHome07_result_label" class="tableCellADA" scope="row">
+                                          Principal and interest
+                                      </th>
+                                      <td id="lf_PrincAndIntHome07_result_value" class="tableCellADA "><span class="lf-nbsp-number">$1,235</span>
+                                      </td>
+                                      <td id="lf_PrincAndInt2Home07_result_value" class="tableCellADA "><span class="lf-nbsp-number">$1,013</span>
+                                      </td>
+                                  </tr>
+                                  <tr id="lf_TaxAndIns_results">
+                                      <th id="lf_TaxAndIns_result_label" class="tableCellADA" scope="row">
+                                          Property taxes and insurance
+                                      </th>
+                                      <td id="lf_TaxAndIns_result_value" class="tableCellADA "><span class="lf-nbsp-number">$354</span>
+                                      </td>
+                                      <td id="lf_TaxAndIns2_result_value" class="tableCellADA "><span class="lf-nbsp-number">$354</span>
+                                      </td>
+                                  </tr>
+                                  <tr id="lf_MortInsHome07_results">
+                                      <th id="lf_MortInsHome07_result_label" class="tableCellADA" scope="row">
+                                          Private mortgage insurance (PMI)
+                                      </th>
+                                      <td id="lf_MortInsHome07_result_value" class="tableCellADA "><span class="lf-nbsp-number">$221</span>
+                                      </td>
+                                      <td id="lf_MortIns2Home07_result_value" class="tableCellADA "><span class="lf-nbsp-number">$0</span>
+                                      </td>
+                                  </tr>
+                                  <tr id="lf_TotPmtHome07_results">
+                                      <th id="lf_TotPmtHome07_result_label" class="tableCellADA" scope="row">
+                                          Total payment
+                                      </th>
+                                      <td id="lf_TotPmtHome07_result_value" class="tableCellADA "><span class="lf-nbsp-number">$1,810</span>
+                                      </td>
+                                      <td id="lf_TotPmt2Home07_result_value" class="tableCellADA "><span class="lf-nbsp-number">$1,368</span>
+                                      </td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <script type="text/template" id="lf-more-info-plain-template">
+                              {{#text}}
+                              <div id="lf_answer_text" class="tableCellADA">{{{text}}}</div>
+                              {{/text}}
+                              {{^text}}
+                              {{#.}}
+                              {{#title}}
+                              <div id="lf_result_title" class="lf-result-title">{{{title}}}</div>
+                              {{/title}}
+                              <div class="lf-results-list lf-list-{{listNumber}}">
+                                  {{#entries}}
+                                  <div id="lf_{{dataElementName}}_results" class="lf-result-list-content">
+                                      <div id="lf_{{dataElementName}}_result_label" class="lf-details-list-label">
+                                          {{{fieldLabel}}}
+                                      </div>
+                                      {{#formattedValues}}
+                                      <div id="lf_{{dataElementName}}_result_value"
+                                           class="lf-details-list-value">{{value}}
+                                      </div>
+                                      {{/formattedValues}}
+                                  </div>
+                                  {{/entries}}
+                              </div>
+                              {{/.}}
+                              {{/text}}
+                          </script>
+                          <script type="text/template" id="lf-more-info-table-template">
+                              {{#text}}
+                              <div id="lf_answer_text" class="tableCellADA">{{{text}}}</div>
+                              {{/text}}
+                              {{^text}}
+                              {{#.}}
+                              {{#title}}
+                              <div id="lf_result_title" class="tableCellADA" class="lf-result-title">{{{title}}}</div>
+                              {{/title}}
+                              <table class="lf-results-table" id="lf-results-table-main">
+                                  <thead>
+                                  <tr>
+                                      {{#columnHeaders}}
+                                      <td></td>
+                                      {{#columnHeader}}
+                                      <th class="lf-results-header tableCellADA" scope="col">{{.}}</th>
+                                      {{/columnHeader}}
+                                      {{/columnHeaders}}
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  {{#subtitle}}
+                                  <tr>
+                                      <th id="lf_result_subtitle1"
+                                          class="lf-result-subtitle tableCellADA three-headers" colspan="100%">
+                                          {{{subtitle}}}
+                                      </th>
+                                  </tr>
+                                  {{/subtitle}}
+
+                                  {{#entries}}
+                                  <tr id="lf_{{dataElementName}}_results">
+                                      <th id="lf_{{dataElementName}}_result_label" class="tableCellADA" scope="row">
+                                          {{#negLabel}}<span class="lf-minus-sign">&minus;</span>{{/negLabel}}{{{fieldLabel}}}
+                                          {{#glossaryTerm}}
+                                          <a role="button" href="#{{glossaryTerm}}"
+                                             id="lf_{{dataElementName}}_tooltip"
+                                             class="lf-show-tooltip lf_{{dataElementName}}_tooltip lf-more-details-tooltip"
+                                             {{#tooltipAriaLabel}}aria-label="{{{tooltipAriaLabel}}}"{{/tooltipAriaLabel}}>
+                                          <div aria-hidden="true" class="lf-tooltip-i lf-results-tooltip">i</div>
+                                          </a>
+                                          {{/glossaryTerm}}
+                                      </th>
+                                      {{#formattedValues}}
+                                      <td id="lf_{{dataElementName}}_result_value"
+                                          class="tableCellADA {{shownClasses}}"><span class="lf-nbsp-number">{{#negSymbol}}<span class="lf-minus-sign {{negSymbolClass}}">&minus;</span>{{/negSymbol}}{{value}}</span>
+                                      </td>
+                                      {{/formattedValues}}
+                                  </tr>
+                                  {{/entries}}
+                                  </tbody>
+                              </table>
+                              {{/.}}
+                              {{/text}}
+                          </script>
+                      </div>
+
+                  </div>
+                  <button id="lf_next_steps_label" type="button" class="lf-next-steps" style="display: inline-block;">Next Steps</button>
+
+                  <div id="lf-selectors-template-placeholder">
+                      <div class="lf-graph-list">
+                          <div id="lf_container1-graph-container" class="lf-graph lf-active" role="tabpanel" aria-labelledby="lf_graph_tabs_lf_container1">
+                              <div id="lf_container1" class="lf-cm-90 lf-graph_container" style="overflow: hidden;" aria-hidden="false" role="region" aria-label="Bar chart of the difference in total cost, in today's dollars, for both the less down and more down scenarios over the expected years in home." data-highcharts-chart="1"><div id="highcharts-screen-reader-region-before-1" style="position: relative;" aria-hidden="false"><div aria-hidden="false" style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;"><h4>Difference in total cost, in today's dollars, for both the less down and more down scenarios over the expected years in home</h4><div>Bar chart with 1 bar.</div><div><button id="hc-linkto-highcharts-data-table-1" tabindex="-1" aria-expanded="false">View as data table, Difference in total cost, in today's dollars, for both the less down and more down scenarios over the expected years in home</button></div><div>The chart has 1 X axis displaying categories. </div><div>The chart has 1 Y axis displaying values. Data ranges from 86884 to 86884.</div></div></div><div aria-hidden="false" class="highcharts-announcer-container" style="position: relative;"><div aria-hidden="false" aria-live="polite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;"></div><div aria-hidden="false" aria-live="assertive" style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;"></div><div aria-hidden="false" aria-live="polite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;"></div></div><div id="highcharts-mafbdco-4" dir="ltr" style="position: relative; overflow: hidden; width: 594px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); user-select: none; touch-action: manipulation; outline: none; font-family: arial, &quot;sans-serif&quot;, &quot;helvetica neue&quot;, helvetica; font-size: 1em; color: rgb(110, 110, 110);" class="highcharts-container " aria-hidden="false"><div aria-hidden="false" class="highcharts-a11y-proxy-container-before" style="top: 0px; left: 0px; white-space: nowrap; position: absolute;"></div><svg version="1.1" class="highcharts-root" style="font-family: arial, &quot;sans-serif&quot;, &quot;helvetica neue&quot;, helvetica; font-size: 1em; color: rgb(110, 110, 110); fill: rgb(110, 110, 110);" xmlns="http://www.w3.org/2000/svg" width="594" height="400" viewBox="0 0 594 400" aria-hidden="false" aria-label="Interactive chart"><desc aria-hidden="true">Created with Highcharts 11.1.0</desc><defs aria-hidden="true"><filter id="highcharts-drop-shadow-1"><feDropShadow dx="1" dy="1" flood-color="#000000" flood-opacity="0.75" stdDeviation="2.5"></feDropShadow></filter><clipPath id="highcharts-mafbdco-5-"><rect x="0" y="0" width="321" height="574" fill="none"></rect></clipPath><clipPath id="highcharts-mafbdco-7-"><rect x="0" y="0" width="321" height="574" fill="none"></rect></clipPath><filter id="highcharts-drop-shadow-1--1--1"><feDropShadow dx="-1" dy="-1" flood-color="#000000" flood-opacity="0.75" stdDeviation="2.5"></feDropShadow></filter></defs><rect fill="none" class="highcharts-background" filter="none" x="0" y="0" width="594" height="400" rx="0" ry="0" aria-hidden="true"></rect><rect fill="none" class="highcharts-plot-background" x="10" y="35" width="574" height="321" filter="url(#highcharts-drop-shadow-1)" aria-hidden="true"></rect><g class="highcharts-grid highcharts-xaxis-grid" data-z-index="1" aria-hidden="true"><path fill="none" stroke="#c0c0c0" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 10 356.5 L 584 356.5" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 10 35.5 L 584 35.5" opacity="1"></path></g><g class="highcharts-grid highcharts-yaxis-grid" data-z-index="1" aria-hidden="true"><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 9.5 35 L 9.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 66.5 35 L 66.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 124.5 35 L 124.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 181.5 35 L 181.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 239.5 35 L 239.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 296.5 35 L 296.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 353.5 35 L 353.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 411.5 35 L 411.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 468.5 35 L 468.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 526.5 35 L 526.5 356" opacity="1"></path><path fill="none" stroke="#c0c0c0" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 584.5 35 L 584.5 356" opacity="1"></path></g><rect fill="none" class="highcharts-plot-border" data-z-index="1" stroke="#cccccc" stroke-width="0" x="10" y="35" width="574" height="321" aria-hidden="true"></rect><g class="highcharts-axis highcharts-xaxis" data-z-index="2" aria-hidden="true"><path fill="none" class="highcharts-axis-line" stroke="#c0c0c0" stroke-width="1" data-z-index="7" d="M 9.5 35 L 9.5 356"></path></g><g class="highcharts-axis highcharts-yaxis" data-z-index="2" aria-hidden="true"><path fill="none" class="highcharts-axis-line" stroke="#c0c0c0" stroke-width="0" data-z-index="7" d="M 10 356 L 584 356"></path></g><g class="highcharts-series-group" data-z-index="3" filter="none" aria-hidden="false"><g class="highcharts-series highcharts-series-0 highcharts-bar-series highcharts-color-0 highcharts-tracker" data-z-index="0.1" opacity="1" transform="translate(10,35) rotate(90 126.5 447.5) scale(-1 1)" clip-path="url(#highcharts-mafbdco-7-)" aria-hidden="false"><path fill="#0079c1" d="M 85.5 75.5 L 234.5 75.5 A 3 3 0 0 1 237.5 78.5 L 237.5 574.5 A 0 0 0 0 1 237.5 574.5 L 82.5 574.5 A 0 0 0 0 1 82.5 574.5 L 82.5 78.5 A 3 3 0 0 1 85.5 75.5 Z" stroke="#cccccc" stroke-width="1" opacity="1" filter="none" class="highcharts-point highcharts-color-0" tabindex="-1" role="img" aria-label="Cost Difference: $86,884" style="outline: none;"></path></g><g class="highcharts-markers highcharts-series-0 highcharts-bar-series highcharts-color-0" data-z-index="0.1" opacity="1" transform="translate(10,35) scale(1 1)" clip-path="none" aria-hidden="true"></g></g><g class="highcharts-exporting-group" data-z-index="3" aria-hidden="true"><g class="highcharts-no-tooltip highcharts-button lf-data-table" stroke-linecap="round" style="cursor: pointer;" transform="translate(549,15)"><title>Chart context menu</title><rect fill="#ffffff" class="highcharts-button-box" x="0.5" y="0.5" width="20" height="16" rx="2" ry="2" stroke="none" stroke-width="1"></rect><image preserveAspectRatio="none" href="../artifact/home07/assets/images/glyphicons-basic-120-table.svg" x="10" y="8" width="26" transform="translate(-13,-13)" height="26" class="highcharts-button-symbol" data-z-index="1" stroke="#666666" fill="#666666" stroke-width="3"></image><text x="0" data-z-index="1" y="11.5" style="color: rgb(51, 51, 51); font-size: 0.8em; font-weight: normal; fill: rgb(51, 51, 51);"></text></g></g><text x="297" text-anchor="middle" class="highcharts-title" data-z-index="4" style="font-size: 1em; color: rgb(110, 110, 110); font-weight: bold; fill: rgb(110, 110, 110);" y="20" aria-hidden="true">Difference in total cost, in today's dollars, for both the less down and more down scenarios over the expected years in home</text><text x="297" text-anchor="middle" class="highcharts-subtitle" data-z-index="4" style="color: rgb(192, 192, 192); font-size: 0.75em; fill: rgb(192, 192, 192);" y="22" aria-hidden="true"></text><text x="10" text-anchor="start" class="highcharts-caption" data-z-index="4" style="color: rgb(102, 102, 102); font-size: 0.8em; fill: rgb(102, 102, 102);" y="395" aria-hidden="true"></text><g class="highcharts-data-labels highcharts-series-0 highcharts-bar-series highcharts-color-0 highcharts-tracker" data-z-index="6" opacity="1" transform="translate(10,35) scale(1 1)" aria-hidden="true"><g class="highcharts-label highcharts-data-label highcharts-data-label-color-0" data-z-index="1" filter="none" transform="translate(215,147)"><text x="5" data-z-index="1" y="20" style="color: rgb(255, 255, 255); font-size: 16px; font-weight: bold; fill: rgb(255, 255, 255);">$86,884</text></g></g><g class="highcharts-axis-labels highcharts-xaxis-labels" data-z-index="7" aria-hidden="true"></g><g class="highcharts-axis-labels highcharts-yaxis-labels" data-z-index="7" aria-hidden="true"><text x="13.480468749999996" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">0</text><text x="67.4" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">10K</text><text x="124.8" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">20K</text><text x="182.2" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">30K</text><text x="239.6" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">40K</text><text x="297" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">50K</text><text x="354.4" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">60K</text><text x="411.8" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">70K</text><text x="469.2" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">80K</text><text x="526.6" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1">90K</text><text x="569.65" style="color: rgb(51, 51, 51); cursor: default; font-size: 12px; font-family: Lato; fill: rgb(51, 51, 51);" text-anchor="middle" transform="translate(0,0)" y="383" opacity="1"><title>100K</title>10…</text></g></svg><div aria-hidden="false" class="highcharts-a11y-proxy-container-after" style="top: 0px; left: 0px; white-space: nowrap; position: absolute;"><div class="highcharts-a11y-proxy-group highcharts-a11y-proxy-group-zoom"></div><div class="highcharts-a11y-proxy-group highcharts-a11y-proxy-group-chartMenu"><button class="highcharts-a11y-proxy-button highcharts-no-tooltip" aria-label="View as data table" aria-expanded="false" title="View as data table" style="border-width: 0px; background-color: transparent; cursor: pointer; outline: none; opacity: 0.001; z-index: 999; overflow: hidden; padding: 0px; margin: 0px; display: block; position: absolute; width: 26px; height: 26px; left: 546px; top: 10px;" aria-controls="highcharts-mafbdco-4"></button></div></div></div><div id="highcharts-screen-reader-region-after-1" style="position: relative;" aria-hidden="false"><div aria-hidden="false" style="position: absolute; width: 1px; height: 1px; overflow: hidden; white-space: nowrap; clip: rect(1px, 1px, 1px, 1px); margin-top: -3px; opacity: 0.01;"><div id="highcharts-end-of-chart-marker-1" class="highcharts-exit-anchor" tabindex="0" aria-hidden="false">End of interactive chart.</div></div></div></div>
+                          </div>
+                          <div id="lf_container2-graph-container" class="lf-graph is-hidden lf-hidden" role="tabpanel" aria-labelledby="lf_graph_tabs_lf_container2">
+                              <div id="lf_container2" class="lf-cm-90 lf-graph_container"></div>
+                          </div>
+                          <div id="lf_container3-graph-container" class="lf-graph lf-hidden is-hidden" role="tabpanel" aria-labelledby="lf_graph_tabs_lf_container3">
+                              <div class="lf-tables-links">
+                                  <div>
+                                      <span class="lf-graph-label lf-graph-label-multiple">Payment Schedule - Less Down Loan</span>
+                                      <button id="lf_tables_links0" class="lf-open-table lf-open-table-xl lf-open-table-multiple" tabletitle="Payment Schedule - Less Down Loan" onclick="LF_Response_Main.showTable('0','Payment Schedule - Less Down Loan')" aria-label="See Payment Schedule - Less Down Loan table">
+                                          <span aria-hidden="true" class="lf-open-table-label">SEE TABLE</span>
+                                      </button>
+                                  </div>
+                                  <div>
+                                      <span class="lf-graph-label lf-graph-label-multiple">Payment Schedule - More Down Loan</span>
+                                      <button id="lf_tables_links1" class="lf-open-table lf-open-table-xl lf-open-table-multiple" tabletitle="Payment Schedule - More Down Loan" onclick="LF_Response_Main.showTable('1','Payment Schedule - More Down Loan')" aria-label="See Payment Schedule - More Down Loan table">
+                                          <span aria-hidden="true" class="lf-open-table-label">SEE TABLE</span>
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div id="lf_selectors_description" class="visually-hidden">Change views between Cost Difference graph, Payment graph, and Amortization tables</div>
+                      <div class="lf-results-loop" role="tablist" aria-labelledby="lf_selectors_description">
+                          <span class="lf-divider"></span>
+                          <button id="lf_graph_tabs_lf_container1" class="lf-active  lf-graph-tabs" style="width: 33%" role="tab" aria-selected="true" aria-controls="lf_container1-graph-container">
+                              <span class="lf-dot" aria-hidden="true"></span>
+                              <div class="lf-dot-holder lf-dot-label">Cost Difference</div>
+                          </button>
+                          <button id="lf_graph_tabs_lf_container2" class=" lf-graph-tabs" style="width: 33%" role="tab" aria-selected="false" aria-controls="lf_container2-graph-container" tabindex="-1">
+                              <span class="lf-dot" aria-hidden="true"></span>
+                              <div class="lf-dot-holder lf-dot-label">Payment</div>
+                          </button>
+                          <button id="lf_graph_tabs_lf_container3" class="lf-last-loop lf-graph-tabs" style="width: 33%" role="tab" aria-selected="false" aria-controls="lf_container3-graph-container" tabindex="-1">
+                              <span class="lf-dot" aria-hidden="true"></span>
+                              <div class="lf-dot-holder lf-dot-label">Amortization</div>
+                          </button>
+                      </div>
+                  </div>
+                  <script type="text/template" id="lf-selectors-template">
+                      <div class="lf-graph-list">
+                          {{#.}}
+                          {{^table}}
+                          <div id="{{id}}-graph-container" class="lf-graph{{#first}} lf-active{{/first}}" role="tabpanel" aria-labelledby="lf_graph_tabs_{{id}}">
+                              <div id="{{id}}" class="lf-cm-90 lf-graph_container"></div>
+                          </div>
+                          {{/table}}
+                          {{#table}}
+                          <div id="{{id}}-graph-container" class="lf-graph lf-hidden" role="tabpanel" aria-labelledby="lf_graph_tabs_{{id}}">
+                              <div class="lf-tables-links">
+                                  {{#tables}}
+                                  <div>
+                                      {{#label}}
+                                      <span class="lf-graph-label lf-graph-label-multiple">{{title}}</span>
+                                      <button id="lf_tables_links{{index}}"
+                                              class="lf-open-table lf-open-table-xl lf-open-table-multiple"
+                                              tabletitle="{{title}}"
+                                              onclick="LF_Response_Main.showTable('{{index}}','{{title}}')">
+                                          <span aria-hidden="true" class="lf-open-table-label"></span>
+                                      </button>
+                                      {{/label}}
+                                      {{^label}}
+                                      <span class="lf-graph-label lf-graph-label-single">{{title}}</span>
+                                      <button id="lf_tables_links{{index}}"
+                                              class="lf-open-table lf-open-table-xl lf-open-table-single"
+                                              tabletitle="{{title}}"
+                                              onclick="LF_Response_Main.showTable('{{index}}','{{title}}')">
+                                          <span aria-hidden="true" class="lf-open-table-label"></span>
+                                      </button>
+                                      {{/label}}
+                                  </div>
+                                  {{/tables}}
+                              </div>
+                          </div>
+                          {{/table}}
+                          {{/.}}
+                      </div>
+                      <div id="lf_selectors_description" class="visually-hidden"></div>
+                      <div class="lf-results-loop" role="tablist" aria-labelledby="lf_selectors_description">
+                          <span class="lf-divider"></span>
+                          {{#.}}
+                          <button id="lf_graph_tabs_{{id}}" class="{{#first}}lf-active {{/first}}{{#last}}lf-last-loop{{/last}} lf-graph-tabs" style="width: {{width}}" role="tab" aria-selected="false" aria-controls="{{id}}-graph-container" tabindex="-1">
+                              <span class="lf-dot" aria-hidden="true"></span>
+                              <div class="lf-dot-holder lf-dot-label">{{label}}</div>
+                          </button>
+                          {{/.}}
+                      </div>
+                  </script>
+                  <div class="lf-icons">
+                      <div id="lf_shareButton_container" class="lf-shareButton-container"><button type="button" id="lf_save_print_share" class="lf-save-print-share lf-secondary-gradient" tabindex="0" aria-label="Save/Print/Share"><svg class="lf-share-svg" preserveAspectRatio="xMinYMid" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve" focusable="false" aria-hidden="true"><polyline class="lf-share-icon-svg" points="17,10 25,2 33,10"></polyline><line class="lf-share-icon-svg" x1="25" y1="32" x2="25" y2="2.333"></line><path class="lf-share-icon-svg" d="M17,17H8v32h34V17h-9"></path></svg></button></div>
+                  </div>
+              </div>
+
+              <hr aria-hidden="true" id="lf-next-steps-zoneB1-separator" class="lf-line-gradient">
+              <div id="lf-next-steps-zoneB1" class="lf-next-steps-zoneB">
+                  <div id="lf-next-steps-zoneB1-content" class="lf-next-steps-zoneB-content"><div class="webMessagingContentContainer">
+  
+    
+    
+    
+    
+    
+    
+<a target="_blank" href="https://calculators.bmo.com/tools/cc/Rd?param=sGlDsG1*r010fmVyoGh7h1oHqnhidjkFg2VvrHxEu1RIcFx9lCpDqnh1ikgNo2F*Z3lDpnZZpTEBdzUHeTcFdjYFdCpzrGJEpnxEikgNcjkFcjY2u2N_pk1Ufn5*r2lSZ2d*r3h1r3hZpTEBdjcEczwFdjgJdypzrGJEpmJEl2lCsG1*rzEAZ3VFomBjpmtDfipFr3VFomBjpmtDfip8qmJ7imgNcjkDdTYIdjkFcTc@">Apply now</a>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</div></div>
+              </div>
+
+          </div>
+
+          <div class="lf-cm-35 lf-right-col lf-clear">
+              <div id="yourinfo-section" class="visually-hidden" aria-level="2" role="heading">Inputs</div>
+              <div id="calc-instructions" class="visually-hidden">A note about this tool: Some of the fields are pre-filled to get you started. Move the sliders or enter a number to change the amounts. The calculator results will automatically update as you move the sliders or leave a text field.</div>
+              <div id="screen-instructions"></div>
+              <div class="lf-form lf-shown">
+                  <div id="lf-input-fields-template-placeholder">
+  <span id="lf_input_fields">
+          <fieldset id="lf-tab-HomeInfo">
+
+              <div class="lf-legend lf-accordian-legend lf-open">
+                  <h3>
+                      <span aria-hidden="true" class="lf-arrow"></span>
+                      <a role="button" aria-expanded="true" id="HomeInfo-accordion" aria-controls="lf-panel-HomeInfo" class="lf-accordion-label" href="javascript:void(0)" aria-label="Current selection, Home Info category, Click to hide details,">Home Info</a>
+                  </h3>
+              </div>
+
+              <div class="scrollbar disable">
+                  <div class="track">
+                      <div class="thumb">
+                          <div class="end"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="lf-accordion lf-simpleplus-viewport" role="group" aria-label="Home Info" id="lf-panel-HomeInfo">
+                  <div id="lf_Global_HomeAppraisedValue-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Global_HomeAppraisedValue" id="lf_Global_HomeAppraisedValue-label">Purchase price<span id="lf_Global_HomeAppraisedValue-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#appraisalvalue" id="lf_Global_HomeAppraisedValue_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Purchase price"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Global_HomeAppraisedValue-error-message">Must be between $1 and $1,000,000,000</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Global_HomeAppraisedValue_prefix" class="lf-before-input" aria-hidden="true">$</span>
+                          <input id="lf_Global_HomeAppraisedValue" name="Global_HomeAppraisedValue" class="lf-input-comma" type="text" value="250000" maxlength="13" aria-label="Purchase price, in dollars" style="padding-left: 20px;">
+                          <span id="lf_Global_HomeAppraisedValue_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Global_HomeAppraisedValue_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Global_HomeAppraisedValue-input-safe" id="lf_Global_HomeAppraisedValue-input-safe-label" style="display: none">Purchase price
+                          </label>
+                          <input id="lf_Global_HomeAppraisedValue-input-safe" type="range" class="lf-input-safe" role="slider" trumin="1" min="0" max="2000000" trumax="1000000000" defaultvalue="250000" aria-label="Purchase price" format="currency" precision="0" step="20000" value="250000" data-highlight="true" maxlength="13" aria-valuetext="250000 dollars" aria-valuenow="250000" style="background-size: 12.5% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_LoanTermInYears-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_LoanTermInYears" id="lf_Home_LoanTermInYears-label">Term<span id="lf_Home_LoanTermInYears-small-label" class="lf-small-label"> (years)</span></label>
+                          <a role="button" href="#term" id="lf_Home_LoanTermInYears_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Term"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_LoanTermInYears-error-message">Must be between 1 and 40 years</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Home_LoanTermInYears_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Home_LoanTermInYears" name="Home_LoanTermInYears" class="lf-input-comma" type="text" value="30" maxlength="2" aria-label="Term, years" style="padding-left: 20px;">
+                          <span id="lf_Home_LoanTermInYears_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Home_LoanTermInYears_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_LoanTermInYears-input-safe" id="lf_Home_LoanTermInYears-input-safe-label" style="display: none">Term
+                          </label>
+                          <input id="lf_Home_LoanTermInYears-input-safe" type="range" class="lf-input-safe" role="slider" trumin="1" min="1" max="30" trumax="40" defaultvalue="30" aria-label="Term" format="number" precision="0" step="1" value="30" data-highlight="true" maxlength="2" aria-valuetext="30 years" aria-valuenow="30" style="background-size: 100% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_ExpectedYearsInHome-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_ExpectedYearsInHome" id="lf_Home_ExpectedYearsInHome-label" class="lf-field-label-no-tooltip">Expected years in home<span id="lf_Home_ExpectedYearsInHome-small-label" class="lf-small-label"> </span></label>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_ExpectedYearsInHome-error-message">Must be between 1 and 40</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Home_ExpectedYearsInHome_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Home_ExpectedYearsInHome" name="Home_ExpectedYearsInHome" class="lf-input-comma" type="text" value="25" maxlength="2" aria-label="Expected years in home" style="padding-left: 20px;">
+                          <span id="lf_Home_ExpectedYearsInHome_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Home_ExpectedYearsInHome_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_ExpectedYearsInHome-input-safe" id="lf_Home_ExpectedYearsInHome-input-safe-label" style="display: none">Expected years in home
+                          </label>
+                          <input id="lf_Home_ExpectedYearsInHome-input-safe" type="range" class="lf-input-safe" role="slider" trumin="1" min="0" max="30" trumax="40" defaultvalue="7" aria-label="Expected years in home" format="number" precision="0" step="1" value="25" data-highlight="true" maxlength="2" aria-valuetext="25 years" aria-valuenow="25" style="background-size: 83.3333% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+              </div>
+          </fieldset>
+          <fieldset id="lf-tab-LessDown">
+
+              <div class="lf-legend lf-accordian-legend">
+                  <h3>
+                      <span aria-hidden="true" class="lf-arrow"></span>
+                      <a role="button" aria-expanded="false" id="LessDown-accordion" aria-controls="lf-panel-LessDown" class="lf-accordion-label" href="javascript:void(0)" aria-label="Less Down category, Click to show details,">Less Down</a>
+                  </h3>
+              </div>
+
+              <div class="scrollbar disable">
+                  <div class="track">
+                      <div class="thumb">
+                          <div class="end"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="lf-accordion lf-simpleplus-viewport" role="group" aria-label="Less Down" id="lf-panel-LessDown">
+                  <div id="lf_Home_DownPaymentPercentage-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_DownPaymentPercentage" id="lf_Home_DownPaymentPercentage-label">Down payment<span id="lf_Home_DownPaymentPercentage-small-label" class="lf-small-label"> ($20K)</span></label>
+                          <a role="button" href="#downpayment" id="lf_Home_DownPaymentPercentage_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Down payment"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_DownPaymentPercentage-error-message">Must be between 0.000% and 99.000%</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs  lf-percent">
+                          <span id="lf_Home_DownPaymentPercentage_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Home_DownPaymentPercentage" name="Home_DownPaymentPercentage" class="lf-input-comma" type="text" value="20" maxlength="6" aria-label="Down payment, $20K, as a percent" style="padding-left: 20px;">
+                          <span id="lf_Home_DownPaymentPercentage_suffix" class="lf-after-input" aria-hidden="true">%</span>
+                          <span id="lf_Home_DownPaymentPercentage_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_DownPaymentPercentage-input-safe" id="lf_Home_DownPaymentPercentage-input-safe-label" style="display: none">Down payment
+                          </label>
+                          <input id="lf_Home_DownPaymentPercentage-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="99" trumax="99" defaultvalue="20" aria-label="Down payment" format="percent" precision="3" step="1" value="8.000" data-highlight="true" maxlength="6" aria-valuetext="8.000 percent" aria-valuenow="8.000" style="background-size: 8.08081% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_InterestRate-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_InterestRate" id="lf_Home_InterestRate-label">Interest rate<span id="lf_Home_InterestRate-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#interestrate" id="lf_Home_InterestRate_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Interest rate"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_InterestRate-error-message">Must be between 0.000% and 50.000%</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs  lf-percent">
+                          <span id="lf_Home_InterestRate_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Home_InterestRate" name="Home_InterestRate" class="lf-input-comma" type="text" value="5.000" maxlength="6" aria-label="Interest rate, as a percent" style="padding-left: 20px;">
+                          <span id="lf_Home_InterestRate_suffix" class="lf-after-input" aria-hidden="true">%</span>
+                          <span id="lf_Home_InterestRate_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_InterestRate-input-safe" id="lf_Home_InterestRate-input-safe-label" style="display: none">Interest rate
+                          </label>
+                          <input id="lf_Home_InterestRate-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0.000" max="10.000" trumax="50" defaultvalue="5" aria-label="Interest rate" format="percent" precision="3" step="0.1" value="5.000" data-highlight="true" maxlength="6" aria-valuetext="5.000 percent" aria-valuenow="5.000" style="background-size: 50% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_OriginationCharge-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_OriginationCharge" id="lf_Home_OriginationCharge-label">Origination charge<span id="lf_Home_OriginationCharge-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#origchargeamount" id="lf_Home_OriginationCharge_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Origination charge"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_OriginationCharge-error-message">Must be between $0 and $100,000</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Home_OriginationCharge_prefix" class="lf-before-input" aria-hidden="true">$</span>
+                          <input id="lf_Home_OriginationCharge" name="Home_OriginationCharge" class="lf-input-comma" type="text" value="1500" maxlength="7" aria-label="Origination charge, in dollars" style="padding-left: 20px;">
+                          <span id="lf_Home_OriginationCharge_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Home_OriginationCharge_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_OriginationCharge-input-safe" id="lf_Home_OriginationCharge-input-safe-label" style="display: none">Origination charge
+                          </label>
+                          <input id="lf_Home_OriginationCharge-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="10000" trumax="100000" defaultvalue="1500" aria-label="Origination charge" format="currency" precision="0" step="100" value="1500" data-highlight="true" maxlength="7" aria-valuetext="1500 dollars" aria-valuenow="1500" style="background-size: 15% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_DiscountPoints-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_DiscountPoints" id="lf_Home_DiscountPoints-label">Discount points<span id="lf_Home_DiscountPoints-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#chargeforspecificinterestrate" id="lf_Home_DiscountPoints_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Discount points"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_DiscountPoints-error-message">Must be between 0.000% and 100.000%</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs  lf-percent">
+                          <span id="lf_Home_DiscountPoints_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Home_DiscountPoints" name="Home_DiscountPoints" class="lf-input-comma" type="text" value="1.000" maxlength="7" aria-label="Discount points, as a percent" style="padding-left: 20px;">
+                          <span id="lf_Home_DiscountPoints_suffix" class="lf-after-input" aria-hidden="true">%</span>
+                          <span id="lf_Home_DiscountPoints_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_DiscountPoints-input-safe" id="lf_Home_DiscountPoints-input-safe-label" style="display: none">Discount points
+                          </label>
+                          <input id="lf_Home_DiscountPoints-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0.000" max="5.000" trumax="100" defaultvalue="1" aria-label="Discount points" format="percent" precision="3" step="0.1" value="1.000" data-highlight="true" maxlength="7" aria-valuetext="1.000 percent" aria-valuenow="1.000" style="background-size: 20% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_OtherClosingCosts-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_OtherClosingCosts" id="lf_Home_OtherClosingCosts-label">Other settlement services<span id="lf_Home_OtherClosingCosts-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#othersettlementservices" id="lf_Home_OtherClosingCosts_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Other settlement services"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_OtherClosingCosts-error-message">Must be between $0 and $100,000</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Home_OtherClosingCosts_prefix" class="lf-before-input" aria-hidden="true">$</span>
+                          <input id="lf_Home_OtherClosingCosts" name="Home_OtherClosingCosts" class="lf-input-comma" type="text" value="1000" maxlength="7" aria-label="Other settlement services, in dollars" style="padding-left: 20px;">
+                          <span id="lf_Home_OtherClosingCosts_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Home_OtherClosingCosts_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_OtherClosingCosts-input-safe" id="lf_Home_OtherClosingCosts-input-safe-label" style="display: none">Other settlement services
+                          </label>
+                          <input id="lf_Home_OtherClosingCosts-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="10000" trumax="100000" defaultvalue="1000" aria-label="Other settlement services" format="currency" precision="0" step="1" value="1000" data-highlight="true" maxlength="7" aria-valuetext="1000 dollars" aria-valuenow="1000" style="background-size: 10% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+              </div>
+          </fieldset>
+          <fieldset id="lf-tab-MoreDown">
+
+              <div class="lf-legend lf-accordian-legend">
+                  <h3>
+                      <span aria-hidden="true" class="lf-arrow"></span>
+                      <a role="button" aria-expanded="false" id="MoreDown-accordion" aria-controls="lf-panel-MoreDown" class="lf-accordion-label" href="javascript:void(0)" aria-label="More Down category, Click to show details,">More Down</a>
+                  </h3>
+              </div>
+
+              <div class="scrollbar disable">
+                  <div class="track">
+                      <div class="thumb">
+                          <div class="end"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="lf-accordion lf-simpleplus-viewport" role="group" aria-label="More Down" id="lf-panel-MoreDown">
+                  <div id="lf_Home_SecondLoanDownPaymentPercentage-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_SecondLoanDownPaymentPercentage" id="lf_Home_SecondLoanDownPaymentPercentage-label">Down payment<span id="lf_Home_SecondLoanDownPaymentPercentage-small-label" class="lf-small-label"> ($50K)</span></label>
+                          <a role="button" href="#downpayment" id="lf_Home_SecondLoanDownPaymentPercentage_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Down payment"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_SecondLoanDownPaymentPercentage-error-message">Must be between 0.000% and 99.000%</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs  lf-percent">
+                          <span id="lf_Home_SecondLoanDownPaymentPercentage_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Home_SecondLoanDownPaymentPercentage" name="Home_SecondLoanDownPaymentPercentage" class="lf-input-comma" type="text" value="20" maxlength="6" aria-label="Down payment, $50K, as a percent" style="padding-left: 20px;">
+                          <span id="lf_Home_SecondLoanDownPaymentPercentage_suffix" class="lf-after-input" aria-hidden="true">%</span>
+                          <span id="lf_Home_SecondLoanDownPaymentPercentage_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_SecondLoanDownPaymentPercentage-input-safe" id="lf_Home_SecondLoanDownPaymentPercentage-input-safe-label" style="display: none">Down payment
+                          </label>
+                          <input id="lf_Home_SecondLoanDownPaymentPercentage-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="40" trumax="99" defaultvalue="20" aria-label="Down payment" format="percent" precision="3" step="1" value="20.000" data-highlight="true" maxlength="6" aria-valuetext="20.000 percent" aria-valuenow="20.000" style="background-size: 50% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_SecondLoanInterestRate-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_SecondLoanInterestRate" id="lf_Home_SecondLoanInterestRate-label">Interest rate<span id="lf_Home_SecondLoanInterestRate-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#interestrate" id="lf_Home_SecondLoanInterestRate_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Interest rate"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_SecondLoanInterestRate-error-message">Must be between 0.000% and 50.000%</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs  lf-percent">
+                          <span id="lf_Home_SecondLoanInterestRate_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Home_SecondLoanInterestRate" name="Home_SecondLoanInterestRate" class="lf-input-comma" type="text" value="4.500" maxlength="6" aria-label="Interest rate, as a percent" style="padding-left: 20px;">
+                          <span id="lf_Home_SecondLoanInterestRate_suffix" class="lf-after-input" aria-hidden="true">%</span>
+                          <span id="lf_Home_SecondLoanInterestRate_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_SecondLoanInterestRate-input-safe" id="lf_Home_SecondLoanInterestRate-input-safe-label" style="display: none">Interest rate
+                          </label>
+                          <input id="lf_Home_SecondLoanInterestRate-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0.000" max="10.000" trumax="50" defaultvalue="4.5" aria-label="Interest rate" format="percent" precision="3" step="0.1" value="4.500" data-highlight="true" maxlength="6" aria-valuetext="4.500 percent" aria-valuenow="4.500" style="background-size: 45% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_SecondLoanOriginationCharge-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_SecondLoanOriginationCharge" id="lf_Home_SecondLoanOriginationCharge-label">Origination charge<span id="lf_Home_SecondLoanOriginationCharge-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#origchargeamount" id="lf_Home_SecondLoanOriginationCharge_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Origination charge"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_SecondLoanOriginationCharge-error-message">Must be between $0 and $100,000</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Home_SecondLoanOriginationCharge_prefix" class="lf-before-input" aria-hidden="true">$</span>
+                          <input id="lf_Home_SecondLoanOriginationCharge" name="Home_SecondLoanOriginationCharge" class="lf-input-comma" type="text" value="1500" maxlength="7" aria-label="Origination charge, in dollars" style="padding-left: 20px;">
+                          <span id="lf_Home_SecondLoanOriginationCharge_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Home_SecondLoanOriginationCharge_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_SecondLoanOriginationCharge-input-safe" id="lf_Home_SecondLoanOriginationCharge-input-safe-label" style="display: none">Origination charge
+                          </label>
+                          <input id="lf_Home_SecondLoanOriginationCharge-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="10000" trumax="100000" defaultvalue="1500" aria-label="Origination charge" format="currency" precision="0" step="100" value="1500" data-highlight="true" maxlength="7" aria-valuetext="1500 dollars" aria-valuenow="1500" style="background-size: 15% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_SecondLoanDiscountPoints-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_SecondLoanDiscountPoints" id="lf_Home_SecondLoanDiscountPoints-label">Discount points<span id="lf_Home_SecondLoanDiscountPoints-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#chargeforspecificinterestrate" id="lf_Home_SecondLoanDiscountPoints_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Discount points"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_SecondLoanDiscountPoints-error-message">Must be between 0.000% and 100.000%</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs  lf-percent">
+                          <span id="lf_Home_SecondLoanDiscountPoints_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Home_SecondLoanDiscountPoints" name="Home_SecondLoanDiscountPoints" class="lf-input-comma" type="text" value="1.000" maxlength="7" aria-label="Discount points, as a percent" style="padding-left: 20px;">
+                          <span id="lf_Home_SecondLoanDiscountPoints_suffix" class="lf-after-input" aria-hidden="true">%</span>
+                          <span id="lf_Home_SecondLoanDiscountPoints_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_SecondLoanDiscountPoints-input-safe" id="lf_Home_SecondLoanDiscountPoints-input-safe-label" style="display: none">Discount points
+                          </label>
+                          <input id="lf_Home_SecondLoanDiscountPoints-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0.000" max="5.000" trumax="100" defaultvalue="1" aria-label="Discount points" format="percent" precision="3" step="0.1" value="1.000" data-highlight="true" maxlength="7" aria-valuetext="1.000 percent" aria-valuenow="1.000" style="background-size: 20% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_SecondLoanOtherClosingCosts-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_SecondLoanOtherClosingCosts" id="lf_Home_SecondLoanOtherClosingCosts-label">Other settlement services<span id="lf_Home_SecondLoanOtherClosingCosts-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#othersettlementservices" id="lf_Home_SecondLoanOtherClosingCosts_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Other settlement services"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_SecondLoanOtherClosingCosts-error-message">Must be between $0 and $100,000</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Home_SecondLoanOtherClosingCosts_prefix" class="lf-before-input" aria-hidden="true">$</span>
+                          <input id="lf_Home_SecondLoanOtherClosingCosts" name="Home_SecondLoanOtherClosingCosts" class="lf-input-comma" type="text" value="1000" maxlength="7" aria-label="Other settlement services, in dollars" style="padding-left: 20px;">
+                          <span id="lf_Home_SecondLoanOtherClosingCosts_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Home_SecondLoanOtherClosingCosts_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_SecondLoanOtherClosingCosts-input-safe" id="lf_Home_SecondLoanOtherClosingCosts-input-safe-label" style="display: none">Other settlement services
+                          </label>
+                          <input id="lf_Home_SecondLoanOtherClosingCosts-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="10000" trumax="100000" defaultvalue="1000" aria-label="Other settlement services" format="currency" precision="0" step="100" value="1000" data-highlight="true" maxlength="7" aria-valuetext="1000 dollars" aria-valuenow="1000" style="background-size: 10% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+              </div>
+          </fieldset>
+          <fieldset id="lf-tab-TaxesInsurance">
+
+              <div class="lf-legend lf-accordian-legend">
+                  <h3>
+                      <span aria-hidden="true" class="lf-arrow"></span>
+                      <a role="button" aria-expanded="false" id="TaxesInsurance-accordion" aria-controls="lf-panel-TaxesInsurance" class="lf-accordion-label" href="javascript:void(0)" aria-label="Taxes &amp; Insurance category, Click to show details,">Taxes &amp; Insurance</a>
+                  </h3>
+              </div>
+
+              <div class="scrollbar disable">
+                  <div class="track">
+                      <div class="thumb">
+                          <div class="end"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="lf-accordion lf-simpleplus-viewport" role="group" aria-label="Taxes &amp; Insurance" id="lf-panel-TaxesInsurance">
+                  <div id="lf_Home_YearlyPropertyTax-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_YearlyPropertyTax" id="lf_Home_YearlyPropertyTax-label">Property tax<span id="lf_Home_YearlyPropertyTax-small-label" class="lf-small-label"> (yearly)</span></label>
+                          <a role="button" href="#propertytax" id="lf_Home_YearlyPropertyTax_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Property tax"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_YearlyPropertyTax-error-message">Must be between $0 and $4,000,000</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Home_YearlyPropertyTax_prefix" class="lf-before-input" aria-hidden="true">$</span>
+                          <input id="lf_Home_YearlyPropertyTax" name="Home_YearlyPropertyTax" class="lf-input-comma" type="text" value="3250" maxlength="9" aria-label="Property tax, yearly, in dollars" style="padding-left: 20px;">
+                          <span id="lf_Home_YearlyPropertyTax_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Home_YearlyPropertyTax_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_YearlyPropertyTax-input-safe" id="lf_Home_YearlyPropertyTax-input-safe-label" style="display: none">Property tax
+                          </label>
+                          <input id="lf_Home_YearlyPropertyTax-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="10000" trumax="4000000" defaultvalue="3250" aria-label="Property tax" format="currency" precision="0" step="100" value="3250" data-highlight="true" maxlength="9" aria-valuetext="3250 dollars" aria-valuenow="3250" style="background-size: 32.5% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Home_YearlyHomeownersInsurance-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Home_YearlyHomeownersInsurance" id="lf_Home_YearlyHomeownersInsurance-label">Homeowners insurance<span id="lf_Home_YearlyHomeownersInsurance-small-label" class="lf-small-label"> (yearly)</span></label>
+                          <a role="button" href="#homeownersinsurance" id="lf_Home_YearlyHomeownersInsurance_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Homeowners insurance"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Home_YearlyHomeownersInsurance-error-message">Must be between $0 and $4,000,000</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs ">
+                          <span id="lf_Home_YearlyHomeownersInsurance_prefix" class="lf-before-input" aria-hidden="true">$</span>
+                          <input id="lf_Home_YearlyHomeownersInsurance" name="Home_YearlyHomeownersInsurance" class="lf-input-comma" type="text" value="1000" maxlength="7" aria-label="Homeowners insurance, yearly, in dollars" style="padding-left: 20px;">
+                          <span id="lf_Home_YearlyHomeownersInsurance_suffix" class="lf-hidden" aria-hidden="true">%</span>
+                          <span id="lf_Home_YearlyHomeownersInsurance_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Home_YearlyHomeownersInsurance-input-safe" id="lf_Home_YearlyHomeownersInsurance-input-safe-label" style="display: none">Homeowners insurance
+                          </label>
+                          <input id="lf_Home_YearlyHomeownersInsurance-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="10000" trumax="4000000" defaultvalue="1000" aria-label="Homeowners insurance" format="currency" precision="0" step="100" value="1000" data-highlight="true" maxlength="7" aria-valuetext="1000 dollars" aria-valuenow="1000" style="background-size: 10% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Global_FederalAndStateTaxRate-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Global_FederalAndStateTaxRate" id="lf_Global_FederalAndStateTaxRate-label">Your state + federal tax rate<span id="lf_Global_FederalAndStateTaxRate-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#taxrates" id="lf_Global_FederalAndStateTaxRate_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Your state + federal tax rate"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Global_FederalAndStateTaxRate-error-message">Must be between 0.00% and 90.00%</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs  lf-percent">
+                          <span id="lf_Global_FederalAndStateTaxRate_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Global_FederalAndStateTaxRate" name="Global_FederalAndStateTaxRate" class="lf-input-comma" type="text" value="33.80" maxlength="5" aria-label="Your state + federal tax rate, as a percent" style="padding-left: 20px;">
+                          <span id="lf_Global_FederalAndStateTaxRate_suffix" class="lf-after-input" aria-hidden="true">%</span>
+                          <span id="lf_Global_FederalAndStateTaxRate_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Global_FederalAndStateTaxRate-input-safe" id="lf_Global_FederalAndStateTaxRate-input-safe-label" style="display: none">Your state + federal tax rate
+                          </label>
+                          <input id="lf_Global_FederalAndStateTaxRate-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0" max="40" trumax="90" defaultvalue="33.8" aria-label="Your state + federal tax rate" format="percent" precision="2" step="1" value="33.80" data-highlight="true" maxlength="5" aria-valuetext="33.80 percent" aria-valuenow="33.80" style="background-size: 84.5% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+                  <div id="lf_Global_SavingsInterestRate-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          <label for="lf_Global_SavingsInterestRate" id="lf_Global_SavingsInterestRate-label">Your savings rate<span id="lf_Global_SavingsInterestRate-small-label" class="lf-small-label"> </span></label>
+                          <a role="button" href="#savingsinterestrate" id="lf_Global_SavingsInterestRate_tooltip" class="lf-show-tooltip" aria-label="Show tooltip for Your savings rate"><div aria-hidden="true" class="lf-tooltip-i">i</div></a>
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_Global_SavingsInterestRate-error-message">Must be between 0.00% and 100.00%</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs  lf-percent">
+                          <span id="lf_Global_SavingsInterestRate_prefix" class="lf-hidden" aria-hidden="true">$</span>
+                          <input id="lf_Global_SavingsInterestRate" name="Global_SavingsInterestRate" class="lf-input-comma" type="text" value="1.00" maxlength="6" aria-label="Your savings rate, as a percent" style="padding-left: 20px;">
+                          <span id="lf_Global_SavingsInterestRate_suffix" class="lf-after-input" aria-hidden="true">%</span>
+                          <span id="lf_Global_SavingsInterestRate_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_Global_SavingsInterestRate-input-safe" id="lf_Global_SavingsInterestRate-input-safe-label" style="display: none">Your savings rate
+                          </label>
+                          <input id="lf_Global_SavingsInterestRate-input-safe" type="range" class="lf-input-safe" role="slider" trumin="0" min="0.00" max="20.00" trumax="100" defaultvalue="1" aria-label="Your savings rate" format="percent" precision="2" step="1.00" value="1.00" data-highlight="true" maxlength="6" aria-valuetext="1.00 percent" aria-valuenow="1.00" style="background-size: 5% 100%;">
+                      </div>
+
+
+                      </div>
+                  </div>
+              </div>
+          </fieldset>
+      </span>
+</div>
+              </div>
+          </div>
+
+          <div id="lf-next-steps-zoneB2" class="lf-next-steps-zoneB">
+              <hr aria-hidden="true" id="lf-next-steps-zoneB2-separator" class="lf-line-gradient">
+              <div id="lf-next-steps-zoneB2-content" class="lf-next-steps-zoneB-content"><div class="webMessagingContentContainer">
+  
+    
+    
+    
+    
+    
+    
+<a target="_blank" href="/apply-now">Apply now</a>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</div></div>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="lf_cross_field_error" role="dialog" aria-modal="true" class="lf-cross-field-error-pop-up lf-pop-up lf-hidden" aria-labelledby="lf_cross_field_error_title" aria-describedby="lf_cross_field_error_label lf_cross_field_error_count">
+  <div class="lf-modal-title-bar drag-handle">
+      <h2 id="lf_cross_field_error_title" class="lf-modal-title"></h2>
+      <button type="button" id="lf_cross_field_error_close_btn" class="lf-modal-close-btn" tabindex="0" onclick="closeDialog(this)">
+          <span aria-hidden="true">X</span>
+      </button>
+  </div>
+  <div id="lf_cross_field_error_content" class="lf-cross-field-error-content lf-mobile-scroll">
+  </div>
+</div>
+<div id="lf-tooltip-definitions" class="lf-definitions" role="dialog" aria-labelled-by="lf-tooltip-term">
+  <div id="lf-tooltip" class="lf-help-tooltip">
+      <dfn>
+          <h2><span id="lf-tooltip-term"></span></h2>
+          <a id="lf-tooltip-close" href="javascript:void(0)" class="lf-close-pop" role="button"><span aria-hidden="true">X</span></a>
+      </dfn>
+      <p id="lf-tooltip-text"></p>
+  </div>
+</div>
+<div id="lf_next_steps_zoneA" class="hidden" role="dialog" aria-modal="true" aria-labelledby="lf_next_steps_zoneA_title" aria-describedby="lf-next-steps-zoneA-content">
+  <div class="lf-modal-title-bar drag-handle">
+      <h2 id="lf_next_steps_zoneA_title" class="lf-modal-title"></h2>
+      <button type="button" id="lf_next_steps_zoneA_close_btn" class="lf-modal-close-btn" tabindex="0" onclick="closeDialog(this)">
+          <span aria-hidden="true">X</span>
+      </button>
+  </div>
+  <div id="lf-next-steps-zoneA-content" class="lf-next-steps-content lf-mobile-scroll">
+  </div>
+</div>
+<div id="lf_help_Container" class="hidden" role="dialog" aria-modal="true" aria-labelledby="lf_help_title">
+  <div class="lf-modal-title-bar drag-handle">
+      <h2 id="lf_help_title" class="lf-modal-title"></h2>
+      <button type="button" id="lf_help_Container_close_btn" class="lf-modal-close-btn" tabindex="0" onclick="closeDialog(this)">
+          <span aria-hidden="true">X</span>
+      </button>
+  </div>
+  <div id="lf_help-table" class="lf-help-table">
+      <script type="text/template" id="lf-help-table-template">
+          <div id="lf-help-tooltip-definitions" class="lf-definitions">
+              <div id="lf-help-tooltip" class="lf-help-tooltip" aria-modal="true" role="dialog"
+                   aria-describedby="lf-help-tooltip-text" aria-labelledby="lf-help-tooltip-term">
+                  <dfn><h2><span id="lf-help-tooltip-term"></span></h2>
+                      <a id="lf-help-tooltip-close" href="javascript:void(0)" class="lf-close-pop"
+                         aria-label="Close tooltip" title="Close tooltip">
+                          <div aria-hidden="true">X</div>
+                      </a>
+                  </dfn>
+                  <p id="lf-help-tooltip-text"></p>
+              </div>
+          </div>
+
+          <div id="lf_help-table-content" class="lf-help-table-content">
+              <div class="viewport">
+                  <div class="overview">
+                      <div class="body_font">
+                              <span id="lf-help-content">
+                              {{#.}}
+                              <p id="lf_help_{{class}}">{{{textLabel}}}</p>
+                              {{/.}}
+                              </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </script>
+  </div>
+  <div class="lf-end-of-help visually-hidden"></div>
+</div>
+<div id="lf_graphs-table" class="hidden" role="dialog" aria-modal="true" aria-labelledby="lf_amortization_title">
+  <div class="lf-modal-title-bar drag-handle">
+      <h2 id="lf_amortization_title" class="lf-modal-title"></h2>
+      <button type="button" id="lf_graphs-table_close_btn" class="lf-modal-close-btn" tabindex="0" onclick="closeDialog(this)">
+          <span aria-hidden="true">X</span>
+      </button>
+  </div>
+  <div id="lf_graphs-table-content" class="lf-graphs-table-content">
+      <div class="lf-month" id="lf-month">
+          <div class="lf-table lf-open">
+              <table id="lf-months-table" tabindex="0">
+                  <thead id="lf-table-head">
+                  <tr id="lf-table-head-content"></tr>
+                  </thead>
+                  <tbody id="lf-table-rows" class="lf-table-rows"></tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="lf_save_print_share_dialog" role="dialog" aria-labelledby="lf_save_print_share_title" aria-modal="true" class="hidden">
+  <div class="lf-modal-title-bar drag-handle">
+      <h2 id="lf_save_print_share_title" class="lf-modal-title"></h2>
+      <button type="button" id="lf_save_print_share_dialog_close_btn" class="lf-modal-close-btn" tabindex="0" onclick="closeDialog(this)">
+          <span aria-hidden="true">X</span>
+      </button>
+  </div>
+  <div id="lf_save_print_share_content" class="lf-save-print-share-content">
+      <span id="lf_enter_email_label" class="lf-enter-email-label">Enter your email address to:</span>
+      <div id="lf-save-print-share-description">
+          <ul role="presentation">
+              <li id="lf_email_save_label"><strong>Save</strong> your results by emailing a link to this page</li>
+              <li id="lf_email_print_label"><strong>Print</strong> your results from a print-friendly version</li>
+              <li id="lf_email_share_label"><strong>Share</strong> your results in an email to your friends or family</li>
+          </ul>
+      </div>
+      <label for="lf-email-address" id="lf_email_address_label">Enter your email address:</label>
+      <div class="lf-email-input-container">
+          <input type="email" id="lf-email-address" maxlength="50" aria-describedby="lf-save-print-share-description">
+          <button type="button" id="lf-email-submit">Send</button>
+      </div>
+      <div id="lf-email-message" role="alert"></div>
+      <table class="lf-email-optinStatus-container" role="presentation">
+          <tbody><tr>
+              <td>
+                  <input id="lf-email-optinStatus" type="checkbox" class="lf-email-optinStatus">
+              </td>
+              <td id="lf_email_related_content">
+                  <label id="lf_email_related_label" for="lf-email-optinStatus" class="lf-email-related-label">Send me information on related products and services.</label>
+              </td>
+          </tr>
+      </tbody></table>
+      <div class="lf-email-privacy">
+          <a href="#" id="lf_privacy_policy_label" class="lf-privacy-policy" target="_blank">Privacy Policy</a>
+      </div>
+  </div>
+</div>
+<script type="text/template" id="lf_input_fields_template">
+  <span id="lf_input_fields">
+          {{#.}}
+          <fieldset id="lf-tab-{{tabId}}">
+
+              <div class="lf-legend lf-accordian-legend">
+                  <h3>
+                      <span aria-hidden="true" class="lf-arrow"></span>
+                      <a role="button" aria-expanded="false" id="{{tabId}}-accordion"
+                         aria-controls="lf-panel-{{tabId}}" class="lf-accordion-label" href="javascript:void(0)">{{tabLabel}}</a>
+                  </h3>
+              </div>
+
+              {{#tabDesc}}
+              <div class="lf-tab-desc">{{tabDesc}}</div>
+              {{/tabDesc}}
+              <div class="scrollbar disable">
+                  <div class="track">
+                      <div class="thumb">
+                          <div class="end"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="lf-accordion lf-simpleplus-viewport" role="group" aria-label="{{tabLabel}}"
+                   id="lf-panel-{{tabId}}">
+                  {{#fields}}
+                  <div id="lf_{{dataElementName}}-table" class="lf-simpleplus-viewport-fields">
+                      <div class="lf-simpleplus-viewport-field-label">
+                          {{#glossaryTerm}}
+                          <label for="lf_{{dataElementName}}" id="lf_{{dataElementName}}-label">{{{fieldLabel}}}<span
+                                  id="lf_{{dataElementName}}-small-label"
+                                  class="lf-small-label"> {{smallLabel}}</span></label>
+                          <a role="button" href="#{{glossaryTerm}}" id="lf_{{dataElementName}}_tooltip"
+                             class="lf-show-tooltip"
+                             aria-label="{{tooltipAriaLabel}}"><div aria-hidden="true"
+                                                                    class="lf-tooltip-i">i</div></a>
+                          {{/glossaryTerm}}
+                          {{^glossaryTerm}}
+                          <label for="lf_{{dataElementName}}" id="lf_{{dataElementName}}-label"
+                                 class="lf-field-label-no-tooltip">{{{fieldLabel}}}<span
+                                  id="lf_{{dataElementName}}-small-label"
+                                  class="lf-small-label"> {{smallLabel}}</span></label>
+                          {{/glossaryTerm}}
+                      </div>
+                      <div class="lf-hidden lf-error-message" id="lf_{{dataElementName}}-error-message">{{errorMessage}}</div>
+                      <div class="lf-input-fields-container lf-simpleplus-viewport-field inputs {{cellClass}}">
+                          {{#inputTypeText}}
+                          <span id="lf_{{dataElementName}}_prefix" class="{{showDollar}}" aria-hidden="true">$</span>
+                          <input id="lf_{{dataElementName}}" name="{{dataElementName}}" class="lf-input-comma"
+                                 type="{{inputType}}"
+                                 value="{{value}}" maxlength="{{maxlength}}"
+                          />
+                          <span id="lf_{{dataElementName}}_suffix" class="{{showPercentage}}" aria-hidden="true">%</span>
+                          <span id="lf_{{dataElementName}}_nothing" class="lf-hidden"> </span>
+                      <div class="lf-slider-container">
+                          <label for="lf_{{dataElementName}}-input-safe"
+                                 id="lf_{{dataElementName}}-input-safe-label" style="display: none">{{{fieldLabel}}}
+                          </label>
+                          <input id="lf_{{dataElementName}}-input-safe" type="range"
+                                 class="lf-input-safe"
+                                 role="slider"
+                                 trumin="{{minimumValue}}" min="{{sliderMinVal}}" max="{{sliderMaxVal}}"
+                                 trumax="{{maximumValue}}"
+                                 defaultValue="{{defaultValue}}" aria-label="{{fieldLabel}}" format="{{format}}"
+                                 precision="{{precision}}" step="{{widgetStep}}" value="{{value}}"
+                                 data-highlight="{{dataHighlight}}"
+                                 maxLength="{{maxlength}}" aria-label="{{fieldLabel}}"
+                          />
+                      </div>
+                          {{/inputTypeText}}
+                          {{#inputTypeDDL}}
+                          <select class="lf-select-toggle" name="{{dataElementName}}" aria-label="{{fieldLabel}}"
+                                  id="lf_{{dataElementName}}">{{#dropdownOptions}}
+                              <option value="{{optionValue}}" {{#defaultSelection}}selected{{/defaultSelection}}>{{optionText}}</option>
+                              {{/dropdownOptions}}
+                          </select>
+                          {{/inputTypeDDL}}
+                          {{#inputTypeRadio}}
+                              {{#radioOptions}}
+                                  <input type="radio" id="lf_{{dataElementName}}_{{optionId}}" name="{{dataElementName}}" aria-label="{{fieldLabel}}" value="{{optionValue}}" {{#checked}}checked{{/checked}}>
+                                  <label for="lf_{{dataElementName}}_{{optionId}}">{{optionDisplayText}}</label><br>
+                              {{/radioOptions}}
+                          {{/inputTypeRadio}}
+                          {{#inputTypeChar}}
+                          <input id="lf_{{dataElementName}}" name="{{dataElementName}}" type="{{inputType}}"
+                                 class="lf-text-area" value="{{value}}" maxlength="{{maxlength}}"/>
+                         {{/inputTypeChar}}
+
+
+                      </div>
+                  </div>
+                  {{/fields}}
+              </div>
+          </fieldset>
+          {{/.}}
+      </span>
+</script>
+<div id="sr-message" aria-live="off" class="visually-hidden"></div>
+
+<script src="https://bmo.com/assets/pft/js/calc-plugins-4.0.js"></script>
+<script src="https://bmo.com/response/bmo/artifact/home07/assets/scripts/data-layout.js"></script>
+<script src="https://bmo.com/assets/pft/js/common.js"></script>
+<script src="https://bmo.com/assets/pft/js/simple-plus.js"></script>
+<script src="https://bmo.com/response/bmo/artifact/home07/assets/scripts/simple-plus-custom.js"></script>
+<script src="https://bmo.com/response/bmo/artifact/home07/assets/scripts/graph.js"></script>
+<script src="https://bmo.com/response/bmo/artifact/home07/assets/scripts/client-global.js"></script>
+<script src="https://bmo.com/response/bmo/artifact/home07/assets/scripts/client-simple-plus.js"></script>
+
+<script type="text/javascript">_satellite.pageBottom();</script>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

@@ -161,7 +161,8 @@ function Header(props: MyProps) {
                         {item.childItems.nodes.map((submenu, id) => {
                           if (
                             submenu.label !== 'FTHBI Calculator' &&
-                            submenu.label !== 'Readvanceable Mortgage'
+                            submenu.label !== 'Mortgage Payment Calculator' &&
+                            submenu.label !== 'Refinance Calculator'
                           ) {
                             return (
                               <li
@@ -358,7 +359,44 @@ function Header(props: MyProps) {
                           return null;
                         })}
                       </ul>
-                    ): null}
+                    ): (
+                      <ul
+                        className={`submenu_level`}
+                        id={`submenu-${index}-${idx}`}
+                      >
+                        {item.childItems.nodes.map((submenu, id) => {
+                          if (
+                            submenu.label !== 'FTHBI Calculator' &&
+                            submenu.label !== 'Readvanceable Mortgage'
+                          ) {
+                            return (
+                              <li
+                                key={id}
+                                className={
+                                   submenu.label === 'Commercial Mortgages' ? 'commercial-mortgages' : submenu.label === 'Vancouver' ? 'vancouver' : submenu.label === 'Surrey' ? 'surrey' : ''
+                                }
+                              >
+                                <span>
+                                  <Nav.Link
+                                    as={Link}
+                                    href={
+                                      submenu.uri.endsWith('/')
+                                        ? submenu.uri.slice(0, -1)
+                                        : submenu.label === 'Surrey'
+                                        ? '/'
+                                        : submenu.uri
+                                    }
+                                  >
+                                    <span className="sublink">{submenu.label}</span>
+                                  </Nav.Link>
+                                </span>
+                              </li>
+                            );
+                          }
+                          return null;
+                        })}
+                      </ul>
+                    )}
                     
                   </span>
                 ) : (
