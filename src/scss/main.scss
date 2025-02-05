@@ -955,6 +955,52 @@ body {
     }
   }
 }
+.scenario-card {
+  border: 1px solid #ced4da; // Light border for the cards
+  margin-bottom: 1rem; // Space between cards
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+}
+.result-box {
+  background-color: #12143A; // Dark blue background
+  color: white;
+  padding: 2rem; // Increased padding
+  border-radius: 5px;
+  text-align: center;
+  display: flex; // Use flexbox for alignment
+  flex-direction: column; // Align items vertically
+  align-items: center; // Center horizontally
+}.result-label {
+  font-size: 1.5rem; // Larger label
+  margin-bottom: 1rem; // Space below label
+}.estimate-value {
+  font-size: 2rem; // Larger estimate value
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 0.5rem; // Rounded corners
+  padding: 0.8rem; // Increased padding
+  font-size: 1.1rem; // Larger font size
+}
+
+.card-header {
+  background-color: transparent;
+  border-bottom: none;
+  padding: 0;
+}.card {
+  border: none; // Remove card border
+}
 .form-div {
   border-radius: 0px 20px 0px 20px;
   background-color: rgba(255, 255, 255, 0.8);

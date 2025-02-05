@@ -1,19 +1,17 @@
 import { gql } from '@apollo/client';
-import { Hero } from 'components';
-import HomeBuyerSection from 'components/HomeBuyerSection';
+import LocationHero from 'components/LocationHero';
 import MortgageAdvisor from 'components/MortgageAdvisor';
-import MortgageFeatured from 'components/MortgageFeatured';
+import OurLenders from 'components/OurLenders';
+import OurRates from 'components/OurRates';
 import ServiceSection from 'components/ServiceSection';
 import Head from 'next/head';
 import Image from 'next/image';
+import { Fragment } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
-import { Fragment } from 'react';
-import OurRates from 'components/OurRates';
-import OurLenders from 'components/OurLenders';
-import LocationHero from 'components/LocationHero';
+import MortgageAdvisorLoc from 'components/MortgageAdvisorLoc';
 
 
 export async function getStaticProps() {
@@ -262,11 +260,12 @@ export default function NewPrince(props: MyProps) {
   '<h2 style="font-size: 40px;">Our Lenders in Prince George</h2>\n' +
   "";
 const teamDescription =
-  `<p><span style="font-weight: 400;">We have partnered with 100+ lenders! We work together with banks, for instance, big banks, local credit unions, and specialized lenders. Because of our extensive partner base, we can find a mortgage that is tailored to your needs. Whether you are a perfect credit holder, self-employed, or buying your first house we will make you covered.   </span></p>\n` +
+  `<p><span style="font-weight: 400;">We have partnered with 100+ lenders! We work together with banks. For instance- big banks, local credit unions, and specialized lenders. We will cover you, whether you have perfect credit, are self-employed, or are buying your first home.   </span></p>\n` +
   "";
   const rateTitle = `
 <h2>Current Mortgage Rates</h2>
-<p>We make sure you get the best ones that fit your pocket. Whether you're buying a house for the first time or looking to get a new place, we work hard to find rates that are just right for you. We keep our eyes on all the rate changes to make sure you don’t have to pay more than you should. With us, it's all about getting you a deal that makes you smile.</p>
+<p>We make sure you get the best ones that fit your pocket. If you're a first-time home buyer, we work hard to find competitive interest rates for you.
+</p>
 
 `;
   return (
@@ -331,10 +330,9 @@ const teamDescription =
                     ></div>
                   </Container>
                     <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
-                      <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
                       <OurRates title={rateTitle} />
-          <MortgageAdvisor advisorData={mortgageBenefitsData}/>     
-        <MortgageAdvisor advisorData={advisorData}/>
+        <MortgageAdvisorLoc advisorData={advisorData}/>
+          <MortgageAdvisorLoc advisorData={mortgageBenefitsData}/>     
         <OurLenders title={teamTitle} description={teamDescription} />
         <Container className="mb-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
