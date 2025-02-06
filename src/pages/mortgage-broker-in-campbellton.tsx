@@ -274,12 +274,12 @@ export default function Page(props: MyProps) {
   '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Mortgage Lenders </span></h2>\n' +
   "";
 const teamDescription =
-  `<p><span style="font-weight: 400;">Our network encompasses connections with over 100 lenders, ensuring a broad range of options for our clients. This extensive collaboration allows us to secure the most competitive rates and terms tailored to individual needs. Each lender in our portfolio has been carefully selected to provide diverse and flexible financing solutions.
+  `<p><span style="font-weight: 400;">We connect with more than 100 lenders. This gives our clients many options to choose from. This collaboration helps us get the best rates and terms for each person.
 </span></p>\n` +
   "";
   const rateTitle = `
 <h2>Current Mortgage Rates​ In Campbellton</h2>
-<p>We're dedicated to offering competitive mortgage rates in Willoughby that reflect the current mortgage market. Our team tirelessly negotiates with lenders to bring you deals that make financial sense for your unique situation, ensuring you get the most favorable terms available.
+<p><span style="font-weight: 400;">We’re dedicated to offering </span><a href="http://asimali.ca/current-rates"><span style="font-weight: 400;">competitive mortgage rates</span></a><span style="font-weight: 400;"> in Campbellton. We work hard to negotiate with lenders. Our goal is to find deals that fit your needs.</span>
 </p>
 
 `;
@@ -341,6 +341,7 @@ const teamDescription =
                 </Row>
                 </Container>
                 <OurRates title={rateTitle} />
+        <MortgageAdvisor advisorData={mortgageInterestData}/> 
         <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
@@ -353,9 +354,8 @@ const teamDescription =
                     ></div>
                   </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
-        <AccordionSection advisorData={mortgageInterestData}/>
         <OurLenders title={teamTitle} description={teamDescription} />
-        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
+        <AccordionSection advisorData={mortgageBenefitsData}/>
         <Container className="mb-5 mt-5">
         <p className="text-center service-title">{contactData?.title}</p>
         <div
@@ -364,13 +364,13 @@ const teamDescription =
             }}
             className="text-lg text-center"
           ></div>
-          <div className="tb-btn">
+          {/* <div className="tb-btn">
                     <Link href={"/contact-us"}>
                       <Button className="HeadBtn">
                       CONTACT US
                       </Button>
                     </Link>
-                  </div>
+                  </div> */}
         </Container>
       </main>
       <Footer settings={settings} mainMenus={mainMenus} />

@@ -50,7 +50,7 @@ const AccordionSection = (props: MyProps) => {
                             key={index}
                             eventKey={index.toString()}
                           >
-                            <Accordion.Header as="h3">
+                            <Accordion.Header as="p">
                               {qa?.title}
                             </Accordion.Header>
                             <Accordion.Body
