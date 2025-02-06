@@ -319,9 +319,9 @@ const teamDescription =
                 </Row>
                 </Container>
                     <Container className="mb-5 px-3 py-3" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
-                    <p className="text-center service-title">
+                    <h2 className="text-center service-title">
                       {tipsTitle}
-                    </p>
+                    </h2>
                     <div
                       className="text-center"
                       dangerouslySetInnerHTML={{
