@@ -1,21 +1,16 @@
 import { gql } from '@apollo/client';
-import { Hero, Team } from 'components';
 import AccordionSection from 'components/AccordionSection';
-import FlexibilityTab from 'components/FlexibilityTab';
+import LocationHero from 'components/LocationHero';
 import MortgageAdvisor from 'components/MortgageAdvisor';
 import ServiceSection from 'components/ServiceSection';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Fragment } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { apolloClient } from "../lib/apollo";
-import { Fragment } from 'react';
-import Link from 'next/link';
-import ContactSection from 'components/ContactSection';
-import OurRates from 'components/OurRates';
-import OurLenders from 'components/OurLenders';
-import LocationHero from 'components/LocationHero';
 
 
 
@@ -320,13 +315,7 @@ export default function Page(props: MyProps) {
                         __html: serviceBannerData?.aboutText,
                       }}
                     ></div>
-                    <div className="tb-btn-left">
-                    <Link href={"/apply-now"}>
-                      <Button className="HeadBtn">
-                      Book A Meeting With Us
-                      </Button>
-                    </Link>
-                  </div>
+                    
                   </Col>
                   <Col md={5}>
                     <Image
@@ -344,7 +333,7 @@ export default function Page(props: MyProps) {
         <div className="tb-btn">
                     <Link href={"/contact-us"}>
                       <Button className="HeadBtn">
-                      We Are Ready To Help!
+                      We Are Ready To Help
                       </Button>
                     </Link>
                   </div>
@@ -368,7 +357,6 @@ export default function Page(props: MyProps) {
                   </div>
                   </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
-        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
         
         {/* <OurLenders title={teamTitle} description={teamDescription} /> */}
         <AccordionSection advisorData={mortgageInterestData}/>
@@ -380,7 +368,7 @@ export default function Page(props: MyProps) {
                     </Link>
                   </div> */}
         <Container className="mb-5 mt-5">
-        <p className="text-center service-title">{contactData?.title}</p>
+        <h2 className="text-center service-title">{contactData?.title}</h2>
         <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,
