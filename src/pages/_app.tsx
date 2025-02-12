@@ -23,7 +23,7 @@ const blacklist_countries = [
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   useReportWebVitals((metric) => {
-    console.log(metric)
+    // console.log(metric)
   })
   useEffect(() => {
     const props = {

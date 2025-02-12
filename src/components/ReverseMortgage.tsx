@@ -14,7 +14,7 @@ const ReverseMortgageCalculator = () => {
         homeValue: 100000,  // Initial value set to first option
         mortgageBalance: 0,   // Initial value set to first option
         age: 59,              // Initial value set to first option
-        rate: 59,              // Initial value set to first option
+        rate: 5.4,              // Initial value set to first option
         loanEstimate: undefined,
     });
     const [isLoading, setIsLoading] = useState(false); // Add loading state
@@ -61,7 +61,7 @@ const ReverseMortgageCalculator = () => {
             setIsLoading(false); // Set loading to false
         }
     };
-
+console.log(mortgageData);
     return (
         <Container className="mt-5">
             <Card className="shadow">
@@ -70,7 +70,7 @@ const ReverseMortgageCalculator = () => {
                         <Row className="mb-3">
                             <Form.Label column sm={4}>Select Estimated Home Value</Form.Label>
                             <Col sm={8}>
-                            <Form.Control as="select" name="homeValue" value={mortgageData.homeValue} onChange={(e)=>handleInputChange}>
+                            <Form.Control as="select" name="homeValue" value={mortgageData.homeValue} onChange={(e:any)=>handleInputChange(e)}>
       <option disabled value="">Select Home Value</option>
       <option value="150000">$100,001 - $150,000</option>
       <option value="200000">$150,001 - $200,000</option>
@@ -137,7 +137,7 @@ const ReverseMortgageCalculator = () => {
                         <Row className="mb-3">
                             <Form.Label column sm={4}>Select Mortgage Balance</Form.Label>
                             <Col sm={8}>
-                            <Form.Control as="select" name="mortgageBalance" value={mortgageData.mortgageBalance} onChange={(e)=>handleInputChange}>
+                            <Form.Control as="select" name="mortgageBalance" value={mortgageData.mortgageBalance} onChange={(e:any)=>handleInputChange(e)}>
       <option disabled value="">Select Mortgage Balance</option>
       <option value="1">$1 - $25,000</option>
       <option value="25001">$25,001 - $50,000</option>
@@ -190,7 +190,7 @@ const ReverseMortgageCalculator = () => {
                                     as="select"
                                     name="age"
                                     value={mortgageData.age}
-                                    onChange={(e)=>handleInputChange}
+                                    onChange={(e:any)=>handleInputChange(e)}
                                 >
                                     <option disabled value="">Select Age</option>
                                     <option value="59">Under 60</option>
@@ -216,10 +216,10 @@ const ReverseMortgageCalculator = () => {
                             {isLoading? (
                                 <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             ): (
-                                `$${mortgageData.loanEstimate !== undefined && mortgageData.loanEstimate > 0 ? mortgageData.loanEstimate.toLocaleString() : "0"}`
+                                `$${mortgageData?.loanEstimate !== undefined && mortgageData?.loanEstimate > 0 ? mortgageData.loanEstimate.toLocaleString() : "0"}`
                             )}
                         </p>
-                        <p className="result-label">OUR RATE</p>
+                        <p className="result-label mt-3">OUR RATE</p>
                         <p className="estimate-value">
                             {isLoading? (
                                 <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
