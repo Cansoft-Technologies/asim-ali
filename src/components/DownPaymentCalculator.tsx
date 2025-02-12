@@ -43,6 +43,7 @@ const DownPaymentCalculator = () => {
             <Form.Label>Home Price ($)</Form.Label>
             <Form.Control
               type="number"
+              min="0"
               value={homePrice}
               onChange={(e) => setHomePrice(parseFloat(e.target.value))}
             />
@@ -52,6 +53,7 @@ const DownPaymentCalculator = () => {
             <Form.Label>Down Payment (%)</Form.Label>
             <Form.Control
               type="number"
+              min="0"
               value={downPaymentPercent}
               onChange={(e) => setDownPaymentPercent(parseFloat(e.target.value))}
             />
@@ -60,6 +62,7 @@ const DownPaymentCalculator = () => {
           <Form.Group controlId="interestRate">
             <Form.Label>Interest Rate (%)</Form.Label>
             <Form.Control
+              min="1"
               type="number"
               value={interestRate}
               onChange={(e) => setInterestRate(parseFloat(e.target.value))}
@@ -70,6 +73,7 @@ const DownPaymentCalculator = () => {
             <Form.Label>Amortization Period (years)</Form.Label>
             <Form.Control
               type="number"
+              min="1"
               value={amortizationPeriod}
               onChange={(e) => setAmortizationPeriod(parseFloat(e.target.value))}
             />
@@ -77,13 +81,13 @@ const DownPaymentCalculator = () => {
         </Form>
 
         <div className="results">
-          <h4>Results</h4>
-          <p>Down Payment Amount: ${results.downPaymentAmount.toFixed(2)}</p>
-          <p>Mortgage Amount: ${results.mortgageAmount.toFixed(2)}</p>
-          <p>Mortgage Loan Insurance Premium: ${results.insurancePremium.toFixed(2)}</p>
-          <p>Total Mortgage: ${results.totalMortgage.toFixed(2)}</p>
-          <p>Monthly Payment: ${results.monthlyPayment.toFixed(2)}</p>
-          <p>Total Cost: ${results.totalCost.toFixed(2)}</p>
+          <p className="service-title mb-3">Results</p>
+          <p>Down Payment Amount: ${results.downPaymentAmount.toFixed(2) || 0}</p>
+          <p>Mortgage Amount: ${results.mortgageAmount.toFixed(2) || 0}</p>
+          <p>Mortgage Loan Insurance Premium: ${results.insurancePremium.toFixed(2) || 0}</p>
+          <p>Total Mortgage: ${results.totalMortgage.toFixed(2) || 0}</p>
+          <p>Monthly Payment: ${results.monthlyPayment.toFixed(2) || 0}</p>
+          <p>Total Cost: ${results.totalCost.toFixed(2) || 0}</p>
         </div>
       </Card.Body>
     </Card>

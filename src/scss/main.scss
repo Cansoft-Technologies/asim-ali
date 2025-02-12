@@ -972,7 +972,8 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
 }
 .result-box {
-  background-color: #12143A; // Dark blue background
+  border-color: #12143A; // Dark blue background
+  border: 1px solid #12143A; // Dark blue border
   color: white;
   padding: 2rem; // Increased padding
   border-radius: 5px;
@@ -980,12 +981,16 @@ body {
   display: flex; // Use flexbox for alignment
   flex-direction: column; // Align items vertically
   align-items: center; // Center horizontally
-}.result-label {
-  font-size: 1.5rem; // Larger label
-  margin-bottom: 1rem; // Space below label
-}.estimate-value {
-  font-size: 2rem; // Larger estimate value
-  font-weight: bold;
+  .result-label {
+    color: white;
+    font-size: 1.5rem; // Larger label
+    margin-bottom: 1rem; // Space below label
+  }
+  .estimate-value {
+    color: white;
+    font-size: 2rem; // Larger estimate value
+    font-weight: bold;
+  }
 }
 
 .form-control {
