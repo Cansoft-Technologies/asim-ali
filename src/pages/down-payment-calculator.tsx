@@ -194,7 +194,7 @@ const Page = (props: MyProps) => {
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
-                    <meta name="robots" content="noindex"></meta>
+                    {/* <meta name="robots" content="noindex"></meta> */}
                     <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
