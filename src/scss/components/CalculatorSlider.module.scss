@@ -1,0 +1,86 @@
+.sliderContainer {
+  padding: 1rem 0;
+  position: relative;
+}
+
+.carouselContainer {
+  padding: 2rem 0;
+}
+
+.carouselItem {
+  padding: 0 15px;
+}
+
+.calculatorCard {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(27, 27, 27, 0.15);
+  padding: 2.5rem;
+  min-height: 150px;
+  display: flex;
+  transition: transform 0.3s ease;
+  width: 100%;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  width: 100%;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  text-align: center;
+}
+
+.cardLink {
+  // color: #12143A !important;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  
+  &:hover {
+    color: #12143A;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .calculatorCard {
+    padding: 2rem;
+    min-height: 280px;
+  }
+  
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+  
+  .cardSubtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sliderContainer {
+    padding: 2rem 0;
+  }
+  
+  .calculatorCard {
+    min-height: 250px;
+    padding: 1.5rem;
+  }
+  
+  .cardLink {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
