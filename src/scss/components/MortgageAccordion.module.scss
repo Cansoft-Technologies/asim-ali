@@ -1,0 +1,115 @@
+.accordionContainer {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.mainTitle {
+  color: #2a4365;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  color: #4a5568;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.accordionItem {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px !important;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #cbd5e0;
+  }
+}
+
+.accordionHeader {
+  padding: 1rem;
+  background-color: #f7fafc;
+  
+  button {
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    color: #2a4365;
+    padding: 0;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.accordionTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 1.1rem;
+  
+  svg {
+    margin-left: 1rem;
+    transition: transform 0.3s ease;
+  }
+}
+
+.chevronOpen {
+  display: none;
+}
+
+.accordion-button:not(.collapsed) {
+  .chevronClosed {
+    display: none;
+  }
+  
+  .chevronOpen {
+    display: inline-block;
+  }
+}
+
+.accordionBody {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.contentList {
+  padding-left: 1.5rem;
+  margin-bottom: 0;
+}
+
+.listItem {
+  color: #4a5568;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 1.75rem;
+  }
+  
+  .accordionTitle {
+    font-size: 1rem;
+  }
+  
+  .accordionBody {
+    padding: 1rem;
+  }
+}
