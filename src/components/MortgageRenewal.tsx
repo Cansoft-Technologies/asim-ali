@@ -14,13 +14,11 @@ const MortgageRenewalCalculator = () => {
   const [mortgageData, setMortgageData] = useState<MortgageData>({
     amount: 700000,
     amortization: 25,
-    rate1: 5.78,
-    rate2: 6.89,
+    rate1: 0,
+    rate2: 0,
     payment1: undefined,
     payment2: undefined,
   });
-  const [variableRate, setVariableRate] = useState<string>("0.00%");
-  const [primeRate, setPrimeRate] = useState<string>("0.00");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
@@ -49,26 +47,25 @@ const MortgageRenewalCalculator = () => {
         const primeRateText = doc
           .querySelector(".mainLeft p strong:nth-child(3)")
           ?.textContent?.trim();
-        if (variableRateText) setVariableRate(variableRateText);
-        if (primeRateText) setPrimeRate(primeRateText);
 
         const newMortgageData: MortgageData = {
           amount: 700000,
           amortization: 25,
-          rate1: parseFloat(variableRate) || 0,
-          rate2: parseFloat(primeRate) || 0,
+          rate1: parseFloat(variableRateText),
+          rate2: parseFloat(primeRateText),
           payment1: undefined,
           payment2: undefined,
         };
-
         setMortgageData(newMortgageData);
       } catch (err) {
         console.error("Error fetching rates:", err);
       }
     };
 
-    fetchRates();
-  }, [1]);
+    if(mortgageData?.rate1 <= 0 || mortgageData?.rate2 <= 0) {
+      fetchRates();
+    }
+  }, [mortgageData.rate1, mortgageData.rate2]);
   // Helper function to calculate the monthly rate from the semi-annual compounded rate
 const getMonthlyRateFromAnnual = (annualRate: number) => {
   const semiAnnualRate = (1 + annualRate / 100 / 2); // Semi-annual compounding
@@ -76,14 +73,14 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
   const monthlyRate = Math.pow(1 + effectiveAnnualRate, 1 / 12) - 1; // Convert EAR to monthly rate
   return monthlyRate;
 };
-  const calculateMortgage = (amount: number, amortization: number, rate: number): number => {
-    const monthlyRate = getMonthlyRateFromAnnual(rate);
-    const numPayments = amortization * 12;
-    const mortgagePayment = (amount * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
-    return mortgagePayment;
-  };
-
   useEffect(() => {
+    const calculateMortgage = (amount: number, amortization: number, rate: number): number => {
+      const monthlyRate = getMonthlyRateFromAnnual(rate);
+      const numPayments = amortization * 12;
+      const mortgagePayment = (amount * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+      return mortgagePayment;
+    };
+
     const newPayment1 = calculateMortgage(mortgageData.amount, mortgageData.amortization, mortgageData.rate1);
     const newPayment2 = calculateMortgage(mortgageData.amount, mortgageData.amortization, mortgageData.rate2);
     setMortgageData({
@@ -92,7 +89,7 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
       payment2: newPayment2,
     });
   }, [mortgageData.amount, mortgageData.amortization, mortgageData.rate1, mortgageData.rate2]);
-
+  console.log(mortgageData);
   return (
     <Container className='mt-5'>
       <Card className="mt-4">
@@ -141,7 +138,7 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
                       />
                     </Col>
                   </Form.Group>
-                  <p><strong>Monthly Payment:</strong> {mortgageData.payment1 ? mortgageData.payment1.toFixed(2) : "-"}</p>
+                  <p><strong>Monthly Payment:</strong> ${mortgageData.payment1 ? mortgageData.payment1.toFixed(2) : "0"}</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -160,7 +157,7 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
                       />
                     </Col>
                   </Form.Group>
-                  <p><strong>Monthly Payment:</strong> {mortgageData.payment2 ? mortgageData.payment2.toFixed(2) : "-"}</p>
+                  <p><strong>Monthly Payment:</strong> ${mortgageData.payment2 ? mortgageData.payment2.toFixed(2) : "0"}</p>
                 </Card.Body>
               </Card>
             </Col>
