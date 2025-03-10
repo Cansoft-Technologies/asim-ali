@@ -36,6 +36,9 @@ export async function getStaticProps() {
             raw
           }
         }
+        schemaField {
+          schemaCode
+        }
         NewLangley {
           serviceBannerTitle
               serviceBannerHeading
@@ -261,12 +264,14 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.NewLangley?.planSection,
       reviewSection: data?.pages?.nodes[0]?.NewLangley?.reviewSection,
       mapSection: data?.pages?.nodes[0]?.NewLangley?.mapSection,
+      schemaCode: data?.pages?.nodes[0]?.schemaField?.schemaCode,
     },
     revalidate: 60,
   };
 }
 
 type MyProps = {
+  schemaCode: any;
   settings: any;
   mainMenus: any;
   metaData: any;
@@ -324,7 +329,8 @@ export default function NewLangley(props: MyProps) {
     serviceBannerData,
     benefitTitle,
     benefitDescription,
-    mapSection
+    mapSection,
+    schemaCode
   } = props;
 
   const teamTitle =
@@ -364,6 +370,11 @@ export default function NewLangley(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
+              <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaCode }}
+          key="product-jsonld"
+        />
             </>
           );
         })}

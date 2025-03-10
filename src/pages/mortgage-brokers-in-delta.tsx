@@ -38,6 +38,9 @@ export async function getStaticProps() {
                 raw
               }
             }
+            schemaField {
+          schemaCode
+        }
             NewDelta {
               serviceBannerTitle
               serviceBannerHeading
@@ -256,12 +259,14 @@ export async function getStaticProps() {
       planSection:
         data?.pages?.nodes[0]?.NewDelta?.planSection,
       reviewSection: data?.pages?.nodes[0]?.NewDelta?.reviewSection,
+      schemaCode: data?.pages?.nodes[0]?.schemaField?.schemaCode,
     },
     revalidate: 60,
   };
 }
 
 type MyProps = {
+  schemaCode: any;
   settings: any;
   mainMenus: any;
   metaData: any;
@@ -310,6 +315,7 @@ export default function NewDelta(props: MyProps) {
     faqData,
     planSection,
     reviewSection,
+    schemaCode
   } = props;
 
   const teamTitle =
@@ -349,6 +355,11 @@ export default function NewDelta(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
+              <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaCode }}
+          key="product-jsonld"
+        />
             </Fragment>
           );
         })}
