@@ -37,6 +37,9 @@ export async function getStaticProps() {
             raw
           }
         }
+          schemaField {
+          schemaCode
+        }
         NewMaple {
           serviceBannerTitle
               serviceBannerHeading
@@ -224,12 +227,14 @@ export async function getStaticProps() {
       tipsRightText: data?.pages?.nodes[0]?.NewMaple?.tipsRightText,
       tipsImageRight: data?.pages?.nodes[0]?.NewMaple?.tipsImageRight,
       tipsImageLeft: data?.pages?.nodes[0]?.NewMaple?.tipsImageLeft,
+      schemaCode: data?.pages?.nodes[0]?.schemaField?.schemaCode,
     },
     revalidate: 60
   };
 }
 
 type MyProps = {
+  schemaCode: any;
   settings: any;
   mainMenus: any;
   metaData: any;
@@ -252,7 +257,7 @@ type MyProps = {
 };
 
 export default function NewMaple(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData } = props;
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,homebuyerSectionData, serviceBannerData,advisorData,mortgageBenefitsData,schemaCode } = props;
 
   const teamTitle =
   '<p style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></p>\n' +
@@ -278,6 +283,11 @@ const teamDescription =
               <meta property="og:title" content={meta?.seo?.title} />
               <meta property="og:description" content={meta?.seo?.description} />
               <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaCode }}
+          key="product-jsonld"
+        />
             </Fragment>
           )
         })}

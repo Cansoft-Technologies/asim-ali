@@ -8,47 +8,47 @@ class MyDocument extends Document {
   }
 
   render() {
-    const schema = { 
-      "@context" : "http://schema.org",
+  //   const schema = { 
+  //     "@context" : "http://schema.org",
   
-      "@type" : "Organization", 
+  //     "@type" : "Organization", 
   
-      address : {
+  //     address : {
   
-          "@type": "PostalAddress",
+  //         "@type": "PostalAddress",
   
-           addressCountry: "CANADA",
+  //          addressCountry: "CANADA",
   
-          addressLocality: "Surrey", 
+  //         addressLocality: "Surrey", 
   
-          addressRegion: "BC", 
+  //         addressRegion: "BC", 
   
-          postalCode: "V3W 1A4", 
+  //         postalCode: "V3W 1A4", 
   
-          streetAddress: "7327 137 St Suite 311"
+  //         streetAddress: "7327 137 St Suite 311"
   
-          }, 
+  //         }, 
   
-      name:"Expert Mortgage Broker for Tailored Financing Solutions",
+  //     name:"Expert Mortgage Broker for Tailored Financing Solutions",
   
-      image:"https://asimali.ca/_next/image?url=https%3A%2F%2Fasimaliprod.wpengine.com%2Fwp-content%2Fuploads%2F2022%2F11%2Flogo.png&w=384&q=75",
+  //     image:"https://asimali.ca/_next/image?url=https%3A%2F%2Fasimaliprod.wpengine.com%2Fwp-content%2Fuploads%2F2022%2F11%2Flogo.png&w=384&q=75",
   
-      url:"https://asimali.ca",
+  //     url:"https://asimali.ca",
   
-      email:"clientcare@asimali.ca",
+  //     email:"clientcare@asimali.ca",
   
-      telephone:"+1 604-591-3590",
+  //     telephone:"+1 604-591-3590",
       
-      aggregateRating:{
+  //     aggregateRating:{
   
-          "@type":"AggregateRating",
+  //         "@type":"AggregateRating",
   
-          ratingValue:"4.8",
+  //         ratingValue:"4.8",
   
-          reviewCount:"226"
+  //         reviewCount:"226"
   
-          }
-  };
+  //         }
+  // };
   return (
     <Html lang="en-US">
       <Head>
@@ -63,11 +63,11 @@ class MyDocument extends Document {
         <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
         <meta name="google-site-verification" content="ArsOxUI8W_sRuQ8inukzs24Mjl5_sl-TfzJGoz3CBQI" />
         <meta name="theme-color" content="#ffffff" />
-        <script
+        {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           key="product-jsonld"
-        />
+        /> */}
       </Head>
       <body>
       <Script

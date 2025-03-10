@@ -34,6 +34,9 @@ export async function getStaticProps() {
             raw
           }
         }
+        schemaField {
+          schemaCode
+        }  
         NewAbbotsford {
           serviceBannerTitle
               serviceBannerHeading
@@ -262,12 +265,14 @@ export async function getStaticProps() {
       planSection:
         data?.pages?.nodes[0]?.NewAbbotsford?.planSection,
       reviewSection: data?.pages?.nodes[0]?.NewAbbotsford?.reviewSection,
+      schemaCode: data?.pages?.nodes[0]?.schemaField?.schemaCode,
     },
     revalidate: 60,
   };
 }
 
 type MyProps = {
+  schemaCode: any;
   settings: any;
   mainMenus: any;
   metaData: any;
@@ -316,6 +321,7 @@ export default function NewAbbotsford(props: MyProps) {
     faqData,
     planSection,
     reviewSection,
+    schemaCode
   } = props;
 
   const teamTitle =
@@ -354,6 +360,11 @@ export default function NewAbbotsford(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
+              <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaCode }}
+          key="product-jsonld"
+        />
             </>
           );
         })}

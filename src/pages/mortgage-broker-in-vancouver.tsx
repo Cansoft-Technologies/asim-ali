@@ -43,6 +43,9 @@ export async function getStaticProps() {
             raw
           }
         }
+        schemaField {
+          schemaCode
+        }
         NewVancouver {
           serviceBannerTitle
               serviceBannerHeading
@@ -282,12 +285,14 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.NewVancouver?.planSection,
       reviewSection: data?.pages?.nodes[0]?.NewVancouver?.reviewSection,
       mapSection: data?.pages?.nodes[0]?.NewVancouver?.mapSection,
+      schemaCode: data?.pages?.nodes[0]?.schemaField?.schemaCode,
     },
     revalidate: 60
   };
 }
 
 type MyProps = {
+  schemaCode: any;
   settings: any;
   mainMenus: any;
   teamData: any;
@@ -316,7 +321,7 @@ type MyProps = {
 };
 
 export default function NewVancouver(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData,faqData, planSection, reviewSection,mapSection} = props;
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData,faqData, planSection, reviewSection,mapSection, schemaCode} = props;
 
   const teamTitle =
   '<h2 style="font-size: 40px;">Lenders We Work With</h2>\n' +
@@ -329,6 +334,7 @@ const teamDescription =
 <p></p>
 
 `;
+
   return (
     <>
       <Head>
@@ -342,6 +348,11 @@ const teamDescription =
               <meta property="og:title" content={meta?.seo?.title} />
               <meta property="og:description" content={meta?.seo?.description} />
               <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaCode }}
+          key="product-jsonld"
+        />
             </Fragment>
           )
         })}

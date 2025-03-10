@@ -36,6 +36,9 @@ export async function getStaticProps() {
                 raw
               }
             }
+            schemaField {
+          schemaCode
+        }
             mortgageBrokerBurnaby {
               serviceBannerTitle
               serviceBannerHeading
@@ -315,12 +318,14 @@ faqSection {
       planSection:
         data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.planSection,
       reviewSection: data?.pages?.nodes[0]?.mortgageBrokerBurnaby?.reviewSection,
+      schemaCode: data?.pages?.nodes[0]?.schemaField?.schemaCode,
     },
     revalidate: 60,
   };
 }
 
 type MyProps = {
+  schemaCode: any;
   settings: any;
   mainMenus: any;
   metaData: any;
@@ -393,6 +398,7 @@ export default function NewMortgageBrokerInBurnaby(props: MyProps) {
     faqData,
     planSection,
     reviewSection,
+    schemaCode
   } = props;
 
   const teamTitle =
@@ -429,6 +435,11 @@ const teamDescription =
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
+              <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: schemaCode }}
+          key="product-jsonld"
+        />
             </>
           );
         })}
