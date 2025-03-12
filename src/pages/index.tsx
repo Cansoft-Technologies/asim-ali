@@ -466,6 +466,7 @@ export default function Page(props: MyProps) {
       items: 1,
     },
   };
+  const schemaCode = settings?.generalSettings?.schemaProductRating;
   return (
     <>
       <Head>
@@ -484,6 +485,11 @@ export default function Page(props: MyProps) {
                 property="og:image"
                 content={meta?.seo?.openGraph?.image?.url}
               />
+              <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: schemaCode }}
+                        key="product-jsonld"
+                      />
             </Fragment>
           );
         })}
