@@ -1,5 +1,5 @@
 import "faust.config";
-
+import '../../styles/globals.scss'
 import { FaustProvider } from "@faustjs/next";
 import { useEffect } from "react";
 import "scss/main.scss";

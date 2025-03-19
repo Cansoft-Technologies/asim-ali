@@ -28,9 +28,9 @@ function oldPageRedirectRules() {
 module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
-      optimizeImages: false,
       trailingSlash: false,
       images: {
+        unoptimized: true,
         // domains: ["localhost", "asimaliprod.wpengine.com"],
         remotePatterns: [
           {
@@ -44,8 +44,6 @@ module.exports = withBundleAnalyzer(
             pathname: "**",
           },
         ],
-        optimized: false,
-        allowFutureImage: true,
       },
       async redirects() {
         return [

@@ -61,6 +61,7 @@ postBodyData.set('message', formData.message.toString() || "");
       const data = await response.json();
       setBtnLoader(false);
       setSuccess(data.message);
+      console.log(data);
       e.target.reset();
     } catch (error) {}
   }

@@ -1,19 +1,14 @@
 import dynamic from "next/dynamic";
 import { Container } from "react-bootstrap";
+import ApplyApprovedLoc from "./ApplyApprovedLoc";
 import CategoryTabs from "./CatagoryTabs";
 import HomeBuyerLoc from "./HomebuyerLoc";
-import ApplyApprovedLoc from "./ApplyApprovedLoc";
-const ApplyApprovedSection = dynamic(
-  () => import("components/ApplyApprovedSection")
-);
 const ContactSection = dynamic(() => import("components/ContactSection"));
-const FlexibilityTab = dynamic(() => import("components/FlexibilityTab"));
-const HomeBuyerSection = dynamic(() => import("components/HomeBuyerSection"));
 const MortgageAdvisorHome = dynamic(() => import("components/MortgageAdvisorHome"));
 const MortgageFeaturedHomePage = dynamic(
   () => import("components/MortgageFeaturedHomePage")
 );
-const Team = dynamic(() => import("components/Team"));
+
 const Meeting = dynamic(() => import("components/Meeting"));
 const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
 type Props = {
