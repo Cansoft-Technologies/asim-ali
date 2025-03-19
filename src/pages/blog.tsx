@@ -29,7 +29,7 @@ export function ResourcesPage (props: MyProps) {
 
   const [pageCount, setPageCount] = useState(0)
   const [page, setPage] = useState(0)
-  const size = 5
+  const size = 9
 
   const filters = [
     "Mortgage",
