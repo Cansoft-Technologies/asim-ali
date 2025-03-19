@@ -5,7 +5,7 @@ import dynamic from "next/dynamic"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Moment from "react-moment"
 
 const Footer = dynamic(() => import("../../components/Footer"))
@@ -19,44 +19,42 @@ export interface PostProps {
   relatedPosts: any[]
 }
 
-// Function to extract headings from HTML content
-const extractTableOfContents = (content) => {
-  if (!content) return []
-
-  // Create a temporary div to parse the HTML
-  const tempDiv = document.createElement("div")
-  tempDiv.innerHTML = content
-
-  // Find all heading elements
-  const headings = tempDiv.querySelectorAll("h2, h3, h4")
-
-  return Array.from(headings).map((heading, index) => {
-    // Create an ID if one doesn't exist
-    if (!heading.id) {
-      heading.id = `heading-${index}`
-    }
-
-    return {
-      id: heading.id,
-      text: heading.textContent,
-      level: Number.parseInt(heading.tagName.substring(1)),
-    }
-  })
+interface TOCItem {
+  id: string
+  text: string | null
+  level: number
 }
 
 export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: PostProps) {
-  const [tableOfContents, setTableOfContents] = useState([])
+  const [tableOfContents, setTableOfContents] = useState<TOCItem[]>([])
+  const contentRef = useRef<HTMLDivElement>(null)
 
+  // After content is rendered, update headings with ids and build TOC state
   useEffect(() => {
-    if (post?.content) {
-      setTableOfContents(extractTableOfContents(post.content))
+    if (contentRef.current) {
+      const headings = contentRef.current.querySelectorAll("h2, h3, h4")
+      const toc: TOCItem[] = Array.from(headings).map((heading, index) => {
+        if (!heading.id) {
+          heading.id = `heading-${index}`
+        }
+        return {
+          id: heading.id,
+          text: heading.textContent,
+          level: Number.parseInt(heading.tagName.substring(1)),
+        }
+      })
+      setTableOfContents(toc)
     }
   }, [post?.content])
 
-  // Extract categories/tags for breadcrumbs
-  // const categories = post?.categories?.nodes || []
-  // const primaryCategory = categories[0]?.name || "BASICS"
-  // const secondaryCategory = categories[1]?.name || "ON-PAGE SEO"
+  // Smooth scroll handler for table of contents links
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault()
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
     <>
@@ -65,7 +63,11 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
         <meta name="description" content={seo?.description} />
         <link
           rel="canonical"
-          href={seo?.canonicalUrl?.endsWith("/") ? seo?.canonicalUrl?.slice(0, -1) : seo?.canonicalUrl}
+          href={
+            seo?.canonicalUrl?.endsWith("/")
+              ? seo?.canonicalUrl?.slice(0, -1)
+              : seo?.canonicalUrl
+          }
         />
         <meta property="og:title" content={seo?.title} />
         <meta property="og:description" content={seo?.description} />
@@ -78,12 +80,12 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumbs */}
           <div className="text-sm mb-6 flex items-start justify-start gap-2">
-            <Link href="/blog" style={{ textDecoration: 'none' }}>
-            <p className="text-[#12143A] hover:text-[#F0B254] uppercase">BLOG</p>
+            <Link href="/blog" style={{ textDecoration: "none" }}>
+              <p className="text-[#12143A] hover:text-[#F0B254] uppercase">BLOG</p>
             </Link>{" "}
             /{" "}
-            <p>
-            <p className="text-[#12143A] hover:text-[#F0B254] uppercase">{seo?.title}</p>
+            <p className="text-[#12143A] hover:text-[#F0B254] uppercase">
+              {seo?.title}
             </p>
           </div>
 
@@ -93,7 +95,10 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
             <div
               className="absolute inset-0 bg-cover bg-center z-0"
               style={{
-                backgroundImage: `url(${post?.featuredImage?.node?.sourceUrl || "/placeholder.svg?height=800&width=1600"})`,
+                backgroundImage: `url(${
+                  post?.featuredImage?.node?.sourceUrl ||
+                  "/placeholder.svg?height=800&width=1600"
+                })`,
                 filter: "blur(1px)",
               }}
             ></div>
@@ -107,13 +112,19 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
                 </h1>
               </div>
               <div>
-                <p className="text-lg text-white/90 mb-6">{seo?.description}</p>
+                <p className="text-lg text-white/90 mb-6">
+                  {seo?.description}
+                </p>
                 <div className="border-t border-white/20 pt-4">
                   <p className="text-white/90">
-                    Written by <span className="font-semibold text-white">{post?.author?.node?.name}</span>
+                    Written by{" "}
+                    <span className="font-semibold text-white">
+                      {post?.author?.node?.name}
+                    </span>
                   </p>
                   <p className="text-white/80">
-                    Last Updated <Moment format="MMMM D, YYYY">{post?.date}</Moment>
+                    Last Updated{" "}
+                    <Moment format="MMMM D, YYYY">{post?.date}</Moment>
                   </p>
                 </div>
               </div>
@@ -125,61 +136,33 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
             {/* Table of Contents - Left Sidebar */}
             <div className="lg:col-span-3">
               <div className="bg-white p-6 rounded-lg shadow-sm sticky top-6">
-                <p className="text-xl font-semibold mb-4">Table of Contents</p>
+                <p className="text-xl font-semibold mb-4">
+                  Table of Contents
+                </p>
                 <nav>
                   <ul className="space-y-3">
                     {tableOfContents.map((heading) => (
                       <li
                         key={heading.id}
-                        className={`${heading.level === 2 ? "ml-0" : heading.level === 3 ? "ml-4" : "ml-6"}`}
+                        className={`${
+                          heading.level === 2
+                            ? "ml-0"
+                            : heading.level === 3
+                            ? "ml-4"
+                            : "ml-6"
+                        }`}
                       >
                         <a
                           href={`#${heading.id}`}
-                          style={{ textDecoration: 'none' }}
-                          
+                          onClick={(e) => handleSmoothScroll(e, heading.id)}
+                          style={{ textDecoration: "none" }}
                         >
-                          <p className="text-gray-700 hover:text-[#F0B254] block transition-colors">{heading.text}</p>
+                          <p className="text-gray-700 hover:text-[#F0B254] block transition-colors">
+                            {heading.text}
+                          </p>
                         </a>
                       </li>
                     ))}
-                    {tableOfContents.length === 0 && (
-                      <>
-                        <li>
-                          <a
-                            href="#what-is-domain"
-                            className="text-gray-700 hover:text-purple-600 block transition-colors"
-                          >
-                            What is a Domain Name?
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="#why-matters"
-                            className="text-gray-700 hover:text-purple-600 block transition-colors"
-                          >
-                            Why Choosing a Domain Name Matters for SEO
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="#how-to-choose"
-                            className="text-gray-700 hover:text-purple-600 block transition-colors"
-                          >
-                            How to Choose a Domain Name for SEO
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#faqs" className="text-gray-700 hover:text-purple-600 block transition-colors">
-                            Frequently Asked Questions (FAQs)
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#optimize" className="text-gray-700 hover:text-purple-600 block transition-colors">
-                            Optimize Your Domain Name for SEO
-                          </a>
-                        </li>
-                      </>
-                    )}
                   </ul>
                 </nav>
               </div>
@@ -189,9 +172,10 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
             <div className="lg:col-span-6">
               <article className="bg-white p-8 rounded-lg shadow-sm">
                 <div
+                  ref={contentRef}
                   className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700"
                   dangerouslySetInnerHTML={{ __html: String(post?.content) }}
-                ></div>
+                />
               </article>
             </div>
 
@@ -201,10 +185,15 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
                 {/* Author Info */}
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <p className="text-xl font-semibold">Author</p>
-                  <Link href="/author/asim-ali" style={{ textDecoration: 'none' }} className="flex items-center no-underline hover:underline">
+                  <Link
+                    href="/author/asim-ali"
+                    style={{ textDecoration: "none" }}
+                    className="flex items-center no-underline hover:underline"
+                  >
                     <div className="flex-shrink-0 mr-2">
                       <Image
-                        src={"https://asimaliprod.wpengine.com/wp-content/uploads/2024/05/asim-logo-1-1.png"
+                        src={
+                          "https://asimaliprod.wpengine.com/wp-content/uploads/2024/05/asim-logo-1-1.png"
                         }
                         alt={post?.author?.node?.name || "Author"}
                         width={60}
@@ -213,22 +202,35 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
                       />
                     </div>
                     <div>
-                      <p className="font-semibold text-lg text-gray-900 hover:text-[#F0B254] mt-2">{post?.author?.node?.name}</p>
+                      <p className="font-semibold text-lg text-gray-900 hover:text-[#F0B254] mt-2">
+                        {post?.author?.node?.name}
+                      </p>
                     </div>
                   </Link>
                 </div>
 
                 {/* Related Posts */}
                 <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-xl font-semibold mb-4">Related Resources</p>
+                  <p className="text-xl font-semibold mb-4">
+                    Related Resources
+                  </p>
                   <ul className="space-y-4">
                     {relatedPosts?.map((relatedPost, index) => (
                       <li key={index}>
                         <Link
-                        style={{ textDecoration: 'none' }}
+                          style={{ textDecoration: "none" }}
                           href={relatedPost.uri}
                         >
-                          <p className="text-gray-700 hover:text-[#12143A] font-medium block transition-colors">{relatedPost.title}</p>
+                          <p className="text-gray-700 hover:text-[#F0B254] font-medium block transition-colors">
+                            {relatedPost.title}
+                          </p>
+                          {relatedPost.excerpt && (
+                            <p className="text-gray-500 text-sm">
+                              {relatedPost.excerpt
+                                .replace(/<[^>]+>/g, "")
+                                .substring(0, 100) + "..."}
+                            </p>
+                          )}
                         </Link>
                       </li>
                     ))}
@@ -236,7 +238,7 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
                       <>
                         <li>
                           <Link
-                          style={{ textDecoration: 'none' }}
+                            style={{ textDecoration: "none" }}
                             href="#"
                             className="text-gray-700 hover:text-[#F0B254] font-medium block transition-colors"
                           >
@@ -245,7 +247,7 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
                         </li>
                         <li>
                           <Link
-                          style={{ textDecoration: 'none' }}
+                            style={{ textDecoration: "none" }}
                             href="#"
                             className="text-gray-700 hover:text-[#F0B254] font-medium block transition-colors no-underline"
                           >
@@ -268,13 +270,22 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
 }
 
 export default function Page({ seo, settings, mainMenus, post, relatedPosts }) {
-  return <PostComponent post={post} seo={seo} settings={settings} mainMenus={mainMenus} relatedPosts={relatedPosts} />
+  return (
+    <PostComponent
+      post={post}
+      seo={seo}
+      settings={settings}
+      mainMenus={mainMenus}
+      relatedPosts={relatedPosts}
+    />
+  )
 }
 
 export async function getStaticProps({ params }) {
   const id = params?.postSlug
   const { data } = await apolloClient.query({
-    query: gql`query{
+    query: gql`
+      query {
         post(id: "${id}", idType: URI) {
           date
           content(format: RENDERED)
@@ -330,7 +341,7 @@ export async function getStaticProps({ params }) {
               }
             }
             generalSettings {
-                schemaProductRating
+              schemaProductRating
             }
             footerSettings {
               socialUrl {
@@ -360,11 +371,11 @@ export async function getStaticProps({ params }) {
           }
         }
 
-        menus(where: {location: PRIMARY}) {
+        menus(where: { location: PRIMARY }) {
           nodes {
             name
             slug
-            menuItems(first: 150){
+            menuItems(first: 150) {
               nodes {
                 url
                 target
@@ -373,7 +384,7 @@ export async function getStaticProps({ params }) {
                 cssClasses
                 description
                 id
-                childItems (first: 150) {
+                childItems(first: 150) {
                   nodes {
                     uri
                     label
@@ -383,58 +394,38 @@ export async function getStaticProps({ params }) {
             }
           }
         }
-      }`,
+      }
+    `,
   })
 
-  // Get related posts based on categories or tags
+  // Get related posts based on similar type in the blog title and excerpt.
   let relatedPosts = []
-  // const postCategories = data?.post?.categories?.nodes || []
-  // const postTags = data?.post?.tags?.nodes || []
-
-
-  // if (postCategories.length > 0 || postTags.length > 0) {
-  //   const categoryIds = postCategories.map((cat) => cat.id); // Assuming 'id' is of type ID
-  //   const tagIds = postTags.map((tag) => tag.id); // Assuming 'id' is of type ID
-  
-  //   // Construct the 'where' clause dynamically
-  //   const whereClause: any = {
-  //     notIn: [id],
-  //   };
-  //   if (categoryIds.length > 0) {
-  //     whereClause.categoryIn = categoryIds;
-  //   }
-  
-  //   const relatedQuery = await apolloClient.query({
-  //     query: gql`
-  //       query RelatedPosts($categoryIds: [ID!], $tagIds: [ID!], $excludeId: ID!) {
-  //         posts(
-  //           where: {
-  //             ${categoryIds.length > 0 ? 'categoryIn: $categoryIds,' : ''}
-  //             ${tagIds.length > 0 ? 'tagIn: $tagIds,' : ''}
-  //             notIn: [$excludeId]
-  //           },
-  //           first: 5
-  //         ) {
-  //           nodes {
-  //             title
-  //             uri
-  //             date
-  //           }
-  //         }
-  //       }
-  //     `,
-  //     variables: {
-  //       categoryIds: categoryIds.length > 0 ? categoryIds : undefined,
-  //       tagIds: tagIds.length > 0 ? tagIds : undefined,
-  //       excludeId: id,
-  //     },
-  //   });
-  
-  //   relatedPosts = relatedQuery?.data?.posts?.nodes || [];
-  // }
-  
-  
-  
+  if (data?.post?.title) {
+    // Use the first three words of the title as a search term.
+    const searchTerm = data.post.title.split(" ").slice(0, 3).join(" ")
+    const relatedQuery = await apolloClient.query({
+      query: gql`
+        query RelatedPosts($search: String!, $excludeId: ID!) {
+          posts(
+            where: { search: $search, notIn: [$excludeId] },
+            first: 5
+          ) {
+            nodes {
+              title
+              uri
+              date
+              excerpt
+            }
+          }
+        }
+      `,
+      variables: {
+        search: searchTerm,
+        excludeId: id,
+      },
+    })
+    relatedPosts = relatedQuery?.data?.posts?.nodes || []
+  }
 
   const seo = data?.post?.seo
   const settings = data?.settingsOptions?.AsimOptions
@@ -463,13 +454,15 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const { data } = await apolloClient.query({
-    query: gql`query{
-      posts {
-        nodes {
-          uri
+    query: gql`
+      query {
+        posts {
+          nodes {
+            uri
+          }
         }
       }
-    }`,
+    `,
   })
   const paths = data?.posts?.nodes?.map((post: { uri: any }) => ({
     params: { postSlug: post?.uri },
@@ -479,4 +472,3 @@ export async function getStaticPaths() {
     fallback: "blocking",
   }
 }
-

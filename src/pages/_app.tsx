@@ -3,7 +3,6 @@ import '../../styles/globals.scss'
 import { FaustProvider } from "@faustjs/next";
 import { useEffect } from "react";
 import "scss/main.scss";
-import { SSRProvider } from 'react-bootstrap';
 import { client } from "client";
 
 import App, { AppContext } from "next/app";
@@ -60,7 +59,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
   return (
-    <SSRProvider>
     <>
       <FaustProvider client={client} pageProps={pageProps}>
       <Script id="gtm" strategy="lazyOnload">
@@ -89,7 +87,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </FaustProvider>
     </>
-    </SSRProvider>
   );
 }
 
