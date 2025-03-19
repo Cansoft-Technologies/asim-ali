@@ -7,6 +7,11 @@
       "dom.iterable",
       "esnext"
     ],
+    "paths": {
+      "@/styles/*": [
+        "styles/*"
+      ]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -24,8 +29,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/components/PartnerLogo.tsx"  ],
+    "src/components/PartnerLogo.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]

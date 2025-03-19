@@ -1,0 +1,42 @@
+// styles/globals.scss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Your custom SCSS below
+/* Custom styles for blog post content */
+
+/* Sticky sidebar behavior */
+@media (min-width: 1024px) {
+  .sticky {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+/* Background overlay effects */
+.bg-overlay {
+  position: relative;
+}
+
+.bg-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(91, 33, 182, 0.7);
+  z-index: 1;
+}
+
+.bg-overlay > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Add a subtle shadow to the title section */
+.title-section {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
