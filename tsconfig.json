@@ -29,6 +29,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx",
     "src/components/PartnerLogo.tsx"
   ],
   "exclude": [
