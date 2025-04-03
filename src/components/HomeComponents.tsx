@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import ApplyApprovedLoc from "./ApplyApprovedLoc";
 import CategoryTabs from "./CatagoryTabs";
 import HomeBuyerLoc from "./HomebuyerLoc";
+import MortgageRatesCalculator from "./mortgage-rates-calculator";
 const ContactSection = dynamic(() => import("components/ContactSection"));
 const MortgageAdvisorHome = dynamic(() => import("components/MortgageAdvisorHome"));
 const MortgageFeaturedHomePage = dynamic(
@@ -56,7 +57,8 @@ const HomeComponents = (props: Props) => {
       <MortgageFeaturedHomePage advisorData={mortgageInterestData} />
       <MortgageAdvisorHome advisorData={advisorData} />
       {/* <FlexibilityTab tabData={tabRenovationData} /> */}
-      <Meeting meetings={meetings} />
+      {/* <Meeting meetings={meetings} /> */}
+      <MortgageRatesCalculator/>
       <ApplyApprovedLoc
         approvalRenovationData={approvalRenovationData}
         sliders={sliders}

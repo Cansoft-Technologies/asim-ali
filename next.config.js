@@ -28,6 +28,11 @@ function oldPageRedirectRules() {
 module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
+      compiler: {
+        removeConsole: {
+          exclude: ['error'],
+        },
+      },
       trailingSlash: false,
       images: {
         unoptimized: true,

@@ -15,6 +15,38 @@ import { useReportWebVitals } from 'next/web-vitals'
 import { gtmPageView, pageview } from "lib/gtm";
 import { useRouter } from "next/router";
 import Script from "next/script";
+import { Open_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
+
+// Load RB Magnat Neue Test as local font
+const rbMagnat = localFont({
+  src: [
+    {
+      path: '../../public/fonts/RB-Magnat-Neue-Test.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-rb-magnat',
+});
+
+const helvetica = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Helvetica-Neue.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-helvetica',
+});
+
+// Load Open Sans from Google Fonts
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+});
+
 const blacklist_countries = [
   "PL", // Poland
 ];
@@ -59,7 +91,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
   return (
-    <>
+    <main className={`${rbMagnat.variable} ${openSans.variable} ${helvetica.variable} font-sans`}>
       <FaustProvider client={client} pageProps={pageProps}>
       <Script id="gtm" strategy="lazyOnload">
       {`
@@ -86,7 +118,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       />
         <Component {...pageProps} />
       </FaustProvider>
-    </>
+      </main>
   );
 }
 
