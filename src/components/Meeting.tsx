@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Alert, Col, Container, Row } from "react-bootstrap";
+import MortgageRatesCalculator from "./mortgage-rates-calculator";
 
 type MyProps = {
   meetings: any;
@@ -117,79 +118,7 @@ const updatedRates = dataRates.map((rate: any) => {
                 </div>
               </Col>
             </Row>
-            <Row lg={12} className="text-center mt-5">
-              <Col
-                className="rates-table"
-                lg={10}
-                md={{ span: 10, offset: 1 }}
-              >
-                <Row>
-                  <Col lg={3}>
-                    <Row>
-                      <Col lg={12} md={6}>
-                        <div className="variable-prime-rates">
-                          <p>
-                            {variableRate} <span>%</span>
-                          </p>
-                          <span className="small-print">Current Variable Rate</span>
-                        </div>
-                      </Col>
-                      <Col lg={12} md={6}>
-                        <div className="variable-prime-rates">
-                          <p>
-                            {primeRate} <span>%</span>
-                          </p>
-                          <span className="small-print">Current Prime Rate</span>
-                        </div>
-                      </Col>
-                      <Col lg={12}>
-                        <Alert variant="info" className="small">
-                          <p>
-                            <b>Please Note:</b> Some conditions may apply. Rates may
-                            vary from Province to Province. Rates subject to change
-                            without notice. Posted rates may be high ratio and/or
-                            quick close which can differ from conventional rates.{" "}
-                            *O.A.C. & E.O
-                          </p>
-                        </Alert>
-                      </Col>
-                    </Row>
-                  </Col>
-                  <Col lg={9} className="rates">
-                    <Row>
-                      <Col xs={2}>
-                        <b>Terms</b>
-                      </Col>
-                      <Col xs={2}>
-                        <b>Bank Rates</b>
-                      </Col>
-                      <Col xs={2}>
-                        <b>Payment Per $100K</b>
-                      </Col>
-                      <Col xs={2}>
-                        <b>Our Rates</b>
-                      </Col>
-                      <Col xs={2}>
-                        <b>Payment Per $100K</b>
-                      </Col>
-                      <Col xs={2}>
-                        <b>Savings</b>
-                      </Col>
-                    </Row>
-                    {updatedRates.map((rate, index) => (
-                      <Row key={index}>
-                        <Col xs={2}>{rate.term}</Col>
-                        <Col xs={2}>{parseFloat(rate.bankRate).toFixed(2)} %</Col>
-                        <Col xs={2}>{rate.bankPayment}</Col>
-                        <Col xs={2}>{parseFloat(rate.ourRate).toFixed(2)} %</Col>
-                        <Col xs={2}>{rate.ourPayment}</Col>
-                        <Col xs={2}>{rate.savings}</Col>
-                      </Row>
-                    ))}
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
+            <MortgageRatesCalculator/>
           </Container>
         </div>
   );
