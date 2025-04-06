@@ -11,7 +11,6 @@ module.exports = {
   prefix: "",
   theme: {
     extend: {
-      extend: {
         fontFamily: {
           sans: ["var(--font-open-sans)", "sans-serif"],
           rb: ["var(--font-rb-magnat)", "sans-serif"],
@@ -20,7 +19,6 @@ module.exports = {
           avenirBook: ["AvenirBook", "sans-serif"],
           avenirRoman: ["AvenirRoman", "sans-serif"],
         },
-      },
       textDecoration: "none",
       // hover styling goes here
       _hover: {
