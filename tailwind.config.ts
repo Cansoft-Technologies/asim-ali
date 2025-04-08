@@ -15,6 +15,7 @@ module.exports = {
           sans: ["var(--font-open-sans)", "sans-serif"],
           rb: ["var(--font-rb-magnat)", "sans-serif"],
           hlv: ["var(--font-helvetica)", "sans-serif"],
+          oswald: ["var(--font-oswald)", "sans-serif"],
           avenirBlack: ["AvenirBlack", "sans-serif"],
           avenirBook: ["AvenirBook", "sans-serif"],
           avenirRoman: ["AvenirRoman", "sans-serif"],
