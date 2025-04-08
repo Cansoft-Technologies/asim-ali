@@ -56,7 +56,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 pt-12">
+        <div className="border-t border-b border-gray-200 py-12">
           <PartnerLogos />
         </div>
       </div>
