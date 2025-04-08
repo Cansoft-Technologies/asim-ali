@@ -15,7 +15,7 @@ import { useReportWebVitals } from 'next/web-vitals'
 import { gtmPageView, pageview } from "lib/gtm";
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { Open_Sans } from 'next/font/google';
+import { Open_Sans, Oswald } from 'next/font/google';
 import localFont from 'next/font/local';
 
 // Load RB Magnat Neue Test as local font
@@ -45,6 +45,10 @@ const helvetica = localFont({
 const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-open-sans',
+});
+const oswald = Oswald({
+  subsets: ['latin'],
+  variable: '--font-oswald',
 });
 
 const blacklist_countries = [
@@ -91,7 +95,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
   return (
-    <main className={`${rbMagnat.variable} ${openSans.variable} ${helvetica.variable} font-sans`}>
+    <main className={`${rbMagnat.variable} ${openSans.variable} ${helvetica.variable} ${oswald.variable} font-sans`}>
       <FaustProvider client={client} pageProps={pageProps}>
       <Script id="gtm" strategy="lazyOnload">
       {`
