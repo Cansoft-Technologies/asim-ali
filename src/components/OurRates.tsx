@@ -100,7 +100,7 @@ export default function OurRates(props: MyProps) {
     <div className="container mx-auto p-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
         <div
-          className="text-4xl fnt-rb md:text-5xl xl:text-[48px] font-bold leading-7 text-[#000000] mb-6 md:mb-0"
+          className="text-[#000000] mb-6 md:mb-0"
           dangerouslySetInnerHTML={{__html: title}}
         >
         </div>

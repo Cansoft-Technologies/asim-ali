@@ -16,6 +16,7 @@ import FeaturedTab from "components/FeaturedTab";
 import CategoryTabs from "components/CatagoryTabs";
 import ClientReviews from "components/ClientReviews";
 import EmbeddedMap from "components/EmbeddedMap";
+import { Fragment } from "react";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -340,17 +341,14 @@ export default function NewLangley(props: MyProps) {
     `<p><span style="font-weight: 400;">
 </span></p>\n` + "";
   const rateTitle = `
-<h2>Current Mortgage Rates in Langley</h2>
-<p>Talking about rates can seem a bit tricky, but it's just about finding out how much it costs to borrow money for your house. We work hard to make sure you get a great deal. Think of it like this: if you were buying a new car and one dealership had it for less money than another, you'd want to go to the cheaper dealership, right? It's the same with borrowing money for a house. We look around at lots of different places to find you a rate that's like getting your new car at the best price!
-</p>
-
+<h2 className="text-4xl font-rb md:text-5xl xl:text-[48px] font-bold leading-7">Current Mortgage Rates in Langley</h2>
 `;
   return (
     <>
       <Head>
         {metaData?.map((meta,index) => {
           return (
-            <>
+            <Fragment key={index}>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
               <link
@@ -375,7 +373,7 @@ export default function NewLangley(props: MyProps) {
           dangerouslySetInnerHTML={{ __html: schemaCode }}
           key="product-jsonld"
         />
-            </>
+            </Fragment>
           );
         })}
       </Head>
