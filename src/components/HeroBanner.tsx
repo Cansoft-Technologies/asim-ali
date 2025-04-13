@@ -9,14 +9,19 @@ export default function HeroBanner() {
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-between bg-[#0a1e3b] text-white">
       {/* Background image with overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-40"
-        style={{
-          backgroundImage:
-            "url('https://asimaliprod.wpengine.com/wp-content/uploads/2024/09/Expert-Mortgage-Broker-in-Vancouver-scaled.webp?height=1080&width=1920')",
-          backgroundBlendMode: "overlay",
-        }}
-      />
+      <Image
+                      src="https://asimaliprod.wpengine.com/wp-content/uploads/2024/09/Expert-Mortgage-Broker-in-Vancouver-scaled.webp?height=1080&width=1920"
+                      alt="Background"
+                      fill
+                      sizes="100vw"
+                      className="object-cover object-center"
+                      priority
+                    />
+                    {/* Overlay div to handle the blend mode */}
+                    <div 
+                      className="absolute inset-0 bg-[#0a1e3b]/40 mix-blend-overlay" 
+                      aria-hidden="true"
+                    />
       
         <Header />
       {/* Content section */}
@@ -33,13 +38,13 @@ export default function HeroBanner() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/about-us">
-              <Button className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium px-10 py-3 text-base rounded-none">
+              <Button variant="outline" className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium px-10 py-3 text-base rounded-none">
               Learn More About Our Team
               </Button>
             </Link>
             <Link href="/apply-now">
               <Button
-                variant="outline"
+              variant="outline"
                 className="border border-[#F0B254] border-1 text-white hover:bg-[#F0B254]/10 px-10 py-3 text-base rounded-none"
               >
                 Apply Now

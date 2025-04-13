@@ -2,11 +2,21 @@ import Image from "next/image"
 
 export default function ApprovalProcessSection() {
   return (
-    <section className="relative text-white py-16 px-4 md:px-8 overflow-hidden">
-          {/* Background logo */}
-          <div className="absolute right-0 top-0 h-full pointer-events-none">
-            <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/service-bg.png" alt="" width={500} height={700} className="h-full w-auto" />
-          </div>
+    <section className="relative text-white py-16 px-4 h-full w-full md:px-8 overflow-hidden min-h-[850px] flex flex-col justify-center items-center">
+      {/* Background image with overlay */}
+      <Image
+          src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/service-bg.png?height=1080&width=1920"
+          alt="Background"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+        {/* Overlay div to handle the blend mode */}
+        <div 
+          className="absolute inset-0 mix-blend-overlay" 
+          aria-hidden="true"
+        />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">

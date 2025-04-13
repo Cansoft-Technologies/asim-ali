@@ -116,7 +116,7 @@ export default function TestimonialSlider() {
   
   return (
     <div 
-      className="relative w-full overflow-hidden bg-[#0a1e3b]/80 backdrop-blur-sm py-6"
+      className="relative w-full overflow-hidden py-6"
       onMouseEnter={() => setIsMouseOver(true)}
       onMouseLeave={() => setIsMouseOver(false)}
     >
@@ -131,7 +131,7 @@ export default function TestimonialSlider() {
       >
         {allTestimonials.map((testimonial, index) => (
           <div key={testimonial.id} className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-2">
-          <div className="bg-[#0a1e3b]/60 backdrop-blur-sm p-3 rounded-md border border-white/10 h-full">
+          <div className="bg-transparent backdrop-blur-sm p-3 rounded-md border border-white/10 h-full">
             <p className="text-xs text-white/90 mb-2 line-clamp-2">{testimonial.text}</p>
 
             <div className="flex items-center justify-between gap-2">
