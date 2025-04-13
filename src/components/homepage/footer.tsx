@@ -6,9 +6,21 @@ export default function Footer() {
   return (
     <footer className="w-full text-white pt-16 pb-6 relative overflow-hidden">
       {/* Background logo watermark */}
-      <div className="absolute inset-0 z-0 right-0 top-0 h-full">
-        <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/service-bg.png" alt="" fill priority className="object-cover h-full" sizes="100vw" />
-      </div>
+      <div className="absolute inset-0">
+  <Image
+    src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Footerbgnew.png?height=1080&width=1920"
+    alt="Background"
+    fill
+    sizes="100vw"
+    className="object-cover object-center"
+    priority
+  />
+  {/* Overlay div to handle the blend mode */}
+  <div 
+    className="absolute inset-0 mix-blend-overlay" 
+    aria-hidden="true"
+  />
+</div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -147,7 +159,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-[#112845] pt-6">
+        <div className="pt-6">
           <p className="text-xs text-white/60 text-center">© Copyright 2025 Asim Ali | SEO By Cansoft</p>
         </div>
       </div>

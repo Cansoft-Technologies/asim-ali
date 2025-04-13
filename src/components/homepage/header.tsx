@@ -27,7 +27,7 @@ export default function Header() {
             </Link>
           </div>
           <Link href="/apply" className="hidden md:block">
-            <Button className="bg-transparent hover:bg-[#F0B254] text-white hover:text-black border border-1 border-[#F0B254] font-medium px-6 py-2 transition-colors">
+            <Button variant="outline" className="bg-transparent text-white hover:text-black hover:bg-[#F0B254]/10 border border-1 border-[#F0B254] font-medium px-6 py-2 transition-colors">
               Apply Now
             </Button>
           </Link>

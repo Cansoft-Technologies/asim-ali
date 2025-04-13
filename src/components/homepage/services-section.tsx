@@ -42,11 +42,21 @@ export default function MortgageAgencyServices() {
   ]
 
   return (
-    <section className="relative text-white py-16 px-4 md:px-8 overflow-hidden">
-              {/* Background logo */}
-              <div className="absolute right-0 top-0 inset-0 h-full pointer-events-none">
-                <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/service-bg.png" alt="" width={500} height={700} className="h-full w-auto" />
-              </div>
+    <section className="relative text-white py-16 px-4 h-full w-full md:px-8 overflow-hidden min-h-[850px] flex flex-col justify-center items-center">
+      {/* Background image with overlay */}
+      <Image
+                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/service-bg.png?height=1080&width=1920"
+                alt="Background"
+                fill
+                sizes="100vw"
+                className="object-cover object-center"
+                priority
+              />
+              {/* Overlay div to handle the blend mode */}
+              <div 
+                className="absolute inset-0 mix-blend-overlay" 
+                aria-hidden="true"
+              />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header section */}
