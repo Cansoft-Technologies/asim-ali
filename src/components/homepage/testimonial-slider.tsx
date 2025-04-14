@@ -144,11 +144,11 @@ export default function TestimonialSlider() {
                 <div className="flex items-center gap-1">
                     <span className="text-xs text-gray-400">Reviews on</span>
                     <Image 
-                      src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/logos_google.png" 
+                      src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/google.png" 
                       alt="Google" 
                       width={50} 
                       height={16}
-                      className="h-4 w-auto"
+                      className="h-8 w-auto"
                     />
                   </div>
             </div>
