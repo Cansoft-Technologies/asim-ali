@@ -153,7 +153,7 @@ export default function HistoricalMortgageRates() {
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="5 Year Mortgage" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="1-year">1 Year Mortgage</SelectItem>
                   <SelectItem value="2-year">2 Year Mortgage</SelectItem>
                   <SelectItem value="3-year">3 Year Mortgage</SelectItem>

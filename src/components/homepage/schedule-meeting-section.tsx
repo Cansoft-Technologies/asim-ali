@@ -206,7 +206,7 @@ export default function ScheduleMeetingSection() {
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Alberta" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-white">
                         <SelectItem value="alberta">Alberta</SelectItem>
                         <SelectItem value="bc">British Columbia</SelectItem>
                         <SelectItem value="ontario">Ontario</SelectItem>
@@ -226,7 +226,7 @@ export default function ScheduleMeetingSection() {
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Please Select" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-white">
                         <SelectItem value="phone">Phone</SelectItem>
                         <SelectItem value="email">Email</SelectItem>
                         <SelectItem value="text">Text Message</SelectItem>
@@ -242,7 +242,7 @@ export default function ScheduleMeetingSection() {
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Please Select" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-white">
                         <SelectItem value="new-mortgage">New Mortgage</SelectItem>
                         <SelectItem value="refinance">Refinance</SelectItem>
                         <SelectItem value="renewal">Mortgage Renewal</SelectItem>
@@ -260,7 +260,7 @@ export default function ScheduleMeetingSection() {
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Please Select" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       <SelectItem value="purchase">Home Purchase</SelectItem>
                       <SelectItem value="refinance">Refinancing</SelectItem>
                       <SelectItem value="renewal">Mortgage Renewal</SelectItem>

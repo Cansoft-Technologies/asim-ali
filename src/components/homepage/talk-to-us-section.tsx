@@ -1,7 +1,8 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "components/ui/button"
-import { Check } from "lucide-react"
+import { Button } from "components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { IoMdCheckboxOutline } from "react-icons/io";
+
 
 export default function TalkToUsSection() {
   return (
@@ -27,7 +28,7 @@ export default function TalkToUsSection() {
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 mt-1">
                   <div className="h-5 w-5 text-[#0a1e3b]">
-                    <Check className="h-5 w-5" />
+                    <IoMdCheckboxOutline className="h-5 w-5" />
                   </div>
                 </div>
                 <div>
@@ -39,7 +40,7 @@ export default function TalkToUsSection() {
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 mt-1">
                   <div className="h-5 w-5 text-[#0a1e3b]">
-                    <Check className="h-5 w-5" />
+                    <IoMdCheckboxOutline className="h-5 w-5" />
                   </div>
                 </div>
                 <div>
@@ -51,7 +52,7 @@ export default function TalkToUsSection() {
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 mt-1">
                   <div className="h-5 w-5 text-[#0a1e3b]">
-                    <Check className="h-5 w-5" />
+                    <IoMdCheckboxOutline className="h-5 w-5" />
                   </div>
                 </div>
                 <div>
@@ -63,7 +64,7 @@ export default function TalkToUsSection() {
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 mt-1">
                   <div className="h-5 w-5 text-[#0a1e3b]">
-                    <Check className="h-5 w-5" />
+                    <IoMdCheckboxOutline className="h-5 w-5" />
                   </div>
                 </div>
                 <div>
