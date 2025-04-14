@@ -144,7 +144,7 @@ export default function Header() {
 
   return (
     <header className="relative z-50 bg-transparent shadow-sm" ref={menuRef}>
-      <div className="container mx-auto px-6 md:px-12 py-4">
+      <div className="container mx-auto px-6 md:px-12 py-4" onMouseLeave={() => setActiveMenu(null)}>
         <div className="flex justify-between items-center">
           <div className="w-48">
             <Image
@@ -158,7 +158,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 no-underline">
-            <Link href="/" className="text-base text-white hover:text-[#F0B254] transition-colors">
+            <Link style={{ textDecoration: "none" }} href="/" className="text-base text-white hover:text-[#F0B254] transition-colors">
               Home
             </Link>
 
@@ -166,7 +166,7 @@ export default function Header() {
             <div
               className="relative"
               onMouseEnter={() => setActiveMenu("services")}
-              onMouseLeave={() => setActiveMenu(null)}
+              // onMouseLeave={() => setActiveMenu(null)}
               onKeyDown={(e) => handleKeyDown(e, "services")}
               tabIndex={0}
             >
@@ -182,7 +182,7 @@ export default function Header() {
             <div
               className="relative"
               onMouseEnter={() => setActiveMenu("rates")}
-              onMouseLeave={() => setActiveMenu(null)}
+              // onMouseLeave={() => setActiveMenu(null)}
               onKeyDown={(e) => handleKeyDown(e, "rates")}
               tabIndex={0}
             >
@@ -196,7 +196,6 @@ export default function Header() {
             <div
               className="relative"
               onMouseEnter={() => setActiveMenu("howItWorks")}
-              onMouseLeave={() => setActiveMenu(null)}
               onKeyDown={(e) => handleKeyDown(e, "howItWorks")}
               tabIndex={0}
             >
@@ -208,7 +207,7 @@ export default function Header() {
               </button>
             </div>
 
-            <Link href="/about" className="text-base text-white hover:text-[#F0B254] transition-colors">
+            <Link style={{ textDecoration: "none" }} href="/about" className="text-base text-white hover:text-[#F0B254] transition-colors">
               About Us
             </Link>
           </div>
@@ -233,21 +232,22 @@ export default function Header() {
 
       {/* Mega Menu */}
       {activeMenu && (
-        <div className="absolute left-0 w-full bg-transparent backdrop-blur-sm p-3 rounded-md border border-white/10 z-50">
+        <div onMouseEnter={() => setActiveMenu(activeMenu)} onMouseLeave={() => setActiveMenu(null)} className="absolute left-0 top-full w-full bg-[#FFF9F0] backdrop-blur-sm p-3 rounded-md border border-white/10 z-50">
           <div className="container mx-auto px-6 md:px-12 py-8">
             <div className="grid grid-cols-12 gap-8">
               {/* Menu Columns */}
               {menuData[activeMenu as keyof typeof menuData].columns.map((column, colIndex) => (
                 <div key={colIndex} className="col-span-3">
-                  <h3 className="text-sm font-semibold text-gray-500 mb-4">{column.heading}</h3>
+                  <p className="text-sm md:text-2xl font-oswald text-[#12143A] mb-4">{column.heading}</p>
                   <ul className="space-y-3">
                     {column.items.map((item, itemIndex) => (
                       <li key={itemIndex}>
                         <Link
                           href={item.href}
-                          className="text-sm font-medium text-white hover:text-[#F0B254] transition-colors"
+                          style={{ textDecoration: "none" }}
+                          className=""
                         >
-                          {item.title}
+                          <p className="text-sm font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">{item.title}</p>
                         </Link>
                       </li>
                     ))}
@@ -291,15 +291,16 @@ export default function Header() {
       {mobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className="md:hidden absolute top-full left-0 right-0 bg-transparent backdrop-blur-sm p-3 rounded-md border-b border-gray-200 z-50 max-h-[80vh] overflow-y-auto"
+          className="md:hidden absolute top-full left-0 right-0 bg-[#FFF9F0] backdrop-blur-sm p-3 rounded-md border-b border-gray-200 z-50 max-h-[80vh] overflow-y-auto"
         >
           <div className="p-4 space-y-4">
             <Link
               href="/"
-              className="block py-2 text-white hover:text-[#F0B254] transition-colors"
+              
               onClick={() => setMobileMenuOpen(false)}
+              style={{ textDecoration: "none" }}
             >
-              Home
+              <p className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">Home</p>
             </Link>
 
             {/* Mobile Services Menu */}
@@ -308,7 +309,7 @@ export default function Header() {
                 className="flex items-center justify-between w-full py-2 text-white hover:text-[#F0B254] transition-colors"
                 onClick={() => setActiveMenu(activeMenu === "services" ? null : "services")}
               >
-                <span>Services</span>
+                <span className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">Services</span>
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${activeMenu === "services" ? "rotate-180" : ""}`}
                 />
@@ -318,16 +319,17 @@ export default function Header() {
                 <div className="pl-4 mt-2 space-y-4">
                   {menuData.services.columns.map((column, colIndex) => (
                     <div key={colIndex} className="mb-4">
-                      <h3 className="text-sm font-semibold text-gray-500 mb-2">{column.heading}</h3>
+                      <p className="text-md text-[#12143A] mb-2">{column.heading}</p>
                       <ul className="space-y-2">
                         {column.items.map((item, itemIndex) => (
                           <li key={itemIndex}>
                             <Link
                               href={item.href}
-                              className="block py-1 text-sm text-white hover:text-[#F0B254] transition-colors"
+                              className=""
                               onClick={() => setMobileMenuOpen(false)}
+                              style={{ textDecoration: "none" }}
                             >
-                              {item.title}
+                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">{item.title}</p>
                             </Link>
                           </li>
                         ))}
@@ -344,7 +346,7 @@ export default function Header() {
                 className="flex items-center justify-between w-full py-2 text-white hover:text-[#F0B254] transition-colors"
                 onClick={() => setActiveMenu(activeMenu === "rates" ? null : "rates")}
               >
-                <span>Current Rate</span>
+                <span className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">Current Rate</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${activeMenu === "rates" ? "rotate-180" : ""}`} />
               </button>
 
@@ -352,16 +354,17 @@ export default function Header() {
                 <div className="pl-4 mt-2 space-y-4">
                   {menuData.rates.columns.map((column, colIndex) => (
                     <div key={colIndex} className="mb-4">
-                      <h3 className="text-sm font-semibold text-gray-500 mb-2">{column.heading}</h3>
+                      <p className="text-md text-[#12143A] mb-2">{column.heading}</p>
                       <ul className="space-y-2">
                         {column.items.map((item, itemIndex) => (
                           <li key={itemIndex}>
                             <Link
                               href={item.href}
-                              className="block py-1 text-sm text-white hover:text-[#F0B254] transition-colors"
+                              style={{ textDecoration: "none" }}
+                              className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors"
                               onClick={() => setMobileMenuOpen(false)}
                             >
-                              {item.title}
+                            <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">{item.title}</p>
                             </Link>
                           </li>
                         ))}
@@ -378,7 +381,7 @@ export default function Header() {
                 className="flex items-center justify-between w-full py-2 text-white hover:text-[#F0B254] transition-colors"
                 onClick={() => setActiveMenu(activeMenu === "howItWorks" ? null : "howItWorks")}
               >
-                <span>How It Works</span>
+                <span className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">How It Works</span>
                 <ChevronDown
                   className={`h-4 w-4 transition-transform ${activeMenu === "howItWorks" ? "rotate-180" : ""}`}
                 />
@@ -388,16 +391,16 @@ export default function Header() {
                 <div className="pl-4 mt-2 space-y-4">
                   {menuData.howItWorks.columns.map((column, colIndex) => (
                     <div key={colIndex} className="mb-4">
-                      <h3 className="text-sm font-semibold text-gray-500 mb-2">{column.heading}</h3>
+                      <p className="text-md text-[#12143A] mb-2">{column.heading}</p>
                       <ul className="space-y-2">
                         {column.items.map((item, itemIndex) => (
                           <li key={itemIndex}>
                             <Link
+                            style={{ textDecoration: "none" }}
                               href={item.href}
-                              className="block py-1 text-sm text-white hover:text-[#F0B254] transition-colors"
                               onClick={() => setMobileMenuOpen(false)}
                             >
-                              {item.title}
+                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">{item.title}</p>
                             </Link>
                           </li>
                         ))}
@@ -410,16 +413,17 @@ export default function Header() {
 
             <Link
               href="/about"
-              className="block py-2 text-white hover:text-[#F0B254] transition-colors"
+              style={{ textDecoration: "none" }}
+              className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              About Us
+            <p className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">About Us</p>
             </Link>
 
             {/* Apply Now Button (Mobile) */}
             <div className="pt-2">
               <Link href="/apply" className="block w-full" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-transparent text-white hover:text-black hover:bg-[#F0B254]/10 border border-1 border-[#F0B254] font-medium py-2 rounded-md transition-colors">
+                <Button className="w-full bg-transparent text-[#12143A] hover:text-black hover:bg-[#F0B254]/10 border border-1 border-[#F0B254] font-medium py-2 rounded-md transition-colors">
                   Apply Now
                 </Button>
               </Link>
