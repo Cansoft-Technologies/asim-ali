@@ -2762,7 +2762,7 @@ arraybuffer.prototype.slice@^1.0.4:
     "@tailwindcss/line-clamp" "^0.4.4"
     "@tailwindcss/postcss" "^4.0.14"
     "@types/react-dom" "^18.3.1"
-    asim-ali "file:d:/Yarn/Cache/v6/npm-asim-ali-0.1.0-0b0cbcc8-3d36-46f7-a048-ab495a6067a5-1744615110012/node_modules/asim-ali"
+    asim-ali "file:d:/Yarn/Cache/v6/npm-asim-ali-0.1.0-9890c5c1-fcdb-4dd2-8c15-95cfa99f4991-1744698260391/node_modules/asim-ali"
     axios "^1.4.0"
     bootstrap "^5.2.2"
     class-variance-authority "^0.7.1"
@@ -2782,6 +2782,7 @@ arraybuffer.prototype.slice@^1.0.4:
     react-day-picker "^9.6.5"
     react-dom "^18.3.1"
     react-hook-form "^7.54.1"
+    react-icons "5.3.0"
     react-moment "^1.1.2"
     react-multi-carousel "^2.8.2"
     react-resizable-panels "^2.1.7"
@@ -5522,10 +5523,10 @@ react-hook-form@^7.54.1:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.55.0.tgz#df3c80a20a68f6811f49bec3406defaefb6dce80"
   integrity sha512-XRnjsH3GVMQz1moZTW53MxfoWN7aDpUg/GpVNc4A3eXRVNdGXfbzJ4vM4aLQ8g6XCUh1nIbx70aaNCl7kxnjog==
 
-react-icons@^5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.5.0.tgz#8aa25d3543ff84231685d3331164c00299cdfaf2"
-  integrity sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==
+react-icons@5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.3.0.tgz#ccad07a30aebd40a89f8cfa7d82e466019203f1c"
+  integrity sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==
 
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.7.0:
   version "16.13.1"
