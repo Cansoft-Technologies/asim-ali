@@ -34,6 +34,7 @@ const excludeItems = [
   "/new-homepage",
   "/new-apply-now",
   "/new-current-rates",
+  "/new-contact-us",
   "/location-sitemap.xml",
   "/sitemap-0.xml",
   ...locationRoutes,

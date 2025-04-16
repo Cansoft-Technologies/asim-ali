@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "components/ui/button"
 import Image from "next/image"
-import { Menu, X, ChevronDown, TrendingUp } from "lucide-react"
+import { Menu, X, ChevronDown, TrendingUp, Phone, Linkedin, Instagram, Facebook, Mail } from "lucide-react"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -143,8 +143,54 @@ export default function Header() {
   }
 
   return (
-    <header className="relative z-50 bg-transparent shadow-sm" ref={menuRef}>
-      <div className="container mx-auto px-6 md:px-12 py-4" onMouseLeave={() => setActiveMenu(null)}>
+    <header className="relative z-50 bg-[#1a1a3a] shadow-sm" ref={menuRef}>
+      <div className="w-full bg-[#1a1a3a] text-white py-2 px-4">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        {/* Left side - Email and License */}
+        <div className="flex items-center text-xs md:mb-0">
+          <Mail className="h-4 w-4 mr-2 text-white" />
+          <a style={{ textDecoration: "none" }} href="mailto:clientcare@asmail.ca" className="mr-3 text-white no-underline hover:text-[#F0B254] transition-colors">
+            clientcare@asmail.ca
+          </a>
+          <span className="hidden md:inline-block">|</span>
+          <span className="ml-3 hidden md:inline-block">Licensed in BC & AB</span>
+        </div>
+
+        {/* Center - Social Media Icons */}
+        <div className="flex space-x-4 md:mb-0  text-xs">
+          <a href="#" aria-label="Facebook" className="hover:text-gray-300 transition-colors no-underline">
+            <Facebook className="h-4 w-4 text-[#F0B254]" />
+          </a>
+          <a href="#" aria-label="Instagram" className="hover:text-gray-300 transition-colors">
+            <Instagram className="h-4 w-4 text-[#F0B254]" />
+          </a>
+          <a href="#" aria-label="LinkedIn" className="hover:text-gray-300 transition-colors">
+            <Linkedin className="h-4 w-4 text-[#F0B254]" />
+          </a>
+          <a href="#" aria-label="TikTok" className="hover:text-gray-300 transition-colors text-[#F0B254]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 text-[#F0B254]"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Right side - Phone Number */}
+        <div className="flex items-center text-xs">
+          <Phone className="h-4 w-4 mr-2 text-white" />
+          <a style={{ textDecoration: "none" }} href="tel:+16045913950" className="text-white">+16045913950</a>
+        </div>
+      </div>
+    </div>
+      <div className="container mx-auto px-6 md:px-12 py-2" onMouseLeave={() => setActiveMenu(null)}>
         <div className="flex justify-between items-center">
           <div className="w-48">
             <Image

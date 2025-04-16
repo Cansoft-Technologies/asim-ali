@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import HeroBanner from "components/HeroBanner";
 import HistoricalMortgageRates from "components/HistoricalMortgage";
 import Footer from "components/homepage/footer";
+import Header from "components/homepage/header";
 import MortgageRatesSection from "components/homepage/mortgage-rates-section";
 import RoleSection from "components/homepage/role-section";
 import TalkToUsSection from "components/homepage/talk-to-us-section";
@@ -172,7 +173,7 @@ const CurrentRates = (props: MyProps) => {
         })}
       </Head>
       <main className="min-h-screen">
-      <HeroBanner />
+      <Header/>
       <MortgageRatesSection />
       <TalkToUsSection />
       <HistoricalMortgageRates />
