@@ -1,40 +1,26 @@
 import { gql } from "@apollo/client";
-import CTASection from "components/CTASection";
-import HeroBanner from "components/HeroBanner";
-import ApprovalProcessSection from "components/homepage/approval-process-section";
-import Footer from "components/homepage/footer";
-import Header from "components/homepage/header";
-import ScheduleMeetingComponent from "components/ScheduleMeetingComponent";
+import {
+  faEnvelope,
+  faMapMarker,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ContactSection from "components/ContactSection";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
+import { Col, Container, Row } from "react-bootstrap";
+import { Hero } from "../components";
+import ExperienceRoleSection from "components/ExperienceRoleSection";
+import ScheduleMeetingForm from "components/ScheduleMeetingForm";
+import Header from "components/homepage/header";
+import Footer from "components/homepage/footer";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
       query {
-        pages(where: { id: 2222 }) {
+        pages(where: { id: 245 }) {
           nodes {
-            ApplyNow {
-              bannerTitle
-              bannerBackgroundImage {
-                altText
-                sourceUrl
-              }
-              formBackgroundImage {
-                altText
-                sourceUrl
-              }
-              applyStepHeading
-              applyStepSection{
-                firstStepTitle
-                firstStepDescription
-                secondStepTitle
-                secondStepDescription
-                thirdStepTitle
-                thirdStepDescription
-              }
-              applyNowContent
-            }
             seo {
               title
               description
@@ -46,9 +32,21 @@ export async function getStaticProps() {
                 }
               }
             }
+            contactPage {
+              contactBannerTitle
+              contactBannerHeading
+              contactBannerDescription
+              phoneNumber
+              eMail
+              address
+              addressMap
+              contactBannerBackgroundImage {
+                altText
+                sourceUrl
+              }
+            }
           }
         }
-
         settingsOptions {
           AsimOptions {
             headerSettings {
@@ -63,7 +61,7 @@ export async function getStaticProps() {
                 tiktok
                 linkedin
                 instagram
-              }              
+              }
               copyrightText
               footerLeftWidget {
                 title
@@ -98,7 +96,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems (first: 150) {
+                childItems(first: 150) {
                   nodes {
                     uri
                     label
@@ -121,7 +119,7 @@ export async function getStaticProps() {
   }
   return {
     props: {
-      howApplyData: data?.pages?.nodes,
+      contactData: data?.pages?.nodes,
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
@@ -131,22 +129,22 @@ export async function getStaticProps() {
 }
 
 type MyProps = {
-  howApplyData: any;
+  contactData: any;
   metaData: any;
   settings: any;
   mainMenus: any;
 };
 
-function ApplyNow(props: MyProps) {
-  const { settings, mainMenus, howApplyData, metaData } = props;
+export default function Page(props: MyProps) {
+  const { settings, mainMenus, contactData, metaData } = props;
 
   return (
     <>
-      {howApplyData?.map((data, index) => {
+      {contactData?.map((contact, index) => {
         return (
           <div key={index}>
             <Head>
-              {metaData?.map((meta,index) => {
+              {metaData?.map((meta, index) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>
@@ -160,7 +158,6 @@ function ApplyNow(props: MyProps) {
                       }
                     />
                     <meta property="og:title" content={meta?.seo?.title} />
-                    <meta name="robots" content="noindex"></meta>
                     <meta
                       property="og:description"
                       content={meta?.seo?.description}
@@ -173,18 +170,16 @@ function ApplyNow(props: MyProps) {
                 );
               })}
             </Head>
+
             <main className="min-h-screen">
-                  <Header />
-                  <ScheduleMeetingComponent />
-                  <ApprovalProcessSection />
-                  <CTASection />
-                  <Footer />
-                </main>
+              <Header />
+              <ScheduleMeetingForm />
+              <ExperienceRoleSection />
+              <Footer />
+            </main>
           </div>
         );
       })}
     </>
   );
 }
-
-export default ApplyNow;
