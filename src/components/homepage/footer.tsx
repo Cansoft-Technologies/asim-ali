@@ -46,9 +46,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-medium mb-4">Contact Us</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2">
+            <p className="text-2xl font-medium mb-4 text-start">Contact Us</p>
+            <ul className="space-y-3 flex flex-col items-start mt-3 px-0">
+              <li className="flex items-start gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -108,7 +108,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-xl font-medium mb-6">Quick Links</h3>
-            <ul className="space-y-3 mt-3">
+            <ul className="space-y-3 mt-3 px-0">
               <li>
                 <Link style={{textDecoration: "none"}} href="/" className="hover:text-[#F0B254] text-white">
                   Home
@@ -134,7 +134,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-xl font-medium mb-6">Services</h3>
-            <ul className="space-y-3 mt-3">
+            <ul className="space-y-3 mt-3 px-0">
               <li>
                 <Link style={{textDecoration: "none"}} href="/services" className="hover:text-[#F0B254] text-white">
                   Home
