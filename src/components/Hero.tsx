@@ -33,54 +33,53 @@ function Hero({
   buttonLeft,
   usingFor,
 }: Props): JSX.Element {
-  var words = title.split(' ');
-  var first = words.shift();
-  var others = words.join(' ');
+  const words = title.split(" ");
+  const first = words.shift();
+  const others = words.join(" ");
+
   return (
     <section
-      // eslint-disable-next-line react/jsx-props-no-spreading
       {...(id && { id })}
-      style={{ position: "relative"}}
       className={styles.hero}
     >
-      <div>
-                      <Image
-                        alt="Asim Ali Slider"
-                        fill
-                        src={bgImage}
-                        style={{ objectFit: "cover"}}
-                        
-                      />
-                    </div>
+      {bgImage && (
+        <Image
+          alt="Hero Background"
+          src={bgImage}
+          fill
+          priority
+          className={styles.backgroundImage}
+        />
+      )}
+
       <div className={styles.wrap}>
         <div className="hero-title-col col-xl-6 offset-xl-6">
-          {
-            usingFor === 'blocked' ? (
-              <p className="hero-title">
-            {first}
-              <span>
-                {others}
-              </span>
-          </p>
+          <p className="hero-title">
+            {usingFor === "blocked" ? (
+              <>
+                {first} <span>{others}</span>
+              </>
             ) : (
-              <p className="hero-title">
-            {title?.split(" ")[0]}
-            {title?.split(" ")[1] && title?.split(" ")[2] ? (
-              <span>
-                {title?.split(" ")[1]} {title?.split(" ")[2]}
-              </span>
-            ) : (
-              <span>{title?.split(" ")[1]}</span>
+              <>
+                {title.split(" ")[0]}
+                {title.split(" ")[1] && title.split(" ")[2] ? (
+                  <span>
+                    {" "}
+                    {title.split(" ")[1]} {title.split(" ")[2]}
+                  </span>
+                ) : (
+                  <span> {title.split(" ")[1]}</span>
+                )}
+              </>
             )}
-            {/* <span>{title?.split(" ")[1]}</span> */}
           </p>
-            )
-          }
         </div>
+
         <div className="banner-bottom col-md-11 offset-md-1 mt-5">
-          <p className="heading">{heading}</p>
-          <p className="description">{description}</p>
-          {buttonLeft && (
+          {heading && <p className="heading">{heading}</p>}
+          {description && <p className="description">{description}</p>}
+
+          {buttonLeft ? (
             <Row className="align-items-center home-slide">
               <Col className={styles.textPosition}>
                 {buttonText && buttonURL && (
@@ -99,28 +98,27 @@ function Hero({
                 )}
               </Col>
             </Row>
+          ) : (
+            <Row className="align-items-center home-slide">
+              <Col className="text-center mt-5 link_banner">
+                {buttonText && buttonURL && (
+                  <Link href={buttonURL}>
+                    <Button className={styles.bannerBtn}>
+                      <span>{buttonText}</span>
+                    </Button>
+                  </Link>
+                )}
+                {button2Text && button2URL && (
+                  <Link href={button2URL}>
+                    <Button className={styles.bannerBtn}>
+                      <span>{button2Text}</span>
+                    </Button>
+                  </Link>
+                )}
+              </Col>
+            </Row>
           )}
         </div>
-        {!buttonLeft && (
-          <Row className="align-items-center home-slide">
-            <Col className="text-center mt-5 link_banner">
-              {buttonText && buttonURL && (
-                <Link href={buttonURL}>
-                  <Button className={styles.bannerBtn}>
-                    <span>{buttonText}</span>
-                  </Button>
-                </Link>
-              )}
-              {button2Text && button2URL && (
-                <Link href={button2URL}>
-                  <Button className={styles.bannerBtn}>
-                    <span>{button2Text}</span>
-                  </Button>
-                </Link>
-              )}
-            </Col>
-          </Row>
-        )}
       </div>
     </section>
   );
