@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -7,6 +8,7 @@ type MyProps = {
 };
 export default function FeaturedSection(props: MyProps) {
   const { featuredData } = props;
+  console.log(featuredData, "featuredData");
   return (
     <section className="my-5">
       <Container>
