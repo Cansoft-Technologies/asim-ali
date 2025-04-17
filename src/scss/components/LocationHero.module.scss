@@ -5,7 +5,12 @@
   display: flex;
   align-items: center;
   color: #fff;
+  overflow: hidden;
 
+  .backgroundImage {
+    object-fit: cover;
+    z-index: 0;
+  }
 
   .container {
     position: relative;
@@ -26,6 +31,7 @@
     margin-bottom: 2rem;
   }
 }
+
 .bannerBtn {
   background: transparent;
   border: 2px solid #fff;
