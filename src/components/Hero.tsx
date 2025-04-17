@@ -51,7 +51,8 @@ function Hero({
           className={styles.backgroundImage}
         />
       )}
-
+{/* Overlay */}
+<div className={styles.overlay}></div>
       <div className={styles.wrap}>
         <div className="hero-title-col col-xl-6 offset-xl-6">
           <p className="hero-title">

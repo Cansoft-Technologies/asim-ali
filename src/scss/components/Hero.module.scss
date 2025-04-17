@@ -3,7 +3,7 @@
 @import "scss/variables";
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.65);
+background-color: rgba(0, 0, 0, 0.65);
   position: absolute;
   top: 0;
   left: 0;
@@ -20,6 +20,7 @@
 }
 
 .hero {
+  color: $color-white;
   position: relative;
   height: 100vh;
   overflow: hidden;

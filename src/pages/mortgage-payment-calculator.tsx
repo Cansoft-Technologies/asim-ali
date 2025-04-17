@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { Footer, Header, Hero } from "components";
 import FeaturedSection from "components/FeaturedSection";
+import ServiceDividerSection from "components/ServiceDivider";
 import ServiceSection from "components/ServiceSection";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
@@ -256,7 +257,7 @@ export default function Page(props: MyProps){
                 <FeaturedSection
                   featuredData={data?.newMortgagecalculator?.homebuyerSection}
                 />
-                <ServiceSection
+                <ServiceDividerSection
                   textLeft={data?.newMortgagecalculator?.tipsLeftText}
                   textRight={data?.newMortgagecalculator?.tipsRightText}
                   imageLeft={data?.newMortgagecalculator?.tipsImageLeft}
