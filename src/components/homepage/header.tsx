@@ -13,6 +13,7 @@ export default function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   // Close menus when clicking outside
   useEffect(() => {
@@ -40,6 +41,22 @@ export default function Header() {
       setActiveMenu(activeMenu === menuName ? null : menuName)
     }
   }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      if (scrollPosition > 50) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   // Menu data structure
   const menuData = {
@@ -143,56 +160,65 @@ export default function Header() {
   }
 
   return (
-    <header className="relative z-50 bg-[#1a1a3a] shadow-sm" ref={menuRef}>
-      <div className="w-full bg-[#1a1a3a] text-white py-2 px-4">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        {/* Left side - Email and License */}
-        <div className="flex items-center text-xs md:mb-0">
-          <Mail className="h-4 w-4 mr-2 text-white" />
-          <a style={{ textDecoration: "none" }} href="mailto:clientcare@asmail.ca" className="mr-3 text-white no-underline hover:text-[#F0B254] transition-colors">
-            clientcare@asmail.ca
-          </a>
-          <span className="hidden md:inline-block">|</span>
-          <span className="ml-3 hidden md:inline-block">Licensed in BC & AB</span>
-        </div>
-
-        {/* Center - Social Media Icons */}
-        <div className="flex space-x-4 md:mb-0  text-xs">
-          <a href="#" aria-label="Facebook" className="hover:text-gray-300 transition-colors no-underline">
-            <Facebook className="h-4 w-4 text-[#F0B254]" />
-          </a>
-          <a href="#" aria-label="Instagram" className="hover:text-gray-300 transition-colors">
-            <Instagram className="h-4 w-4 text-[#F0B254]" />
-          </a>
-          <a href="#" aria-label="LinkedIn" className="hover:text-gray-300 transition-colors">
-            <Linkedin className="h-4 w-4 text-[#F0B254]" />
-          </a>
-          <a href="#" aria-label="TikTok" className="hover:text-gray-300 transition-colors text-[#F0B254]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 text-[#F0B254]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+    <header className="relative z-50 bg-[#1a1a3a] shadow-sm sticky top-0" ref={menuRef}>
+      <div className="w-full bg-[#1a1a3a] text-white py-2 md:px-4 px-0">
+        <div className="container mx-auto flex flex-row justify-between items-center">
+          {/* Left side - Email and License */}
+          <div className="flex items-center text-xs md:mb-0">
+            <Mail className="h-4 w-4 mr-2 text-white" />
+            <a
+              style={{ textDecoration: "none" }}
+              href="mailto:clientcare@asmail.ca"
+              className="mr-3 text-white no-underline hover:text-[#F0B254] transition-colors"
             >
-              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-            </svg>
-          </a>
-        </div>
+              clientcare@asmail.ca
+            </a>
+            <span className="hidden md:inline-block">|</span>
+            <span className="ml-3 hidden md:inline-block">Licensed in BC & AB</span>
+          </div>
 
-        {/* Right side - Phone Number */}
-        <div className="flex items-center text-xs">
-          <Phone className="h-4 w-4 mr-2 text-white" />
-          <a style={{ textDecoration: "none" }} href="tel:+16045913950" className="text-white">+16045913950</a>
+          {/* Center - Social Media Icons */}
+          <div className="flex space-x-2 md:space-x-4 md:mb-0  text-xs">
+            <a href="#" aria-label="Facebook" className="hover:text-gray-300 transition-colors no-underline">
+              <Facebook className="h-4 w-4 text-[#F0B254]" />
+            </a>
+            <a href="#" aria-label="Instagram" className="hover:text-gray-300 transition-colors">
+              <Instagram className="h-4 w-4 text-[#F0B254]" />
+            </a>
+            <a href="#" aria-label="LinkedIn" className="hover:text-gray-300 transition-colors">
+              <Linkedin className="h-4 w-4 text-[#F0B254]" />
+            </a>
+            <a href="#" aria-label="TikTok" className="hover:text-gray-300 transition-colors text-[#F0B254]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 text-[#F0B254]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+              </svg>
+            </a>
+          </div>
+
+          {/* Right side - Phone Number */}
+          <div className="flex items-center text-xs">
+            <Phone className="h-4 w-4 mr-2 text-white" />
+            <a style={{ textDecoration: "none" }} href="tel:+16045913950" className="text-white">
+              +16045913950
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-      <div className="container mx-auto px-6 md:px-12 py-2" onMouseLeave={() => setActiveMenu(null)}>
+      <div
+        className={`container mx-auto px-6 md:px-12 transition-all duration-300 ${isScrolled ? "py-1 pb-1" : "py-2 pb-3"}`}
+        onMouseLeave={() => setActiveMenu(null)}
+      >
         <div className="flex justify-between items-center">
-          <div className="w-48">
+          <div className={`transition-all duration-300 ${isScrolled ? "w-36 py-3" : "w-48"}`}>
             <Image
               src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Frame-1984078075.png"
               alt="Asim Ali Mortgage Team"
@@ -204,7 +230,11 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 no-underline">
-            <Link style={{ textDecoration: "none" }} href="/" className="text-base text-white hover:text-[#F0B254] transition-colors">
+            <Link
+              style={{ textDecoration: "none" }}
+              href="/"
+              className="text-base text-white hover:text-[#F0B254] transition-colors"
+            >
               Home
             </Link>
 
@@ -253,14 +283,20 @@ export default function Header() {
               </button>
             </div>
 
-            <Link style={{ textDecoration: "none" }} href="/about" className="text-base text-white hover:text-[#F0B254] transition-colors">
+            <Link
+              style={{ textDecoration: "none" }}
+              href="/about"
+              className="text-base text-white hover:text-[#F0B254] transition-colors"
+            >
               About Us
             </Link>
           </div>
 
           {/* Apply Now Button (Desktop) */}
           <Link href="/apply" className="hidden md:block">
-            <Button className="bg-transparent text-white hover:text-black hover:bg-[#F0B254]/10 border border-1 border-[#F0B254] font-medium px-6 py-2 rounded-md transition-colors">
+            <Button
+              className={`bg-transparent text-white hover:text-black hover:bg-[#F0B254]/10 border border-1 border-[#F0B254] font-medium rounded-md transition-all duration-300 ${isScrolled ? "px-4 py-1 text-sm" : "px-6 py-2"}`}
+            >
               Apply Now
             </Button>
           </Link>
@@ -278,7 +314,11 @@ export default function Header() {
 
       {/* Mega Menu */}
       {activeMenu && (
-        <div onMouseEnter={() => setActiveMenu(activeMenu)} onMouseLeave={() => setActiveMenu(null)} className="absolute left-0 top-full w-full bg-[#FFF9F0] backdrop-blur-sm p-3 rounded-md border border-white/10 z-50">
+        <div
+          onMouseEnter={() => setActiveMenu(activeMenu)}
+          onMouseLeave={() => setActiveMenu(null)}
+          className="absolute left-0 top-full w-full bg-[#FFF9F0] backdrop-blur-sm p-3 rounded-md border border-white/10 z-50"
+        >
           <div className="container mx-auto px-6 md:px-12 py-8">
             <div className="grid grid-cols-12 gap-8">
               {/* Menu Columns */}
@@ -288,12 +328,10 @@ export default function Header() {
                   <ul className="space-y-3">
                     {column.items.map((item, itemIndex) => (
                       <li key={itemIndex}>
-                        <Link
-                          href={item.href}
-                          style={{ textDecoration: "none" }}
-                          className=""
-                        >
-                          <p className="text-sm font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">{item.title}</p>
+                        <Link href={item.href} style={{ textDecoration: "none" }} className="">
+                          <p className="text-sm font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">
+                            {item.title}
+                          </p>
                         </Link>
                       </li>
                     ))}
@@ -340,12 +378,7 @@ export default function Header() {
           className="md:hidden absolute top-full left-0 right-0 bg-[#FFF9F0] backdrop-blur-sm p-3 rounded-md border-b border-gray-200 z-50 max-h-[80vh] overflow-y-auto"
         >
           <div className="p-4 space-y-4">
-            <Link
-              href="/"
-              
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ textDecoration: "none" }}
-            >
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} style={{ textDecoration: "none" }}>
               <p className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">Home</p>
             </Link>
 
@@ -375,7 +408,9 @@ export default function Header() {
                               onClick={() => setMobileMenuOpen(false)}
                               style={{ textDecoration: "none" }}
                             >
-                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">{item.title}</p>
+                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">
+                                {item.title}
+                              </p>
                             </Link>
                           </li>
                         ))}
@@ -410,7 +445,9 @@ export default function Header() {
                               className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors"
                               onClick={() => setMobileMenuOpen(false)}
                             >
-                            <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">{item.title}</p>
+                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">
+                                {item.title}
+                              </p>
                             </Link>
                           </li>
                         ))}
@@ -442,11 +479,13 @@ export default function Header() {
                         {column.items.map((item, itemIndex) => (
                           <li key={itemIndex}>
                             <Link
-                            style={{ textDecoration: "none" }}
+                              style={{ textDecoration: "none" }}
                               href={item.href}
                               onClick={() => setMobileMenuOpen(false)}
                             >
-                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">{item.title}</p>
+                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">
+                                {item.title}
+                              </p>
                             </Link>
                           </li>
                         ))}
@@ -463,7 +502,7 @@ export default function Header() {
               className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-            <p className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">About Us</p>
+              <p className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">About Us</p>
             </Link>
 
             {/* Apply Now Button (Mobile) */}

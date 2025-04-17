@@ -68,7 +68,7 @@ export default function RoleSection() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/apply">
             <Button className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium px-12 py-6 rounded-none">
               Apply Now
