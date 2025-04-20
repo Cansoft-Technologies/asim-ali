@@ -98,7 +98,7 @@ export default function MortgageRatesSection() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold font-oswald">Our Mortgage Rates</h2>
+            <p className="text-3xl md:text-5xl font-bold leading-7 font-rb">Our Mortgage Rates</p>
           </div>
 
           <div className="max-w-xl">

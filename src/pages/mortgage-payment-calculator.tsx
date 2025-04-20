@@ -257,12 +257,66 @@ export default function Page(props: MyProps){
                 <FeaturedSection
                   featuredData={data?.newMortgagecalculator?.homebuyerSection}
                 />
-                <ServiceDividerSection
-                  textLeft={data?.newMortgagecalculator?.tipsLeftText}
-                  textRight={data?.newMortgagecalculator?.tipsRightText}
-                  imageLeft={data?.newMortgagecalculator?.tipsImageLeft}
-                  imageRight={data?.newMortgagecalculator?.tipsImageRight}
-                />
+                <section className="my-5">
+                      <div className="service-row">
+                        <Container>
+                          <div className="service-image">
+                                          <Image
+                                            src={data?.newMortgagecalculator?.tipsImageRight?.sourceUrl}
+                                            alt={data?.newMortgagecalculator?.tipsImageRight?.altText}
+                                            width="390"
+                                            height="400"
+                                            style={{ width: "100%", objectFit: "contain", height: "45vh" }}
+                                            quality={100}
+                                          />
+                                        </div>
+                          <Row>
+                            <Col className="service-texts hide-pc" lg={6}>
+                              <div
+                                className="service-content text-center"
+                                dangerouslySetInnerHTML={{
+                                  __html: data?.newMortgagecalculator?.tipsLeftText,
+                                }}
+                              ></div>
+                            </Col>
+                            <Col className="service-texts hide-sm" lg={6}>
+                              <div
+                                className="service-content"
+                                dangerouslySetInnerHTML={{
+                                  __html: data?.newMortgagecalculator?.tipsLeftText,
+                                }}
+                              ></div>
+                            </Col>
+                            <Col className="service-texts mb-5 hide-pc" lg={6}>
+                              <div
+                                className="service-content text-center"
+                                dangerouslySetInnerHTML={{
+                                  __html: data?.newMortgagecalculator?.tipsRightText,
+                                }}
+                              ></div>
+                            </Col>
+                            <Col className="service-texts my-5 hide-sm" lg={6}>
+                              <div
+                                className="service-content"
+                                dangerouslySetInnerHTML={{
+                                  __html: data?.newMortgagecalculator?.tipsRightText,
+                                }}
+                              ></div>
+                            </Col>
+                          </Row>
+                          <div className="service-image">
+                                          <Image
+                                            src={data?.newMortgagecalculator?.tipsImageLeft?.sourceUrl}
+                                            alt={data?.newMortgagecalculator?.tipsImageLeft?.altText}
+                                            width="390"
+                                            height="400"
+                                            style={{ width: "100%", objectFit: "contain", height: "45vh" }}
+                                            quality={100}
+                                          />
+                                        </div>
+                        </Container>
+                      </div>
+                    </section>
                 <Container className="mb-5">
                   <h2 className="text-center service-title">
                     {data?.newMortgagecalculator?.homeContactSection?.title}
