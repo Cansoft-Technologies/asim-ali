@@ -14,6 +14,7 @@ import ExperienceRoleSection from "components/ExperienceRoleSection";
 import ScheduleMeetingForm from "components/ScheduleMeetingForm";
 import Header from "components/homepage/header";
 import Footer from "components/homepage/footer";
+import AreasWeWorkIn from "components/areas-we-work-in";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -175,6 +176,7 @@ export default function Page(props: MyProps) {
               <Header />
               <ScheduleMeetingForm />
               <ExperienceRoleSection />
+              <AreasWeWorkIn />
               <Footer />
             </main>
           </div>
