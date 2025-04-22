@@ -90,7 +90,7 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
           </div>
 
           {/* Title Section */}
-          <div className="relative mb-12 rounded-xl overflow-hidden">
+          <div className="relative mb-12 rounded-xl overflow-hidden h-[40vh]">
             {/* Background image with overlay */}
             <div
               className="absolute inset-0 bg-cover bg-center z-0"
