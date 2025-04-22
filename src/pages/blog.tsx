@@ -17,7 +17,21 @@ type MyProps = {
   settings: any
   mainMenus: any
 }
-
+const SkeletonLoader = () => (
+  <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm animate-pulse">
+    <div className="h-48 bg-gray-200" />
+    <div className="p-5">
+      <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+      <div className="h-4 bg-gray-200 rounded w-1/2 mb-3"></div>
+      <div className="space-y-2">
+        <div className="h-4 bg-gray-200 rounded w-full"></div>
+        <div className="h-4 bg-gray-200 rounded w-full"></div>
+        <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+      </div>
+      <div className="h-10 bg-gray-200 rounded w-1/3 mt-4"></div>
+    </div>
+  </div>
+)
 export function ResourcesPage (props: MyProps) {
   const { metaData, settings, mainMenus, blogData } = props
 
@@ -204,10 +218,11 @@ export function ResourcesPage (props: MyProps) {
         </div>
 
         {isLoading ? (
-          <div className="text-center py-12">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-gray-800 border-r-transparent"></div>
-            <span className="sr-only">Loading...</span>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[...Array(9)].map((_, index) => (
+            <SkeletonLoader key={index} />
+          ))}
+        </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resources.map((resource, index) => (
@@ -271,8 +286,8 @@ export function ResourcesPage (props: MyProps) {
           </div>
         )}
 
-        {pageCount > 1 && (
-          <div className="flex justify-center mt-12 gap-2">
+{!isLoading && pageCount > 1 && (
+  <div className="flex justify-center mt-12 gap-2">
             <button
               onClick={() => setPage(Math.max(0, page - 1))}
               disabled={page === 0}
