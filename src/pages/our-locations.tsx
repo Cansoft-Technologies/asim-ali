@@ -189,7 +189,7 @@ const Locations = (props: MyProps) => {
               })}
             </Head>
             <Header settings={settings} mainMenus={mainMenus} />
-            <main className="content">
+            <main>
               <BCLocationsMockMap/>
             </main>
             <Footer settings={settings} mainMenus={mainMenus} />
