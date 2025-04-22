@@ -49,13 +49,14 @@ export default function BCLocationsMockMap() {
           fill
           priority
           className="object-cover object-center backdrop-blur-sm"
-          style={{ filter: "brightness(0.7)" }}
+          style={{ filter: "brightness(0.3)" }}
         />
       </div>
 
       <div className="relative z-10 flex-1 flex flex-col p-4 md:p-8 max-w-7xl mx-auto w-full">
-        <p className="text-3xl md:text-5xl font-bold text-white mb-6">Our Locations</p>
-
+        <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Locations</h1>
+        <p className="text-sm md:text-md text-gray-300 mb-6">Asim Ali offers expert mortgage brokerage services across BC and Alberta. With a deep understanding of each community, we serve everyone based on their needs. Whether buying your first home, refinancing, or investing in property, our team makes the mortgage process smooth and stress-free.</p>
+        
         {/* Mock Map Container */}
         <div className="bg-white shadow-lg overflow-hidden mb-6 flex-1 relative">
           <div className="w-full h-[400px] md:h-[500px] relative">
@@ -103,6 +104,7 @@ export default function BCLocationsMockMap() {
                 // Optional: Add smooth scroll or other click handlers
                 handleLocationClick(location.name)
               }}
+              style={{ textDecoration: "none" }}
             >
               <Card
                 className={`flex items-center justify-between p-4 hover:bg-[#F0b245] hover:text-[#12143A] transition-colors ${
