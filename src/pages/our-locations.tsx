@@ -167,7 +167,7 @@ const Locations = (props: MyProps) => {
     <>
       {locationData.map((data, index) => {
         return (
-          <div key={index} className="our-locations">
+          <div key={index}>
             <Head>
               {metaData.map((meta) => {
                 return (
