@@ -11,14 +11,17 @@ export const getServerSideProps = async ({ res }) => {
         posts(first: 100) {
           nodes {
             uri
+            postSlug {
+              parentSlug
+            }
           }
         }
       }
-      `,
+    `,
   });
 
   const postsSitemaps = data?.posts?.nodes.map((item) => ({
-    loc: `https://asimali.ca${item?.uri?.toString()}`,
+    loc: `https://asimali.ca${item?.postSlug?.parentSlug ? "/" + item?.postSlug?.parentSlug + item?.uri?.toString() : item?.uri?.toString()}`,
     lastmod: new Date().toISOString(),
     changefreq: "daily",
     priority: 0.9,
@@ -38,7 +41,7 @@ export const getServerSideProps = async ({ res }) => {
     .map(
       (field) => `
   <url>
-    <loc>${field.loc.endsWith("/")? field.loc.slice(0, -1) : field.loc}</loc>
+    <loc>${field.loc.endsWith("/") ? field.loc.slice(0, -1) : field.loc}</loc>
     <lastmod>${field.lastmod}</lastmod>
     <changefreq>${field.changefreq}</changefreq>
     <priority>${field.priority}</priority>

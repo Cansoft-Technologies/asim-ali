@@ -59,6 +59,18 @@ module.exports = withBundleAnalyzer(
             statusCode: 301,
           },
           {
+            source: "/how-much-mortgage-can-you-afford",
+            destination: "/mortgage-affordability",
+            permanent: true,
+            statusCode: 301,
+          },
+          {
+            source: "/how-much-mortgage-100k-salary-canada",
+            destination: "/mortgage-affordability/100k-salary",
+            permanent: true,
+            statusCode: 301,
+          },
+          {
             source: "/best-mortgage-rates-in-vancouver",
             destination: "/",
             permanent: true,
