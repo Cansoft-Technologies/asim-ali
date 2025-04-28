@@ -47,6 +47,8 @@ export function ResourcesPage(props: MyProps) {
 
   const filters = [
     "Mortgage",
+    "Mortgage Affordability",
+    "Mortgage Calculator",
     "Down Payment",
     "Business",
     "Credit",
