@@ -42,23 +42,18 @@ export default function BCLocationsMockMap() {
   return (
     <div className="relative min-h-screen flex flex-col">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* <div className="absolute inset-0 z-0 overflow-hidden h-full">
         <Image
           src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/bc-map-image.png?height=1080&width=1920"
           alt="British Columbia landscape"
           fill
           priority
           className="object-cover object-center backdrop-blur-sm"
-          style={{ filter: "brightness(0.3)" }}
+          // style={{ filter: "brightness(0.3)" }}
         />
-      </div>
-
-      <div className="relative z-10 flex-1 flex flex-col p-4 md:p-8 max-w-7xl mx-auto w-full">
-        <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Locations</h1>
-        <p className="text-sm md:text-md text-gray-300 mb-6">Asim Ali offers expert mortgage brokerage services across BC and Alberta. With a deep understanding of each community, we serve everyone based on their needs. Whether buying your first home, refinancing, or investing in property, our team makes the mortgage process smooth and stress-free.</p>
-        
-        {/* Mock Map Container */}
-        <div className="bg-white shadow-lg overflow-hidden mb-6 flex-1 relative">
+      </div> */}
+      {/* Mock Map Container */}
+      <div className="bg-white shadow-lg overflow-hidden mb-6 flex-1 relative">
           <div className="w-full h-[400px] md:h-[500px] relative">
             {/* Mock Map Background */}
             <div className="absolute inset-0 bg-[#e8ecef] overflow-hidden">
@@ -93,6 +88,12 @@ export default function BCLocationsMockMap() {
             ))}
           </div>
         </div>
+
+      <div className="relative z-10 flex-1 flex flex-col p-4 md:p-8 max-w-7xl mx-auto w-full">
+        <h1 className="text-3xl md:text-5xl font-bold text-[#12143A] mb-6">Our Locations</h1>
+        <p className="text-sm md:text-md text-[#12143A] mb-6">Asim Ali offers expert mortgage brokerage services across BC and Alberta. With a deep understanding of each community, we serve everyone based on their needs. Whether buying your first home, refinancing, or investing in property, our team makes the mortgage process smooth and stress-free.</p>
+        
+        
 
         {/* Locations List */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
