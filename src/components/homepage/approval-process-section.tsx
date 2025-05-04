@@ -21,7 +21,7 @@ export default function ApprovalProcessSection() {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div>
-            <h2 className="text-4xl md:text-7xl xl:text-7xl font-bold font-oswald">
+            <h2 className="!text-xl md:!text-2xl xl:!text-4xl space-y-5 !font-bold font-oswald">
               Our Mortgage Approval
               <br />
               Process

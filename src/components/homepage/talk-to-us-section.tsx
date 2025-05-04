@@ -14,7 +14,7 @@ export default function TalkToUsSection() {
           </div>
 
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#0a1e3b]">
+            <h2 className="!text-3xl md:!text-4xl !font-bold mb-6 text-[#0a1e3b]">
               Talk To Us For Your Mortgage
               <br />
               Approval

@@ -62,7 +62,7 @@ export default function MortgageAgencyServices() {
         {/* Header section */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-16 gap-8 items-center">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-oswald sm:text-center text-start">Our Mortgage Agency Services</h2>
+            <h2 className="!text-2xl md:!text-5xl font-bold mb-4 font-oswald sm:text-center text-start">Our Mortgage Agency Services</h2>
             <p className="text-gray-300 text-lg">
               If you&apos;re looking to buy a home or refinance your current mortgage, you&apos;re in the right place. Asim Ali is
               your go-to mortgage broker in Surrey to guide you through the mortgage journey.
@@ -70,8 +70,9 @@ export default function MortgageAgencyServices() {
           </div>
           <div className="mt-4 md:mt-0">
             <Link
+            style={{ textDecoration: "none" }}
               href="/services"
-              className="inline-block bg-[#f5b14a] hover:bg-[#e9a43c] text-white font-medium py-3 px-8 text-center min-w-[220px]"
+              className="inline-block bg-[#f5b14a] hover:bg-[#e9a43c] text-white text-md xl:text-xl font-medium py-3 px-8 text-center min-w-[220px]"
             >
               More Services
             </Link>
