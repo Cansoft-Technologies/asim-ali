@@ -7,7 +7,7 @@ import Header from "./header"
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-between bg-[#0a1e3b] text-white">
+    <section className="relative w-full min-h-screen flex flex-col justify-between text-white">
       {/* Background image with overlay */}
       <Image
                 src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/c151ca5610382ee34521b0a0e95cca2a-scaled.jpeg?height=1080&width=1920"
@@ -19,15 +19,18 @@ export default function HeroSection() {
               />
               {/* Overlay div to handle the blend mode */}
               <div 
-                className="absolute inset-0 bg-[#0a1e3b]/40 mix-blend-overlay" 
+                className="absolute inset-0 bg-[#12143AB2]/80" 
                 aria-hidden="true"
               />
       
         <Header />
+        <div className="w-full text-center md:px-4 px-0 relative z-10 justify-center">
+          <p className="text-sm bg-white md:!text-md xl:!text-xl py-2 text-[#12143AB2]">Lowest Mortgage Rate in Canada. <span className="text-[#F0B254]">Starting from 2.99%</span></p>
+        </div>
       {/* Content section */}
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex-grow flex flex-col">
         <div className="flex-grow flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
-          <h1 className="text-4xl font-oswald md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="!text-4xl font-oswald md:!text-5xl lg:!text-6xl xl:!text-7xl font-bold mb-6 leading-tight">
             Mortgage Broker in <span className="text-[#F0B254]">Surrey</span> For
             <br />
             Expert Home Loan Solutions
@@ -40,7 +43,7 @@ export default function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/apply">
-              <Button variant="outline" className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium px-10 py-3 text-base rounded-none">
+              <Button variant="outline" className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium px-10 py-3 text-white rounded-none">
                 Apply Now
               </Button>
             </Link>

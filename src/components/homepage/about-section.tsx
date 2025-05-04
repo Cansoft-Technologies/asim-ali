@@ -7,11 +7,9 @@ export default function AboutSection() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 mb-16">
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-5xl font-bold mb-2 font-oswald">
-              Asim Ali, Your <span className="text-[#F0B254]">Mortgage</span>
-            </h2>
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              <span className="text-[#F0B254]">Broker</span> in Surrey
+            <h2 className="text-3xl md:!text-5xl !font-bold mb-2 font-oswald">
+              Asim Ali, Your <span className="text-[#F0B254] font-normal">Mortgage</span> <br/>
+              <span className="text-[#F0B254] font-normal">Broker</span> in Surrey
             </h2>
           </div>
           
