@@ -42,22 +42,61 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
   const [tableOfContents, setTableOfContents] = useState<TOCItem[]>([])
   const contentRef = useRef<HTMLDivElement>(null)
 
+  interface TOCItem {
+    id: string
+    text: string
+    level: number
+    number: string
+  }
+  
   useEffect(() => {
-    if (contentRef.current) {
-      const headings = contentRef.current.querySelectorAll("h2, h3, h4")
-      const toc: TOCItem[] = Array.from(headings).map((heading, index) => {
-        if (!heading.id) {
-          heading.id = `heading-${index}`
-        }
-        return {
-          id: heading.id,
-          text: heading.textContent,
-          level: Number.parseInt(heading.tagName.substring(1)),
-        }
-      })
-      setTableOfContents(toc)
-    }
+    if (!contentRef.current) return
+  
+    // grab all H2, H3, H4 in the post content
+    const headings = Array.from(
+      contentRef.current.querySelectorAll<HTMLHeadingElement>("h2, h3, h4")
+    )
+  
+    // counters for each level
+    const counters = { 2: 0, 3: 0, 4: 0 }
+  
+    // build the TOC array with .number
+    const toc: TOCItem[] = headings.map((heading, idx) => {
+      // ensure an ID
+      if (!heading.id) heading.id = `heading-${idx}`
+  
+      const level = parseInt(heading.tagName.substring(1), 10) as 2 | 3 | 4
+      // increment the right counter, reset lower levels
+      if (level === 2) {
+        counters[2] += 1
+        counters[3] = 0
+        counters[4] = 0
+      } else if (level === 3) {
+        counters[3] += 1
+        counters[4] = 0
+      } else if (level === 4) {
+        counters[4] += 1
+      }
+  
+      // build the “1.”, “2.3.”, or “4.1.2.” string
+      const number =
+        level === 2
+          ? `${counters[2]}.`
+          : level === 3
+          ? `${counters[2]}.${counters[3]}.`
+          : `${counters[2]}.${counters[3]}.${counters[4]}.`
+  
+      return {
+        id: heading.id,
+        text: heading.textContent ?? "",
+        level,
+        number,
+      }
+    })
+  
+    setTableOfContents(toc)
   }, [post?.content])
+  
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
@@ -147,27 +186,34 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* TOC */}
             <aside className="lg:col-span-3">
-              <div className="bg-white p-6 rounded-lg shadow-sm sticky top-6">
-                <p className="text-xl font-semibold mb-4">Table of Contents</p>
-                <nav>
-                  <ul className="space-y-3">
-                    {tableOfContents.map((heading) => (
-                      <li key={heading.id} className={`ml-${(heading.level - 2) * 4}`}>
-                        <a
-                          href={`#${heading.id}`}
-                          onClick={(e) => handleSmoothScroll(e, heading.id)}
-                          style={{ textDecoration: "none" }}
-                        >
-                          <p className="text-gray-700 hover:text-[#F0B254] block transition-colors">
-                            {heading.text}
-                          </p>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
-            </aside>
+  <div className="bg-white p-6 rounded-lg shadow-sm sticky top-6">
+    <p className="text-xl font-semibold mb-4">Table of Contents</p>
+    <nav>
+      <ul className="space-y-3 !list-none">
+        {tableOfContents.map((h) => (
+          <li
+            key={h.id}
+            className={
+              h.level === 2 ? "ml-0" : h.level === 3 ? "ml-4" : "ml-8"
+            }
+          >
+            <a
+              href={`#${h.id}`}
+              style={{ textDecoration: "none" }}
+              onClick={(e) => handleSmoothScroll(e, h.id)}
+            >
+              <p className="text-gray-700 hover:text-[#F0B254] block transition-colors">
+              <span className="font-medium mr-1">{h.number}</span>
+              {h.text}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</aside>
+
 
             {/* Main Article */}
             <article className="lg:col-span-6 bg-white p-8 rounded-lg shadow-sm">

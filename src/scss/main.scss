@@ -18,6 +18,34 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
 ul{
   list-style-type: square;
 }
+// define your colours up front
+$internal-link-color:   #F0B254;
+$internal-link-hover:   #F0B254;
+
+// base reset/typography (optional)
+a {
+  text-decoration: none;
+}
+
+// all internal links: either href starts with “/” or it’s a relative URL without protocol
+a[href^="/"],
+a:not([href^="http"]) {
+  color: #F0B254;
+
+  &:hover,
+  &:focus {
+    color: #F0B254;
+  }
+}
+
+// if you want to explicitly style external links differently, you can override:
+a[href^="http"] {
+  color: #F0B254;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 // BlogAuthor.scss
 .blog-author-card {
   padding: 2rem;
@@ -485,7 +513,7 @@ body {
 }
 .split_section {
   a{
-  color: #495057;
+  color: $color-secondary;
   }
 }
 .first-buyer-calculator-card {
