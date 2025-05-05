@@ -46,27 +46,24 @@ export default function ScheduleMeetingComponent() {
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center bg-[#f8f5f0]">
       {/* Background image with overlay */}
-      {/* <div className="absolute inset-0 z-0">
-        <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2024/09/Mortgage-Broker-In-Abbotsford-scaled.webp" alt="" fill className="object-cover" priority sizes="100vw" />
+      <div className="absolute inset-0 z-0">
+        <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/05/IMG_5127-1.png" alt="" fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-[#0a1e3b] opacity-80"></div>
-      </div> */}
+      </div>
 
       <div className="container mx-auto px-6 md:px-12 py-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <div className="flex flex-col justify-center items-start"> 
-                      <h2 className="text-3xl md:text-5xl font-bold mb-6 text-black font-oswald">
-                        Schedule Your Meeting with
+                      <h2 className="!text-2xl md:!text-5xl !font-semibold mb-6 text-white font-oswald">
+                      Start Your Application 
                         <br />
-                        Our Specialist Mortgage
+                        and Get Approved Quickly!
                         <br />
-                        Advisor
                       </h2>
           
-                      <p className="text-gray-800 mb-8 mt-3">
-                        Are you ready to make your dream of owning a home in Surrey come true? Then Asim Ali is your reliable
-                        partner in your mortgage journey. Reach out today to set up your meeting with our mortgage consultant to
-                        ask any questions you may have.
+                      <p className="text-gray-200 mb-8 mt-3">
+                      Are you a resident of British Columbia looking for a loan? Our hassle-free and obligation-free application process takes less than a minute to complete. Rest assured, we provide full transparency on the terms and conditions, sharing the rate you qualify for. Moreover, we offer a 24/7 application review process to ensure a quick response. Apply now!
                       </p>
           
                       <div className="space-y-4 mb-8 mt-3">
@@ -81,11 +78,11 @@ export default function ScheduleMeetingComponent() {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="text-black"
+                            className="text-white"
                           >
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                           </svg>
-                          <span className="text-sm text-black">+1 (604) 513-2190</span>
+                          <span className="text-sm text-white">+1 (604) 513-2190</span>
                         </div>
           
                         <div className="flex items-center gap-2">
@@ -99,12 +96,12 @@ export default function ScheduleMeetingComponent() {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="text-black"
+                            className="text-white"
                           >
                             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                           </svg>
-                          <span className="text-sm text-black">info@asimali.ca</span>
+                          <span className="text-sm text-white">info@asimali.ca</span>
                         </div>
           
                         <div className="flex items-center gap-2">
@@ -118,27 +115,27 @@ export default function ScheduleMeetingComponent() {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="text-black"
+                            className="text-white"
                           >
                             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
                           </svg>
-                          <span className="text-sm text-black">7327 137 St Suite #311, Surrey, BC V3W 1A4, Canada</span>
+                          <span className="text-sm text-white">7327 137 St Suite #311, Surrey, BC V3W 1A4, Canada</span>
                         </div>
                       </div>
           
                       <div className="flex gap-4 mb-8">
-                        <a href="#" className="text-[#000000] hover:opacity-80">
-                          <Facebook size={24} className="text-[#000000]"/>
+                        <a href="#" className="text-white hover:opacity-80">
+                          <Facebook size={24} className="text-white"/>
                         </a>
-                        <a href="#" className="text-[#000000] hover:opacity-80">
-                          <Instagram size={24} className="text-[#000000]"/>
+                        <a href="#" className="text-white hover:opacity-80">
+                          <Instagram size={24} className="text-white"/>
                         </a>
-                        <a href="#" className="text-[#000000] hover:opacity-80">
-                          <Linkedin size={24} className="text-[#000000]"/>
+                        <a href="#" className="text-white hover:opacity-80">
+                          <Linkedin size={24} className="text-white"/>
                         </a>
-                        <a href="#" className="text-[#000000] hover:opacity-80">
-                          <Music size={24} className="text-[#000000]"/>
+                        <a href="#" className="text-white hover:opacity-80">
+                          <Music size={24} className="text-white"/>
                         </a>
                       </div>
                     </div>
@@ -185,7 +182,6 @@ export default function ScheduleMeetingComponent() {
                     <Input
                       id="email"
                       name="email"
-                      type="email"
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full"
@@ -201,7 +197,7 @@ export default function ScheduleMeetingComponent() {
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Alberta" />
                       </SelectTrigger>
-                      <SelectContent className="bg-white">
+                      <SelectContent className="bg-[#f9fbfc]">
                         <SelectItem value="alberta">Alberta</SelectItem>
                         <SelectItem value="bc">British Columbia</SelectItem>
                         <SelectItem value="ontario">Ontario</SelectItem>
@@ -225,40 +221,6 @@ export default function ScheduleMeetingComponent() {
                       className="w-full"
                       placeholder="Enter Your City..."
                     />
-                  </div>
-
-                  <div>
-                    <label htmlFor="reference" className="block text-sm font-medium text-gray-700 mb-1">
-                      Reference
-                    </label>
-                    <Select onValueChange={(value) => handleSelectChange("reference", value)}>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Please Select" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white">
-                        <SelectItem value="google">Google</SelectItem>
-                        <SelectItem value="friend">Friend</SelectItem>
-                        <SelectItem value="social">Social Media</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="homeowner" className="block text-sm font-medium text-gray-700 mb-1">
-                      Homeowner
-                    </label>
-                    <Select onValueChange={(value) => handleSelectChange("homeowner", value)}>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Please Select" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white">
-                        <SelectItem value="yes">Yes</SelectItem>
-                        <SelectItem value="no">No</SelectItem>
-                      </SelectContent>
-                    </Select>
                   </div>
 
                   <div>
@@ -365,7 +327,9 @@ export default function ScheduleMeetingComponent() {
           </div>
         </div>
       </div>
+      <div className="relative bg-[#f8f5f0] w-full">
       <TestimonialSliderRow />
+      </div>
     </section>
   )
 }

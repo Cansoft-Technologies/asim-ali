@@ -3,7 +3,7 @@ import { Button } from "components/ui/button"
 
 export default function CtaSection() {
   return (
-    <section className="w-full bg-[#FFFFC8] py-16">
+    <section className="w-full bg-[#FCF9F3] py-16">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
