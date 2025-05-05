@@ -33,6 +33,10 @@ export async function getStaticProps() {
               locationsBannerImage {
                 sourceUrl
               }
+              locationHead
+              locationDescription
+              contactTitle
+              contactDescription
               secondLocationList {
                 locationLink {
                   url
@@ -148,20 +152,6 @@ type MyProps = {
 const Locations = (props: MyProps) => {
   const { settings, mainMenus, locationData, metaData } = props;
 
-  const [showMaps, setShowMaps] = useState(false);
-  const [showLists, setShowLists] = useState(true);
-  const [isActive, setIsActive] = useState(false);
-
-  const mapHandler = () => {
-    setShowMaps(true);
-    setShowLists(false);
-    setIsActive((current) => !current);
-  };
-  const listHandler = () => {
-    setShowMaps(false);
-    setShowLists(true);
-    setIsActive((current) => !current);
-  };
 
   return (
     <>
@@ -190,7 +180,8 @@ const Locations = (props: MyProps) => {
             </Head>
             <Header settings={settings} mainMenus={mainMenus} />
             <main>
-              <BCLocationsMockMap/>
+              <BCLocationsMockMap locationHead={data?.locations?.locationHead} locationDescription={data?.locations?.locationDescription} contactTitle={data?.locations?.contactTitle} contactDescription={data?.locations?.contactDescription}
+              />
             </main>
             <Footer settings={settings} mainMenus={mainMenus} />
           </div>
