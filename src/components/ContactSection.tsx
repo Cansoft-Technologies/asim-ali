@@ -71,6 +71,7 @@ postBodyData.set('message', formData.message.toString() || "");
         <div id="contact-form">
           <div className="row contact-row">
             <div className="col-md-6">
+              <label htmlFor="fname">First Name</label>
               <input
                 type="text"
                 name="fname"
@@ -79,6 +80,7 @@ postBodyData.set('message', formData.message.toString() || "");
               />
             </div>
             <div className="col-md-6">
+              <label htmlFor="lname">Last Name</label>
               <input
                 type="text"
                 name="lname"
@@ -86,7 +88,8 @@ postBodyData.set('message', formData.message.toString() || "");
                 placeholder="Last Name"
               />
             </div>
-            <div className="col-md-12">
+            <div className="col-md-6">
+            <label htmlFor="about">Email</label>
               <input type="email" name="mail" id="mail" placeholder="Email" />
             </div>
             <div className="col-md-6">
@@ -151,6 +154,7 @@ postBodyData.set('message', formData.message.toString() || "");
               </select>
             </div>
             <div className="col-md-12 mt-3">
+              <label htmlFor="subject">Subject</label>
               <input
                 type="text"
                 name="subject"
@@ -159,6 +163,7 @@ postBodyData.set('message', formData.message.toString() || "");
               />
             </div>
             <div className="col-md-12">
+              <label htmlFor="message">Message</label>
               <textarea
                 name="message"
                 id="message"
