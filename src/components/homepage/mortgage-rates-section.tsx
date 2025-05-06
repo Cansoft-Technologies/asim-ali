@@ -167,10 +167,10 @@ export default function MortgageRatesSection() {
 
         {/* Rate Display */}
         <div className="bg-gray-200 p-6 mb-0 text-center relative">
-          <div className="text-sm text-gray-600 mb-1">3 Years Fixed Form</div>
+          <div className="text-sm text-gray-600 mb-1"><p className=" text-[#F0b254]">3 Years Fixed Form</p></div>
           <div className="flex items-center justify-center">
             <p className="text-6xl font-bold text-[#0a1e3b]">4.24%</p>
-            <span className="ml-2 px-2 py-1 bg-white text-[#0a1e3b] text-xs font-medium">*Most Popular</span>
+            <span className="ml-2 px-2 py-1 bg-transparent text-[#0a1e3b] text-xs font-medium">*Most Popular</span>
           </div>
         </div>
 
@@ -216,7 +216,7 @@ export default function MortgageRatesSection() {
                             payments per year, including the ability to increase your payments by up to 20%! It&apos;s a
                             full-frills mortgage with a rate that can be held for up to 120 days.
                           </p>
-                          <Button className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium py-2 px-6">
+                          <Button className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-white font-medium py-2 px-6">
                             Get The Best Rates
                           </Button>
                         </div>

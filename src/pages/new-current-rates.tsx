@@ -11,6 +11,8 @@ import ScheduleMeeting from "components/ScheduleMeeting";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import { Fragment, useRef, useState } from "react";
+import Current from "./current-rates";
+import CurrentRatesHero from "components/CurrentRatesHero";
 
 
 export async function getStaticProps() {
@@ -173,7 +175,7 @@ const CurrentRates = (props: MyProps) => {
         })}
       </Head>
       <main className="min-h-screen">
-      <Header/>
+      <CurrentRatesHero/>
       <MortgageRatesSection />
       <TalkToUsSection />
       <HistoricalMortgageRates />

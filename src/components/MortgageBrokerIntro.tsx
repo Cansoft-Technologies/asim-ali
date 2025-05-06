@@ -8,9 +8,9 @@ export default function MortgageBrokerIntro() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight font-oswald">
-              Let The Best Mortgage Broker in Surrey Help You With Your Homeownership Dream
-            </h1>
+            <h2 className="!text-xl md:!text-2xl lg:!text-4xl !font-semibold mb-8 leading-tight font-oswald">
+            Let The Best Mortgage Broker in Surrey Help You With Your Homeownership Dream
+            </h2>
 
             <p className="text-gray-700 mb-6">
               It is a difficult process to get approved for a mortgage in the Surrey area. Asim Ali is a renowned
@@ -25,7 +25,7 @@ export default function MortgageBrokerIntro() {
               needs.
             </p>
 
-            <h2 className="text-4xl font-bold mb-6 font-oswald">Mortgage Solutions That Will Fit Your Needs</h2>
+            <p className="!text-lg md:!text-xl lg:!text-2xl font-medium mb-6 font-oswald">Mortgage Solutions That Will Fit Your Needs</p>
 
             <p className="text-gray-700 mb-4">
               Asim Ali is your trusted local mortgage broker in Surrey. Our team offers a suite of mortgage solutions
