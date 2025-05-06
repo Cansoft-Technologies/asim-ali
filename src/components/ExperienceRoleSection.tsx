@@ -7,7 +7,7 @@ export default function ExperienceRoleSection() {
     <section className="w-full bg-white py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Experience a Stress Free and Transparent Lending Process with us</h2>
+          <h2 className="!text-xl md:!text-2xl lg:!text-4xl !font-semibold mb-6">Experience a Stress <br/>Free and Transparent Lending Process with us</h2>
 
           <p className="text-gray-600 max-w-3xl mx-auto">
           Our mortgage professionals ensure your path to homeownership or mortgage refinancing is easy. We use our experience and local market knowledge to select the right solution for you no matter your credit score.
@@ -67,7 +67,7 @@ export default function ExperienceRoleSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/apply">
-            <Button className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium px-12 py-6 rounded-none">
+            <Button className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-white font-medium px-12 py-6 rounded-none">
               Apply Now
             </Button>
           </Link>

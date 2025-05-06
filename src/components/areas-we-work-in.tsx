@@ -106,7 +106,7 @@ export default function AreasWeWorkIn() {
         <Link
           href="/apply-now"
           style={{ textDecoration: "none" }}
-          className="px-8 py-3 bg-[#f0b95e] text-black font-medium text-center hover:bg-[#e5ae50] transition-colors"
+          className="px-8 py-3 bg-[#f0b95e] text-white font-medium text-center hover:bg-[#e5ae50] transition-colors"
         >
           Apply Now
         </Link>

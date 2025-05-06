@@ -142,7 +142,7 @@ export default function HistoricalMortgageRates() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start mb-8">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-2">Historical Mortgage Rates</h2>
+            <h2 className="!text-xl md:!text-2xl lg:!text-4xl !font-semibold mb-2">Historical Mortgage Rates</h2>
             <p className="text-gray-600">For British Columbia - Last Updated Apr 01 2025</p>
           </div>
 
@@ -173,7 +173,7 @@ export default function HistoricalMortgageRates() {
               <p className="text-xl">3.89% - 5.49%</p>
             </div>
 
-            <div className="border-t border-gray-200">
+            <div className="border-t border-gray-200 h-full">
               <div className="grid grid-cols-3 bg-gray-50 p-4">
                 <div className="font-medium">Year (Average)</div>
                 <div className="font-medium">Lowest Rates</div>
