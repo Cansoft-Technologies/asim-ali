@@ -2,12 +2,14 @@ import { gql } from "@apollo/client";
 import { Footer, Header, Hero } from "components";
 import FeaturedSection from "components/FeaturedSection";
 import ServiceSection from "components/ServiceSection";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "components/ui/card";
+import { ca } from "date-fns/locale";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Col, Container, Row } from "react-bootstrap";
-
+import { Calculator, RefreshCw, DollarSign, Percent, Clock, Home } from "lucide-react"
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
@@ -23,6 +25,14 @@ export async function getStaticProps() {
                 image {
                   url
                 }
+              }
+            }
+            allCalculators {
+              calculators {
+                title
+                description
+                icon
+                url
               }
             }
             newMortgagecalculator {
@@ -47,10 +57,10 @@ export async function getStaticProps() {
               }
               homebuyerSection {
                 advisorTitle
-                advisorCards{
+                advisorCards {
                   title
                   description
-                  image{
+                  image {
                     sourceUrl
                     altText
                   }
@@ -80,7 +90,7 @@ export async function getStaticProps() {
                 tiktok
                 linkedin
                 instagram
-              }             
+              }
               copyrightText
               footerLeftWidget {
                 title
@@ -115,7 +125,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems (first: 150) {
+                childItems(first: 150) {
                   nodes {
                     uri
                     label
@@ -138,6 +148,7 @@ export async function getStaticProps() {
   }
   return {
     props: {
+      calculators: data?.pages?.nodes[0]?.allCalculators?.calculators,
       calculatorData: data?.pages?.nodes,
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
@@ -149,13 +160,32 @@ export async function getStaticProps() {
 
 type MyProps = {
   calculatorData: any;
+  calculators: any;
   metaData: any;
   settings: any;
   mainMenus: any;
 };
 
-const Calculator = (props: MyProps) => {
-  const { settings, mainMenus, calculatorData, metaData } = props;
+const AllCalculator = (props: MyProps) => {
+  const { settings, mainMenus, calculatorData, metaData, calculators } = props;
+const getIconByTitle = (title: string) => {
+  switch (title) {
+    case "Mortgage Payment Calculator":
+      return <Calculator className="h-6 w-6" />;
+    case "Reverse Mortgage Calculator":
+      return <RefreshCw className="h-6 w-6" />;
+    case "Down Payment Calculator":
+      return <DollarSign className="h-6 w-6" />;
+    case "FTHBI Calculator":
+      return <Home className="h-6 w-6" />;
+    case "Renewal Mortgage Calculator":
+      return <Clock className="h-6 w-6" />;
+    case "Refinance Calculator":
+      return <Percent className="h-6 w-6" />;
+    default:
+      return <Calculator className="h-6 w-6" />; // Fallback icon
+  }
+};
 
   return (
     <>
@@ -163,7 +193,7 @@ const Calculator = (props: MyProps) => {
         return (
           <div key={index} className="our-locations">
             <Head>
-              {metaData?.map((meta,index) => {
+              {metaData?.map((meta, index) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>
@@ -188,93 +218,39 @@ const Calculator = (props: MyProps) => {
             <Header settings={settings} mainMenus={mainMenus} />
             <div>
               <main className="content">
-                {data?.newMortgagecalculator?.calculatorBannerTitle == null ? (
-                  ""
-                ) : (
-                  <Hero
-                    title={data?.newMortgagecalculator?.calculatorBannerTitle}
-                    bgImage={
-                      data?.newMortgagecalculator?.calculatorBannerImage
-                        ?.sourceUrl
-                    }
-                  />
-                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto md:py-10 md:mt-10 mt-0 py-5">
+  {calculators.map((calculator: any, index: number) => (
+    <Card
+      key={index}
+      className="flex flex-col justify-between bg-[#12143A] backdrop-blur-sm border-none overflow-hidden hover:shadow-lg transition-all duration-300 hover:translate-y-[-5px] min-h-[380px]"
+    >
+      <div>
+        <CardHeader className="pb-2">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-full bg-[#f0b254] text-[#12143A]">
+              {getIconByTitle(calculator?.title)}
+            </div>
+            <CardTitle className="text-[#f0b254]"><h2 className="">{calculator.title}</h2></CardTitle>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <CardDescription className="text-white/80 min-h-[120px]">
+            <div dangerouslySetInnerHTML={{ __html: calculator.description }} />
+          </CardDescription>
+        </CardContent>
+      </div>
 
-                <Container className="my-5">
-                  <Row className="mortgagecalculator-heading text-center my-5 service-title">
-                    <p>
-                      {
-                        data?.newMortgagecalculator?.calculatorBannerTitle.split(
-                          " "
-                        )[0]
-                      }{" "}
-                      <span>
-                        {
-                          data?.newMortgagecalculator?.calculatorBannerTitle.split(
-                            " "
-                          )[1]
-                        }
-                      </span>
-                    </p>
-                  </Row>
-                  <div
-                    className="mortgagecalculator-content my-5"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        data?.newMortgagecalculator?.calculatorPageContent,
-                    }}
-                  ></div>
-                  <div className="tab-btn">
-                    <Link href={"/apply-now"}>
-                      <Button className="HeadBtn">
-                        Apply <span>Now</span>
-                      </Button>
-                    </Link>
-                  </div>
-                </Container>
-                <Container className="my-5">
-                  <Row className="coquitlam-grid my-5">
-                    <Col md={7}>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: data?.newMortgagecalculator?.aboutText,
-                        }}
-                      ></div>
-                    </Col>
-                    <Col md={5}>
-                      <Image
-                        src={data?.newMortgagecalculator?.aboutImage?.sourceUrl}
-                        alt={data?.newMortgagecalculator?.aboutImage?.altText}
-                        width="390"
-                        height="400"
-                        
-                        style={{ width: "100%", objectFit: "cover" }}
-                      />
-                    </Col>
-                  </Row>
-                </Container>
-                <FeaturedSection
-                  featuredData={data?.newMortgagecalculator?.homebuyerSection}
-                />
-                <ServiceSection
-                  textLeft={data?.newMortgagecalculator?.tipsLeftText}
-                  textRight={data?.newMortgagecalculator?.tipsRightText}
-                  imageLeft={data?.newMortgagecalculator?.tipsImageLeft}
-                  imageRight={data?.newMortgagecalculator?.tipsImageRight}
-                />
-                <Container className="mb-5">
-                  <h2 className="text-center service-title">
-                    {data?.newMortgagecalculator?.homeContactSection?.title}
-                  </h2>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        data?.newMortgagecalculator?.homeContactSection
-                          ?.description,
-                    }}
-                    className="text-lg text-start"
-                  ></div>
-                </Container>
+      <CardFooter className="mt-auto">
+        <Link href={calculator?.url} className="w-full">
+          <Button className="w-full !bg-[#f0b254] text-white hover:!bg-[#12143A] hover:!border-[#f0b254] hover:text-[#f0b254] transition-all duration-300">
+            Use Calculator
+          </Button>
+        </Link>
+      </CardFooter>
+    </Card>
+  ))}
+</div>
+
               </main>
             </div>
             <Footer settings={settings} mainMenus={mainMenus} />
@@ -285,4 +261,4 @@ const Calculator = (props: MyProps) => {
   );
 };
 
-export default Calculator;
+export default AllCalculator;
