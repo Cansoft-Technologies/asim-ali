@@ -111,12 +111,13 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
       .replace(/-/g, " ")    // replace dashes with spaces
       .replace(/\b\w/g, (l) => l.toUpperCase()); // capitalize first letter of each word
   }
+
   return (
     <>
       <Head>
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
-        <link rel="canonical" href={seo?.canonicalUrl?.replace(/\/$/, "")} />
+        <link rel="canonical" href={post?.postSlug?.parentSlug ? `https://asimali.ca/${post.postSlug.parentSlug}/${post?.slug}` : seo?.canonicalUrl?.replace(/\/$/, "")} />
         <meta property="og:title" content={seo?.title} />
         <meta property="og:description" content={seo?.description} />
         <meta property="og:image" content={seo?.openGraph?.image?.url} />
@@ -138,7 +139,7 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
   {/* If there is a parent slug, show it */}
   {post?.postSlug?.parentSlug && (
     <>
-      <Link href={`/blog/${post?.postSlug.parentSlug}`} style={{ textDecoration: "none" }}>
+      <Link href={`/${post?.postSlug.parentSlug}`} style={{ textDecoration: "none" }}>
         <p className="text-[#12143A] hover:text-[#F0B254] uppercase">
           {formatBreadcrumb(post.postSlug.parentSlug)}
         </p>
@@ -291,6 +292,7 @@ export async function getStaticProps({ params }) {
       query GetPost($id: ID!) {
         post(id: $id, idType: URI) {
           date
+          slug
           content(format: RENDERED)
           featuredImage {
             node {
