@@ -279,7 +279,7 @@ const teamDescription =
   "";
   const rateTitle = `
 <h2>Current Mortgage Rates​ In Campbellton</h2>
-<p><span style="font-weight: 400;">We’re dedicated to offering </span><a href="http://asimali.ca/current-rates"><span style="font-weight: 400;">competitive mortgage rates</span></a><span style="font-weight: 400;"> in Campbellton. We work hard to negotiate with lenders. Our goal is to find deals that fit your needs.</span>
+<p><span style="font-weight: 400;">We’re dedicated to offering </span><a href="https://asimali.ca/current-rates"><span style="font-weight: 400;">competitive mortgage rates</span></a><span style="font-weight: 400;"> in Campbellton. We work hard to negotiate with lenders. Our goal is to find deals that fit your needs.</span>
 </p>
 
 `;
