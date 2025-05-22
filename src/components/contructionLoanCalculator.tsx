@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "components/ui/card";
 import { Input } from "components/ui/input";
 import { Label } from "components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "components/ui/select";
-// import { jsPDF } from "jspdf";
+import { jsPDF } from "jspdf";
 
 type FormState = {
   landCost: string;
@@ -156,34 +156,33 @@ export default function ConstructionLoanCalculator() {
   };
 
   const generatePDF = () => {
-    console.log("clicked");
-    // const doc = new jsPDF();
-    // doc.setFontSize(16);
-    // doc.text("Construction Loan Report", 10, 10);
-    // doc.setFontSize(12);
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text("Construction Loan Report", 10, 10);
+    doc.setFontSize(12);
     
-    // let yPos = 20;
-    // const addLine = (text: string, value: string) => {
-    //   doc.text(`${text}: $${value}`, 10, yPos);
-    //   yPos += 10;
-    // };
+    let yPos = 20;
+    const addLine = (text: string, value: string) => {
+      doc.text(`${text}: $${value}`, 10, yPos);
+      yPos += 10;
+    };
 
-    // addLine("Total Project Cost", formatNumber(results.totalProjectCost));
-    // addLine("Maximum Loan Amount", formatNumber(results.maxLoanLTC));
-    // addLine("Construction Interest (Scenario 1)", formatNumber(results.constructionInterest1));
-    // addLine("Monthly Payment (Scenario 1)", formatNumber(results.monthlyPermPayment1));
+    addLine("Total Project Cost", formatNumber(results.totalProjectCost));
+    addLine("Maximum Loan Amount", formatNumber(results.maxLoanLTC));
+    addLine("Construction Interest (Scenario 1)", formatNumber(results.constructionInterest1));
+    addLine("Monthly Payment (Scenario 1)", formatNumber(results.monthlyPermPayment1));
     
-    // if (showScenario2 && results.constructionInterest2 && results.monthlyPermPayment2) {
-    //   yPos += 5;
-    //   doc.setFontSize(14);
-    //   doc.text("Scenario 2 Results", 10, yPos);
-    //   yPos += 10;
-    //   doc.setFontSize(12);
-    //   addLine("Construction Interest (Scenario 2)", formatNumber(results.constructionInterest2));
-    //   addLine("Monthly Payment (Scenario 2)", formatNumber(results.monthlyPermPayment2));
-    // }
+    if (showScenario2 && results.constructionInterest2 && results.monthlyPermPayment2) {
+      yPos += 5;
+      doc.setFontSize(14);
+      doc.text("Scenario 2 Results", 10, yPos);
+      yPos += 10;
+      doc.setFontSize(12);
+      addLine("Construction Interest (Scenario 2)", formatNumber(results.constructionInterest2));
+      addLine("Monthly Payment (Scenario 2)", formatNumber(results.monthlyPermPayment2));
+    }
 
-    // doc.save("construction-loan-report.pdf");
+    doc.save("construction-loan-report.pdf");
   };
 
   return (
@@ -297,7 +296,7 @@ export default function ConstructionLoanCalculator() {
               />
             </div>
             <div>
-              <Label>Permanent Rate (%)</Label>
+              <Label>Rate After Completion (%)</Label>
               <Input
                 type="number"
                 step="0.01"
