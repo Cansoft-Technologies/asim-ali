@@ -45,7 +45,7 @@ export default function AboutSection() {
 
             <div className="relative h-80 w-full rounded-sm overflow-hidden">
               <Image
-                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/9e752e1e42b87a7c8c79ca3f01c4ef6f-scaled.jpeg?height=400&width=600"
+                src="https://asimaliprod.wpengine.com/wp-content/uploads/2024/07/mortgage-broker-in-Walnut-Grove-BC.webp?height=400&width=600"
                 alt="Asim Ali and Team"
                 fill
                 className="object-cover"
