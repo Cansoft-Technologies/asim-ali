@@ -111,8 +111,8 @@ export default function MortgageRatesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div>
-            <label className="block font-medium text-gray-700 mb-2">Location:</label>
-            <div className="relative">
+            <label className="block font-medium text-gray-700 mb-2">*Only Applicable for BC</label>
+            {/* <div className="relative">
               <select className="block w-full border border-gray-300 py-2 pl-3 pr-10 text-base focus:outline-none bg-white">
                 <option>Select Your Province</option>
                 <option>British Columbia</option>
@@ -121,7 +121,7 @@ export default function MortgageRatesSection() {
                 <option>Quebec</option>
                 <option>Manitoba</option>
               </select>
-            </div>
+            </div> */}
           </div>
 
           <div>

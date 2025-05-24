@@ -26,7 +26,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div>
             <div className="mb-8">
-              <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Frame-1984078075.png" alt="Asim Ali Mortgage Team" width={200} height={60} />
+              <div className="flex items-center justify-center gap-2 md:gap-4">
+                <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Frame-1984078075.png" alt="Asim Ali Mortgage Team" width={200} height={60} />
+                <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/05/AIMI-318x108px.webp" alt="Asim Ali Mortgage Team" width={80} height={30} />
+
+              </div>
             </div>
 
             <div className="flex gap-6 mb-6">
