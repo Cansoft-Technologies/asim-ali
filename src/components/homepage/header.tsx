@@ -229,15 +229,6 @@ export default function Header() {
               priority
             />
           </div>
-          <div className={`transition-all duration-300 ${isScrolled ? "w-16 py-3" : "w-24"}`}>
-            <Image
-              src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/05/AIMI-318x108px.webp"
-              alt="Asim Ali Mortgage Team"
-              width={200}
-              height={60}
-              priority
-            />
-          </div>
           </div>
 
           {/* Desktop Navigation */}

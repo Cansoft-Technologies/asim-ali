@@ -45,10 +45,11 @@ export default function AboutSection() {
 
             <div className="relative h-80 w-full rounded-sm overflow-hidden">
               <Image
-                src="https://asimaliprod.wpengine.com/wp-content/uploads/2024/07/mortgage-broker-in-Walnut-Grove-BC.webp?height=400&width=600"
+                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/05/IMG_4966-scaled.jpg"
                 alt="Asim Ali and Team"
                 fill
-                className="object-cover"
+                className="object-contain object-center"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
           </div>
