@@ -156,7 +156,7 @@ export default function MortgageCompareCalculator() {
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="bg-gray-100 px-4 py-3 hover:no-underline">
                 <div className="flex justify-between w-full pr-4">
-                  <h3 className="font-semibold">Mortgage {index + 1}</h3>
+                  <p className="font-semibold">Mortgage {index + 1}</p>
                   <div>
                     {results[index] && (
                       <span className="font-bold">${results[index].equivalentMonthlyPayment.toFixed(2)} monthly</span>
@@ -172,12 +172,14 @@ export default function MortgageCompareCalculator() {
                       type="number"
                       value={mortgage.loanAmount}
                       onChange={(e) => handleInputChange(index, 'loanAmount', Number(e.target.value))}
+                      className="mt-3"
                     />
                   </div>
                   
                   <div>
                     <Label>Interest Rate (%)</Label>
                     <Input
+                    className="mt-3"
                       type="number"
                       step="0.01"
                       value={mortgage.interestRate}
@@ -187,14 +189,15 @@ export default function MortgageCompareCalculator() {
                   
                   <div>
                     <Label>Mortgage Amortization (Years)</Label>
-                    <Select
+                    <div className="mt-3">
+                      <Select
                       value={mortgage.amortization.toString()}
                       onValueChange={(value) => handleInputChange(index, 'amortization', Number(value))}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select years" />
                       </SelectTrigger>
-                      <SelectContent className="max-h-60">
+                      <SelectContent className="max-h-60 bg-white">
                         {amortizationOptions.map(year => (
                           <SelectItem key={year} value={year.toString()}>
                             {year} {year === 1 ? 'year' : 'years'}
@@ -202,18 +205,20 @@ export default function MortgageCompareCalculator() {
                         ))}
                       </SelectContent>
                     </Select>
+                    </div>
                   </div>
                   
                   <div>
                     <Label>Mortgage Term (Years)</Label>
-                    <Select
+                    <div className="mt-3">
+                      <Select
                       value={mortgage.loanTerm.toString()}
                       onValueChange={(value) => handleInputChange(index, 'loanTerm', Number(value))}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select years" />
                       </SelectTrigger>
-                      <SelectContent className="max-h-60">
+                      <SelectContent className="max-h-60 bg-white">
                         {amortizationOptions.map(year => (
                           <SelectItem key={year} value={year.toString()}>
                             {year} {year === 1 ? 'year' : 'years'}
@@ -221,18 +226,20 @@ export default function MortgageCompareCalculator() {
                         ))}
                       </SelectContent>
                     </Select>
+                    </div>
                   </div>
                   
                   <div>
                     <Label>Payment Type</Label>
-                    <Select
+                    <div className="mt-3">
+                      <Select
                       value={mortgage.paymentType.toString()}
                       onValueChange={(value) => handleInputChange(index, 'paymentType', Number(value))}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select payment type" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className='max-h-60 bg-white'>
                         {paymentTypes.map(type => (
                           <SelectItem key={type.value} value={type.value.toString()}>
                             {type.label}
@@ -240,12 +247,14 @@ export default function MortgageCompareCalculator() {
                         ))}
                       </SelectContent>
                     </Select>
+                    </div>
                   </div>
                   
                   <div>
                     <Label>Fees ($)</Label>
                     <Input
                       type="number"
+                      className="mt-3"
                       value={mortgage.fees}
                       onChange={(e) => handleInputChange(index, 'fees', Number(e.target.value))}
                     />
@@ -271,7 +280,7 @@ export default function MortgageCompareCalculator() {
       </div>
 
       <div className="flex justify-center gap-4 mb-6">
-        <Button onClick={calculateMortgages} className="bg-blue-600 hover:bg-blue-700">
+        <Button onClick={calculateMortgages} className="bg-[#12143A] hover:bg-[#f0b245] text-white">
           Calculate
         </Button>
         <Button onClick={toggleReport} variant="outline">
@@ -289,7 +298,7 @@ export default function MortgageCompareCalculator() {
               <YAxis />
               <Tooltip formatter={(value) => [`$${value}`, 'Monthly Payment']} />
               <Legend />
-              <Bar dataKey="payment" fill="#3b82f6" name="Monthly Payment" />
+              <Bar dataKey="payment" fill="#12143A" name="Monthly Payment" />
             </BarChart>
           </ResponsiveContainer>
         </div>
