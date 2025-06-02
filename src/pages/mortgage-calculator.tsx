@@ -28,6 +28,7 @@ export async function getStaticProps() {
               }
             }
             allCalculators {
+              headingContent
               calculators {
                 title
                 description
@@ -149,6 +150,7 @@ export async function getStaticProps() {
   return {
     props: {
       calculators: data?.pages?.nodes[0]?.allCalculators?.calculators,
+      headingContent: data?.pages?.nodes[0]?.allCalculators?.headingContent,
       calculatorData: data?.pages?.nodes,
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
@@ -160,6 +162,7 @@ export async function getStaticProps() {
 
 type MyProps = {
   calculatorData: any;
+  headingContent: any;
   calculators: any;
   metaData: any;
   settings: any;
@@ -167,7 +170,8 @@ type MyProps = {
 };
 
 const AllCalculator = (props: MyProps) => {
-  const { settings, mainMenus, calculatorData, metaData, calculators } = props;
+  const { settings, mainMenus, calculatorData, headingContent, metaData, calculators } = props;
+  console.log(headingContent);
 const getIconByTitle = (title: string) => {
   switch (title) {
     case "Mortgage Payment Calculator":
@@ -218,6 +222,7 @@ const getIconByTitle = (title: string) => {
             <Header settings={settings} mainMenus={mainMenus} />
             <div>
               <main className="content">
+                <div className="my-10 text-center" dangerouslySetInnerHTML={{__html: headingContent}}></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto md:py-10 md:mt-10 mt-0 py-5">
   {calculators.map((calculator: any, index: number) => (
     <Card
