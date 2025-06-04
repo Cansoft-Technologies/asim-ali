@@ -219,7 +219,7 @@ const getIconByTitle = (title: string) => {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
             <div>
               <main className="content">
                 <div className="my-10 text-center" dangerouslySetInnerHTML={{__html: headingContent}}></div>
@@ -258,7 +258,7 @@ const getIconByTitle = (title: string) => {
 
               </main>
             </div>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

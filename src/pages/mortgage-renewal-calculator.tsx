@@ -210,7 +210,7 @@ const Page = (props: MyProps) => {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
 
             <main className="content">
               {data?.Refinance?.bannerTitle == null ? (
@@ -386,7 +386,7 @@ const Page = (props: MyProps) => {
                 </Row>
               </Container>
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

@@ -300,7 +300,7 @@ const teamDescription =
           )
         })}
       </Head>
-        <Header settings={settings} mainMenus={mainMenus} />
+        <Header settings={settings} menuData={mainMenus} />
       <main className="content">
         {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
@@ -366,7 +366,7 @@ const teamDescription =
           ></div>
         </Container>
       </main>
-      <Footer settings={settings} mainMenus={mainMenus} />
+      <Footer settings={settings} menuData={mainMenus} />
     </>
   );
 }

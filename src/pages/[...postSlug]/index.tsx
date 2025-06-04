@@ -123,7 +123,7 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
         <meta property="og:image" content={seo?.openGraph?.image?.url} />
       </Head>
 
-      <Header settings={settings} mainMenus={mainMenus} />
+      <Header settings={settings} menuData={mainMenus} />
 
       {/* MAIN CONTENT */}
       <main className="bg-[#f9f5ff] min-h-screen py-8">
@@ -269,7 +269,7 @@ export function PostComponent({ post, seo, settings, mainMenus, relatedPosts }: 
         </div>
       </main>
 
-      <Footer settings={settings} mainMenus={mainMenus} />
+      <Footer settings={settings} menuData={mainMenus} />
     </>
   )
 }

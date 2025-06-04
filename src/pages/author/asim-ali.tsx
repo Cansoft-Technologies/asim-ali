@@ -170,7 +170,7 @@ export default function Page(props: MyProps) {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
 
             <main className="content">
               {data?.authorInfo?.bannerTitle == null ? (
@@ -220,7 +220,7 @@ export default function Page(props: MyProps) {
                 </Card>
               </Container>
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

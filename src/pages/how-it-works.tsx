@@ -201,7 +201,7 @@ const HowItWorks = (props: MyProps) => {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
             <main className="content">
               <Hero
                 title={data?.HowItWorks?.bannerTitle}
@@ -386,7 +386,7 @@ const HowItWorks = (props: MyProps) => {
                 </h2>
               </Container>
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

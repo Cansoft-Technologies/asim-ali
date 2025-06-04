@@ -193,7 +193,7 @@ const Services = (props: MyProps) => {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
             <main className="content">
               {data?.services?.serviceBannerTitle == null ? (
                 ""
@@ -301,7 +301,7 @@ const Services = (props: MyProps) => {
               </div>
               <CTA />
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

@@ -178,12 +178,12 @@ const Locations = (props: MyProps) => {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
             <main>
               <BCLocationsMockMap locationHead={data?.locations?.locationHead} locationDescription={data?.locations?.locationDescription} contactTitle={data?.locations?.contactTitle} contactDescription={data?.locations?.contactDescription}
               />
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

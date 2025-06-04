@@ -286,7 +286,7 @@ console.log(settings);
           )
         })}
       </Head>
-        <Header settings={settings} mainMenus={mainMenus} />
+        <Header settings={settings} menuData={mainMenus} />
       <main className="content">
         {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
@@ -361,7 +361,7 @@ console.log(settings);
       </div>
         </Container>
       </main>
-      <Footer settings={settings} mainMenus={mainMenus} />
+      <Footer settings={settings} menuData={mainMenus} />
     </>
   );
 }

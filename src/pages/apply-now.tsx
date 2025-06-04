@@ -172,8 +172,8 @@ function ApplyNow(props: MyProps) {
             <main className="content">
               <Header
                 settings={settings}
-                mainMenus={mainMenus}
-                usingFor="apply-now"
+                menuData={mainMenus}
+                // usingFor="apply-now"
               />
               <Hero
                 title={data?.ApplyNow?.bannerTitle}
@@ -280,8 +280,8 @@ function ApplyNow(props: MyProps) {
             </main>
             <Footer
               settings={settings}
-              mainMenus={mainMenus}
-              usingFor="apply-now"
+              menuData={mainMenus}
+              // usingFor="apply-now"
             />
           </div>
         );

@@ -168,7 +168,7 @@ export function ResourcesPage(props: MyProps) {
       </Head>
 
       <div className="bg-white min-h-screen">
-        <Header settings={settings} mainMenus={mainMenus} />
+        <Header settings={settings} menuData={mainMenus} />
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
@@ -415,7 +415,7 @@ export function ResourcesPage(props: MyProps) {
           )}
         </main>
 
-        <Footer settings={settings} mainMenus={mainMenus} />
+        <Footer settings={settings} menuData={mainMenus} />
       </div>
     </>
   );
