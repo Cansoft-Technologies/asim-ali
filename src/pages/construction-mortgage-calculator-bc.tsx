@@ -199,13 +199,13 @@ const ConstructionLoanCalc = (props: MyProps) => {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
             <div>
               <main className="content">
                 <ConstructionLoanCalculator/>
               </main>
             </div>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

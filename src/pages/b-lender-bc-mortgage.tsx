@@ -224,7 +224,7 @@ const BLender = (props: MyProps) => {
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
 
             <main className="content">
               {data?.BLender?.bannerTitle == null ? (
@@ -428,7 +428,7 @@ const BLender = (props: MyProps) => {
                 {/* faq section end */}
               </Container>
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

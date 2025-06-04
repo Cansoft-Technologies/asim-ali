@@ -186,7 +186,7 @@ export default function Page(props: MyProps){
                 );
               })}
             </Head>
-            <Header settings={settings} mainMenus={mainMenus} />
+            <Header settings={settings} menuData={mainMenus} />
             <div>
               <main className="content">
                 {data?.newMortgagecalculator?.calculatorBannerTitle == null ? (
@@ -332,7 +332,7 @@ export default function Page(props: MyProps){
                 </Container>
               </main>
             </div>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

@@ -191,7 +191,7 @@ export default function faq(props: MyProps) {
           );
         })}
       </Head>
-              <Header settings={settings} mainMenus={mainMenus} />
+              <Header settings={settings} menuData={mainMenus} />
       <main className="content">
         <section className="relative w-full md:min-h-[70dvh] min-h-screen flex flex-col justify-between text-white">
       {/* Background image with overlay */}
@@ -238,7 +238,7 @@ export default function faq(props: MyProps) {
       </Accordion>
     </div>
       </main>
-      <Footer settings={settings} mainMenus={mainMenus} />
+      <Footer settings={settings} menuData={mainMenus} />
     </>
   );
 }

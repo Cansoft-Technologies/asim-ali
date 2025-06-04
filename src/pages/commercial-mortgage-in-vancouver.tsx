@@ -339,7 +339,7 @@ export default function NewComVancouver(props: MyProps) {
           );
         })}
       </Head>
-      <Header settings={settings} mainMenus={mainMenus} />
+      <Header settings={settings} menuData={mainMenus} />
       <main className="content">
         {serviceBannerData?.serviceBannerTitle == null ? (
           ""
@@ -425,7 +425,7 @@ export default function NewComVancouver(props: MyProps) {
           ></div>
         </Container>
       </main>
-      <Footer settings={settings} mainMenus={mainMenus} />
+      <Footer settings={settings} menuData={mainMenus} />
     </>
   );
 }

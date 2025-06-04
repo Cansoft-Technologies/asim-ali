@@ -377,7 +377,7 @@ export default function NewLangley(props: MyProps) {
           );
         })}
       </Head>
-      <Header settings={settings} mainMenus={mainMenus} />
+      <Header settings={settings} menuData={mainMenus} />
       <main className="content">
         {serviceBannerData?.serviceBannerTitle == null ? (
           ""
@@ -452,7 +452,7 @@ export default function NewLangley(props: MyProps) {
         </Container>
         <EmbeddedMap mapData={mapSection}/>
       </main>
-      <Footer settings={settings} mainMenus={mainMenus} />
+      <Footer settings={settings} menuData={mainMenus} />
     </>
   );
 }

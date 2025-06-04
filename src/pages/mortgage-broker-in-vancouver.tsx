@@ -357,7 +357,7 @@ const teamDescription =
           )
         })}
       </Head>
-        <Header settings={settings} mainMenus={mainMenus} />
+        <Header settings={settings} menuData={mainMenus} />
       <main className="content">
         {serviceBannerData?.serviceBannerTitle == null ? (
                 ""
@@ -425,7 +425,7 @@ const teamDescription =
         </Container>
         <EmbeddedMap mapData={mapSection} />
       </main>
-      <Footer settings={settings} mainMenus={mainMenus} />
+      <Footer settings={settings} menuData={mainMenus} />
     </>
   );
 }

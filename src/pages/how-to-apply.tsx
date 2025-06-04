@@ -194,7 +194,7 @@ function HowtoApply(props) {
               })}
             </Head>
             <main className="content">
-              <Header settings={settings} mainMenus={mainMenus} />
+              <Header settings={settings} menuData={mainMenus} />
               <Hero
                 title={data?.HowToApply?.bannerTitle}
                 // heading={data?.HowToApply?.bannerTitle}
@@ -246,7 +246,7 @@ function HowtoApply(props) {
                 </Container>
               </div>
             </main>
-            <Footer settings={settings} mainMenus={mainMenus} />
+            <Footer settings={settings} menuData={mainMenus} />
           </div>
         );
       })}

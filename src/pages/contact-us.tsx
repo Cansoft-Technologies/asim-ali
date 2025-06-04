@@ -169,8 +169,8 @@ const Contact = (props: MyProps) => {
             </Head>
             <Header
               settings={settings}
-              mainMenus={mainMenus}
-              usingFor="apply-now"
+              menuData={mainMenus}
+              // usingFor="apply-now"
             />
 
             <main className="content">
@@ -238,8 +238,8 @@ const Contact = (props: MyProps) => {
             </main>
             <Footer
               settings={settings}
-              mainMenus={mainMenus}
-              usingFor="apply-now"
+              menuData={mainMenus}
+              // usingFor="apply-now"
             />
           </div>
         );
