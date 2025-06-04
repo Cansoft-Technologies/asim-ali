@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 import CTASection from "components/CTASection";
-import HeroBanner from "components/HeroBanner";
 import ApprovalProcessSection from "components/homepage/approval-process-section";
 import Footer from "components/homepage/footer";
 import Header from "components/homepage/header";
