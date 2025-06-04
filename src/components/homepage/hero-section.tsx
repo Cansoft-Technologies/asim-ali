@@ -5,7 +5,8 @@ import { Button } from "components/ui/button"
 import TestimonialSlider from "./testimonial-slider"
 import Header from "./header"
 
-export default function HeroSection() {
+
+export default function HeroSection({ menuItems, settings }: { menuItems: any[], settings: any }) {
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-between text-white">
       {/* Background image with overlay */}
@@ -23,7 +24,7 @@ export default function HeroSection() {
                 aria-hidden="true"
               />
       
-        <Header />
+        <Header settings={settings} menuData={menuItems} />
         <div className="w-full text-center md:px-4 px-0 relative z-10 justify-center">
           <p className="text-sm bg-white md:!text-md xl:!text-xl py-2 text-[#12143AB2]">Lowest Mortgage Rate in Canada. <span className="text-[#F0B254]">Starting from 2.99%</span></p>
         </div>

@@ -497,7 +497,7 @@ export default function Page(props: MyProps) {
         })}
       </Head>
       <main className="min-h-screen">
-      <HeroSection />
+      <HeroSection settings={settings} menuItems={mainMenus}/>
       <AboutSection />
       <ServicesSection />
       <MortgageRatesSection />
@@ -506,7 +506,7 @@ export default function Page(props: MyProps) {
       <ApprovalProcessSection />
       <ScheduleMeetingSection />
       <CalculatorToolsSection />
-      <Footer />
+      <Footer settings={settings} menuData={mainMenus}/>
     </main>
     </>
   );
