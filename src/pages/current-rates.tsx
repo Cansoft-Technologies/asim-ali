@@ -1,8 +1,7 @@
 import { gql } from "@apollo/client";
-import HeroBanner from "components/HeroBanner";
+import CurrentRatesHero from "components/CurrentRatesHero";
 import HistoricalMortgageRates from "components/HistoricalMortgage";
 import Footer from "components/homepage/footer";
-import Header from "components/homepage/header";
 import MortgageRatesSection from "components/homepage/mortgage-rates-section";
 import RoleSection from "components/homepage/role-section";
 import TalkToUsSection from "components/homepage/talk-to-us-section";
@@ -10,9 +9,7 @@ import MortgageBrokerIntro from "components/MortgageBrokerIntro";
 import ScheduleMeeting from "components/ScheduleMeeting";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
-import { Fragment, useRef, useState } from "react";
-import Current from "./current-rates";
-import CurrentRatesHero from "components/CurrentRatesHero";
+import { Fragment } from "react";
 
 
 export async function getStaticProps() {

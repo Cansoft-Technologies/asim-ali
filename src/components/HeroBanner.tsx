@@ -5,7 +5,7 @@ import { Button } from "components/ui/button"
 import Header from "./homepage/header"
 
 
-export default function HeroBanner() {
+export default function HeroBanner({settings, mainMenus}) {
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-between bg-[#0a1e3b] text-white">
       {/* Background image with overlay */}
@@ -23,7 +23,7 @@ export default function HeroBanner() {
                       aria-hidden="true"
                     />
       
-        <Header />
+        <Header menuData={mainMenus} settings={settings} />
       {/* Content section */}
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex-grow flex flex-col">
         <div className="flex-grow flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
