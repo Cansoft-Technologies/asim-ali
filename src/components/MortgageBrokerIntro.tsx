@@ -31,7 +31,7 @@ export default function MortgageBrokerIntro() {
               Asim Ali is your trusted local mortgage broker in Surrey. Our team offers a suite of mortgage solutions
               designed to cater to diverse financial needs and homeownership goals. We know that each client has unique
               needs and that&apos;s why we&apos;ve developed a{" "}
-              <Link href="/services" className="text-[#F0B254] hover:underline">
+              <Link href="/our-services" className="text-[#F0B254] hover:underline">
                 comprehensive range of services
               </Link>{" "}
               that address various aspects of the mortgage process, ensuring you&apos;re well-equipped to make wise decisions

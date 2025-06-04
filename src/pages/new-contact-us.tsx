@@ -173,11 +173,11 @@ export default function Page(props: MyProps) {
             </Head>
 
             <main className="min-h-screen">
-              <Header />
+              <Header settings={settings} menuData={mainMenus}/>
               <ScheduleMeetingForm />
               <ExperienceRoleSection />
               <AreasWeWorkIn />
-              <Footer />
+              <Footer settings={settings} menuData={mainMenus}/>
             </main>
           </div>
         );

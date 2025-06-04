@@ -1,172 +1,245 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Music } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { Facebook, Instagram, Linkedin, Music } from "lucide-react";
+import { useMemo } from "react";
 
-export default function Footer() {
+// Define MenuItem interface
+interface MenuItem {
+  id: string;
+  label: string;
+  url: string;
+  parentId: string | null;
+  children: MenuItem[];
+}
+
+
+
+// Clean URL helper
+function cleanUrl(url: string): string {
+  if (!url) return "/";
+  const cleaned = url.replace(/^https?:\/\/[^/]+/, "");
+  return cleaned.endsWith("/") ? cleaned.slice(0, -1) : cleaned;
+}
+
+export default function Footer({ menuData, settings }: { menuData: any; settings: any }) {
+  // Helper function to build menu tree
+const menuTree = useMemo(() => {
+    const nodes = menuData[0]?.menuItems?.nodes || []
+    const menuMap = new Map()
+    const rootItems = []
+
+    nodes.forEach((node) => {
+      menuMap.set(node.id, {
+        id: node.id,
+        label: node.label,
+        uri: node?.url || node?.uri,
+        parentId: node.parentId,
+        children: []
+      })
+    })
+
+    nodes.forEach((node) => {
+      const item = menuMap.get(node.id)
+      if (item) {
+        if (node.parentId) {
+          const parent = menuMap.get(node.parentId)
+          if (parent) {
+            parent.children.push(item)
+          }
+        } else {
+          rootItems.push(item)
+        }
+      }
+    })
+
+    return rootItems
+  }, [menuData]);
+  const servicesItem = menuTree.find((item) => item.label === "Our Services");
+
   return (
     <footer className="w-full text-white pt-16 pb-6 relative overflow-hidden">
-      {/* Background logo watermark */}
+      {/* Background watermark */}
       <div className="absolute inset-0">
-  <Image
-    src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Footerbgnew.png?height=1080&width=1920"
-    alt="Background"
-    fill
-    sizes="100vw"
-    className="object-cover object-center"
-    priority
-  />
-  {/* Overlay div to handle the blend mode */}
-  <div 
-    className="absolute inset-0 mix-blend-overlay" 
-    aria-hidden="true"
-  />
-</div>
+        <Image
+          src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Footerbgnew.png?height=1080&width=1920"
+          alt="Footer background"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 mix-blend-overlay" aria-hidden="true" />
+      </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+          {/* Logo and Socials */}
+          <div className="md:col-span-3">
             <div className="mb-8">
               <div className="flex items-center justify-center gap-2 md:gap-4">
-                <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Frame-1984078075.png" alt="Asim Ali Mortgage Team" width={200} height={60} />
-                <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/05/AIMI-318x108px.webp" alt="Asim Ali Mortgage Team" width={80} height={30} />
-
+                <Image
+                  src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Frame-1984078075.png"
+                  alt="Primary Logo"
+                  width={200}
+                  height={60}
+                />
+                <Image
+                  src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/05/AIMI-318x108px.webp"
+                  alt="Secondary Logo"
+                  width={80}
+                  height={30}
+                />
               </div>
             </div>
 
-            <div className="flex gap-6 mb-6">
-              <a href="#" >
-                <Facebook size={24} className="text-[#F0B254] hover:opacity-80"/>
+            <div className="flex gap-6 mb-6 items-center justify-center md:justify-start">
+              <a href="#" aria-label="Facebook">
+                <Facebook size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
-              <a href="#" >
-                <Instagram size={24} className="text-[#F0B254] hover:opacity-80"/>
+              <a href="#" aria-label="Instagram">
+                <Instagram size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
-              <a href="#" >
-                <Linkedin size={24} className="text-[#F0B254] hover:opacity-80"/>
+              <a href="#" aria-label="LinkedIn">
+                <Linkedin size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
-              <a href="#" >
-                <Music size={24} className="text-[#F0B254] hover:opacity-80"/>
+              <a href="#" aria-label="Podcast">
+                <Music size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
             </div>
           </div>
 
-          <div>
+          {/* Contact */}
+          <div className="md:col-span-3 flex flex-col md:items-start items-center justify-center md:justify-start">
             <p className="text-2xl font-medium mb-4 text-start">Contact Us</p>
-            <ul className="space-y-3 flex flex-col items-start mt-3 px-0">
+            <ul className="space-y-3 flex flex-col md:items-start items-center mt-3 px-0">
               <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-[#F0B254]"
-                >
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
+                <PhoneIcon />
                 <span className="text-sm">+1 (604) 513-2190</span>
               </li>
-
               <li className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-[#F0B254]"
-                >
-                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
+                <MailIcon />
                 <span className="text-sm">info@asimali.ca</span>
               </li>
-
               <li className="flex items-start gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-[#F0B254] mt-1 flex-shrink-0"
-                >
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                <span className="text-sm">7327 137 St Suite #311, Surrey, BC V3W 1A4, Canada</span>
+                <MapPinIcon />
+                <span className="text-sm">
+                  7327 137 St Suite #311, Surrey, BC V3W 1A4, Canada
+                </span>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xl font-medium mb-6">Quick Links</h3>
+          {/* Quick Links */}
+          <div className="md:col-span-2">
+            <p className="text-xl font-medium mb-6">Quick Links</p>
             <ul className="space-y-3 mt-3 px-0">
-              <li>
+              <li className="list-none">
                 <Link style={{textDecoration: "none"}} href="/" className="hover:text-[#F0B254] text-white">
                   Home
                 </Link>
               </li>
-              <li>
-                <Link style={{textDecoration: "none"}} href="/services" className="hover:text-[#F0B254] text-white">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link style={{textDecoration: "none"}} href="/about-us" className="hover:text-[#F0B254] text-white">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link style={{textDecoration: "none"}} href="/blog" className="hover:text-[#F0B254] text-white">
-                  Blog
-                </Link>
-              </li>
+              {menuTree
+                .filter(
+                  (item) =>
+                    item.label !== "Our Services" &&
+                    item.label !== "Calculators" &&
+                    item.label !== "Our Locations"
+                )
+                .map((item) => (
+                  <li key={item.id} className="list-none">
+                    <Link style={{textDecoration: "none"}} href={cleanUrl(item.url)} className="hover:text-[#F0B254] text-white">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xl font-medium mb-6">Services</h3>
-            <ul className="space-y-3 mt-3 px-0">
-              <li>
-                <Link style={{textDecoration: "none"}} href="/services" className="hover:text-[#F0B254] text-white">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link style={{textDecoration: "none"}} href="/services" className="hover:text-[#F0B254] text-white">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link style={{textDecoration: "none"}} href="/about-us" className="hover:text-[#F0B254] text-white">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link style={{textDecoration: "none"}} href="/privacy-policy" className="hover:text-[#F0B254] text-white">
-                  Privacy & Policy
-                </Link>
-              </li>
-            </ul>
+          {/* Services */}
+          <div className="md:col-span-4">
+            <p className="text-xl font-medium mb-6">Services</p>
+            <ul className="grid grid-cols-3 gap-y-4 gap-x-6 mt-3 px-0">
+  {servicesItem?.children?.length > 0 ? (
+    servicesItem.children.map((child) => (
+      <li key={child.id} className="list-none col-span-1">
+        <Link style={{textDecoration: "none"}} href={cleanUrl(child.url)} className="text-sm text-white hover:text-[#F0B254]">
+          {child.label}
+        </Link>
+      </li>
+    ))
+  ) : (
+    <li className="text-sm text-white/70 col-span-2">No services available.</li>
+  )}
+</ul>
           </div>
         </div>
 
         <div className="pt-6">
-          <p className="text-xs text-white/60 text-center">© Copyright 2025 Asim Ali | SEO By Cansoft</p>
+          <p className="text-xs text-white/60 text-center">
+            © Copyright 2025 Asim Ali | SEO By Cansoft
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
+}
+
+// Icon components
+function PhoneIcon() {
+  return (
+    <svg
+      className="text-[#F0B254]"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 19a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2 4.11 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81A2 2 0 0 1 9.36 8l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg
+      className="text-[#F0B254]"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+}
+
+function MapPinIcon() {
+  return (
+    <svg
+      className="text-[#F0B254] mt-1 flex-shrink-0"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
 }

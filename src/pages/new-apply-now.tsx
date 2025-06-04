@@ -174,11 +174,11 @@ function ApplyNow(props: MyProps) {
               })}
             </Head>
             <main className="min-h-screen">
-                  <Header />
+                  <Header settings={settings} menuData={mainMenus}/>
                   <ScheduleMeetingComponent />
                   <ApprovalProcessSection />
                   <CTASection />
-                  <Footer />
+                  <Footer settings={settings} menuData={mainMenus}/>
                 </main>
           </div>
         );

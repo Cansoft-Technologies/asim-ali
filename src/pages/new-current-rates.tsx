@@ -175,14 +175,14 @@ const CurrentRates = (props: MyProps) => {
         })}
       </Head>
       <main className="min-h-screen">
-      <CurrentRatesHero/>
+      <CurrentRatesHero settings={settings} menuItems={mainMenus}/>
       <MortgageRatesSection />
       <TalkToUsSection />
       <HistoricalMortgageRates />
       <MortgageBrokerIntro />
       <ScheduleMeeting />
       <RoleSection />
-      <Footer />
+      <Footer settings={settings} menuData={mainMenus}/>
     </main>
     </>
   );

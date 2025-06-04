@@ -1,21 +1,30 @@
 "use client"
 
 import type React from "react"
-
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { Button } from "components/ui/button"
 import Image from "next/image"
 import { Menu, X, ChevronDown, TrendingUp, Phone, Linkedin, Instagram, Facebook, Mail } from "lucide-react"
 
-export default function Header() {
+// Define menu item type
+interface MenuItem {
+  id: string;
+  label: string;
+  uri: string;
+  parentId: string | null;
+  children: MenuItem[];
+}
+
+
+export default function Header(props: { menuData: any, settings:any }) {
+  const { menuData, settings } = props
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const [isScrolled, setIsScrolled] = useState(false)
 
-  // Close menus when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -32,7 +41,6 @@ export default function Header() {
     }
   }, [])
 
-  // Handle keyboard navigation for accessibility
   const handleKeyDown = (e: React.KeyboardEvent, menuName: string) => {
     if (e.key === "Escape") {
       setActiveMenu(null)
@@ -45,125 +53,114 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
-      if (scrollPosition > 50) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(scrollPosition > 50)
     }
-
     window.addEventListener("scroll", handleScroll)
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
 
-  // Menu data structure
-  const menuData = {
-    services: {
-      title: "Services",
-      columns: [
-        {
-          heading: "SERVICES WE PROVIDE",
-          items: [
-            { title: "AAA MORTGAGE", href: "/services/aaa-mortgage" },
-            { title: "CONSTRUCTION FINANCING", href: "/services/construction-financing" },
-            { title: "MORTGAGE FOR SELF EMPLOYED", href: "/services/self-employed" },
-            { title: "UNINSURED MORTGAGE SOLUTIONS", href: "/services/uninsured-mortgage" },
-            { title: "PPC SERVICES", href: "/services/ppc-services" },
-            { title: "AI MORTGAGE SERVICES", href: "/services/ai-mortgage" },
-          ],
-        },
-        {
-          heading: "OUR MORTGAGE AGENCY",
-          items: [
-            { title: "B LENDING", href: "/services/b-lending" },
-            { title: "DISCHARGE MORTGAGE", href: "/services/discharge-mortgage" },
-            { title: "PRIVATE REFINANCE", href: "/services/private-refinance" },
-            { title: "VACANT LAND MORTGAGE", href: "/services/vacant-land" },
-            { title: "HOW MUCH DO MORTGAGES COST?", href: "/services/mortgage-cost" },
-            { title: "HOW TO COMPARE MORTGAGE RATES", href: "/services/compare-rates" },
-          ],
-        },
-      ],
-      promo: {
-        title: "Let's Drive Results Together",
-        subtitle: "Get the best mortgage rates today!",
-        buttonText: "Apply Now",
-        buttonLink: "/apply",
-        bgColor: "bg-[#12143A]",
-        textColor: "text-white",
-      },
-    },
-    rates: {
-      title: "Current Rate",
-      columns: [
-        {
-          heading: "MORTGAGE RATES",
-          items: [
-            { title: "FIXED MORTGAGE RATES", href: "/rates/fixed" },
-            { title: "VARIABLE MORTGAGE RATES", href: "/rates/variable" },
-            { title: "COMMERCIAL MORTGAGE RATES", href: "/rates/commercial" },
-            { title: "HISTORICAL MORTGAGE RATES", href: "/rates/historical" },
-          ],
-        },
-        {
-          heading: "RATE COMPARISONS",
-          items: [
-            { title: "BANK VS BROKER RATES", href: "/rates/bank-vs-broker" },
-            { title: "BEST MORTGAGE RATES", href: "/rates/best-rates" },
-            { title: "RATE FORECASTS", href: "/rates/forecasts" },
-            { title: "RATE CALCULATORS", href: "/rates/calculators" },
-          ],
-        },
-      ],
-      promo: {
-        title: "Find Your Best Rate",
-        subtitle: "Compare and save on your mortgage!",
-        buttonText: "Get Quote",
-        buttonLink: "/quote",
-        bgColor: "bg-[#12143A]",
-        textColor: "text-white",
-      },
-    },
-    howItWorks: {
-      title: "How It Works",
-      columns: [
-        {
-          heading: "THE MORTGAGE PROCESS",
-          items: [
-            { title: "MORTGAGE PRE-APPROVAL", href: "/how-it-works/pre-approval" },
-            { title: "MORTGAGE APPLICATION", href: "/how-it-works/application" },
-            { title: "DOCUMENT REQUIREMENTS", href: "/how-it-works/documents" },
-            { title: "CLOSING PROCESS", href: "/how-it-works/closing" },
-          ],
-        },
-        {
-          heading: "MORTGAGE GUIDES",
-          items: [
-            { title: "FIRST-TIME HOME BUYERS", href: "/how-it-works/first-time-buyers" },
-            { title: "REFINANCING GUIDE", href: "/how-it-works/refinancing" },
-            { title: "INVESTMENT PROPERTIES", href: "/how-it-works/investment" },
-            { title: "MORTGAGE RENEWAL", href: "/how-it-works/renewal" },
-          ],
-        },
-      ],
-      promo: {
-        title: "Need Expert Guidance?",
-        subtitle: "Our mortgage specialists are here to help!",
-        buttonText: "Contact Us",
-        buttonLink: "/contact",
-        bgColor: "bg-[#12143A]",
-        textColor: "text-white",
-      },
-    },
+  const buildMenuTree = useMemo(() => {
+    const nodes = menuData[0]?.menuItems?.nodes || []
+    const menuMap = new Map<string, MenuItem>()
+    const rootItems: MenuItem[] = []
+
+    nodes.forEach((node) => {
+      menuMap.set(node.id, {
+        id: node.id,
+        label: node.label,
+        uri: node?.url || node?.uri,
+        parentId: node.parentId,
+        children: []
+      })
+    })
+
+    nodes.forEach((node) => {
+      const item = menuMap.get(node.id)
+      if (item) {
+        if (node.parentId) {
+          const parent = menuMap.get(node.parentId)
+          if (parent) {
+            parent.children.push(item)
+          }
+        } else {
+          rootItems.push(item)
+        }
+      }
+    })
+
+    return rootItems
+  }, [menuData])
+
+  const filterMenuItems = (items: MenuItem[], parentLabel?: string): MenuItem[] => {
+    return items.filter(item => {
+      if (parentLabel === "Our Services") {
+        return !["FTHBI Calculator", "Mortgage Payment Calculator", "Refinance Calculator"].includes(item.label)
+      }
+      if (parentLabel === "How It Works") {
+        return !["FTHBI Calculator", "Readvanceable Mortgage"].includes(item.label)
+      }
+      return true
+    })
   }
+
+  const megaMenuPromos = {
+    "Our Services": {
+      title: "Let's Drive Results Together",
+      subtitle: "Get the best mortgage rates today!",
+      buttonText: "Apply Now",
+      buttonLink: "/apply-now",
+      bgColor: "bg-[#12143A]",
+      textColor: "text-white"
+    },
+    "How It Works": {
+      title: "Need Expert Guidance?",
+      subtitle: "Our mortgage specialists are here to help!",
+      buttonText: "Contact Us",
+      buttonLink: "/contact-us",
+      bgColor: "bg-[#12143A]",
+      textColor: "text-white"
+    },
+    "Calculators": {
+      title: "Need Expert Calculated Rates?",
+      subtitle: "Our mortgage specialists are here to help!",
+      buttonText: "Contact Us",
+      buttonLink: "/contact-us",
+      bgColor: "bg-[#12143A]",
+      textColor: "text-white"
+    },
+    "Our Locations": {
+      title: "Need Location Based Guidance?",
+      subtitle: "Our mortgage specialists are here to help!",
+      buttonText: "Contact Us",
+      buttonLink: "/contact-us",
+      bgColor: "bg-[#12143A]",
+      textColor: "text-white"
+    },
+    "About Us": {
+      title: "Find Your Best Rate",
+      subtitle: "Compare and save on your mortgage!",
+      buttonText: "Get Quote",
+      buttonLink: "/contact-us",
+      bgColor: "bg-[#12143A]",
+      textColor: "text-white"
+    }
+  } as const
+
+  const cleanUri = (uri: string) => uri?.endsWith("/") ? uri.slice(0, -1) : uri
+
+  const splitChildren = (children: MenuItem[]) => {
+    const half = Math.ceil(children.length / 2)
+    return [children.slice(0, half), children.slice(half)]
+  }
+
 
   return (
     <header className="relative z-50 bg-[#1a1a3a] shadow-sm sticky top-0" ref={menuRef}>
+      {/* Top info bar */}
       <div className="w-full bg-[#1a1a3a] text-white py-2 md:px-4 px-0">
         <div className="container mx-auto flex flex-row justify-between items-center">
-          {/* Left side - Email and License */}
           <div className="flex items-center text-xs md:mb-0">
             <Mail className="h-4 w-4 mr-2 text-white" />
             <a
@@ -177,7 +174,6 @@ export default function Header() {
             <span className="ml-3 hidden md:inline-block">Licensed in BC & AB</span>
           </div>
 
-          {/* Center - Social Media Icons */}
           <div className="flex space-x-2 md:space-x-4 md:mb-0  text-xs">
             <a href="#" aria-label="Facebook" className="hover:text-gray-300 transition-colors no-underline">
               <Facebook className="h-4 w-4 text-[#F0B254]" />
@@ -204,31 +200,37 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Right side - Phone Number */}
           <div className="flex items-center text-xs">
             <Phone className="h-4 w-4 mr-2 text-white" />
             <a style={{ textDecoration: "none" }} href="tel:+16045913950" className="text-white">
-              +16045913950
+              +16045913590
             </a>
           </div>
         </div>
       </div>
+
+      {/* Main navigation */}
       <div
         className={`container mx-auto px-6 md:px-12 transition-all duration-300 ${isScrolled ? "py-1 pb-1" : "py-2 pb-3"}`}
         onMouseLeave={() => setActiveMenu(null)}
       >
         <div className="flex justify-between items-center">
           <div className="flex items-center justify-center gap-2 md:gap-4">
-          {/* Logo */}
+            <Link
+              style={{ textDecoration: "none" }}
+              href="/"
+              className="text-base text-white hover:text-[#F0B254] transition-colors"
+            >
             <div className={`transition-all duration-300 ${isScrolled ? "w-36 py-3" : "w-48"}`}>
-            <Image
-              src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Frame-1984078075.png"
-              alt="Asim Ali Mortgage Team"
-              width={200}
-              height={60}
-              priority
-            />
-          </div>
+              <Image
+                src={settings?.headerSettings?.uploadLogo?.sourceUrl}
+                alt="Asim Ali Mortgage Team"
+                width={200}
+                height={60}
+                priority
+              />
+            </div>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -241,64 +243,40 @@ export default function Header() {
               Home
             </Link>
 
-            {/* Services Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveMenu("services")}
-              // onMouseLeave={() => setActiveMenu(null)}
-              onKeyDown={(e) => handleKeyDown(e, "services")}
-              tabIndex={0}
-            >
-              <button className="flex items-center gap-1 text-base text-white hover:text-[#F0B254] transition-colors">
-                Services
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform ${activeMenu === "services" ? "rotate-180" : ""}`}
-                />
-              </button>
-            </div>
-
-            {/* Current Rate Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveMenu("rates")}
-              // onMouseLeave={() => setActiveMenu(null)}
-              onKeyDown={(e) => handleKeyDown(e, "rates")}
-              tabIndex={0}
-            >
-              <button className="flex items-center gap-1 text-base text-white hover:text-[#F0B254] transition-colors">
-                Current Rate
-                <ChevronDown className={`h-4 w-4 transition-transform ${activeMenu === "rates" ? "rotate-180" : ""}`} />
-              </button>
-            </div>
-
-            {/* How It Works Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setActiveMenu("howItWorks")}
-              onKeyDown={(e) => handleKeyDown(e, "howItWorks")}
-              tabIndex={0}
-            >
-              <button className="flex items-center gap-1 text-base text-white hover:text-[#F0B254] transition-colors">
-                How It Works
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform ${activeMenu === "howItWorks" ? "rotate-180" : ""}`}
-                />
-              </button>
-            </div>
-
-            <Link
-              style={{ textDecoration: "none" }}
-              href="/about"
-              className="text-base text-white hover:text-[#F0B254] transition-colors"
-            >
-              About Us
-            </Link>
+            {filterMenuItems(buildMenuTree).map((menuItem) => (
+              <div
+                key={menuItem.id}
+                className="relative"
+                onMouseEnter={() => setActiveMenu(menuItem.label)}
+                onKeyDown={(e) => handleKeyDown(e, menuItem.label)}
+                tabIndex={0}
+              >
+                {menuItem.children.length > 0 ? (
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    href={cleanUri(menuItem?.uri) || '/'} className="flex items-center gap-1 text-base text-white hover:text-[#F0B254] transition-colors">
+                    {menuItem.label}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${activeMenu === menuItem.label ? "rotate-180" : ""}`}
+                    />
+                  </Link>
+                ) : (
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    href={cleanUri(menuItem?.uri) || '/'}
+                    className="text-base text-white hover:text-[#F0B254] transition-colors"
+                  >
+                    {menuItem.label}
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
 
           {/* Apply Now Button (Desktop) */}
-          <Link href="/apply" className="hidden md:block">
+          <Link href="/apply-now" className="hidden md:block">
             <Button
-              className={`bg-transparent text-white hover:text-black hover:bg-[#F0B254]/10 border border-1 border-[#F0B254] font-medium rounded-md transition-all duration-300 ${isScrolled ? "px-4 py-1 text-sm" : "px-6 py-2"}`}
+              className={`bg-transparent text-white hover:text-black hover:bg-[#F0B254]/10 border border-1 border-[#F0B254] font-medium rounded-md transition-all duration-300 ${isScrolled ? "px-4 py-1 text-xl" : "px-6 py-2"}`}
             >
               Apply Now
             </Button>
@@ -315,8 +293,8 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mega Menu */}
-      {activeMenu && (
+      {/* Mega Menu for Desktop */}
+      {activeMenu && megaMenuPromos[activeMenu as keyof typeof megaMenuPromos] && (
         <div
           onMouseEnter={() => setActiveMenu(activeMenu)}
           onMouseLeave={() => setActiveMenu(null)}
@@ -325,17 +303,47 @@ export default function Header() {
           <div className="container mx-auto px-6 md:px-12 py-8">
             <div className="grid grid-cols-12 gap-8">
               {/* Menu Columns */}
-              {menuData[activeMenu as keyof typeof menuData].columns.map((column, colIndex) => (
+              {splitChildren(filterMenuItems(
+                buildMenuTree.find(item => item.label === activeMenu)?.children || [],
+                activeMenu
+              )).map((column, colIndex) => (
                 <div key={colIndex} className="col-span-3">
-                  <p className="text-sm md:text-2xl font-oswald text-[#12143A] mb-4">{column.heading}</p>
-                  <ul className="space-y-3">
-                    {column.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>
-                        <Link href={item.href} style={{ textDecoration: "none" }} className="">
-                          <p className="text-sm font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">
-                            {item.title}
+                  <ul className="space-y-1">
+                    {column.map((child) => (
+                      <li key={child.id}>
+                        <Link href={cleanUri(child?.uri) 
+                          || '/'}
+                         style={{ textDecoration: "none" }} className="">
+                          <p className="text-xl font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">
+                            {child.label}
                           </p>
                         </Link>
+                        {/* Special handling for Commercial Mortgages */}
+                        {child.label === "Commercial Mortgages" && (
+                          <ul className="submenu-child pl-4 mt-2 space-y-2">
+                            <li>
+                              <Link href="/commercial-mortgage-in-bc" style={{ textDecoration: "none" }}>
+                                <p className="text-xl text-[#12143A] hover:text-[#F0B254] transition-colors">
+                                  British Columbia
+                                </p>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/commercial-mortgage-in-surrey" style={{ textDecoration: "none" }}>
+                                <p className="text-xl text-[#12143A] hover:text-[#F0B254] transition-colors">
+                                  Surrey
+                                </p>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/commercial-mortgage-in-vancouver" style={{ textDecoration: "none" }}>
+                                <p className="text-xl text-[#12143A] hover:text-[#F0B254] transition-colors">
+                                  Vancouver
+                                </p>
+                              </Link>
+                            </li>
+                          </ul>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -343,28 +351,28 @@ export default function Header() {
               ))}
 
               {/* Promo Section */}
-              <div className="col-span-6">
+              <div className="col-span-6 h-[300px]">
                 <div
                   className={`${
-                    menuData[activeMenu as keyof typeof menuData].promo.bgColor
+                    megaMenuPromos[activeMenu as keyof typeof megaMenuPromos].bgColor
                   } rounded-lg p-8 h-full flex flex-col justify-center`}
                 >
                   <div className="flex items-center mb-4">
                     <TrendingUp className="h-8 w-8 text-[#F0B254] mr-2" />
                   </div>
-                  <h3
+                  <p
                     className={`text-3xl font-bold mb-2 ${
-                      menuData[activeMenu as keyof typeof menuData].promo.textColor
+                      megaMenuPromos[activeMenu as keyof typeof megaMenuPromos].textColor
                     }`}
                   >
-                    {menuData[activeMenu as keyof typeof menuData].promo.title}
-                  </h3>
-                  <p className={`mb-6 ${menuData[activeMenu as keyof typeof menuData].promo.textColor} opacity-90`}>
-                    {menuData[activeMenu as keyof typeof menuData].promo.subtitle}
+                    {megaMenuPromos[activeMenu as keyof typeof megaMenuPromos].title}
                   </p>
-                  <Link href={menuData[activeMenu as keyof typeof menuData].promo.buttonLink}>
+                  <p className={`mb-6 ${megaMenuPromos[activeMenu as keyof typeof megaMenuPromos].textColor} opacity-90`}>
+                    {megaMenuPromos[activeMenu as keyof typeof megaMenuPromos].subtitle}
+                  </p>
+                  <Link href={megaMenuPromos[activeMenu as keyof typeof megaMenuPromos].buttonLink}>
                     <Button className="bg-[#F0B254] hover:bg-[#e0a54a] text-white font-medium px-6 py-2 rounded-md transition-colors">
-                      {menuData[activeMenu as keyof typeof menuData].promo.buttonText}
+                      {megaMenuPromos[activeMenu as keyof typeof megaMenuPromos].buttonText}
                     </Button>
                   </Link>
                 </div>
@@ -385,132 +393,86 @@ export default function Header() {
               <p className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">Home</p>
             </Link>
 
-            {/* Mobile Services Menu */}
-            <div className="border-b border-gray-200 pb-2">
-              <button
-                className="flex items-center justify-between w-full py-2 text-white hover:text-[#F0B254] transition-colors"
-                onClick={() => setActiveMenu(activeMenu === "services" ? null : "services")}
-              >
-                <span className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">Services</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform ${activeMenu === "services" ? "rotate-180" : ""}`}
-                />
-              </button>
+            {filterMenuItems(buildMenuTree).map((menuItem) => (
+              <div key={menuItem.id} className="border-b border-gray-200 pb-2">
+                {menuItem.children.length > 0 ? (
+                  <>
+                    <button
+                      className="flex items-center justify-between w-full py-2 text-white hover:text-[#F0B254] transition-colors"
+                      onClick={() => setActiveMenu(activeMenu === menuItem.label ? null : menuItem.label)}
+                    >
+                      <span className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">
+                        {menuItem.label}
+                      </span>
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${activeMenu === menuItem.label ? "rotate-180" : ""}`}
+                      />
+                    </button>
 
-              {activeMenu === "services" && (
-                <div className="pl-4 mt-2 space-y-4">
-                  {menuData.services.columns.map((column, colIndex) => (
-                    <div key={colIndex} className="mb-4">
-                      <p className="text-md text-[#12143A] mb-2">{column.heading}</p>
-                      <ul className="space-y-2">
-                        {column.items.map((item, itemIndex) => (
-                          <li key={itemIndex}>
-                            <Link
-                              href={item.href}
-                              className=""
-                              onClick={() => setMobileMenuOpen(false)}
-                              style={{ textDecoration: "none" }}
-                            >
-                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">
-                                {item.title}
-                              </p>
-                            </Link>
-                          </li>
+                    {activeMenu === menuItem.label && (
+                      <div className="pl-4 mt-2 space-y-4">
+                        {filterMenuItems(menuItem.children, menuItem.label).map((child) => (
+                          <div key={child.id} className="mb-4">
+                            {child.children.length > 0 ? (
+                              <>
+                                <button
+                                  className="flex items-center justify-between w-full py-2"
+                                  onClick={() => setActiveMenu(activeMenu === child.label ? null : child.label)}
+                                >
+                                  <p className="text-md text-[#12143A] mb-2">{child.label}</p>
+                                  <ChevronDown
+                                    className={`h-4 w-4 transition-transform ${activeMenu === child.label ? "rotate-180" : ""}`}
+                                  />
+                                </button>
+
+                                {activeMenu === child.label && (
+                                  <ul className="pl-4 space-y-2">
+                                    {child.children.map((grandChild) => (
+                                      <li key={grandChild.id}>
+                                        <Link
+                                          href={cleanUri(grandChild?.uri) || '/'}
+                                          style={{ textDecoration: "none" }}
+                                          className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors"
+                                          onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                          {grandChild.label}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </>
+                            ) : (
+                              <Link
+                                href={cleanUri(child?.uri) || '/'}
+                                style={{ textDecoration: "none" }}
+                                className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                {child.label}
+                              </Link>
+                            )}
+                          </div>
                         ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Mobile Current Rate Menu */}
-            <div className="border-b border-gray-200 pb-2">
-              <button
-                className="flex items-center justify-between w-full py-2 text-white hover:text-[#F0B254] transition-colors"
-                onClick={() => setActiveMenu(activeMenu === "rates" ? null : "rates")}
-              >
-                <span className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">Current Rate</span>
-                <ChevronDown className={`h-4 w-4 transition-transform ${activeMenu === "rates" ? "rotate-180" : ""}`} />
-              </button>
-
-              {activeMenu === "rates" && (
-                <div className="pl-4 mt-2 space-y-4">
-                  {menuData.rates.columns.map((column, colIndex) => (
-                    <div key={colIndex} className="mb-4">
-                      <p className="text-md text-[#12143A] mb-2">{column.heading}</p>
-                      <ul className="space-y-2">
-                        {column.items.map((item, itemIndex) => (
-                          <li key={itemIndex}>
-                            <Link
-                              href={item.href}
-                              style={{ textDecoration: "none" }}
-                              className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors"
-                              onClick={() => setMobileMenuOpen(false)}
-                            >
-                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">
-                                {item.title}
-                              </p>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Mobile How It Works Menu */}
-            <div className="border-b border-gray-200 pb-2">
-              <button
-                className="flex items-center justify-between w-full py-2 text-white hover:text-[#F0B254] transition-colors"
-                onClick={() => setActiveMenu(activeMenu === "howItWorks" ? null : "howItWorks")}
-              >
-                <span className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">How It Works</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform ${activeMenu === "howItWorks" ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              {activeMenu === "howItWorks" && (
-                <div className="pl-4 mt-2 space-y-4">
-                  {menuData.howItWorks.columns.map((column, colIndex) => (
-                    <div key={colIndex} className="mb-4">
-                      <p className="text-md text-[#12143A] mb-2">{column.heading}</p>
-                      <ul className="space-y-2">
-                        {column.items.map((item, itemIndex) => (
-                          <li key={itemIndex}>
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              href={item.href}
-                              onClick={() => setMobileMenuOpen(false)}
-                            >
-                              <p className="block py-1 text-sm text-[#12143A] hover:text-[#F0B254] transition-colors">
-                                {item.title}
-                              </p>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Link
-              href="/about"
-              style={{ textDecoration: "none" }}
-              className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <p className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors">About Us</p>
-            </Link>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={cleanUri(menuItem?.uri)|| '/'}
+                    style={{ textDecoration: "none" }}
+                    className="block py-2 text-[#12143A] hover:text-[#F0B254] transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {menuItem.label}
+                  </Link>
+                )}
+              </div>
+            ))}
 
             {/* Apply Now Button (Mobile) */}
             <div className="pt-2">
-              <Link href="/apply" className="block w-full" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/apply-now" className="block w-full" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full bg-transparent text-[#12143A] hover:text-black hover:bg-[#F0B254]/10 border border-1 border-[#F0B254] font-medium py-2 rounded-md transition-colors">
                   Apply Now
                 </Button>

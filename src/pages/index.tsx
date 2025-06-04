@@ -1,18 +1,19 @@
 import { gql } from "@apollo/client";
-import dynamic from "next/dynamic";
 import Head from "next/head";
-import Image from "next/image";
-import { Container } from "react-bootstrap";
 import { apolloClient } from "../lib/apollo";
 import { Fragment } from "react";
-const HomeComponents = dynamic(() => import("components/HomeComponents"));
-const Footer = dynamic(() => import("../components/Footer"));
-const Header = dynamic(() => import("../components/Header"));
-const Banner = dynamic(() => import("../components/Banner"));
-const WeHelp = dynamic(() => import("../components/WeHelp"));
-const MobileBanner = dynamic(() => import("components/MobileBanner"));
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Header from "components/homepage/header";
+import HeroSection from "components/homepage/hero-section";
+import AboutSection from "components/homepage/about-section";
+import MortgageRatesSection from "components/homepage/mortgage-rates-section";
+import RoleSection from "components/homepage/role-section";
+import ApprovalProcessSection from "components/homepage/approval-process-section";
+import ScheduleMeetingSection from "components/homepage/schedule-meeting-section";
+import TalkToUsSection from "components/homepage/talk-to-us-section";
+import ServicesSection from "components/homepage/services-section";
+import CalculatorToolsSection from "components/homepage/calculator-tools-section";
+import Footer from "components/homepage/footer";
+
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -494,91 +495,18 @@ export default function Page(props: MyProps) {
           );
         })}
       </Head>
-      <main>
-        <Header settings={settings} mainMenus={mainMenus} />
-        <div className="desktop-banner">
-          <Banner sliders={sliders} />
-        </div>
-        <div className="mobile-banner">
-          <MobileBanner msliders={msliders} />
-        </div>
-        <Container className="d-none d-md-block">
-          <div className="ms-auto mt-5 footer-partner-logo">
-            {bottomPartnerLogoSection?.map((singleLogo:any) => {
-              return (
-                <div key={singleLogo?.sourceUrl}>
-                  <Image
-                    src={singleLogo?.sourceUrl}
-                    width="350"
-                    height="150"
-                    alt={singleLogo?.altText}
-                    style={{ objectFit: "contain", width: "100%" }}
-                    loading="lazy"
-                    quality={100}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </Container>
-        <Container className="my-5 d-block d-md-none">
-                {bottomPartnerLogoSection == null ? (
-                  ""
-                ) : (
-                  <Carousel
-                    autoPlay={true}
-                    infinite={true}
-                    responsive={responsive}
-                  >
-                    {bottomPartnerLogoSection?.map((singleLogo, i) => {
-                      return (
-                        <div key={singleLogo?.sourceUrl}>
-                  <Image
-                  className="slide-text"
-                    src={singleLogo?.sourceUrl}
-                    width="350"
-                    height="150"
-                    alt={singleLogo?.altText}
-                    style={{ objectFit: "contain", width: "100%" }}
-                    loading="lazy"
-                    quality={100}
-                  />
-                </div>
-                      );
-                    })}
-                  </Carousel>
-                )}
-              </Container>
-        <WeHelp helps={helps} />
-        <div>
-          <HomeComponents
-            teamData={teamData}
-            featuredTextLeft={featuredTextLeft}
-            featuredTextRight={featuredTextRight}
-            featuredImageLeft={featuredImageLeft}
-            featuredImageRight={featuredImageRight}
-            approvalRenovationData={approvalRenovationData}
-            sliders={sliders}
-            meetings={meetings}
-            advisorData={advisorData}
-            splitImagesRight={splitImagesRight}
-            mortgageInterestData={mortgageInterestData}
-            splitImagesLeft={splitImagesLeft}
-            tabRenovationData={tabRenovationData}
-            mortgageServiceData={mortgageServiceData}
-            tipsTitle={tipsTitle}
-            tipsDescription={tipsDescription}
-            tipsLeftText={tipsLeftText}
-            tipsRightText={tipsRightText}
-            tipsImageLeft={tipsImageLeft}
-            tipsImageRight={tipsImageRight}
-            homebuyerSectionData={homebuyerSectionData}
-            contactData={contactData}
-            planData={planSection}
-          />
-        </div>
-      </main>
-      <Footer settings={settings} mainMenus={mainMenus} />
+      <main className="min-h-screen">
+      <HeroSection settings={settings} menuItems={mainMenus}/>
+      <AboutSection />
+      <ServicesSection />
+      <MortgageRatesSection />
+      <RoleSection />
+      <TalkToUsSection />
+      <ApprovalProcessSection />
+      <ScheduleMeetingSection />
+      <CalculatorToolsSection />
+      <Footer settings={settings} menuData={mainMenus}/>
+    </main>
     </>
   );
 }

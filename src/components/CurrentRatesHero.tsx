@@ -5,7 +5,7 @@ import { Button } from "components/ui/button"
 import Header from "./homepage/header"
 
 
-export default function CurrentRatesHero() {
+export default function CurrentRatesHero({ menuItems,settings }: { menuItems: any[], settings: any }) {
   return (
     <section className="relative w-full md:min-h-[70dvh] min-h-screen flex flex-col justify-between text-white">
       {/* Background image with overlay */}
@@ -23,7 +23,7 @@ export default function CurrentRatesHero() {
                 aria-hidden="true"
               />
       
-        <Header />
+        <Header settings={settings} menuData={menuItems}/>
       {/* Content section */}
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex-grow flex flex-col">
         <div className="flex-grow flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
