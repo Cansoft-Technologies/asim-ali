@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Music } from "lucide-react";
@@ -55,6 +56,7 @@ const menuTree = useMemo(() => {
     return rootItems
   }, [menuData]);
   const servicesItem = menuTree.find((item) => item.label === "Our Services");
+  console.log(servicesItem, "servicesItem");
 
   return (
     <footer className="w-full text-white pt-16 pb-6 relative overflow-hidden">
@@ -147,7 +149,7 @@ const menuTree = useMemo(() => {
                 )
                 .map((item) => (
                   <li key={item.id} className="list-none">
-                    <Link style={{textDecoration: "none"}} href={cleanUrl(item.url)} className="hover:text-[#F0B254] text-white">
+                    <Link style={{textDecoration: "none"}} href={cleanUrl(item.uri)} className="hover:text-[#F0B254] text-white">
                       {item.label}
                     </Link>
                   </li>
@@ -160,9 +162,9 @@ const menuTree = useMemo(() => {
             <p className="text-xl font-medium mb-6">Services</p>
             <ul className="grid grid-cols-3 gap-y-4 gap-x-6 mt-3 px-0">
   {servicesItem?.children?.length > 0 ? (
-    servicesItem.children.map((child) => (
+    servicesItem.children.map((child:any) => (
       <li key={child.id} className="list-none col-span-1">
-        <Link style={{textDecoration: "none"}} href={cleanUrl(child.url)} className="text-sm text-white hover:text-[#F0B254]">
+        <Link style={{textDecoration: "none"}} href={cleanUrl(child?.uri)} className="text-sm text-white hover:text-[#F0B254]">
           {child.label}
         </Link>
       </li>

@@ -57,7 +57,6 @@ postBodyData.set('message', formData.message.toString() || "");
         url: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/api/v1/contact-form/`,
         data: postBodyData,
       };
-      const post_response = await axios(post_config);
       const data = await response.json();
       setBtnLoader(false);
       setSuccess(data.message);

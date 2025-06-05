@@ -147,7 +147,7 @@ const menuTree = useMemo(() => {
                 )
                 .map((item) => (
                   <li key={item.id} className="list-none">
-                    <Link style={{textDecoration: "none"}} href={cleanUrl(item.url)} className="hover:text-[#F0B254] text-white">
+                    <Link style={{textDecoration: "none"}} href={cleanUrl(item.uri)} className="hover:text-[#F0B254] text-white">
                       {item.label}
                     </Link>
                   </li>
@@ -162,7 +162,7 @@ const menuTree = useMemo(() => {
   {servicesItem?.children?.length > 0 ? (
     servicesItem.children.map((child) => (
       <li key={child.id} className="list-none col-span-1">
-        <Link style={{textDecoration: "none"}} href={cleanUrl(child.url)} className="text-sm text-white hover:text-[#F0B254]">
+        <Link style={{textDecoration: "none"}} href={cleanUrl(child.uri)} className="text-sm text-white hover:text-[#F0B254]">
           {child.label}
         </Link>
       </li>
