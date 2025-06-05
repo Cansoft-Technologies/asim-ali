@@ -9,6 +9,7 @@ import { Input } from "components/ui/input"
 import { Textarea } from "components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "components/ui/select"
 import { Facebook, Instagram, Linkedin, Music } from "lucide-react"
+import { Toast } from "components/ui/toast"
 
 export default function ScheduleMeetingSection() {
   const [formData, setFormData] = useState({
@@ -20,22 +21,102 @@ export default function ScheduleMeetingSection() {
     contactAbout: "",
     subject: "",
     message: "",
-  })
+  });
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Here you would typically send the data to your backend
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Show loading toast
+    Toast({
+      title: "Wait:Please wait while we process your request",
+      duration: 3000,
+    });
+
+    // Extract first and last names from full name
+    const [fname, ...lnameParts] = formData.name.split(" ");
+    const lname = lnameParts.join(" ") || "";
+
+    const bodyData = JSON.stringify({
+      fromEmail: "noreply@asimali.ca",
+      toEmail: "clientcare@asimali.ca",
+      emailSubject: `${formData.subject} - ${formData.name}`,
+      fname: fname || "",
+      lname: lname || "",
+      mail: formData.email || "",
+      phone: formData.phone || "",
+      province: formData.province || "",
+      contact: formData.contactMethod || "",
+      about: formData.contactAbout || "",
+      message: formData.message || "",
+    });
+
+    const postBodyData = new FormData();
+    postBodyData.set('email_subject', `${formData.subject} - ${formData.name}`);
+    postBodyData.set('name', formData.name);
+    postBodyData.set('email', formData.email);
+    postBodyData.set('phone', formData.phone);
+    postBodyData.set('province', formData.province);
+    postBodyData.set('contact', formData.contactMethod);
+    postBodyData.set('about', formData.contactAbout);
+    postBodyData.set('message', formData.message);
+
+    try {
+      // First API call
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: bodyData
+      });
+
+      // Second API call to WordPress
+      await fetch(
+        `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/api/v1/contact-form/`,
+        {
+          method: "POST",
+          body: postBodyData
+        }
+      );
+
+      // Show success toast
+      Toast({
+        title: "Message Sent!We'll contact you within 24 hours",
+        duration: 5000,
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        province: "",
+        contactMethod: "",
+        contactAbout: "",
+        subject: "",
+        message: "",
+      });
+
+    } catch (error) {
+      // Show error toast
+      Toast({
+        title: "Error: Failed to send message. Please try again.",
+        variant: "destructive",
+        duration: 5000,
+      });
+      console.error("Submission error:", error);
+    }
+  };
 
   const locations = [
     "Abbotsford",
@@ -88,7 +169,7 @@ export default function ScheduleMeetingSection() {
                 >
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                <span className="text-sm">+1 (604) 513-2190</span>
+                <span className="text-sm">+16045913590</span>
               </div>
 
               <div className="flex items-center gap-2">

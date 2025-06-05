@@ -35,7 +35,7 @@ export default function CalculatorToolsSection() {
             <p className="text-gray-600 text-center mb-8">
               See for yourself how much you can save with our lower rates.
             </p>
-            <Link href="/calculator/mortgage" className="block">
+            <Link href="/mortgage-calculator" className="block">
               <Button
                 variant="outline"
                 className="w-full border-gray-300 text-[#0a1e3b] hover:bg-[#0a1e3b] hover:text-white py-6 rounded-none"
@@ -55,7 +55,7 @@ export default function CalculatorToolsSection() {
             <p className="text-gray-600 text-center mb-8">
               See for yourself how much you can save with our lower rates.
             </p>
-            <Link href="/calculator/ftbhi" className="block">
+            <Link href="/fthbi-calculator-bc" className="block">
             <Button
                 variant="outline"
                 className="w-full border-gray-300 text-[#0a1e3b] hover:bg-[#0a1e3b] hover:text-white py-6 rounded-none"
@@ -73,7 +73,7 @@ export default function CalculatorToolsSection() {
             <p className="text-gray-600 text-center mb-8">
               See for yourself how much you can save with our lower rates.
             </p>
-            <Link href="/calculator/refinancing" className="block">
+            <Link href="/mortgage-refinance-calculator-bc" className="block">
               <Button
                 variant="outline"
                 className="w-full border-gray-300 text-[#0a1e3b] hover:bg-[#0a1e3b] hover:text-white py-6 rounded-none"

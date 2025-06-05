@@ -29,9 +29,7 @@ module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
       compiler: {
-        removeConsole: {
-          exclude: ['error'],
-        },
+        removeConsole: false,
       },
       trailingSlash: false,
       images: {
@@ -220,7 +218,6 @@ const inValidUrls = [
   "/new-home",
   "/contact-a-mortgage-broker/feed",
   "/posts/b-lender-mortgage-bc",
-  "/new-home",
   "/author/seoteam",
   "/tools/current-rates",
   "/posts/loans-for-low-income",
