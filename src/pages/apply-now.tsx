@@ -160,7 +160,6 @@ function ApplyNow(props: MyProps) {
                       }
                     />
                     <meta property="og:title" content={meta?.seo?.title} />
-                    <meta name="robots" content="noindex"></meta>
                     <meta
                       property="og:description"
                       content={meta?.seo?.description}
