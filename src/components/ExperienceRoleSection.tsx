@@ -66,12 +66,12 @@ export default function ExperienceRoleSection() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link href="/apply">
+          <Link href="/apply-now">
             <Button className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-white font-medium px-12 py-6 rounded-none">
               Apply Now
             </Button>
           </Link>
-          <Link href="/team">
+          <Link href="/about-us">
             <Button
               variant="outline"
               className="border-black text-black hover:bg-gray/900 hover:text-white px-12 py-6 rounded-none"

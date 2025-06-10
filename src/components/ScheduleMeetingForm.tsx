@@ -10,6 +10,7 @@ import { Facebook, Instagram, Linkedin, Music } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import ScheduleApplyForm from "./ScheduleApplyForm"
 
 export default function ScheduleMeetingForm() {
   const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ export default function ScheduleMeetingForm() {
                       </p>
           
                       <div className="flex flex-col sm:flex-row gap-4 justify-center mt-3">
-            <Link href="/consultation">
+            <Link href="/apply-now">
               <Button
               variant="outline"
                 className="border border-[#F0B254] border-1 text-white hover:border-[#F0B254] px-10 py-3 text-base rounded-none bg-transparent"
@@ -82,153 +83,7 @@ export default function ScheduleMeetingForm() {
                     </div>
 
           {/* Right side - Form */}
-          <div>
-                      <div className="bg-white p-8 shadow-sm">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                                Name
-                              </label>
-                              <Input
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="w-full"
-                                placeholder="Enter Your Name..."
-                                required
-                              />
-                            </div>
-          
-                            <div>
-                              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                                Phone
-                              </label>
-                              <Input
-                                id="phone"
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                className="w-full"
-                                placeholder="+1"
-                                required
-                              />
-                            </div>
-                          </div>
-          
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                                Email
-                              </label>
-                              <Input
-                                id="email"
-                                name="email"
-                                type="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full"
-                                placeholder="Enter Your Mail..."
-                                required
-                              />
-                            </div>
-          
-                            <div>
-                              <label htmlFor="province" className="block text-sm font-medium text-gray-700 mb-1">
-                                Province
-                              </label>
-                              <Select onValueChange={(value) => handleSelectChange("province", value)}>
-                                <SelectTrigger className="w-full">
-                                  <SelectValue placeholder="Alberta" />
-                                </SelectTrigger>
-                                <SelectContent className="bg-white">
-                                  <SelectItem value="alberta">Alberta</SelectItem>
-                                  <SelectItem value="bc">British Columbia</SelectItem>
-                                  <SelectItem value="ontario">Ontario</SelectItem>
-                                  <SelectItem value="quebec">Quebec</SelectItem>
-                                  <SelectItem value="manitoba">Manitoba</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-                          </div>
-          
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                              <label htmlFor="contactMethod" className="block text-sm font-medium text-gray-700 mb-1">
-                                How Should We Contact You?
-                              </label>
-                              <Select onValueChange={(value) => handleSelectChange("contactMethod", value)}>
-                                <SelectTrigger className="w-full">
-                                  <SelectValue placeholder="Please Select" />
-                                </SelectTrigger>
-                                <SelectContent className="bg-white">
-                                  <SelectItem value="phone">Phone</SelectItem>
-                                  <SelectItem value="email">Email</SelectItem>
-                                  <SelectItem value="text">Text Message</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-          
-                            <div>
-                              <label htmlFor="contactAbout" className="block text-sm font-medium text-gray-700 mb-1">
-                                Please Contact Me About
-                              </label>
-                              <Select onValueChange={(value) => handleSelectChange("contactAbout", value)}>
-                                <SelectTrigger className="w-full">
-                                  <SelectValue placeholder="Please Select" />
-                                </SelectTrigger>
-                                <SelectContent className="bg-white">
-                                  <SelectItem value="new-mortgage">New Mortgage</SelectItem>
-                                  <SelectItem value="refinance">Refinance</SelectItem>
-                                  <SelectItem value="renewal">Mortgage Renewal</SelectItem>
-                                  <SelectItem value="consultation">General Consultation</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-                          </div>
-          
-                          <div>
-                            <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                              Subject
-                            </label>
-                            <Select onValueChange={(value) => handleSelectChange("subject", value)}>
-                              <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Please Select" />
-                              </SelectTrigger>
-                              <SelectContent className="bg-white">
-                                <SelectItem value="purchase">Home Purchase</SelectItem>
-                                <SelectItem value="refinance">Refinancing</SelectItem>
-                                <SelectItem value="renewal">Mortgage Renewal</SelectItem>
-                                <SelectItem value="consultation">Consultation</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-          
-                          <div>
-                            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                              Message
-                            </label>
-                            <Textarea
-                              id="message"
-                              name="message"
-                              value={formData.message}
-                              onChange={handleChange}
-                              className="w-full min-h-[100px]"
-                              placeholder="Type your Message..."
-                            />
-                          </div>
-          
-                          <Button type="submit" className="w-full bg-[#0a1e3b] hover:bg-[#0a1e3b]/90 text-white py-6">
-                            Send
-                          </Button>
-          
-                          <p className="text-xs text-center text-gray-500 mt-2">
-                            *After submit this form, we will contact within 24 hours.
-                          </p>
-                        </form>
-                      </div>
-                    </div>
+          <ScheduleApplyForm/>
         </div>
       </div>
     </section>

@@ -112,7 +112,7 @@ export default function AreasWeWorkIn() {
         </Link>
         <Link
         style={{ textDecoration: "none" }}
-          href="#team"
+          href="/about-us"
           className="px-8 py-3 border border-gray-300 text-black font-medium text-center hover:bg-gray-50 transition-colors"
         >
           Our Team

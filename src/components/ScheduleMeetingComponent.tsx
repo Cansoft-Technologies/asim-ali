@@ -10,6 +10,7 @@ import { Button } from "components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "components/ui/select"
 import { Facebook, Instagram, Linkedin, Music } from "lucide-react"
 import TestimonialSliderRow from "./TestimonialSliderRow"
+import ScheduleApplyForm from "./ScheduleApplyForm"
 
 export default function ScheduleMeetingComponent() {
   const [formData, setFormData] = useState({
@@ -67,7 +68,8 @@ export default function ScheduleMeetingComponent() {
                       </p>
           
                       <div className="space-y-4 mb-8 mt-3">
-                        <div className="flex items-center gap-2">
+                        <a href="tel:+1 (604) 513-2190" className="!no-underline text-white !hover:text-[#F0B254]">
+                          <div className="flex items-center gap-2">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -84,8 +86,10 @@ export default function ScheduleMeetingComponent() {
                           </svg>
                           <span className="text-sm text-white">+1 (604) 513-2190</span>
                         </div>
+                        </a>
           
-                        <div className="flex items-center gap-2">
+                        <a href="mailto:info@asimali.ca" className="!no-underline text-white !hover:text-[#F0B254]">
+                          <div className="flex items-center gap-2 mt-3">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -103,8 +107,10 @@ export default function ScheduleMeetingComponent() {
                           </svg>
                           <span className="text-sm text-white">info@asimali.ca</span>
                         </div>
+                        </a>
           
-                        <div className="flex items-center gap-2">
+                        <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.999123195198!2d-122.8460286843705!3d49.13409867924468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d6a7b8c8e9b7%3A0x7a5c6e9b8c8e9b7!2s7327%20137%20St%20%23311%2C%20Surrey%2C%20BC%20V3W%201A4%2C%20Canada!5e0!3m2!1sen!2sus!4v1691234567890" className="!no-underline text-white !hover:text-[#F0B254]">
+                          <div className="flex items-center gap-2 mt-3">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -122,6 +128,7 @@ export default function ScheduleMeetingComponent() {
                           </svg>
                           <span className="text-sm text-white">7327 137 St Suite #311, Surrey, BC V3W 1A4, Canada</span>
                         </div>
+                        </a>
                       </div>
           
                       <div className="flex gap-4 mb-8">
@@ -141,190 +148,7 @@ export default function ScheduleMeetingComponent() {
                     </div>
 
           {/* Right side - Form */}
-          <div>
-            <div className="bg-white p-8 shadow-lg">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Name
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full"
-                      placeholder="Enter Your Name..."
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full"
-                      placeholder="+1"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full"
-                      placeholder="Enter Your Mail..."
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="province" className="block text-sm font-medium text-gray-700 mb-1">
-                      Province
-                    </label>
-                    <Select defaultValue="Alberta" onValueChange={(value) => handleSelectChange("province", value)}>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Alberta" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#f9fbfc]">
-                        <SelectItem value="alberta">Alberta</SelectItem>
-                        <SelectItem value="bc">British Columbia</SelectItem>
-                        <SelectItem value="ontario">Ontario</SelectItem>
-                        <SelectItem value="quebec">Quebec</SelectItem>
-                        <SelectItem value="manitoba">Manitoba</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
-                      City
-                    </label>
-                    <Input
-                      id="city"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                      className="w-full"
-                      placeholder="Enter Your City..."
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="hasMortgage" className="block text-sm font-medium text-gray-700 mb-1">
-                      Do you have Mortgage?
-                    </label>
-                    <Select onValueChange={(value) => handleSelectChange("hasMortgage", value)}>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Please Select" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white">
-                        <SelectItem value="yes">Yes</SelectItem>
-                        <SelectItem value="no">No</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="propertyValue" className="block text-sm font-medium text-gray-700 mb-1">
-                      Property Value ($)
-                    </label>
-                    <Input
-                      id="propertyValue"
-                      name="propertyValue"
-                      value={formData.propertyValue}
-                      onChange={handleChange}
-                      className="w-full"
-                      placeholder="Enter Amount..."
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="mortgageBalance" className="block text-sm font-medium text-gray-700 mb-1">
-                      Current Mortgage Balance ($)
-                    </label>
-                    <Input
-                      id="mortgageBalance"
-                      name="mortgageBalance"
-                      value={formData.mortgageBalance}
-                      onChange={handleChange}
-                      className="w-full"
-                      placeholder="Enter Amount..."
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="loanAmount" className="block text-sm font-medium text-gray-700 mb-1">
-                      Requested Loan Amount ($)
-                    </label>
-                    <Input
-                      id="loanAmount"
-                      name="loanAmount"
-                      value={formData.loanAmount}
-                      onChange={handleChange}
-                      className="w-full"
-                      placeholder="Enter Amount..."
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contactMethod" className="block text-sm font-medium text-gray-700 mb-1">
-                      Preferred Contact Method
-                    </label>
-                    <Select onValueChange={(value) => handleSelectChange("contactMethod", value)}>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Please Select" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white">
-                        <SelectItem value="phone">Phone</SelectItem>
-                        <SelectItem value="email">Email</SelectItem>
-                        <SelectItem value="text">Text Message</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full min-h-[100px]"
-                    placeholder="Type your Message..."
-                  />
-                </div>
-
-                <Button type="submit" className="w-full bg-[#0a1e3b] hover:bg-[#0a1e3b]/90 text-white py-6 text-lg">
-                  Apply Now
-                </Button>
-
-                <p className="text-xs text-center text-gray-500 mt-2">
-                  *After submit this form, we will contact within 24 hours.
-                </p>
-              </form>
-            </div>
-          </div>
+          <ScheduleApplyForm/>
         </div>
       </div>
       <div className="relative bg-[#f8f5f0] w-full">

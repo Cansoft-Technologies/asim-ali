@@ -19,14 +19,13 @@ export default function TalkToUsSection() {
 
           <div>
             <h2 className="!text-3xl md:!text-4xl !font-bold mb-6 text-[#0a1e3b]">
-              Talk To Us For Your Mortgage
+              The sooner you contact us, the
               <br />
-              Approval
+              A sooner we can hold your rate.
             </h2>
 
             <p className="text-gray-600 mb-8">
-              Choosing us as your mortgage broker in Surrey offers you many
-              benefits.
+              Choosing us as your mortgage broker in Surrey offers you many benefits.
             </p>
 
             <div className="space-y-6 mb-8">
@@ -96,7 +95,7 @@ export default function TalkToUsSection() {
               </div>
             </div>
 
-            <Link href="/contact">
+            <Link href="/contact-us">
               <Button className="bg-transparent hover:bg-[#F0B254]/10 text-[#F0B254] font-medium text-2xl capitalize border border-[#F0B254] px-10 py-3 rounded-none">
                 Contact Us
               </Button>
