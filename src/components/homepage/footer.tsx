@@ -93,16 +93,16 @@ const menuTree = useMemo(() => {
             </div>
 
             <div className="flex gap-6 mb-6 items-center justify-center md:justify-start">
-              <a href="#" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=100063649628029" aria-label="Facebook">
                 <Facebook size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
-              <a href="#" aria-label="Instagram">
+              <a href="https://www.instagram.com/asimfinance/" aria-label="Instagram">
                 <Instagram size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
-              <a href="#" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/asim-ali-a75168125/?originalSubdomain=ca" aria-label="LinkedIn">
                 <Linkedin size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
-              <a href="#" aria-label="Podcast">
+              <a href="https://www.tiktok.com/@asimortgage/" aria-label="Podcast">
                 <Music size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
             </div>
@@ -112,20 +112,26 @@ const menuTree = useMemo(() => {
           <div className="md:col-span-3 flex flex-col md:items-start items-center justify-center md:justify-start">
             <p className="text-2xl font-medium mb-4 text-start">Contact Us</p>
             <ul className="space-y-3 flex flex-col md:items-start items-center mt-3 px-0">
-              <li className="flex items-start gap-2">
+              <a href="tel:+1 (604) 513-2190" className="!no-underline text-white !hover:text-[#F0B254]">
+                <li className="flex items-start gap-2">
                 <PhoneIcon />
                 <span className="text-sm">+1 (604) 513-2190</span>
               </li>
-              <li className="flex items-center gap-2">
+              </a>
+              <a href="mailto:info@asimali.ca" className="!no-underline text-white !hover:text-[#F0B254]">
+                <li className="flex items-center gap-2">
                 <MailIcon />
                 <span className="text-sm">info@asimali.ca</span>
               </li>
-              <li className="flex items-start gap-2">
+              </a>
+              <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.999123195198!2d-122.8460286843705!3d49.13409867924468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d6a7b8c8e9b7%3A0x7a5c6e9b8c8e9b7!2s7327%20137%20St%20%23311%2C%20Surrey%2C%20BC%20V3W%201A4%2C%20Canada!5e0!3m2!1sen!2sus!4v1691234567890" className="!no-underline text-white !hover:text-[#F0B254]">
+                <li className="flex items-start gap-2">
                 <MapPinIcon />
                 <span className="text-sm">
                   7327 137 St Suite #311, Surrey, BC V3W 1A4, Canada
                 </span>
               </li>
+              </a>
             </ul>
           </div>
 

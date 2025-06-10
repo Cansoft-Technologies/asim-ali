@@ -15,7 +15,7 @@ export default function CtaSection() {
           </div>
 
           <div className="flex flex-col items-center md:items-end">
-            <Link href="/apply">
+            <Link href="/apply-now">
               <Button className="bg-[#070819] hover:bg-[#070819]/90 text-white font-medium px-10 py-3 text-base mb-4 rounded-sm">
                 Apply Now
               </Button>

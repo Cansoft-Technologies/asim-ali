@@ -1,9 +1,12 @@
 import { gql } from "@apollo/client";
-import { Footer, Header, Hero } from "components";
-import ApplySection from "components/ApplySection";
+import CTASection from "components/CTASection";
+import ApprovalProcessSection from "components/homepage/approval-process-section";
+import Footer from "components/homepage/footer";
+import Header from "components/homepage/header";
+import TalkToUsSection from "components/homepage/talk-to-us-section";
+import ScheduleMeetingComponent from "components/ScheduleMeetingComponent";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
-import { Col, Container, Row } from "react-bootstrap";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -157,6 +160,7 @@ function ApplyNow(props: MyProps) {
                       }
                     />
                     <meta property="og:title" content={meta?.seo?.title} />
+                    <meta name="robots" content="noindex"></meta>
                     <meta
                       property="og:description"
                       content={meta?.seo?.description}
@@ -169,120 +173,14 @@ function ApplyNow(props: MyProps) {
                 );
               })}
             </Head>
-            <main className="content">
-              <Header
-                settings={settings}
-                menuData={mainMenus}
-                // usingFor="apply-now"
-              />
-              <Hero
-                title={data?.ApplyNow?.bannerTitle}
-                bgImage={data?.ApplyNow?.bannerBackgroundImage?.sourceUrl}
-              />
-              <Container>
-                <div className="text-center my-5">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data?.ApplyNow?.applyNowContent,
-                    }}
-                  ></div>
-                </div>
-              </Container>
-
-              <div
-                style={{
-                  backgroundImage: `url("${data?.ApplyNow?.formBackgroundImage?.sourceUrl}")`,
-                }}
-                className="howto-application"
-              >
-                <div className="overlay"></div>
-                <Container className="py-1">
-                  <Row>
-                    <Col md={12}>
-                      <ApplySection />
-                    </Col>
-                    <Col md={6}></Col>
-                  </Row>
-                </Container>
-              </div>
-              <Container className="apply-now">
-                <div className="text-center mt-5 mb-5">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data?.ApplyNow?.applyStepHeading,
-                    }}
-                  ></div>
-                </div>
-                <div className="mt-5">
-                  <Row className="apply-step">
-                    <Col md={4}>
-                      {data?.ApplyNow?.applyStepSection?.firstStepTitle ==
-                      null ? (
-                        ""
-                      ) : (
-                        <div className="apply">
-                          <span>01</span>
-                          <p>
-                            {data?.ApplyNow?.applyStepSection?.firstStepTitle}
-                          </p>
-                          <p className="desc">
-                            {
-                              data?.ApplyNow?.applyStepSection
-                                ?.firstStepDescription
-                            }
-                          </p>
-                          <div className="apply-border"></div>
-                        </div>
-                      )}
-                    </Col>
-                    <Col md={4}>
-                      {data?.ApplyNow?.applyStepSection?.secondStepTitle ==
-                      null ? (
-                        ""
-                      ) : (
-                        <div className="approved">
-                          <span>02</span>
-                          <p className="title">
-                            {data?.ApplyNow?.applyStepSection?.secondStepTitle}
-                          </p>
-                          <p>
-                            {
-                              data?.ApplyNow?.applyStepSection
-                                ?.secondStepDescription
-                            }
-                          </p>
-                        </div>
-                      )}
-                    </Col>
-                    <Col md={4}>
-                      {data?.ApplyNow?.applyStepSection?.thirdStepTitle ==
-                      null ? (
-                        ""
-                      ) : (
-                        <div className="apply">
-                          <span>03</span>
-                          <p>
-                            {data?.ApplyNow?.applyStepSection?.thirdStepTitle}
-                          </p>
-                          <p className="desc">
-                            {
-                              data?.ApplyNow?.applyStepSection
-                                ?.thirdStepDescription
-                            }
-                          </p>
-                          <div className="apply-border"></div>
-                        </div>
-                      )}
-                    </Col>
-                  </Row>
-                </div>
-              </Container>
-            </main>
-            <Footer
-              settings={settings}
-              menuData={mainMenus}
-              // usingFor="apply-now"
-            />
+            <main className="min-h-screen">
+                  <Header settings={settings} menuData={mainMenus}/>
+                  <ScheduleMeetingComponent />
+                  <TalkToUsSection />
+                  <ApprovalProcessSection />
+                  <CTASection />
+                  <Footer settings={settings} menuData={mainMenus}/>
+                </main>
           </div>
         );
       })}

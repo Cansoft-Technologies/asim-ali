@@ -175,30 +175,30 @@ export default function Header(props: { menuData: any, settings:any }) {
           </div>
 
           <div className="flex space-x-2 md:space-x-4 md:mb-0  text-xs">
-            <a href="#" aria-label="Facebook" className="hover:text-gray-300 transition-colors no-underline">
-              <Facebook className="h-4 w-4 text-[#F0B254]" />
-            </a>
-            <a href="#" aria-label="Instagram" className="hover:text-gray-300 transition-colors">
-              <Instagram className="h-4 w-4 text-[#F0B254]" />
-            </a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-gray-300 transition-colors">
-              <Linkedin className="h-4 w-4 text-[#F0B254]" />
-            </a>
-            <a href="#" aria-label="TikTok" className="hover:text-gray-300 transition-colors text-[#F0B254]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#F0B254]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-              </svg>
-            </a>
-          </div>
+                      <a href="https://www.facebook.com/profile.php?id=100063649628029" aria-label="Facebook" className="hover:text-gray-300 transition-colors no-underline">
+                        <Facebook className="h-4 w-4 text-[#F0B254]" />
+                      </a>
+                      <a href="https://www.instagram.com/asimfinance/" aria-label="Instagram" className="hover:text-gray-300 transition-colors">
+                        <Instagram className="h-4 w-4 text-[#F0B254]" />
+                      </a>
+                      <a href="https://www.linkedin.com/in/asim-ali-a75168125/?originalSubdomain=ca" aria-label="LinkedIn" className="hover:text-gray-300 transition-colors">
+                        <Linkedin className="h-4 w-4 text-[#F0B254]" />
+                      </a>
+                      <a href="https://www.tiktok.com/@asimortgage/" aria-label="TikTok" className="hover:text-gray-300 transition-colors text-[#F0B254]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 text-[#F0B254]"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg>
+                      </a>
+                    </div>
 
           <div className="flex items-center text-xs">
             <Phone className="h-4 w-4 mr-2 text-white" />

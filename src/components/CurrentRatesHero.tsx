@@ -36,7 +36,7 @@ export default function CurrentRatesHero({ menuItems,settings }: { menuItems: an
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply">
+            <Link href="/apply-now">
               <Button variant="outline" className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium px-10 py-3 text-white rounded-none">
                 Apply Now
               </Button>

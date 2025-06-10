@@ -1,16 +1,11 @@
 import { gql } from "@apollo/client";
-import {
-  faEnvelope,
-  faMapMarker,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Footer, Header } from "components";
-import ContactSection from "components/ContactSection";
+import ExperienceRoleSection from "components/ExperienceRoleSection";
+import ScheduleMeetingForm from "components/ScheduleMeetingForm";
+import TestimonialSliderRow from "components/TestimonialSliderRow";
+import Footer from "components/homepage/footer";
+import Header from "components/homepage/header";
 import { apolloClient } from "lib/apollo";
 import Head from "next/head";
-import { Col, Container, Row } from "react-bootstrap";
-import { Hero } from "../components";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -58,7 +53,7 @@ export async function getStaticProps() {
                 tiktok
                 linkedin
                 instagram
-              }             
+              }
               copyrightText
               footerLeftWidget {
                 title
@@ -93,7 +88,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems (first: 150) {
+                childItems(first: 150) {
                   nodes {
                     uri
                     label
@@ -132,7 +127,7 @@ type MyProps = {
   mainMenus: any;
 };
 
-const Contact = (props: MyProps) => {
+export default function Page(props: MyProps) {
   const { settings, mainMenus, contactData, metaData } = props;
 
   return (
@@ -141,7 +136,7 @@ const Contact = (props: MyProps) => {
         return (
           <div key={index}>
             <Head>
-              {metaData?.map((meta,index) => {
+              {metaData?.map((meta, index) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>
@@ -167,85 +162,19 @@ const Contact = (props: MyProps) => {
                 );
               })}
             </Head>
-            <Header
-              settings={settings}
-              menuData={mainMenus}
-              // usingFor="apply-now"
-            />
 
-            <main className="content">
-              <Hero
-                title={contact?.contactPage?.contactBannerTitle}
-                heading={contact?.contactPage?.contactBannerHeading}
-                description={contact?.contactPage?.contactBannerDescription}
-                bgImage={
-                  contact?.contactPage?.contactBannerBackgroundImage?.sourceUrl
-                }
-              />
-              <div className="contact-page mt-5">
-                <Container>
-                  <Row>
-                    {contact?.contactPage?.address == null &&
-                    contact?.contactPage?.eMail == null &&
-                    contact?.contactPage?.phoneNumber == null ? (
-                      ""
-                    ) : (
-                      <Col xs={12} lg="4">
-                        <h1>Get in Touch</h1>
-
-                        <div className="contact-item">
-                          <div className="contact-icon">
-                            <FontAwesomeIcon icon={faMapMarker} />
-                          </div>
-                          <h2>Address</h2>
-                          <p>{contact?.contactPage?.address}</p>
-                        </div>
-
-                        <div className="contact-item">
-                          <div className="contact-icon">
-                            <FontAwesomeIcon icon={faPhone} />
-                          </div>
-                          <h2>Call Us</h2>
-                          <a href={`tel: ${contact?.contactPage?.phoneNumber}`}>
-                            {contact?.contactPage?.phoneNumber}
-                          </a>
-                        </div>
-
-                        <div className="contact-item">
-                          <div className="contact-icon">
-                            <FontAwesomeIcon icon={faEnvelope} />
-                          </div>
-                          <h2>E-mail</h2>
-                          <a href={`mailto:${contact?.contactPage?.eMail}`}>
-                            {contact?.contactPage?.eMail}
-                          </a>
-                        </div>
-                      </Col>
-                    )}
-
-                    <Col xs={12} lg="8">
-                      <ContactSection />
-                    </Col>
-                  </Row>
-                </Container>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: contact?.contactPage?.addressMap,
-                  }}
-                  className="mt-5"
-                ></div>
-              </div>
+            <main className="min-h-screen">
+              <Header settings={settings} menuData={mainMenus}/>
+              <ScheduleMeetingForm />
+              <ExperienceRoleSection />
+              <div className="relative bg-[#f8f5f0] w-full">
+            <TestimonialSliderRow />
+            </div>
+              <Footer settings={settings} menuData={mainMenus}/>
             </main>
-            <Footer
-              settings={settings}
-              menuData={mainMenus}
-              // usingFor="apply-now"
-            />
           </div>
         );
       })}
     </>
   );
-};
-
-export default Contact;
+}
