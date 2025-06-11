@@ -74,7 +74,7 @@ export default function RoleSection() {
               Apply Now
             </Button>
           </Link>
-          <Link href="/team">
+          <Link href="/about-us">
             <Button
               variant="outline"
               className="border-black font-semibold text-black hover:bg-gray/900 hover:text-white px-12 py-6 rounded-none"

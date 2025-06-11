@@ -71,7 +71,7 @@ export default function MortgageAgencyServices() {
           <div className="mt-4 md:mt-0">
             <Link
             style={{ textDecoration: "none" }}
-              href="/services"
+              href="/our-services"
               className="inline-block bg-[#f5b14a] hover:bg-[#e9a43c] text-white text-md xl:text-xl font-medium py-3 px-8 text-center min-w-[220px]"
             >
               More Services

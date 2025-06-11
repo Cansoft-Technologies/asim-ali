@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Slider } from "components/ui/slider"
 import { Plus, Minus } from "lucide-react"
 import { Button } from "components/ui/button"
+import Link from "next/link"
 
 export default function MortgageRatesSection() {
   const [rateType, setRateType] = useState<"fixed" | "variable">("fixed")
@@ -210,7 +211,8 @@ export default function MortgageRatesSection() {
                   {index === expandedRow && (
                     <tr className="bg-[#fff9f0] container mx-auto">
                       <td colSpan={6} className="p-6">
-                        <div className="mb-4 text-center">
+                        <Link href="/current-rates" className="block">
+                          <div className="mb-4 text-center">
                           <p className="text-gray-700 mb-4">
                             This great rate is available for High Ratio purchases and Switches only. Offers 20% lump sum
                             payments per year, including the ability to increase your payments by up to 20%! It&apos;s a
@@ -220,6 +222,7 @@ export default function MortgageRatesSection() {
                             Get The Best Rates
                           </Button>
                         </div>
+                        </Link>
                       </td>
                     </tr>
                   )}
