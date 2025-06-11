@@ -203,7 +203,7 @@ export default function Header(props: { menuData: any, settings:any }) {
           <div className="flex items-center text-xs">
             <Phone className="h-4 w-4 mr-2 text-white" />
             <a style={{ textDecoration: "none" }} href="tel:+16045913950" className="text-white">
-              +16045913590
+              +1(604)591-3950
             </a>
           </div>
         </div>
@@ -235,13 +235,6 @@ export default function Header(props: { menuData: any, settings:any }) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 no-underline">
-            <Link
-              style={{ textDecoration: "none" }}
-              href="/"
-              className="text-base text-white hover:text-[#F0B254] transition-colors"
-            >
-              Home
-            </Link>
 
             {filterMenuItems(buildMenuTree).map((menuItem) => (
               <div

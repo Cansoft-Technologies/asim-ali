@@ -167,7 +167,7 @@ const ApplyNowEmail = ({
               </Text>
               <Row>
                 <Link
-                href="tel:+1 (604) 591 3590"
+                href="tel:+1 (604) 591-3950"
                 style={{ ...footFirst}}
               >
                 <Img
@@ -176,7 +176,7 @@ const ApplyNowEmail = ({
                   height="18"
                   src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/iphone-se-50.png"
                 />
-                +1 (604) 591 3590
+                +1 (604) 591-3950
               </Link>
               </Row>
               <Row style={{marginTop: "10px" }}>

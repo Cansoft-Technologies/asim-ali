@@ -114,16 +114,16 @@ const menuTree = useMemo(() => {
           <div className="md:col-span-3 flex flex-col md:items-start items-center justify-center md:justify-start">
             <p className="text-2xl font-medium mb-4 text-start">Contact Us</p>
             <ul className="space-y-3 flex flex-col md:items-start items-center mt-3 px-0">
-              <a href="tel:+1 (604) 513-2190" className="!no-underline text-white !hover:text-[#F0B254]">
+              <a href="tel:+1 (604) 591-3950" className="!no-underline text-white !hover:text-[#F0B254]">
                 <li className="flex items-start gap-2">
                 <PhoneIcon />
-                <span className="text-sm">+1 (604) 513-2190</span>
+                <span className="text-sm">+1 (604) 591-3950</span>
               </li>
               </a>
-              <a href="mailto:info@asimali.ca" className="!no-underline text-white !hover:text-[#F0B254]">
+              <a href="mailto:clientcare@asmail.ca" className="!no-underline text-white !hover:text-[#F0B254]">
                 <li className="flex items-center gap-2">
                 <MailIcon />
-                <span className="text-sm">info@asimali.ca</span>
+                <span className="text-sm">clientcare@asmail.ca</span>
               </li>
               </a>
               <a href="https://maps.app.goo.gl/cG5KTbHiutikqXjeA" className="!no-underline text-white !hover:text-[#F0B254]">
@@ -142,8 +142,8 @@ const menuTree = useMemo(() => {
             <p className="text-xl font-medium mb-6">Quick Links</p>
             <ul className="space-y-3 mt-3 px-0">
               <li className="list-none">
-                <Link style={{textDecoration: "none"}} href="/" className="hover:text-[#F0B254] text-white">
-                  Home
+                <Link style={{textDecoration: "none"}} href="/our-locations" className="hover:text-[#F0B254] text-white">
+                  Our Locations
                 </Link>
               </li>
               {menuTree
