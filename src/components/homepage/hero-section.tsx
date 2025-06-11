@@ -48,7 +48,7 @@ export default function HeroSection({ menuItems, settings }: { menuItems: any[],
                 Apply Now
               </Button>
             </Link>
-            <Link href="/consultation">
+            <Link href="/contact-us">
               <Button
               variant="outline"
                 className="border border-white border-1 text-white hover:border-[#F0B254] px-10 py-3 text-base rounded-none bg-transparent"
