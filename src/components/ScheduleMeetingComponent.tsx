@@ -109,7 +109,7 @@ export default function ScheduleMeetingComponent() {
                         </div>
                         </a>
           
-                        <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.999123195198!2d-122.8460286843705!3d49.13409867924468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d6a7b8c8e9b7%3A0x7a5c6e9b8c8e9b7!2s7327%20137%20St%20%23311%2C%20Surrey%2C%20BC%20V3W%201A4%2C%20Canada!5e0!3m2!1sen!2sus!4v1691234567890" className="!no-underline text-white !hover:text-[#F0B254]">
+                        <a href="https://maps.app.goo.gl/cG5KTbHiutikqXjeA" className="!no-underline text-white !hover:text-[#F0B254]">
                           <div className="flex items-center gap-2 mt-3">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

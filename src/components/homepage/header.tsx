@@ -298,7 +298,7 @@ export default function Header(props: { menuData: any, settings:any }) {
         <div
           onMouseEnter={() => setActiveMenu(activeMenu)}
           onMouseLeave={() => setActiveMenu(null)}
-          className="absolute left-0 top-full w-full bg-[#FFF9F0] backdrop-blur-sm p-3 rounded-md border border-white/10 z-50"
+          className="absolute hidden md:block left-0 top-full w-full bg-[#FFF9F0] backdrop-blur-sm p-3 rounded-md border border-white/10 z-50"
         >
           <div className="container mx-auto px-6 md:px-12 py-8">
             <div className="grid grid-cols-12 gap-8">
