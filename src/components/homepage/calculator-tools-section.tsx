@@ -12,7 +12,7 @@ export default function CalculatorToolsSection() {
             Plan with Our Mortgage Calculator Tools
           </h2>
 
-          <Link href="/tools">
+          <Link href="/mortgage-calculator">
             <Button className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-white font-medium px-8 py-3 rounded-none">
               More Tools
             </Button>
@@ -31,11 +31,11 @@ export default function CalculatorToolsSection() {
                 <Calculator className="h-8 w-8 text-[#0a1e3b]" />
               </div>
             </div>
-            <h3 className="text-xl font-medium text-center mb-3">Mortgage Calculator</h3>
+            <h3 className="text-xl font-medium text-center mb-3">Mortgage Renewal Calculator</h3>
             <p className="text-gray-600 text-center mb-8">
               See for yourself how much you can save with our lower rates.
             </p>
-            <Link href="/mortgage-calculator" className="block">
+            <Link href="/mortgage-renewal-calculator" className="block">
               <Button
                 variant="outline"
                 className="w-full border-gray-300 text-[#0a1e3b] hover:bg-[#0a1e3b] hover:text-white py-6 rounded-none"
