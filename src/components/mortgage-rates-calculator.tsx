@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, Plus, Minus } from "lucide-react";
 import { cn } from "../lib/utils";
 import Link from "next/link";
@@ -13,6 +13,7 @@ export default function MortgageRatesCalculator() {
   const [mortgageSize, setMortgageSize] = useState(100000);
   const [expandedRow, setExpandedRow] = useState(2);
   const router = useRouter();
+  
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMortgageSize(Number.parseInt(e.target.value));
   };
@@ -25,71 +26,64 @@ export default function MortgageRatesCalculator() {
     }
   };
 
-  const rows = [
-    {
-      term: "6 Months",
-      bankRate: "7.89 %",
-      bankPayment: "$756.21",
-      ourRate: "7.49 %",
-      ourPayment: "$730.93",
-      saving: "$25.28",
-    },
-    {
-      term: "6 Months",
-      bankRate: "7.89 %",
-      bankPayment: "$756.21",
-      ourRate: "7.49 %",
-      ourPayment: "$730.93",
-      saving: "$25.28",
-    },
-    {
-      term: "6 Months",
-      bankRate: "7.89 %",
-      bankPayment: "$756.21",
-      ourRate: "7.49 %",
-      ourPayment: "$730.93",
-      saving: "$25.28",
-    },
-    {
-      term: "6 Months",
-      bankRate: "7.89 %",
-      bankPayment: "$756.21",
-      ourRate: "7.49 %",
-      ourPayment: "$730.93",
-      saving: "$25.28",
-    },
-    {
-      term: "6 Months",
-      bankRate: "7.89 %",
-      bankPayment: "$756.21",
-      ourRate: "7.49 %",
-      ourPayment: "$730.93",
-      saving: "$25.28",
-    },
-    {
-      term: "6 Months",
-      bankRate: "7.89 %",
-      bankPayment: "$756.21",
-      ourRate: "7.49 %",
-      ourPayment: "$730.93",
-      saving: "$25.28",
-    },
-    {
-      term: "6 Months",
-      bankRate: "7.89 %",
-      bankPayment: "$756.21",
-      ourRate: "7.49 %",
-      ourPayment: "$730.93",
-      saving: "$25.28",
-    },
+  // Mortgage calculation function
+  const calculateMortgagePayment = (
+    principal: number,
+    annualRate: number,
+    years: number
+  ): number => {
+    const monthlyRate = annualRate / 100 / 12;
+    const numberOfPayments = years * 12;
+    const monthlyPayment =
+      (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
+      (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+    return monthlyPayment;
+  };
+
+  // Term options with bank rates and our rates
+  const termOptions = [
+    { term: "6 Months", bankRate: 7.89, ourRate: 7.49, years: 0.5 },
+    { term: "1 Year", bankRate: 7.39, ourRate: 6.99, years: 1 },
+    { term: "2 Years", bankRate: 6.99, ourRate: 6.59, years: 2 },
+    { term: "3 Years", bankRate: 5.99, ourRate: 5.59, years: 3 },
+    { term: "4 Years", bankRate: 5.74, ourRate: 5.34, years: 4 },
+    { term: "5 Years", bankRate: 5.49, ourRate: 5.09, years: 5 },
+    { term: "10 Years", bankRate: 6.99, ourRate: 6.59, years: 10 },
   ];
+
+  // Calculate rows dynamically
+  const rows = termOptions.map((option) => {
+    const bankPayment = calculateMortgagePayment(
+      mortgageSize,
+      option.bankRate,
+      option.years
+    );
+    const ourPayment = calculateMortgagePayment(
+      mortgageSize,
+      option.ourRate,
+      option.years
+    );
+    const saving = bankPayment - ourPayment;
+
+    return {
+      term: option.term,
+      bankRate: `${option.bankRate.toFixed(2)} %`,
+      bankPayment: `$${bankPayment.toFixed(2)}`,
+      ourRate: `${option.ourRate.toFixed(2)} %`,
+      ourPayment: `$${ourPayment.toFixed(2)}`,
+      saving: `$${saving.toFixed(2)}`,
+      years: option.years,
+    };
+  });
+
+  // Find the most popular term (3 years)
+  const popularTerm = rows.find((row) => row.years === 3);
+  const popularRate = popularTerm ? popularTerm.ourRate : "5.59%";
 
   return (
     <div className="container mx-auto p-6 mt-20">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
-        <p
-          className="font-rb text-4xl md:text-5xl xl:text-[48px] font-bold leading-7 text-[#000000] mb-6 md:mb-0"
-        >
+        <p className="font-rb text-4xl md:text-5xl xl:text-[48px] font-bold leading-7 text-[#000000] mb-6 md:mb-0">
           Our Mortgage Rates
         </p>
         <p className="max-w-md text-[#000000]">
@@ -107,32 +101,8 @@ export default function MortgageRatesCalculator() {
           >
             Location:
           </label>
-          <div className="col-span-4 md:col-span-5 relative">
-            <select
-              id="location"
-              className="w-full md:w-[400px] border border-[#808080] rounded-xl bg-white text-[#000000] appearance-none focus:outline-none focus:ring-0 focus:border-transparent"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select Your Province
-              </option>
-              <option value="alberta">Alberta</option>
-              <option value="british-columbia">British Columbia</option>
-              <option value="manitoba">Manitoba</option>
-              <option value="new-brunswick">New Brunswick</option>
-              <option value="newfoundland-and-labrador">
-                Newfoundland and Labrador
-              </option>
-              <option value="nova-scotia">Nova Scotia</option>
-              <option value="ontario">Ontario</option>
-              <option value="prince-edward-island">Prince Edward Island</option>
-              <option value="quebec">Quebec</option>
-              <option value="saskatchewan">Saskatchewan</option>
-            </select>
-            <ChevronDown
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#808080]"
-              size={20}
-            />
+          <div>
+            <label className="block font-medium text-gray-700 mb-2">*Only Applicable for BC</label>
           </div>
         </div>
         <div className="grid md:grid-cols-8 items-center gap-8">
@@ -196,10 +166,8 @@ export default function MortgageRatesCalculator() {
             3 Years Fixed Form
           </div>
           <div className="flex items-center justify-center">
-            <p
-              className="text-6xl font-bold text-[#11143a] font-hlv"
-            >
-              4.24%
+            <p className="text-6xl font-bold text-[#11143a] font-hlv">
+              {popularRate}
             </p>
             <span className="ml-2 px-2 py-1 bg-white text-[#11143a] text-xs font-medium rounded">
               *Most Popular

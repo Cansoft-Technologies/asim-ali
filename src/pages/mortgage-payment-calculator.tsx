@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { Footer, Header, Hero } from "components";
 import FeaturedSection from "components/FeaturedSection";
+import MortgageCalculator from "components/MortgageRatesCalculator";
 import ServiceDividerSection from "components/ServiceDivider";
 import ServiceSection from "components/ServiceSection";
 import { apolloClient } from "lib/apollo";
@@ -218,13 +219,14 @@ export default function Page(props: MyProps){
                       </span>
                     </p>
                   </Row>
-                  <div
+                  {/* <div
                     className="mortgagecalculator-content my-5"
                     dangerouslySetInnerHTML={{
                       __html:
                         data?.newMortgagecalculator?.calculatorPageContent,
                     }}
-                  ></div>
+                  ></div> */}
+                  <MortgageCalculator/>
                   <div className="tab-btn">
                     <Link href={"/apply-now"}>
                       <Button className="HeadBtn">
