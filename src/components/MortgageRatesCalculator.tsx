@@ -9,6 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'compon
 import { Button } from 'components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'components/ui/table';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
+import Link from 'next/link';
 
 // Types
 type PaymentFrequency = 
@@ -252,7 +253,7 @@ const MortgageCalculator = () => {
                 </p>
               </div>
               
-              <h4 className="text-lg font-semibold mb-4">Enter Mortgage Information</h4>
+              <p className="text-lg font-semibold mb-4">Enter Mortgage Information</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Mortgage Amount */}
@@ -310,7 +311,7 @@ const MortgageCalculator = () => {
                     <SelectTrigger>
                       <SelectValue placeholder="Select frequency" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       <SelectItem value="1">Annually</SelectItem>
                       <SelectItem value="2">Semi-Annually</SelectItem>
                       <SelectItem value="4">Quarterly</SelectItem>
@@ -335,7 +336,7 @@ const MortgageCalculator = () => {
                     <SelectTrigger>
                       <SelectValue placeholder="Select term" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       <SelectItem value="0.5">6 Months</SelectItem>
                       <SelectItem value="1">1 Year</SelectItem>
                       <SelectItem value="2">2 Years</SelectItem>
@@ -571,9 +572,9 @@ const MortgageCalculator = () => {
                   </div>
                 </div>
                 
-                <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700">
+                <Link href="/contact-us" className="w-full mt-4 bg-white border border-[#1A1A3A] hover:!bg-[#1A1A3A] hover:!text-white px-5 py-1.5 text-[#1A1A3A]">
                   Find an Expert
-                </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
