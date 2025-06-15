@@ -7,7 +7,7 @@ export default function RoleSection() {
     <section className="w-full bg-white py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-12">
-          <h2 className="!text-4xl md:!text-5xl !font-bold mb-6">The Role We Play as Your Specialist Mortgage Brokers</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">The Role We Play as Your Specialist Mortgage Brokers</h2>
 
           <p className="text-gray-600 max-w-3xl mx-auto">
             Our mortgage professionals ensure your path to homeownership or mortgage refinancing is easy. We use our

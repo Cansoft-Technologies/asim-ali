@@ -29,7 +29,7 @@ module.exports = withBundleAnalyzer(
   withFaust(
     withPWA({
       compiler: {
-        removeConsole: false,
+        removeConsole: prod ? { exclude: ["error", "warn"] } : false,
       },
       trailingSlash: false,
       images: {
