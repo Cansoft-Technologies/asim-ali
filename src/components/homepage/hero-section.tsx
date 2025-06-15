@@ -26,12 +26,12 @@ export default function HeroSection({ menuItems, settings }: { menuItems: any[],
       
         <Header settings={settings} menuData={menuItems} />
         <div className="w-full text-center md:px-4 px-0 relative z-10 justify-center">
-          <p className="text-sm bg-white md:!text-md xl:!text-xl py-2 text-[#12143AB2]">Lowest Mortgage Rate in Canada. <span className="text-[#F0B254]">Starting from 2.99%</span></p>
+          <p className="text-sm bg-white md:text-md xl:text-xl py-2 text-[#12143AB2]">Lowest Mortgage Rate in Canada. <span className="text-[#F0B254]">Starting from 2.99%</span></p>
         </div>
       {/* Content section */}
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex-grow flex flex-col">
         <div className="flex-grow flex flex-col justify-center items-center text-center max-w-5xl mx-auto">
-          <h1 className="!text-4xl font-oswald md:!text-5xl lg:!text-6xl xl:!text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl font-oswald md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
             Mortgage Broker in <span className="text-[#F0B254]">Surrey</span> For
             <br />
             Expert Home Loan Solutions
