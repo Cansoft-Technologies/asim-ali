@@ -45,7 +45,7 @@ export default function MortgageAgencyServices() {
     <section className="relative text-white py-16 px-4 h-full w-full md:px-8 overflow-hidden min-h-[850px] flex flex-col justify-center items-center">
       {/* Background image with overlay */}
       <Image
-                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/service-bg.png?height=1080&width=1920"
+                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/service-bg.webp?height=1080&width=1920"
                 alt="Background"
                 fill
                 sizes="100vw"

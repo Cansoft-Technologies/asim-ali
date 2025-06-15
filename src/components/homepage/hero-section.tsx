@@ -11,7 +11,7 @@ export default function HeroSection({ menuItems, settings }: { menuItems: any[],
     <section className="relative w-full min-h-screen flex flex-col justify-between text-white">
       {/* Background image with overlay */}
       <Image
-                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/c151ca5610382ee34521b0a0e95cca2a-scaled.jpeg?height=1080&width=1920"
+                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/c151ca5610382ee34521b0a0e95cca2a-scaled-1.webp?height=1080&width=1920"
                 alt="Background"
                 fill
                 sizes="100vw"
