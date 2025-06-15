@@ -46,7 +46,7 @@ export default function ScheduleMeeting() {
     <section className="relative w-full min-h-screen flex items-center">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
-        <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2024/09/Mortgage-Broker-In-Abbotsford-scaled.webp" alt="" fill className="object-cover" priority sizes="100vw" />
+        <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Mortgage-Broker-Surrey.webp" alt="" fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-[#0a1e3b] opacity-80"></div>
       </div>
 

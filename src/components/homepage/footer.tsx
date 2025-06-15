@@ -61,7 +61,7 @@ const menuTree = useMemo(() => {
       {/* Background watermark */}
       <div className="absolute inset-0">
         <Image
-          src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Footerbgnew.png?height=1080&width=1920"
+          src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Footerbgnew.webp?height=1080&width=1920"
           alt="Footer background"
           fill
           sizes="100vw"
@@ -78,7 +78,7 @@ const menuTree = useMemo(() => {
             <div className="mb-8">
               <div className="flex items-center justify-center gap-2 md:gap-4">
                 <Image
-                  src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Frame-1984078075.png"
+                  src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Frame-1984078075.webp"
                   alt="Primary Logo"
                   width={200}
                   height={60}
