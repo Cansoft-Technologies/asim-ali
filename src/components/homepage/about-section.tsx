@@ -95,7 +95,7 @@ export default function AboutSection() {
             </div>)
             : (<div className="relative h-80 w-full rounded-sm overflow-hidden">
               <Image
-                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/credit-score-for-mortgage-in-Canada.webp"
+                src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Best-Mortgage-Broker-in-surrey.webp"
                 alt="Asim Ali and Team"
                 fill
                 className="object-contain object-center"

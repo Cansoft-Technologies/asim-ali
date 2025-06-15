@@ -8,9 +8,9 @@ export default function TalkToUsSection() {
     <section className="w-full bg-[#f8f5f0] py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-[400px] w-full overflow-hidden">
+          <div className="relative h-[600px] w-full overflow-hidden">
             <Image
-              src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/Mortgage-Broker-in-Surrey-scaled-1.png"
+              src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Asim-Ali-best-Mortgage-Broker-in-Surrey.webp"
               alt="Mortgage consultation"
               fill
               className="object-cover"
