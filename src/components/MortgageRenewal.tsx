@@ -89,9 +89,8 @@ const getMonthlyRateFromAnnual = (annualRate: number) => {
       payment2: newPayment2,
     });
   }, [mortgageData.amount, mortgageData.amortization, mortgageData.rate1, mortgageData.rate2]);
-  console.log(mortgageData);
   return (
-    <Container className='mt-5'>
+    <Container className=''>
       <Card className="mt-4">
       <Card.Header>
         <Card.Title className='text-center'>Mortgage Renewal Calculator</Card.Title>

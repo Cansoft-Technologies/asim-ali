@@ -18,7 +18,7 @@ export default function TalkToUsSection() {
           </div>
 
           <div>
-            <h2 className="!text-3xl md:!text-4xl !font-bold mb-6 text-[#0a1e3b]">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#0a1e3b]">
               The sooner you contact us, the
               <br />
               A sooner we can hold your rate.

@@ -8,7 +8,7 @@ export default function CalculatorToolsSection() {
     <section className="w-full bg-white py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start mb-8">
-          <h2 className="!text-xl md:!text-2xl xl:!text-4xl font-oswald md:text-[48px] !font-bold text-[#0a1e3b] mb-4 md:mb-0 max-w-xl">
+          <h2 className="text-xl md:text-2xl xl:text-4xl font-oswald md:text-[48px] font-bold text-[#0a1e3b] mb-4 md:mb-0 max-w-xl">
             Plan with Our Mortgage Calculator Tools
           </h2>
 

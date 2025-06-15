@@ -62,7 +62,7 @@ export default function MortgageAgencyServices() {
         {/* Header section */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-16 gap-8 items-center">
           <div className="max-w-2xl">
-            <h2 className="!text-2xl md:!text-5xl font-bold mb-4 font-oswald sm:text-center text-start">Our Mortgage Agency Services</h2>
+            <h2 className="text-2xl md:text-5xl font-bold mb-4 font-oswald sm:text-center text-start">Our Mortgage Agency Services</h2>
             <p className="text-gray-300 text-lg">
             Navigating the world of mortgages can feel like a maze. Especially if you&apos;re new in this field. But you don&apos;t have to find your way alone. Asim Ali is here as your go-to mortgage broker in Surrey. <br/>We&apos;ll guide you through your whole mortgage journey. Let&apos;s find out what we offer:
 

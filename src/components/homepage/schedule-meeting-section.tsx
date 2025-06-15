@@ -139,7 +139,7 @@ export default function ScheduleMeetingSection() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="flex flex-col justify-center items-start"> 
-            <h2 className="!text-xl md:!text-2xl xl:!text-4xl !font-bold mb-6 text-black font-oswald">
+            <h2 className="text-xl md:text-2xl xl:text-4xl font-bold mb-6 text-black font-oswald">
               Schedule Your Meeting with
               <br />
               Our Specialist Mortgage
@@ -394,7 +394,7 @@ export default function ScheduleMeetingSection() {
             </div>
           <div className="flex flex-col justify-center items-start mt-12">
           <div className="mt-12">
-              <h3 className="!text-xl md:!text-2xl xl:!text-4xl !font-bold mb-4 font-oswald">Visit our Head office in Surrey</h3>
+              <h3 className="text-xl md:text-2xl xl:text-4xl font-bold mb-4 font-oswald">Visit our Head office in Surrey</h3>
               <p className="text-gray-600 mb-6">
                 Connect with the best mortgage broker in Surrey. Get expert advice, competitive rates, and customized
                 solutions. Contact us now.

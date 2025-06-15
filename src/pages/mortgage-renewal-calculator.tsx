@@ -225,6 +225,14 @@ const Page = (props: MyProps) => {
               )}
 
               <Container className="my-5">
+                <Row className="mortgage-broker">
+                <Col>
+                <p className="service-title">
+                      Mortgage Renewal Calculator
+                    </p>
+                    <MortgageRenewalCalculator />
+            </Col>
+                </Row>
                 <Row className="refinance-text my-5">
                   <Col md={5}>
                     <p>
@@ -366,14 +374,7 @@ const Page = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="mortgage-broker">
-                <Col>
-                <p className="service-title">
-                      Mortgage Renewal Calculator
-                    </p>
-                    <MortgageRenewalCalculator />
-            </Col>
-                </Row>
+                
                   <Row className="mortgage-broker-bottom text-center">
                   <Col>
                     <p className="service-title">{data?.Refinance?.bottomBrokerTitle}</p>
