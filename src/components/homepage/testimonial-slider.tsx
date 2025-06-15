@@ -34,7 +34,7 @@ export default function TestimonialSlider() {
         })
 
         const fetchedTestimonials =
-          data.pages?.nodes?.[0]?.Testimonials?.testimonials || []
+          (data.pages?.nodes?.[0]?.Testimonials?.testimonials || []).slice(0, 10)
         setTestimonials(fetchedTestimonials)
       } catch (error) {
         console.error("Failed to fetch testimonials:", error)

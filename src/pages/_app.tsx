@@ -1,9 +1,8 @@
-import "faust.config";
-import '../../styles/globals.scss'
 import { FaustProvider } from "@faustjs/next";
-import { useEffect } from "react";
-import "scss/main.scss";
 import { client } from "client";
+import "faust.config";
+import "scss/main.scss";
+import '../../styles/globals.scss';
 
 import App, { AppContext } from "next/app";
 
@@ -11,12 +10,11 @@ import type { AppProps } from "next/app";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useReportWebVitals } from 'next/web-vitals'
-import { gtmPageView, pageview } from "lib/gtm";
-import { useRouter } from "next/router";
-import Script from "next/script";
 import { Open_Sans, Oswald } from 'next/font/google';
 import localFont from 'next/font/local';
+import { useRouter } from "next/router";
+import Script from "next/script";
+import { useReportWebVitals } from 'next/web-vitals';
 
 // Load RB Magnat Neue Test as local font
 const rbMagnat = localFont({
@@ -60,12 +58,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   useReportWebVitals((metric) => {
     // console.log(metric)
   })
-  useEffect(() => {
-    const props = {
-      page_title: pageProps.slug || null,
-    };
-    gtmPageView(props);
-  }, [pageProps]);
 
   function get_country_code(api_url: string) {
     fetch(api_url, { method: "GET" })
@@ -83,29 +75,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       .catch((error) => console.log("error", error));
   }
   get_country_code("https://get.geojs.io/v1/ip/country.json");
-  useEffect(() => {
-    const handleRouteChange = (url: any) => {
-      pageview(url);
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
   return (
     <main className={`${rbMagnat.variable} ${openSans.variable} ${helvetica.variable} ${oswald.variable} font-sans`}>
       <FaustProvider client={client} pageProps={pageProps}>
-      <Script id="gtm" strategy="lazyOnload">
-      {`
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-KQV4VW3G');
-      `}
-    </Script>
     {/* Clarity Tracking Script */}
     <Script
         id="clarity-script"
