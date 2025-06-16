@@ -19,6 +19,7 @@ export default function PartnerLogos() {
             alt={partner.name}
             width={partner.width}
             height={40}
+            loading="lazy"
             className="h-30 w-auto"
           />
         </div>
