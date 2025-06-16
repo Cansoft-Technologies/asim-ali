@@ -2,14 +2,13 @@
 
 import type React from "react"
 
-import { useState } from "react"
-import Image from "next/image"
 import { Button } from "components/ui/button"
 import { Input } from "components/ui/input"
-import { Textarea } from "components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "components/ui/select"
-import { Facebook, Instagram, Linkedin, Music } from "lucide-react"
+import { Textarea } from "components/ui/textarea"
 import { Toast } from "components/ui/toast"
+import { Facebook, Instagram, Linkedin, Music } from "lucide-react"
+import { useState } from "react"
 
 export default function ScheduleMeetingSection() {
   const [formData, setFormData] = useState({

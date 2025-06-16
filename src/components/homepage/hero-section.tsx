@@ -2,7 +2,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "components/ui/button"
-import TestimonialSlider from "./testimonial-slider"
+import dynamic from "next/dynamic"
+const TestimonialSlider = dynamic(() => import("./testimonial-slider"), {
+  ssr: false,
+})
 import Header from "./header"
 
 
@@ -15,12 +18,12 @@ export default function HeroSection({ menuItems, settings }: { menuItems: any[],
                 alt="Background"
                 fill
                 sizes="100vw"
-                className="object-cover object-center"
+                className="object-cover"
                 priority
               />
               {/* Overlay div to handle the blend mode */}
               <div 
-                className="absolute inset-0 bg-[#12143AB2]/80" 
+                className="absolute inset-0 bg-[#12143AB2]" 
                 aria-hidden="true"
               />
       
@@ -37,21 +40,21 @@ export default function HeroSection({ menuItems, settings }: { menuItems: any[],
             Expert Home Loan Solutions
           </h1>
 
-          <p className="text-lg md:text-xl opacity-90 mb-10 max-w-3xl">
+          <p className="text-lg md:text-xl opacity-90 mb-10">
             Looking for a <span className="font-medium">reliable</span> mortgage broker in Surrey? Asim Ali offers
             mortgage solutions, competitive rates, and expert guidance. Book us to experience the best services.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/apply-now">
-              <Button variant="outline" className="bg-[#F0B254] hover:bg-[#F0B254]/90 text-black font-medium px-10 py-3 text-white rounded-none">
+              <Button variant="outline" className="bg-[#F0B254] hover:bg-[#12143AB2]/90 text-white font-medium px-10 py-3 hover:text-white rounded-none">
                 Apply Now
               </Button>
             </Link>
             <Link href="/contact-us">
               <Button
               variant="outline"
-                className="border border-white border-1 text-white hover:border-[#F0B254] px-10 py-3 text-base rounded-none bg-transparent"
+                className="border border-white border-1 text-white hover:!border-[#F0B254] px-10 py-3 text-base rounded-none bg-transparent animation-delay-100"
               >
                 Get Consultation
               </Button>

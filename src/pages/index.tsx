@@ -1,18 +1,19 @@
 import { gql } from "@apollo/client";
-import Head from "next/head";
-import { apolloClient } from "../lib/apollo";
-import { Fragment } from "react";
-import Header from "components/homepage/header";
+import dynamic from "next/dynamic";
+
+const AboutSection = dynamic(() => import("components/homepage/about-section"));
+const ApprovalProcessSection = dynamic(() => import("components/homepage/approval-process-section"));
+const CalculatorToolsSection = dynamic(() => import("components/homepage/calculator-tools-section"));
+const Footer = dynamic(() => import("components/homepage/footer"));
+const MortgageRatesSection = dynamic(() => import("components/homepage/mortgage-rates-section"));
+const RoleSection = dynamic(() => import("components/homepage/role-section"));
+const ScheduleMeetingSection = dynamic(() => import("components/homepage/schedule-meeting-section"));
+const ServicesSection = dynamic(() => import("components/homepage/services-section"));
+const TalkToUsSection = dynamic(() => import("components/homepage/talk-to-us-section"));
 import HeroSection from "components/homepage/hero-section";
-import AboutSection from "components/homepage/about-section";
-import MortgageRatesSection from "components/homepage/mortgage-rates-section";
-import RoleSection from "components/homepage/role-section";
-import ApprovalProcessSection from "components/homepage/approval-process-section";
-import ScheduleMeetingSection from "components/homepage/schedule-meeting-section";
-import TalkToUsSection from "components/homepage/talk-to-us-section";
-import ServicesSection from "components/homepage/services-section";
-import CalculatorToolsSection from "components/homepage/calculator-tools-section";
-import Footer from "components/homepage/footer";
+import Head from "next/head";
+import { Fragment } from "react";
+import { apolloClient } from "../lib/apollo";
 
 
 export async function getStaticProps() {
