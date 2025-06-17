@@ -1,9 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import Image from "next/image";
 import styles from "scss/components/LocationHero.module.scss";
-import ContactSection from "./ContactSection";
-import Link from "next/link";
+import ScheduleApplyForm from "./ScheduleApplyForm";
 
 interface Props {
   title: string;
@@ -90,7 +90,7 @@ function LocationHero({
 
           <Col lg={6} className="p-4 form-div d-none d-md-block">
             <p className="mb-4 text-dark service-title">Get in Touch</p>
-            <ContactSection />
+            <ScheduleApplyForm />
           </Col>
         </Row>
       </Container>
