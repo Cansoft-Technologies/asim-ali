@@ -1,18 +1,15 @@
 import { gql } from "@apollo/client";
-import { Hero } from "components";
 import AccordionNewBC from "components/AccordionNewBC";
-import HomeBuyerNewBC from "components/HomeBuyerNewBC";
+import LocationHero from "components/LocationHero";
+import OurLenders from "components/OurLenders";
+import OurRates from "components/OurRates";
 import ServiceSection from "components/ServiceSection";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
-import OurRates from "components/OurRates";
-import OurLenders from "components/OurLenders";
-import LocationHero from "components/LocationHero";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({

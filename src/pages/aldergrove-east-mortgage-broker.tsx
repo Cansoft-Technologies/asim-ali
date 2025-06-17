@@ -334,7 +334,7 @@ const teamDescription =
                       width="390"
                       height="400"
                       
-                      style={{ width: "100%", objectFit: "cover" }}
+                      style={{ width: "100%", objectFit: "cover", height: "70vh" }}
                     />
                   </Col>
                 </Row>

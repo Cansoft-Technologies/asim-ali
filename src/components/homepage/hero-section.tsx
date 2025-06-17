@@ -1,18 +1,20 @@
 "use client"
 import Image from "next/image"
+import TestimonialSlider from "./testimonial-slider"
 import Link from "next/link"
 import { Button } from "components/ui/button"
-import dynamic from "next/dynamic"
-const TestimonialSlider = dynamic(() => import("./testimonial-slider"), {
-  ssr: false,
-  loading: () => <div>Loading testimonials...</div>,
-})
 import Header from "./header"
 
-export default function HeroSection({ menuItems, settings }: { menuItems: any[], settings: any }) {
+export default function HeroSection({
+  menuItems,
+  settings,
+}: {
+  menuItems: any[]
+  settings: any
+}) {
   return (
-    <section className="relative w-full text-white">
-      {/* Static background image with better layout control */}
+    <section className="relative w-full min-h-screen overflow-hidden">
+      {/* Background Image */}
       <div className="absolute inset-0 -z-10 h-full w-full">
         <Image
           src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/c151ca5610382ee34521b0a0e95cca2a-scaled-1.webp"
@@ -22,46 +24,51 @@ export default function HeroSection({ menuItems, settings }: { menuItems: any[],
           priority
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#12143AB2]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[#12143A] opacity-80" aria-hidden="true" />
       </div>
 
       <Header settings={settings} menuData={menuItems} />
-<div className="w-full text-center md:px-4 px-0 relative z-10 justify-center">
-          <p className="text-sm bg-white md:text-md xl:text-xl py-2 text-[#12143AB2]">Lowest Mortgage Rate in Canada. <span className="text-[#F0B254]">Starting from 3.99%</span></p>
+        <div className="w-full text-center md:px-4 px-0 relative z-10 justify-center">
+          <p className="text-xs bg-white md:text-sm py-1 text-[#12143A]">Lowest Mortgage Rate in Canada. <span className="text-[#F0B254]">Starting from 3.99%</span></p>
         </div>
-      {/* Hero content */}
-      <div className="container mx-auto px-6 md:px-12 min-h-[80vh] flex flex-col justify-center items-center text-center relative z-10">
-        <h1 className="text-4xl font-oswald md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
-          Mortgage Broker in <span className="text-[#F0B254]">Surrey</span> For
-          <br />
-          Expert Home Loan Solutions
-        </h1>
 
-        <p className="text-lg md:text-xl mb-10 max-w-3xl">
-          Looking for a <span className="font-medium">reliable</span> mortgage broker in Surrey? Asim Ali offers
-          mortgage solutions, competitive rates, and expert guidance. Book us to experience the best services.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/apply-now">
-            <Button variant="outline" className="bg-[#F0B254] hover:bg-[#12143AB2]/90 text-white font-medium px-10 py-3 rounded-none">
-              Apply Now
-            </Button>
-          </Link>
-          <Link href="/contact-us">
-            <Button
-              variant="outline"
-              className="border border-white text-white hover:border-[#F0B254] px-10 py-3 text-base rounded-none bg-transparent"
-            >
-              Get Consultation
-            </Button>
-          </Link>
-        </div>
+      {/* Notification Strip */}
+      <div className="w-full text-center px-4 sm:px-6 relative z-10 flex justify-center">
       </div>
 
-      {/* Below-the-fold content */}
-      <div className="relative mt-16">
-        <TestimonialSlider />
+      {/* Hero Content */}
+      <div className="container mx-auto px-4 sm:px-6 flex flex-col justify-around items-center text-center min-h-[80vh] relative z-10">
+        <div className="mt-12 sm:mt-16">
+          <h1 className="lg:text-5xl xl:text-6xl font-oswald font-bold mb-4 sm:mb-6 leading-tight text-white">
+            Mortgage Broker in <span className="text-[#F0B254]">Surrey</span> For
+            <br className="hidden sm:block" />
+            Expert Home Loan Solutions
+          </h1>
+
+          <p className="text-base md:text-xl mb-8 sm:mb-10 max-w-2xl text-white/80">
+            Looking for a <span className="font-medium">reliable</span> mortgage broker in Surrey?
+            Asim Ali offers mortgage solutions, competitive rates, and expert guidance.
+            Book us to experience the best services.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Link href="/apply-now">
+              <Button className="bg-[#F0B254] hover:bg-[#e3a94d] text-white font-medium px-6 py-3 rounded-none w-full sm:w-auto">
+                Apply Now
+              </Button>
+            </Link>
+            <Link href="/contact-us">
+              <Button className="border border-white text-white hover:border-[#F0B254] px-6 py-3 text-base rounded-none bg-transparent w-full sm:w-auto">
+                Get Consultation
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="mt-16 relative w-screen">
+          <TestimonialSlider />
+        </div>
       </div>
     </section>
   )
