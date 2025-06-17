@@ -516,7 +516,7 @@ const teamDescription =
                 ></div>
               </Col>
               <Col className="service-texts" lg={6}>
-                <div className="service-image">
+                <div className="">
                   <Image
                     src={expertsHelpData?.helpRightImage?.sourceUrl}
                     alt={expertsHelpData?.helpRightImage?.altText}

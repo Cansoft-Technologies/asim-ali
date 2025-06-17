@@ -2836,7 +2836,7 @@ arraybuffer.prototype.slice@^1.0.4:
     "@tailwindcss/postcss" "^4.0.14"
     "@types/leaflet" "^1.9.17"
     "@types/react-dom" "^18.3.1"
-    asim-ali "file:../../../../Library/Caches/Yarn/v6/npm-asim-ali-0.1.0-21066014-80ab-4df2-96e3-e014dd13d994-1748804769621/node_modules/asim-ali"
+    asim-ali "file:d:/Yarn/Cache/v6/npm-asim-ali-0.1.0-bf769e67-a565-40c0-90a1-da39f6ab1b4e-1750152516112/node_modules/asim-ali"
     axios "^1.4.0"
     bootstrap "^5.2.2"
     class-variance-authority "^0.7.1"
@@ -2863,6 +2863,7 @@ arraybuffer.prototype.slice@^1.0.4:
     react-moment "^1.1.2"
     react-multi-carousel "^2.8.2"
     react-resizable-panels "^2.1.7"
+    recharts "^2.15.3"
     sass "^1.54.0"
     sharp "^0.33.5"
     sonner "^1.7.1"
@@ -5302,6 +5303,11 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
+
+next-lazy-hydrate@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/next-lazy-hydrate/-/next-lazy-hydrate-1.1.0.tgz#0fa1f83a88217cc5a9724d649e330954c789310d"
+  integrity sha512-MQ6oiHUpE10tfCJ/MGa7lhHymrAeFw2AXnfOG/kxxoSS46FCtt6MZXnn/r2phwdUh2g9C5aggB086MnugahDIg==
 
 next-pwa@^5.6.0:
   version "5.6.0"

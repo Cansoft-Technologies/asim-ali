@@ -28,28 +28,22 @@ const AccordionNewBC = (props: MyProps) => {
             ></div>
             {/* <p>{homebuyerData?.advisorDescription}</p> */}
           </div>
-          <div className="service-row my-5">
-            <Container>
-              <Row>
-                <Col className="service-texts" lg={5}>
-                  <div className="service-image">
+          <div className="my-5">
+            <Container className="mb-5">
+              <Row className="coquitlam-grid my-5">
+                <Col md={5}>
+                  <div>
                     <Image
                       src={homebuyerData?.advisorImage?.sourceUrl}
                       alt={homebuyerData?.advisorImage?.altText}
                       width="390"
                   height="400"
-                  
-                      sizes="100vw"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
+                      style={{ width: "100%", objectFit: "cover", height: "55vh" }}
                       quality={100}
                     />
                   </div>
                 </Col>
-                <Col lg={7}>
+                <Col md={7}>
                   <div className="faq-accordion">
                     <Accordion defaultActiveKey="0">
                       {homebuyerData?.advisorCards?.map((qa, index) => {
