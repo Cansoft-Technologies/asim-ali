@@ -1,18 +1,14 @@
 import { gql } from "@apollo/client";
-import { Footer, Header, Hero } from "components";
+import { Footer, Header } from "components";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 
-import CalculatorSlider from "components/CalculatorSlider";
-import MortgageRenewalCalculator from "components/MortgageRenewal";
-import { apolloClient } from "lib/apollo";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
 import MortgageCompareCalculator from "components/MortgageCompareCalculator";
-import { ArrowRight, Calculator, ChevronRight, BarChart3 } from "lucide-react";
+import { apolloClient } from "lib/apollo";
+import { ArrowRight, Calculator, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 export async function getStaticProps() {
