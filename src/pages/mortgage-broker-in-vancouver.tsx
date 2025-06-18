@@ -19,6 +19,7 @@ import ClientReviews from 'components/ClientReviews';
 import CategoryTabs from 'components/CatagoryTabs';
 import EmbeddedMap from 'components/EmbeddedMap';
 import ContactSection from 'components/ContactSection';
+import MortgageReasons from 'components/MortgageReasons';
 
 
 
@@ -330,9 +331,10 @@ const teamDescription =
   `<p><span style="font-weight: 400;">We're proud to have forged strong relationships with over 100 lenders. This vast network includes big banks, credit unions, and private lending institutions, ensuring a diverse range of financing options. This extensive access not only broadens your choices but also enhances our ability to secure the most advantageous terms for you.  </span></p>\n` +
   "";
   const rateTitle = `
-<h2>Current Mortgage Rates in Vancouver</h2>
-<p></p>
-
+<h2>Our Current Mortgage Broker Rates</h2>
+`;
+const rateDescription = `
+The rates in Vancouver can change from week to week. Here are our current rates for you:
 `;
 
   return (
@@ -390,6 +392,7 @@ const teamDescription =
                   </Col>
                 </Row>
                 </Container>
+                <OurRates title={rateTitle} description={rateDescription} />
         <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
@@ -402,18 +405,30 @@ const teamDescription =
                     ></div>
                   </Container>
         <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
-        <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/>
-        <Team teams={teamData} />
-        <OurRates title={rateTitle} />
+        {/* <ServiceSection textLeft={tipsLeftText} textRight={tipsRightText} imageLeft={tipsImageLeft} imageRight={tipsImageRight}/> */}
         <FeaturedTab tabData={tabRenovationData}/>
-        <OurLenders title={teamTitle} description={teamDescription} />
-                      {/* <AccordionSection advisorData={mortgageInterestData}/> */}
-        <ClientReviews reviews={reviewSection} />
-        <FAQ faqsections={faqData} />
-        <CategoryTabs planData={planSection} />
-        <div className="mt-5">
-        <ContactSection />
-        </div>
+        <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+                    <div className="text-center" dangerouslySetInnerHTML={{
+                        __html: mortgageBenefitsData?.advisorTitle,
+                      }}>
+                    </div>
+                    <div
+                      className="text-center"
+                      dangerouslySetInnerHTML={{
+                        __html: mortgageBenefitsData?.advisorDescriptionTop,
+                      }}
+                    ></div>
+                  </Container>
+                  <Container className="d-flex justify-content-center align-items-center flex-wrap mb-5">
+                    <Image
+                      src={mortgageBenefitsData?.advisorImage?.sourceUrl}
+                      alt={mortgageBenefitsData?.advisorImage?.altText}
+                      width="390"
+                      height="400"
+                      
+                      style={{ width: "50%", objectFit: "cover" }}
+                    />
+                  </Container>
         <Container className="mt-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
       <div

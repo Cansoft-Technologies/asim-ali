@@ -6,7 +6,7 @@ import { Plus, Minus } from "lucide-react";
 import { Button } from "components/ui/button";
 import Link from "next/link";
 
-export default function MortgageRatesSection() {
+export default function MortgageRatesSection({ ratesSection }: { ratesSection?: any }) {
   const [rateType, setRateType] = useState<"fixed" | "variable">("fixed");
   const [sliderValue, setSliderValue] = useState([0]);
   const [expandedRow, setExpandedRow] = useState<number | null>(2);
@@ -152,16 +152,13 @@ const tableData = useMemo(() => {
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
           <div>
             <p className="text-3xl md:text-5xl font-bold leading-7 font-oswald">
-              Our Mortgage Rates
+              {              ratesSection?.title || "Our Mortgage Rates"}
             </p>
           </div>
 
           <div className="max-w-xl">
-            <p className="text-gray-600">
-              Before investing in a home, it&apos;s important to find out the
-              specifics. Here is an overview of our current mortgage rates that
-              you will receive:
-            </p>
+            <p className="text-gray-600" dangerouslySetInnerHTML={{__html: ratesSection?.description || `Before investing in a home, it&apos;s important to find out the
+              specifics. Here is an overview of our current mortgage rates that you will receive:`}}></p>
           </div>
         </div>
 

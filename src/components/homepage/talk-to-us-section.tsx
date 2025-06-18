@@ -3,15 +3,34 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoMdCheckboxOutline } from "react-icons/io";
 
-export default function TalkToUsSection() {
+export default function TalkToUsSection({ teamSection }: { teamSection?: any }) {
+  const defaultContent =
+  [
+  {
+    "type": "Page_Homelandingpage_TeamSection_teamDescriptions",
+    "description": "<p><strong><span class=\"font-semibold text-[#0a1e3b]\">Access to Multiple Lenders:</span></strong> We connect you with various lenders for more options.</p>\n"
+  },
+  {
+    "type": "Page_Homelandingpage_TeamSection_teamDescriptions",
+    "description": "<p><strong><span class=\"font-semibold text-[#0a1e3b]\">Tailored Mortgage Solutions:</span></strong> Our efficient process helps you save both time and money.</p>\n"
+  },
+  {
+    "type": "Page_Homelandingpage_TeamSection_teamDescriptions",
+    "description": "<p><strong><span class=\"font-semibold text-[#0a1e3b]\">Saving Time and Money:</span></strong> Our efficient process helps you save both time and money.</p>\n"
+  },
+  {
+    "type": "Page_Homelandingpage_TeamSection_teamDescriptions",
+    "description": "<p><span class=\"font-semibold text-[#0a1e3b]\"><strong>Streamline Process:</strong> </span>We make your mortgage pre-approval easy and set a clear path toward homeownership.</p>\n"
+  }
+];
   return (
     <section className="w-full bg-[#f8f5f0] py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative h-[600px] w-full overflow-hidden">
             <Image
-              src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Asim-Ali-best-Mortgage-Broker-in-Surrey.webp"
-              alt="Mortgage consultation"
+              src={teamSection?.image?.sourceUrl || "https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Asim-Ali-best-Mortgage-Broker-in-Surrey.webp"}
+              alt={teamSection?.image?.altText || "Asim Ali and Team"}
               fill
               className="object-cover"
             />
@@ -24,75 +43,30 @@ export default function TalkToUsSection() {
               A sooner we can hold your rate.
             </h2>
 
-            <p className="text-gray-600 mb-8">
-              Choosing us as your mortgage broker in Surrey offers you many benefits.
+            <p className="text-gray-600 mb-8" dangerouslySetInnerHTML={{
+              __html: teamSection?.description || `Choosing us as your mortgage broker in Surrey offers you many benefits.`
+            }}>
             </p>
 
             <div className="space-y-6 mb-8">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="h-5 w-5 text-[#0a1e3b]">
-                    <IoMdCheckboxOutline className="h-5 w-5" />
+              {
+                (
+                  teamSection?.teamDescriptions
+                    ? teamSection.teamDescriptions
+                    : defaultContent)?.map((benefit: any, index: number) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-5 w-5 text-[#0a1e3b]">
+                        <IoMdCheckboxOutline className="h-5 w-5" />
+                      </div>
+                    </div>
+                    <div className="flex flex-row gap-2 items-start">
+                      <p className="text-gray-600" dangerouslySetInnerHTML={{ __html: benefit.description }}>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-row gap-2 items-start">
-                  <p className="text-gray-600">
-                    <span className="font-semibold text-[#0a1e3b]">
-                      Access to Multiple Lenders:
-                    </span>{" "}
-                    We connect you with various lenders for more options.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="h-5 w-5 text-[#0a1e3b]">
-                    <IoMdCheckboxOutline className="h-5 w-5" />
-                  </div>
-                </div>
-                <div className="flex flex-row gap-2 items-start">
-                  <p className="text-gray-600">
-                    <span className="font-semibold text-[#0a1e3b]">
-                      Tailored Mortgage Solutions:
-                    </span>{" "}
-                    Our efficient process helps you save both time and money.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="h-5 w-5 text-[#0a1e3b]">
-                    <IoMdCheckboxOutline className="h-5 w-5" />
-                  </div>
-                </div>
-                <div className="flex flex-row gap-2 items-start">
-                  <p className="text-gray-600">
-                    <span className="font-semibold text-[#0a1e3b]">
-                      Saving Time and Money:
-                    </span>{" "}
-                    Our efficient process helps you save both time and money.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="h-5 w-5 text-[#0a1e3b]">
-                    <IoMdCheckboxOutline className="h-5 w-5" />
-                  </div>
-                </div>
-                <div className="flex flex-row gap-2 items-start">
-                  <p className="text-gray-600">
-                    <span className="font-semibold text-[#0a1e3b]">
-                      Streamline Process:{" "}
-                    </span>
-                    We make your mortgage pre-approval easy and set a clear path
-                    toward homeownership.
-                  </p>
-                </div>
-              </div>
+                ))
+              }
             </div>
 
             <Link href="/contact-us">

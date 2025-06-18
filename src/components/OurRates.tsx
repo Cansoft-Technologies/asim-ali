@@ -10,17 +10,17 @@ import { useRouter } from "next/router";
 
 type MyProps = {
   title?: any;
+  description?: any;
 };
 
 type RateData = {
   term: string;
   bankRate: string;
   ourRate: string;
-
 };
 
 export default function OurRates(props: MyProps) {
-  const { title } = props;
+  const { title, description } = props;
   const [activeTab, setActiveTab] = useState<"fixed" | "variable">("fixed");
   const [mortgageSize, setMortgageSize] = useState(100000);
   const [expandedRow, setExpandedRow] = useState(2);
@@ -101,52 +101,22 @@ export default function OurRates(props: MyProps) {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
         <div
           className="text-[#000000] mb-6 md:mb-0"
-          dangerouslySetInnerHTML={{__html: title}}
-        >
-        </div>
+          dangerouslySetInnerHTML={{ __html: title }}
+        ></div>
         <p className="max-w-md text-[#000000]">
-          Before investing in a home, it&apos;s important to find out the
+          {description ||
+            `Before investing in a home, it&apos;s important to find out the
           specifics. Here is an overview of our current mortgage rates that you
-          will receive:
+          will receive:`}
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 mb-8">
-        <div className="grid md:grid-cols-6 gap-8 items-center">
-          <label
-            htmlFor="location"
-            className="block text-[#000000] font-medium mb-2 text-[18px] col-span-2 md:col-span-1"
-          >
-            Location:
-          </label>
-          <div className="col-span-4 md:col-span-5 relative">
-            <select
-              id="location"
-              className="w-full md:w-[400px] border border-[#808080] rounded-xl bg-white text-[#000000] appearance-none focus:outline-none focus:ring-0 focus:border-transparent"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Select Your Province
-              </option>
-              <option value="alberta">Alberta</option>
-              <option value="british-columbia">British Columbia</option>
-              <option value="manitoba">Manitoba</option>
-              <option value="new-brunswick">New Brunswick</option>
-              <option value="newfoundland-and-labrador">
-                Newfoundland and Labrador
-              </option>
-              <option value="nova-scotia">Nova Scotia</option>
-              <option value="ontario">Ontario</option>
-              <option value="prince-edward-island">Prince Edward Island</option>
-              <option value="quebec">Quebec</option>
-              <option value="saskatchewan">Saskatchewan</option>
-            </select>
-            <ChevronDown
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#808080]"
-              size={20}
-            />
+        <div>
+            <label className="block font-medium text-gray-700 mb-2">
+              *Only Applicable for BC
+            </label>
           </div>
-        </div>
         <div className="grid md:grid-cols-8 items-center gap-8">
           <label
             htmlFor="mortgage-size"
