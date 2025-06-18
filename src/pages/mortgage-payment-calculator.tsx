@@ -219,13 +219,6 @@ export default function Page(props: MyProps){
                       </span>
                     </p>
                   </Row>
-                  {/* <div
-                    className="mortgagecalculator-content my-5"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        data?.newMortgagecalculator?.calculatorPageContent,
-                    }}
-                  ></div> */}
                   <MortgageCalculator/>
                   <div className="tab-btn">
                     <Link href={"/apply-now"}>
