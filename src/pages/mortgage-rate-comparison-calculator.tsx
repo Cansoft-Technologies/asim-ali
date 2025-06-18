@@ -267,7 +267,7 @@ const Page = (props: MyProps) => {
               {metaData?.map((meta, index) => {
                 return (
                   <>
-                    <title>Plan Mortgage Wisely</title>
+                    <title>Save Money with Mortgage Rate Comparison Calculator BC - Asim Ali</title>
                     <meta name="description" content='Try Asim Ali’s mortgage rate comparison calculator in BC and compare home loan options instantly. Find the best rate for your budget with us!' />
                     <meta name="robots" content="noindex"></meta>
                     <link
