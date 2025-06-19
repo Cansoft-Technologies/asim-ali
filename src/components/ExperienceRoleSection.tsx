@@ -2,15 +2,47 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "components/ui/button"
 
-export default function ExperienceRoleSection() {
+export default function ExperienceRoleSection({roleSection}:{roleSection?:any}) {
+  const defaultContent =
+ [
+  {
+    "type": "Page_Homelandingpage_RoleSection_roles",
+    "title": "Assessing Financial Situation",
+    "description": "<p>At first, we find out your current financial situation and credit score. We will help you access your income, expenses, and savings. This will help us understand your affordability and the amount of money you can borrow.</p>\n",
+    "icon": {
+      "type": "MediaItem",
+      "altText": "role1",
+      "sourceUrl": "https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/role1.png"
+    }
+  },
+  {
+    "type": "Page_Homelandingpage_RoleSection_roles",
+    "title": "Exploring Mortgage Options",
+    "description": "<p>Once we understand your financial situation, we will look at different mortgage loan options. We will check out interest rates and terms before finding the best home loan option for you.</p>\n",
+    "icon": {
+      "type": "MediaItem",
+      "altText": "role2",
+      "sourceUrl": "https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/role2.png"
+    }
+  },
+  {
+    "type": "Page_Homelandingpage_RoleSection_roles",
+    "title": "Communication with Lenders",
+    "description": "<p>We work as a middleman between you and the lenders. We communicate with financial institutions on your behalf. Also, we handle all your paperwork and discuss the terms of the home loan.</p>\n",
+    "icon": {
+      "type": "MediaItem",
+      "altText": "fi 3050431",
+      "sourceUrl": "https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/fi_3050431.png"
+    }
+  }
+];
   return (
     <section className="w-full bg-white py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-12">
           <h2 className="!text-xl md:!text-2xl lg:!text-4xl !font-semibold mb-6">Experience a Stress <br/>Free and Transparent Lending Process with us</h2>
 
-          <p className="text-gray-600 max-w-3xl mx-auto">
-          Our mortgage professionals ensure your path to homeownership or mortgage refinancing is easy. We use our experience and local market knowledge to select the right solution for you no matter your credit score.
+          <p className="text-gray-600 max-w-3xl mx-auto" dangerouslySetInnerHTML={{__html: roleSection?.title || `Our mortgage professionals ensure your path to homeownership or mortgage refinancing is easy. We use our experience and local market knowledge to select the right solution for you no matter your credit score.`}}>
           </p>
         </div>
 
@@ -32,37 +64,17 @@ export default function ExperienceRoleSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-gray-50 p-8 rounded-sm">
-            <div className="flex justify-center mb-6">
-              <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/fi_12841736.png" alt="Financial Assessment" width={48} height={48} />
-            </div>
-            <h3 className="text-xl font-medium text-center mb-4">Assessing Financial Situation</h3>
-            <p className="text-gray-600 text-center">
-              At first, we find out your current financial situation and credit score. We will help you access your
-              income, expenses, and savings. This will help us understand your affordability and the amount of money you
-              can borrow.
-            </p>
-          </div>
-
-          <div className="bg-gray-50 p-8 rounded-sm">
-            <div className="flex justify-center mb-6">
-              <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/fi_4298592.png" alt="Mortgage Options" width={48} height={48} />
-            </div>
-            <h3 className="text-xl font-medium text-center mb-4">Apply Online</h3>
-            <p className="text-gray-600 text-center">
-            Whether you need $10,000 or $2,500,000, we are here to assist you. Let us know your borrowing amount, and we&apos;ll guide you through the process.
-            </p>
-          </div>
-
-          <div className="bg-gray-50 p-8 rounded-sm">
-            <div className="flex justify-center mb-6">
-              <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/fi_3050431.png" alt="Communication with Lenders" width={48} height={48} />
-            </div>
-            <h3 className="text-xl font-medium text-center mb-4">Get Approved</h3>
-            <p className="text-gray-600 text-center">
-            After smoothly completing the lending process, your desired funds will be swiftly transferred to your account. That&apos;s what we do!
-            </p>
-          </div>
+          {
+                      (roleSection?.roles || defaultContent)?.map((role: any, index: number) => (
+                        <div key={index} className="bg-gray-50 p-8 rounded-sm">
+                          <div className="flex justify-center mb-6">
+                            <Image src={role.icon?.sourceUrl || "https://asimaliprod.wpengine.com/wp-content/uploads/2025/04/role1.png"} alt={role.icon?.altText || role.title} width={48} height={48} />
+                          </div>
+                          <h3 className="text-xl font-medium text-center mb-4">{role.title}</h3>
+                          <p className="text-gray-600 text-center" dangerouslySetInnerHTML={{ __html: role.description }}></p>
+                        </div>
+                      ))
+                    }
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

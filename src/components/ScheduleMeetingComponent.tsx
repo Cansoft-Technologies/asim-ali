@@ -12,7 +12,7 @@ import { Facebook, Instagram, Linkedin, Music } from "lucide-react"
 import TestimonialSliderRow from "./TestimonialSliderRow"
 import ScheduleApplyForm from "./ScheduleApplyForm"
 
-export default function ScheduleMeetingComponent() {
+export default function ScheduleMeetingComponent({ heroSection }: { heroSection?: any }) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -48,7 +48,7 @@ export default function ScheduleMeetingComponent() {
     <section className="relative w-full min-h-screen flex flex-col items-center bg-[#f8f5f0]">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
-        <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Mortgage-Broker-Surrey.webp" alt="" fill className="object-cover" priority sizes="100vw" />
+        <Image src={`${heroSection?.bannerImage?.sourceUrl || 'https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/Mortgage-Broker-Surrey.webp'}`} alt={heroSection?.bannerImage?.altText || "bannerImage"} fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-[#0a1e3b] opacity-80"></div>
       </div>
 
@@ -62,9 +62,8 @@ export default function ScheduleMeetingComponent() {
                         and Get Approved Quickly!
                         <br />
                       </h2>
-          
-                      <p className="text-gray-200 mb-8 mt-3">
-                      Are you a resident of British Columbia looking for a loan? Our hassle-free and obligation-free application process takes less than a minute to complete. Rest assured, we provide full transparency on the terms and conditions, sharing the rate you qualify for. Moreover, we offer a 24/7 application review process to ensure a quick response. Apply now!
+
+                      <p className="text-gray-200 mb-8 mt-3" dangerouslySetInnerHTML={{ __html: heroSection?.description || `Are you a resident of British Columbia looking for a loan? Our hassle-free and obligation-free application process takes less than a minute to complete. Rest assured, we provide full transparency on the terms and conditions, sharing the rate you qualify for. Moreover, we offer a 24/7 application review process to ensure a quick response. Apply now!` }}>
                       </p>
           
                       <div className="space-y-4 mb-8 mt-3">

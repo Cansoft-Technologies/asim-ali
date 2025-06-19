@@ -11,7 +11,6 @@ import { apolloClient } from "lib/apollo";
 import Head from "next/head";
 import { Fragment } from "react";
 
-
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
@@ -28,31 +27,57 @@ export async function getStaticProps() {
                   url
                 }
               }
+              jsonLd {
+                raw
+              }
             }
-
             CurrentRates {
-              bannerTitle
-              currentMortgageRate
-              currentPrimeRate
-              easyApplicationSubtitle
-              easyApplicationTitle
-              paymentCalculatorTitle
-              tableBottomNotes
-              bannerBackgroundImage {
-                altText
-                sourceUrl
+              heroSection {
+                title
+                description
+                bannerImage {
+                  altText
+                  sourceUrl
+                }
               }
-              easyApplicationBackground {
-                altText
-                sourceUrl
+              helpSection {
+                description
+                title
+                helpImage {
+                  altText
+                  sourceUrl
+                }
               }
-              paymentCalculatorLink {
-                url
+              ratesSection {
+                title
+                description
               }
-              tableRateInformation {
-                terms
-                bankRates
-                dominion
+              roleSection {
+                title
+                description
+                roles {
+                  description
+                  title
+                  icon {
+                    altText
+                    sourceUrl
+                  }
+                }
+              }
+              scheduleSection {
+                description
+                title
+              }
+              teamSection {
+                description
+                title
+                image {
+                  altText
+                  sourceUrl
+                }
+                teamDescriptions {
+                  description
+                }
               }
             }
           }
@@ -64,6 +89,13 @@ export async function getStaticProps() {
                 sourceUrl
                 altText
               }
+              uploadLogoMobile {
+                sourceUrl
+                altText
+              }
+            }
+            generalSettings {
+              schemaProductRating
             }
             footerSettings {
               socialUrl {
@@ -71,7 +103,7 @@ export async function getStaticProps() {
                 tiktok
                 linkedin
                 instagram
-              }              
+              }
               copyrightText
               footerLeftWidget {
                 title
@@ -81,6 +113,10 @@ export async function getStaticProps() {
               footerLogoSection {
                 logoText
                 logoUpload {
+                  altText
+                  sourceUrl
+                }
+                logoUploadTwo {
                   altText
                   sourceUrl
                 }
@@ -106,7 +142,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems (first: 150) {
+                childItems(first: 150) {
                   nodes {
                     uri
                     label
@@ -129,24 +165,44 @@ export async function getStaticProps() {
   }
   return {
     props: {
-      currentData: data?.pages?.nodes,
-      metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
+      metaData: data?.pages?.nodes,
+      heroSection: data?.pages?.nodes[0]?.CurrentRates?.heroSection,
+      ratesSection: data?.pages?.nodes[0]?.CurrentRates?.ratesSection,
+      roleSection: data?.pages?.nodes[0]?.CurrentRates?.roleSection,
+      scheduleSection: data?.pages?.nodes[0]?.CurrentRates?.scheduleSection,
+      teamSection: data?.pages?.nodes[0]?.CurrentRates?.teamSection,
+      helpSection: data?.pages?.nodes[0]?.CurrentRates?.helpSection,
     },
     revalidate: 60,
   };
 }
 
 type MyProps = {
-  currentData: any;
-  metaData: any;
   settings: any;
   mainMenus: any;
+  metaData: any;
+  heroSection: any;
+  ratesSection: any;
+  roleSection: any;
+  scheduleSection: any;
+  teamSection: any;
+  helpSection: any;
 };
 
 const CurrentRates = (props: MyProps) => {
-  const { settings, mainMenus, currentData, metaData } = props;
+  const {
+    settings,
+    mainMenus,
+    metaData,
+    heroSection,
+    ratesSection,
+    roleSection,
+    scheduleSection,
+    teamSection,
+    helpSection,
+  } = props;
 
   return (
     <>
@@ -156,7 +212,14 @@ const CurrentRates = (props: MyProps) => {
             <Fragment key={index}>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+              <link
+                rel="canonical"
+                href={
+                  meta?.seo?.canonicalUrl?.endsWith("/")
+                    ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                    : meta?.seo?.canonicalUrl
+                }
+              />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta
                 property="og:description"
@@ -171,15 +234,19 @@ const CurrentRates = (props: MyProps) => {
         })}
       </Head>
       <main className="min-h-screen">
-      <CurrentRatesHero settings={settings} menuItems={mainMenus}/>
-      <MortgageRatesSection />
-      <TalkToUsSection />
-      <HistoricalMortgageRates />
-      <MortgageBrokerIntro />
-      <ScheduleMeeting />
-      <RoleSection />
-      <Footer settings={settings} menuData={mainMenus}/>
-    </main>
+        <CurrentRatesHero
+          settings={settings}
+          menuItems={mainMenus}
+          heroSection={heroSection}
+        />
+        <MortgageRatesSection ratesSection={ratesSection} />
+        <TalkToUsSection teamSection={teamSection} />
+        <HistoricalMortgageRates />
+        <MortgageBrokerIntro helpSection={helpSection} />
+        <ScheduleMeeting scheduleSection={scheduleSection} />
+        <RoleSection roleSection={roleSection} />
+        <Footer settings={settings} menuData={mainMenus} />
+      </main>
     </>
   );
 };
