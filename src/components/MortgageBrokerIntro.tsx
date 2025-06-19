@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function MortgageBrokerIntro() {
+export default function MortgageBrokerIntro({ helpSection }: { helpSection?: any }) {
   return (
     <section className="w-full bg-white py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12">
@@ -9,17 +9,13 @@ export default function MortgageBrokerIntro() {
           {/* Left side - Text content */}
           <div>
             <h2 className="!text-xl md:!text-2xl lg:!text-4xl !font-semibold mb-8 leading-tight font-oswald">
-            Let The Best Mortgage Broker in Surrey Help You With Your Homeownership Dream
+              {helpSection?.title || "Let The Best Mortgage Broker in Surrey Help You With Your Homeownership Dream"}
             </h2>
 
-            <p className="text-gray-700 mb-6">
-              It is a difficult process to get approved for a mortgage in the Surrey area. Asim Ali is a renowned
-              mortgage broker in Surrey and with him, you can rest assured that your home financing and mortgage process
-              will be smoothly done. We provide in-depth knowledge of your local real estate market and we have
-              extensive partnerships in the mortgage world.
-            </p>
+            <div className="text-gray-700 mb-6" dangerouslySetInnerHTML={{ __html: helpSection?.description || "Whether you are about to go after your first home or you are looking for possible ways to refinance your existing mortgage, we will gladly assist you with the most suitable financing solution customized to your needs." }}>
+            </div>
 
-            <p className="text-gray-700 mb-10">
+            {/* <p className="text-gray-700 mb-10">
               Whether you are about to go after your first home or you are looking for possible ways to refinance your
               existing mortgage, we will gladly assist you with the most suitable financing solution customized to your
               needs.
@@ -36,14 +32,14 @@ export default function MortgageBrokerIntro() {
               </Link>{" "}
               that address various aspects of the mortgage process, ensuring you&apos;re well-equipped to make wise decisions
               at every step. Here are the services we are offering
-            </p>
+            </p> */}
           </div>
 
           {/* Right side - Image */}
           <div className="relative h-[400px] md:h-[500px] w-full">
             <Image
-              src="https://asimaliprod.wpengine.com/wp-content/uploads/2024/09/Top-Mortgage-Broker-In-Chilliwack.webp"
-              alt="Asim Ali Mortgage Team"
+              src={helpSection?.helpImage?.sourceUrl || "https://asimaliprod.wpengine.com/wp-content/uploads/2024/09/Top-Mortgage-Broker-In-Chilliwack.webp"}
+              alt={helpSection?.helpImage?.altText || "Asim Ali Mortgage Team"}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"

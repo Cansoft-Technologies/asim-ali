@@ -1,17 +1,29 @@
-import Link from "next/link"
-import { Button } from "components/ui/button"
+import Link from "next/link";
+import { Button } from "components/ui/button";
 
-export default function CtaSection() {
+export default function CtaSection({
+  contactSection,
+}: {
+  contactSection?: any;
+}) {
   return (
     <section className="w-full bg-[#FCF9F3] py-16">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold mb-6">Start Your Application and Get Approved Quickly!</h2>
-            <p className="text-gray-600 mb-8">
-              Are you a resident of British Columbia looking for a loan? Our hassle-free and obligation-free application
-              process takes less than a minute to complete.
-            </p>
+            <h2 className="text-3xl font-bold mb-6">
+              {contactSection?.title ||
+                "Start Your Application and Get Approved Quickly!"}
+            </h2>
+            <p
+              className="text-gray-600 mb-8"
+              dangerouslySetInnerHTML={{
+                __html:
+                  contactSection?.description ||
+                  `Are you a resident of British Columbia looking for a loan? Our hassle-free and obligation-free application
+              process takes less than a minute to complete.`,
+              }}
+            ></p>
           </div>
 
           <div className="flex flex-col items-center md:items-end">
@@ -25,5 +37,5 @@ export default function CtaSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

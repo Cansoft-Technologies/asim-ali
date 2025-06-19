@@ -12,7 +12,7 @@ import Link from "next/link"
 import Image from "next/image"
 import ScheduleApplyForm from "./ScheduleApplyForm"
 
-export default function ScheduleMeetingForm() {
+export default function ScheduleMeetingForm({heroSection}: {heroSection?:any}) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -48,7 +48,7 @@ export default function ScheduleMeetingForm() {
     <section className="relative w-full min-h-screen flex flex-col items-center bg-[#f8f5f0]">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
-        <Image src="https://asimaliprod.wpengine.com/wp-content/uploads/2024/09/Mortgage-Broker-In-Abbotsford-scaled.webp" alt="" fill className="object-cover" priority sizes="100vw" />
+        <Image src={heroSection?.bannerImage?.sourceUrl || "https://asimaliprod.wpengine.com/wp-content/uploads/2024/09/Mortgage-Broker-In-Abbotsford-scaled.webp"} alt={heroSection?.bannerImage?.altText || "banner image"} fill className="object-cover" priority sizes="100vw" />
         <div className="absolute inset-0 bg-[#0a1e3b] opacity-80"></div>
       </div>
 
@@ -64,10 +64,9 @@ export default function ScheduleMeetingForm() {
                         Advisor
                       </h2>
           
-                      <p className="text-gray-200 mb-8 mt-3">
-                        Are you ready to make your dream of owning a home in Surrey come true? Then Asim Ali is your reliable
+                      <p className="text-gray-200 mb-8 mt-3" dangerouslySetInnerHTML={{__html: heroSection?.description || `Are you ready to make your dream of owning a home in Surrey come true? Then Asim Ali is your reliable
                         partner in your mortgage journey. Reach out today to set up your meeting with our mortgage consultant to
-                        ask any questions you may have.
+                        ask any questions you may have.`}}>
                       </p>
           
                       <div className="flex flex-col sm:flex-row gap-4 justify-center mt-3">
