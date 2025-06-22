@@ -5,7 +5,7 @@ import { ChevronRight, MapPin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import { Button, Container } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 import ContactSection from "./ContactSection"
 
 type MyProps = {
@@ -34,6 +34,7 @@ export default function BCLocationsMockMap(props: MyProps) {
     { name: "Langley", top: 75, left: 22, url: "/langley-mortgage-broker" },
     { name: "Nanaimo", top: 45, left: 10, url: "/mortgage-broker-in-nanaimo" },
     { name: "Prince George", top: 15, left: 55, url: "/mortgage-brokers-in-prince-george" },
+    { name: "White Rock", top: 80, left: 20, url: "/mortgage-broker-in-white-rock" },
     {
       name: "Vancouver",
       top: 65,
@@ -50,7 +51,6 @@ export default function BCLocationsMockMap(props: MyProps) {
         { name: "Yaletown", url: "/mortgage-broker-in-yaletown" },
       ],
     },
-    { name: "White Rock", top: 80, left: 20, url: "/mortgage-broker-in-white-rock" },
     {
       name: "Surrey",
       top: 78,
@@ -69,18 +69,9 @@ export default function BCLocationsMockMap(props: MyProps) {
     setSelectedLocation(locationName === selectedLocation ? null : locationName)
   }
 
-  // Sort to render selected last
-  const sortedLocations = [...locations].sort((a, b) => {
-    if (a.name === selectedLocation) return 1
-    if (b.name === selectedLocation) return -1
-    return 0
-  })
-
-  // Find currently selected location
-  const current = locations.find((loc) => loc.name === selectedLocation)
-
   return (
     <div className="relative min-h-screen flex flex-col">
+      {/* Map Section */}
       <div className="bg-white shadow-lg overflow-hidden mb-6 flex-1 relative">
         <div className="w-full h-[400px] md:h-[500px] relative">
           <div className="absolute inset-0 bg-[#e8ecef] overflow-hidden">
@@ -93,7 +84,7 @@ export default function BCLocationsMockMap(props: MyProps) {
             />
           </div>
 
-          {sortedLocations.map((location) => (
+          {locations.map((location) => (
             <button
               key={location.name}
               className="absolute transform -translate-x-1/2 -translate-y-1/2 z-20 transition-all duration-200 focus:outline-none"
@@ -103,7 +94,7 @@ export default function BCLocationsMockMap(props: MyProps) {
               <div
                 className={`location-marker flex items-center justify-between gap-2 px-3 py-1 rounded-md text-sm font-medium shadow-md transition-all duration-200 ${
                   selectedLocation === location.name
-                    ? "bg-[#F0b245] text-black scale-110 shadow-lg"
+                    ? "bg-[#F0b245] text-black scale-150 shadow-lg"
                     : "bg-[#12143A] text-white"
                 }`}
               >
@@ -115,88 +106,69 @@ export default function BCLocationsMockMap(props: MyProps) {
         </div>
       </div>
 
+      {/* Locations List */}
       <div className="relative z-10 flex-1 flex flex-col p-4 md:p-8 max-w-7xl mx-auto w-full">
         <h1 className="text-3xl md:text-5xl font-bold text-center text-[#12143A] mb-6">{locationHead}</h1>
         <div
-            dangerouslySetInnerHTML={{
-              __html: locationDescription,
-            }}
-            className="text-lg text-center"
-          ></div>
-        <h2 className="text-3xl md:text-5xl text-center font-bold text-[#12143A] my-5">Location We Serve</h2>
+          dangerouslySetInnerHTML={{
+            __html: locationDescription,
+          }}
+          className="text-lg text-center mb-8"
+        ></div>
+
+        <h2 className="text-3xl md:text-5xl text-center font-bold text-[#12143A] mb-5">Locations We Serve</h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {locations.map((location) => (
-            location.name !== "Surrey" ? (
-              
-              <Card
-              key={location.name}
-              onClick={() => handleLocationClick(location.name)}
-                className={`flex items-center justify-between p-4 hover:bg-[#F0b245] hover:text-[#12143A] transition-colors ${
-                  selectedLocation === location.name ? "bg-[#F0b245] text-[#12143A] border-[#12143A]" : "bg-[#12143A] text-[#F0b245]"
-                }`}
-              >
-                <div className="flex items-center">
-                  <span className="font-medium">{location.name}</span>
-                </div>
-                <Link
-              href={location.url}
-              style={{ textDecoration: "none" }}
-            ></Link>
-                <ChevronRight className="h-5 w-5" />
-              </Card>
-          ): (
-            <div
-              key={location.name}
-              onClick={() => handleLocationClick(location.name)}
-              style={{ textDecoration: "none" }}
-            >
-              <Card
-                className={`flex items-center justify-between p-4 hover:bg-[#F0b245] hover:text-[#12143A] transition-colors ${
-                  selectedLocation === location.name ? "bg-[#F0b245] text-[#12143A] border-[#12143A]" : "bg-[#12143A] text-[#F0b245]"
-                }`}
-              >
-                <div className="flex items-center">
-                  <span className="font-medium">{location.name}</span>
-                </div>
-                <ChevronRight className="h-5 w-5" />
-              </Card>
-            </div>
-          )))}
-
-          {/* Sublocations Display */}
-          {current?.sublocations && (
-            <>
-              {current.sublocations.map((sub) => (
-                <Link
-                  href={sub.url}
-                  key={sub.name}
-                  onClick={() => handleLocationClick(current.name)}
-                  style={{ textDecoration: "none" }}
+            <div key={location.name} className="space-y-2">
+              <Link href={location.url} className="block">
+                <Card
+                  className={`flex items-center justify-between p-4 hover:bg-[#F0b245] hover:text-[#12143A] transition-colors ${
+                    selectedLocation === location.name
+                      ? "bg-[#F0b245] text-[#12143A] border-[#12143A]"
+                      : "bg-[#12143A] text-[#F0b245]"
+                  }`}
                 >
-                  <Card className="flex items-center justify-between p-4 bg-gray-100 text-gray-800 hover:bg-[#F0b245] hover:text-[#12143A] transition-colors">
-                    <div className="flex items-center">
-                      <span className="font-medium">{sub.name}</span>
-                    </div>
-                    <ChevronRight className="h-5 w-5" />
-                  </Card>
-                </Link>
-              ))}
-            </>
-          )}
+                  <div className="flex items-center">
+                    <span className="font-medium">{location.name}</span>
+                  </div>
+                  <ChevronRight className="h-5 w-5" />
+                </Card>
+              </Link>
+
+              {/* Sublocations */}
+              {location.sublocations?.length && (
+                <div className="ml-4 space-y-2">
+                  {location.sublocations.map((sub) => (
+                    <Link key={sub.name} href={sub.url} className="block !no-underline">
+                      <Card className="flex items-center justify-between p-4 bg-white border border-gray-200 text-gray-800 hover:!bg-[#F0b245] hover:text-[#12143A] transition-colors">
+                        <div className="flex items-center pl-2">
+                          <span className="font-medium">{sub.name}</span>
+                        </div>
+                        <ChevronRight className="h-5 w-5" />
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Contact Section */}
       <Container className="my-5">
-          <h2 className="text-center service-title">{contactTitle}</h2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: contactDescription,
-            }}
-            className="text-lg text-center my-2"
-          ></div>
-          <div className="my-5">
-          <ContactSection/>
-          </div>
-        </Container>
+        <h2 className="text-center service-title">{contactTitle}</h2>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: contactDescription,
+          }}
+          className="text-lg text-center my-2"
+        ></div>
+        <div className="my-5">
+          <ContactSection />
+        </div>
+      </Container>
     </div>
   )
 }

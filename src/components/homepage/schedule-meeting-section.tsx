@@ -15,6 +15,7 @@ import { Textarea } from "components/ui/textarea";
 import { Toast } from "components/ui/toast";
 import { Facebook, Instagram, Linkedin, Music } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ScheduleMeetingSection({
   scheduleSection,
@@ -128,17 +129,28 @@ export default function ScheduleMeetingSection({
   };
 
   const locations = [
-    "Abbotsford",
-    "Aberdeen",
-    "Coquitlam",
-    "Vancouver",
-    "Maple Ridge",
-    "Kamloops",
-    "Delta",
-    "Langley",
-    "Kelowna",
-    "Prince George",
-  ];
+    { name: "Abbotsford", top: 75, left: 25, url: "/mortgage-broker-in-abbotsford" },
+    { name: "Aberdeen", top: 40, left: 30, url: "/mortgage-broker-in-aberdeen" },
+    { name: "Aldergrove East", top: 78, left: 28, url: "/aldergrove-east-mortgage-broker" },
+    { name: "Burnaby", top: 65, left: 20, url: "/mortgage-broker-in-burnaby" },
+    { name: "Campbell River", top: 30, left: 15, url: "/mortgage-broker-in-campbell-river" },
+    { name: "Chilliwack", top: 72, left: 35, url: "/trusted-mortgage-broker-in-chilliwack" },
+    { name: "Coquitlam", top: 62, left: 22, url: "/mortgage-broker-in-coquitlam" },
+    { name: "Delta", top: 70, left: 18, url: "/mortgage-brokers-in-delta" },
+    { name: "Hope", top: 68, left: 45, url: "/hope-mortgage-broker" },
+    { name: "Kamloops", top: 45, left: 50, url: "/mortgage-brokers-in-kamloops" },
+    { name: "Kelowna", top: 55, left: 60, url: "/mortgage-brokers-in-kelowna" },
+    { name: "Langley", top: 75, left: 22, url: "/langley-mortgage-broker" },
+    { name: "Nanaimo", top: 45, left: 10, url: "/mortgage-broker-in-nanaimo" },
+    { name: "Prince George", top: 15, left: 55, url: "/mortgage-brokers-in-prince-george" },
+    { name: "White Rock", top: 80, left: 20, url: "/mortgage-broker-in-white-rock" },
+    {
+      name: "Vancouver",
+      top: 65,
+      left: 15,
+      url: "/mortgage-broker-in-vancouver",
+    },
+  ]
 
   return (
     <section className="w-full bg-[#f8f5f0] py-16 md:py-24 relative">
@@ -508,13 +520,14 @@ export default function ScheduleMeetingSection({
 
               <div className="flex flex-wrap gap-2">
                 {locations.map((location) => (
-                  <Button
-                    key={location}
+                  <Link href={location?.url} key={location?.name}>
+                    <Button
                     variant="outline"
                     className="border-gray-300 hover:bg-[#0a1e3b] hover:text-white text-[#0a1e3b] py-2 px-4 rounded-none"
                   >
-                    {location}
+                    {location?.name}
                   </Button>
+                  </Link>
                 ))}
               </div>
             </div>
