@@ -140,23 +140,6 @@ const MortgageReasons = () => {
         </h2>
         
         <div className="relative mt-12 lg:mt-16">
-          {/* This is a simplified SVG graphic. A more accurate one is below */}
-          {/* <div className="absolute inset-0 z-0 flex items-center justify-center">
-            <svg width="100%" height="100%" viewBox="0 0 400 600" preserveAspectRatio="none" className="opacity-70">
-              <defs>
-                <g id="line-group">
-                  <path d="" stroke="white" strokeWidth="1.5" />
-                  <path d="" stroke="white" strokeWidth="1.5" transform="translate(3,0)" />
-                  <path d="" stroke="white" strokeWidth="1.5" transform="translate(-3,0)" />
-                </g>
-              </defs>
-              <path d="M 200 375 L 192 360 L 208 360 Z" fill="white" stroke="#101844" strokeWidth="1" />
-              <path d="M 200 360 Q 125 285, 50 150 M 198 360 Q 123 285, 48 150 M 202 360 Q 127 285, 52 150" fill="none" stroke="white" strokeWidth="1" />
-              <path d="M 200 360 Q 275 285, 350 150 M 198 360 Q 273 285, 348 150 M 202 360 Q 277 285, 352 150" fill="none" stroke="white" strokeWidth="1" />
-              <path d="M 200 360 Q 125 435, 50 500 M 198 360 Q 123 435, 48 500 M 202 360 Q 127 435, 52 500" fill="none" stroke="white" strokeWidth="1" />
-              <path d="M 200 360 Q 275 435, 350 500 M 198 360 Q 273 435, 348 500 M 202 360 Q 277 435, 352 500" fill="none" stroke="white" strokeWidth="1" />
-            </svg>
-          </div> */}
           <CentralPencilGraphic/>
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
               <div className="flex flex-col gap-y-8 md:mt-16">
