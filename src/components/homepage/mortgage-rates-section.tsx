@@ -215,17 +215,21 @@ const tableData = useMemo(() => {
         </div>
 
         {/* Rate Display */}
-        <div className="bg-gray-200 p-6 mb-0 text-center relative">
-          <div className="text-sm text-gray-600 mb-1">
-            <p className=" text-[#F0b254]">3 Years Fixed Form</p>
+        {/* Summary Section */}
+        {rateType === "fixed" ? (
+          <div className="bg-gray-200 p-6 mb-0 text-center relative">
+            <p className="text-sm text-[#F0b254] mb-1">3 Years Fixed</p>
+            <div className="flex items-center justify-center">
+              <p className="text-6xl font-bold text-[#0a1e3b]">{popularRate || "4.24%"}</p>
+              <span className="ml-2 px-2 py-1 bg-transparent text-[#0a1e3b] text-xs font-medium">*Most Popular</span>
+            </div>
           </div>
-          <div className="flex items-center justify-center">
-            <p className="text-6xl font-bold text-[#0a1e3b]">{popularRate}</p>
-            <span className="ml-2 px-2 py-1 bg-transparent text-[#0a1e3b] text-xs font-medium">
-              *Most Popular
-            </span>
+        ) : (
+          <div className="bg-gray-200 p-6 text-center">
+            <p className="text-3xl font-bold text-[#0a1e3b]">Current Variable Rate: <span className="text-[#F0b254]">4.30%</span></p>
+            <p className="text-3xl font-bold text-[#0a1e3b]">Current Prime Rate: <span className="text-[#F0b254]">4.95 %</span></p>
           </div>
-        </div>
+        )}
 
         {/* Rate Table */}
         <div className="overflow-x-auto mb-6">

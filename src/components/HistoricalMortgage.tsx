@@ -39,7 +39,7 @@ export default function HistoricalMortgageRates() {
   const toggleVariableYear = (year: string) =>
     setExpandedVariableYear(expandedVariableYear === year ? "" : year)
 
-  const fixedRateData = [
+ const fixedRateData = [
     {
       year: "2025",
       average: "4.06 %",
@@ -72,29 +72,84 @@ export default function HistoricalMortgageRates() {
         { month: "March", lowest: "5.01%", highest: "5.70%" },
       ],
     },
+    {
+      year: "2021",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
+      months: [],
+    },
+    {
+      year: "2020",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
+      months: [],
+    },
+    {
+      year: "2024",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
+      months: [],
+    },
   ]
 
   const variableRateData = [
     {
       year: "2024",
-      average: "4.95%",
-      lowest: "4.85%",
-      highest: "5.10%",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
+      months: [],
+    },
+    {
+      year: "2024",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
+      months: [],
+    },
+    {
+      year: "2024",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
       months: [],
     },
     {
       year: "2022",
-      average: "4.89%",
-      lowest: "4.06%",
-      highest: "5.97%",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
       months: [
-        { month: "January", lowest: "4.06%", highest: "5.97%" },
-        { month: "February", lowest: "4.10%", highest: "5.90%" },
-        { month: "March", lowest: "4.20%", highest: "5.85%" },
+        { month: "January", lowest: "4.06 %", highest: "5.97%" },
+        { month: "February", lowest: "4.06 %", highest: "5.97%" },
+        { month: "March", lowest: "4.06 %", highest: "5.97%" },
       ],
     },
+    {
+      year: "2024",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
+      months: [],
+    },
+    {
+      year: "2024",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
+      months: [],
+    },
+    {
+      year: "2024",
+      average: "7.89 %",
+      lowest: "7.89 %",
+      highest: "7.89 %",
+      months: [],
+    },
   ]
-
   return (
     <section className="w-full bg-[#fcf9f3] py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12">
