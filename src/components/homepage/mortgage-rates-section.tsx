@@ -47,7 +47,7 @@ export default function MortgageRatesSection({ ratesSection }: { ratesSection?: 
   };
 
   // Term options with bank rates and our rates
-  const termOptions = [
+  const termOptions = useMemo(() => [
     {
       term: "6 Months",
       bankRate: 7.89,
@@ -104,7 +104,7 @@ export default function MortgageRatesSection({ ratesSection }: { ratesSection?: 
       description:
         "You will get a 5.35 % rate with our 6-year plan. With this, you will pay $601.69 monthly and save $25.28 each month. So, if you want 1.75% less than any average bank rates, then this plan is right for you.",
     },
-  ];
+  ], []);
 
   // Calculate table data dynamically
 const tableData = useMemo(() => {
@@ -139,7 +139,7 @@ const tableData = useMemo(() => {
       description: option.description,
     };
   });
-}, [mortgageAmount]);
+}, [mortgageAmount, termOptions]);
 
 
   // Find the most popular term (3 years)
