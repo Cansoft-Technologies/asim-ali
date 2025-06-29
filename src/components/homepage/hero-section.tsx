@@ -1,7 +1,8 @@
 "use client"
 
 import Image from "next/image"
-import TestimonialSlider from "./testimonial-slider"
+import dynamic from "next/dynamic";
+const TestimonialSlider = dynamic(() => import("./testimonial-slider"));
 import Link from "next/link"
 import { Button } from "components/ui/button"
 import Header from "./header"
