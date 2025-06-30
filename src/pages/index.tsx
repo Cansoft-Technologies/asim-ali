@@ -14,7 +14,7 @@ const RoleSection = dynamic(() => import("components/homepage/role-section"));
 const ScheduleMeetingSection = dynamic(() => import("components/homepage/schedule-meeting-section"));
 const ServicesSection = dynamic(() => import("components/homepage/services-section"));
 const TalkToUsSection = dynamic(() => import("components/homepage/talk-to-us-section"));
-
+// MisHkat
 export async function getStaticProps() {
   try {
     const { data } = await apolloClient.query({
