@@ -278,6 +278,7 @@ export default function HomePage({
         {metaData?.openGraph?.image?.url && (
           <meta property="og:image" content={metaData.openGraph.image.url} />
         )}
+        {/*  Google tag (gtag.js) */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-3XYCPEHD2P"
