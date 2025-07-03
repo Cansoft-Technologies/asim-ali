@@ -278,6 +278,20 @@ export default function HomePage({
         {metaData?.openGraph?.image?.url && (
           <meta property="og:image" content={metaData.openGraph.image.url} />
         )}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-3XYCPEHD2P"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3XYCPEHD2P');
+    `,
+          }}
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
