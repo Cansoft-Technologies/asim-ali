@@ -6,7 +6,6 @@ const StickyCtaTab = () => {
   useEffect(() => {
     setShow(true);
   }, []);
-
   return (
     <>
       <style>{`
