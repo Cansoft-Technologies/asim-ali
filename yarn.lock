@@ -2754,7 +2754,7 @@
   dependencies:
     "@types/geojson" "*"
 
-"@types/minimatch@*":
+"@types/minimatch@*", "@types/minimatch@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-6.0.0.tgz#4d207b1cc941367bdcd195a3a781a7e4fc3b1e03"
   integrity sha512-zmPitbQ8+6zNutpwgcQuLcsEpn/Cj54Kbn7L5pX0Os5kdWplB7xPgEh/g+SWOB/qmows2gpuCaPyduq8ZZRnxA==
@@ -3177,7 +3177,7 @@ arraybuffer.prototype.slice@^1.0.4:
     "@tailwindcss/postcss" "^4.0.14"
     "@types/leaflet" "^1.9.17"
     "@types/react-dom" "^18.3.1"
-    asim-ali "file:C:/Users/MisHkat/AppData/Local/Yarn/Cache/v6/npm-asim-ali-0.1.0-8575f901-5323-4e98-8014-fbf098e0fef4-1751556011494/node_modules/asim-ali"
+    asim-ali "file:C:/Users/MisHkat/AppData/Local/Yarn/Cache/v6/npm-asim-ali-0.1.0-b376747c-616d-46f9-b960-ac167165680f-1751557298053/node_modules/asim-ali"
     axios "^1.4.0"
     bootstrap "^5.2.2"
     class-variance-authority "^0.7.1"
