@@ -458,19 +458,18 @@ export default function Page(props: MyProps) {
               __html: reasonDescription,
             }}
           ></div>
-          <ServiceSection
-            textLeft={reasonLeftText}
-            textRight={reasonRightText}
-            imageLeft={reasonLeftImage}
-            imageRight={reasonRightImage}
-          />
-          <div className="tb-btn">
-            <Link href={"/apply-now"}>
-              <Button className="HeadBtn">Start Mortgage Plan Now</Button>
-            </Link>
-          </div>
         </Container>
-
+        <ServiceSection
+          textLeft={reasonLeftText}
+          textRight={reasonRightText}
+          imageLeft={reasonLeftImage}
+          imageRight={reasonRightImage}
+        />
+        <div className="tb-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">Start Mortgage Plan Now</Button>
+          </Link>
+        </div>
         <ClientReviews reviews={reviewSection} />
         {/* <AccordionSection advisorData={mortgageInterestData} /> */}
         <Container className="mb-5 mt-5">
