@@ -7,32 +7,35 @@ import ServiceSectionNewBC from "components/ServiceSectionNewBC";
 import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
+import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import ClientReviews from "components/ClientReviews";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
-    query: gql`query{
-      pages(where: {id: 4223}) {
-      nodes {
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-          openGraph {
-            image {
-              url
+    query: gql`
+      query {
+        pages(where: { id: 4223 }) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+              jsonLd {
+                raw
+              }
             }
-          }
-          jsonLd {
-            raw
-          }
-        }
-        NewComBC {
-          serviceBannerTitle
+            NewComBC {
+              serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
               serviceBannerImage {
@@ -44,194 +47,201 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-          mortgageType
-          mortgageDescription
-          featuredTextLeft
-          featuredTextRight
-          featuredLeftText
-          featuredImageRight {
-            altText
-            sourceUrl
-          }
-          featuredImageLeft {
-            altText
-            sourceUrl
-          }
-          featuredLeftImage {
-            altText
-            sourceUrl
-          }
-          mortgageServiceSection {
-            advisorTitle
-            advisorDescriptionTop
-            advisorImage {
-              sourceUrl
-              altText
+              mortgageType
+              mortgageDescription
+              featuredTextLeft
+              featuredTextRight
+              featuredLeftText
+              featuredImageRight {
+                altText
+                sourceUrl
+              }
+              featuredImageLeft {
+                altText
+                sourceUrl
+              }
+              featuredLeftImage {
+                altText
+                sourceUrl
+              }
+              mortgageServiceSection {
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              tipsTitle
+              tipsDescription
+              benefitTitle
+              benefitDescription
+              tipsLeftText
+              tipsRightText
+              tipsTextLeft
+              tipsImageRight {
+                altText
+                sourceUrl
+              }
+              tipsImageLeft {
+                altText
+                sourceUrl
+              }
+              tipsRightImage {
+                altText
+                sourceUrl
+              }
+              homebuyerSection {
+                advisorTitle
+                advisorDescription
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                  image {
+                    sourceUrl
+                    altText
+                  }
+                }
+              }
+              advisorSection {
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              mortgageInterest {
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              mortgageBenifits {
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              reviewSection {
+                reviewTitle
+                reviewDescription
+                reviewCard {
+                  author
+                  reviewText
+                  clientImage {
+                    sourceUrl
+                    altText
+                  }
+                }
+              }
+              tabRenovation {
+                tabHeading
+                tabDescription
+                tabDetails {
+                  title
+                  description
+                }
+              }
+              homeContactSection {
+                title
+                description
+              }
             }
-            advisorCards{
-              title
-              description
-            }
           }
-          tipsTitle
-          tipsDescription
-          benefitTitle
-          benefitDescription
-          tipsLeftText
-          tipsRightText
-          tipsTextLeft
-          tipsImageRight {
-            altText
-            sourceUrl
-          }
-          tipsImageLeft {
-            altText
-            sourceUrl
-          }
-          tipsRightImage {
-            altText
-            sourceUrl
-          }
-          homebuyerSection {
-            advisorTitle
-            advisorDescription
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-              image{
+        }
+        settingsOptions {
+          AsimOptions {
+            headerSettings {
+              uploadLogo {
+                sourceUrl
+                altText
+              }
+              uploadLogoMobile {
                 sourceUrl
                 altText
               }
             }
-          }
-          advisorSection {
-            advisorTitle
-            advisorDescriptionTop
-            advisorImage {
-              sourceUrl
-              altText
+            generalSettings {
+              schemaProductRating
             }
-            advisorCards{
-              title
-              description
+            footerSettings {
+              socialUrl {
+                facebook
+                tiktok
+                linkedin
+                instagram
+              }
+              copyrightText
+              footerLeftWidget {
+                title
+                phoneNumber
+                emailAddress
+              }
+              footerLogoSection {
+                logoText
+                logoUpload {
+                  altText
+                  sourceUrl
+                }
+              }
+              footerRightWidget {
+                title
+                address
+              }
             }
-          }
-          mortgageInterest {
-            advisorTitle
-            advisorDescriptionTop
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-            }
-          }
-          mortgageBenifits {
-            advisorTitle
-            advisorDescriptionTop
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-            }
-          }
-          tabRenovation{
-            tabHeading
-            tabDescription
-            tabDetails{
-              title
-              description
-            }
-          }
-          homeContactSection {
-            title
-            description
           }
         }
-     
-     
-      }
-     
-    
-    
- 
-  }
-   settingsOptions {
-      AsimOptions {
-        headerSettings {
-          uploadLogo {
-            sourceUrl
-            altText
-          }
-          uploadLogoMobile {
-            sourceUrl
-            altText
-          }
-        }
-        generalSettings {
-            schemaProductRating
-        }
-        footerSettings {
-          socialUrl {
-            facebook
-            tiktok
-            linkedin
-            instagram
-          }
-          copyrightText
-          footerLeftWidget {
-            title
-            phoneNumber
-            emailAddress
-          }
-          footerLogoSection {
-            logoText
-            logoUpload {
-              altText
-              sourceUrl
-            }
-          }
-          footerRightWidget {
-            title
-            address
-          }
-        }
-      }
-    }
 
-    menus(where: {location: PRIMARY}) {
-      nodes {
-        name
-        slug
-        menuItems(first: 150){
+        menus(where: { location: PRIMARY }) {
           nodes {
-            url
-            target
-            parentId
-            label
-            cssClasses
-            description
-            id
-            childItems (first: 150) {
+            name
+            slug
+            menuItems(first: 150) {
               nodes {
-                uri
+                url
+                target
+                parentId
                 label
+                cssClasses
+                description
+                id
+                childItems(first: 150) {
+                  nodes {
+                    uri
+                    label
+                  }
+                }
               }
             }
           }
         }
       }
-    }
-}`,
+    `,
   });
   if(!data){
     return {
@@ -266,6 +276,7 @@ export async function getStaticProps() {
       tipsTitle: data?.pages?.nodes[0]?.NewComBC?.tipsTitle,
       tipsDescription: data?.pages?.nodes[0]?.NewComBC?.tipsDescription,
       benefitTitle: data?.pages?.nodes[0]?.NewComBC?.benefitTitle,
+      reviewSection: data?.pages?.nodes[0]?.NewComBC?.reviewSection,
       benefitDescription: data?.pages?.nodes[0]?.NewComBC?.benefitDescription,
       tipsLeftText: data?.pages?.nodes[0]?.NewComBC?.tipsLeftText,
       tipsRightText: data?.pages?.nodes[0]?.NewComBC?.tipsRightText,
@@ -306,6 +317,7 @@ type MyProps = {
   mortgageBenefitsData: any;
   homebuyerSectionData: any;
   serviceBannerData: any;
+  reviewSection: any;
   advisorData: any;
   mortgageInterestData: any;
 };
@@ -339,6 +351,7 @@ export default function NewCommercialMortgageBC(props: MyProps) {
     advisorData,
     mortgageBenefitsData,
     benefitTitle,
+    reviewSection,
     benefitDescription,
     mortgageInterestData,
   } = props;
@@ -348,12 +361,19 @@ export default function NewCommercialMortgageBC(props: MyProps) {
   return (
     <>
       <Head>
-        {metaData?.map((meta,index) => {
+        {metaData?.map((meta, index) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+              <link
+                rel="canonical"
+                href={
+                  meta?.seo?.canonicalUrl?.endsWith("/")
+                    ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                    : meta?.seo?.canonicalUrl
+                }
+              />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta
                 property="og:description"
@@ -387,6 +407,11 @@ export default function NewCommercialMortgageBC(props: MyProps) {
                   __html: serviceBannerData?.aboutText,
                 }}
               ></div>
+              <div className="tb-btn-left">
+                <Link href={"/apply-now"}>
+                  <Button className="HeadBtn">Secure Your Financing</Button>
+                </Link>
+              </div>
             </Col>
             <Col md={5}>
               <Image
@@ -394,13 +419,12 @@ export default function NewCommercialMortgageBC(props: MyProps) {
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="390"
                 height="400"
-                
-                      sizes="100vw"
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                      }}
-                      quality={100}
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+                quality={100}
               />
             </Col>
           </Row>
@@ -419,15 +443,23 @@ export default function NewCommercialMortgageBC(props: MyProps) {
         </Container>
         <MortgageAdvisor advisorData={mortgageBenefitsData} />
         {/* Types of Mortgage */}
-        <Row
-          className="mortgage-broker text-center"
-          style={{ marginTop: "80px" }}
+        <div className="tb-btn mb-4">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">Start Your Pre-Assessment Now</Button>
+          </Link>
+        </div>
+        <Container
+          className="mb-5 px-3 py-3"
+          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
         >
-          <Col>
-            <h2 className="headering-title">{mortgageType}</h2>
-            <p>{mortgageDescription}</p>
-          </Col>
-        </Row>
+          <h2 className="text-center">{mortgageType}</h2>
+          <div
+            className="text-center"
+            dangerouslySetInnerHTML={{
+              __html: mortgageDescription,
+            }}
+          ></div>
+        </Container>
         <ServiceSectionNewBC
           textLeft={featuredTextLeft}
           textRight={featuredTextRight}
@@ -436,7 +468,17 @@ export default function NewCommercialMortgageBC(props: MyProps) {
           leftText={featuredLeftText}
           leftImage={featuredLeftImage}
         />
-
+        <div className="tb-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">Secure The Best Rates Today</Button>
+          </Link>
+        </div>
+        <TabNewBC tabData={tabRenovationData} />
+        <div className="tb-btn">
+          <Link href={"/current-rates"}>
+            <Button className="HeadBtn">Check Our Current Rates </Button>
+          </Link>
+        </div>
         <Container
           className="mb-5 px-3 py-3 my-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -457,13 +499,16 @@ export default function NewCommercialMortgageBC(props: MyProps) {
           leftText={tipsTextLeft}
           leftImage={tipsRightImage}
         />
-
-        <TabNewBC tabData={tabRenovationData} />
-        <HomeBuyerNewBC advisorData={mortgageServiceData} />
-        <AccordionNewBC homebuyerData={homebuyerSectionData} />
-
+        <div className="tb-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">Partner With Our Expert Team</Button>
+          </Link>
+        </div>
+        {/* <HomeBuyerNewBC advisorData={mortgageServiceData} /> */}
+        {/* <AccordionNewBC homebuyerData={homebuyerSectionData} /> */}
+        <ClientReviews reviews={reviewSection} />
         <Container className="mb-5">
-          <p className="text-center service-title">{contactData?.title}</p>
+          <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
             dangerouslySetInnerHTML={{
               __html: contactData?.description,
@@ -471,6 +516,13 @@ export default function NewCommercialMortgageBC(props: MyProps) {
             className="text-lg text-start"
           ></div>
         </Container>
+        <div className="tb-btn mb-4">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">
+              Fund Your Next Business Project Now
+            </Button>
+          </Link>
+        </div>
       </main>
       <Footer settings={settings} menuData={mainMenus} />
     </>

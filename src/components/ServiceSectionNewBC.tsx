@@ -11,51 +11,58 @@ type MyProps = {
   leftImage: any;
 };
 export default function ServiceSectionNewBC(props: MyProps) {
-  const { textLeft, textRight, imageLeft, imageRight, leftText, leftImage } = props;
+  const { textLeft, textRight, imageLeft, imageRight, leftText, leftImage } =
+    props;
   return (
     <section className="my-5">
-      <div className="service-row">
-        <Container>
-          <Row>
-            <Col className="service-texts" lg={6}>
-              <div
-                className="service-content"
-                dangerouslySetInnerHTML={{
-                  __html: textLeft,
-                }}
-              ></div>
-            </Col>
-            <Col className="service-texts" lg={6}>
-              <div className="service-image">
-                <Image
-                  src={imageRight?.sourceUrl}
-                  alt={imageRight?.altText}
-                  width="390"
-                  height="400"
-                  sizes="100vw"
-                  
-                      style={{
-                        width: "100%",
-                        objectFit: "cover",
-                      }}
+      {/* First service row: textLeft & imageRight */}
+      {(textLeft || imageRight) && (
+        <div className="service-row">
+          <Container>
+            <Row>
+              {textLeft && (
+                <Col className="service-texts" lg={6}>
+                  <div
+                    className="service-content"
+                    dangerouslySetInnerHTML={{
+                      __html: textLeft,
+                    }}
+                  ></div>
+                </Col>
+              )}
+              {imageRight && imageRight.sourceUrl && (
+                <Col className="service-texts" lg={6}>
+                  <div className="service-image">
+                    <Image
+                      src={imageRight.sourceUrl}
+                      alt={imageRight.altText}
+                      width="390"
+                      height="400"
+                      sizes="100vw"
+                      style={{ width: "100%", objectFit: "cover" }}
                       quality={100}
-                />
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-      <div className="service-row my-5">
-        <Container>
-          <Row>
-            <Col className="service-texts" lg={6}>
-              <div className="service-image">
-                <Image
-                  src={imageLeft?.sourceUrl}
-                  alt={imageLeft?.altText}
-                  width="390"
-                  height="400"
-                  
+                    />
+                  </div>
+                </Col>
+              )}
+            </Row>
+          </Container>
+        </div>
+      )}
+
+      {/* Second service row: imageLeft & textRight */}
+      {(imageLeft || textRight) && (
+        <div className="service-row my-5">
+          <Container>
+            <Row>
+              {imageLeft && imageLeft.sourceUrl && (
+                <Col className="service-texts" lg={6}>
+                  <div className="service-image">
+                    <Image
+                      src={imageLeft.sourceUrl}
+                      alt={imageLeft.altText}
+                      width="390"
+                      height="400"
                       sizes="100vw"
                       style={{
                         width: "100%",
@@ -63,51 +70,59 @@ export default function ServiceSectionNewBC(props: MyProps) {
                         objectFit: "cover",
                       }}
                       quality={100}
-                />
-              </div>
-            </Col>
-            <Col className="service-texts my-5" lg={6}>
-              <div
-                className="service-content"
-                dangerouslySetInnerHTML={{
-                  __html: textRight,
-                }}
-              ></div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-      <div className="service-row my-5">
-        <Container>
-          <Row>
-            <Col className="service-texts my-5" lg={6}>
-              <div
-                className="service-content"
-                dangerouslySetInnerHTML={{
-                  __html: leftText,
-                }}
-              ></div>
-            </Col>
-            <Col className="service-texts" lg={6}>
-              <div className="service-image">
-                <Image
-                  src={leftImage?.sourceUrl}
-                  alt={leftImage?.altText}
-                  width="390"
-                  height="400"
-                  
+                    />
+                  </div>
+                </Col>
+              )}
+              {textRight && (
+                <Col className="service-texts my-5" lg={6}>
+                  <div
+                    className="service-content"
+                    dangerouslySetInnerHTML={{
+                      __html: textRight,
+                    }}
+                  ></div>
+                </Col>
+              )}
+            </Row>
+          </Container>
+        </div>
+      )}
+
+      {/* Third service row: leftText & leftImage */}
+      {(leftText || leftImage) && (
+        <div className="service-row my-5">
+          <Container>
+            <Row>
+              {leftText && (
+                <Col className="service-texts my-5" lg={6}>
+                  <div
+                    className="service-content"
+                    dangerouslySetInnerHTML={{
+                      __html: leftText,
+                    }}
+                  ></div>
+                </Col>
+              )}
+              {leftImage && leftImage.sourceUrl && (
+                <Col className="service-texts" lg={6}>
+                  <div className="service-image">
+                    <Image
+                      src={leftImage.sourceUrl}
+                      alt={leftImage.altText}
+                      width="390"
+                      height="400"
                       sizes="100vw"
-                      style={{
-                        width: "100%",
-                        objectFit: "cover",
-                      }}
+                      style={{ width: "100%", objectFit: "cover" }}
                       quality={100}
-                />
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+                    />
+                  </div>
+                </Col>
+              )}
+            </Row>
+          </Container>
+        </div>
+      )}
     </section>
   );
 }

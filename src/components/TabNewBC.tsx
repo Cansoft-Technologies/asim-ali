@@ -50,7 +50,7 @@ export default function TabNewBC(props: MyProps) {
                 <Tab
                   key={item}
                   eventKey={item.toString()}
-                  title={<h3 className="location-tab-title">{tab.title}</h3>}
+                  title={<p className="location-tab-title">{tab.title}</p>}
                 >
                   <div
                     dangerouslySetInnerHTML={{

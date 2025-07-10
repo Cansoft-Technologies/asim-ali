@@ -9,7 +9,7 @@ export default function MortgageAdvisor(props: MyProps) {
   const { advisorData } = props;
   return (
     <>
-    <section className="split_section mt-5 d-none d-md-block">
+    <section className="split_section mt-3 d-none d-md-block">
       <Container>
       <div
               dangerouslySetInnerHTML={{
