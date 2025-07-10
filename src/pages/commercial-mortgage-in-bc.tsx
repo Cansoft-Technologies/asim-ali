@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
 import ClientReviews from "components/ClientReviews";
+import OurLenders from "components/OurLenders";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -357,6 +358,12 @@ export default function NewCommercialMortgageBC(props: MyProps) {
   } = props;
 
   //   console.log(settings);
+  const teamTitle =
+    '<h2 style="font-size: 40px;">Lenders<span style="color: #f0b243;"> We Work with </span></h2>\n' +
+    "";
+  const teamDescription =
+    `<p><span style="font-weight: 400;">We have collaborated with more than 300 lenders so that you can have more options at hand. Let’s take a look at some of the lenders we've worked with:
+</span></p>\n` + "";
 
   return (
     <>
@@ -473,6 +480,7 @@ export default function NewCommercialMortgageBC(props: MyProps) {
             <Button className="HeadBtn">Secure The Best Rates Today</Button>
           </Link>
         </div>
+        <OurLenders title={teamTitle} description={teamDescription} />
         <TabNewBC tabData={tabRenovationData} />
         <div className="tb-btn">
           <Link href={"/current-rates"}>
@@ -507,7 +515,7 @@ export default function NewCommercialMortgageBC(props: MyProps) {
         {/* <HomeBuyerNewBC advisorData={mortgageServiceData} /> */}
         {/* <AccordionNewBC homebuyerData={homebuyerSectionData} /> */}
         <ClientReviews reviews={reviewSection} />
-        <Container className="mb-5">
+        <Container className="mb-5 mt-5 px-3 py-3">
           <h2 className="text-center service-title">{contactData?.title}</h2>
           <div
             dangerouslySetInnerHTML={{
@@ -516,7 +524,7 @@ export default function NewCommercialMortgageBC(props: MyProps) {
             className="text-lg text-start"
           ></div>
         </Container>
-        <div className="tb-btn mb-4">
+        <div className="tb-btn mb-6">
           <Link href={"/apply-now"}>
             <Button className="HeadBtn">
               Fund Your Next Business Project Now

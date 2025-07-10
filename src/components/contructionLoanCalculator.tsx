@@ -187,7 +187,7 @@ export default function ConstructionLoanCalculator() {
 
   return (
     <div className="container py-8 max-w-4xl">
-      <h2 className="text-3xl font-bold text-center mb-6">Construction Loan Calculator – BC</h2>
+      <p className="text-3xl font-bold text-center mb-6">Construction Loan Calculator – BC</p>
       <p className="text-center text-muted-foreground mb-8">
         Get a quick estimate of your new-build financing needs. Compare scenarios and see if you qualify for special rates.
       </p>
