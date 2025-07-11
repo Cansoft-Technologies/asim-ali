@@ -41,7 +41,7 @@ const StickyCtaTab = () => {
         }}
       >
         <a
-          href="tel:+16045913950"
+          href="tel:+16045913590"
           style={{ color: "#fff", margin: "8px 0", fontSize: "20px" }}
           title="Call Us"
         >

@@ -56,160 +56,190 @@ const ApplyNowEmail = ({
   <Html>
     <Head />
     <Preview>
-    New Form Submission: {fname} {lname}
+      New Form Submission: {fname} {lname}
     </Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={paragraphContent}>
           <Hr style={hr} />
           <Text style={heading}>
-          New Form Submission: {fname} {lname}
+            New Form Submission: {fname} {lname}
           </Text>
           <Text style={paragraph}>Dear Asim Ali,</Text>
           <Text style={paragraph}>
-          A new form submission has been received with the following details:
+            A new form submission has been received with the following details:
           </Text>
         </Section>
         <Section style={paragraphList}>
-        <Text style={{ ...text, marginBottom: "10px" }}>
-        <span style={{...span}}>Name: </span>{fname} {lname}
-        </Text>
-        <Text style={{ ...text, marginBottom: "10px" }}>
-        <span style={{...span}}>Email: </span>{mail}
-        </Text>
-        
-        {phone?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}><span style={{...span}}>Phone:</span> {phone}</Text>
-        )}
-        {contact?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>How Should We Contact You?:</span> {contact}
+            <span style={{ ...span }}>Name: </span>
+            {fname} {lname}
           </Text>
-        )}
-        {about?.length > 0 && (
           <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Please Contact Me About:</span> {about}
+            <span style={{ ...span }}>Email: </span>
+            {mail}
           </Text>
-        )}
-        {referred?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Referred by:</span> {referred}
-          </Text>
-        )}
-        {homeowner?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Homeowner:</span> {homeowner}
-          </Text>
-        )}
-        {city?.length > 0 && (
-          <span style={{ ...text, marginBottom: "10px" }}><Text style={{...span}}>City:</Text> {city}</span>
-        )}
-        {province?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Province:</span> {province}
-          </Text>
-        )}
-        {mortgage?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Do You Have A Mortgage:</span> {mortgage} $
-          </Text>
-        )}
-        {property?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Property Value:</span> {property} $
-          </Text>
-        )}
-        {balance?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Current Mortgage Balance:</span> {balance} $
-          </Text>
-        )}
-        {amount?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Requested Loan Ammount:</span> {amount} $
-          </Text>
-        )}
-        {preferred?.length > 0 && (
-          <Text style={{ ...text, marginBottom: "10px" }}>
-            <span style={{...span}}>Preferred Contact Method:</span> {preferred}
-          </Text>
-        )}
+
+          {phone?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Phone:</span> {phone}
+            </Text>
+          )}
+          {contact?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>How Should We Contact You?:</span>{" "}
+              {contact}
+            </Text>
+          )}
+          {about?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Please Contact Me About:</span> {about}
+            </Text>
+          )}
+          {referred?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Referred by:</span> {referred}
+            </Text>
+          )}
+          {homeowner?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Homeowner:</span> {homeowner}
+            </Text>
+          )}
+          {city?.length > 0 && (
+            <span style={{ ...text, marginBottom: "10px" }}>
+              <Text style={{ ...span }}>City:</Text> {city}
+            </span>
+          )}
+          {province?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Province:</span> {province}
+            </Text>
+          )}
+          {mortgage?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Do You Have A Mortgage:</span>{" "}
+              {mortgage} $
+            </Text>
+          )}
+          {property?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Property Value:</span> {property} $
+            </Text>
+          )}
+          {balance?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Current Mortgage Balance:</span>{" "}
+              {balance} $
+            </Text>
+          )}
+          {amount?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Requested Loan Ammount:</span> {amount}{" "}
+              $
+            </Text>
+          )}
+          {preferred?.length > 0 && (
+            <Text style={{ ...text, marginBottom: "10px" }}>
+              <span style={{ ...span }}>Preferred Contact Method:</span>{" "}
+              {preferred}
+            </Text>
+          )}
         </Section>
         <Section style={paragraphContent}>
-        <Text style={{ ...text, marginBottom: "14px" }}>
-        <Text style={{...span}}>Message:</Text> {message}
-        </Text>
-        <Text style={{ ...text, marginBottom: "14px" }}>
-          Please review the provided information and take appropriate action as
-          necessary.
-        </Text>
+          <Text style={{ ...text, marginBottom: "14px" }}>
+            <Text style={{ ...span }}>Message:</Text> {message}
+          </Text>
+          <Text style={{ ...text, marginBottom: "14px" }}>
+            Please review the provided information and take appropriate action
+            as necessary.
+          </Text>
           <Hr style={hr} />
         </Section>
 
         <Section style={paragraphContent}>
           <Text style={paragraph}>Best regards,</Text>
           <Text style={{ ...paragraph, fontSize: "20px", ...headerBlue }}>
-          {fname} {lname}
+            {fname} {lname}
           </Text>
         </Section>
         <Container style={footerContainer}>
           <Row style={{ ...footSecond, marginTop: 30 }}>
-          <Column>
+            <Column>
               <Img
                 width="150"
                 height="32"
                 src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/logo.png"
               />
               <Text
-                style={{ ...paragraph, color: "#12143A",fontSize: "16px", }}
+                style={{ ...paragraph, color: "#12143A", fontSize: "16px" }}
               >
-                {usingFor === 'apply-now' ? 'Client Care Data Analyst' : 'Your Ideal Mortgage Partner'}
+                {usingFor === "apply-now"
+                  ? "Client Care Data Analyst"
+                  : "Your Ideal Mortgage Partner"}
               </Text>
               <Row>
+                <Link href="tel:+1 (604) 591-3590" style={{ ...footFirst }}>
+                  <Img
+                    style={{ marginRight: "10px" }}
+                    width="18"
+                    height="18"
+                    src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/iphone-se-50.png"
+                  />
+                  +1 (604) 591-3590
+                </Link>
+              </Row>
+              <Row style={{ marginTop: "10px" }}>
                 <Link
-                href="tel:+1 (604) 591-3950"
-                style={{ ...footFirst}}
-              >
-                <Img
-                style={{marginRight: "10px"}}
-                  width="18"
-                  height="18"
-                  src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/iphone-se-50.png"
-                />
-                +1 (604) 591-3950
-              </Link>
+                  href={`mailto:${
+                    usingFor === "apply-now"
+                      ? "clientcare@asimali.ca"
+                      : "clientcare@asimali.ca"
+                  }`}
+                  style={footFirst}
+                >
+                  <Img
+                    style={{ marginRight: "10px" }}
+                    width="18"
+                    height="18"
+                    src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
+                  />
+                  {usingFor === "apply-now"
+                    ? "clientcare@asimali.ca"
+                    : "clientcare@asimali.ca"}
+                </Link>
               </Row>
-              <Row style={{marginTop: "10px" }}>
-                  <Link href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'clientcare@asimali.ca'}`} style={footFirst}>
-                    <Img
-                    style={{marginRight: "10px"}}
-                      width="18"
-                      height="18"
-                      src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
-                    />
-                   {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'clientcare@asimali.ca'}
-                  </Link>
-              </Row>
-              <Row style={{marginTop: "10px" }}>
-              <Link href="https://asimali.ca" style={footFirst}>
-                    <Img
-                    style={{marginRight: "10px"}}
-                      width="18"
-                      height="18"
-                      src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/web-24.png"
-                    />
-                    www.asimali.ca
-                  </Link>
+              <Row style={{ marginTop: "10px" }}>
+                <Link href="https://asimali.ca" style={footFirst}>
+                  <Img
+                    style={{ marginRight: "10px" }}
+                    width="18"
+                    height="18"
+                    src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/web-24.png"
+                  />
+                  www.asimali.ca
+                </Link>
               </Row>
             </Column>
             <Column style={{ marginTop: "20px" }}>
               <Img
-                style={{ display: "block", margin: "0 50px", alignItems: "center" }}
+                style={{
+                  display: "block",
+                  margin: "0 50px",
+                  alignItems: "center",
+                }}
                 width="50"
                 height="50"
                 src="http://asimaliprod.wpengine.com/wp-content/uploads/2022/11/favicon.png"
               />
-              <Text style={{ ...paragraph,textAlign: "center", color: "#12143A",fontSize: "14px", }}>
+              <Text
+                style={{
+                  ...paragraph,
+                  textAlign: "center",
+                  color: "#12143A",
+                  fontSize: "14px",
+                }}
+              >
                 Asim Ali Mortgage Team
               </Text>
             </Column>
@@ -258,7 +288,6 @@ const span = {
   fontWeight: "bold",
 };
 
-
 const footFirst = {
   display: "flex",
   alignItems: "center",
@@ -290,7 +319,6 @@ const footerContainer = {
   overflow: "hidden",
 };
 
-
 const heading = {
   fontSize: "14px",
   lineHeight: "26px",
@@ -311,7 +339,6 @@ const paragraph = {
   lineHeight: "22px",
   color: "#3c4043",
 };
-
 
 const hr = {
   borderColor: "#e8eaed",

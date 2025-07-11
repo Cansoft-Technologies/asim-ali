@@ -76,55 +76,74 @@ const AutoReply = ({ fname, lname, usingFor }: MyProps) => (
                 src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/logo.png"
               />
               <Text
-                style={{ ...paragraph, color: "#12143A",fontSize: "16px", }}
+                style={{ ...paragraph, color: "#12143A", fontSize: "16px" }}
               >
-                {usingFor === 'apply-now' ? 'Client Care Data Analyst' : 'Your Ideal Mortgage Partner'}
+                {usingFor === "apply-now"
+                  ? "Client Care Data Analyst"
+                  : "Your Ideal Mortgage Partner"}
               </Text>
               <Row>
+                <Link href="tel:+1 (604) 591-3590" style={{ ...footFirst }}>
+                  <Img
+                    style={{ marginRight: "10px" }}
+                    width="18"
+                    height="18"
+                    src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/iphone-se-50.png"
+                  />
+                  +1 (604) 591-3590
+                </Link>
+              </Row>
+              <Row style={{ marginTop: "10px" }}>
                 <Link
-                href="tel:+1 (604) 591-3950"
-                style={{ ...footFirst}}
-              >
-                <Img
-                style={{marginRight: "10px"}}
-                  width="18"
-                  height="18"
-                  src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/iphone-se-50.png"
-                />
-                +1 (604) 591-3950
-              </Link>
+                  href={`mailto:${
+                    usingFor === "apply-now"
+                      ? "clientcare@asimali.ca"
+                      : "clientcare@asimali.ca"
+                  }`}
+                  style={footFirst}
+                >
+                  <Img
+                    style={{ marginRight: "10px" }}
+                    width="18"
+                    height="18"
+                    src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
+                  />
+                  {usingFor === "apply-now"
+                    ? "clientcare@asimali.ca"
+                    : "clientcare@asimali.ca"}
+                </Link>
               </Row>
-              <Row style={{marginTop: "10px" }}>
-                  <Link href={`mailto:${usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'clientcare@asimali.ca'}`} style={footFirst}>
-                    <Img
-                    style={{marginRight: "10px"}}
-                      width="18"
-                      height="18"
-                      src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/email-48.png"
-                    />
-                   {usingFor === 'apply-now' ? 'clientcare@asimali.ca' : 'clientcare@asimali.ca'}
-                  </Link>
-              </Row>
-              <Row style={{marginTop: "10px" }}>
-              <Link href="https://asimali.ca" style={footFirst}>
-                    <Img
-                    style={{marginRight: "10px"}}
-                      width="18"
-                      height="18"
-                      src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/web-24.png"
-                    />
-                    www.asimali.ca
-                  </Link>
+              <Row style={{ marginTop: "10px" }}>
+                <Link href="https://asimali.ca" style={footFirst}>
+                  <Img
+                    style={{ marginRight: "10px" }}
+                    width="18"
+                    height="18"
+                    src="http://asimaliprod.wpengine.com/wp-content/uploads/2023/12/web-24.png"
+                  />
+                  www.asimali.ca
+                </Link>
               </Row>
             </Column>
             <Column style={{ marginTop: "20px" }}>
               <Img
-                style={{ display: "block", margin: "0 50px", alignItems: "center" }}
+                style={{
+                  display: "block",
+                  margin: "0 50px",
+                  alignItems: "center",
+                }}
                 width="50"
                 height="50"
                 src="http://asimaliprod.wpengine.com/wp-content/uploads/2022/11/favicon.png"
               />
-              <Text style={{ ...paragraph,textAlign: "center", color: "#12143A",fontSize: "14px", }}>
+              <Text
+                style={{
+                  ...paragraph,
+                  textAlign: "center",
+                  color: "#12143A",
+                  fontSize: "14px",
+                }}
+              >
                 Asim Ali Mortgage Team
               </Text>
             </Column>

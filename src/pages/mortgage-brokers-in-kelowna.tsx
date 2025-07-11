@@ -22,7 +22,7 @@ export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
       query {
-        pages(where: { id: 3950 }) {
+        pages(where: { id: 3590 }) {
           nodes {
             seo {
               title
@@ -126,38 +126,38 @@ export async function getStaticProps() {
                   description
                 }
               }
-                faqSection {
-            hideSection
-            faqTitle
-            faqSubitle
-            faqImage {
-              altText
-              sourceUrl
-            }
-            faqAccordion {
-              question
-              answer
-            }
-          }
-          planSection {
-            planTitle
-            linkUrls {
-              linkText
-              url
-            }
-          }
-          reviewSection {
-            reviewTitle
-            reviewDescription
-            reviewCard{
-              author
-              reviewText
-              clientImage{
-                sourceUrl
-                altText
+              faqSection {
+                hideSection
+                faqTitle
+                faqSubitle
+                faqImage {
+                  altText
+                  sourceUrl
+                }
+                faqAccordion {
+                  question
+                  answer
+                }
               }
-            }
-          }
+              planSection {
+                planTitle
+                linkUrls {
+                  linkText
+                  url
+                }
+              }
+              reviewSection {
+                reviewTitle
+                reviewDescription
+                reviewCard {
+                  author
+                  reviewText
+                  clientImage {
+                    sourceUrl
+                    altText
+                  }
+                }
+              }
               homeContactSection {
                 title
                 description
@@ -217,7 +217,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems (first: 150) {
+                childItems(first: 150) {
                   nodes {
                     uri
                     label
@@ -230,13 +230,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -246,21 +246,15 @@ export async function getStaticProps() {
       serviceLeftText: data?.pages?.nodes[0]?.NewKelowna?.serviceLeftText,
       serviceRightText: data?.pages?.nodes[0]?.NewKelowna?.serviceRightText,
       serviceImageLeft: data?.pages?.nodes[0]?.NewKelowna?.serviceImageLeft,
-      serviceImageRight:
-        data?.pages?.nodes[0]?.NewKelowna?.serviceImageRight,
+      serviceImageRight: data?.pages?.nodes[0]?.NewKelowna?.serviceImageRight,
       advisorData: data?.pages?.nodes[0]?.NewKelowna?.advisorSection,
-      mortgageInterestData:
-        data?.pages?.nodes[0]?.NewKelowna?.mortgageInterest,
+      mortgageInterestData: data?.pages?.nodes[0]?.NewKelowna?.mortgageInterest,
       serviceBannerData: data?.pages?.nodes[0]?.NewKelowna,
-      mortgageBenefitsData:
-        data?.pages?.nodes[0]?.NewKelowna?.mortgageBenifits,
+      mortgageBenefitsData: data?.pages?.nodes[0]?.NewKelowna?.mortgageBenifits,
       featuredTextLeft: data?.pages?.nodes[0]?.NewKelowna?.featuredTextLeft,
-      featuredImageLeft:
-        data?.pages?.nodes[0]?.NewKelowna?.featuredImageLeft,
-      featuredImageRight:
-        data?.pages?.nodes[0]?.NewKelowna?.featuredImageRight,
-      featuredTextRight:
-        data?.pages?.nodes[0]?.NewKelowna?.featuredTextRight,
+      featuredImageLeft: data?.pages?.nodes[0]?.NewKelowna?.featuredImageLeft,
+      featuredImageRight: data?.pages?.nodes[0]?.NewKelowna?.featuredImageRight,
+      featuredTextRight: data?.pages?.nodes[0]?.NewKelowna?.featuredTextRight,
       contactData: data?.pages?.nodes[0]?.NewKelowna?.homeContactSection,
       tabRenovationData: data?.pages?.nodes[0]?.NewKelowna?.tabRenovation,
       tipsTitle: data?.pages?.nodes[0]?.NewKelowna?.tipsTitle,
@@ -270,8 +264,7 @@ export async function getStaticProps() {
       tipsImageRight: data?.pages?.nodes[0]?.NewKelowna?.tipsImageRight,
       tipsImageLeft: data?.pages?.nodes[0]?.NewKelowna?.tipsImageLeft,
       faqData: data?.pages?.nodes[0]?.NewKelowna?.faqSection,
-      planSection:
-        data?.pages?.nodes[0]?.NewKelowna?.planSection,
+      planSection: data?.pages?.nodes[0]?.NewKelowna?.planSection,
       reviewSection: data?.pages?.nodes[0]?.NewKelowna?.reviewSection,
     },
     revalidate: 60,
@@ -352,12 +345,19 @@ export default function NewKelowna(props: MyProps) {
   return (
     <>
       <Head>
-        {metaData?.map((meta,index) => {
+        {metaData?.map((meta, index) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+              <link
+                rel="canonical"
+                href={
+                  meta?.seo?.canonicalUrl?.endsWith("/")
+                    ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                    : meta?.seo?.canonicalUrl
+                }
+              />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta
                 property="og:description"
@@ -398,7 +398,6 @@ export default function NewKelowna(props: MyProps) {
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="390"
                 height="400"
-                
                 style={{ width: "100%", objectFit: "cover" }}
               />
             </Col>
@@ -432,8 +431,8 @@ export default function NewKelowna(props: MyProps) {
         {/* <MortgageAdvisor advisorData={mortgageBenefitsData} /> */}
         {/* <AccordionSection advisorData={mortgageInterestData} /> */}
         <FeaturedTab tabData={tabRenovationData} />
-       <OurLenders title={teamTitle} description={teamDescription} />
-       <ClientReviews reviews={reviewSection} />
+        <OurLenders title={teamTitle} description={teamDescription} />
+        <ClientReviews reviews={reviewSection} />
         <FAQ faqsections={faqData} />
         <CategoryTabs planData={planSection} />
         <Container className="mt-5">
