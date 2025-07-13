@@ -5,29 +5,32 @@ export default function ApprovalProcessSection({
 }: {
   approvalSection?: any;
 }) {
-  const defaultContent =
-  [
-  {
-    "type": "Page_Homelandingpage_ApprovalSection_processes",
-    "title": "Organizing Financial Documents",
-    "description": "<p>Our mortgage agent will help you gather all the financial documents. They include tax returns, pay stubs from the last two years, and bank statements.</p>\n"
-  },
-  {
-    "type": "Page_Homelandingpage_ApprovalSection_processes",
-    "title": "Addressing Credit Concerns",
-    "description": "<p>If you have any concerns related to your credit history, we can address them together. We review your credit report, identify any issues, and provide you with a solution.</p>\n"
-  },
-  {
-    "type": "Page_Homelandingpage_ApprovalSection_processes",
-    "title": "Anticipating Potential Hurdles",
-    "description": "<p>Any kind of challenge could come at any time during the mortgage process. You can rely on our expertise to navigate any complexities with confidence and ease.</p>\n"
-  },
-  {
-    "type": "Page_Homelandingpage_ApprovalSection_processes",
-    "title": "Mortgage Application",
-    "description": "<p>Our online mortgage broker helps you with the application. We submit all the necessary information. We&#8217;ll also be there to answer any questions along the way.</p>\n"
-  }
-];
+  const defaultContent = [
+    {
+      type: "Page_Homelandingpage_ApprovalSection_processes",
+      title: "Organizing Financial Documents",
+      description:
+        "<p>Our mortgage agent will help you gather all the financial documents. They include tax returns, pay stubs from the last two years, and bank statements.</p>\n",
+    },
+    {
+      type: "Page_Homelandingpage_ApprovalSection_processes",
+      title: "Addressing Credit Concerns",
+      description:
+        "<p>If you have any concerns related to your credit history, we can address them together. We review your credit report, identify any issues, and provide you with a solution.</p>\n",
+    },
+    {
+      type: "Page_Homelandingpage_ApprovalSection_processes",
+      title: "Anticipating Potential Hurdles",
+      description:
+        "<p>Any kind of challenge could come at any time during the mortgage process. You can rely on our expertise to navigate any complexities with confidence and ease.</p>\n",
+    },
+    {
+      type: "Page_Homelandingpage_ApprovalSection_processes",
+      title: "Mortgage Application",
+      description:
+        "<p>Our online mortgage broker helps you with the application. We submit all the necessary information. We&#8217;ll also be there to answer any questions along the way.</p>\n",
+    },
+  ];
   return (
     <section className="relative text-white py-16 px-4 h-full w-full md:px-8 overflow-hidden min-h-[850px] flex flex-col justify-center items-center">
       {/* Background image with overlay */}
@@ -43,16 +46,13 @@ export default function ApprovalProcessSection({
       <div className="absolute inset-0 mix-blend-overlay" aria-hidden="true" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <div className="flex flex-col gap-6 mb-16">
           <div>
-            <h2 className="text-xl md:text-2xl xl:text-4xl space-y-5 font-bold font-oswald">
-              Our Mortgage Approval
-              <br />
-              Process
+            <h2 className="text-3xl md:text-4xl xl:text-5xl space-y-5 font-bold font-oswald">
+              Our Mortgage Approval Process
             </h2>
           </div>
-
-          <div>
+          <div className="max-w-2xl">
             <p
               className="text-white/80 text-lg"
               dangerouslySetInnerHTML={{
@@ -77,7 +77,10 @@ export default function ApprovalProcessSection({
               <h3 className="text-2xl font-bold mb-4 font-oswald">
                 {step.title}
               </h3>
-              <p className="text-white/80" dangerouslySetInnerHTML={{ __html: step.description }}></p>
+              <p
+                className="text-white/80"
+                dangerouslySetInnerHTML={{ __html: step.description }}
+              ></p>
             </div>
           ))}
         </div>

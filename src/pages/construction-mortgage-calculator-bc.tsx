@@ -208,7 +208,7 @@ const ConstructionLoanCalc = (props: MyProps) => {
                   />
                 )}
 
-                <Container className="my-5">
+                <Container className="my-5" id="calculator-content">
                   <ConstructionLoanCalculator />
                   <div className="tb-btn">
                     <Link href={"/apply-now"}>
@@ -227,7 +227,7 @@ const ConstructionLoanCalc = (props: MyProps) => {
                         }}
                       ></div>
                       <div className="tb-btn-left">
-                        <Link href={"/apply-now"}>
+                        <Link href={"#calculator-content"}>
                           <Button className="HeadBtn">
                             Calculate Your Building Costs
                           </Button>

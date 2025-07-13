@@ -185,7 +185,7 @@ export default function Header(props: { menuData: any; settings: any }) {
       {/* Top info bar */}
       <div className="w-full bg-[#1a1a3a] text-white py-2 md:px-4 px-0">
         <div className="container mx-auto flex flex-row justify-between items-center">
-          <div className="flex items-center text-xs md:mb-0">
+          <div className="flex items-center text-sm md:mb-0">
             <Mail className="h-4 w-4 mr-2 text-white" />
             <a
               style={{ textDecoration: "none" }}
@@ -200,7 +200,7 @@ export default function Header(props: { menuData: any; settings: any }) {
             </span>
           </div>
 
-          <div className="flex space-x-2 md:space-x-4 md:mb-0  text-xs">
+          <div className="flex space-x-2 md:space-x-4 md:mb-0  text-sm">
             <a
               href="https://www.facebook.com/profile.php?id=100063649628029"
               aria-label="Facebook"
@@ -242,7 +242,7 @@ export default function Header(props: { menuData: any; settings: any }) {
             </a>
           </div>
 
-          <div className="flex items-center text-xs">
+          <div className="flex items-center text-sm">
             <Phone className="h-4 w-4 mr-2 text-white" />
             <a
               style={{ textDecoration: "none" }}
@@ -374,7 +374,7 @@ export default function Header(props: { menuData: any; settings: any }) {
                             style={{ textDecoration: "none" }}
                             className=""
                           >
-                            <p className="text-xl font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">
+                            <p className="!text-xl font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">
                               {child.label}
                             </p>
                           </Link>

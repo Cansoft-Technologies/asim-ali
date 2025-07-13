@@ -234,7 +234,7 @@ export default function Footer({
         </div>
 
         <div className="pt-6">
-          <p className="text-xs text-white/60 text-center">
+          <p className="text-sm text-white/60 text-center">
             © Copyright {new Date().getFullYear()} Asim Ali | SEO By Cansoft
           </p>
         </div>

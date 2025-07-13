@@ -20,18 +20,8 @@ export default function ServiceSectionNewBC(props: MyProps) {
         <div className="service-row">
           <Container>
             <Row>
-              {textLeft && (
-                <Col className="service-texts" lg={6}>
-                  <div
-                    className="service-content"
-                    dangerouslySetInnerHTML={{
-                      __html: textLeft,
-                    }}
-                  ></div>
-                </Col>
-              )}
               {imageRight && imageRight.sourceUrl && (
-                <Col className="service-texts" lg={6}>
+                <Col className="service-texts order-1 order-lg-2" lg={6}>
                   <div className="service-image">
                     <Image
                       src={imageRight.sourceUrl}
@@ -45,6 +35,20 @@ export default function ServiceSectionNewBC(props: MyProps) {
                   </div>
                 </Col>
               )}
+              {textLeft && (
+                <Col
+                  className="service-texts order-2 order-lg-1 text-start"
+                  lg={6}
+                >
+                  <div
+                    className="service-content"
+                    style={{ textAlign: "left" }}
+                    dangerouslySetInnerHTML={{
+                      __html: textLeft,
+                    }}
+                  ></div>
+                </Col>
+              )}
             </Row>
           </Container>
         </div>
@@ -56,7 +60,7 @@ export default function ServiceSectionNewBC(props: MyProps) {
           <Container>
             <Row>
               {imageLeft && imageLeft.sourceUrl && (
-                <Col className="service-texts" lg={6}>
+                <Col className="service-texts order-1 order-lg-1" lg={6}>
                   <div className="service-image">
                     <Image
                       src={imageLeft.sourceUrl}
@@ -75,9 +79,13 @@ export default function ServiceSectionNewBC(props: MyProps) {
                 </Col>
               )}
               {textRight && (
-                <Col className="service-texts my-5" lg={6}>
+                <Col
+                  className="service-texts my-5 order-2 order-lg-2 text-start"
+                  lg={6}
+                >
                   <div
                     className="service-content"
+                    style={{ textAlign: "left" }}
                     dangerouslySetInnerHTML={{
                       __html: textRight,
                     }}
@@ -95,9 +103,13 @@ export default function ServiceSectionNewBC(props: MyProps) {
           <Container>
             <Row>
               {leftText && (
-                <Col className="service-texts my-5" lg={6}>
+                <Col
+                  className="service-texts my-5 order-1 order-lg-1 text-start"
+                  lg={6}
+                >
                   <div
                     className="service-content"
+                    style={{ textAlign: "left" }}
                     dangerouslySetInnerHTML={{
                       __html: leftText,
                     }}
@@ -105,7 +117,7 @@ export default function ServiceSectionNewBC(props: MyProps) {
                 </Col>
               )}
               {leftImage && leftImage.sourceUrl && (
-                <Col className="service-texts" lg={6}>
+                <Col className="service-texts order-2 order-lg-2" lg={6}>
                   <div className="service-image">
                     <Image
                       src={leftImage.sourceUrl}

@@ -6,7 +6,11 @@ import { Plus, Minus } from "lucide-react";
 import { Button } from "components/ui/button";
 import Link from "next/link";
 
-export default function MortgageRatesSection({ ratesSection }: { ratesSection?: any }) {
+export default function MortgageRatesSection({
+  ratesSection,
+}: {
+  ratesSection?: any;
+}) {
   const [rateType, setRateType] = useState<"fixed" | "variable">("fixed");
   const [sliderValue, setSliderValue] = useState([0]);
   const [expandedRow, setExpandedRow] = useState<number | null>(2);
@@ -47,100 +51,102 @@ export default function MortgageRatesSection({ ratesSection }: { ratesSection?: 
   };
 
   // Term options with bank rates and our rates
-  const termOptions = useMemo(() => [
-    {
-      term: "6 Months",
-      bankRate: 7.89,
-      ourRate: 7.49,
-      years: 0.5,
-      description:
-        "Our 6-month mortgage plan will give you a short-term rate of 5.99%. If you only need a loan for a little while or expect better rates soon, then go for this one. You’ll pay $639.21 and can save $116.99 more. Here, you’ll get a 1.90% lower interest rate than the bank.",
-    },
-    {
-      term: "1 Year",
-      bankRate: 7.39,
-      ourRate: 5.24,
-      years: 1,
-      description:
-        "Choose our 1-year plan if you want a low rate without committing long-term. Our rate is 5.29%, and your monthly payment will be $598.22 for every $100,000. Basically, that’s $50.53 less than what banks charge.",
-    },
-    {
-      term: "2 Years",
-      bankRate: 6.99,
-      ourRate: 5.09,
-      years: 2,
-      description:
-        "You get a steady rate of 4.69% with our 2-year mortgage. You’ll pay 0.75% less interest than banks and save $42.82 over what they offer. With this, you will have some stability and can move or refinance within two years.",
-    },
-    {
-      term: "3 Years",
-      bankRate: 5.99,
-      ourRate: 4.24,
-      years: 3,
-      description:
-        "Get a 4.24% rate with our 3-year plan. Compared to average bank rates, you will save $539.11 and pay $539.11 for every $100,000 borrowed. This one is a great choice if you're looking for low payments and solid savings over three years.",
-    },
-    {
-      term: "4 Years",
-      bankRate: 5.74,
-      ourRate: 4.34,
-      years: 4,
-      description:
-        "Go with our 4-year plan and lock in a great rate of 4.34%. Your payment will be $544.61, and you will be saving $95.79 compared to bank rates. You will have four years of peace of mind and reliable payments.",
-    },
-    {
-      term: "5 Years",
-      bankRate: 5.49,
-      ourRate: 3.99,
-      years: 5,
-      description:
-        "Our 5-year plan is one of the most popular ones. You’ll get a 4.29% rate, pay 0.27% less in interest than the bank rate, and save $14.95 every month.",
-    },
-    {
-      term: "6 Years",
-      bankRate: 7.1,
-      ourRate: 5.35,
-      years: 6,
-      description:
-        "You will get a 5.35 % rate with our 6-year plan. With this, you will pay $601.69 monthly and save $25.28 each month. So, if you want 1.75% less than any average bank rates, then this plan is right for you.",
-    },
-  ], []);
+  const termOptions = useMemo(
+    () => [
+      {
+        term: "6 Months",
+        bankRate: 7.89,
+        ourRate: 7.49,
+        years: 0.5,
+        description:
+          "Our 6-month mortgage plan will give you a short-term rate of 5.99%. If you only need a loan for a little while or expect better rates soon, then go for this one. You’ll pay $639.21 and can save $116.99 more. Here, you’ll get a 1.90% lower interest rate than the bank.",
+      },
+      {
+        term: "1 Year",
+        bankRate: 7.39,
+        ourRate: 5.24,
+        years: 1,
+        description:
+          "Choose our 1-year plan if you want a low rate without committing long-term. Our rate is 5.29%, and your monthly payment will be $598.22 for every $100,000. Basically, that’s $50.53 less than what banks charge.",
+      },
+      {
+        term: "2 Years",
+        bankRate: 6.99,
+        ourRate: 5.09,
+        years: 2,
+        description:
+          "You get a steady rate of 4.69% with our 2-year mortgage. You’ll pay 0.75% less interest than banks and save $42.82 over what they offer. With this, you will have some stability and can move or refinance within two years.",
+      },
+      {
+        term: "3 Years",
+        bankRate: 5.99,
+        ourRate: 4.24,
+        years: 3,
+        description:
+          "Get a 4.24% rate with our 3-year plan. Compared to average bank rates, you will save $539.11 and pay $539.11 for every $100,000 borrowed. This one is a great choice if you're looking for low payments and solid savings over three years.",
+      },
+      {
+        term: "4 Years",
+        bankRate: 5.74,
+        ourRate: 4.34,
+        years: 4,
+        description:
+          "Go with our 4-year plan and lock in a great rate of 4.34%. Your payment will be $544.61, and you will be saving $95.79 compared to bank rates. You will have four years of peace of mind and reliable payments.",
+      },
+      {
+        term: "5 Years",
+        bankRate: 5.49,
+        ourRate: 3.99,
+        years: 5,
+        description:
+          "Our 5-year plan is one of the most popular ones. You’ll get a 4.29% rate, pay 0.27% less in interest than the bank rate, and save $14.95 every month.",
+      },
+      {
+        term: "6 Years",
+        bankRate: 7.1,
+        ourRate: 5.35,
+        years: 6,
+        description:
+          "You will get a 5.35 % rate with our 6-year plan. With this, you will pay $601.69 monthly and save $25.28 each month. So, if you want 1.75% less than any average bank rates, then this plan is right for you.",
+      },
+    ],
+    []
+  );
 
   // Calculate table data dynamically
-const tableData = useMemo(() => {
-  const baseAmount = 100000;
-  return termOptions.map((option) => {
-    // Extract monthly payment per $100k from description (e.g. "$598.22")
-    const matchOur = option.description.match(/\$\d{2,3}\.\d{2}/g);
-    const matchBank = option.description.match(/save \$([\d\.]+)/i);
+  const tableData = useMemo(() => {
+    const baseAmount = 100000;
+    return termOptions.map((option) => {
+      // Extract monthly payment per $100k from description (e.g. "$598.22")
+      const matchOur = option.description.match(/\$\d{2,3}\.\d{2}/g);
+      const matchBank = option.description.match(/save \$([\d\.]+)/i);
 
-    const ourMonthlyPer100k = matchOur?.[0]
-      ? parseFloat(matchOur[0].replace("$", ""))
-      : calculateMortgagePayment(baseAmount, option.ourRate, option.years);
+      const ourMonthlyPer100k = matchOur?.[0]
+        ? parseFloat(matchOur[0].replace("$", ""))
+        : calculateMortgagePayment(baseAmount, option.ourRate, option.years);
 
-    const bankMonthlyPer100k = matchBank?.[1]
-      ? ourMonthlyPer100k + parseFloat(matchBank[1])
-      : calculateMortgagePayment(baseAmount, option.bankRate, option.years);
+      const bankMonthlyPer100k = matchBank?.[1]
+        ? ourMonthlyPer100k + parseFloat(matchBank[1])
+        : calculateMortgagePayment(baseAmount, option.bankRate, option.years);
 
-    const scale = mortgageAmount / baseAmount;
+      const scale = mortgageAmount / baseAmount;
 
-    const ourPayment = ourMonthlyPer100k * scale;
-    const bankPayment = bankMonthlyPer100k * scale;
-    const saving = bankPayment - ourPayment;
+      const ourPayment = ourMonthlyPer100k * scale;
+      const bankPayment = bankMonthlyPer100k * scale;
+      const saving = bankPayment - ourPayment;
 
-    return {
-      term: option.term,
-      bankRate: `${option.bankRate.toFixed(2)} %`,
-      bankPayment: `$${bankPayment.toFixed(2)}`,
-      ourRate: `${option.ourRate.toFixed(2)} %`,
-      ourPayment: `$${ourPayment.toFixed(2)}`,
-      saving: `$${saving.toFixed(2)}`,
-      years: option.years,
-      description: option.description,
-    };
-  });
-}, [mortgageAmount, termOptions]);
-
+      return {
+        term: option.term,
+        bankRate: `${option.bankRate.toFixed(2)} %`,
+        bankPayment: `$${bankPayment.toFixed(2)}`,
+        ourRate: `${option.ourRate.toFixed(2)} %`,
+        ourPayment: `$${ourPayment.toFixed(2)}`,
+        saving: `$${saving.toFixed(2)}`,
+        years: option.years,
+        description: option.description,
+      };
+    });
+  }, [mortgageAmount, termOptions]);
 
   // Find the most popular term (3 years)
   const popularTerm = tableData.find((row) => row.term === "3 Years");
@@ -152,13 +158,20 @@ const tableData = useMemo(() => {
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
           <div>
             <p className="text-3xl md:text-5xl font-bold leading-7 font-oswald">
-              {              ratesSection?.title || "Our Mortgage Rates"}
+              {ratesSection?.title || "Our Mortgage Rates"}
             </p>
           </div>
 
           <div className="max-w-xl">
-            <p className="text-gray-600" dangerouslySetInnerHTML={{__html: ratesSection?.description || `Before investing in a home, it&apos;s important to find out the
-              specifics. Here is an overview of our current mortgage rates that you will receive:`}}></p>
+            <p
+              className="text-gray-600"
+              dangerouslySetInnerHTML={{
+                __html:
+                  ratesSection?.description ||
+                  `Before investing in a home, it&apos;s important to find out the
+              specifics. Here is an overview of our current mortgage rates that you will receive:`,
+              }}
+            ></p>
           </div>
         </div>
 
@@ -193,10 +206,12 @@ const tableData = useMemo(() => {
         </div>
 
         {/* Fixed/Variable Toggle */}
-        <div className="flex mb-6 border-b border-gray-300">
+        <div className="flex mb-6 border-b-3 border-gray-300">
           <button
             className={`flex-1 text-center py-3 font-medium ${
-              rateType === "fixed" ? "border-b-2 border-black" : "text-gray-500"
+              rateType === "fixed"
+                ? "border-b-3 border-black"
+                : "text-gray-500"
             }`}
             onClick={() => setRateType("fixed")}
           >
@@ -205,7 +220,7 @@ const tableData = useMemo(() => {
           <button
             className={`flex-1 text-center py-3 font-medium ${
               rateType === "variable"
-                ? "border-b-2 border-black"
+                ? "border-b-3 border-black"
                 : "text-gray-500"
             }`}
             onClick={() => setRateType("variable")}
@@ -220,14 +235,23 @@ const tableData = useMemo(() => {
           <div className="bg-gray-200 p-6 mb-0 text-center relative">
             <p className="text-sm text-[#F0b254] mb-1">3 Years Fixed</p>
             <div className="flex items-center justify-center">
-              <p className="text-6xl font-bold text-[#0a1e3b]">{popularRate || "4.24%"}</p>
-              <span className="ml-2 px-2 py-1 bg-transparent text-[#0a1e3b] text-xs font-medium">*Most Popular</span>
+              <p className="text-6xl font-bold text-[#0a1e3b]">
+                {popularRate || "4.24%"}
+              </p>
+              <span className="ml-2 px-2 py-1 bg-transparent text-[#0a1e3b] text-sm font-medium">
+                *Most Popular
+              </span>
             </div>
           </div>
         ) : (
           <div className="bg-gray-200 p-6 text-center">
-            <p className="text-3xl font-bold text-[#0a1e3b]">Current Variable Rate: <span className="text-[#F0b254]">4.30%</span></p>
-            <p className="text-3xl font-bold text-[#0a1e3b]">Current Prime Rate: <span className="text-[#F0b254]">4.95 %</span></p>
+            <p className="text-3xl font-bold text-[#0a1e3b]">
+              Current Variable Rate:{" "}
+              <span className="text-[#F0b254]">4.30%</span>
+            </p>
+            <p className="text-3xl font-bold text-[#0a1e3b]">
+              Current Prime Rate: <span className="text-[#F0b254]">4.95 %</span>
+            </p>
           </div>
         )}
 
@@ -306,7 +330,7 @@ const tableData = useMemo(() => {
           </table>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-start text-xs text-gray-500">
+        <div className="flex flex-col md:flex-row justify-between items-start text-sm text-gray-500">
           <p className="max-w-2xl mb-4 md:mb-0">
             <span className="font-medium">Please Note:</span> Some conditions
             may apply. Rates may vary from Province to Province. Rates subject

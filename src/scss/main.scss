@@ -1,3 +1,17 @@
+// Grow animation for buttons
+button,
+.btn,
+.apply-button {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+button:hover,
+.btn:hover,
+.apply-button:hover,
+button:focus,
+.btn:focus,
+.apply-button:focus {
+  transform: scale(1.07);
+}
 // CSS for use on every page. Added with normalize.css in pages/_app.tsx.
 
 @import "variables";
@@ -14,13 +28,15 @@ button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left {
   width: 19px;
   display: block;
 }
-
-ul{
+body {
+  font-size: 17px !important;
+}
+ul {
   list-style-type: square;
 }
 // define your colours up front
-$internal-link-color:   #F0B254;
-$internal-link-hover:   #F0B254;
+$internal-link-color: #f0b254;
+$internal-link-hover: #f0b254;
 
 // base reset/typography (optional)
 a {
@@ -30,17 +46,17 @@ a {
 // all internal links: either href starts with “/” or it’s a relative URL without protocol
 a[href^="/"],
 a:not([href^="http"]) {
-  color: #F0B254;
+  color: #f0b254;
 
   &:hover,
   &:focus {
-    color: #F0B254;
+    color: #f0b254;
   }
 }
 
 // if you want to explicitly style external links differently, you can override:
 a[href^="http"] {
-  color: #F0B254;
+  color: #f0b254;
   &:hover {
     text-decoration: underline;
   }
@@ -57,6 +73,7 @@ a[href^="http"] {
   .author-image {
     width: 150px;
     height: 150px;
+    -o-object-fit: cover;
     object-fit: cover;
     border: 3px solid #f0f0f0;
   }
@@ -90,7 +107,7 @@ a[href^="http"] {
       .interest-list {
         margin: 0.5rem 0 0 1.5rem;
         color: #4a5568;
-        
+
         li {
           margin-bottom: 0.25rem;
           line-height: 1.4;
@@ -105,7 +122,7 @@ a[href^="http"] {
   margin-top: 25px;
   padding: 30px 15px;
   background: #fff;
-  border: 1px solid #DDE6E9;
+  border: 1px solid #dde6e9;
   border-radius: 10px;
   box-shadow: 0 0 5px rgba(27, 27, 27, 0.15);
   color: #000000;
@@ -122,40 +139,40 @@ a[href^="http"] {
 }
 .variable-prime-rates {
   padding: 20px;
-  border: 1px solid #DDE6E9;
+  border: 1px solid #dde6e9;
   border-radius: 5px;
   margin-bottom: 20px;
   text-align: center;
-  p{
+  p {
     font-size: 30px;
     font-weight: 700;
     color: $color-secondary;
   }
-  &:hover{
+  &:hover {
     box-shadow: 10px 10px 10px rgba(36, 36, 36, 0.5);
   }
 }
 
-.rates > .row:nth-child(even) .col-2:nth-child(n+4) {
+.rates > .row:nth-child(even) .col-2:nth-child(n + 4) {
   background: #002141;
   border-radius: 0;
 }
-.rates > .row:nth-child(even) .col-2:nth-child(n+4) {
+.rates > .row:nth-child(even) .col-2:nth-child(n + 4) {
   border-right: none;
 }
 .rates > .row .col-2:nth-child(4) {
   background: transparent;
 }
-.rates > .row .col-2:nth-child(n+4) {
+.rates > .row .col-2:nth-child(n + 4) {
   background: #004282;
   color: #fff;
   font-weight: bold;
   border: none;
 }
 .rates > .row:nth-child(even) .col-2 {
-  background: #F5F5F8;
-  border-top: 1px solid #DDE6E9;
-  border-bottom: 1px solid #DDE6E9;
+  background: #f5f5f8;
+  border-top: 1px solid #dde6e9;
+  border-bottom: 1px solid #dde6e9;
 }
 .rates .col-2 {
   text-align: right;
@@ -197,8 +214,8 @@ a[href^="http"] {
 .mapContainer {
   padding: 20px;
   iframe {
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -216,7 +233,8 @@ a[href^="http"] {
   }
 
   .info-table {
-    th, td {
+    th,
+    td {
       vertical-align: middle;
       text-align: center;
     }
@@ -234,22 +252,22 @@ a[href^="http"] {
 }
 .category-tabs {
   .category-button {
-      margin: 0.5rem;
-      border: 2px solid $color-black;
-      &:hover {
-        background: $color-black;
-        border: 2px solid $color-secondary;
+    margin: 0.5rem;
+    border: 2px solid $color-black;
+    &:hover {
+      background: $color-black;
+      border: 2px solid $color-secondary;
+      color: $color-white;
+      span {
         color: $color-white;
-        span {
-          color: $color-white;
-        }
       }
+    }
   }
   .category-item {
-      padding: 0.5rem;
-      border: 1px solid $color-black;
-      border-radius: 5px;
-      margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid $color-black;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -356,16 +374,16 @@ a[href^="http"] {
     }
   }
 }
-.font-rb{
+.font-rb {
   font-family: "RB Magnat Neue";
 }
-.font-hlv{
+.font-hlv {
   font-family: "HelveticaNeue";
 }
-.font-sans{
+.font-sans {
   font-family: "Open Sans";
 }
-.font-oswald{
+.font-oswald {
   font-family: "Oswald";
 }
 .tab-btn {
@@ -491,7 +509,7 @@ a[href^="http"] {
 }
 body {
   color: $color-black;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
   // .preloader {
@@ -512,8 +530,8 @@ body {
   padding: 25px;
 }
 .split_section {
-  a{
-  color: $color-secondary;
+  a {
+    color: $color-secondary;
   }
 }
 .first-buyer-calculator-card {
@@ -536,9 +554,7 @@ body {
 }
 
 .input-group-text {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
   padding: 0.375rem 0.75rem;
   margin-bottom: 0;
@@ -600,6 +616,9 @@ body {
   font-size: 1.5rem;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   flex-shrink: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -661,7 +680,7 @@ body {
       }
 
       ul {
-        &.submenu_level{
+        &.submenu_level {
           display: none;
           grid-template-columns: repeat(1, minmax(220px, 1fr));
           grid-template-rows: auto;
@@ -862,10 +881,6 @@ body {
   }
 }
 
-
-
-
-
 .wrap {
   margin: 0 auto;
   max-width: $content-width;
@@ -886,6 +901,7 @@ body {
       svg {
         width: 100%;
         // height: 500px;
+        -o-object-fit: cover;
         object-fit: cover;
       }
     }
@@ -1068,8 +1084,8 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
 }
 .result-box {
-  border-color: #12143A; // Dark blue background
-  border: 1px solid #12143A; // Dark blue border
+  border-color: #12143a; // Dark blue background
+  border: 1px solid #12143a; // Dark blue border
   color: white;
   padding: 2rem; // Increased padding
   border-radius: 5px;
@@ -1099,7 +1115,8 @@ body {
   background-color: transparent;
   border-bottom: none;
   padding: 0;
-}.card {
+}
+.card {
   border: none; // Remove card border
 }
 .calculator-card {
@@ -1157,17 +1174,17 @@ body {
     width: 80%;
     font-family: "AvenirBook";
     padding: 5px 30px;
-    font-size: 18px;
+    font-size: 16px;
     color: $color-white;
     // position: absolute;
     // margin-top: 120px;
   }
 }
-.service-content { 
+.service-content {
   padding: 20px 0px 20px 0px;
   h3 {
-  font-size: 22px;
-}
+    font-size: 22px;
+  }
 }
 .coquitlam-grid {
   display: flex;
@@ -1202,10 +1219,10 @@ body {
     }
   }
 }
-.advisorDivDesc{
+.advisorDivDesc {
   display: block;
 }
-.advisorDivMob{
+.advisorDivMob {
   display: none;
 }
 .meeting_section {
@@ -1235,7 +1252,7 @@ body {
   .row {
     align-items: center;
   }
-  .split_text_home{
+  .split_text_home {
     h2 {
       font-family: "AvenirBook";
       font-size: 22px;
@@ -1284,6 +1301,7 @@ body {
     .split_image {
       width: 100%;
       float: right;
+      -o-object-fit: cover;
       object-fit: cover;
       background-color: white !important;
     }
@@ -1293,6 +1311,7 @@ body {
     height: 80vh;
     position: relative;
     img {
+      -o-object-fit: cover;
       object-fit: cover;
     }
   }
@@ -1575,7 +1594,9 @@ footer {
   margin-left: 350px;
   margin-bottom: 50px;
   margin-top: 50px;
+  -o-object-fit: cover;
   object-fit: cover;
+  -webkit-clip-path: inset(0 0 0 0);
   clip-path: inset(0 0 0 0);
   // position: relative;
 }
@@ -1799,11 +1820,11 @@ q.review-content {
       }
     }
 
-      .card-title {
-        font-size: 24px;
-        font-weight: 400;
-        margin-bottom: 10px; /* Adjust spacing between title and description */
-      }
+    .card-title {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 10px; /* Adjust spacing between title and description */
+    }
   }
 }
 
@@ -1856,6 +1877,7 @@ q.review-content {
   img {
     transition-duration: 0.3s;
     &:hover {
+      -webkit-filter: grayscale(1);
       filter: grayscale(1);
       cursor: pointer;
     }
@@ -2020,7 +2042,6 @@ q.review-content {
 .contact-icon {
   width: 50px;
   height: 50px;
-  -webkit-border-radius: 50%;
   border-radius: 50%;
   border: 2px solid $color-secondary;
   text-align: center;
@@ -2087,10 +2108,6 @@ textarea {
   margin-bottom: 16px;
   padding: 0 16px;
   // color: #7a7a7a;
-  -webkit-transition: border-color 0.3s ease-in-out;
-  -moz-transition: border-color 0.3s ease-in-out;
-  -ms-transition: border-color 0.3s ease-in-out;
-  -o-transition: border-color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
   border-radius: 3px;
 }
@@ -2105,7 +2122,7 @@ textarea#comment {
   border: 2px solid $color-black !important;
   text-transform: uppercase;
   font-family: "AvenirBook";
-  font-size: 18px;
+  font-size: 16px;
   padding: 10px 15px 6px 15px;
   color: $color-black !important;
   border-radius: 7px;
@@ -2206,7 +2223,7 @@ textarea#comment {
     border: 2px solid $color-black !important;
     text-transform: uppercase;
     font-family: "AvenirBook";
-    font-size: 18px;
+    font-size: 16px;
     padding: 10px 15px 6px 15px;
     color: $color-black !important;
     border-radius: 7px;
@@ -2387,8 +2404,8 @@ textarea#comment {
     margin: 10px;
   }
 }
-.slide-div{
-  .slide-card{
+.slide-div {
+  .slide-card {
     // border: 1px solid $color-secondary;
     border-radius: 10px;
     margin: 13px;
@@ -2402,21 +2419,21 @@ textarea#comment {
     font-weight: 600;
     box-shadow: #7a7a7a 0px 0px 10px 0px;
   }
-    .react-multiple-carousel__arrow {
-      background-color: transparent;
-      &:before {
-        color: $color-secondary;
-      }
-      &:hover {
-        background: transparent;
-      }
+  .react-multiple-carousel__arrow {
+    background-color: transparent;
+    &:before {
+      color: $color-secondary;
     }
-    .react-multiple-carousel__arrow--left {
-      left: calc(0% + -15px);
+    &:hover {
+      background: transparent;
     }
-    .react-multiple-carousel__arrow--right {
-      right: calc(0% + -15px);
-    }
+  }
+  .react-multiple-carousel__arrow--left {
+    left: calc(0% + -15px);
+  }
+  .react-multiple-carousel__arrow--right {
+    right: calc(0% + -15px);
+  }
 }
 .our-services {
   a.slide-text {
@@ -2527,6 +2544,7 @@ textarea#comment {
           img {
             width: 100%;
             height: 100%;
+            -o-object-fit: cover;
             object-fit: cover;
           }
           padding: 20px 0px 20px 0px;
@@ -2755,7 +2773,10 @@ textarea#comment {
           font-weight: 900;
           width: 100%;
           p.verticall-location {
+            -webkit-writing-mode: vertical-rl;
+            -ms-writing-mode: tb-rl;
             writing-mode: vertical-rl;
+            -webkit-text-orientation: upright;
             text-orientation: upright;
             margin: auto;
             white-space: nowrap;
@@ -2779,7 +2800,7 @@ textarea#comment {
   }
 }
 .service-description p {
-  font-size: 18px;
+  font-size: 16px;
 }
 .service-top-section {
   display: flex;
@@ -3186,14 +3207,14 @@ p.testimonials-name {
 .location-tab-title {
   font-size: 15px;
 }
-.footer-logo-image{
+.footer-logo-image {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 4px;
   margin-left: -40px;
 }
-.header-logo-image{
+.header-logo-image {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3328,7 +3349,7 @@ p.testimonials-name {
             display: flex;
           }
         }
-  
+
         ul {
           &.submenu,
           &.submenu-loc {
@@ -3342,13 +3363,13 @@ p.testimonials-name {
             font-size: 12px;
             &.submenu-loc {
               top: 10;
-              left:0;
+              left: 0;
             }
-  
+
             li {
               box-sizing: border-box;
               position: relative;
-  
+
               &:hover {
                 ul.submenu-child {
                   display: flex;
@@ -3358,11 +3379,11 @@ p.testimonials-name {
                 z-index: 1000;
                 display: none;
                 position: relative;
-                left:0;
+                left: 0;
                 background: #fff;
                 width: 100%;
                 min-width: 100px;
-  
+
                 li {
                   width: 100%;
                 }
@@ -3370,30 +3391,30 @@ p.testimonials-name {
                   font-size: 10px !important;
                 }
               }
-  
+
               &.commercial-mortgages,
               &.vancouver,
               &.surrey {
                 &:hover {
                   background: $color-secondary;
                   color: $color-white;
-  
+
                   ul.submenu-child {
                     display: flex;
                   }
                 }
               }
-  
+
               &.commercial-mortgages ul.submenu-child {
                 right: 100%;
                 top: 0;
               }
-  
+
               &.vancouver ul.submenu-child {
                 left: 0;
                 top: 5px;
               }
-  
+
               &.surrey ul.submenu-child {
                 left: 0;
                 top: 0;
@@ -3407,7 +3428,6 @@ p.testimonials-name {
       }
     }
   }
-  
 
   .renovation-tab-row {
     .tab-content {
@@ -3420,9 +3440,9 @@ p.testimonials-name {
       margin-top: 20px;
       .nav-link {
         display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         margin-top: 5px;
         width: 400px;
         padding: 10px;
@@ -3516,7 +3536,7 @@ p.testimonials-name {
     }
   }
   .split_text {
-    .advisor-title{
+    .advisor-title {
       padding-top: 25px;
     }
   }
@@ -3535,6 +3555,7 @@ p.testimonials-name {
   .split_section .flex-row-reverse .split_image {
     // width: 100%;
     text-align: center;
+    -o-object-fit: cover;
     object-fit: cover;
   }
   .Banner_carouselcaption__NAlFf {
@@ -3769,14 +3790,14 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 441px) {
-  .header-logo-image{
+  .header-logo-image {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0px;
     margin-left: 0;
   }
-  .footer-logo-image{
+  .footer-logo-image {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3784,25 +3805,25 @@ p.testimonials-name {
     gap: 4px;
     margin-left: 0;
   }
-  .brand-mail{
+  .brand-mail {
     display: flex;
     flex-direction: column;
     font-size: 12px;
   }
-  .brand-cell{
+  .brand-cell {
     font-size: 12px;
     color: $color-secondary;
   }
-  .service-content { 
+  .service-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    h3{
+    align-items: left;
+    h3 {
       font-size: 25px;
       font-weight: bold !important;
     }
-    p{
-      text-align: center;
+    p {
+      text-align: left;
       padding-top: 10px;
     }
   }
@@ -3823,13 +3844,13 @@ p.testimonials-name {
     width: 19px;
     display: block;
   }
-  .advisorDivDesc{
+  .advisorDivDesc {
     display: none;
   }
-  .advisorDivMob{
+  .advisorDivMob {
     display: block;
   }
-  .meeting_section{
+  .meeting_section {
     margin-top: -10px;
   }
   .coquitlam-grid {
@@ -3856,17 +3877,17 @@ p.testimonials-name {
     }
   }
   .wehelp_section {
-    .wehelp_image{
+    .wehelp_image {
       width: 100%;
     }
   }
-  .team_section{
+  .team_section {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     h2 {
-      padding-top:20px ;
+      padding-top: 20px;
       text-align: center;
     }
     p {
@@ -3992,6 +4013,7 @@ p.testimonials-name {
       height: 60vh;
       margin-bottom: 30px;
       margin-top: 50px;
+      -o-object-fit: cover;
       object-fit: cover;
       width: 100%;
       background-color: #ffffff;
@@ -4071,6 +4093,7 @@ p.testimonials-name {
         svg {
           width: 100%;
           // height: 400px;
+          -o-object-fit: cover;
           object-fit: cover;
         }
       }

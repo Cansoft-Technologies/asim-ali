@@ -232,7 +232,7 @@ export default function Footer({
         </div>
 
         <div className="pt-6">
-          <p className="text-xs text-white/60 text-center">
+          <p className="text-sm text-white/60 text-center">
             © Copyright 2025 Asim Ali | SEO By Cansoft
           </p>
         </div>

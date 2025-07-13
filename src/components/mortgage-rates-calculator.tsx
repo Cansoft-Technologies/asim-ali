@@ -13,7 +13,7 @@ export default function MortgageRatesCalculator() {
   const [mortgageSize, setMortgageSize] = useState(100000);
   const [expandedRow, setExpandedRow] = useState(2);
   const router = useRouter();
-  
+
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMortgageSize(Number.parseInt(e.target.value));
   };
@@ -102,7 +102,9 @@ export default function MortgageRatesCalculator() {
             Location:
           </label>
           <div>
-            <label className="block font-medium text-gray-700 mb-2">*Only Applicable for BC</label>
+            <label className="block font-medium text-gray-700 mb-2">
+              *Only Applicable for BC
+            </label>
           </div>
         </div>
         <div className="grid md:grid-cols-8 items-center gap-8">
@@ -169,7 +171,7 @@ export default function MortgageRatesCalculator() {
             <p className="text-6xl font-bold text-[#11143a] font-hlv">
               {popularRate}
             </p>
-            <span className="ml-2 px-2 py-1 bg-white text-[#11143a] text-xs font-medium rounded">
+            <span className="ml-2 px-2 py-1 bg-white text-[#11143a] text-sm font-medium rounded">
               *Most Popular
             </span>
           </div>
