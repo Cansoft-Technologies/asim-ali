@@ -3,13 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
 // Your custom SCSS below
 /* Custom styles for blog post content */
+
 
 /* Sticky sidebar behavior */
 @media (min-width: 1024px) {
   .sticky {
+    position: -webkit-sticky;
     position: sticky;
     top: 2rem;
   }
@@ -40,4 +41,3 @@
 .title-section {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-

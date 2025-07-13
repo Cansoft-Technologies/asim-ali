@@ -374,7 +374,7 @@ export default function Header(props: { menuData: any; settings: any }) {
                             style={{ textDecoration: "none" }}
                             className=""
                           >
-                            <p className="text-xl font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">
+                            <p className="!text-xl font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">
                               {child.label}
                             </p>
                           </Link>
