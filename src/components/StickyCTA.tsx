@@ -16,12 +16,13 @@ const StickyCtaTab = () => {
         }
         .cta-pop {
           opacity: 0;
+          color: #F0B254;
         }
         .cta-pop.show {
           animation: popInLeft 0.7s cubic-bezier(.68,-0.55,.27,1.55) forwards;
         }
         .cta-pop:hover {
-          color: #FFD700;
+          color: #FFFF;
         }
       `}</style>
       <div
