@@ -12,7 +12,7 @@ export default function FeaturedSection2(props: MyProps) {
     <section className="my-5">
       <Container>
         <div
-          className="text-center my-5 border-bottom pb-3"
+          className="text-left my-5 border-bottom pb-3"
           dangerouslySetInnerHTML={{
             __html: featuredData?.advisorTitle,
           }}

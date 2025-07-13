@@ -206,10 +206,12 @@ export default function MortgageRatesSection({
         </div>
 
         {/* Fixed/Variable Toggle */}
-        <div className="flex mb-6 border-b border-gray-300">
+        <div className="flex mb-6 border-b-3 border-gray-300">
           <button
             className={`flex-1 text-center py-3 font-medium ${
-              rateType === "fixed" ? "border-b-2 border-black" : "text-gray-500"
+              rateType === "fixed"
+                ? "border-b-3 border-black"
+                : "text-gray-500"
             }`}
             onClick={() => setRateType("fixed")}
           >
@@ -218,7 +220,7 @@ export default function MortgageRatesSection({
           <button
             className={`flex-1 text-center py-3 font-medium ${
               rateType === "variable"
-                ? "border-b-2 border-black"
+                ? "border-b-3 border-black"
                 : "text-gray-500"
             }`}
             onClick={() => setRateType("variable")}
