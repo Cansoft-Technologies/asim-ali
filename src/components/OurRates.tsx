@@ -113,10 +113,10 @@ export default function OurRates(props: MyProps) {
 
       <div className="grid md:grid-cols-2 gap-8 mb-8">
         <div>
-            <label className="block font-medium text-gray-700 mb-2">
-              *Only Applicable for BC
-            </label>
-          </div>
+          <label className="block font-medium text-gray-700 mb-2">
+            *Only Applicable for BC
+          </label>
+        </div>
         <div className="grid md:grid-cols-8 items-center gap-8">
           <label
             htmlFor="mortgage-size"
@@ -184,7 +184,7 @@ export default function OurRates(props: MyProps) {
             >
               4.24%
             </p>
-            <span className="ml-2 px-2 py-1 bg-white text-[#11143a] text-xs font-medium rounded">
+            <span className="ml-2 px-2 py-1 bg-white text-[#11143a] text-sm font-medium rounded">
               *Most Popular
             </span>
           </div>

@@ -445,7 +445,7 @@ export default function ScheduleMeeting({
                   Apply Now
                 </Button>
 
-                <p className="text-xs text-center text-gray-500 mt-2">
+                <p className="text-sm text-center text-gray-500 mt-2">
                   *After submit this form, we will contact within 24 hours.
                 </p>
               </form>

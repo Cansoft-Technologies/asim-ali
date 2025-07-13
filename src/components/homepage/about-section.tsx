@@ -10,7 +10,7 @@ export default function AboutSection({aboutSection, partnerLogo}: {aboutSection?
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 mb-16">
           <div className="container mx-auto max-w-2xl">
-            <h2 className="text-xl md:text-2xl xl:text-4xl space-y-5 font-bold font-oswald">
+            <h2 className="!text-5xl md:text-2xl xl:text-4xl space-y-5 font-bold font-oswald">
               Asim Ali, Your{" "}
               <span className="text-[#F0B254] font-normal">Mortgage</span>{" "}
               <br />
