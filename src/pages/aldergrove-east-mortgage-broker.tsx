@@ -392,7 +392,7 @@ export default function Page(props: MyProps) {
                 }}
               ></div>
               <div className="tb-btn-left">
-                <Link href={"/apply-now"}>
+                <Link href={"tel:+16045913590"}>
                   <Button className="HeadBtn">Book Free Mortgage Call!</Button>
                 </Link>
               </div>
@@ -434,7 +434,7 @@ export default function Page(props: MyProps) {
         </div>
         <MortgageAdvisor advisorData={mortgageBenefitsData} />
         <div className="tb-btn mb-4">
-          <Link href={"tel:+16045913590"}>
+          <Link href={"https://asimali.ca/current-rates"}>
             <Button className="HeadBtn">Secure Your Best Rate</Button>
           </Link>
         </div>
