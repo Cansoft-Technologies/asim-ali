@@ -6,10 +6,13 @@ import OurRates from "components/OurRates";
 import ServiceSection from "components/ServiceSection";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import ClientReviews from "components/ClientReviews";
+import Link from "next/link";
+import MortgageAdvisor from "components/MortgageAdvisor";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -44,7 +47,18 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-
+              mortgageBenifits {
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
               reasonTitle
               reasonDescription
               reasonLeftText
@@ -110,6 +124,22 @@ export async function getStaticProps() {
               reasonRightImageCopy {
                 altText
                 sourceUrl
+              }
+              homeContactSection {
+                title
+                description
+              }
+              reviewSectionCopy {
+                reviewTitle
+                reviewDescription
+                reviewCard {
+                  author
+                  reviewText
+                  clientImage {
+                    sourceUrl
+                    altText
+                  }
+                }
               }
 
               qualifyingTitle
@@ -236,7 +266,8 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reasonLeftImageCopy,
       borrowingPaymentData:
         data?.pages?.nodes[0]?.mortgageBrokerCampbell?.borrowingPayment,
-
+      mortgageBenefitsData:
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.mortgageBenifits,
       expertsHelpData:
         data?.pages?.nodes[0]?.mortgageBrokerCampbell?.expertsHelp,
       tabWhyChooseData:
@@ -252,11 +283,15 @@ export async function getStaticProps() {
       talkTitle: data?.pages?.nodes[0]?.mortgageBrokerCampbell?.talkTitle,
       talkDescription:
         data?.pages?.nodes[0]?.mortgageBrokerCampbell?.talkDescription,
+      reviewSection:
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.reviewSectionCopy,
       processBelowDesc:
         data?.pages?.nodes[0]?.mortgageBrokerCampbell?.processBelowDesc,
       ratesTitle: data?.pages?.nodes[0]?.mortgageBrokerCampbell?.ratesTitle,
       ratesDescription:
         data?.pages?.nodes[0]?.mortgageBrokerCampbell?.ratesDescription,
+      homeContactSection:
+        data?.pages?.nodes[0]?.mortgageBrokerCampbell?.homeContactSection,
     },
     revalidate: 60,
   };
@@ -286,9 +321,12 @@ type MyProps = {
   qualifyingDescription: any;
   commonConcernsData: any;
   talkTitle: any;
+  reviewSection: any;
   talkDescription: any;
   processBelowDesc: any;
   ratesTitle: any;
+  mortgageBenefitsData: any;
+  homeContactSection: any;
   ratesDescription: any;
 };
 
@@ -317,10 +355,12 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
     qualifyingDescription,
     commonConcernsData,
     talkTitle,
-    talkDescription,
     ratesTitle,
     ratesDescription,
-    processBelowDesc,
+    talkDescription,
+    reviewSection,
+    homeContactSection,
+    mortgageBenefitsData,
   } = props;
   const teamTitle =
     '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Campbell River Mortgage Lender </span></h2>\n' +
@@ -329,8 +369,8 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
     `<p><span style="font-weight: 400;">With our expansive network of over 100 lenders, we've got your back when it comes to exploring every imaginable financing option. This diverse network includes both traditional banks and alternative lending institutions, granting us access to the most favorable rates and terms customized to your unique circumstances. Our relationships with these lenders are built on trust and years of experience, affording us the ability to advocate on your behalf with confidence.
   </span></p>\n` + "";
   const rateTitle = `
-<h2>Current Mortgage Rates In Campbell River</h2>
-<p>These days, mortgage rates can be as unpredictable as the weather, shifting frequently. We keep an eye on these rates every day to find the best deals for you. Rates can go up and down daily, so it's important to check with us for the most recent information. We promise to help you understand these rates and show you how they fit into your home-buying plans.</p>
+<h2>We Offer The Best Mortgage Rates in Campbell River</h2>
+<p>If you don't have the right information, then finding the best rates can be very hard. As your reliable mortgage agents, here are the rates you can get.</p>
 
 `;
   return (
@@ -394,12 +434,12 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="390"
                 height="400"
-                
                 style={{ width: "100%", objectFit: "cover" }}
               />
             </Col>
           </Row>
         </Container>
+        <OurRates title={rateTitle} />
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -424,60 +464,34 @@ export default function NewMortgageBrokerInCampbellRiver(props: MyProps) {
           imageLeft={reasonLeftImage}
           imageRight={reasonRightImage}
         />
-
-        <ServiceSection
-          textLeft={reasonLeftTextCopy}
-          textRight={reasonRightTextCopy}
-          imageLeft={reasonLeftImageCopy}
-          imageRight={reasonRightImageCopy}
-        />
-        <OurRates title={rateTitle} />
-        <AccordionNewBC homebuyerData={commonConcernsData} />
-        <section className="split_section mt-5">
-          <Container>
-            <Row>
-              <Col lg={5} className="text-hide-pc">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-              <Col lg={7}>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingTitle,
-                  }}
-                  className=""
-                ></div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingDescriptionTop,
-                  }}
-                  className="mt-5"
-                ></div>
-                <div className="split_image">
-                  <Image
-                    src={borrowingPaymentData?.borrowingImage?.sourceUrl}
-                    fill
-                    alt={borrowingPaymentData?.borrowingImage?.altText}
-                  />
-                </div>
-              </Col>
-              <Col lg={5} className="text-hide-sm">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: borrowingPaymentData?.borrowingRightDescription,
-                  }}
-                  className=""
-                ></div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-        <OurLenders title={teamTitle} description={teamDescription} />
+        <div className="tb-btn">
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">Get Pre-Approved Today</Button>
+          </Link>
+        </div>
+        <MortgageAdvisor advisorData={mortgageBenefitsData} />
+        <div className="tb-btn">
+          <Link href={"/current-rates"}>
+            <Button className="HeadBtn">
+              Discover Affordable Mortgage Options
+            </Button>
+          </Link>
+        </div>
+        <ClientReviews reviews={reviewSection} />
         <div style={{ height: "15px" }}></div>
+        <Container className="mt-5">
+          <h2 className="text-center service-title">
+            {homeContactSection?.title}
+          </h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: homeContactSection?.description,
+            }}
+            className="text-lg text-start"
+          ></div>
+        </Container>
+        <div style={{ height: "15px" }}></div>
+
         <Container className="mb-5 mt-5">
           <p className="text-center service-title">{talkTitle}</p>
           <div
