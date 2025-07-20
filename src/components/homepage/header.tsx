@@ -185,7 +185,7 @@ export default function Header(props: { menuData: any; settings: any }) {
       {/* Top info bar */}
       <div className="w-full bg-[#1a1a3a] text-white py-2 md:px-4 px-0">
         <div className="container mx-auto flex flex-row justify-between items-center">
-          <div className="flex items-center text-sm md:mb-0">
+          <div className="flex items-center text-md md:mb-0">
             <Mail className="h-4 w-4 mr-2 text-white" />
             <a
               style={{ textDecoration: "none" }}
@@ -242,14 +242,14 @@ export default function Header(props: { menuData: any; settings: any }) {
             </a>
           </div>
 
-          <div className="flex items-center text-sm">
+          <div className="flex items-center text-md">
             <Phone className="h-4 w-4 mr-2 text-white" />
             <a
               style={{ textDecoration: "none" }}
               href="tel:+16045913590"
               className="text-white"
             >
-              +1(604)591-3590
+              +1 (604) 591-3590
             </a>
           </div>
         </div>

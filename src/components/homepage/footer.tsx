@@ -146,7 +146,7 @@ export default function Footer({
               >
                 <li className="flex items-start gap-2">
                   <PhoneIcon />
-                  <span className="text-sm">+1 (604) 591-3590</span>
+                  <span className="text-md">+1 (604) 591-3590</span>
                 </li>
               </a>
               <a
@@ -155,7 +155,7 @@ export default function Footer({
               >
                 <li className="flex items-center gap-2">
                   <MailIcon />
-                  <span className="text-sm">clientcare@asmail.ca</span>
+                  <span className="text-md">clientcare@asmail.ca</span>
                 </li>
               </a>
               <a
@@ -164,7 +164,7 @@ export default function Footer({
               >
                 <li className="flex items-start gap-2">
                   <MapPinIcon />
-                  <span className="text-sm">
+                  <span className="text-md">
                     7327 137 St Suite #311, Surrey, BC V3W 1A4, Canada
                   </span>
                 </li>

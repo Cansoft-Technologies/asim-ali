@@ -32,7 +32,7 @@ export default function CtaSection({
                 Apply Now
               </Button>
             </Link>
-            <p className="text-2xl font-bold text-[#070819]">+1 604-591-3590</p>
+            <p className="!text-2xl font-bold text-[#070819]">+1 (604) 591-3590</p>
           </div>
         </div>
       </div>
