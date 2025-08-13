@@ -13,7 +13,7 @@ export default async function handler(
   if(req.method === 'POST'){
 
     try {
-      const data = await JSON.parse(req.body);
+      const data = req.body;
       const { fromEmail, toEmail, emailSubject, fname, lname, mail, phone, contact, about,province,message } = data;
 
       await sendEmail({
@@ -34,7 +34,7 @@ export default async function handler(
       });
       return res.send({ status: 200, message: 'Form Submission Success' });
     } catch (error) {
-      console.log(error);
+      console.log("⭐", error);
       return res.status(500);
     }
   }

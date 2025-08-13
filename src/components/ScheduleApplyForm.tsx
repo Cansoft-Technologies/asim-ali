@@ -43,18 +43,18 @@ export default function ScheduleApplyForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Show loading toast
-    Toast({
-      title: "Wait:Please wait while we process your request",
-      duration: 3000,
-    });
+    // // Show loading toast
+    // Toast({
+    //   title: "Wait:Please wait while we process your request",
+    //   duration: 3000,
+    // });
 
     // Extract first and last names from full name
     const [fname, ...lnameParts] = formData.name.split(" ");
     const lname = lnameParts.join(" ") || "";
 
     const bodyData = JSON.stringify({
-      fromEmail: "noreply@asimali.ca",
+      fromEmail: "noreply-asimali@csoft.ca",
       toEmail: "clientcare@asimali.ca",
       emailSubject: `${formData.subject} - ${formData.name}`,
       fname: fname || "",

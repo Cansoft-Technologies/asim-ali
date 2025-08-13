@@ -48,17 +48,17 @@ export default function ScheduleMeetingSection({
     e.preventDefault();
 
     // Show loading toast
-    Toast({
-      title: "Wait:Please wait while we process your request",
-      duration: 3000,
-    });
+    // Toast({
+    //   title: "Wait:Please wait while we process your request",
+    //   duration: 3000,
+    // });
 
     // Extract first and last names from full name
     const [fname, ...lnameParts] = formData.name.split(" ");
     const lname = lnameParts.join(" ") || "";
 
     const bodyData = JSON.stringify({
-      fromEmail: "noreply@asimali.ca",
+      fromEmail: "noreply-asimali@csoft.ca",
       toEmail: "clientcare@asimali.ca",
       emailSubject: `${formData.subject} - ${formData.name}`,
       fname: fname || "",
@@ -72,7 +72,7 @@ export default function ScheduleMeetingSection({
     });
 
     const postBodyData = new FormData();
-    postBodyData.set("email_subject", `${formData.subject} - ${formData.name}`);
+    postBodyData.set("email_subject", ` Homepage - ${formData.subject} - ${formData.name}`);
     postBodyData.set("name", formData.name);
     postBodyData.set("email", formData.email);
     postBodyData.set("phone", formData.phone);
@@ -101,10 +101,10 @@ export default function ScheduleMeetingSection({
       );
 
       // Show success toast
-      Toast({
-        title: "Message Sent!We'll contact you within 24 hours",
-        duration: 5000,
-      });
+      // Toast({
+      //   title: "Message Sent!We'll contact you within 24 hours",
+      //   duration: 5000,
+      // });
 
       // Reset form
       setFormData({

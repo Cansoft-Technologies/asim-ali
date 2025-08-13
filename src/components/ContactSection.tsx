@@ -22,7 +22,7 @@ export default function ContactSection() {
       });
 
     const bodyData = JSON.stringify({
-      fromEmail: "noreply@asimali.ca",
+      fromEmail: "noreply-asimali@csoft.ca",
       toEmail: "clientcare@asimali.ca",
       emailSubject:
         formData.subject + "-" + formData.fname + " " + formData.lname,
