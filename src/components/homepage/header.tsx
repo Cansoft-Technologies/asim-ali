@@ -372,7 +372,7 @@ export default function Header(props: { menuData: any; settings: any }) {
                           <Link
                             href={cleanUri(child?.uri) || "/"}
                             style={{ textDecoration: "none" }}
-                            className=""
+                            className="flex items-center gap-2"
                           >
                             <p className="!text-xl font-medium text-[#12143A] hover:text-[#F0B254] transition-colors">
                               {child.label}
@@ -385,6 +385,7 @@ export default function Header(props: { menuData: any; settings: any }) {
                                 <Link
                                   href="/commercial-mortgage-in-bc"
                                   style={{ textDecoration: "none" }}
+                                  className="flex items-center gap-2"
                                 >
                                   <p className="text-xl text-[#12143A] hover:text-[#F0B254] transition-colors">
                                     British Columbia
@@ -395,6 +396,7 @@ export default function Header(props: { menuData: any; settings: any }) {
                                 <Link
                                   href="/commercial-mortgage-in-surrey"
                                   style={{ textDecoration: "none" }}
+                                  className="flex items-center gap-2"
                                 >
                                   <p className="text-xl text-[#12143A] hover:text-[#F0B254] transition-colors">
                                     Surrey
@@ -405,6 +407,7 @@ export default function Header(props: { menuData: any; settings: any }) {
                                 <Link
                                   href="/commercial-mortgage-in-vancouver"
                                   style={{ textDecoration: "none" }}
+                                  className="flex items-center gap-2"
                                 >
                                   <p className="text-xl text-[#12143A] hover:text-[#F0B254] transition-colors">
                                     Vancouver

@@ -12,10 +12,38 @@ import {
   SelectValue,
 } from "components/ui/select";
 import { Textarea } from "components/ui/textarea";
-import { Toast } from "components/ui/toast";
+import { toast } from "sonner";
 import { Facebook, Instagram, Linkedin, Music } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+
+// Validation utilities
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validatePhone = (phone: string): boolean => {
+  // Remove all non-digit characters
+  const cleaned = phone.replace(/\D/g, "");
+  // Check if it's a valid North American phone number (5-11 digits)
+  return cleaned.length >= 5 && cleaned.length <= 11;
+};
+
+const validateName = (name: string): boolean => {
+  return name.trim().length >= 2;
+};
+
+interface ValidationErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  province?: string;
+  contactMethod?: string;
+  contactAbout?: string;
+  subject?: string;
+  message?: string;
+}
 
 export default function ScheduleMeetingSection({
   scheduleSection,
@@ -33,25 +61,131 @@ export default function ScheduleMeetingSection({
     message: "",
   });
 
+  const [errors, setErrors] = useState<ValidationErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
+
+  // Validation function for individual fields
+  const validateField = (name: string, value: string): string | undefined => {
+    switch (name) {
+      case "name":
+        if (!value.trim()) return "Name is required";
+        if (!validateName(value)) return "Name must be at least 2 characters";
+        return undefined;
+
+      case "email":
+        if (!value.trim()) return "Email is required";
+        if (!validateEmail(value)) return "Please enter a valid email address";
+        return undefined;
+
+      case "phone":
+        if (!value.trim()) return "Phone number is required";
+        if (!validatePhone(value))
+          return "Please enter a valid phone number (5-11 digits)";
+        return undefined;
+
+      case "province":
+        if (!value) return "Please select a province";
+        return undefined;
+
+      case "contactMethod":
+        if (!value) return "Please select a contact method";
+        return undefined;
+
+      case "contactAbout":
+        if (!value) return "Please select what you want to be contacted about";
+        return undefined;
+
+      case "subject":
+        if (!value) return "Please select a subject";
+        return undefined;
+
+      case "message":
+        if (value.trim().length > 0 && value.trim().length < 10) {
+          return "Message must be at least 10 characters if provided";
+        }
+        return undefined;
+
+      default:
+        return undefined;
+    }
+  };
+
+  // Validate all fields
+  const validateForm = (): ValidationErrors => {
+    const newErrors: ValidationErrors = {};
+
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key, formData[key as keyof typeof formData]);
+      if (error) {
+        newErrors[key as keyof ValidationErrors] = error;
+      }
+    });
+
+    return newErrors;
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Mark field as touched
+    setTouched((prev) => ({ ...prev, [name]: true }));
+
+    // Validate field in real-time if it has been touched
+    if (touched[name]) {
+      const error = validateField(name, value);
+      setErrors((prev) => ({ ...prev, [name]: error }));
+    }
   };
 
   const handleSelectChange = (name: string, value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Mark field as touched
+    setTouched((prev) => ({ ...prev, [name]: true }));
+
+    // Validate field in real-time
+    const error = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+
+    const error = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Mark all fields as touched for validation display
+    const allTouched = Object.keys(formData).reduce((acc, key) => {
+      acc[key] = true;
+      return acc;
+    }, {} as { [key: string]: boolean });
+    setTouched(allTouched);
+
+    // Validate entire form
+    const formErrors = validateForm();
+    setErrors(formErrors);
+
+    // Check if there are any errors
+    if (Object.keys(formErrors).length > 0) {
+      toast.error("Please fix the errors in the form before submitting");
+      return;
+    }
+
+    setIsSubmitting(true);
+
     // Show loading toast
-    // Toast({
-    //   title: "Wait:Please wait while we process your request",
-    //   duration: 3000,
-    // });
+    toast.loading("Sending your message...");
 
     // Extract first and last names from full name
     const [fname, ...lnameParts] = formData.name.split(" ");
@@ -72,7 +206,10 @@ export default function ScheduleMeetingSection({
     });
 
     const postBodyData = new FormData();
-    postBodyData.set("email_subject", ` Homepage - ${formData.subject} - ${formData.name}`);
+    postBodyData.set(
+      "email_subject",
+      ` Homepage - ${formData.subject} - ${formData.name}`
+    );
     postBodyData.set("name", formData.name);
     postBodyData.set("email", formData.email);
     postBodyData.set("phone", formData.phone);
@@ -101,12 +238,9 @@ export default function ScheduleMeetingSection({
       );
 
       // Show success toast
-      // Toast({
-      //   title: "Message Sent!We'll contact you within 24 hours",
-      //   duration: 5000,
-      // });
+      toast.success("Message Sent! We'll contact you within 24 hours");
 
-      // Reset form
+      // Reset form and validation state
       setFormData({
         name: "",
         email: "",
@@ -117,14 +251,14 @@ export default function ScheduleMeetingSection({
         subject: "",
         message: "",
       });
+      setErrors({});
+      setTouched({});
     } catch (error) {
       // Show error toast
-      Toast({
-        title: "Error: Failed to send message. Please try again.",
-        variant: "destructive",
-        duration: 5000,
-      });
+      toast.error("Failed to send message. Please try again.");
       console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -346,17 +480,23 @@ export default function ScheduleMeetingSection({
                       htmlFor="name"
                       className="block text-md font-medium text-gray-700 mb-1"
                     >
-                      Name
+                      Name *
                     </label>
                     <Input
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full"
+                      onBlur={handleBlur}
+                      className={`w-full ${
+                        errors.name ? "border-red-500 focus:border-red-500" : ""
+                      }`}
                       placeholder="Enter Your Name..."
                       required
                     />
+                    {errors.name && (
+                      <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                    )}
                   </div>
 
                   <div>
@@ -364,17 +504,27 @@ export default function ScheduleMeetingSection({
                       htmlFor="phone"
                       className="block text-md font-medium text-gray-700 mb-1"
                     >
-                      Phone
+                      Phone *
                     </label>
                     <Input
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full"
-                      placeholder="+1"
+                      onBlur={handleBlur}
+                      className={`w-full ${
+                        errors.phone
+                          ? "border-red-500 focus:border-red-500"
+                          : ""
+                      }`}
+                      placeholder="+1 (555) 123-4567"
                       required
                     />
+                    {errors.phone && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.phone}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -384,7 +534,7 @@ export default function ScheduleMeetingSection({
                       htmlFor="email"
                       className="block text-md font-medium text-gray-700 mb-1"
                     >
-                      Email
+                      Email *
                     </label>
                     <Input
                       id="email"
@@ -392,10 +542,20 @@ export default function ScheduleMeetingSection({
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full"
-                      placeholder="Enter Your Mail..."
+                      onBlur={handleBlur}
+                      className={`w-full ${
+                        errors.email
+                          ? "border-red-500 focus:border-red-500"
+                          : ""
+                      }`}
+                      placeholder="Enter Your Email..."
                       required
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -403,15 +563,20 @@ export default function ScheduleMeetingSection({
                       htmlFor="province"
                       className="block text-md font-medium text-gray-700 mb-1"
                     >
-                      Province
+                      Province *
                     </label>
                     <Select
                       onValueChange={(value) =>
                         handleSelectChange("province", value)
                       }
+                      value={formData.province}
                     >
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Alberta" />
+                      <SelectTrigger
+                        className={`w-full ${
+                          errors.province ? "border-red-500" : ""
+                        }`}
+                      >
+                        <SelectValue placeholder="Select Province" />
                       </SelectTrigger>
                       <SelectContent className="bg-white">
                         <SelectItem value="alberta">Alberta</SelectItem>
@@ -421,6 +586,11 @@ export default function ScheduleMeetingSection({
                         <SelectItem value="manitoba">Manitoba</SelectItem>
                       </SelectContent>
                     </Select>
+                    {errors.province && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.province}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -430,14 +600,19 @@ export default function ScheduleMeetingSection({
                       htmlFor="contactMethod"
                       className="block text-md font-medium text-gray-700 mb-1"
                     >
-                      How Should We Contact You?
+                      How Should We Contact You? *
                     </label>
                     <Select
                       onValueChange={(value) =>
                         handleSelectChange("contactMethod", value)
                       }
+                      value={formData.contactMethod}
                     >
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger
+                        className={`w-full ${
+                          errors.contactMethod ? "border-red-500" : ""
+                        }`}
+                      >
                         <SelectValue placeholder="Please Select" />
                       </SelectTrigger>
                       <SelectContent className="bg-white">
@@ -446,6 +621,11 @@ export default function ScheduleMeetingSection({
                         <SelectItem value="text">Text Message</SelectItem>
                       </SelectContent>
                     </Select>
+                    {errors.contactMethod && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.contactMethod}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -453,14 +633,19 @@ export default function ScheduleMeetingSection({
                       htmlFor="contactAbout"
                       className="block text-md font-medium text-gray-700 mb-1"
                     >
-                      Please Contact Me About
+                      Please Contact Me About *
                     </label>
                     <Select
                       onValueChange={(value) =>
                         handleSelectChange("contactAbout", value)
                       }
+                      value={formData.contactAbout}
                     >
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger
+                        className={`w-full ${
+                          errors.contactAbout ? "border-red-500" : ""
+                        }`}
+                      >
                         <SelectValue placeholder="Please Select" />
                       </SelectTrigger>
                       <SelectContent className="bg-white">
@@ -476,6 +661,11 @@ export default function ScheduleMeetingSection({
                         </SelectItem>
                       </SelectContent>
                     </Select>
+                    {errors.contactAbout && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.contactAbout}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -484,14 +674,19 @@ export default function ScheduleMeetingSection({
                     htmlFor="subject"
                     className="block text-md font-medium text-gray-700 mb-1"
                   >
-                    Subject
+                    Subject *
                   </label>
                   <Select
                     onValueChange={(value) =>
                       handleSelectChange("subject", value)
                     }
+                    value={formData.subject}
                   >
-                    <SelectTrigger className="w-full">
+                    <SelectTrigger
+                      className={`w-full ${
+                        errors.subject ? "border-red-500" : ""
+                      }`}
+                    >
                       <SelectValue placeholder="Please Select" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -501,6 +696,11 @@ export default function ScheduleMeetingSection({
                       <SelectItem value="consultation">Consultation</SelectItem>
                     </SelectContent>
                   </Select>
+                  {errors.subject && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.subject}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -515,16 +715,27 @@ export default function ScheduleMeetingSection({
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full min-h-[100px]"
+                    onBlur={handleBlur}
+                    className={`w-full min-h-[100px] ${
+                      errors.message
+                        ? "border-red-500 focus:border-red-500"
+                        : ""
+                    }`}
                     placeholder="Type your Message..."
                   />
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-[#0a1e3b] hover:bg-[#0a1e3b]/90 text-white py-6"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#0a1e3b] hover:bg-[#0a1e3b]/90 text-white py-6 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send
+                  {isSubmitting ? "Sending..." : "Send"}
                 </Button>
 
                 <p className="text-sm text-center text-gray-500 mt-2">
