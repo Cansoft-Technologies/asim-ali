@@ -27,7 +27,7 @@ const validatePhone = (phone: string): boolean => {
   // Remove all non-digit characters
   const cleaned = phone.replace(/\D/g, "");
   // Check if it's a valid North American phone number (5-11 digits)
-  return cleaned.length >= 5 && cleaned.length <= 11;
+  return cleaned.length >= 5;
 };
 
 const validateName = (name: string): boolean => {
@@ -509,6 +509,7 @@ export default function ScheduleMeetingSection({
                     <Input
                       id="phone"
                       name="phone"
+                      type="number"
                       value={formData.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
