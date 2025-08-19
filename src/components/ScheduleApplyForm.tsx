@@ -24,7 +24,7 @@ const validateEmail = (email: string): boolean => {
 
 const validatePhone = (phone: string): boolean => {
   const cleaned = phone.replace(/\D/g, "");
-  return cleaned.length >= 5 && cleaned.length <= 11;
+  return cleaned.length >= 5;
 };
 
 const validateName = (name: string): boolean => {
@@ -73,8 +73,7 @@ export default function ScheduleApplyForm() {
 
       case "phone":
         if (!value.trim()) return "Phone number is required";
-        if (!validatePhone(value))
-          return "Please enter a valid phone number (10-11 digits)";
+        if (!validatePhone(value)) return "Please enter a valid phone number";
         return undefined;
 
       case "province":
@@ -293,6 +292,7 @@ export default function ScheduleApplyForm() {
               <Input
                 id="phone"
                 name="phone"
+                type="number"
                 value={formData.phone}
                 onChange={handleChange}
                 onBlur={handleBlur}
