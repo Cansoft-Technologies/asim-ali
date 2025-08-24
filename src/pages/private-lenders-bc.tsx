@@ -406,7 +406,6 @@ const PrivateRefinance = (props: MyProps) => {
                   </Row>
                 </Container>
 
-                {/* faq section start */}
 
                 <div className="faq-accordion text-center">
                   <h2>Frequently Asked Questions</h2>
