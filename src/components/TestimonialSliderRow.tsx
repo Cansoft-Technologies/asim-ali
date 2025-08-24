@@ -98,9 +98,9 @@ export default function TestimonialSliderRow() {
   return (
     <section className="w-full py-16">
       <div className="">
-        <h2 className="!text-xl md:!text-2xl xl:!text-4xl !font-semibold mb-12 text-center font-oswald">
+        <div className="!text-xl md:!text-2xl xl:!text-4xl !font-semibold mb-12 text-center font-oswald">
           What our Happy Clients have to say
-        </h2>
+        </div>
 
         <div
           className="relative w-full overflow-hidden mt-10"
