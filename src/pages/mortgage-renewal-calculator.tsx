@@ -12,7 +12,6 @@ import { apolloClient } from "lib/apollo";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
-
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
@@ -105,7 +104,7 @@ export async function getStaticProps() {
                 tiktok
                 linkedin
                 instagram
-              }              
+              }
               copyrightText
               footerLeftWidget {
                 title
@@ -140,7 +139,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems (first: 150) {
+                childItems(first: 150) {
                   nodes {
                     uri
                     label
@@ -153,13 +152,13 @@ export async function getStaticProps() {
       }
     `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
