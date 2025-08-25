@@ -190,13 +190,20 @@ const Page = (props: MyProps) => {
         return (
           <div key={index} className="Bc-Coquitlam">
             <Head>
-              {metaData?.map((meta,index) => {
+              {metaData?.map((meta, index) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>
                     <meta name="description" content={meta?.seo?.description} />
                     {/* <meta name="robots" content="noindex"></meta> */}
-                    <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+                    <link
+                      rel="canonical"
+                      href={
+                        meta?.seo?.canonicalUrl?.endsWith("/")
+                          ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                          : meta?.seo?.canonicalUrl
+                      }
+                    />
                     <meta property="og:title" content={meta?.seo?.title} />
                     <meta
                       property="og:description"
@@ -225,14 +232,6 @@ const Page = (props: MyProps) => {
               )}
 
               <Container className="my-5">
-                <Row className="mortgage-broker">
-                <Col>
-                <p className="service-title">
-                      Mortgage Renewal Calculator
-                    </p>
-                    <MortgageRenewalCalculator />
-            </Col>
-                </Row>
                 <Row className="refinance-text my-5">
                   <Col md={5}>
                     <p>
@@ -258,7 +257,6 @@ const Page = (props: MyProps) => {
                       alt={data?.Refinance?.aboutImage?.altText}
                       width="390"
                       height="400"
-                      
                       style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
@@ -266,19 +264,20 @@ const Page = (props: MyProps) => {
                 <Row className="mt-5">
                   <Col md={12}>
                     <div
-                    className="text-center"
+                      className="text-center"
                       dangerouslySetInnerHTML={{
                         __html: data?.Refinance?.brokerText,
                       }}
                     ></div>
                   </Col>
                 </Row>
-                  <CalculatorSlider />
+                <Row className="">
+                  <Col>
+                    <MortgageRenewalCalculator />
+                  </Col>
+                </Row>
                 <Row className="mortgage-broker">
                   <Col>
-                    <h2 className="headering-title">
-                      {data?.Refinance?.brokerTitle}
-                    </h2>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: data?.Refinance?.brokerDescription,
@@ -288,102 +287,47 @@ const Page = (props: MyProps) => {
                   </Col>
                 </Row>
                 <div className="service-row">
-                                  <Container>
-                                    <Row>
-                                      <Col className="service-texts" lg={6}>
-                                        <div
-                                          className="service-content"
-                                          dangerouslySetInnerHTML={{
-                                            __html: data?.Refinance?.productsLeftText,
-                                          }}
-                                        ></div>
-                                      </Col>
-                                      <Col className="service-texts" lg={6}>
-                                        <div className="service-image">
-                                          <Image
-                                            src={data?.Refinance?.productsImage?.sourceUrl}
-                                            alt={data?.Refinance?.productsImage?.altText}
-                                            width="390"
-                                            height="400"
-                                            style={{ width: "100%", objectFit: "cover" }}
-                                          />
-                                        </div>
-                                      </Col>
-                                    </Row>
-                                  </Container>
-                                </div>
-                                <div className="service-row mt-5">
                   <Container>
+                    <h2 className="headering-title text-center mb-4">
+                      {data?.Refinance?.brokerTitle}
+                    </h2>
                     <Row>
-                      <Col className="service-texts" lg={12}>
+                      <Col className="service-texts" lg={6}>
                         <div
-                          className="service-content"
+                          className="service-content text-xl"
                           dangerouslySetInnerHTML={{
-                            __html: data?.Refinance?.productsRightText,
+                            __html: data?.Refinance?.productsLeftText,
                           }}
                         ></div>
+                      </Col>
+                      <Col className="service-texts" lg={6}>
+                        <div className="service-image">
+                          <Image
+                            src={data?.Refinance?.productsImage?.sourceUrl}
+                            alt={data?.Refinance?.productsImage?.altText}
+                            width="390"
+                            height="400"
+                            style={{ width: "100%", objectFit: "cover" }}
+                          />
+                        </div>
                       </Col>
                     </Row>
                   </Container>
                 </div>
                 <Row className="product-service mt-5">
                   <Col className="px-5" md={1}></Col>
-                  <Col className="py-3" md={10} style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
-                    <h2 className="text-center">
+                  <Col className="py-3" md={10}>
+                    <h2 className="text-center mb-3">
                       {data?.Refinance?.productsTitle}
                     </h2>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: data?.Refinance?.productsDescription,
                       }}
-                      className="text-center"
+                      className="text-left text-xl"
                     ></div>
                   </Col>
                   <Col className="px-5" md={1}></Col>
-                </Row>
-                {data.Refinance.renovation == null ? (
-                  ""
-                ) : (
-                  <Row className="renovation-tab-row">
-                    <Tabs
-                      id="controlled-tab-example"
-                      activeKey={key == null ? 0 : key}
-                      onSelect={(k) => setKey(k)}
-                      className="mb-3 renovation"
-                    >
-                      {data?.Refinance?.renovation?.map((tab, item) => {
-                        return (
-                          <Tab
-                            key={item}
-                            eventKey={item.toString()}
-                            title={
-                              <p className="location-tab-title">
-                                {tab.title}
-                              </p>
-                            }
-                          >
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: tab.description,
-                              }}
-                              className="renovation-content-list"
-                            ></div>
-                          </Tab>
-                        );
-                      })}
-                    </Tabs>
-                  </Row>
-                )}
-                
-                  <Row className="mortgage-broker-bottom text-center">
-                  <Col>
-                    <p className="service-title">{data?.Refinance?.bottomBrokerTitle}</p>
-                    <div
-                              dangerouslySetInnerHTML={{
-                                __html: data?.Refinance?.bottomBrokerDescription,
-                              }}
-                            ></div>
-                  </Col>
                 </Row>
               </Container>
             </main>
