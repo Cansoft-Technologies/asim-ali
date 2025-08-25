@@ -13,7 +13,7 @@ export default function ServiceSection(props: MyProps) {
   return (
     <>
       {(textLeft || imageRight) && (
-        <section className="my-5">
+        <section className="">
           <div className="service-row">
             <Container>
               <Row>
@@ -43,12 +43,12 @@ export default function ServiceSection(props: MyProps) {
                       <Image
                         src={imageRight.sourceUrl}
                         alt={imageRight.altText}
-                        width="390"
+                        width="400"
                         height="400"
                         style={{
                           width: "100%",
                           objectFit: "cover",
-                          height: "45vh",
+                          height: "auto",
                         }}
                         quality={100}
                       />
@@ -61,12 +61,12 @@ export default function ServiceSection(props: MyProps) {
         </section>
       )}
       {(textRight || imageLeft) && (
-        <section className="my-5">
-          <div className="service-row my-5">
+        <section className="my-3">
+          <div className="service-row my-2">
             <Container>
               <Row className="">
                 {textRight && (
-                  <Col className="service-texts mb-5 hide-pc" lg={6}>
+                  <Col className="service-texts hide-pc" lg={6}>
                     <div
                       className="service-content text-left"
                       dangerouslySetInnerHTML={{
@@ -86,7 +86,7 @@ export default function ServiceSection(props: MyProps) {
                         style={{
                           width: "100%",
                           objectFit: "cover",
-                          height: "45vh",
+                          height: "auto",
                         }}
                         quality={100}
                       />
@@ -94,7 +94,7 @@ export default function ServiceSection(props: MyProps) {
                   </Col>
                 )}
                 {textRight && (
-                  <Col className="service-texts my-5 hide-sm" lg={6}>
+                  <Col className="service-texts my-2 hide-sm" lg={6}>
                     <div
                       className="service-content"
                       dangerouslySetInnerHTML={{

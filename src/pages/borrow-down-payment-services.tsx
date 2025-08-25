@@ -390,7 +390,7 @@ export default function BorrowDownPaymentInBC(props: MyProps) {
           />
         )}
         <Container className="mb-5">
-          <Row className="coquitlam-grid my-5">
+          <Row className="coquitlam-grid mt-4">
             <Col md={7}>
               <div
                 dangerouslySetInnerHTML={{
@@ -433,7 +433,7 @@ export default function BorrowDownPaymentInBC(props: MyProps) {
           imageLeft={expertsHelpData?.helpLeftImage}
           imageRight={expertsHelpData?.helpRightImage}
         />
-        <div className="mt-16 w-full">
+        <div className=" w-full">
           <TestimonialSliderRow />
         </div>
         <Container>
@@ -445,7 +445,7 @@ export default function BorrowDownPaymentInBC(props: MyProps) {
               }}
             ></div>
             <p
-              className="text-center mx-4 my-4"
+              className="text-left my-2"
               dangerouslySetInnerHTML={{
                 __html: borrowingProcessData.advisorDescriptionTop,
               }}
