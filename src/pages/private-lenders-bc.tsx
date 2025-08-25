@@ -302,9 +302,6 @@ const PrivateRefinance = (props: MyProps) => {
                       </span>
                     </p>
                   </Col>
-                  <Col md={7}>
-                    <span>{data?.PrivateRefinance?.heroDescription}</span>
-                  </Col>
                 </Row>
                 <Row className="coquitlam-grid my-5">
                   <Col md={7}>
@@ -320,29 +317,33 @@ const PrivateRefinance = (props: MyProps) => {
                       alt={data?.PrivateRefinance?.aboutImage?.altText}
                       width="390"
                       height="400"
-                      style={{ width: "100%", objectFit: "cover" }}
+                      style={{
+                        width: "100%",
+                        objectFit: "cover",
+                        padding: "2",
+                      }}
                     />
                   </Col>
                 </Row>
-                <Row className="product-service">
+                <Row className="">
                   <Col className="px-5" md={1}></Col>
                   <Col md={10}>
-                    <h2 className="text-center mt-5">
+                    <h2 className="text-center mt-2 font-bold!">
                       {data?.PrivateRefinance?.productsTitle}
                     </h2>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: data?.PrivateRefinance?.productsDescription,
                       }}
-                      className="text-center my-4"
+                      className="text-center my-2"
                     ></div>
                   </Col>
                   <Col className="px-5" md={1}></Col>
                 </Row>
 
-                <Row className="mortgage-broker">
+                <Row className="mortgage-broker pb-4!">
                   <Col>
-                    <h2 className="headering-title">
+                    <h2 className="headering-title font-bold!">
                       {data?.PrivateRefinance?.brokerTitle}
                     </h2>
                     <div
@@ -405,7 +406,6 @@ const PrivateRefinance = (props: MyProps) => {
                     </Col>
                   </Row>
                 </Container>
-
 
                 <div className="faq-accordion text-center">
                   <h2>Frequently Asked Questions</h2>
