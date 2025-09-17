@@ -28,7 +28,7 @@ const HeroSection = ({
     "https://asimaliprod.wpengine.com/wp-content/uploads/2025/06/hero-bg.webp?height=1080&width=1920";
 
   const altText = heroSection?.bannerImage?.altText || "Mortgage Background";
-  const rate = heroSection?.mortgageRatesLabel || "3.99";
+  const rate = heroSection?.mortgageRatesLabel || "4.70";
   const description =
     heroSection?.description ||
     `Looking for a reliable mortgage broker in Surrey? Asim Ali offers mortgage solutions, competitive rates, and expert guidance. Book us to experience the best services.`;
@@ -56,8 +56,8 @@ const HeroSection = ({
       {/* Mortgage Rate Strip */}
       <div className="text-center z-10 relative">
         <p className="text-sm md:text-sm py-1 bg-white text-[#12143A]">
-          Lowest Mortgage Rate in Canada.{" "}
-          <span className="text-[#F0B254]">Starting from {rate}%</span>
+          Expert Mortgage Advice, Every Step.
+          <span className="text-[#F0B254]"> Starting from {rate}%</span>
         </p>
       </div>
 
