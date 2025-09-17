@@ -49,11 +49,12 @@ const AccordionNewBC = (props: MyProps) => {
                       {homebuyerData?.advisorCards?.map((qa, index) => {
                         return (
                           <Accordion.Item
+                            as="p"
                             key={index}
                             eventKey={index.toString()}
                           >
                             <Accordion.Header as="p">
-                              {qa?.title}
+                              <div>{qa?.title}</div>
                             </Accordion.Header>
                             <Accordion.Body
                               dangerouslySetInnerHTML={{
