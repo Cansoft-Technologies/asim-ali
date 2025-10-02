@@ -383,7 +383,7 @@ export default function ScheduleMeetingSection({
               </a>
 
               <a
-                href="mailto:clientcare@asmail.ca"
+                href="mailto:clientcare@asimali.ca"
                 className="!no-underline text-black !hover:text-[#F0B254]"
               >
                 <div className="flex items-center gap-2 mt-3">
@@ -403,7 +403,7 @@ export default function ScheduleMeetingSection({
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </svg>
                   <span className="text-md text-black">
-                    clientcare@asmail.ca
+                    clientcare@asimali.ca
                   </span>
                 </div>
               </a>

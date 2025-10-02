@@ -127,7 +127,7 @@ export default function ScheduleMeeting({
                   <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
-                <span className="text-sm text-white">clientcare@asmail.ca</span>
+                <span className="text-sm text-white">clientcare@asimali.ca</span>
               </div>
 
               <div className="flex items-center gap-2">

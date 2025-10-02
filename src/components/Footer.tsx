@@ -152,12 +152,12 @@ export default function Footer({
                 </li>
               </a>
               <a
-                href="mailto:clientcare@asmail.ca"
+                href="mailto:clientcare@asimali.ca"
                 className="!no-underline text-white !hover:text-[#F0B254]"
               >
                 <li className="flex items-center gap-2">
                   <MailIcon />
-                  <span className="text-md">clientcare@asmail.ca</span>
+                  <span className="text-md">clientcare@asimali.ca</span>
                 </li>
               </a>
               <a

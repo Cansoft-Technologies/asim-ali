@@ -189,10 +189,10 @@ export default function Header(props: { menuData: any; settings: any }) {
             <Mail className="h-4 w-4 mr-2 text-white" />
             <a
               style={{ textDecoration: "none" }}
-              href="mailto:clientcare@asmail.ca"
+              href="mailto:clientcare@asimali.ca"
               className="mr-3 text-md text-white no-underline hover:text-[#F0B254] transition-colors"
             >
-              clientcare@asmail.ca
+              clientcare@asimali.ca
             </a>
             <span className="hidden md:inline-block">|</span>
             <span className="ml-3 text-md hidden md:inline-block">
