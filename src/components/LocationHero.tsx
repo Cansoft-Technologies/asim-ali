@@ -89,7 +89,7 @@ function LocationHero({
           </Col>
 
           <Col lg={6} className="p-4 form-div d-none d-md-block">
-            <p className="mb-4 text-dark service-title">Get in Touch</p>
+            <p className="mb-4 text-dark service-title">Get in Touch </p>
             <ScheduleApplyForm />
           </Col>
         </Row>
