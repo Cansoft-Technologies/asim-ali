@@ -290,6 +290,10 @@ const teamDescription =
   return (
     <>
       <Head>
+        {/* No-index robot meta tags */}
+        <meta name="robots" content="noindex, nofollow" />
+       
+
         {metaData?.map((meta,index) => {
 
           return (
