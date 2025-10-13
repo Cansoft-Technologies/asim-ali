@@ -363,7 +363,7 @@ const teamDescription =
 
 
 
-        <Container className="mb-5 px-3 py-3 my-5" style={{ borderRadius: "10px"}}>
+        <Container className="mb-5 px-3 md:py-3 my-5" style={{ borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
                     </h2>

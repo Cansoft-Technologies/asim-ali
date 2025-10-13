@@ -13,7 +13,7 @@ const AberdeenAccordionSection = (props: MyProps) => {
   return (
     <>
       <Container>
-        <div>
+        <div >
           {/* adding heading here */}
          
           <div className=" my-5">
@@ -21,7 +21,7 @@ const AberdeenAccordionSection = (props: MyProps) => {
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
               }}
-              className="text-center service-title text-lg tab-head"
+              className="max-sm:pt-[40px] text-center service-title text-lg tab-head"
             ></div>
             <span
               dangerouslySetInnerHTML={{
