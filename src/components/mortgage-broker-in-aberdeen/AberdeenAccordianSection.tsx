@@ -68,6 +68,15 @@ const AberdeenAccordionSection = (props: MyProps) => {
                   </div>
                 </Col>
               </Row>
+              {/* bttom section of this accordian */}
+              <div
+               dangerouslySetInnerHTML={{
+                __html: advisorData?.advisorDescriptionBottom,
+              }}
+              >
+
+              </div>
+
             </Container>
           </div>
         </div>

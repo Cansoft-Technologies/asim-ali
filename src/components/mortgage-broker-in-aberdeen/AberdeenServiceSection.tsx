@@ -31,7 +31,7 @@ export default function AberdeenServiceSection(props: MyProps) {
                 {textLeft && (
                   <Col className="service-texts d-flex align-items-start" lg={6} style={{ paddingTop: 0 }}>
                     <div
-                      className="service-content text-left"
+                      className=" text-left"
                       dangerouslySetInnerHTML={{
                         __html: textLeft,
                       }}

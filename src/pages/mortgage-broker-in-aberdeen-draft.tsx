@@ -20,6 +20,7 @@ import AberdeenOurRates from 'components/mortgage-broker-in-aberdeen/AberdeenOur
 import AberdeenMortgageAdvisor from 'components/mortgage-broker-in-aberdeen/AberdeenMortgageAdvisor';
 import AberdeenAccordionSection from 'components/mortgage-broker-in-aberdeen/AberdeenAccordianSection';
 import AberdeenServiceSection from 'components/mortgage-broker-in-aberdeen/AberdeenServiceSection';
+import FeaturedTab from 'components/FeaturedTab';
 
 
 
@@ -102,6 +103,7 @@ export async function getStaticProps() {
             }
           }
           mortgageInterest {
+            advisorDescriptionBottom
             
             advisorTitle
             advisorDescriptionTop
@@ -138,15 +140,9 @@ export async function getStaticProps() {
             description
           }
         }
-     
-     
-      }
-     
-    
-    
- 
-  }
-   settingsOptions {
+}
+        }
+settingsOptions {
       AsimOptions {
         headerSettings {
           uploadLogo {
@@ -219,6 +215,7 @@ export async function getStaticProps() {
   // const tipsTitleTwo = data?.pages?.nodes[0]?.NewVancouver?.tipsTitleTwo;
 
   
+  console.log("checking data ",data)
 
 
   if(!data){
@@ -378,6 +375,10 @@ const teamDescription =
                     ></div>
                   </Container>
 
+          <FeaturedTab 
+          tabData={tabRenovationData}
+          />
+
 
         <AberdeenServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}   header={mortgageInterestDataHeader}/>
 
@@ -399,7 +400,9 @@ const teamDescription =
 
                         {/* {console.log("mortgageInterestDataHeader",mortgageInterestDataHeader)} */}
 
-                        {console.log("checking",mortgageInterestDataHeader )}
+                        {/* {console.log("checking",mortgageInterestDataHeader )} */}
+
+                        {console.log("testing acordian data",mortgageInterestData)}
 
         <AberdeenAccordionSection  advisorData={mortgageInterestData}  />
        
