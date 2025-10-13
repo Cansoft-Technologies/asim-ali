@@ -60,7 +60,7 @@ export default function Footer({
     return rootItems;
   }, [menuData]);
   const servicesItem = menuTree.find((item) => item.label === "Our Services");
-  console.log(servicesItem, "servicesItem");
+  // console.log(servicesItem, "servicesItem");
 
   return (
     <footer className="w-full text-white pt-16 pb-6 relative overflow-hidden">

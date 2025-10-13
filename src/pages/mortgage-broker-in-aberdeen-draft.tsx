@@ -18,6 +18,9 @@ import OurLenders from 'components/OurLenders';
 import LocationHero from 'components/LocationHero';
 import AberdeenOurRates from 'components/mortgage-broker-in-aberdeen/AberdeenOurRates';
 import AberdeenMortgageAdvisor from 'components/mortgage-broker-in-aberdeen/AberdeenMortgageAdvisor';
+import AberdeenAccordionSection from 'components/mortgage-broker-in-aberdeen/AberdeenAccordianSection';
+import AberdeenServiceSection from 'components/mortgage-broker-in-aberdeen/AberdeenServiceSection';
+import FeaturedTab from 'components/FeaturedTab';
 
 
 
@@ -43,6 +46,7 @@ export async function getStaticProps() {
           }
         }
         NewVancouver {
+          tipsTitleTwo
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -99,6 +103,8 @@ export async function getStaticProps() {
             }
           }
           mortgageInterest {
+            advisorDescriptionBottom
+            
             advisorTitle
             advisorDescriptionTop
             advisorImage {
@@ -134,15 +140,9 @@ export async function getStaticProps() {
             description
           }
         }
-     
-     
-      }
-     
-    
-    
- 
-  }
-   settingsOptions {
+}
+        }
+settingsOptions {
       AsimOptions {
         headerSettings {
           uploadLogo {
@@ -211,8 +211,13 @@ export async function getStaticProps() {
 }`,
   });
 
-  console.log("checking data",data)
+  // console.log("checking data",data)
+  // const tipsTitleTwo = data?.pages?.nodes[0]?.NewVancouver?.tipsTitleTwo;
+
   
+  console.log("checking data ",data)
+
+
   if(!data){
     return {
       redirect: {
@@ -231,6 +236,8 @@ export async function getStaticProps() {
       serviceBannerData: data?.pages?.nodes[0]?.NewVancouver,
       mortgageBenefitsData: data?.pages?.nodes[0]?.NewVancouver?.mortgageBenifits,
       mortgageInterestData: data?.pages?.nodes[0]?.NewVancouver?.mortgageInterest,
+      mortgageInterestDataHeader: data?.pages?.nodes[0]?.NewVancouver?.tipsTitleTwo,
+      
       featuredTextLeft: data?.pages?.nodes[0]?.NewVancouver?.featuredTextLeft,
       featuredImageLeft: data?.pages?.nodes[0]?.NewVancouver?.featuredImageLeft,
       featuredImageRight: data?.pages?.nodes[0]?.NewVancouver?.featuredImageRight,
@@ -270,10 +277,11 @@ type MyProps = {
   serviceBannerData: any;
   advisorData: any;
   mortgageInterestData: any;
+  mortgageInterestDataHeader:any
 };
 
 export default function Page(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData ,mortgageInterestDataHeader} = props;
 
   const teamTitle =
   '<h2 style="font-size: 40px;">Client <span style="color: #f0b243;">Testimonial </span>: See What Our Happy Clients Say</h2>\n' +
@@ -285,6 +293,9 @@ const teamDescription =
 <h2>Current Mortgage Rates</h2>
 <p>Knowing about the current rates will <a href="/mortgage-payment-calculator"></a> help you select the best options for you. Here are the best current rates that you will have from our <strong>mortgage specialists</strong>:
 </p>
+
+  console.log("tips title two",tipsTitleTwo)
+
 
 `;
   return (
@@ -364,10 +375,14 @@ const teamDescription =
                     ></div>
                   </Container>
 
+          <FeaturedTab 
+          tabData={tabRenovationData}
+          />
 
-        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
 
+        <AberdeenServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}   header={mortgageInterestDataHeader}/>
 
+                      {console.log("testing form parents",mortgageInterestDataHeader)}
 
 {/* Current Mortgage Rates */}
             <AberdeenOurRates title={rateTitle} />
@@ -381,9 +396,18 @@ const teamDescription =
       
 
 
-        <AberdeenMortgageAdvisor advisorData={mortgageBenefitsData} />
+     
+
+                        {/* {console.log("mortgageInterestDataHeader",mortgageInterestDataHeader)} */}
+
+                        {/* {console.log("checking",mortgageInterestDataHeader )} */}
+
+                        {console.log("testing acordian data",mortgageInterestData)}
+
+        <AberdeenAccordionSection  advisorData={mortgageInterestData}  />
+       
+       
 {/* 
-        <AccordionSection advisorData={mortgageInterestData}/>
         <Container className="mb-5 mt-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
         <div
