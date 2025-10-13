@@ -322,7 +322,7 @@ const teamDescription =
         <Header settings={settings} menuData={mainMenus} />
       <main className="content">
         {serviceBannerData?.serviceBannerTitle == null ? (
-                ""
+                null
               ) : (
                 <LocationHero
                   title={serviceBannerData?.serviceBannerTitle}
@@ -382,10 +382,10 @@ const teamDescription =
 
         <AberdeenServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}   header={mortgageInterestDataHeader}/>
 
-                      {console.log("testing form parents",mortgageInterestDataHeader)}
+                  
 
 {/* Current Mortgage Rates */}
-            <AberdeenOurRates title={rateTitle} />
+        <AberdeenOurRates title={rateTitle} />
           
 
           {/* testimonial section */}
@@ -401,8 +401,6 @@ const teamDescription =
                         {/* {console.log("mortgageInterestDataHeader",mortgageInterestDataHeader)} */}
 
                         {/* {console.log("checking",mortgageInterestDataHeader )} */}
-
-                        {console.log("testing acordian data",mortgageInterestData)}
 
         <AberdeenAccordionSection  advisorData={mortgageInterestData}  />
        
