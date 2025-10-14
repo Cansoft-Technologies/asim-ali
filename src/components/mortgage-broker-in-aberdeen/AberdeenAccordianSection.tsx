@@ -21,7 +21,8 @@ const AberdeenAccordionSection = (props: MyProps) => {
               dangerouslySetInnerHTML={{
                 __html: advisorData?.advisorTitle,
               }}
-              className="max-sm:pt-[40px] text-center service-title text-lg tab-head"
+              className="max-sm:pt-[60px] text-center  text-lg tab-head"
+              style={{ fontFamily: "AvenirBook" }}
             ></div>
             <span
               dangerouslySetInnerHTML={{
@@ -30,7 +31,7 @@ const AberdeenAccordionSection = (props: MyProps) => {
               className="text-center"
             ></span>
           </div>
-          <div className="service-row my-5">
+          <div className="service-row ">
             <Container>
               <Row>
                 <Col className="service-texts" lg={5}>
