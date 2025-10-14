@@ -70,6 +70,7 @@ export default function AberdeenServiceSection(props: MyProps) {
                   <Col className="service-texts d-flex align-items-start" lg={6} style={{ paddingTop: 0 }}>
                     <div className="service-image">
                       <Image
+                        className="max-sm:hidden"
                         src={imageLeft.sourceUrl}
                         alt={imageLeft.altText}
                         width="390"
