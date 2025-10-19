@@ -16,6 +16,11 @@ import ContactSection from 'components/ContactSection';
 import OurRates from 'components/OurRates';
 import OurLenders from 'components/OurLenders';
 import LocationHero from 'components/LocationHero';
+import AberdeenOurRates from 'components/mortgage-broker-in-aberdeen/AberdeenOurRates';
+import AberdeenMortgageAdvisor from 'components/mortgage-broker-in-aberdeen/AberdeenMortgageAdvisor';
+import AberdeenAccordionSection from 'components/mortgage-broker-in-aberdeen/AberdeenAccordianSection';
+import AberdeenServiceSection from 'components/mortgage-broker-in-aberdeen/AberdeenServiceSection';
+import FeaturedTab from 'components/FeaturedTab';
 
 
 
@@ -24,7 +29,7 @@ export async function getStaticProps() {
 
   const { data } = await apolloClient.query({
     query: gql`query{
-      pages(where: {id: 6017}) {
+      pages(where: {id: 7452}) {
       nodes {
         seo {
           title
@@ -41,6 +46,7 @@ export async function getStaticProps() {
           }
         }
         NewVancouver {
+          tipsTitleTwo
           serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
@@ -97,6 +103,8 @@ export async function getStaticProps() {
             }
           }
           mortgageInterest {
+            advisorDescriptionBottom
+            
             advisorTitle
             advisorDescriptionTop
             advisorImage {
@@ -132,15 +140,9 @@ export async function getStaticProps() {
             description
           }
         }
-     
-     
-      }
-     
-    
-    
- 
-  }
-   settingsOptions {
+}
+        }
+settingsOptions {
       AsimOptions {
         headerSettings {
           uploadLogo {
@@ -208,6 +210,14 @@ export async function getStaticProps() {
     }
 }`,
   });
+
+  // console.log("checking data",data)
+  // const tipsTitleTwo = data?.pages?.nodes[0]?.NewVancouver?.tipsTitleTwo;
+
+  
+  console.log("checking data ",data)
+
+
   if(!data){
     return {
       redirect: {
@@ -226,6 +236,8 @@ export async function getStaticProps() {
       serviceBannerData: data?.pages?.nodes[0]?.NewVancouver,
       mortgageBenefitsData: data?.pages?.nodes[0]?.NewVancouver?.mortgageBenifits,
       mortgageInterestData: data?.pages?.nodes[0]?.NewVancouver?.mortgageInterest,
+      mortgageInterestDataHeader: data?.pages?.nodes[0]?.NewVancouver?.tipsTitleTwo,
+      
       featuredTextLeft: data?.pages?.nodes[0]?.NewVancouver?.featuredTextLeft,
       featuredImageLeft: data?.pages?.nodes[0]?.NewVancouver?.featuredImageLeft,
       featuredImageRight: data?.pages?.nodes[0]?.NewVancouver?.featuredImageRight,
@@ -265,27 +277,34 @@ type MyProps = {
   serviceBannerData: any;
   advisorData: any;
   mortgageInterestData: any;
+  mortgageInterestDataHeader:any
 };
 
 export default function Page(props: MyProps) {
-  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData } = props;
+  const { settings, mainMenus, metaData,contactData,tabRenovationData, featuredTextLeft,featuredImageLeft,featuredImageRight,featuredTextRight,mortgageServiceData,tipsImageRight, tipsLeftText, tipsRightText, tipsDescription, tipsTitle,tipsImageLeft,serviceBannerData,advisorData,mortgageBenefitsData,teamData,mortgageInterestData ,mortgageInterestDataHeader} = props;
 
   const teamTitle =
-  '<h2 style="font-size: 40px;">Our <span style="color: #f0b243;">Lenders </span></h2>\n' +
+  '<h2 style="font-size: 40px;">Client <span style="color: #f0b243;">Testimonial </span>: See What Our Happy Clients Say</h2>\n' +
   "";
 const teamDescription =
-  `<p><span style="font-weight: 400;">Our network consists of more than 100 partner lenders, ensuring that we have access to a wide range of financing options. This extensive collaboration with various financial institutions allows us to offer our clients a diverse set of mortgage solutions. This vast pool of resources is instrumental in our ability to secure the most favorable terms for your loan.
-</span></p>\n` +
+  `<p><span style="font-weight: 400;">We make sure that all our clients get what they are looking for. Take a look at our client testimonial:</span></p>\n` +
   "";
   const rateTitle = `
 <h2>Current Mortgage Rates</h2>
-<p>Navigating the fluctuating mortgage rates can be challenging, but our dedicated team works tirelessly to secure the most competitive rates for our clients, ensuring your financing plan is both affordable and suited to your financial landscape.
+<p>Knowing about the current rates will <a href="/mortgage-payment-calculator"></a> help you select the best options for you. Here are the best current rates that you will have from our <strong>mortgage specialists</strong>:
 </p>
+
+  console.log("tips title two",tipsTitleTwo)
+
 
 `;
   return (
     <>
       <Head>
+        {/* No-index robot meta tags */}
+        {/* <meta name="robots" content="noindex, nofollow" />
+        */}
+
         {metaData?.map((meta,index) => {
 
           return (
@@ -303,7 +322,7 @@ const teamDescription =
         <Header settings={settings} menuData={mainMenus} />
       <main className="content">
         {serviceBannerData?.serviceBannerTitle == null ? (
-                ""
+                null
               ) : (
                 <LocationHero
                   title={serviceBannerData?.serviceBannerTitle}
@@ -312,6 +331,7 @@ const teamDescription =
                   bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
                 />
               )}
+
               <Container className="mb-5">
               <Row className="coquitlam-grid my-5">
                   <Col md={7}>
@@ -323,7 +343,7 @@ const teamDescription =
                     <div className="tb-btn-left">
                     <Link href={"/apply-now"}>
                       <Button className="HeadBtn">
-                      Get Your Personalized Mortgage Solution Today!
+                      Call Mortgage Broker in Aberdeen
                       </Button>
                     </Link>
                   </div>
@@ -340,22 +360,52 @@ const teamDescription =
                   </Col>
                 </Row>
                 </Container>
-                <OurRates title={rateTitle} />
-        <Container className="mb-5 px-3 py-3 my-5" style={{border: "1px solid #f0b254", borderRadius: "10px"}}>
+
+
+
+        <Container className="mb-5 px-3 md:py-3 my-5" style={{ borderRadius: "10px"}}>
                     <h2 className="text-center">
                       {tipsTitle}
                     </h2>
                     <div
-                      className="text-center"
+                      className=""
                       dangerouslySetInnerHTML={{
                         __html: tipsDescription,
                       }}
                     ></div>
                   </Container>
-        <ServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}/>
-        <MortgageAdvisor advisorData={mortgageBenefitsData}/>
+
+          <FeaturedTab 
+          tabData={tabRenovationData}
+          />
+
+
+        <AberdeenServiceSection textLeft={featuredTextLeft} textRight={featuredTextRight} imageLeft={featuredImageLeft} imageRight={featuredImageRight}   header={mortgageInterestDataHeader}/>
+
+                  
+
+{/* Current Mortgage Rates */}
+        <AberdeenOurRates title={rateTitle} />
+          
+
+          {/* testimonial section */}
+
         <OurLenders title={teamTitle} description={teamDescription} />
-        <AccordionSection advisorData={mortgageInterestData}/>
+
+
+      
+
+
+     
+
+                        {/* {console.log("mortgageInterestDataHeader",mortgageInterestDataHeader)} */}
+
+                        {/* {console.log("checking",mortgageInterestDataHeader )} */}
+
+        <AberdeenAccordionSection  advisorData={mortgageInterestData}  />
+       
+       
+{/* 
         <Container className="mb-5 mt-5">
         <h2 className="text-center service-title">{contactData?.title}</h2>
         <div
@@ -364,7 +414,7 @@ const teamDescription =
             }}
             className="text-lg text-center"
           ></div>
-        </Container>
+        </Container> */}
       </main>
       <Footer settings={settings} menuData={mainMenus} />
     </>
