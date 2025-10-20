@@ -43,6 +43,12 @@ Disallow: /contact-a-mortgage-broker?desktop=true
 Disallow: /wp-content/uploads/2020/08/ApplicationForm_AsimAli_20200810.pdf
 Disallow: /ApplicationForm_AsimAli_20200810.pdf
 
+# Block specific pages that are no longer active
+Disallow: /home-landing-page
+Disallow: /home-landing-page/
+Disallow: /mortgage-broker-in-aberdeen-draft
+Disallow: /mortgage-broker-in-aberdeen-draft/
+
 # Host
 Host: https://asimali.ca
 

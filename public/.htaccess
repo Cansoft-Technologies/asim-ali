@@ -1,0 +1,23 @@
+
+
+
+
+RewriteRule ^home-landing-page/?$ - [R=410,L]
+RewriteRule ^home-landing-page$ - [R=410,L]
+RewriteRule ^mortgage-broker-in-aberdeen-draft/?$ - [R=410,L]
+RewriteRule ^mortgage-broker-in-aberdeen-draft$ - [R=410,L]
+
+
+
+# RewriteRule ^home-landing-page/?$ - [R=404,L]
+# RewriteRule ^mortgage-broker-in-aberdeen-draft/?$ - [R=404,L]
+
+# Block access to these URLs completely
+<FilesMatch "^(home-landing-page|mortgage-broker-in-aberdeen-draft)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Additional security: Block any query parameters on these URLs
+RewriteCond %{QUERY_STRING} ^.*$
+RewriteRule ^(home-landing-page|mortgage-broker-in-aberdeen-draft) - [R=410,L]
