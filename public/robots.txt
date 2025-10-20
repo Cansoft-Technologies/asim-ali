@@ -1,6 +1,48 @@
 # *
 User-agent: *
 Allow: /
+
+# Disallow specific routes
+Disallow: /blog?lang=fr
+Disallow: /?ignorenitro=
+Disallow: /?3x=
+Disallow: /how-to-apply?refinance=
+Disallow: /blog?et_blog=
+Disallow: /?lang=fr
+Disallow: /?refinance=
+Disallow: /?page_id=
+Disallow: /?pagename=testimonials&desktop=true&lang=fr
+Disallow: /current-rates?lang=fr
+Disallow: /?author=1
+Disallow: /contact-us?desktop=true
+Disallow: /?fbclid=
+Disallow: /current-rates?refinance=
+Disallow: /testimonials?desktop=true
+Disallow: /?desktop=true
+Disallow: /mortgage-affordability-calculator-blog/?lang=fr
+Disallow: /testimonials/?desktop=true
+Disallow: /how-to-apply/?homepurchase
+Disallow: /blog/?desktop=true
+Disallow: /?pagename=testimonials&desktop=true&lang=en
+Disallow: /blog/?lang=fr&et_blog
+Disallow: /?et_core_page_resource
+Disallow: /blog/?desktop=true&et_blog
+Disallow: /mortgages/how-to-apply/?refinance
+Disallow: /_next/image?url=https%3A%2F%2Fasimaliprod.wpengine.com%2Fwp-content%2Fuploads%2F2023%2F03%2Fcommercial-mortgage-surrey-41.webp&w=828&q=75
+Disallow: /_next/image?url=https%3A%2F%2Fasimaliprod.wpengine.com%2Fwp-content%2Fuploads%2F2023%2F03%2Fmortgage-broker-surrey-8.webp&w=3840&q=75
+Disallow: /blog/page/4?et_blog=&lang=fr
+Disallow: /category/uncategorized/after/YXJyYXljb25uZWN0aW9uOjQ4Mg==
+Disallow: /category/uncategorized
+Disallow: /blog/page/2?desktop=true&et_blog=
+Disallow: /cdn-cgi/l/email-protection
+Disallow: /category/uncategorized/page/3/
+Disallow: /tag/mortgage/
+Disallow: /mortgages/current-rates/?refinance
+Disallow: /tools/current-rates/?lang=fr
+Disallow: /contact-a-mortgage-broker?desktop=true
+Disallow: /wp-content/uploads/2020/08/ApplicationForm_AsimAli_20200810.pdf
+Disallow: /ApplicationForm_AsimAli_20200810.pdf
+
 # Block specific pages that are no longer active
 Disallow: /home-landing-page
 Disallow: /home-landing-page/
