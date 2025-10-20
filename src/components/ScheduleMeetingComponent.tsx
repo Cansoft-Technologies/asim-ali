@@ -78,12 +78,12 @@ export default function ScheduleMeetingComponent({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <div className="flex flex-col justify-center items-start">
-            <h2 className="!text-2xl md:!text-5xl !font-semibold mb-6 text-white font-oswald">
+            <h1 className="!text-2xl md:!text-5xl !font-semibold mb-6 text-white font-oswald">
               Start Your Application
               <br />
               and Get Approved Quickly!
               <br />
-            </h2>
+            </h1>
 
             <p
               className="text-gray-200 mb-8 mt-3"
