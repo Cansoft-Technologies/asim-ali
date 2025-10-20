@@ -68,7 +68,7 @@ const HeroSection = ({
             Mortgage Broker in <span className="text-[#F0B254]">Surrey</span>{" "}
             For
             <br className="hidden sm:inline" />
-            Expert Home Loan Solutions
+            For Home Loans
           </h1>
 
           <p
