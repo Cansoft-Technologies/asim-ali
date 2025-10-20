@@ -50,6 +50,31 @@ module.exports = withBundleAnalyzer(
       },
       async redirects() {
         return [
+          // Block specific URLs with 410 Gone status
+          {
+            source: "/home-landing-page",
+            destination: "/",
+            permanent: true,
+            statusCode: 301,
+          },
+          {
+            source: "/home-landing-page/",
+            destination: "/",
+            permanent: true,
+            statusCode: 301,
+          },
+          {
+            source: "/mortgage-broker-in-aberdeen-draft",
+            destination: "/mortgage-broker-in-aberdeen",
+            permanent: true,
+            statusCode: 301,
+          },
+          {
+            source: "/mortgage-broker-in-aberdeen-draft/",
+            destination: "/mortgage-broker-in-aberdeen",
+            permanent: true,
+            statusCode: 301,
+          },
           {
             source: "/refinance-your-mortgage-in-vancouver",
             destination: "/",
