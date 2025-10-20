@@ -56,13 +56,13 @@ export default function ScheduleMeetingForm({heroSection}: {heroSection?:any}) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <div className="flex flex-col justify-center items-start"> 
-                      <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white font-oswald">
+                      <h1 className="text-3xl md:text-5xl font-bold mb-6 text-white font-oswald">
                         Schedule Your Meeting with
                         <br />
                         Our Specialist Mortgage
                         <br />
                         Advisor
-                      </h2>
+                      </h1>
           
                       <p className="text-gray-200 mb-8 mt-3" dangerouslySetInnerHTML={{__html: heroSection?.description || `Are you ready to make your dream of owning a home in Surrey come true? Then Asim Ali is your reliable
                         partner in your mortgage journey. Reach out today to set up your meeting with our mortgage consultant to
