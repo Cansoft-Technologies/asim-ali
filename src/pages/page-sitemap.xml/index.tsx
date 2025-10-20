@@ -37,6 +37,9 @@ const excludeItems = [
   "/new-contact-us",
   "/location-sitemap.xml",
   "/sitemap-0.xml",
+
+  "/home-landing-page",
+  "/mortgage-broker-in-aberdeen-draft",
   ...locationRoutes,
 ];
 const data = [
