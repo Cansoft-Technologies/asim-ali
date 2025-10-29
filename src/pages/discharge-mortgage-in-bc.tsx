@@ -14,25 +14,26 @@ import { apolloClient } from "../lib/apollo";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
-    query: gql`query{
-      pages(where: {id: 4651}) {
-      nodes {
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-          openGraph {
-            image {
-              url
+    query: gql`
+      query {
+        pages(where: { id: 4651 }) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+              jsonLd {
+                raw
+              }
             }
-          }
-          jsonLd {
-            raw
-          }
-        }
-        dischargeMortgageBc {
-          serviceBannerTitle
+            dischargeMortgageBc {
+              serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
               serviceBannerImage {
@@ -44,176 +45,178 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-          
-          reasonTitle
-          reasonDescription
-          reasonLeftText
-          reasonRightText
-          reasonLeftImage {
-            altText
-            sourceUrl
-          }
-          reasonRightImage {
-            altText
-            sourceUrl
-          }
-          processBorrowing {
-            advisorTitle
-            advisorDescriptionTop
-            advisorCards{
-              title
-              description
+              aboutCtaText
+              aboutCtaUrl
+
+              reasonTitle
+              reasonDescription
+              reasonCtaText
+              reasonCtaUrl
+              reasonLeftText
+              reasonRightText
+              reasonLeftImage {
+                altText
+                sourceUrl
+              }
+              reasonRightImage {
+                altText
+                sourceUrl
+              }
+              processBorrowing {
+                advisorTitle
+                advisorDescriptionTop
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              borrowingPayment {
+                borrowingTitle
+                borrowingDescriptionTop
+                borrowingRightDescription
+                borrowingImage {
+                  sourceUrl
+                  altText
+                }
+              }
+              expertsHelp {
+                expertsHelpTitle
+                expertsHelpDescription
+                helpLeftText
+                helpRightText
+                helpLeftImage {
+                  sourceUrl
+                  altText
+                }
+                helpRightImage {
+                  sourceUrl
+                  altText
+                }
+              }
+              ratesTitle
+              ratesDescription
+
+              tabWhyChoose {
+                tabHeading
+                tabDescription
+                tabDetails {
+                  title
+                  description
+                }
+              }
+              loanTitle
+              processTitle
+              processDescription
+              reasonLeftTextCopy
+              reasonRightTextCopy
+              reasonLeftImageCopy {
+                altText
+                sourceUrl
+              }
+              reasonRightImageCopy {
+                altText
+                sourceUrl
+              }
+
+              qualifyingTitle
+              qualifyingDescription
+              commonConcerns {
+                advisorTitle
+                advisorDescription
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              advisorCtaText
+              advisorCtaUrl
+              talkTitle
+              talkDescription
+              talkCtaText
+              talkCtaUrl
             }
           }
-          borrowingPayment{
-            borrowingTitle
-            borrowingDescriptionTop
-            borrowingRightDescription
-            borrowingImage {
-              sourceUrl
-              altText
-            }
-          }
-          expertsHelp{
-            expertsHelpTitle
-            expertsHelpDescription
-            helpLeftText
-            helpRightText
-            helpLeftImage{
+        }
+        settingsOptions {
+          AsimOptions {
+            headerSettings {
+              uploadLogo {
                 sourceUrl
                 altText
-            }
-            helpRightImage{
+              }
+              uploadLogoMobile {
                 sourceUrl
                 altText
-            }    
-          }
-          ratesTitle
-          ratesDescription
-          
-          tabWhyChoose{
-            tabHeading
-            tabDescription
-            tabDetails{
-              title
-              description
+              }
+            }
+            generalSettings {
+              schemaProductRating
+            }
+            footerSettings {
+              socialUrl {
+                facebook
+                tiktok
+                linkedin
+                instagram
+              }
+              copyrightText
+              footerLeftWidget {
+                title
+                phoneNumber
+                emailAddress
+              }
+              footerLogoSection {
+                logoText
+                logoUpload {
+                  altText
+                  sourceUrl
+                }
+              }
+              footerRightWidget {
+                title
+                address
+              }
             }
           }
-          loanTitle
-          processTitle
-          processDescription
-          reasonLeftTextCopy
-          reasonRightTextCopy
-          reasonLeftImageCopy {
-            altText
-            sourceUrl
-          }
-          reasonRightImageCopy {
-            altText
-            sourceUrl
-          }
+        }
 
-          qualifyingTitle
-          qualifyingDescription
-          commonConcerns {
-            advisorTitle
-            advisorDescription
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-            }
-          }
-          talkTitle
-          talkDescription
-          
-        }
-     
-     
-      }
-     
-    
-    
- 
-  }
-   settingsOptions {
-      AsimOptions {
-        headerSettings {
-          uploadLogo {
-            sourceUrl
-            altText
-          }
-          uploadLogoMobile {
-            sourceUrl
-            altText
-          }
-        }
-        generalSettings {
-            schemaProductRating
-        }
-        footerSettings {
-          socialUrl {
-            facebook
-            tiktok
-            linkedin
-            instagram
-          }
-          copyrightText
-          footerLeftWidget {
-            title
-            phoneNumber
-            emailAddress
-          }
-          footerLogoSection {
-            logoText
-            logoUpload {
-              altText
-              sourceUrl
-            }
-          }
-          footerRightWidget {
-            title
-            address
-          }
-        }
-      }
-    }
-
-    menus(where: {location: PRIMARY}) {
-      nodes {
-        name
-        slug
-        menuItems(first: 150){
+        menus(where: { location: PRIMARY }) {
           nodes {
-            url
-            target
-            parentId
-            label
-            cssClasses
-            description
-            id
-            childItems (first: 150) {
+            name
+            slug
+            menuItems(first: 150) {
               nodes {
-                uri
+                url
+                target
+                parentId
                 label
+                cssClasses
+                description
+                id
+                childItems(first: 150) {
+                  nodes {
+                    uri
+                    label
+                  }
+                }
               }
             }
           }
         }
       }
-    }
-}`,
+    `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -335,12 +338,19 @@ export default function DischargeMortgageBc(props: MyProps) {
   return (
     <>
       <Head>
-        {metaData?.map((meta,index) => {
+        {metaData?.map((meta, index) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+              <link
+                rel="canonical"
+                href={
+                  meta?.seo?.canonicalUrl?.endsWith("/")
+                    ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                    : meta?.seo?.canonicalUrl
+                }
+              />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta
                 property="og:description"
@@ -379,6 +389,15 @@ export default function DischargeMortgageBc(props: MyProps) {
                   __html: serviceBannerData?.aboutText,
                 }}
               ></div>
+              {serviceBannerData?.aboutCtaText && (
+                <div className="mt-3">
+                  <Link href={serviceBannerData?.aboutCtaUrl || "/"}>
+                    <Button className="ctaBtn">
+                      {serviceBannerData?.aboutCtaText}
+                    </Button>
+                  </Link>
+                </div>
+              )}
             </Col>
             <Col md={5}>
               <Image
@@ -386,7 +405,6 @@ export default function DischargeMortgageBc(props: MyProps) {
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="390"
                 height="400"
-                
                 style={{ width: "100%", objectFit: "cover" }}
               />
             </Col>
@@ -403,6 +421,17 @@ export default function DischargeMortgageBc(props: MyProps) {
               __html: reasonDescription,
             }}
           ></div>
+
+          {/* Reason CTA */}
+          {serviceBannerData?.reasonCtaText && (
+            <div className="mt-3 text-center">
+              <Link href={serviceBannerData?.reasonCtaUrl || "/"}>
+                <Button className="ctaBtn">
+                  {serviceBannerData?.reasonCtaText}
+                </Button>
+              </Link>
+            </div>
+          )}
         </Container>
 
         <ServiceSection
@@ -418,17 +447,26 @@ export default function DischargeMortgageBc(props: MyProps) {
           imageLeft={reasonLeftImage}
           imageRight={reasonRightImage}
         />
-        <div className="tab-btn">
+        {/* <div className="tab-btn">
           <Link href={"/apply-now"}>
             <Button className="HeadBtn">
               Apply <span>Now</span>
             </Button>
           </Link>
-        </div>
+        </div> */}
         <TabNewBC tabData={tabWhyChooseData} />
         <HomeBuyerNewBC advisorData={borrowingProcessData} />
-
         <AccordionNewBC homebuyerData={commonConcernsData} />
+        {serviceBannerData?.advisorCtaText && (
+          <div className="mb-3 text-center">
+            <Link href={serviceBannerData?.advisorCtaUrl || "/"}>
+              <Button className="ctaBtn">
+                {serviceBannerData?.advisorCtaText}
+              </Button>
+            </Link>
+          </div>
+        )}
+
         <Container
           className="mb-5 px-3 py-3"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -455,13 +493,23 @@ export default function DischargeMortgageBc(props: MyProps) {
             }}
             className="text-lg text-center"
           ></div>
-          <div className="tab-btn">
+          {serviceBannerData?.talkCtaText && (
+            <div className="mt-3 text-center">
+              <Link href={serviceBannerData?.talkCtaUrl || "/"}>
+                <Button className="ctaBtn">
+                  {serviceBannerData?.talkCtaText}
+                </Button>
+              </Link>
+            </div>
+          )}
+
+          {/* <div className="tab-btn">
             <Link href={"/contact-us"}>
               <Button className="HeadBtn">
                 Contact <span>Us</span>
               </Button>
             </Link>
-          </div>
+          </div> */}
         </Container>
       </main>
       <Footer settings={settings} menuData={mainMenus} />
