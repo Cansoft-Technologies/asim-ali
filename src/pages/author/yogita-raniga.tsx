@@ -13,7 +13,7 @@ export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
       query {
-        pages(where: { id: 6730 }) {
+        pages(where: { id: 7520 }) {
           nodes {
             seo {
               title

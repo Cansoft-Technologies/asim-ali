@@ -13,7 +13,7 @@ export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
       query {
-        pages(where: { id: 6730 }) {
+        pages(where: { id: 7514 }) {
           nodes {
             seo {
               title
@@ -220,9 +220,7 @@ export default function Page(props: MyProps) {
                             __html: data?.authorInfo?.aboutText,
                           }}
                         ></div>
-
-                        {/* LinkedIn Profile */}
-                        <div>
+                        <div className="">
                           {data?.authorInfo?.linkedinProfile && (
                             <a
                               href={data?.authorInfo?.linkedinProfile}
