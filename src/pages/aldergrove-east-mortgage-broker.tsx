@@ -14,6 +14,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
 import ClientReviews from "components/ClientReviews";
+import MapSection from "components/MapSection";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -44,6 +45,7 @@ export async function getStaticProps() {
                 sourceUrl
               }
               aboutText
+              aboutBtn
               aboutImage {
                 altText
                 sourceUrl
@@ -332,13 +334,15 @@ export default function Page(props: MyProps) {
   } = props;
 
   const teamTitle =
-    '<h2 style="font-size: 40px;">Mortgage Lenders<span style="color: #f0b243;"> We Work with </span></h2>\n' +
+    '<h2 style="font-size: 40px;">Why Our Clients <span style="color: #f0b243;"> Trust Us </span></h2>\n' +
     "";
   const teamDescription =
     `<p><span style="font-weight: 400;">We have collaborated with more than 300 lenders so that you can have more options at hand. Let’s take a look at some of the lenders we've worked with:
 </span></p>\n` + "";
   const rateTitle = `
-<h2>Our Current Mortgage Rates in Aldergrove East, BC​​</h2>
+<span style="font-size: 32px; font-weight: semi-bold;">Current Mortgage Rates
+​​</span>
+
 <p>If you are a first-time home buyer, then knowing about the rates will help you a lot. Here are our competitive rates:</p>
 
 `;
@@ -391,10 +395,13 @@ export default function Page(props: MyProps) {
                   __html: serviceBannerData?.aboutText,
                 }}
               ></div>
-              <div className="tb-btn-left">
-                <Link href={"tel:+16045913590"}>
-                  <Button className="HeadBtn">Book Free Mortgage Call!</Button>
-                </Link>
+              <div className="tb-btn-left"
+              dangerouslySetInnerHTML={{
+                __html: serviceBannerData?.aboutBtn
+              }}
+              >
+            
+                
               </div>
             </Col>
             <Col md={5}>
@@ -488,6 +495,11 @@ export default function Page(props: MyProps) {
             </Link>
           </div>
         </Container>
+        
+        {/* added map section here */}
+
+        <MapSection />
+
       </main>
       <Footer settings={settings} menuData={mainMenus} />
     </>
