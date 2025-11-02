@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 type MyProps = {
   advisorData: any;
@@ -64,6 +65,16 @@ export default function MortgageAdvisor(props: MyProps) {
                 }}
                 className="service-description "
               ></div>
+              {/* CTA Button */}
+              {advisorData?.advisorCtaText && (
+                <div className="tb-btn">
+                  <Link href={advisorData?.advisorCtaUrl}>
+                    <Button className="HeadBtn">
+                      {advisorData?.advisorCtaText}
+                    </Button>
+                  </Link>
+                </div>
+              )}
             </Col>
           </Row>
         </Container>
