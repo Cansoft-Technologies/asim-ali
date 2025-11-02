@@ -526,22 +526,38 @@ export default function Page(props: MyProps) {
               </Col>
             )}
             <Col md={homeContactSectionSecond?.image ? 7 : 12}>
-             
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: contactData?.description,
-                }}
-                className=""
-              ></div>
-              
-              {homeContactSectionSecond?.ctaBtn && (
-                <div 
-                  className="tb-btn mt-4"
+              <div className="d-flex flex-column h-100 px-md-4 px-0 justify-content-center">
+                <div
                   dangerouslySetInnerHTML={{
-                    __html: homeContactSectionSecond?.ctaBtn,
+                    __html: contactData?.description,
+                  }}
+                  className="mb-4 contact-description"
+                  style={{
+                    fontSize: "16px",
+                    lineHeight: "1.7",
+                    color: "#333",
                   }}
                 ></div>
-              )}
+                
+                {homeContactSectionSecond?.ctaBtn && (
+                  <div 
+                    className="tb-btn-left mt-4"
+                    dangerouslySetInnerHTML={{
+                      __html: homeContactSectionSecond?.ctaBtn,
+                    }}
+                  ></div>
+                )}
+              </div>
+              <style dangerouslySetInnerHTML={{
+                __html: `
+                  .contact-description p {
+                    margin-bottom: 1.25rem;
+                  }
+                  .contact-description p:last-child {
+                    margin-bottom: 0;
+                  }
+                `
+              }} />
             </Col>
           </Row>
        
