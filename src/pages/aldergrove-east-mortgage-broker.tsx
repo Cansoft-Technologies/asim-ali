@@ -15,222 +15,223 @@ import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
 import ClientReviews from "components/ClientReviews";
 import MapSection from "components/MapSection";
+import TestimonialSliderRow from "components/TestimonialSliderRow";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
- query{
-  pages(where: {id: 5979}) {
-    nodes {
-      seo {
-        title
-        description
-        canonicalUrl
-        focusKeywords
-        openGraph {
-          image {
-            url
-          }
-        }
-        jsonLd {
-          raw
-        }
-      }
-      NewVancouver {
-        serviceBannerTitle
-        serviceBannerHeading
-        serviceBannerDescription
-        serviceBannerImage {
-          altText
-          sourceUrl
-        }
-        aboutText
-        aboutBtn
-        aboutImage {
-          altText
-          sourceUrl
-        }
-        featuredTextLeft
-        featuredTextRight
-        featuredImageRight {
-          altText
-          sourceUrl
-        }
-        featuredImageLeft {
-          altText
-          sourceUrl
-        }
-        teamSection {
-          teamTitle
-          teamDescription
-          hideSection
-          teamImage {
-            sourceUrl
-            altText
-          }
-        }
-        reasonTitle
-        reasonDescription
-        reasonLeftText
-        reasonLeftCta
-        reasonRightText
-        reasonLeftImage {
-          altText
-          sourceUrl
-        }
-        reasonRightImage {
-          altText
-          sourceUrl
-        }
-        tipsTitle
-        tipsDescription
-        tipsLeftText
-        tipsRightText
-        tipsImageRight {
-          altText
-          sourceUrl
-        }
-        tipsImageLeft {
-          altText
-          sourceUrl
-        }
-        advisorSection {
-          cta
-          advisorTitle
-          advisorDescriptionTop
-          advisorImage {
-            sourceUrl
-            altText
-          }
-          advisorCards {
-            title
-            description
-          }
-        }
-        mortgageInterest {
-          advisorTitle
-          advisorDescriptionTop
-          advisorImage {
-            sourceUrl
-            altText
-          }
-          advisorCards {
-            title
-            description
-          }
-        }
-        mortgageBenifits {
-          advisorTitle
-          advisorDescriptionTop
-          advisorImage {
-            sourceUrl
-            altText
-          }
-          advisorCards {
-            title
-            description
-          }
-        }
-        reviewSection {
-          reviewTitle
-          reviewDescription
-          reviewCard {
-            author
-            reviewText
-            clientImage {
-              sourceUrl
-              altText
+      query {
+        pages(where: { id: 5979 }) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+              jsonLd {
+                raw
+              }
+            }
+            NewVancouver {
+              serviceBannerTitle
+              serviceBannerHeading
+              serviceBannerDescription
+              serviceBannerImage {
+                altText
+                sourceUrl
+              }
+              aboutText
+              aboutBtn
+              aboutImage {
+                altText
+                sourceUrl
+              }
+              featuredTextLeft
+              featuredTextRight
+              featuredImageRight {
+                altText
+                sourceUrl
+              }
+              featuredImageLeft {
+                altText
+                sourceUrl
+              }
+              teamSection {
+                teamTitle
+                teamDescription
+                hideSection
+                teamImage {
+                  sourceUrl
+                  altText
+                }
+              }
+              reasonTitle
+              reasonDescription
+              reasonLeftText
+              reasonLeftCta
+              reasonRightText
+              reasonLeftImage {
+                altText
+                sourceUrl
+              }
+              reasonRightImage {
+                altText
+                sourceUrl
+              }
+              tipsTitle
+              tipsDescription
+              tipsLeftText
+              tipsRightText
+              tipsImageRight {
+                altText
+                sourceUrl
+              }
+              tipsImageLeft {
+                altText
+                sourceUrl
+              }
+              advisorSection {
+                cta
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              mortgageInterest {
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              mortgageBenifits {
+                advisorTitle
+                advisorDescriptionTop
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+              reviewSection {
+                reviewTitle
+                reviewDescription
+                reviewCard {
+                  author
+                  reviewText
+                  clientImage {
+                    sourceUrl
+                    altText
+                  }
+                }
+              }
+              tabRenovation {
+                tabHeading
+                tabDetails {
+                  title
+                  description
+                }
+              }
+              homeContactSection {
+                title
+                description
+                cta
+              }
+              homeContactSectionSecond {
+                image {
+                  sourceUrl
+                  altText
+                }
+                ctaBtn
+              }
             }
           }
         }
-        tabRenovation {
-          tabHeading
-          tabDetails {
-            title
-            description
+        settingsOptions {
+          AsimOptions {
+            headerSettings {
+              uploadLogo {
+                sourceUrl
+                altText
+              }
+              uploadLogoMobile {
+                sourceUrl
+                altText
+              }
+            }
+            generalSettings {
+              schemaProductRating
+            }
+            footerSettings {
+              socialUrl {
+                facebook
+                tiktok
+                linkedin
+                instagram
+              }
+              copyrightText
+              footerLeftWidget {
+                title
+                phoneNumber
+                emailAddress
+              }
+              footerLogoSection {
+                logoText
+                logoUpload {
+                  altText
+                  sourceUrl
+                }
+              }
+              footerRightWidget {
+                title
+                address
+              }
+            }
           }
         }
-        homeContactSection {
-          title
-          description
-          cta
-        }
-        homeContactSectionSecond{
-          image{
-            sourceUrl
-            altText
-          }
-          ctaBtn
-        }
-      }
-    }
-  }
-  settingsOptions {
-    AsimOptions {
-      headerSettings {
-        uploadLogo {
-          sourceUrl
-          altText
-        }
-        uploadLogoMobile {
-          sourceUrl
-          altText
-        }
-      }
-      generalSettings {
-        schemaProductRating
-      }
-      footerSettings {
-        socialUrl {
-          facebook
-          tiktok
-          linkedin
-          instagram
-        }
-        copyrightText
-        footerLeftWidget {
-          title
-          phoneNumber
-          emailAddress
-        }
-        footerLogoSection {
-          logoText
-          logoUpload {
-            altText
-            sourceUrl
-          }
-        }
-        footerRightWidget {
-          title
-          address
-        }
-      }
-    }
-  }
-  menus(where: {location: PRIMARY}) {
-    nodes {
-      name
-      slug
-      menuItems(first: 150) {
-        nodes {
-          url
-          target
-          parentId
-          label
-          cssClasses
-          description
-          id
-          childItems(first: 150) {
-            nodes {
-              uri
-              label
+        menus(where: { location: PRIMARY }) {
+          nodes {
+            name
+            slug
+            menuItems(first: 150) {
+              nodes {
+                url
+                target
+                parentId
+                label
+                cssClasses
+                description
+                id
+                childItems(first: 150) {
+                  nodes {
+                    uri
+                    label
+                  }
+                }
+              }
             }
           }
         }
       }
-    }
-  }
-}
     `,
   });
   if (!data) {
@@ -242,8 +243,6 @@ export async function getStaticProps() {
     };
   }
   return {
-    
-
     props: {
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
@@ -276,7 +275,8 @@ export async function getStaticProps() {
       reasonRightImage: data?.pages?.nodes[0]?.NewVancouver?.reasonRightImage,
       reasonRightText: data?.pages?.nodes[0]?.NewVancouver?.reasonRightText,
       reasonLeftImage: data?.pages?.nodes[0]?.NewVancouver?.reasonLeftImage,
-      homeContactSectionSecond: data?.pages?.nodes[0]?.NewVancouver?.homeContactSectionSecond,
+      homeContactSectionSecond:
+        data?.pages?.nodes[0]?.NewVancouver?.homeContactSectionSecond,
     },
     revalidate: 60,
   };
@@ -310,7 +310,7 @@ type MyProps = {
   reasonLeftText: any;
   reasonRightText: any;
   reasonLeftImage: any;
-  reasonLeftCta:any
+  reasonLeftCta: any;
   reasonRightImage: any;
   homeContactSectionSecond: any;
 };
@@ -348,8 +348,6 @@ export default function Page(props: MyProps) {
     reasonLeftImage,
     homeContactSectionSecond,
   } = props;
-
-
 
   const teamTitle =
     '<h2 style="font-size: 40px;">Why Our Clients <span style="color: #f0b243;"> Trust Us </span></h2>\n' +
@@ -413,14 +411,12 @@ export default function Page(props: MyProps) {
                   __html: serviceBannerData?.aboutText,
                 }}
               ></div>
-              <div className="tb-btn-left"
-              dangerouslySetInnerHTML={{
-                __html: serviceBannerData?.aboutBtn
-              }}
-              >
-            
-                
-              </div>
+              <div
+                className="tb-btn-left"
+                dangerouslySetInnerHTML={{
+                  __html: serviceBannerData?.aboutBtn,
+                }}
+              ></div>
             </Col>
             <Col md={5}>
               <Image
@@ -452,16 +448,16 @@ export default function Page(props: MyProps) {
           imageLeft={featuredImageLeft}
           imageRight={featuredImageRight}
         />
-        
-       
-  {/* CTA btn */}
-      <div className="tb-btn"> <Link href={"/apply-now"}>
-        <Button className="HeadBtn">{contactData?.cta}</Button>
+
+        {/* CTA btn */}
+        <div className="tb-btn">
+          {" "}
+          <Link href={"/apply-now"}>
+            <Button className="HeadBtn">{contactData?.cta}</Button>
           </Link>
         </div>
 
         <MortgageAdvisor advisorData={mortgageBenefitsData} />
-
 
         <div className="tb-btn mb-4">
           <Link href={"https://asimali.ca/current-rates"}>
@@ -476,7 +472,12 @@ export default function Page(props: MyProps) {
           </Link>
         </div>
 
-        <OurLenders title={teamTitle} description={teamDescription} />
+        {/* <OurLenders title={teamTitle} description={teamDescription} /> */}
+
+        {/* Client Testimonials */}
+        <Container className="mb-5 mt-5">
+          <TestimonialSliderRow />
+        </Container>
 
         <Container
           className="mb-5 px-3 py-3 my-5 mt-5"
@@ -497,9 +498,8 @@ export default function Page(props: MyProps) {
           imageRight={reasonRightImage}
         />
 
-
         {reasonLeftCta && (
-          <div 
+          <div
             className="tb-btn"
             dangerouslySetInnerHTML={{
               __html: reasonLeftCta,
@@ -509,10 +509,9 @@ export default function Page(props: MyProps) {
 
         {/* <ClientReviews reviews={reviewSection} /> */}
 
-
         {/* <AccordionSection advisorData={mortgageInterestData} /> */}
         <Container className="mb-5 mt-5">
-        <h2 className="text-center service-title">{contactData?.title}</h2>
+          <h2 className="text-center service-title">{contactData?.title}</h2>
           <Row className="my-5">
             {homeContactSectionSecond?.image && (
               <Col md={5}>
@@ -538,9 +537,9 @@ export default function Page(props: MyProps) {
                     color: "#333",
                   }}
                 ></div>
-                
+
                 {homeContactSectionSecond?.ctaBtn && (
-                  <div 
+                  <div
                     className="tb-btn-left mt-4"
                     dangerouslySetInnerHTML={{
                       __html: homeContactSectionSecond?.ctaBtn,
@@ -548,25 +547,24 @@ export default function Page(props: MyProps) {
                   ></div>
                 )}
               </div>
-              <style dangerouslySetInnerHTML={{
-                __html: `
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: `
                   .contact-description p {
                     margin-bottom: 1.25rem;
                   }
                   .contact-description p:last-child {
                     margin-bottom: 0;
                   }
-                `
-              }} />
+                `,
+                }}
+              />
             </Col>
           </Row>
-       
+
+          {/* added map section here */}
+          <MapSection />
         </Container>
-        
-        {/* added map section here */}
-
-        <MapSection />
-
       </main>
       <Footer settings={settings} menuData={mainMenus} />
     </>
