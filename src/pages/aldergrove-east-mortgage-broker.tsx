@@ -512,37 +512,39 @@ export default function Page(props: MyProps) {
 
         {/* <AccordionSection advisorData={mortgageInterestData} /> */}
         <Container className="mb-5 mt-5">
-          <h2 className="text-center service-title">{contactData?.title}</h2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: contactData?.description,
-            }}
-            className=""
-          ></div>
-          
-          {homeContactSectionSecond?.image && (
-            <div className="my-5">
-              <Image
-                src={homeContactSectionSecond?.image?.sourceUrl}
-                alt={homeContactSectionSecond?.image?.altText}
-                width="1200"
-                height="600"
-                style={{ width: "100%", objectFit: "cover" }}
-              />
-            </div>
-          )}
-
-          {homeContactSectionSecond?.ctaBtn && (
-            <div 
-              className="tb-btn"
-              dangerouslySetInnerHTML={{
-                __html: homeContactSectionSecond?.ctaBtn,
-              }}
-            ></div>
-          )}
-
-          
-
+        <h2 className="text-center service-title">{contactData?.title}</h2>
+          <Row className="my-5">
+            {homeContactSectionSecond?.image && (
+              <Col md={5}>
+                <Image
+                  src={homeContactSectionSecond?.image?.sourceUrl}
+                  alt={homeContactSectionSecond?.image?.altText}
+                  width="600"
+                  height="600"
+                  style={{ width: "100%", objectFit: "cover", height: "100%" }}
+                />
+              </Col>
+            )}
+            <Col md={homeContactSectionSecond?.image ? 7 : 12}>
+             
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: contactData?.description,
+                }}
+                className=""
+              ></div>
+              
+              {homeContactSectionSecond?.ctaBtn && (
+                <div 
+                  className="tb-btn mt-4"
+                  dangerouslySetInnerHTML={{
+                    __html: homeContactSectionSecond?.ctaBtn,
+                  }}
+                ></div>
+              )}
+            </Col>
+          </Row>
+       
         </Container>
         
         {/* added map section here */}
