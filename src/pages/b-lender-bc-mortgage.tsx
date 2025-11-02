@@ -3,13 +3,16 @@ import { Footer, Header, Hero } from "components";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import { Accordion, Col, Container, Row } from "react-bootstrap";
+import { Accordion, Button, Col, Container, Row } from "react-bootstrap";
 import "react-multi-carousel/lib/styles.css";
 
 import MortgageAdvisor from "components/MortgageAdvisor";
 import { apolloClient } from "lib/apollo";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import MapSection from "components/MapSection";
+import Link from "next/link";
+import TestimonialSliderRow from "components/TestimonialSliderRow";
 
 const responsive = {
   superLargeDesktop: {
@@ -55,6 +58,8 @@ export async function getStaticProps() {
               bannerHeading
               bannerDescription
               aboutText
+              aboutCtaText
+              aboutCtaUrl
               aboutImage {
                 altText
                 sourceUrl
@@ -63,10 +68,22 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
+              testimonialsCtaText
+              testimonialsCtaUrl
+              exploreTitle
+              exploreDescription
+              exploreCtaText
+              exploreCtaUrl
               productsTitle
               productsDescription
               productsRightText
               productsLeftText
+              productsCtaText
+              productsCtaUrl
+              processHeading
+              processDiscription
+              processCtaText
+              processCtaUrl
               brokerTitle
               brokerDescription
               bottomBrokerTitle
@@ -84,6 +101,8 @@ export async function getStaticProps() {
                   title
                   description
                 }
+                advisorCtaText
+                advisorCtaUrl
                 advisorTitle
                 advisorDescriptionTop
                 advisorImage {
@@ -99,6 +118,7 @@ export async function getStaticProps() {
                 question
                 answer
               }
+              author
             }
           }
         }
@@ -117,7 +137,7 @@ export async function getStaticProps() {
                 tiktok
                 linkedin
                 instagram
-              }              
+              }
               copyrightText
               footerLeftWidget {
                 title
@@ -152,7 +172,7 @@ export async function getStaticProps() {
                 cssClasses
                 description
                 id
-                childItems (first: 150) {
+                childItems(first: 150) {
                   nodes {
                     uri
                     label
@@ -202,7 +222,7 @@ const BLender = (props: MyProps) => {
         return (
           <div key={index} className="Bc-Coquitlam">
             <Head>
-              {metaData?.map((meta,index) => {
+              {metaData?.map((meta, index) => {
                 return (
                   <>
                     <title>{meta?.seo?.title}</title>
@@ -257,6 +277,16 @@ const BLender = (props: MyProps) => {
                         __html: data?.BLender?.aboutText,
                       }}
                     ></div>
+                    {/* CTA Button */}
+                    {data?.BLender?.aboutCtaText && (
+                      <div className="tb-btn">
+                        <Link href={data?.BLender?.aboutCtaUrl}>
+                          <Button className="HeadBtn">
+                            {data?.BLender?.aboutCtaText}
+                          </Button>
+                        </Link>
+                      </div>
+                    )}
                   </Col>
                   <Col md={5}>
                     <Image
@@ -264,7 +294,6 @@ const BLender = (props: MyProps) => {
                       alt={data?.BLender?.aboutImage?.altText}
                       width="390"
                       height="400"
-                      
                       style={{ width: "100%", objectFit: "cover" }}
                     />
                   </Col>
@@ -295,12 +324,24 @@ const BLender = (props: MyProps) => {
                   <Container>
                     <Row>
                       <Col className="service-texts" lg={6}>
-                        <div
-                          className="service-content"
-                          dangerouslySetInnerHTML={{
-                            __html: data?.BLender?.productsLeftText,
-                          }}
-                        ></div>
+                        <Row className="mb-3">
+                          <div
+                            className="service-content"
+                            dangerouslySetInnerHTML={{
+                              __html: data?.BLender?.productsLeftText,
+                            }}
+                          ></div>
+                          {/* CTA Button */}
+                          {data?.BLender?.productsCtaText && (
+                            <div className="tb-btn">
+                              <Link href={data?.BLender?.productsCtaUrl}>
+                                <Button className="HeadBtn">
+                                  {data?.BLender?.productsCtaText}
+                                </Button>
+                              </Link>
+                            </div>
+                          )}
+                        </Row>
                       </Col>
                       <Col className="service-texts" lg={6}>
                         <div className="service-image">
@@ -316,31 +357,77 @@ const BLender = (props: MyProps) => {
                     </Row>
                   </Container>
                 </div>
-                <div className="service-row my-5">
-                  <Container>
-                    <Row>
-                      <Col className="service-texts" lg={6}>
-                        <div className="service-image">
-                          <Image
-                            src={data?.BLender?.renovateImageFirst?.sourceUrl}
-                            alt={data?.BLender?.renovateImageFirst?.altText}
-                            width="390"
-                            height="400"
-                            style={{ width: "100%", objectFit: "cover" }}
-                          />
-                        </div>
-                      </Col>
-                      <Col className="service-texts" lg={6}>
+
+                {/* Process Section */}
+
+                {data?.BLender?.processHeading && (
+                  <div className="process-section">
+                    <Row className="product-service">
+                      <Col className="px-5" md={1}></Col>
+                      <Col
+                        className="py-3"
+                        md={10}
+                        style={{
+                          border: "1px solid #f0b254",
+                          borderRadius: "10px",
+                        }}
+                      >
+                        <h2 className="text-center">
+                          {data?.BLender?.processHeading}
+                        </h2>
                         <div
-                          className="service-content"
                           dangerouslySetInnerHTML={{
-                            __html: data?.BLender?.productsRightText,
+                            __html: data?.BLender?.processDiscription,
                           }}
+                          className="text-center"
                         ></div>
                       </Col>
+                      <Col className="px-5" md={1}></Col>
                     </Row>
-                  </Container>
-                </div>
+
+                    <div className="service-row my-5">
+                      <Container>
+                        <Row>
+                          <Col className="service-texts" lg={6}>
+                            <div className="service-image">
+                              <Image
+                                src={
+                                  data?.BLender?.renovateImageFirst?.sourceUrl
+                                }
+                                alt={data?.BLender?.renovateImageFirst?.altText}
+                                width="390"
+                                height="400"
+                                style={{ width: "100%", objectFit: "cover" }}
+                              />
+                            </div>
+                          </Col>
+                          <Col className="service-texts" lg={6}>
+                            <Row>
+                              <div
+                                className="service-content"
+                                dangerouslySetInnerHTML={{
+                                  __html: data?.BLender?.productsRightText,
+                                }}
+                              ></div>
+
+                              {/* CTA Button */}
+                              {data?.BLender?.processCtaText && (
+                                <div className="tb-btn">
+                                  <Link href={data?.BLender?.processCtaUrl}>
+                                    <Button className="HeadBtn">
+                                      {data?.BLender?.processCtaText}
+                                    </Button>
+                                  </Link>
+                                </div>
+                              )}
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Container>
+                    </div>
+                  </div>
+                )}
+
                 <Row className="my-5">
                   <Container>
                     <div className="my-5">
@@ -350,6 +437,47 @@ const BLender = (props: MyProps) => {
                     </div>
                   </Container>
                 </Row>
+
+                {/* Client Testimonials */}
+                <Container className="mb-5 px-3 py-3">
+                  <TestimonialSliderRow />
+
+                  {/* CTA */}
+                  {data?.BLender?.testimonialsCtaText && (
+                    <div className="tb-btn">
+                      <Link href={data?.BLender?.testimonialsCtaUrl || "/"}>
+                        <Button className="HeadBtn">
+                          {data?.BLender?.testimonialsCtaText}
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
+                </Container>
+
+                {/* Explore section */}
+                <Container
+                  className="mb-5 px-3 py-3"
+                  style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+                >
+                  <h2 className="text-center">{data?.BLender?.exploreTitle}</h2>
+                  <div
+                    className="text-center"
+                    dangerouslySetInnerHTML={{
+                      __html: data?.BLender?.exploreDescription,
+                      // __html: reasonDescription,
+                    }}
+                  ></div>
+                  {data?.BLender?.exploreCtaText && (
+                    <div className="tb-btn">
+                      <Link href={data?.BLender?.exploreCtaUrl || "/"}>
+                        <Button className="HeadBtn">
+                          {data?.BLender?.exploreCtaText}
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
+                </Container>
+
                 <Row className="mortgage-broker">
                   <Col>
                     <h2 className="headering-title">
@@ -366,6 +494,7 @@ const BLender = (props: MyProps) => {
                 {data.BLender.renovation == null ? (
                   ""
                 ) : (
+                  // renovation tab start
                   <Row className="renovation-tab-row">
                     <Tabs
                       id="controlled-tab-example"
@@ -396,36 +525,62 @@ const BLender = (props: MyProps) => {
                     </Tabs>
                   </Row>
                 )}
-                <Row className="mortgage-broker-bottom text-center mt-5">
-                  <Col>
-                    <h2>{data?.BLender?.bottomBrokerTitle}</h2>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.BLender?.bottomBrokerDescription,
-                      }}
-                    ></div>
-                  </Col>
-                </Row>
+                {/* renovation tab end */}
+
+                {data?.BLender?.bottomBrokerTitle && (
+                  <Row className="mortgage-broker-bottom text-center mt-5">
+                    <Col>
+                      <h2>{data?.BLender?.bottomBrokerTitle}</h2>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: data?.BLender?.bottomBrokerDescription,
+                        }}
+                      ></div>
+                    </Col>
+                  </Row>
+                )}
+
                 {/* faq section start */}
 
-                <div className="faq-accordion">
-                  <Accordion defaultActiveKey="0">
-                    {data?.BLender?.faqAccordion?.map((qa, index) => {
-                      return (
-                        <Accordion.Item key={index} eventKey={index.toString()}>
-                          <Accordion.Header as="h3">
-                            {qa.question}
-                          </Accordion.Header>
-                          <Accordion.Body
-                            dangerouslySetInnerHTML={{ __html: qa.answer }}
-                          ></Accordion.Body>
-                        </Accordion.Item>
-                      );
-                    })}
-                  </Accordion>
-                </div>
+                {data?.BLender?.faqAccordion?.length > 0 && (
+                  <div className="faq-accordion">
+                    <Accordion defaultActiveKey="0">
+                      {data?.BLender?.faqAccordion?.map((qa, index) => {
+                        return (
+                          <Accordion.Item
+                            key={index}
+                            eventKey={index.toString()}
+                          >
+                            <Accordion.Header as="h3">
+                              {qa.question}
+                            </Accordion.Header>
+                            <Accordion.Body
+                              dangerouslySetInnerHTML={{ __html: qa.answer }}
+                            ></Accordion.Body>
+                          </Accordion.Item>
+                        );
+                      })}
+                    </Accordion>
+                  </div>
+                )}
 
                 {/* faq section end */}
+
+                {/* Map Section */}
+                <MapSection />
+
+                {/* Author Information */}
+                {data?.BLender?.author == null ? (
+                  ""
+                ) : (
+                  <Row className="author-information">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data?.BLender?.author,
+                      }}
+                    ></div>
+                  </Row>
+                )}
               </Container>
             </main>
             <Footer settings={settings} menuData={mainMenus} />
