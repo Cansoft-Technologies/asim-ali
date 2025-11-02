@@ -19,7 +19,7 @@ import MapSection from "components/MapSection";
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
     query: gql`
- {
+ query{
   pages(where: {id: 5979}) {
     nodes {
       seo {
@@ -155,6 +155,13 @@ export async function getStaticProps() {
           description
           cta
         }
+        homeContactSectionSecond{
+          image{
+            sourceUrl
+            altText
+          }
+          ctaBtn
+        }
       }
     }
   }
@@ -269,6 +276,7 @@ export async function getStaticProps() {
       reasonRightImage: data?.pages?.nodes[0]?.NewVancouver?.reasonRightImage,
       reasonRightText: data?.pages?.nodes[0]?.NewVancouver?.reasonRightText,
       reasonLeftImage: data?.pages?.nodes[0]?.NewVancouver?.reasonLeftImage,
+      homeContactSectionSecond: data?.pages?.nodes[0]?.NewVancouver?.homeContactSectionSecond,
     },
     revalidate: 60,
   };
@@ -304,6 +312,7 @@ type MyProps = {
   reasonLeftImage: any;
   reasonLeftCta:any
   reasonRightImage: any;
+  homeContactSectionSecond: any;
 };
 
 export default function Page(props: MyProps) {
@@ -337,6 +346,7 @@ export default function Page(props: MyProps) {
     reasonRightImage,
     reasonRightText,
     reasonLeftImage,
+    homeContactSectionSecond,
   } = props;
 
 
@@ -509,14 +519,29 @@ export default function Page(props: MyProps) {
             }}
             className=""
           ></div>
+          
+          {homeContactSectionSecond?.image && (
+            <div className="my-5">
+              <Image
+                src={homeContactSectionSecond?.image?.sourceUrl}
+                alt={homeContactSectionSecond?.image?.altText}
+                width="1200"
+                height="600"
+                style={{ width: "100%", objectFit: "cover" }}
+              />
+            </div>
+          )}
 
-          {/* <div className="tb-btn">
-            <Link href={"/apply-now"}>
-              <Button className="HeadBtn">
-              Request a Free Consultation
-              </Button>
-            </Link>
-          </div> */}
+          {homeContactSectionSecond?.ctaBtn && (
+            <div 
+              className="tb-btn"
+              dangerouslySetInnerHTML={{
+                __html: homeContactSectionSecond?.ctaBtn,
+              }}
+            ></div>
+          )}
+
+          
 
         </Container>
         
