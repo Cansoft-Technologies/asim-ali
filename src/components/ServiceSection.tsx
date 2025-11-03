@@ -10,9 +10,20 @@ type MyProps = {
   imageRight: any;
   ctaText?: string;
   ctaUrl?: string;
+  lctaText?: string;
+  lctaUrl?: string;
 };
 export default function ServiceSection(props: MyProps) {
-  const { textLeft, textRight, imageLeft, imageRight, ctaText, ctaUrl } = props;
+  const {
+    textLeft,
+    textRight,
+    imageLeft,
+    imageRight,
+    ctaText,
+    ctaUrl,
+    lctaUrl,
+    lctaText,
+  } = props;
   return (
     <>
       {(textLeft || imageRight) && (
@@ -38,10 +49,10 @@ export default function ServiceSection(props: MyProps) {
                             __html: textLeft,
                           }}
                         ></div>
-                        {ctaText && ctaUrl && (
+                        {lctaText && lctaUrl && (
                           <div className="tb-btn-left">
-                            <Link href={ctaUrl || "/"}>
-                              <Button className="HeadBtn">{ctaText}</Button>
+                            <Link href={lctaUrl || "/"}>
+                              <Button className="HeadBtn">{lctaText}</Button>
                             </Link>
                           </div>
                         )}
