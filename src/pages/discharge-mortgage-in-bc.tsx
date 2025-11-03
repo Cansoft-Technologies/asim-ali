@@ -7,10 +7,22 @@ import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import {
+  Accordion,
+  Button,
+  Col,
+  Container,
+  Row,
+  Tab,
+  Tabs,
+} from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import MapSection from "components/MapSection";
+import { se } from "date-fns/locale";
+import { useState } from "react";
+import TestimonialSliderRow from "components/TestimonialSliderRow";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
@@ -62,49 +74,6 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-              processBorrowing {
-                advisorTitle
-                advisorDescriptionTop
-                advisorCards {
-                  title
-                  description
-                }
-              }
-              borrowingPayment {
-                borrowingTitle
-                borrowingDescriptionTop
-                borrowingRightDescription
-                borrowingImage {
-                  sourceUrl
-                  altText
-                }
-              }
-              expertsHelp {
-                expertsHelpTitle
-                expertsHelpDescription
-                helpLeftText
-                helpRightText
-                helpLeftImage {
-                  sourceUrl
-                  altText
-                }
-                helpRightImage {
-                  sourceUrl
-                  altText
-                }
-              }
-              ratesTitle
-              ratesDescription
-
-              tabWhyChoose {
-                tabHeading
-                tabDescription
-                tabDetails {
-                  title
-                  description
-                }
-              }
-              loanTitle
               processTitle
               processDescription
               reasonLeftTextCopy
@@ -117,27 +86,32 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
-
-              qualifyingTitle
-              qualifyingDescription
-              commonConcerns {
-                advisorTitle
-                advisorDescription
-                advisorImage {
-                  sourceUrl
-                  altText
-                }
-                advisorCards {
+              procecssCtaText
+              processCtaUrl
+              tabWhyChoose {
+                tabHeading
+                tabDescription
+                tabDetails {
                   title
                   description
                 }
+                tabCtaText
+                tabCtaUrl
               }
-              advisorCtaText
-              advisorCtaUrl
+              
               talkTitle
               talkDescription
               talkCtaText
               talkCtaUrl
+              faqTitle
+              faqDescription
+              faqAccordion {
+                question
+                answer
+              }
+              faqCtaText
+              faqCtaUrl
+              author
             }
           }
         }
@@ -238,7 +212,6 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightText,
       reasonLeftImage:
         data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftImage,
-      loanTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.loanTitle,
       reasonLeftTextCopy:
         data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftTextCopy,
       reasonRightImageCopy:
@@ -247,26 +220,11 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonRightTextCopy,
       reasonLeftImageCopy:
         data?.pages?.nodes[0]?.dischargeMortgageBc?.reasonLeftImageCopy,
-      borrowingPaymentData:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.borrowingPayment,
-
-      expertsHelpData: data?.pages?.nodes[0]?.dischargeMortgageBc?.expertsHelp,
       tabWhyChooseData:
         data?.pages?.nodes[0]?.dischargeMortgageBc?.tabWhyChoose,
-      borrowingProcessData:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.processBorrowing,
-      qualifyingTitle:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.qualifyingTitle,
-      qualifyingDescription:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.qualifyingDescription,
-      commonConcernsData:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.commonConcerns,
       talkTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.talkTitle,
       talkDescription:
         data?.pages?.nodes[0]?.dischargeMortgageBc?.talkDescription,
-      ratesTitle: data?.pages?.nodes[0]?.dischargeMortgageBc?.ratesTitle,
-      ratesDescription:
-        data?.pages?.nodes[0]?.dischargeMortgageBc?.ratesDescription,
     },
     revalidate: 60,
   };
@@ -285,25 +243,19 @@ type MyProps = {
   reasonRightText: any;
   reasonLeftImage: any;
   reasonRightImage: any;
-  loanTitle: any;
   reasonLeftTextCopy: any;
   reasonRightTextCopy: any;
   reasonLeftImageCopy: any;
   reasonRightImageCopy: any;
-  borrowingPaymentData: any;
   expertsHelpData: any;
   tabWhyChooseData: any;
-  borrowingProcessData: any;
-  qualifyingTitle: any;
-  qualifyingDescription: any;
-  commonConcernsData: any;
   talkTitle: any;
   talkDescription: any;
-  ratesTitle: any;
-  ratesDescription: any;
 };
 
 export default function DischargeMortgageBc(props: MyProps) {
+  const [key, setKey] = useState(null);
+
   const {
     settings,
     mainMenus,
@@ -312,7 +264,6 @@ export default function DischargeMortgageBc(props: MyProps) {
     reasonTitle,
     processTitle,
     processDescription,
-    loanTitle,
     reasonDescription,
     reasonLeftText,
     reasonRightText,
@@ -322,17 +273,9 @@ export default function DischargeMortgageBc(props: MyProps) {
     reasonRightTextCopy,
     reasonLeftImageCopy,
     reasonRightImageCopy,
-    borrowingPaymentData,
-    expertsHelpData,
     tabWhyChooseData,
-    borrowingProcessData,
-    qualifyingTitle,
-    qualifyingDescription,
-    commonConcernsData,
     talkTitle,
     talkDescription,
-    ratesTitle,
-    ratesDescription,
   } = props;
 
   return (
@@ -381,6 +324,8 @@ export default function DischargeMortgageBc(props: MyProps) {
             button2URL="/apply-now"
           />
         )}
+
+        {/* About Section */}
         <Container className="mb-5">
           <Row className="coquitlam-grid my-5">
             <Col md={7}>
@@ -389,10 +334,11 @@ export default function DischargeMortgageBc(props: MyProps) {
                   __html: serviceBannerData?.aboutText,
                 }}
               ></div>
+              {/* CTA */}
               {serviceBannerData?.aboutCtaText && (
-                <div className="mt-3">
+                <div className="tb-btn-left">
                   <Link href={serviceBannerData?.aboutCtaUrl || "/"}>
-                    <Button className="ctaBtn">
+                    <Button className="HeadBtn">
                       {serviceBannerData?.aboutCtaText}
                     </Button>
                   </Link>
@@ -410,67 +356,32 @@ export default function DischargeMortgageBc(props: MyProps) {
             </Col>
           </Row>
         </Container>
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
+
+        {/* Reason Section */}
+        <Container className="mb-5 px-3 py-3">
           <h2 className="text-center">{reasonTitle}</h2>
           <div
-            className="text-center"
+            className="text-center w-75 mx-auto"
             dangerouslySetInnerHTML={{
               __html: reasonDescription,
             }}
           ></div>
 
-          {/* Reason CTA */}
-          {serviceBannerData?.reasonCtaText && (
-            <div className="mt-3 text-center">
-              <Link href={serviceBannerData?.reasonCtaUrl || "/"}>
-                <Button className="ctaBtn">
-                  {serviceBannerData?.reasonCtaText}
-                </Button>
-              </Link>
-            </div>
-          )}
+          {/* Reasons Content */}
+          <div className="pt-12">
+            <ServiceSection
+              textLeft={reasonLeftText}
+              textRight={reasonRightText}
+              imageLeft={reasonLeftImage}
+              imageRight={reasonRightImage}
+              ctaText={serviceBannerData?.reasonCtaText}
+              ctaUrl={serviceBannerData?.reasonCtaUrl}
+            />
+          </div>
         </Container>
 
-        <ServiceSection
-          textLeft={expertsHelpData?.helpLeftText}
-          textRight={expertsHelpData?.helpRightText}
-          imageLeft={expertsHelpData?.helpLeftImage}
-          imageRight={expertsHelpData?.helpRightImage}
-        />
-
-        <ServiceSection
-          textLeft={reasonLeftText}
-          textRight={reasonRightText}
-          imageLeft={reasonLeftImage}
-          imageRight={reasonRightImage}
-        />
-        {/* <div className="tab-btn">
-          <Link href={"/apply-now"}>
-            <Button className="HeadBtn">
-              Apply <span>Now</span>
-            </Button>
-          </Link>
-        </div> */}
-        <TabNewBC tabData={tabWhyChooseData} />
-        <HomeBuyerNewBC advisorData={borrowingProcessData} />
-        <AccordionNewBC homebuyerData={commonConcernsData} />
-        {serviceBannerData?.advisorCtaText && (
-          <div className="mb-3 text-center">
-            <Link href={serviceBannerData?.advisorCtaUrl || "/"}>
-              <Button className="ctaBtn">
-                {serviceBannerData?.advisorCtaText}
-              </Button>
-            </Link>
-          </div>
-        )}
-
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
+        {/* Service Section */}
+        <Container className="mb-5 px-3 py-3">
           <h2 className="text-center">{processTitle}</h2>
           <div
             className="text-center"
@@ -478,38 +389,140 @@ export default function DischargeMortgageBc(props: MyProps) {
               __html: processDescription,
             }}
           ></div>
-        </Container>
-        <ServiceSection
-          textLeft={reasonLeftTextCopy}
-          textRight={reasonRightTextCopy}
-          imageLeft={reasonLeftImageCopy}
-          imageRight={reasonRightImageCopy}
-        />
-        <Container className="mb-5">
-          <h2 className="text-center service-title">{talkTitle}</h2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: talkDescription,
-            }}
-            className="text-lg text-center"
-          ></div>
-          {serviceBannerData?.talkCtaText && (
-            <div className="mt-3 text-center">
-              <Link href={serviceBannerData?.talkCtaUrl || "/"}>
-                <Button className="ctaBtn">
-                  {serviceBannerData?.talkCtaText}
+          <ServiceSection
+            textLeft={reasonLeftTextCopy}
+            textRight={reasonRightTextCopy}
+            imageLeft={reasonLeftImageCopy}
+            imageRight={reasonRightImageCopy}
+          />
+          {/* CTA */}
+          {serviceBannerData?.procecssCtaText && (
+            <div className="tb-btn">
+              <Link href={serviceBannerData?.processCtaUrl || "/"}>
+                <Button className="HeadBtn">
+                  {serviceBannerData?.procecssCtaText}
                 </Button>
               </Link>
             </div>
           )}
+        </Container>
 
-          {/* <div className="tab-btn">
-            <Link href={"/contact-us"}>
-              <Button className="HeadBtn">
-                Contact <span>Us</span>
-              </Button>
-            </Link>
-          </div> */}
+        {/* Why Choose Us Section */}
+        <Container className="mb-5 px-3 py-3">
+          <TabNewBC tabData={tabWhyChooseData} />
+          
+          {/* CTA */}
+          {serviceBannerData?.tabWhyChoose?.tabCtaText && (
+            <div className="tb-btn">
+              <Link href={serviceBannerData?.tabWhyChoose?.tabCtaUrl || "/"}>
+                <Button className="HeadBtn">
+                  {serviceBannerData?.tabWhyChoose?.tabCtaText}
+                </Button>
+              </Link>
+            </div>
+          )}
+        </Container>
+
+        <Container className="mb-5">
+          {/* Client Testimonial Section */}
+          <TestimonialSliderRow />
+
+          {/* Talk Section */}
+          {serviceBannerData?.talkTitle && (
+            <div
+              className="my-20 p-6 talk-box"
+              style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+            >
+              <h2 className="text-center service-title">{talkTitle}</h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: talkDescription,
+                }}
+                className="text-lg text-center"
+              ></div>
+
+              {/* Talk CTA */}
+              {serviceBannerData?.talkCtaText && (
+                <div className="tb-btn">
+                  <Link href={serviceBannerData?.talkCtaUrl || "/"}>
+                    <Button className="HeadBtn">
+                      {serviceBannerData?.talkCtaText}
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* faq section start */}
+          {serviceBannerData?.faqAccordion?.length > 0 && (
+            <Container className="py-12">
+              <h2 className="text-center">{serviceBannerData?.faqTitle}</h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: serviceBannerData?.faqDescription,
+                }}
+                className="text-lg text-center"
+              ></div>
+              {/* question and answer */}
+              {serviceBannerData?.faqAccordion?.length > 0 && (
+                <Row className="renovation-tab-row">
+                  <Tabs
+                    id="controlled-tab-example"
+                    activeKey={key == null ? 0 : key}
+                    onSelect={(k) => setKey(k)}
+                    className="mb-3 renovation"
+                  >
+                    {serviceBannerData?.faqAccordion?.map((tab, item) => {
+                      return (
+                        <Tab
+                          key={item}
+                          eventKey={item.toString()}
+                          title={
+                            <h3 className="location-tab-title">
+                              {tab.question}
+                            </h3>
+                          }
+                        >
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: tab.answer,
+                            }}
+                            className="renovation-content-list"
+                          ></div>
+                        </Tab>
+                      );
+                    })}
+                  </Tabs>
+                  {/* cta button */}
+                </Row>
+              )}
+              {/* CTA */}
+              {serviceBannerData?.faqCtaText && (
+                <div className="tb-btn">
+                  <Link href={serviceBannerData?.faqCtaUrl || "/"}>
+                    <Button className="HeadBtn">
+                      {serviceBannerData?.faqCtaText}
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </Container>
+          )}
+
+          {/* Map Section */}
+          <MapSection />
+
+          {/* Author Information */}
+          {serviceBannerData?.author && (
+            <Row className="author-information my-24">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: serviceBannerData?.author,
+                }}
+              ></div>
+            </Row>
+          )}
         </Container>
       </main>
       <Footer settings={settings} menuData={mainMenus} />

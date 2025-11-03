@@ -564,8 +564,6 @@ const BLender = (props: MyProps) => {
                   </div>
                 )}
 
-                {/* faq section end */}
-
                 {/* Map Section */}
                 <MapSection />
 

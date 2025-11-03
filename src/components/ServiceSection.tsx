@@ -1,15 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 type MyProps = {
   textLeft: any;
   textRight: any;
   imageLeft: any;
   imageRight: any;
+  ctaText?: string;
+  ctaUrl?: string;
 };
 export default function ServiceSection(props: MyProps) {
-  const { textLeft, textRight, imageLeft, imageRight } = props;
+  const { textLeft, textRight, imageLeft, imageRight, ctaText, ctaUrl } = props;
   return (
     <>
       {(textLeft || imageRight) && (
@@ -28,12 +31,21 @@ export default function ServiceSection(props: MyProps) {
                       ></div>
                     </Col>
                     <Col className="service-texts hide-sm" lg={6}>
-                      <div
-                        className="service-content"
-                        dangerouslySetInnerHTML={{
-                          __html: textLeft,
-                        }}
-                      ></div>
+                      <Row>
+                        <div
+                          className="service-content"
+                          dangerouslySetInnerHTML={{
+                            __html: textLeft,
+                          }}
+                        ></div>
+                        {ctaText && ctaUrl && (
+                          <div className="tb-btn-left">
+                            <Link href={ctaUrl || "/"}>
+                              <Button className="HeadBtn">{ctaText}</Button>
+                            </Link>
+                          </div>
+                        )}
+                      </Row>
                     </Col>
                   </>
                 )}
@@ -95,12 +107,22 @@ export default function ServiceSection(props: MyProps) {
                 )}
                 {textRight && (
                   <Col className="service-texts my-2 hide-sm" lg={6}>
-                    <div
-                      className="service-content"
-                      dangerouslySetInnerHTML={{
-                        __html: textRight,
-                      }}
-                    ></div>
+                    <Row>
+                      <div
+                        className="service-content"
+                        dangerouslySetInnerHTML={{
+                          __html: textRight,
+                        }}
+                      ></div>
+
+                      {ctaText && ctaUrl && (
+                        <div className="tb-btn-left">
+                          <Link href={ctaUrl || "/"}>
+                            <Button className="HeadBtn">{ctaText}</Button>
+                          </Link>
+                        </div>
+                      )}
+                    </Row>
                   </Col>
                 )}
               </Row>
