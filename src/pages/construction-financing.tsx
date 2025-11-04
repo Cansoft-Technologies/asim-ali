@@ -7,32 +7,47 @@ import ServiceSection from "components/ServiceSection";
 import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
 import Image from "next/image";
-import { Alert, Col, Container, Row, Table } from "react-bootstrap";
+import {
+  Alert,
+  Button,
+  Col,
+  Container,
+  Row,
+  Tab,
+  Table,
+  Tabs,
+} from "react-bootstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { apolloClient } from "../lib/apollo";
+import Link from "next/link";
+import TestimonialSliderRow from "components/TestimonialSliderRow";
+import MapSection from "components/MapSection";
+import { useState } from "react";
+import FaqSection from "components/FaqSection";
 
 export async function getStaticProps() {
   const { data } = await apolloClient.query({
-    query: gql`query{
-      pages(where: {id: 4380}) {
-      nodes {
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-          openGraph {
-            image {
-              url
+    query: gql`
+      query {
+        pages(where: { id: 4380 }) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+              jsonLd {
+                raw
+              }
             }
-          }
-          jsonLd {
-            raw
-          }
-        }
-        newConstructionFinancing {
-          serviceBannerTitle
+            newConstructionFinancing {
+              serviceBannerTitle
               serviceBannerHeading
               serviceBannerDescription
               serviceBannerImage {
@@ -40,178 +55,188 @@ export async function getStaticProps() {
                 sourceUrl
               }
               aboutText
+              aboutCtaText
+              aboutCtaUrl
               aboutImage {
                 altText
                 sourceUrl
               }
-          
-          reasonTitle
-          reasonDescription
-          reasonLeftText
-          reasonRightText
-          reasonLeftImage {
-            altText
-            sourceUrl
-          }
-          reasonRightImage {
-            altText
-            sourceUrl
-          }
-          processBorrowing {
-            advisorTitle
-            advisorDescriptionTop
-            advisorCards{
-              title
-              description
+
+              reasonTitle
+              reasonDescription
+              reasonLeftText
+              reasonRightText
+              reasonLeftImage {
+                altText
+                sourceUrl
+              }
+              reasonRightImage {
+                altText
+                sourceUrl
+              }
+              reasonCtaText
+              reasonCtaUrl
+
+              processBorrowing {
+                advisorTitle
+                advisorDescriptionTop
+                advisorCards {
+                  title
+                  description
+                }
+              }
+
+              borrowingPayment {
+                borrowingTitle
+                borrowingDescriptionTop
+                borrowingRightDescription
+                borrowingImage {
+                  sourceUrl
+                  altText
+                }
+                borrowingCtaText
+                borrowingCtaUrl
+              }
+
+              expertsHelp {
+                expertsHelpTitle
+                expertsHelpDescription
+                helpLeftText
+                helpRightText
+                helpLeftImage {
+                  sourceUrl
+                  altText
+                }
+                helpRightImage {
+                  sourceUrl
+                  altText
+                }
+              }
+              ratesTitle
+              ratesDescription
+
+              tabWhyChoose {
+                tabHeading
+                tabDescription
+                tabDetails {
+                  title
+                  description
+                }
+                tabCtaText
+                tabCtaUrl
+              }
+              loanTitle
+
+              qualifyingTitle
+              qualifyingDescription
+              commonConcerns {
+                advisorTitle
+                advisorDescription
+                advisorImage {
+                  sourceUrl
+                  altText
+                }
+                advisorCards {
+                  title
+                  description
+                }
+              }
+
+              talk {
+                talkTitle
+                talkDescription
+                talkCtaText
+                talkCtaUrl
+              }
+              faq {
+                faqTitle
+                faqDescription
+                faqAccordion {
+                  question
+                  answer
+                }
+                faqCtaText
+                faqCtaUrl
+              }
             }
           }
-          borrowingPayment{
-            borrowingTitle
-            borrowingDescriptionTop
-            borrowingRightDescription
-            borrowingImage {
-              sourceUrl
-              altText
-            }
-          }
-          expertsHelp{
-            expertsHelpTitle
-            expertsHelpDescription
-            helpLeftText
-            helpRightText
-            helpLeftImage{
+        }
+        settingsOptions {
+          AsimOptions {
+            headerSettings {
+              uploadLogo {
                 sourceUrl
                 altText
-            }
-            helpRightImage{
+              }
+              uploadLogoMobile {
                 sourceUrl
                 altText
-            }    
-          }
-          ratesTitle
-          ratesDescription
-          
-          tabWhyChoose{
-            tabHeading
-            tabDescription
-            tabDetails{
-              title
-              description
+              }
+            }
+            generalSettings {
+              schemaProductRating
+            }
+            footerSettings {
+              socialUrl {
+                facebook
+                tiktok
+                linkedin
+                instagram
+              }
+              copyrightText
+              footerLeftWidget {
+                title
+                phoneNumber
+                emailAddress
+              }
+              footerLogoSection {
+                logoText
+                logoUpload {
+                  altText
+                  sourceUrl
+                }
+              }
+              footerRightWidget {
+                title
+                address
+              }
             }
           }
-          loanTitle
-          reasonLeftTextCopy
-          reasonRightTextCopy
-          reasonLeftImageCopy {
-            altText
-            sourceUrl
-          }
-          reasonRightImageCopy {
-            altText
-            sourceUrl
-          }
+        }
 
-          qualifyingTitle
-          qualifyingDescription
-          commonConcerns {
-            advisorTitle
-            advisorDescription
-            advisorImage {
-              sourceUrl
-              altText
-            }
-            advisorCards{
-              title
-              description
-            }
-          }
-          talkTitle
-          talkDescription
-          
-        }
-     
-     
-      }
-     
-    
-    
- 
-  }
-   settingsOptions {
-      AsimOptions {
-        headerSettings {
-          uploadLogo {
-            sourceUrl
-            altText
-          }
-          uploadLogoMobile {
-            sourceUrl
-            altText
-          }
-        }
-        generalSettings {
-            schemaProductRating
-        }
-        footerSettings {
-          socialUrl {
-            facebook
-            tiktok
-            linkedin
-            instagram
-          }
-          copyrightText
-          footerLeftWidget {
-            title
-            phoneNumber
-            emailAddress
-          }
-          footerLogoSection {
-            logoText
-            logoUpload {
-              altText
-              sourceUrl
-            }
-          }
-          footerRightWidget {
-            title
-            address
-          }
-        }
-      }
-    }
-
-    menus(where: {location: PRIMARY}) {
-      nodes {
-        name
-        slug
-        menuItems(first: 150){
+        menus(where: { location: PRIMARY }) {
           nodes {
-            url
-            target
-            parentId
-            label
-            cssClasses
-            description
-            id
-            childItems (first: 150) {
+            name
+            slug
+            menuItems(first: 150) {
               nodes {
-                uri
+                url
+                target
+                parentId
                 label
+                cssClasses
+                description
+                id
+                childItems(first: 150) {
+                  nodes {
+                    uri
+                    label
+                  }
+                }
               }
             }
           }
         }
       }
-    }
-}`,
+    `,
   });
-  if(!data){
+  if (!data) {
     return {
       redirect: {
         permanent: false,
-        destination: "/"
-      }
-    }
+        destination: "/",
+      },
+    };
   }
   return {
     props: {
@@ -231,14 +256,6 @@ export async function getStaticProps() {
       reasonLeftImage:
         data?.pages?.nodes[0]?.newConstructionFinancing?.reasonLeftImage,
       loanTitle: data?.pages?.nodes[0]?.newConstructionFinancing?.loanTitle,
-      reasonLeftTextCopy:
-        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonLeftTextCopy,
-      reasonRightImageCopy:
-        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonRightImageCopy,
-      reasonRightTextCopy:
-        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonRightTextCopy,
-      reasonLeftImageCopy:
-        data?.pages?.nodes[0]?.newConstructionFinancing?.reasonLeftImageCopy,
       borrowingPaymentData:
         data?.pages?.nodes[0]?.newConstructionFinancing?.borrowingPayment,
 
@@ -254,12 +271,10 @@ export async function getStaticProps() {
         data?.pages?.nodes[0]?.newConstructionFinancing?.qualifyingDescription,
       commonConcernsData:
         data?.pages?.nodes[0]?.newConstructionFinancing?.commonConcerns,
-      talkTitle: data?.pages?.nodes[0]?.newConstructionFinancing?.talkTitle,
-      talkDescription:
-        data?.pages?.nodes[0]?.newConstructionFinancing?.talkDescription,
       ratesTitle: data?.pages?.nodes[0]?.newConstructionFinancing?.ratesTitle,
       ratesDescription:
         data?.pages?.nodes[0]?.newConstructionFinancing?.ratesDescription,
+      faqData: data?.pages?.nodes[0]?.newConstructionFinancing?.faq,
     },
     revalidate: 60,
   };
@@ -277,10 +292,6 @@ type MyProps = {
   reasonLeftImage: any;
   reasonRightImage: any;
   loanTitle: any;
-  reasonLeftTextCopy: any;
-  reasonRightTextCopy: any;
-  reasonLeftImageCopy: any;
-  reasonRightImageCopy: any;
   borrowingPaymentData: any;
   expertsHelpData: any;
   tabWhyChooseData: any;
@@ -288,10 +299,9 @@ type MyProps = {
   qualifyingTitle: any;
   qualifyingDescription: any;
   commonConcernsData: any;
-  talkTitle: any;
-  talkDescription: any;
   ratesTitle: any;
   ratesDescription: any;
+  faqData: any;
 };
 
 export default function NewConstructionFinancing(props: MyProps) {
@@ -307,10 +317,6 @@ export default function NewConstructionFinancing(props: MyProps) {
     reasonRightText,
     reasonLeftImage,
     reasonRightImage,
-    reasonLeftTextCopy,
-    reasonRightTextCopy,
-    reasonLeftImageCopy,
-    reasonRightImageCopy,
     borrowingPaymentData,
     expertsHelpData,
     tabWhyChooseData,
@@ -318,21 +324,27 @@ export default function NewConstructionFinancing(props: MyProps) {
     qualifyingTitle,
     qualifyingDescription,
     commonConcernsData,
-    talkTitle,
-    talkDescription,
     ratesTitle,
     ratesDescription,
+    faqData,
   } = props;
 
   return (
     <>
       <Head>
-        {metaData?.map((meta,index) => {
+        {metaData?.map((meta, index) => {
           return (
             <>
               <title>{meta?.seo?.title}</title>
               <meta name="description" content={meta?.seo?.description} />
-              <link rel="canonical" href={meta?.seo?.canonicalUrl?.endsWith("/") ? meta?.seo?.canonicalUrl?.slice(0, -1) : meta?.seo?.canonicalUrl} />
+              <link
+                rel="canonical"
+                href={
+                  meta?.seo?.canonicalUrl?.endsWith("/")
+                    ? meta?.seo?.canonicalUrl?.slice(0, -1)
+                    : meta?.seo?.canonicalUrl
+                }
+              />
               <meta property="og:title" content={meta?.seo?.title} />
               <meta
                 property="og:description"
@@ -358,14 +370,28 @@ export default function NewConstructionFinancing(props: MyProps) {
             bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
           />
         )}
+
+        {/* About Section */}
         <Container className="mb-5">
           <Row className="coquitlam-grid my-5">
             <Col md={7}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: serviceBannerData?.aboutText,
-                }}
-              ></div>
+              <Row>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: serviceBannerData?.aboutText,
+                  }}
+                ></div>
+                {/* CTA */}
+                {serviceBannerData?.aboutCtaText && (
+                  <div className="tb-btn-left">
+                    <Link href={serviceBannerData?.aboutCtaUrl || "/"}>
+                      <Button className="HeadBtn">
+                        {serviceBannerData?.aboutCtaText}
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+              </Row>
             </Col>
             <Col md={5}>
               <Image
@@ -373,164 +399,99 @@ export default function NewConstructionFinancing(props: MyProps) {
                 alt={serviceBannerData?.aboutImage?.altText}
                 width="390"
                 height="400"
-                
                 style={{ width: "100%", objectFit: "cover" }}
               />
             </Col>
           </Row>
         </Container>
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <h2 className="text-center">{reasonTitle}</h2>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: reasonDescription,
-            }}
-          ></div>
+
+        {/* Borrowing Payment Section */}
+        <Container className="my-12">
+          <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
         </Container>
 
-        <BorrowingPayment borrowingPaymentData={borrowingPaymentData} />
-        <Container className="mt-5" style={{ border: '1px solid #dee2e6', borderRadius: '5px', padding: '15px' }}>
-        <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Draw Stage</th>
-          <th>Required Building Completion</th>
-          <th>Construction Stage</th>
-          <th>% of Total Mortgage Amount Advanced</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1st Draw (Optional)</td>
-          <td><strong>15% complete</strong></td>
-          <td>Excavation and foundation complete</td>
-          <td>15%</td>
-        </tr>
-        <tr>
-        <td>2nd Draw</td>
-        <td><strong>40% complete</strong></td>
-        <td>Rooftop is on, the building is weather-protected (i.e. airtight, access secured)</td>
-        <td>25%</td>
-        </tr>
-        <tr>
-        <td>3rd Draw</td>
-        <td><strong>65% complete</strong></td>
-        <td>Plumbing and wiring is started, plaster/ drywall is complete, furnace installed, exterior wall cladding complete, etc.</td>
-          <td>20%</td>
-        </tr>
-        <tr>
-        <td>4th Draw</td>
-        <td><strong>65% complete</strong></td>
-        <td>Kitchen cupboards installed, bathroom completed, doors have been hung, etc.</td>
-          <td>20%</td>
-        </tr>
-        <tr>
-        <td>5th Draw</td>
-        <td><strong>100% complete</strong></td>
-        <td>Ready for occupancy with seasonal and exterior work completed</td>
-        <td>15%</td>
-        </tr>
-      </tbody>
-    </Table>
-        </Container>
-    <Container>
-    <div className="mt-4 row">
-                <Col lg={10} className="offset-lg-1 px-0">
-                  <Alert variant="info">
-                    <div className="meeting_text">
-                      <p className="">
-                        Please Note: Rates you see may change, and the rate you
-                        get from any bank or lender, or whether you’re approved
-                        or not, depends on your situation. The rates you see are
-                        just estimates and might not be exact. It’s best to talk
-                        to us for the most accurate info and to find out if you
-                        qualify.
-                      </p>
-                    </div>
-                  </Alert>
-                </Col>
-              </div>
-    </Container>
-
-        {/* <Container>
-          <Row
-            className="mortgage-broker text-center"
-            style={{ marginTop: "80px" }}
+        {/* Reason Section */}
+        <Container className="my-12">
+          <Container
+            className="mb-5 p-3"
+            style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
           >
-            <Col>
-              <h2 className="headering-title">
-                {expertsHelpData?.expertsHelpTitle}
-              </h2>
-              <p className="service-content">
-                {expertsHelpData?.expertsHelpDescription}
-              </p>
-            </Col>
-          </Row>
-        </Container> */}
-        <ServiceSection
-          textLeft={expertsHelpData?.helpLeftText}
-          textRight={expertsHelpData?.helpRightText}
-          imageLeft={expertsHelpData?.helpLeftImage}
-          imageRight={expertsHelpData?.helpRightImage}
-        />
-        <AccordionNewBC homebuyerData={commonConcernsData} />
-
-        <Container
-          className="mb-5 px-3 py-3"
-          style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
-        >
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesTitle,
-            }}
-          ></div>
-          <div
-            className="text-center"
-            dangerouslySetInnerHTML={{
-              __html: ratesDescription,
-            }}
-          ></div>
+            <h2 className="text-center">{reasonTitle}</h2>
+            <div
+              className="text-center"
+              dangerouslySetInnerHTML={{
+                __html: reasonDescription,
+              }}
+            ></div>
+          </Container>
+          <ServiceSection
+            textLeft={reasonLeftText}
+            textRight={reasonRightText}
+            imageLeft={reasonLeftImage}
+            imageRight={reasonRightImage}
+            ctaText={serviceBannerData?.reasonCtaText}
+            ctaUrl={serviceBannerData?.reasonCtaUrl}
+          />
         </Container>
 
-        <ServiceSection
-          textLeft={reasonLeftText}
-          textRight={reasonRightText}
-          imageLeft={reasonLeftImage}
-          imageRight={reasonRightImage}
-        />
+        {/* Why Choose Us Section */}
+        <Container className="mb-5 px-3 py-3">
+          <TabNewBC tabData={tabWhyChooseData} />
 
-        {/* <TabNewBC tabData={tabWhyChooseData} />
-        <HomeBuyerNewBC advisorData={borrowingProcessData} /> */}
+          {/* CTA */}
+          {serviceBannerData?.tabWhyChoose?.tabCtaText && (
+            <div className="tb-btn">
+              <Link href={serviceBannerData?.tabWhyChoose?.tabCtaUrl || "/"}>
+                <Button className="HeadBtn">
+                  {serviceBannerData?.tabWhyChoose?.tabCtaText}
+                </Button>
+              </Link>
+            </div>
+          )}
+        </Container>
 
-        {/* <h2 className="text-center  ">{loanTitle}</h2>
-        <hr
-          style={{
-            width: "350px",
-            margin: "0 auto",
-            border: "1.75px solid #F0B254",
-            borderRadius: "10px",
-          }}
-          className="mb-5"
-        />
-        <ServiceSection
-          textLeft={reasonLeftTextCopy}
-          textRight={reasonRightTextCopy}
-          imageLeft={reasonLeftImageCopy}
-          imageRight={reasonRightImageCopy}
-        /> */}
+        {/* Client Testimonial Section */}
         <Container className="mb-5">
-          <h2 className="text-center service-title">{talkTitle}</h2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: talkDescription,
-            }}
-            className="text-lg text-center"
-          ></div>
+          <TestimonialSliderRow />
+        </Container>
+
+        {/* Talk Section */}
+        <Container className="mb-5">
+          {serviceBannerData?.talk?.talkTitle && (
+            <div
+              className="my-20 p-6 talk-box"
+              style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
+            >
+              <h2 className="text-center service-title">
+                {serviceBannerData?.talk?.talkTitle}
+              </h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: serviceBannerData?.talk?.talkDescription,
+                }}
+                className="text-lg text-center"
+              ></div>
+
+              {/* Talk CTA */}
+              {serviceBannerData?.talk?.talkCtaText && (
+                <div className="tb-btn">
+                  <Link href={serviceBannerData?.talk?.talkCtaUrl || "/"}>
+                    <Button className="HeadBtn">
+                      {serviceBannerData?.talk?.talkCtaText}
+                    </Button>
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
+        </Container>
+
+        <Container>
+          {/* faq section start */}
+          <FaqSection faqData={faqData} />
+
+          {/* Map Section */}
+          <MapSection />
         </Container>
       </main>
       <Footer settings={settings} menuData={mainMenus} />

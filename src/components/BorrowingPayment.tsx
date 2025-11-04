@@ -38,8 +38,8 @@ export default function BorrowingPayment(props: MyProps) {
           </Col>
         </Row>
         {/* Image and right description below titles */}
-        <section className="my-5">
-          <div className="service-row my-5">
+        <section className="">
+          <div className="service-row">
             <Container>
               <Row className="">
                 {borrowingPaymentData?.borrowingImage?.sourceUrl && (
@@ -48,12 +48,12 @@ export default function BorrowingPayment(props: MyProps) {
                       <Image
                         src={borrowingPaymentData.borrowingImage.sourceUrl}
                         alt={borrowingPaymentData.borrowingImage.altText}
-                        width="390"
+                        width="400"
                         height="400"
                         style={{
                           width: "100%",
                           objectFit: "cover",
-                          height: "45vh",
+                          height: "auto",
                         }}
                         quality={100}
                       />
@@ -61,7 +61,7 @@ export default function BorrowingPayment(props: MyProps) {
                   </Col>
                 )}
                 {borrowingPaymentData?.borrowingRightDescription && (
-                  <Col className="service-texts my-5 hide-sm" lg={6}>
+                  <Col className="service-texts my-5" lg={6}>
                     <Row>
                     <div
                       className="service-content"
