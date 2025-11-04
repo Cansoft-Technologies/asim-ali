@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 type MyProps = {
   borrowingPaymentData: any;
@@ -61,12 +62,26 @@ export default function BorrowingPayment(props: MyProps) {
                 )}
                 {borrowingPaymentData?.borrowingRightDescription && (
                   <Col className="service-texts my-5 hide-sm" lg={6}>
+                    <Row>
                     <div
                       className="service-content"
                       dangerouslySetInnerHTML={{
                         __html: borrowingPaymentData.borrowingRightDescription,
                       }}
                     ></div>
+                    {borrowingPaymentData?.borrowingCtaUrl &&
+                      borrowingPaymentData?.borrowingCtaText && (
+                        <div className="tb-btn-left">
+                          <Link
+                            href={borrowingPaymentData?.borrowingCtaUrl || "/"}
+                          >
+                            <Button className="HeadBtn">
+                              {borrowingPaymentData?.borrowingCtaText}
+                            </Button>
+                          </Link>
+                        </div>
+                      )}
+                    </Row>
                   </Col>
                 )}
               </Row>
