@@ -87,9 +87,9 @@ const MapSection = () => {
       </div>
       <div className="flex flex-col justify-center items-start mt-12">
         <div className="mt-12">
-          <h3 className="text-xl md:text-2xl xl:text-4xl font-bold mb-4 font-oswald">
+          <h2 className="text-xl md:text-2xl xl:text-4xl font-bold mb-4 font-oswald">
             {"Visit our Head office in Surrey"}
-          </h3>
+          </h2>
           <p
             className="text-gray-600 mb-6"
             dangerouslySetInnerHTML={{
