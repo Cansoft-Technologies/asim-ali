@@ -46,7 +46,8 @@ export async function getStaticProps() {
                 sourceUrl
               }
               aboutText
-              aboutBtn
+              aboutCtaText
+              aboutCtaUrl
               aboutImage {
                 altText
                 sourceUrl
@@ -73,7 +74,6 @@ export async function getStaticProps() {
               reasonTitle
               reasonDescription
               reasonLeftText
-              reasonLeftCta
               reasonRightText
               reasonLeftImage {
                 altText
@@ -83,6 +83,9 @@ export async function getStaticProps() {
                 altText
                 sourceUrl
               }
+              reasonCtaText
+              reasonCtaUrl
+
               tipsTitle
               tipsDescription
               tipsLeftText
@@ -96,7 +99,6 @@ export async function getStaticProps() {
                 sourceUrl
               }
               advisorSection {
-                cta
                 advisorTitle
                 advisorDescriptionTop
                 advisorImage {
@@ -271,7 +273,6 @@ export async function getStaticProps() {
       reasonTitle: data?.pages?.nodes[0]?.NewVancouver?.reasonTitle,
       reasonDescription: data?.pages?.nodes[0]?.NewVancouver?.reasonDescription,
       reasonLeftText: data?.pages?.nodes[0]?.NewVancouver?.reasonLeftText,
-      reasonLeftCta: data?.pages?.nodes[0]?.NewVancouver?.reasonLeftCta,
       reasonRightImage: data?.pages?.nodes[0]?.NewVancouver?.reasonRightImage,
       reasonRightText: data?.pages?.nodes[0]?.NewVancouver?.reasonRightText,
       reasonLeftImage: data?.pages?.nodes[0]?.NewVancouver?.reasonLeftImage,
@@ -310,7 +311,6 @@ type MyProps = {
   reasonLeftText: any;
   reasonRightText: any;
   reasonLeftImage: any;
-  reasonLeftCta: any;
   reasonRightImage: any;
   homeContactSectionSecond: any;
 };
@@ -342,19 +342,12 @@ export default function Page(props: MyProps) {
     reasonTitle,
     reasonDescription,
     reasonLeftText,
-    reasonLeftCta,
     reasonRightImage,
     reasonRightText,
     reasonLeftImage,
     homeContactSectionSecond,
   } = props;
 
-  const teamTitle =
-    '<h2 style="font-size: 40px;">Why Our Clients <span style="color: #f0b243;"> Trust Us </span></h2>\n' +
-    "";
-  const teamDescription =
-    `<p><span style="font-weight: 400;">We have collaborated with more than 300 lenders so that you can have more options at hand. Let’s take a look at some of the lenders we've worked with:
-</span></p>\n` + "";
   const rateTitle = `
 <span style="font-size: 32px; font-weight: semi-bold;">Current Mortgage Rates
 ​​</span>
@@ -411,12 +404,16 @@ export default function Page(props: MyProps) {
                   __html: serviceBannerData?.aboutText,
                 }}
               ></div>
-              <div
-                className="tb-btn-left"
-                dangerouslySetInnerHTML={{
-                  __html: serviceBannerData?.aboutBtn,
-                }}
-              ></div>
+              {/* CTA */}
+              {serviceBannerData?.aboutCtaText && (
+                <div className="tb-btn-left">
+                  <Link href={serviceBannerData?.aboutCtaUrl || "/"}>
+                    <Button className="HeadBtn">
+                      {serviceBannerData?.aboutCtaText}
+                    </Button>
+                  </Link>
+                </div>
+              )}
             </Col>
             <Col md={5}>
               <Image
@@ -496,16 +493,9 @@ export default function Page(props: MyProps) {
           textRight={reasonRightText}
           imageLeft={reasonLeftImage}
           imageRight={reasonRightImage}
+          lctaText={serviceBannerData?.reasonCtaText}
+          lctaUrl={serviceBannerData?.reasonCtaUrl}
         />
-
-        {reasonLeftCta && (
-          <div
-            className="tb-btn"
-            dangerouslySetInnerHTML={{
-              __html: reasonLeftCta,
-            }}
-          ></div>
-        )}
 
         {/* <ClientReviews reviews={reviewSection} /> */}
 

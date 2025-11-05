@@ -427,7 +427,7 @@ export default function NewTransparentVacantLandMortgage(props: MyProps) {
           />
         )}
 
-        {/* Hero Section */}
+        {/* About Section */}
         <Container className="mb-5">
           <Row className="coquitlam-grid my-5">
             <Col md={7}>
