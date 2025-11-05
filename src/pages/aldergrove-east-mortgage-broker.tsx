@@ -133,6 +133,8 @@ export async function getStaticProps() {
                   title
                   description
                 }
+                advisorCtaText
+                advisorCtaUrl
               }
               reviewSection {
                 reviewTitle
@@ -396,6 +398,8 @@ export default function Page(props: MyProps) {
             bgImage={serviceBannerData?.serviceBannerImage?.sourceUrl}
           />
         )}
+
+        {/* About Section */}
         <Container className="mb-5">
           <Row className="coquitlam-grid my-5">
             <Col md={7}>
@@ -426,6 +430,8 @@ export default function Page(props: MyProps) {
             </Col>
           </Row>
         </Container>
+
+        {/* Tips Section */}
         <Container
           className="mb-5 px-3 py-3 my-5"
           style={{ border: "1px solid #f0b254", borderRadius: "10px" }}
@@ -454,14 +460,17 @@ export default function Page(props: MyProps) {
           </Link>
         </div>
 
-        <MortgageAdvisor advisorData={mortgageBenefitsData} />
+        {/* Mortgage Advisor Section */}
+        <Container className="mt-5 my-20">
+          <MortgageAdvisor advisorData={mortgageBenefitsData} />
+          {/* <div className="tb-btn mb-4">
+            <Link href={"https://asimali.ca/current-rates"}>
+              <Button className="HeadBtn">{advisorData?.cta}</Button>
+            </Link>
+          </div> */}
+        </Container>
 
-        <div className="tb-btn mb-4">
-          <Link href={"https://asimali.ca/current-rates"}>
-            <Button className="HeadBtn">{advisorData?.cta}</Button>
-          </Link>
-        </div>
-
+        {/* Our Rates Section */}
         <OurRates title={rateTitle} />
         <div className="tb-btn">
           <Link href={"/apply-now"}>
