@@ -32,14 +32,13 @@ export default function MortgageAdvisor(props: MyProps) {
               <div className="split_image mt-5">
                 <Image
                   src={advisorData?.advisorImage?.sourceUrl}
-                  width="390"
-                  height="400"
                   alt={advisorData?.advisorImage?.altText}
+                  width="400"
+                  height="400"
                   style={{
                     width: "100%",
-                    height: "100%",
                     objectFit: "cover",
-                    backgroundColor: "#ffffff",
+                    height: "auto",
                   }}
                   quality={100}
                 />
@@ -67,7 +66,7 @@ export default function MortgageAdvisor(props: MyProps) {
               ></div>
               {/* CTA Button */}
               {advisorData?.advisorCtaText && (
-                <div className="tb-btn">
+                <div className="tb-btn-left">
                   <Link href={advisorData?.advisorCtaUrl}>
                     <Button className="HeadBtn">
                       {advisorData?.advisorCtaText}
