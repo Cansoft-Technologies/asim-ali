@@ -1,7 +1,5 @@
 import { gql } from "@apollo/client";
 import { Hero } from "components";
-import AccordionNewBC from "components/AccordionNewBC";
-import HomeBuyerNewBC from "components/HomeBuyerNewBC";
 import ServiceSection from "components/ServiceSection";
 import TabNewBC from "components/TabNewBC";
 import Head from "next/head";
