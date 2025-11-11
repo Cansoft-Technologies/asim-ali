@@ -207,9 +207,9 @@ export default function Page(props: MyProps) {
                     {/* Author Content Column */}
                     <Col md={9}>
                       <div className="author-content">
-                        <h3 className="author-name">
+                        <h1 className="author-name">
                           {data?.authorInfo?.heroTitle}
-                        </h3>
+                        </h1>
                         <p className="author-title">
                           {data?.authorInfo?.heroDescription}
                         </p>
