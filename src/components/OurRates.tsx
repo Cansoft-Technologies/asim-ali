@@ -105,7 +105,7 @@ export default function OurRates(props: MyProps) {
         ></div>
         <p className="max-w-md text-[#000000]">
           {description ||
-            `Before investing in a home, it&apos;s important to find out the
+            `Before investing in a home, it's important to find out the
           specifics. Here is an overview of our current mortgage rates that you
           will receive:`}
         </p>

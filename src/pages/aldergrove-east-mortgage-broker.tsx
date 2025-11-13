@@ -510,56 +510,14 @@ export default function Page(props: MyProps) {
 
         {/* <AccordionSection advisorData={mortgageInterestData} /> */}
         <Container className="mb-5 mt-5">
-          <h2 className="text-center service-title">{contactData?.title}</h2>
-          <Row className="my-5">
-            {homeContactSectionSecond?.image && (
-              <Col md={5}>
-                <Image
-                  src={homeContactSectionSecond?.image?.sourceUrl}
-                  alt={homeContactSectionSecond?.image?.altText}
-                  width="600"
-                  height="600"
-                  style={{ width: "100%", objectFit: "cover", height: "100%" }}
-                />
-              </Col>
-            )}
-            <Col md={homeContactSectionSecond?.image ? 7 : 12}>
-              <div className="d-flex flex-column h-100 px-md-4 px-0 justify-content-center">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: contactData?.description,
-                  }}
-                  className="mb-4 contact-description"
-                  style={{
-                    fontSize: "16px",
-                    lineHeight: "1.7",
-                    color: "#333",
-                  }}
-                ></div>
-
-                {homeContactSectionSecond?.ctaBtn && (
-                  <div
-                    className="tb-btn-left mt-4"
-                    dangerouslySetInnerHTML={{
-                      __html: homeContactSectionSecond?.ctaBtn,
-                    }}
-                  ></div>
-                )}
-              </div>
-              <style
-                dangerouslySetInnerHTML={{
-                  __html: `
-                  .contact-description p {
-                    margin-bottom: 1.25rem;
-                  }
-                  .contact-description p:last-child {
-                    margin-bottom: 0;
-                  }
-                `,
-                }}
-              />
-            </Col>
-          </Row>
+          <h2 className="text-center service-title pb-5">{contactData?.title}</h2>
+          <ServiceSection
+            textLeft=""
+            textRight={contactData?.description}
+            imageLeft={homeContactSectionSecond?.image}
+            imageRight=""
+          />
+          
 
           {/* added map section here */}
           <MapSection />
