@@ -2940,7 +2940,6 @@ textarea#comment {
     }
     p {
       font-size: 70px;
-      font-family: "AvenirBook";
       position: relative;
       &:after {
         position: absolute;
@@ -2953,7 +2952,6 @@ textarea#comment {
         top: 25%;
       }
       span {
-        font-family: "AvenirBlack";
         color: $color-secondary;
         display: block;
         font-weight: 900;
@@ -3025,7 +3023,6 @@ textarea#comment {
       // font-size: 14px;
       font-weight: 200;
       line-height: 25px;
-      font-family: "AvenirBook";
     }
   }
   .apply-step {
@@ -3086,7 +3083,6 @@ textarea#comment {
       // font-size: 14px;
       font-weight: 200;
       line-height: 25px;
-      font-family: "AvenirBook";
     }
     p.headering-title {
       color: $color-primary;

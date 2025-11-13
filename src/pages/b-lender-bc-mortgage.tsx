@@ -258,7 +258,7 @@ const BLender = (props: MyProps) => {
                 />
               )}
 
-              <Container className="my-5">
+              <Container className="m-5 mx-auto">
                 <Row className="refinance-text my-5">
                   <Col md={5}>
                     <p>
@@ -279,7 +279,7 @@ const BLender = (props: MyProps) => {
                     ></div>
                     {/* CTA Button */}
                     {data?.BLender?.aboutCtaText && (
-                      <div className="tb-btn">
+                      <div className="tb-btn-left">
                         <Link href={data?.BLender?.aboutCtaUrl}>
                           <Button className="HeadBtn">
                             {data?.BLender?.aboutCtaText}
@@ -298,27 +298,22 @@ const BLender = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                <Row className="product-service">
-                  <Col className="px-5" md={1}></Col>
-                  <Col
-                    className="py-3"
-                    md={10}
-                    style={{
-                      border: "1px solid #f0b254",
-                      borderRadius: "10px",
+                <Row
+                  className="product-service mx-3 py-3"
+                  style={{
+                    border: "1px solid #f0b254",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <h2 className="text-center">
+                    {data?.BLender?.productsTitle}
+                  </h2>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: data?.BLender?.productsDescription,
                     }}
-                  >
-                    <h2 className="text-center">
-                      {data?.BLender?.productsTitle}
-                    </h2>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data?.BLender?.productsDescription,
-                      }}
-                      className="text-center"
-                    ></div>
-                  </Col>
-                  <Col className="px-5" md={1}></Col>
+                    className="text-center"
+                  ></div>
                 </Row>
                 <div className="service-row my-5">
                   <Container>
@@ -362,27 +357,22 @@ const BLender = (props: MyProps) => {
 
                 {data?.BLender?.processHeading && (
                   <div className="process-section">
-                    <Row className="product-service">
-                      <Col className="px-5" md={1}></Col>
-                      <Col
-                        className="py-3"
-                        md={10}
-                        style={{
-                          border: "1px solid #f0b254",
-                          borderRadius: "10px",
+                    <Row
+                      className="product-service mx-3 py-3"
+                      style={{
+                        border: "1px solid #f0b254",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      <h2 className="text-center">
+                        {data?.BLender?.processHeading}
+                      </h2>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: data?.BLender?.processDiscription,
                         }}
-                      >
-                        <h2 className="text-center">
-                          {data?.BLender?.processHeading}
-                        </h2>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: data?.BLender?.processDiscription,
-                          }}
-                          className="text-center"
-                        ></div>
-                      </Col>
-                      <Col className="px-5" md={1}></Col>
+                        className="text-center"
+                      ></div>
                     </Row>
 
                     <div className="service-row my-5">
@@ -428,15 +418,9 @@ const BLender = (props: MyProps) => {
                   </div>
                 )}
 
-                <Row className="my-5">
-                  <Container>
-                    <div className="my-5">
-                      <MortgageAdvisor
-                        advisorData={data?.BLender?.advisorData}
-                      />
-                    </div>
-                  </Container>
-                </Row>
+                <Container>
+                  <MortgageAdvisor advisorData={data?.BLender?.advisorData} />
+                </Container>
 
                 {/* Client Testimonials */}
                 <Container className="mb-5 px-3 py-3">
