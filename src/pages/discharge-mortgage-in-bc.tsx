@@ -479,9 +479,9 @@ export default function DischargeMortgageBc(props: MyProps) {
                           key={item}
                           eventKey={item.toString()}
                           title={
-                            <h3 className="location-tab-title">
+                            <span className="location-tab-title">
                               {tab.question}
-                            </h3>
+                            </span>
                           }
                         >
                           <div
