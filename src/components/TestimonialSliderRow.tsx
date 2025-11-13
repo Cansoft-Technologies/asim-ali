@@ -98,7 +98,7 @@ export default function TestimonialSliderRow() {
   return (
     <section className="w-full py-16">
       <div className="">
-        <div className="!text-xl md:!text-2xl xl:!text-4xl !font-semibold mb-12 text-center font-oswald">
+        <div className="!text-xl md:!text-2xl xl:!text-4xl !font-semibold mb-12 text-center">
           What our Happy Clients have to say
         </div>
 
