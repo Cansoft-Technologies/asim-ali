@@ -71,10 +71,10 @@ export default function ApprovalProcessSection({
             : defaultContent
           )?.map((step: any, index: number) => (
             <div key={index} className="space-y-4">
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <span className="text-5xl font-bold">{index + 1}.</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-4 font-oswald">
+              </div> */}
+              <h3 className="text-5xl font-bold mb-4 font-oswald">
                 {step.title}
               </h3>
               <p
