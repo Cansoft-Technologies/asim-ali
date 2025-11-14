@@ -134,6 +134,27 @@ export default function Footer({
                 <Music size={24} className="text-[#F0B254] hover:opacity-80" />
               </a>
             </div>
+
+            {/* DLC Logos */}
+            <div className="flex flex-row gap-4 items-center justify-center md:justify-start mb-6">
+
+            <Image
+                src="/logo/DLC-Logo-Horizontal.jpg"
+                alt="DLC Logo Horizontal"
+                width={200}
+                height={80}
+                className="object-contain"
+              />
+{/* 
+              <Image
+                src="/logo/DLC-Logo.jpg"
+                alt="DLC Logo"
+                width={120}
+                height={120}
+                className="object-contain"
+              /> */}
+              
+            </div>
           </div>
 
           {/* Contact */}
