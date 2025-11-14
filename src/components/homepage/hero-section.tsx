@@ -66,7 +66,6 @@ const HeroSection = ({
         <div className="mt-12 sm:mt-16 container mx-auto px-4 sm:px-6 flex flex-col justify-center items-center text-center">
           <h1 className="text-white font-oswald font-bold leading-tight mb-4 sm:mb-6 text-4xl lg:text-5xl xl:text-6xl">
             Mortgage Broker in <span className="text-[#F0B254]">Surrey</span>{" "}
-            For
             <br className="hidden sm:inline" />
             For Home Loans
           </h1>
